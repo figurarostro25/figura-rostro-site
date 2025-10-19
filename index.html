@@ -13,33 +13,34 @@
       text-align: center;
     }
 
-    /* --- Encabezado con banner de fondo --- */
+    /* --- Encabezado con banner de fondo e imagen centrada --- */
     header {
+      position: relative;
       background: 
         linear-gradient(135deg, rgba(230,183,255,0.25), rgba(163,216,244,0.25)),
         url('banner-spa.png') center/cover no-repeat;
-      min-height: 420px;
+      height: 420px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 40px 20px;
       border-bottom-left-radius: 20px;
       border-bottom-right-radius: 20px;
+      text-align: center;
     }
 
     header img.logo {
       max-width: 240px;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       filter: brightness(1.1);
     }
 
     header h1 {
-      font-size: 1.8rem;
+      font-size: 2rem;
       color: #222;
       margin: 10px 0 5px 0;
       background: rgba(255,255,255,0.8);
-      padding: 5px 15px;
+      padding: 8px 18px;
       border-radius: 10px;
       display: inline-block;
     }
@@ -49,125 +50,4 @@
       font-weight: 400;
       background: rgba(255,255,255,0.7);
       padding: 5px 15px;
-      border-radius: 10px;
-      display: inline-block;
-    }
-
-    /* --- Sección de servicios --- */
-    section {
-      padding: 50px 20px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    h2 {
-      color: #222;
-      margin-bottom: 30px;
-      font-size: 1.8rem;
-    }
-
-    .services {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 25px;
-    }
-
-    .service {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      padding: 25px;
-      width: 280px;
-      transition: transform 0.3s ease;
-    }
-
-    .service:hover {
-      transform: scale(1.03);
-    }
-
-    .service h3 {
-      color: #333;
-      margin-bottom: 10px;
-    }
-
-    .service p {
-      color: #555;
-      font-size: 0.95rem;
-    }
-
-    /* --- Botón de WhatsApp --- */
-    .btn {
-      display: inline-block;
-      background: #6c63ff;
-      color: white;
-      padding: 14px 25px;
-      text-decoration: none;
-      border-radius: 8px;
-      margin-top: 30px;
-      transition: background 0.3s;
-    }
-
-    .btn:hover {
-      background: #4a47d5;
-    }
-
-    /* --- Pie de página --- */
-    footer {
-      background: #222;
-      color: #fff;
-      padding: 25px;
-      margin-top: 50px;
-      font-size: 0.9rem;
-    }
-
-    /* --- Adaptable a móviles --- */
-    @media (max-width: 768px) {
-      header {
-        min-height: 320px;
-      }
-      header img.logo {
-        max-width: 180px;
-      }
-      .service {
-        width: 100%;
-        max-width: 340px;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <header>
-    <img src="logo-horizontal.png" alt="Figura Rostro KG" class="logo">
-    <h1>Bienvenidos a Figura Rostro KG</h1>
-    <p>Tu centro de estética integral en Panamá</p>
-  </header>
-
-  <section>
-    <h2>Servicios</h2>
-    <div class="services">
-      <div class="service">
-        <h3>Tratamientos Faciales</h3>
-        <p>Limpieza facial, dermaplaning, peeling y más para rejuvenecer tu piel.</p>
-      </div>
-      <div class="service">
-        <h3>Masajes Terapéuticos</h3>
-        <p>Relajantes, descontracturantes y drenajes linfáticos para tu bienestar.</p>
-      </div>
-      <div class="service">
-        <h3>Rejuvenecimiento</h3>
-        <p>Procedimientos no invasivos para rostro y cuerpo, con tecnología moderna.</p>
-      </div>
-    </div>
-
-    <a href="https://wa.me/50764746168" class="btn" target="_blank">
-      💬 Reserva tu cita por WhatsApp
-    </a>
-  </section>
-
-  <footer>
-    © 2025 Figura Rostro KG — Estética Integral | Panamá
-  </footer>
-</body>
-</html>
+      border-radius: 10p
