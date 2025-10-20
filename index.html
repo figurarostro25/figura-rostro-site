@@ -26,22 +26,40 @@
     }
 
     /* ===== HEADER ===== */
-    header {
-header {
+    header{
   position: relative;
   width: 100%;
   height: 420px;
-  background: 
-    linear-gradient(135deg, rgba(155,93,229,0.85), rgba(161,140,209,0.85), rgba(251,194,235,0.85)),
-    url('header-portada.jpg') center/cover no-repeat;
-  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: var(--blanco);
+  color: #fff;
   padding: 40px 20px;
   text-align: center;
+  overflow: hidden;
+}
+
+/* Imagen de fondo */
+header::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: url('header-portada.jpg') center/cover no-repeat;
+  z-index: -2;
+}
+
+/* Degradado encima de la imagen */
+header::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(135deg,
+    rgba(155,93,229,0.70),
+    rgba(161,140,209,0.70),
+    rgba(251,194,235,0.70)
+  );
+  z-index: -1;
 }
 
   display: flex;
