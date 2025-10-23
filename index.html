@@ -89,20 +89,7 @@
     .accord[open] summary::after{ content:"－"; }
     .accord p{ color:#555; margin:10px 0 0; font-size:14px; line-height:1.55; }
 
-    /* ===== PROMOS DEL MES (ACTUALIZADA) ===== */
-    .promo-card {
-      display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
-      background: linear-gradient(135deg, #fbc2eb, #a18cd1);
-      border-radius: 18px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-      overflow: hidden; margin: 40px auto; max-width: 900px; text-align: left; color: #222;
-    }
-    .promo-info { flex: 1 1 380px; padding: 30px; }
-    .promo-info h3 { color: #6b45b1; font-size: 24px; margin-top: 0; }
-    .promo-info ul { padding-left: 18px; color: #333; margin-bottom: 16px; }
-    .promo-info li { margin-bottom: 4px; }
-    .promo-info .precio { font-size: 22px; color: #6c2eb9; }
-    .promo-img { flex: 1 1 300px; }
-    .promo-img img { width: 100%; height: 100%; object-fit: cover; display: block; background:#ddd; }
+    /* ===== BOTONES ===== */
     .btn {
       background: var(--violeta); color: #fff; padding: 12px 20px; border-radius: 8px;
       text-decoration: none; font-weight: 600; margin-top: 20px; display: inline-block;
@@ -117,9 +104,9 @@
     .fab.waze{ background:#2BC3F3; }
     .fab.whatsapp{ background:#25D366; }
     @media (max-width:768px){ .fab-stack{ display:flex; } }
-    @media (max-width:480px){ header h1{font-size:22px;} header img.logo{width:150px;} .service{width:100%;} .promo-card{flex-direction:column; text-align:center;} }
+    @media (max-width:480px){ header h1{font-size:22px;} header img.logo{width:150px;} .service{width:100%;} }
 
-    /* ===== FOOTER NUEVO ===== */
+    /* ===== FOOTER ===== */
     .site-footer{background:#222;color:#fff;margin-top:3rem}
     .footer-inner{max-width:1100px;margin:0 auto;padding:2rem 1rem;display:grid;gap:1.5rem;grid-template-columns:1.2fr 1fr 1.2fr}
     .site-footer .logo{height:42px;margin-bottom:.5rem;filter:brightness(1000%)}
@@ -132,6 +119,45 @@
     .directions a:hover{text-decoration:underline}
     .legal{border-top:1px solid rgba(255,255,255,.08);padding:1rem;text-align:center;color:#b9b9c3}
     @media (max-width:900px){.footer-inner{grid-template-columns:1fr}}
+
+    /* ===== CARRUSEL DE OFERTAS ===== */
+    #ofertas { padding: 40px 20px; max-width: 1100px; margin: auto; }
+    .offers-carousel { position: relative; }
+    .offers-viewport { overflow: hidden; border-radius: 18px; }
+    .offers-track { display: flex; transition: transform .5s ease; will-change: transform; }
+    .offer-slide { min-width: 100%; }
+    .offer-card {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #fbc2eb, #a18cd1);
+      border-radius: 18px; box-shadow: 0 8px 20px rgba(0,0,0,.12);
+      overflow: hidden; text-align: left; color: #222;
+    }
+    .offer-info { flex: 1 1 380px; padding: 30px; }
+    .offer-info h3 { color: #6b45b1; font-size: 24px; margin-top: 0; }
+    .offer-info ul { padding-left: 18px; color: #333; margin-bottom: 16px; }
+    .offer-info li { margin-bottom: 4px; }
+    .offer-info .precio { font-size: 22px; color: #6c2eb9; }
+    .offer-img { flex: 1 1 300px; }
+    .offer-img img { width: 100%; height: 100%; object-fit: cover; display: block; background:#ddd; }
+    .offer-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(0,0,0,.45); color: #fff; border: 0; width: 40px; height: 40px;
+      border-radius: 999px; display: grid; place-items: center; cursor: pointer;
+      box-shadow: 0 6px 16px rgba(0,0,0,.25);
+    }
+    .offer-nav:hover { background: rgba(0,0,0,.6); }
+    .offer-nav.prev { left: 12px; }
+    .offer-nav.next { right: 12px; }
+    .offer-dots { display: flex; gap: 8px; justify-content: center; margin-top: 12px; }
+    .offer-dots .dot {
+      width: 10px; height: 10px; border-radius: 999px; border: 0; cursor: pointer;
+      background: #c9b4f5;
+    }
+    .offer-dots .dot[aria-selected="true"] { background: #6b45b1; }
+    @media (max-width: 480px) {
+      .offer-info h3 { font-size: 20px; }
+      .offer-info .precio { font-size: 20px; }
+    }
   </style>
 </head>
 
@@ -191,58 +217,87 @@
     </div>
   </section>
 
-  <!-- ===== MASAJES ===== -->
-  <section id="masajes-detalle">
-    <h2>Masajes Terapéuticos</h2>
-    <div class="detail-grid">
-      <article class="detail">
-        <img src="masaje-relajante.jpg" alt="Masaje relajante">
-        <div class="box">
-          <h3>Masaje Relajante</h3>
-          <p>Presiones suaves para liberar tensión y mejorar el descanso.</p>
-        </div>
-      </article>
-
-      <article class="detail">
-        <img src="masaje-descontracturante.jpg" alt="Masaje descontracturante">
-        <div class="box">
-          <h3>Masaje Descontracturante</h3>
-          <p>Focalizado en cuello y espalda para aliviar dolores musculares.</p>
-        </div>
-      </article>
-
-      <article class="detail">
-        <img src="masaje-drenaje.jpg" alt="Drenaje linfático">
-        <div class="box">
-          <h3>Drenaje Linfático</h3>
-          <p>Estimula la circulación y ayuda a eliminar líquidos retenidos.</p>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- ===== PROMOS DEL MES (ACTUALIZADA) ===== -->
-  <section id="promos">
+  <!-- ===== OFERTAS / CARRUSEL ===== -->
+  <section id="ofertas">
     <h2>Promos del Mes 💎</h2>
-    <div class="promo-card">
-      <div class="promo-info">
-        <h3>✨ Peeling + Piernas Cansadas</h3>
-        <p><b>Tratamiento de Peeling Facial + Masaje Relajante de Piernas Cansadas</b></p>
-        <p>Antes <s>$120</s> · Ahora <b class="precio">$89</b></p>
-        <ul>
-          <li>Renueva tu rostro y luce más joven</li>
-          <li>Piel más clara y luminosa</li>
-          <li>Reserva por Directorio Yappi o WhatsApp</li>
-        </ul>
-        <a href="https://wa.me/50764746168" target="_blank" class="btn">💬 Tomar oferta a $89</a>
+
+    <div class="offers-carousel" aria-roledescription="carousel">
+      <div class="offers-viewport" aria-live="polite">
+        <div class="offers-track">
+          <!-- Slide 1 -->
+          <article class="offer-slide" role="group" aria-label="1 de 3">
+            <div class="offer-card">
+              <div class="offer-info">
+                <h3>✨ Combo Relax Premium</h3>
+                <p>Masaje relajante + limpieza facial premium con mascarilla hidratante.</p>
+                <p>Antes <s>$110</s> · Ahora <b class="precio">$85</b></p>
+                <ul>
+                  <li>Reduce estrés y mejora el descanso</li>
+                  <li>Piel más clara e hidratada</li>
+                </ul>
+                <a href="https://wa.me/50764746168" target="_blank" class="btn">Reservar combo a $85</a>
+              </div>
+              <div class="offer-img">
+                <img src="oferta-combo-relax.jpg" alt="Combo Relax Premium: masaje + limpieza facial">
+              </div>
+            </div>
+          </article>
+
+          <!-- Slide 2 -->
+          <article class="offer-slide" role="group" aria-label="2 de 3">
+            <div class="offer-card">
+              <div class="offer-info">
+                <h3>🌟 Peeling Facial Unisex</h3>
+                <p>Renueva tu piel y luce un rostro más luminoso.</p>
+                <p>Antes <s>$120</s> · Ahora <b class="precio">$85</b></p>
+                <ul>
+                  <li>Uniforma tono y textura</li>
+                  <li>Apto para hombres y mujeres</li>
+                  <li>Más luminosidad desde la 1.ª sesión</li>
+                </ul>
+                <a href="https://wa.me/50764746168" target="_blank" class="btn">Tomar peeling a $85</a>
+              </div>
+              <div class="offer-img">
+                <img src="oferta-peeling.jpg" alt="Peeling facial unisex">
+              </div>
+            </div>
+          </article>
+
+          <!-- Slide 3 -->
+          <article class="offer-slide" role="group" aria-label="3 de 3">
+            <div class="offer-card">
+              <div class="offer-info">
+                <h3>💆 Descontracturante + Limpieza</h3>
+                <p>Alivia tensiones musculares y relaja cuerpo y mente.</p>
+                <p>Antes <s>$110</s> · Ahora <b class="precio">$95</b></p>
+                <ul>
+                  <li>Libera contracturas en cuello y espalda</li>
+                  <li>Higiene facial profunda con mascarilla</li>
+                </ul>
+                <a href="https://wa.me/50764746168" target="_blank" class="btn">Reservar pack a $95</a>
+              </div>
+              <div class="offer-img">
+                <img src="oferta-descontracturante-limpieza.jpg" alt="Masaje descontracturante + limpieza facial">
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
-      <div class="promo-img">
-        <img src="banner-promo.jpg" alt="Promoción Figura Rostro">
+
+      <!-- Controles -->
+      <button class="offer-nav prev" aria-label="Oferta anterior" title="Anterior">‹</button>
+      <button class="offer-nav next" aria-label="Siguiente oferta" title="Siguiente">›</button>
+
+      <!-- Indicadores -->
+      <div class="offer-dots" role="tablist" aria-label="Selector de ofertas">
+        <button class="dot" role="tab" aria-selected="true" aria-controls="oferta-1" title="Oferta 1"></button>
+        <button class="dot" role="tab" aria-selected="false" aria-controls="oferta-2" title="Oferta 2"></button>
+        <button class="dot" role="tab" aria-selected="false" aria-controls="oferta-3" title="Oferta 3"></button>
       </div>
     </div>
   </section>
 
-  <!-- ===== FOOTER NUEVO ===== -->
+  <!-- ===== FOOTER ===== -->
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="brand">
@@ -309,6 +364,79 @@
     </a>
   </div>
 
+  <!-- ===== JS CARRUSEL ===== -->
+  <script>
+  (function(){
+    const track = document.querySelector('.offers-track');
+    const slides = Array.from(document.querySelectorAll('.offer-slide'));
+    const prev = document.querySelector('.offer-nav.prev');
+    const next = document.querySelector('.offer-nav.next');
+    const dots = Array.from(document.querySelectorAll('.offer-dots .dot'));
+    const viewport = document.querySelector('.offers-viewport');
+
+    let index = 0;
+    const count = slides.length;
+    const dur = 5000; // autoplay (ms)
+    let timer = null;
+    let isPaused = false;
+
+    function update(){
+      track.style.transform = `translateX(-${index * 100}%)`;
+      slides.forEach((el,i)=>{
+        el.setAttribute('aria-hidden', i !== index);
+        el.querySelectorAll('a, button').forEach(ctrl=>{
+          ctrl.tabIndex = (i === index ? 0 : -1);
+        });
+      });
+      dots.forEach((d,i)=>d.setAttribute('aria-selected', i===index));
+    }
+
+    function goTo(i){
+      index = (i + count) % count;
+      update();
+    }
+
+    function nextSlide(){ goTo(index+1); }
+    function prevSlide(){ goTo(index-1); }
+
+    // Controles
+    document.querySelector('.offer-nav.next').addEventListener('click', nextSlide);
+    document.querySelector('.offer-nav.prev').addEventListener('click', prevSlide);
+    dots.forEach((d,i)=>d.addEventListener('click', ()=>goTo(i)));
+
+    // Autoplay
+    function start(){ if(timer) clearInterval(timer); timer = setInterval(()=>{ if(!isPaused) nextSlide(); }, dur); }
+    function pause(){ isPaused = true; }
+    function resume(){ isPaused = false; }
+
+    viewport.addEventListener('mouseenter', pause);
+    viewport.addEventListener('mouseleave', resume);
+    viewport.addEventListener('focusin', pause);
+    viewport.addEventListener('focusout', resume);
+
+    // Teclado
+    viewport.setAttribute('tabindex','0');
+    viewport.addEventListener('keydown', (e)=>{
+      if(e.key === 'ArrowRight') nextSlide();
+      if(e.key === 'ArrowLeft') prevSlide();
+    });
+
+    // Swipe táctil
+    let startX = null;
+    viewport.addEventListener('touchstart', (e)=>{ startX = e.touches[0].clientX; pause(); }, {passive:true});
+    viewport.addEventListener('touchend', (e)=>{
+      if(startX===null) return;
+      const endX = e.changedTouches[0].clientX;
+      const dx = endX - startX;
+      if(Math.abs(dx) > 40){ dx < 0 ? nextSlide() : prevSlide(); }
+      startX = null; resume();
+    });
+
+    // Inicializar
+    update(); start();
+  })();
+  </script>
+
   <script>
     // Año del footer
     document.getElementById('y').textContent = new Date().getFullYear();
@@ -316,5 +444,4 @@
 </body>
 </html>
 
-</html>
 
