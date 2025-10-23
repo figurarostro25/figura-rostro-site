@@ -65,6 +65,40 @@
     section { padding: 40px 20px; max-width: 1100px; margin: auto; }
     h2 { color: var(--violeta-oscuro); font-size: 26px; margin-bottom: 30px; }
 
+    /* ===== ABOUT + VIDEO ===== */
+    #sobre { display:grid; grid-template-columns: 1.2fr 1fr; gap:24px; align-items:center; }
+    #sobre .about-card{
+      background:#fff; border-radius:16px; box-shadow:0 8px 20px rgba(0,0,0,.08);
+      text-align:left; padding:24px;
+    }
+    #sobre .about-card h2{ margin-top:0; }
+    #sobre .about-card p{ color:#4a4a4a; line-height:1.7; }
+    .video-card{
+      background:#fff; border-radius:16px; box-shadow:0 8px 20px rgba(0,0,0,.08); overflow:hidden;
+      text-align:left;
+    }
+    .ratio{ position:relative; width:100%; padding-top:56.25%; background:#000; }
+    .ratio iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+    .video-actions{ display:flex; gap:10px; padding:12px 16px; border-top:1px solid #eee; }
+    .video-btn{
+      display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:10px;
+      background:#f3ecff; color:#5d3bb5; border:0; cursor:pointer; font-weight:600; text-decoration:none;
+    }
+    .video-btn:hover{ filter:brightness(0.97); }
+    @media (max-width: 900px){ #sobre{ grid-template-columns:1fr; } }
+
+    /* Modal de video */
+    dialog.video-modal{
+      width:min(920px, 92vw); border:0; border-radius:16px; padding:0; overflow:hidden;
+      box-shadow:0 24px 60px rgba(0,0,0,.35);
+    }
+    dialog::backdrop{ background: rgba(0,0,0,.6); }
+    .video-modal .ratio{ padding-top:56.25%; }
+    .video-modal .close-btn{
+      position:absolute; top:8px; right:8px; background:rgba(0,0,0,.6); color:#fff;
+      border:0; width:36px; height:36px; border-radius:999px; cursor:pointer; font-size:18px;
+    }
+
     /* ===== SERVICIOS ===== */
     .services { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
     .service {
@@ -81,10 +115,7 @@
     .detail .box{ padding:16px 18px; }
     .detail h3{ margin:0 0 6px; color:#7e63c9; font-size:18px; }
     .accord{ border-top:1px solid #eee; margin-top:10px; padding-top:10px; }
-    .accord summary{
-      cursor:pointer; list-style:none; font-weight:700; color:#2c2c2c;
-      display:flex; align-items:center; justify-content:space-between;
-    }
+    .accord summary{ cursor:pointer; list-style:none; font-weight:700; color:#2c2c2c; display:flex; align-items:center; justify-content:space-between; }
     .accord summary::after{ content:"＋"; color:#7e63c9; font-weight:900; }
     .accord[open] summary::after{ content:"－"; }
     .accord p{ color:#555; margin:10px 0 0; font-size:14px; line-height:1.55; }
@@ -100,9 +131,9 @@
     /* ===== BOTONES FLOTANTES ===== */
     .fab-stack{ position:fixed; right:16px; bottom:18px; display:none; flex-direction:column; gap:12px; z-index:60; }
     .fab{ width:56px; height:56px; border-radius:999px; display:flex; align-items:center; justify-content:center; box-shadow:0 12px 28px rgba(0,0,0,.18); text-decoration:none; }
-    .fab svg{ width:28px; height:28px; fill:#fff; }
+    .fab svg{ width=28px; height=28px; fill:#fff; }
     .fab.waze{ background:#2BC3F3; }
-    .fab.whatsapp{ background:#25D366; }
+    .fab.whatsapp{ background=#25D366; }
     @media (max-width:768px){ .fab-stack{ display:flex; } }
     @media (max-width:480px){ header h1{font-size:22px;} header img.logo{width:150px;} .service{width:100%;} }
 
@@ -158,6 +189,28 @@
       .offer-info h3 { font-size: 20px; }
       .offer-info .precio { font-size: 20px; }
     }
+
+    /* ===== GALERÍA / INSTAGRAM ===== */
+    #galeria { padding: 40px 20px; max-width: 1100px; margin: auto; }
+    .media-grid{
+      display:grid; gap:14px; grid-template-columns: repeat(3, 1fr);
+    }
+    .media-grid figure{
+      margin:0; border-radius:14px; overflow:hidden; background:#fff; box-shadow:0 8px 20px rgba(0,0,0,.08);
+      cursor:pointer;
+    }
+    .media-grid img{ width:100%; height:240px; object-fit:cover; display:block; }
+    @media (max-width:900px){ .media-grid{ grid-template-columns: repeat(2, 1fr);} .media-grid img{ height:200px; } }
+    @media (max-width:520px){ .media-grid{ grid-template-columns: 1fr;} .media-grid img{ height:220px; } }
+
+    dialog#lightbox{ width:min(980px, 92vw); border:0; border-radius:16px; padding:0; overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,.35); }
+    dialog#lightbox::backdrop{ background: rgba(0,0,0,.65); }
+    .lightbox-body{ position:relative; background:#000; }
+    .lightbox-body img, .lightbox-body iframe{ width:100%; height:calc(92vh - 80px); object-fit:contain; border:0; }
+    .lightbox-close{
+      position:absolute; top:8px; right:8px; background:rgba(0,0,0,.6); color:#fff;
+      border:0; width:36px; height:36px; border-radius:999px; cursor:pointer; font-size:18px;
+    }
   </style>
 </head>
 
@@ -167,6 +220,40 @@
     <h1>Bienvenidos a Figura Rostro KG</h1>
     <p>Tu centro de estética integral en Panamá</p>
   </header>
+
+  <!-- ===== SOBRE FIGURA ROSTRO KG + VIDEO ===== -->
+  <section id="sobre">
+    <div class="about-card">
+      <h2>Figura Rostro KG</h2>
+      <p>
+        Somos un centro de estética integral ubicado en Royal Park – Av. Ernesto T. Lefevre, Ciudad de Panamá.
+        Combinamos técnicas profesionales con un trato cálido para ayudarte a lograr una piel más luminosa y un bienestar total.
+      </p>
+      <p>
+        En nuestro canal compartimos tips de cuidado facial, rutinas y demostraciones de tratamientos. ¡Suscríbete
+        para aprender y ver resultados reales!
+      </p>
+    </div>
+
+    <div class="video-card">
+      <div class="ratio">
+        <iframe id="yt-embed" src="https://www.youtube.com/embed/II9Jexh_MgE?rel=0" title="Video de Figura Rostro KG" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <div class="video-actions">
+        <a class="video-btn" id="yt-open"
+           href="https://www.youtube.com/watch?v=II9Jexh_MgE" target="_blank" rel="noopener">▶ Ver en YouTube</a>
+        <button class="video-btn" id="yt-full">⤢ Pantalla completa</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal para video fullscreen -->
+  <dialog class="video-modal" id="videoModal" aria-label="Video en pantalla completa">
+    <button class="close-btn" id="videoClose" aria-label="Cerrar">✕</button>
+    <div class="ratio">
+      <iframe id="yt-modal" src="" title="Video de Figura Rostro KG (fullscreen)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+  </dialog>
 
   <!-- ===== SERVICIOS ===== -->
   <section>
@@ -297,6 +384,32 @@
     </div>
   </section>
 
+  <!-- ===== GALERÍA / INSTAGRAM ===== -->
+  <section id="galeria">
+    <h2>Galería & Instagram</h2>
+
+    <div class="media-grid" id="mediaGrid">
+      <figure data-type="image" data-src="galeria-1.jpg">
+        <img src="galeria-1.jpg" alt="Resultado de tratamiento 1">
+      </figure>
+      <figure data-type="image" data-src="galeria-2.jpg">
+        <img src="galeria-2.jpg" alt="Ambiente del spa">
+      </figure>
+      <figure data-type="youtube" data-src="https://www.youtube.com/embed/II9Jexh_MgE?rel=0">
+        <img src="galeria-video-thumb.jpg" alt="Video testimonio de cliente">
+      </figure>
+    </div>
+
+    <!-- Instagram embeds (Opcional) -->
+    <!--
+    <div class="insta-embeds">
+      <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/URL_DEL_POST_1/" data-instgrm-version="14"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/URL_DEL_REEL_2/" data-instgrm-version="14"></blockquote>
+    </div>
+    <script async src="https://www.instagram.com/embed.js"></script>
+    -->
+  </section>
+
   <!-- ===== FOOTER ===== -->
   <footer class="site-footer">
     <div class="footer-inner">
@@ -330,7 +443,6 @@
       <div class="map">
         <h4>Cómo llegar</h4>
         <div class="map-embed">
-          <!-- Embed usando plus code 2G42+GC Panamá -->
           <iframe
             src="https://maps.google.com/maps?q=2G42%2BGC%20Panam%C3%A1&output=embed"
             width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"
@@ -391,20 +503,14 @@
       dots.forEach((d,i)=>d.setAttribute('aria-selected', i===index));
     }
 
-    function goTo(i){
-      index = (i + count) % count;
-      update();
-    }
-
+    function goTo(i){ index = (i + count) % count; update(); }
     function nextSlide(){ goTo(index+1); }
     function prevSlide(){ goTo(index-1); }
 
-    // Controles
-    document.querySelector('.offer-nav.next').addEventListener('click', nextSlide);
-    document.querySelector('.offer-nav.prev').addEventListener('click', prevSlide);
+    next.addEventListener('click', nextSlide);
+    prev.addEventListener('click', prevSlide);
     dots.forEach((d,i)=>d.addEventListener('click', ()=>goTo(i)));
 
-    // Autoplay
     function start(){ if(timer) clearInterval(timer); timer = setInterval(()=>{ if(!isPaused) nextSlide(); }, dur); }
     function pause(){ isPaused = true; }
     function resume(){ isPaused = false; }
@@ -414,7 +520,6 @@
     viewport.addEventListener('focusin', pause);
     viewport.addEventListener('focusout', resume);
 
-    // Teclado
     viewport.setAttribute('tabindex','0');
     viewport.addEventListener('keydown', (e)=>{
       if(e.key === 'ArrowRight') nextSlide();
@@ -432,16 +537,95 @@
       startX = null; resume();
     });
 
-    // Inicializar
     update(); start();
   })();
   </script>
 
+  <!-- ===== JS: Video modal + Galería / Lightbox ===== -->
   <script>
+    // VIDEO MODAL
+    (function(){
+      const btnFull = document.getElementById('yt-full');
+      const modal = document.getElementById('videoModal');
+      const closeBtn = document.getElementById('videoClose');
+      const ytInline = document.getElementById('yt-embed');
+      const ytModal = document.getElementById('yt-modal');
+      const openLink = document.getElementById('yt-open');
+
+      function getVideoId(){
+        const url = ytInline.src;
+        const m = url.match(/embed\/([^?]+)/);
+        return m ? m[1] : '';
+      }
+
+      btnFull.addEventListener('click', ()=>{
+        const id = getVideoId();
+        ytModal.src = `https://www.youtube.com/embed/${id}?rel=0&autoplay=1`;
+        modal.showModal();
+      });
+
+      closeBtn.addEventListener('click', ()=>{
+        ytModal.src = '';
+        modal.close();
+      });
+
+      const id = getVideoId();
+      if(id) openLink.href = `https://www.youtube.com/watch?v=${id}`;
+    })();
+
+    // GALERÍA / LIGHTBOX
+    (function(){
+      const grid = document.getElementById('mediaGrid');
+      if(!grid) return;
+
+      let dialog = document.getElementById('lightbox');
+      if(!dialog){
+        dialog = document.createElement('dialog');
+        dialog.id = 'lightbox';
+        dialog.innerHTML = `
+          <div class="lightbox-body">
+            <button class="lightbox-close" aria-label="Cerrar">✕</button>
+            <div class="ratio">
+              <div id="lightboxContent"></div>
+            </div>
+          </div>`;
+        document.body.appendChild(dialog);
+      }
+
+      const closeBtn = dialog.querySelector('.lightbox-close');
+      const content = dialog.querySelector('#lightboxContent');
+
+      grid.addEventListener('click', (e)=>{
+        const fig = e.target.closest('figure');
+        if(!fig) return;
+        const type = fig.getAttribute('data-type');
+        const src = fig.getAttribute('data-src');
+        content.innerHTML = '';
+        if(type === 'image'){
+          const img = document.createElement('img');
+          img.src = src;
+          img.alt = fig.querySelector('img')?.alt || 'Imagen';
+          content.appendChild(img);
+        }else if(type === 'youtube'){
+          const iframe = document.createElement('iframe');
+          iframe.src = src.includes('autoplay=1') ? src : (src + '&autoplay=1');
+          iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+          iframe.allowFullscreen = true;
+          content.appendChild(iframe);
+        }
+        dialog.showModal();
+      });
+
+      closeBtn.addEventListener('click', ()=>{
+        content.innerHTML = '';
+        dialog.close();
+      });
+
+      dialog.addEventListener('close', ()=>{ content.innerHTML = ''; });
+    })();
+
     // Año del footer
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
-
-
