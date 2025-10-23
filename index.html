@@ -25,7 +25,7 @@
       text-align: center;
     }
 
-    /* ===== HEADER (corregido) ===== */
+    /* ===== HEADER ===== */
     header{
       position: relative;
       width: 100%;
@@ -43,7 +43,8 @@
       content:"";
       position:absolute;
       inset:0;
-      background: url('header-portada.jpg') center/cover no-repeat;
+      /* usa tu imagen subida al raíz */
+      background: url('header-portada-demo.jpg.png') center/cover no-repeat;
       z-index: -2;
     }
     header::after{
@@ -65,7 +66,7 @@
     section { padding: 40px 20px; max-width: 1100px; margin: auto; }
     h2 { color: var(--violeta-oscuro); font-size: 26px; margin-bottom: 30px; }
 
-    /* ===== ABOUT + VIDEO ===== */
+    /* ===== SOBRE + VIDEO ===== */
     #sobre { display:grid; grid-template-columns: 1.2fr 1fr; gap:24px; align-items:center; }
     #sobre .about-card{
       background:#fff; border-radius:16px; box-shadow:0 8px 20px rgba(0,0,0,.08);
@@ -114,11 +115,6 @@
     .detail img{ width:100%; height:200px; object-fit:cover; display:block; background:#eaeaea; }
     .detail .box{ padding:16px 18px; }
     .detail h3{ margin:0 0 6px; color:#7e63c9; font-size:18px; }
-    .accord{ border-top:1px solid #eee; margin-top:10px; padding-top:10px; }
-    .accord summary{ cursor:pointer; list-style:none; font-weight:700; color:#2c2c2c; display:flex; align-items:center; justify-content:space-between; }
-    .accord summary::after{ content:"＋"; color:#7e63c9; font-weight:900; }
-    .accord[open] summary::after{ content:"－"; }
-    .accord p{ color:#555; margin:10px 0 0; font-size:14px; line-height:1.55; }
 
     /* ===== BOTONES ===== */
     .btn {
@@ -127,15 +123,6 @@
       box-shadow: 0 6px 12px rgba(0,0,0,.15);
     }
     .btn:hover { background: var(--violeta-oscuro); }
-
-    /* ===== BOTONES FLOTANTES ===== */
-    .fab-stack{ position:fixed; right:16px; bottom:18px; display:none; flex-direction:column; gap:12px; z-index:60; }
-    .fab{ width:56px; height:56px; border-radius:999px; display:flex; align-items:center; justify-content:center; box-shadow:0 12px 28px rgba(0,0,0,.18); text-decoration:none; }
-    .fab svg{ width=28px; height=28px; fill:#fff; }
-    .fab.waze{ background:#2BC3F3; }
-    .fab.whatsapp{ background=#25D366; }
-    @media (max-width:768px){ .fab-stack{ display:flex; } }
-    @media (max-width:480px){ header h1{font-size:22px;} header img.logo{width:150px;} .service{width:100%;} }
 
     /* ===== FOOTER ===== */
     .site-footer{background:#222;color:#fff;margin-top:3rem}
@@ -150,6 +137,15 @@
     .directions a:hover{text-decoration:underline}
     .legal{border-top:1px solid rgba(255,255,255,.08);padding:1rem;text-align:center;color:#b9b9c3}
     @media (max-width:900px){.footer-inner{grid-template-columns:1fr}}
+
+    /* ===== BOTONES FLOTANTES ===== */
+    .fab-stack{ position:fixed; right:16px; bottom:18px; display:none; flex-direction:column; gap:12px; z-index:60; }
+    .fab{ width:56px; height:56px; border-radius:999px; display:flex; align-items:center; justify-content:center; box-shadow:0 12px 28px rgba(0,0,0,.18); text-decoration:none; }
+    .fab svg{ width:28px; height:28px; fill:#fff; }
+    .fab.waze{ background:#2BC3F3; }
+    .fab.whatsapp{ background:#25D366; }
+    @media (max-width:768px){ .fab-stack{ display:flex; } }
+    @media (max-width:480px){ header h1{font-size:22px;} header img.logo{width:150px;} .service{width:100%;} }
 
     /* ===== CARRUSEL DE OFERTAS ===== */
     #ofertas { padding: 40px 20px; max-width: 1100px; margin: auto; }
@@ -185,10 +181,6 @@
       background: #c9b4f5;
     }
     .offer-dots .dot[aria-selected="true"] { background: #6b45b1; }
-    @media (max-width: 480px) {
-      .offer-info h3 { font-size: 20px; }
-      .offer-info .precio { font-size: 20px; }
-    }
 
     /* ===== GALERÍA / INSTAGRAM ===== */
     #galeria { padding: 40px 20px; max-width: 1100px; margin: auto; }
@@ -203,10 +195,14 @@
     @media (max-width:900px){ .media-grid{ grid-template-columns: repeat(2, 1fr);} .media-grid img{ height:200px; } }
     @media (max-width:520px){ .media-grid{ grid-template-columns: 1fr;} .media-grid img{ height:220px; } }
 
+    /* Lightbox */
     dialog#lightbox{ width:min(980px, 92vw); border:0; border-radius:16px; padding:0; overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,.35); }
     dialog#lightbox::backdrop{ background: rgba(0,0,0,.65); }
     .lightbox-body{ position:relative; background:#000; }
-    .lightbox-body img, .lightbox-body iframe{ width:100%; height:calc(92vh - 80px); object-fit:contain; border:0; }
+    .lightbox-body img, .lightbox-body iframe, .lightbox-body video{
+      width:100%; height:calc(92vh - 80px); object-fit:contain; border:0;
+      background:#000;
+    }
     .lightbox-close{
       position:absolute; top:8px; right:8px; background:rgba(0,0,0,.6); color:#fff;
       border:0; width:36px; height:36px; border-radius:999px; cursor:pointer; font-size:18px;
@@ -237,6 +233,7 @@
 
     <div class="video-card">
       <div class="ratio">
+        <!-- Tu short de YouTube -->
         <iframe id="yt-embed" src="https://www.youtube.com/embed/II9Jexh_MgE?rel=0" title="Video de Figura Rostro KG" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
       <div class="video-actions">
@@ -295,7 +292,8 @@
       </article>
 
       <article class="detail">
-        <img src="facial-dermaplaning.jpg" alt="Dermaplaning">
+        <!-- Si aún no subiste esta, luego la cambiamos -->
+        <img src="banner-spa.png" alt="Dermaplaning (imagen temporal)">
         <div class="box">
           <h3>Dermaplaning</h3>
           <p>Elimina células muertas y vello fino para una piel más suave y brillante.</p>
@@ -325,7 +323,7 @@
                 <a href="https://wa.me/50764746168" target="_blank" class="btn">Reservar combo a $85</a>
               </div>
               <div class="offer-img">
-                <img src="oferta-combo-relax.jpg" alt="Combo Relax Premium: masaje + limpieza facial">
+                <img src="oferta-demo-1.jpg.png" alt="Promo Combo Relax Premium Figura Rostro KG">
               </div>
             </div>
           </article>
@@ -345,12 +343,12 @@
                 <a href="https://wa.me/50764746168" target="_blank" class="btn">Tomar peeling a $85</a>
               </div>
               <div class="offer-img">
-                <img src="oferta-peeling.jpg" alt="Peeling facial unisex">
+                <img src="oferta-demo-2.jpg.png" alt="Promo Peeling Facial Unisex Figura Rostro KG">
               </div>
             </div>
           </article>
 
-          <!-- Slide 3 -->
+          <!-- Slide 3 (temporal con banner-spa.png) -->
           <article class="offer-slide" role="group" aria-label="3 de 3">
             <div class="offer-card">
               <div class="offer-info">
@@ -364,7 +362,7 @@
                 <a href="https://wa.me/50764746168" target="_blank" class="btn">Reservar pack a $95</a>
               </div>
               <div class="offer-img">
-                <img src="oferta-descontracturante-limpieza.jpg" alt="Masaje descontracturante + limpieza facial">
+                <img src="banner-spa.png" alt="Promo Masaje Descontracturante + Limpieza (temporal)">
               </div>
             </div>
           </article>
@@ -389,22 +387,23 @@
     <h2>Galería & Instagram</h2>
 
     <div class="media-grid" id="mediaGrid">
-      <figure data-type="image" data-src="galeria-1.jpg">
-        <img src="galeria-1.jpg" alt="Resultado de tratamiento 1">
+      <figure data-type="image" data-src="galeria-demo-1.jpg.png">
+        <img src="galeria-demo-1.jpg.png" alt="Tratamiento facial premium en Figura Rostro KG">
       </figure>
-      <figure data-type="image" data-src="galeria-2.jpg">
-        <img src="galeria-2.jpg" alt="Ambiente del spa">
+      <figure data-type="image" data-src="galeria-demo-2.jpg.png">
+        <img src="galeria-demo-2.jpg.png" alt="Masaje terapéutico relajante en Figura Rostro KG">
       </figure>
-      <figure data-type="youtube" data-src="https://www.youtube.com/embed/II9Jexh_MgE?rel=0">
-        <img src="galeria-video-thumb.jpg" alt="Video testimonio de cliente">
+      <!-- Vídeo local en lightbox (miniatura usa banner-spa.png como poster) -->
+      <figure data-type="video" data-src="galeria-video-thumb-demo.jpg.mp4" data-poster="banner-spa.png">
+        <img src="banner-spa.png" alt="Video testimonio cliente Figura Rostro KG">
       </figure>
     </div>
 
-    <!-- Instagram embeds (Opcional) -->
+    <!-- Embeds de Instagram (opcional) -->
     <!--
     <div class="insta-embeds">
-      <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/URL_DEL_POST_1/" data-instgrm-version="14"></blockquote>
-      <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/URL_DEL_REEL_2/" data-instgrm-version="14"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/URL_DEL_POST_1/" data-instgrm-version="14"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/URL_DEL_REEL_2/" data-instgrm-version="14"></blockquote>
     </div>
     <script async src="https://www.instagram.com/embed.js"></script>
     -->
@@ -600,6 +599,8 @@
         if(!fig) return;
         const type = fig.getAttribute('data-type');
         const src = fig.getAttribute('data-src');
+        const poster = fig.getAttribute('data-poster') || '';
+
         content.innerHTML = '';
         if(type === 'image'){
           const img = document.createElement('img');
@@ -612,6 +613,13 @@
           iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
           iframe.allowFullscreen = true;
           content.appendChild(iframe);
+        }else if(type === 'video'){
+          const video = document.createElement('video');
+          video.src = src;
+          video.controls = true;
+          video.autoplay = true;
+          if(poster) video.poster = poster;
+          content.appendChild(video);
         }
         dialog.showModal();
       });
