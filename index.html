@@ -19,14 +19,11 @@
       justify-content:center;align-items:center;color:#fff;padding:40px 20px;text-align:center;overflow:hidden;
     }
     header::before{
-      content:"";position:absolute;inset:0;
-      background:url('header-portada.jpg') center/cover no-repeat;
-      z-index:-2;
+      content:"";position:absolute;inset:0;background:url('header-portada.jpg') center/cover no-repeat;z-index:-2;
     }
     header::after{
       content:"";position:absolute;inset:0;
-      background:linear-gradient(135deg,rgba(155,93,229,.70),rgba(161,140,209,.70),rgba(251,194,235,.70));
-      z-index:-1;
+      background:linear-gradient(135deg,rgba(155,93,229,.70),rgba(161,140,209,.70),rgba(251,194,235,.70));z-index:-1;
     }
     header img.logo{width:180px;height:auto;margin-bottom:16px}
     header h1{font-size:28px;font-weight:700;margin:10px 0}
@@ -58,10 +55,11 @@
     @media (max-width:700px){.carousel-grid{grid-template-columns:1fr}}
 
     .carousel-nav{
-      position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.45);color:#fff;border:0;width:40px;height:40px;
-      border-radius:999px;display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.25)
+      position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.55);color:#fff;border:0;width:44px;height:44px;
+      border-radius:999px;display:grid;place-items:center;cursor:pointer;box-shadow:0 8px 18px rgba(0,0,0,.28);z-index:3
     }
-    .carousel-nav:hover{background:rgba(0,0,0,.6)}
+    .carousel-nav:hover{background:rgba(0,0,0,.7)}
+    .carousel-nav svg{width:22px;height:22px}
     .carousel-nav.prev{left:12px}
     .carousel-nav.next{right:12px}
     .carousel-dots{display:flex;gap:8px;justify-content:center;margin-top:14px}
@@ -69,7 +67,7 @@
     .carousel-dots .dot[aria-selected="true"]{background:#6b45b1}
 
     /* Ofertas */
-    .offers-viewport{overflow:hidden;border-radius:18px}
+    .offers-viewport{overflow:hidden;border-radius:18px;position:relative}
     .offers-track{display:flex;transition:transform .5s ease}
     .offer-slide{min-width:100%}
     .offer-card{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;background:linear-gradient(135deg,#fbc2eb,#a18cd1);border-radius:18px;box-shadow:0 8px 20px rgba(0,0,0,.12);overflow:hidden;text-align:left;color:#222}
@@ -78,9 +76,15 @@
     .offer-info .precio{font-size:22px;color:#6c2eb9}
     .offer-img{flex:1 1 300px}
     .offer-img img{width:100%;height:100%;object-fit:cover;display:block;background:#ddd}
-    .offer-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.45);color:#fff;border:0;width:40px;height:40px;border-radius:999px;display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.25)}
-    .offer-nav:hover{background:rgba(0,0,0,.6)}
+
+    /* Flechas ofertas (más visibles) */
+    .offer-nav{
+      position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.55);color:#fff;border:0;width:44px;height:44px;border-radius:999px;
+      display:grid;place-items:center;cursor:pointer;box-shadow:0 8px 18px rgba(0,0,0,.28);z-index:3
+    }
+    .offer-nav:hover{background:rgba(0,0,0,.7)}
     .offer-nav.prev{left:12px}.offer-nav.next{right:12px}
+    .offer-nav svg{width:22px;height:22px}
     .offer-dots{display:flex;gap:8px;justify-content:center;margin-top:12px}
     .offer-dots .dot{width:10px;height:10px;border-radius:999px;border:0;cursor:pointer;background:#c9b4f5}
     .offer-dots .dot[aria-selected="true"]{background:#6b45b1}
@@ -115,10 +119,14 @@
     .site-footer{background:#222;color:#fff;margin-top:3rem}
     .footer-inner{max-width:1100px;margin:0 auto;padding:2rem 1rem;display:grid;gap:1.5rem;grid-template-columns:1.2fr 1fr 1.2fr}
     .site-footer .logo{height:42px;margin-bottom:.5rem;filter:brightness(1000%)}
-    .site-footer .cta{display:inline-block;margin-top:.6rem;background:linear-gradient(135deg,var(--lavanda),var(--violeta));color:#fff;text-decoration:none;padding:.55rem .9rem;border-radius:999px;font-weight:600;box-shadow:0 6px 14px rgba(0,0,0,.18)}
+    .site-footer .cta{display:inline-block;margin-top:.6rem;background:linear-gradient(135deg,var(--lavanda),var(--violeta));color:#fff;text-decoration:none;padding:.55rem 1rem;border-radius:999px;font-weight:700;box-shadow:0 6px 14px rgba(0,0,0,.18)}
     .site-footer h4{margin:0 0 .5rem;font-weight:700;color:#fff}
-    .icons .ico{display:inline-flex;align-items:center;justify-content:center;margin-right:.6rem;opacity:.9;transition:.2s}
-    .icons .ico:hover{opacity:1;transform:translateY(-1px)}
+    .icons{display:flex;gap:10px;flex-wrap:wrap}
+    .icons .ico{
+      display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;
+      background:#fff;color:#4a4a4a;box-shadow:0 6px 14px rgba(0,0,0,.18);transition:.2s
+    }
+    .icons .ico:hover{transform:translateY(-2px);filter:brightness(0.92)}
     .map-embed{overflow:hidden;border-radius:14px}
     .directions a{color:#bbb;text-decoration:none}
     .directions a:hover{text-decoration:underline}
@@ -145,9 +153,18 @@
   <section>
     <h2>Servicios</h2>
     <div class="services">
-      <div class="service"><h3>Tratamientos Faciales</h3><p>Limpieza facial, dermaplaning, peeling y rejuvenecimiento para tu piel.</p></div>
-      <div class="service"><h3>Tratamientos Corporales</h3><p>Masajes terapéuticos, reductores, drenajes y cuidado integral.</p></div>
-      <div class="service"><h3>Bienestar</h3><p>Técnicas no invasivas para resultados visibles sin cirugía.</p></div>
+      <div class="service">
+        <h3>Tratamientos Faciales</h3>
+        <p>Limpieza facial, dermaplaning, peeling y rejuvenecimiento para tu piel.</p>
+      </div>
+      <div class="service">
+        <h3>Tratamientos Corporales</h3>
+        <p>Masajes terapéuticos, reductores, drenajes y cuidado integral.</p>
+      </div>
+      <div class="service">
+        <h3>Servicio Belleza Express</h3>
+        <p>Cepillado, limpieza facial, maquillaje, manicura y masajes para moldear.</p>
+      </div>
     </div>
   </section>
 
@@ -201,8 +218,12 @@
           </div>
         </div>
       </div>
-      <button class="carousel-nav prev" aria-label="Anterior">‹</button>
-      <button class="carousel-nav next" aria-label="Siguiente">›</button>
+      <button class="carousel-nav prev" aria-label="Anterior">
+        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M15.5 19 8.5 12l7-7"/></svg>
+      </button>
+      <button class="carousel-nav next" aria-label="Siguiente">
+        <svg viewBox="0 0 24 24"><path fill="currentColor" d="m8.5 5 7 7-7 7"/></svg>
+      </button>
       <div class="carousel-dots" role="tablist" aria-label="Paginación"></div>
     </div>
   </section>
@@ -239,76 +260,12 @@
           </div>
         </div>
       </div>
-      <button class="carousel-nav prev" aria-label="Anterior">‹</button>
-      <button class="carousel-nav next" aria-label="Siguiente">›</button>
-      <div class="carousel-dots" role="tablist" aria-label="Paginación"></div>
-    </div>
-  </section>
-
-  <!-- NUEVO: SERVICIOS DE BELLEZA -->
-  <section id="servicios-belleza">
-    <h2>Servicios de Belleza</h2>
-    <div class="carousel" id="bellezaCarousel" aria-roledescription="carousel">
-      <div class="carousel-viewport" aria-live="polite">
-        <div class="carousel-track">
-
-          <!-- Slide 1 -->
-          <div class="carousel-slide" role="group" aria-label="1 de 4">
-            <div class="carousel-grid">
-              <article class="card">
-                <img src="belleza-limpieza-maquillaje.jpg" alt="Limpieza facial + Maquillaje" width="800" height="500" loading="lazy" onerror="this.src='banner-spa.png'">
-                <div class="box"><h3>Limpieza facial + Maquillaje</h3><p>Piel limpia y maquillaje profesional para eventos o sesiones.</p></div>
-              </article>
-              <article class="card">
-                <img src="belleza-cepillado.jpg" alt="Cepillado / Blowout" width="800" height="500" loading="lazy" onerror="this.src='banner-spa.png'">
-                <div class="box"><h3>Cepillado (Blowout)</h3><p>Peinado con acabado pulido y brillo saludable.</p></div>
-              </article>
-            </div>
-          </div>
-
-          <!-- Slide 2 -->
-          <div class="carousel-slide" role="group" aria-label="2 de 4">
-            <div class="carousel-grid">
-              <article class="card">
-                <img src="belleza-keratina-organica.jpg" alt="Keratina orgánica" width="800" height="500" loading="lazy" onerror="this.src='banner-spa.png'">
-                <div class="box"><h3>Keratina orgánica</h3><p>Control de frizz y suavidad de larga duración sin maltratar el cabello.</p></div>
-              </article>
-              <article class="card">
-                <img src="belleza-manicura-express.jpg" alt="Manicura express" width="800" height="500" loading="lazy" onerror="this.src='banner-spa.png'">
-                <div class="box"><h3>Manicura express</h3><p>Cuidado de manos, limado y esmaltado rápido con acabado perfecto.</p></div>
-              </article>
-            </div>
-          </div>
-
-          <!-- Slide 3 -->
-          <div class="carousel-slide" role="group" aria-label="3 de 4">
-            <div class="carousel-grid">
-              <article class="card">
-                <img src="belleza-eliminacion-lunares-verrugas.jpg" alt="Eliminación de lunares y verrugas" width="800" height="500" loading="lazy" onerror="this.src='banner-spa.png'">
-                <div class="box"><h3>Eliminación de lunares y verrugas</h3><p>Procedimientos estéticos no quirúrgicos con cuidado profesional.</p></div>
-              </article>
-              <article class="card">
-                <img src="belleza-eliminacion-arrugas-sin-cirugia.jpg" alt="Eliminación de arrugas faciales sin cirugía" width="800" height="500" loading="lazy" onerror="this.src='banner-spa.png'">
-                <div class="box"><h3>Eliminación de arrugas (sin cirugía)</h3><p>Técnicas no invasivas para suavizar líneas de expresión.</p></div>
-              </article>
-            </div>
-          </div>
-
-          <!-- Slide 4 -->
-          <div class="carousel-slide" role="group" aria-label="4 de 4">
-            <div class="carousel-grid">
-              <article class="card">
-                <img src="belleza-terapia-adultos-mayores.jpg" alt="Terapia para adultos mayores" width="800" height="500" loading="lazy" onerror="this.src='banner-spa.png'">
-                <div class="box"><h3>Terapia para adultos mayores</h3><p>Sesiones seguras para movilidad, descanso y bienestar general.</p></div>
-              </article>
-              <div></div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-      <button class="carousel-nav prev" aria-label="Anterior">‹</button>
-      <button class="carousel-nav next" aria-label="Siguiente">›</button>
+      <button class="carousel-nav prev" aria-label="Anterior">
+        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M15.5 19 8.5 12l7-7"/></svg>
+      </button>
+      <button class="carousel-nav next" aria-label="Siguiente">
+        <svg viewBox="0 0 24 24"><path fill="currentColor" d="m8.5 5 7 7-7 7"/></svg>
+      </button>
       <div class="carousel-dots" role="tablist" aria-label="Paginación"></div>
     </div>
   </section>
@@ -354,8 +311,13 @@
           </article>
         </div>
       </div>
-      <button class="offer-nav prev" aria-label="Oferta anterior" title="Anterior">‹</button>
-      <button class="offer-nav next" aria-label="Siguiente oferta" title="Siguiente">›</button>
+      <!-- flechas visibles -->
+      <button class="offer-nav prev" aria-label="Oferta anterior" title="Anterior">
+        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M15.5 19 8.5 12l7-7"/></svg>
+      </button>
+      <button class="offer-nav next" aria-label="Siguiente oferta" title="Siguiente">
+        <svg viewBox="0 0 24 24"><path fill="currentColor" d="m8.5 5 7 7-7 7"/></svg>
+      </button>
       <div class="offer-dots" role="tablist" aria-label="Selector de ofertas">
         <button class="dot" role="tab" aria-selected="true" title="Oferta 1"></button>
         <button class="dot" role="tab" aria-selected="false" title="Oferta 2"></button>
@@ -386,26 +348,29 @@
       <div class="brand">
         <img src="logo-horizontal.png" alt="Figura Rostro KG" class="logo" />
         <p>Royal Park – Av. Ernesto T. Lefevre, Ciudad de Panamá</p>
-        <p>Horario: 8:00 a.m. – 8:00 p.m.</p>
-        <a class="cta" href="https://wa.me/50764746168" target="_blank" rel="noopener">💬 Reserva por WhatsApp</a>
+        <p>Email: <a href="mailto:figurarostro25@gmail.com" style="color:#fff;text-decoration:underline">figurarostro25@gmail.com</a></p>
+        <a class="cta" href="https://wa.me/50764746168" target="_blank" rel="noopener">💬 Citas urgentes</a>
+        <p style="margin:.5rem 0 0;color:#d7d7df;font-size:.9rem"><em>Solo para clientes que reserven por Directorio Yappi o clientes frecuentes.</em></p>
       </div>
+
       <div class="social">
         <h4>Síguenos</h4>
         <nav class="icons">
           <a href="https://instagram.com/figurarostrokg" target="_blank" rel="noopener" class="ico" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" width="26" height="26"><path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm5 5.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5Z"/></svg>
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm5 5.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 7.5Z"/></svg>
           </a>
           <a href="https://facebook.com/figurarostrokg" target="_blank" rel="noopener" class="ico" aria-label="Facebook">
-            <svg viewBox="0 0 24 24" width="26" height="26"><path fill="currentColor" d="M22 12a10 10 0 1 0-11.56 9.9v-7H7.9V12h2.54V9.8c0-2.5 1.49-3.9 3.78-3.9 1.1 0 2.25.2 2.25.2v2.48h-1.27c-1.25 0-1.64.78-1.64 1.58V12h2.79l-.45 2.9h-2.34v7A10 10 0 0 0 22 12Z"/></svg>
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M22 12a10 10 0 1 0-11.56 9.9v-7H7.9V12h2.54V9.8c0-2.5 1.49-3.9 3.78-3.9 1.1 0 2.25.2 2.25.2v2.48h-1.27c-1.25 0-1.64.78-1.64 1.58V12h2.79l-.45 2.9h-2.34v7A10 10 0 0 0 22 12Z"/></svg>
           </a>
           <a href="https://www.youtube.com/@FiguraRostroKG" target="_blank" rel="noopener" class="ico" aria-label="YouTube">
-            <svg viewBox="0 0 24 24" width="26" height="26"><path fill="currentColor" d="M23 7.5s-.2-1.6-.8-2.3c-.8-.8-1.7-.8-2.1-.9C17.7 4 12 4 12 4s-5.7 0-8.1.3c-.4 0-1.3.1-2.1.9C1 5.9.9 7.5.9 7.5s-.2 1.9-.2 3.8v1.3c0 1.9.2 3.8.2 3.8s.2 1.6.8 2.3c.8.8 1.9.8 2.4.9 1.8.2 7.9.3 7.9.3s5.7 0 8.1-.3c.4 0 1.3-.1 2.1-.9.6-.7.8-2.3.8-2.3s.2-1.9.2-3.8v-1.3c0-1.9-.2-3.8-.2-3.8zM9.8 14.8V8.8l6 3-6 3z"/></svg>
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M23 7.5s-.2-1.6-.8-2.3c-.8-.8-1.7-.8-2.1-.9C17.7 4 12 4 12 4s-5.7 0-8.1.3c-.4 0-1.3.1-2.1.9C1 5.9.9 7.5.9 7.5s-.2 1.9-.2 3.8v1.3c0 1.9.2 3.8.2 3.8s.2 1.6.8 2.3c.8.8 1.9.8 2.4.9 1.8.2 7.9.3 7.9.3s5.7 0 8.1-.3c.4 0 1.3-.1 2.1-.9.6-.7.8-2.3.8-2.3s.2-1.9.2-3.8v-1.3c0-1.9-.2-3.8-.2-3.8zM9.8 14.8V8.8l6 3-6 3z"/></svg>
           </a>
           <a href="https://wa.me/50764746168" target="_blank" rel="noopener" class="ico" aria-label="WhatsApp">
-            <svg viewBox="0 0 24 24" width="26" height="26"><path fill="currentColor" d="M20.52 3.48A11.86 11.86 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.11 1.61 5.9L0 24l6.25-1.62A12 12 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52Z"/></svg>
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M20.52 3.48A11.86 11.86 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.11 1.61 5.9L0 24l6.25-1.62A12 12 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52Z"/></svg>
           </a>
         </nav>
       </div>
+
       <div class="map">
         <h4>Cómo llegar</h4>
         <div class="map-embed">
@@ -456,10 +421,9 @@
     }
     initCarousel('facialesCarousel',{autoplayMs:6000});
     initCarousel('corporalesCarousel',{autoplayMs:6000});
-    initCarousel('bellezaCarousel',{autoplayMs:6000});
   </script>
 
-  <!-- JS carrusel de ofertas -->
+  <!-- JS carrusel de ofertas (con flechas) -->
   <script>
   (function(){
     const track=document.querySelector('.offers-track');
@@ -508,4 +472,3 @@
   </script>
 </body>
 </html>
-
