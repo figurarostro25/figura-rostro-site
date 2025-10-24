@@ -506,7 +506,79 @@
   #ofertas .offer-nav{ width:42px !important; height:42px !important; }
   #ofertas .offer-dots{ margin-top:10px !important; }
 }
-   
+
+  /* ===== Promos del Mes — versión móvil independiente ===== */
+.offers-mobile{ display:none; }  /* por defecto (desktop) */
+
+@media (max-width:640px){
+  /* Ocultar el carrusel actual SOLO en móvil */
+  #ofertas .offers-carousel{ display:none !important; }
+
+  /* Mostrar el nuevo scroller móvil */
+  #ofertas .offers-mobile{ display:block; }
+
+  #ofertas .offers-mobile .m-scroll{
+    display:flex;
+    gap:14px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    padding: 0 82px 10px 12px;          /* +82px a la derecha para no chocar con el FAB */
+    -webkit-overflow-scrolling: touch;
+  }
+  #ofertas .offers-mobile .m-offer{
+    flex: 0 0 88%;
+    scroll-snap-align: center;
+    border-radius:22px;
+    background: linear-gradient(135deg, #fbc2eb, #a18cd1);
+    box-shadow: 0 12px 24px rgba(0,0,0,.12);
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+  }
+  #ofertas .offers-mobile .m-body{
+    padding:16px 16px 10px;
+    text-align:left;
+  }
+  #ofertas .offers-mobile h3{
+    font-size:22px;
+    line-height:1.2;
+    margin:0 0 6px;
+    color:#5b3bb6;
+  }
+  #ofertas .offers-mobile p{ margin:.35rem 0; font-size:14px; line-height:1.45; color:#222; }
+  #ofertas .offers-mobile .price b{ color:#5b3bb6; font-size:18px; }
+
+  #ofertas .offers-mobile .m-btn{
+    display:inline-block;
+    margin-top:8px;
+    font-weight:700;
+    background:#5b3bb6;
+    color:#fff;
+    text-decoration:none;
+    padding:10px 14px;
+    border-radius:12px;
+  }
+
+  /* Imagen con proporción estable */
+  #ofertas .offers-mobile .m-img{ width:100%; aspect-ratio: 16 / 10; background:#000; }
+  #ofertas .offers-mobile .m-img img{
+    width:100%; height:100%; object-fit:cover; display:block;
+  }
+  /* Fallback para navegadores sin aspect-ratio */
+  @supports not (aspect-ratio: 1){
+    #ofertas .offers-mobile .m-img{ height:clamp(170px, 44vw, 240px); }
+    #ofertas .offers-mobile .m-img img{ height:100%; }
+  }
+
+  /* Puntos de página (opcionales) */
+  #ofertas .offers-mobile .m-dots{
+    display:flex; gap:8px; justify-content:center; margin:10px 0 0;
+  }
+  #ofertas .offers-mobile .m-dots span{
+    width:8px; height:8px; border-radius:999px; background:#c9b4f5;
+  }
+}
+
   </style>
 </head>
 
