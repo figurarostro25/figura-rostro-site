@@ -792,7 +792,16 @@
     display:none !important;
   }
 }
- 
+ /* ===== Móvil: lightbox más limpio ===== */
+@media (max-width:640px){
+  dialog#lightbox .lightbox-body{ background:#111; }
+  dialog#lightbox .lightbox-body img,
+  dialog#lightbox .lightbox-body video{
+    display:block; margin:auto; width:100%; height:auto;
+    max-height:82vh; object-fit:contain; background:#111;
+  }
+}
+
   </style>
 </head>
 
