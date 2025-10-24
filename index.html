@@ -1356,6 +1356,21 @@
       });
     })();
   </script>
+ <!-- Visor full-screen de Promos (móvil) -->
+<div id="promoModal" class="promo-modal" aria-hidden="true">
+  <div class="promo-backdrop"></div>
+  <div class="promo-view" role="dialog" aria-modal="true" aria-label="Visor de promociones">
+    <div class="promo-head">
+      <h4 class="promo-title">Promoción</h4>
+      <button class="promo-close" id="promoClose" aria-label="Cerrar">✕</button>
+    </div>
+    <div class="promo-viewport">
+      <div class="promo-track" id="promoTrack"><!-- slides dinámicos --></div>
+      <div class="promo-dots" id="promoDots"></div>
+    </div>
+  </div>
+</div>
+ 
 </body>
 </html>
 
