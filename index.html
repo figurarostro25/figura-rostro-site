@@ -254,6 +254,85 @@
     /* Micro-mejoras */
     .offer-img img{object-fit:cover;display:block;background:#e6e6e6}
     .offers-viewport{scroll-behavior:smooth}
+  /* ====== Promos del Mes: versión móvil estable ====== */
+@media (max-width:640px){
+  /* El viewport del carrusel no recorta ni “salta” */
+  #ofertas .offers-viewport{ overflow:hidden; }
+
+  /* Track horizontal con snap; NO usar JS para moverlo */
+  #ofertas .offers-track{
+    display:flex;
+    gap:14px;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  /* Cada card ocupa casi toda la pantalla y hace snap centrado */
+  #ofertas .offer-card{
+    flex:0 0 88vw;
+    scroll-snap-align:center;
+    border-radius:18px;
+    background:#fff;
+    overflow:hidden;
+    box-shadow:0 8px 28px rgba(0,0,0,.08);
+  }
+
+  /* Imagen con proporción estable (no se “alarga”) */
+  #ofertas .m-img{ aspect-ratio:16/10; background:#000; }
+  #ofertas .m-img img{
+    width:100%; height:100%;
+    object-fit:cover; display:block;
+  }
+
+  /* Texto y botón más cómodos */
+  #ofertas .m-body{ padding:14px 16px; }
+  #ofertas .m-body h3{
+    font-size:22px; line-height:1.2;
+    margin:0 0 6px; color:#5b3bb6;
+  }
+  #ofertas .m-body p{ margin:.4rem 0 .2rem; color:#444; }
+  #ofertas .m-body .price b{ color:#5b3bb6; font-size:18px; }
+
+  #ofertas .m-btn{
+    display:inline-block; margin-top:10px;
+    background:#5b3bb6; color:#fff; font-weight:700;
+    padding:10px 14px; border-radius:12px;
+    text-decoration:none;
+  }
+
+  /* Puntos / bullets, por si los usas */
+  #ofertas .m-dots{ display:flex; justify-content:center; gap:6px; padding:8px 0 0; }
+  #ofertas .m-dots span{
+    width:6px; height:6px; border-radius:999px; background:#d9d9d9;
+  }
+  #ofertas .m-dots span.is-active{ background:#5b3bb6; }
+}
+
+/* Seguridad por si alguna imagen falla */
+#ofertas .m-img img[onerror]{ background:#000; }
+/* ====== Footer limpio sin mapa ====== */
+.site-footer{ background:#000; color:#fff; padding:28px 16px 32px; }
+.footer-inner{ max-width:980px; margin:0 auto; text-align:center; }
+.f-logo{ width:140px; margin:0 auto 12px; display:block; }
+
+.footer-inner .f-col{ margin:16px 0; }
+.footer-inner h3{
+  color:#a78bfa; font-size:18px; letter-spacing:.3px;
+  margin:0 0 6px; text-transform:uppercase;
+}
+.footer-inner p, .footer-inner a{ color:#e6e6e6; text-decoration:none; }
+.footer-inner a:hover{ text-decoration:underline; }
+
+.f-social{ display:flex; justify-content:center; gap:14px; margin:10px 0 8px; }
+.f-social img{ width:28px; height:28px; display:block; filter:brightness(100%); }
+
+.legal{ margin-top:16px; color:#aaa; font-size:12px; }
+
+/* Escritorio: mismo diseño, solo más aire si quieres */
+@media (min-width:768px){
+  .footer-inner{ text-align:center; }
+}
+
   </style>
 </head>
 
@@ -611,56 +690,39 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div class="brand">
-        <img src="logo-horizontal.png" alt="Figura Rostro KG" class="logo" />
-        <p>Royal Park – Av. Ernesto T. Lefevre, Ciudad de Panamá</p>
-        <p>Email: <a href="mailto:figurarostro25@gmail.com" style="color:#fff;text-decoration:underline">figurarostro25@gmail.com</a></p>
-        <a class="cta" href="https://wa.me/50764746168" target="_blank" rel="noopener">💬 Citas urgentes</a>
-        <p style="margin:.5rem 0 0;color:#d7d7df;font-size:.9rem"><em>Solo para clientes que reserven por Directorio Yappi o clientes frecuentes.</em></p>
-        <!-- Info compacta para móvil -->
-        <div class="footer-info">
-          <h5>Horario</h5>
-          <p>Lun–Sáb 9:00–18:00</p>
-          <h5>Ubicación</h5>
-          <p>Royal Park – Parque Lefevre</p>
-          <h5>Contacto</h5>
-          <p>WhatsApp: +507 6474-6168</p>
-        </div>
-      </div>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <img src="logo-horizontal.png" alt="Figura Rostro KG" class="f-logo">
 
-      <div class="social">
-        <h4>Síguenos</h4>
-        <nav class="icons">
-          <a href="https://instagram.com/figurarostrokg" target="_blank" rel="noopener" class="ico" aria-label="Instagram">
-            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm5 5.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 7.5Z"/></svg>
-          </a>
-          <a href="https://facebook.com/figurarostrokg" target="_blank" rel="noopener" class="ico" aria-label="Facebook">
-            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M22 12a10 10 0 1 0-11.56 9.9v-7H7.9V12h2.54V9.8c0-2.5 1.49-3.9 3.78-3.9 1.1 0 2.25.2 2.25.2v2.48h-1.27c-1.25 0-1.64.78-1.64 1.58V12h2.79l-.45 2.9h-2.34v7A10 10 0 0 0 22 12Z"/></svg>
-          </a>
-          <a href="https://www.youtube.com/@FiguraRostroKG" target="_blank" rel="noopener" class="ico" aria-label="YouTube">
-            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M23 7.5s-.2-1.6-.8-2.3c-.8-.8-1.7-.8-2.1-.9C17.7 4 12 4 12 4s-5.7 0-8.1.3c-.4 0-1.3.1-2.1.9C1 5.9.9 7.5.9 7.5s-.2 1.9-.2 3.8v1.3c0 1.9.2 3.8.2 3.8s.2 1.6.8 2.3c.8.8 1.9.8 2.4.9 1.8.2 7.9.3 7.9.3s5.7 0 8.1-.3c.4 0 1.3-.1 2.1-.9.6-.7.8-2.3.8-2.3s.2-1.9.2-3.8v-1.3c0-1.9-.2-3.8-.2-3.8zM9.8 14.8V8.8l6 3-6 3z"/></svg>
-          </a>
-          <a href="https://wa.me/50764746168" target="_blank" rel="noopener" class="ico" aria-label="WhatsApp">
-            <svg viewBox="0 0 24 24"><path d="M20.5 3.5A10 10 0 0 0 3.9 17.7L3 21l3.4-.9A10 10 0 1 0 20.5 3.5ZM12 20a8 8 0 0 1-4.1-1.1l-.3-.2-2.4 .6 .6 -2.4 -.2 -.3 A8 8 0 1 1 12 20Zm4-5.3c-.2-.1-1.2-.6-1.4-.7-.2-.1-.4-.1-.6.1l-.5.6c-.1.1-.3.1-.5.1-1 0-2.4-1.1-2.8-1.9-.2-.3-.2-.5 0-.7l.4-.5c.1-.2.1-.3 0-.5l-.7-1.5c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.7.7-1.1 1.6-1.1 2.5 0 .3.1 .7.2 1 .6 1.6 2.4 3.3 3.9 3.9 .3 .1 .7 .2 1 .2 .9 0 1.8 -.3 2.5 -1.1 .2 -.2 .3 -.4 .3 -.6 v-.5 c0 -.2 0 -.4 -.2 -.6 Z" fill="#fff"/></svg>
-          </a>
-        </nav>
-      </div>
-
-      <div class="map">
-        <h4>Cómo llegar</h4>
-        <div class="map-embed">
-          <iframe src="https://maps.google.com/maps?q=2G42%2BGC%20Panam%C3%A1&output=embed" width="100%" height="220" style="border:0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-        <div class="directions">
-          <a href="https://ul.waze.com/ul?q=2G42%2BGC%20Panam%C3%A1&navigate=yes" target="_blank" rel="noopener">Abrir en Waze</a> ·
-          <a href="https://maps.google.com/?q=2G42%2BGC%20Panam%C3%A1" target="_blank" rel="noopener">Abrir en Google Maps</a>
-        </div>
-      </div>
+    <div class="f-col">
+      <h3>HORARIO</h3>
+      <p>Lun – Vie: 6 AM – 8 PM<br>Sáb: 9 AM – 8 PM · Dom: 10 AM – 5 PM</p>
     </div>
-    <div class="legal"><small>© <span id="y"></span> Figura Rostro KG · Todos los derechos reservados</small></div>
-  </footer>
+
+    <div class="f-col">
+      <h3>UBICACIÓN</h3>
+      <p>Ave. Ernesto T. Lefevre, PH Royal Park, Local 15PB,<br>Ciudad de Panamá</p>
+    </div>
+
+    <div class="f-col">
+      <h3>CONTACTO</h3>
+      <p>
+        <a href="tel:+50764746168">+507 6474-6168</a><br>
+        <a href="mailto:figurarostro25@gmail.com">figurarostro25@gmail.com</a>
+      </p>
+    </div>
+
+    <!-- Íconos sociales -->
+    <div class="f-social">
+      <!-- Cambia los href por tus enlaces y los src por tus íconos -->
+      <a href="https://wa.me/50764746168" target="_blank" aria-label="WhatsApp"><img src="icon-wa.svg" alt=""></a>
+      <a href="https://www.instagram.com/figurarostrokg" target="_blank" aria-label="Instagram"><img src="icon-ig.svg" alt=""></a>
+      <a href="https://www.youtube.com/@figurarostrokg" target="_blank" aria-label="YouTube"><img src="icon-yt.svg" alt=""></a>
+    </div>
+
+    <p class="legal">© 2025 Figura Rostro KG</p>
+  </div>
+</footer>
 
   <!-- FABs -->
   <div class="fab-stack" aria-label="Accesos rápidos">
