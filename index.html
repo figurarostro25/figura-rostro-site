@@ -248,6 +248,78 @@
     display: block;
   }
 }
+/* ===== Footer: refuerzo y overrides (colocar al FINAL del <style>) ===== */
+.site-footer{
+  background:#000; color:#fff;
+  text-align:center;
+  padding:32px 16px 40px;
+}
+
+/* Ocultar logo del footer en móvil para centrar mejor */
+@media (max-width:640px){
+  .site-footer .footer-logo,
+  .site-footer img.logo,
+  .site-footer .logo-wrap{
+    display:none !important;
+  }
+}
+
+/* Tipografías y espaciado de bloques */
+.site-footer h3{
+  font-size:22px; font-weight:800; color:#b39cf3; /* morado suave */
+  margin:14px 0 10px;
+  letter-spacing:.3px;
+}
+.site-footer p{
+  margin:6px 0 0;
+  line-height:1.55;
+  color:#e9e9ee;
+  font-size:16px;
+}
+
+/* Enlaces importantes */
+.site-footer a{
+  color:#bfe0ff; text-decoration:none; border-bottom:1px dotted rgba(191,224,255,.5);
+}
+.site-footer a:hover{ color:#fff; border-bottom-color:#fff; }
+
+/* Bloques del footer apilados en móvil */
+.footer-block{
+  margin:14px auto 18px;
+  max-width:780px;
+}
+
+/* Redes sociales centradas */
+.footer-social{
+  margin-top:12px; display:flex; justify-content:center; gap:12px;
+}
+.footer-social a{
+  width:44px; height:44px; display:inline-flex; align-items:center; justify-content:center;
+  border-radius:12px; background:#151515; border:1px solid rgba(255,255,255,.1);
+  transition:transform .2s ease, background .2s ease;
+}
+.footer-social a img, .footer-social a svg{ width:22px; height:22px; }
+.footer-social a:hover{ transform:translateY(-2px); background:#1f1f1f; }
+
+/* Separador superior fino opcional */
+.site-footer .legal{
+  border-top:1px solid rgba(255,255,255,.08);
+  margin-top:18px; padding-top:14px; font-size:13px; color:#bdbdc9;
+}
+
+/* Escritorio: layout de 2 columnas si conservas el logo a futuro */
+@media (min-width:861px){
+  .site-footer .footer-inner{
+    max-width:1100px; margin:0 auto;
+    display:grid; grid-template-columns: 1fr 1fr; gap:32px; align-items:start;
+  }
+  .site-footer .footer-right{
+    display:grid; gap:8px;
+  }
+  .site-footer .footer-logo{ display:block; text-align:left; }
+  .site-footer .footer-right .footer-block{ text-align:left; margin:8px 0; }
+  .footer-social{ justify-content:flex-start; }
+}
 
   </style>
 </head>
