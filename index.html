@@ -311,6 +311,76 @@
   .fab{ width:54px !important; height:54px !important; border-radius:18px !important; }
 }
 
+    /* ===== Footer escritorio (restaurar 3 columnas elegantes) ===== */
+@media (min-width: 901px){
+  /* Fondo y tipografía general del footer en desktop */
+  .site-footer{
+    background:#222 !important;
+    color:#fff;
+  }
+  .footer-inner{
+    max-width:1100px;
+    margin:0 auto;
+    padding:2rem 1rem;
+    display:grid !important;
+    gap:1.5rem;
+    grid-template-columns:1.2fr 1fr 1.2fr !important; /* 3 columnas */
+    align-items:start;
+    text-align:left !important; /* vuelve a texto a la izquierda */
+  }
+
+  /* Columna 1: marca / info */
+  .footer-inner .brand,
+  .footer-info{ text-align:left !important; }
+  .site-footer .logo{
+    height:42px !important;
+    margin:0 0 .5rem !important;
+    display:block;
+    filter:brightness(1000%); /* logo blanco sobre fondo oscuro */
+  }
+  .site-footer h4{ color:#fff; margin:0 0 .5rem; font-weight:700; }
+
+  /* Columna 2: redes (título visible y alineación izquierda) */
+  .social{ text-align:left !important; }
+  .social h4{ display:block !important; margin-bottom:.5rem; }
+  .icons{ justify-content:flex-start !important; gap:10px !important; }
+  .icons .ico{
+    width:42px !important; height:42px !important; border-radius:12px !important;
+    background:#fff !important; color:#4a4a4a !important;
+    border:0; box-shadow:0 6px 14px rgba(0,0,0,.18);
+  }
+
+  /* Columna 3: mapa / cómo llegar (volver a mostrar en desktop) */
+  .site-footer .map,
+  .site-footer .directions{ display:block !important; }
+  .map-embed{ overflow:hidden; border-radius:14px; }
+  .directions a{ color:#bbb; text-decoration:none; }
+  .directions a:hover{ text-decoration:underline; }
+
+  /* Legal */
+  .legal{
+    border-top:1px solid rgba(255,255,255,.08);
+    padding:1rem;
+    text-align:center;
+    color:#b9b9c3;
+  }
+
+  /* FABs: vuelven a esquina inferior derecha en desktop */
+  .fab-stack{
+    right:16px !important; bottom:18px !important;
+    top:auto !important; transform:none !important;
+    flex-direction:column !important; gap:12px !important;
+  }
+}
+
+/* Pequeño refinamiento para tablets medianas */
+@media (min-width: 641px) and (max-width: 900px){
+  .footer-inner{
+    grid-template-columns:1fr 1fr !important;
+  }
+  .site-footer .map{ grid-column:1 / -1; }
+}
+
   </style>
 </head>
 
