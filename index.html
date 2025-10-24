@@ -5,891 +5,178 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Figura Rostro KG - Estética Integral</title>
 
-  <style>
-    :root{
-      --violeta:#a18cd1; --lavanda:#fbc2eb; --violeta-oscuro:#7e63c9;
-      --gris-texto:#2c2c2c; --gris-suave:#555; --blanco:#fff;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:"Poppins",sans-serif;background:#f5f5f5;color:var(--gris-texto);text-align:center}
+<style>
+/* =======================
+   Base segura (neutra)
+   ======================= */
+:root{
+  --violeta:#5b3bb6;
+  --violeta-osc:#4a2fa0;
+  --gris:#333;
+  --gris-soft:#666;
+  --bg:#f5f5f5;
+  --bg-dark:#0f0f12;
+  --text:#222;
+  --text-inv:#e9e9ef;
+  --card:#fff;
+  --shadow:0 14px 34px rgba(0,0,0,.30);
+  --radius:16px;
+}
 
-    /* HEADER */
-    header{
-      position:relative;width:100%;height:420px;display:flex;flex-direction:column;
-      justify-content:center;align-items:center;color:#fff;padding:40px 20px;text-align:center;overflow:hidden;
-    }
-    header::before{
-      content:"";position:absolute;inset:0;background:url('header-portada.jpg') center/cover no-repeat;z-index:-2;
-    }
-    header::after{
-      content:"";position:absolute;inset:0;
-      background:linear-gradient(135deg,rgba(155,93,229,.70),rgba(161,140,209,.70),rgba(251,194,235,.70));z-index:-1;
-    }
-    header img.logo{width:180px;height:auto;margin-bottom:16px}
-    header h1{font-size:28px;font-weight:700;margin:10px 0}
-    header p{font-size:16px;color:#fff;margin:0}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
 
-    /* SECCIONES */
-    section{padding:40px 20px;max-width:1100px;margin:auto}
-    h2{color:var(--violeta-oscuro);font-size:26px;margin-bottom:30px}
+img{max-width:100%;height:auto;display:block}
 
-    /* Cards generales */
-    .card{background:#fff;border-radius:14px;box-shadow:0 8px 20px rgba(0,0,0,.08);text-align:left;overflow:hidden}
-    .card img{width:100%;height:200px;object-fit:cover;display:block;background:#eaeaea}
-    .card .box{padding:16px 18px}
-    .card h3{margin:0 0 6px;color:#7e63c9;font-size:18px}
-    .card p{color:#555;margin:10px 0 0;font-size:14px;line-height:1.55}
+/* Titulares */
+h1,h2,h3{margin:0 0 10px 0;color:var(--violeta)}
 
-    /* Carrusel reutilizable */
-    .carousel{position:relative}
-    .carousel-viewport{overflow:hidden;border-radius:18px}
-    .carousel-track{display:flex;transition:transform .5s ease;will-change:transform}
-    .carousel-slide{min-width:100%;padding:6px}
-    .carousel-grid{display:grid;gap:16px;grid-template-columns:repeat(2,minmax(0,1fr))}
-    @media (max-width:700px){.carousel-grid{grid-template-columns:1fr}}
+/* Cards genéricas */
+.card,.about-card,.video-card,.offer-card{
+  background:var(--card);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
 
-    .carousel-nav{
-      position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.55);color:#fff;border:0;width:44px;height:44px;
-      border-radius:999px;display:grid;place-items:center;cursor:pointer;box-shadow:0 8px 18px rgba(0,0,0,.28);z-index:3
-    }
-    .carousel-nav:hover{background:rgba(0,0,0,.7)}
-    .carousel-nav svg{width:22px;height:22px}
-    .carousel-nav.prev{left:12px}
-    .carousel-nav.next{right:12px}
-    .carousel-dots{display:flex;gap:8px;justify-content:center;margin-top:14px}
-    .carousel-dots .dot{width:10px;height:10px;border-radius:999px;border:0;cursor:pointer;background:#c9b4f5}
-    .carousel-dots .dot[aria-selected="true"]{background:#6b45b1}
+/* Footer base (escritorio) */
+.site-footer{
+  background:#fff;
+  color:#333;
+}
+.site-footer a{color:var(--violeta)}
+.site-footer .legal{border-top:1px solid #eaeaea}
 
-    /* Ofertas */
-    .offers-viewport{overflow:hidden;border-radius:18px;position:relative}
-    .offers-track{display:flex;transition:transform .5s ease}
-    .offer-slide{min-width:100%}
-    .offer-card{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;background:linear-gradient(135deg,#fbc2eb,#a18cd1);border-radius:18px;box-shadow:0 8px 20px rgba(0,0,0,.12);overflow:hidden;text-align:left;color:#222}
-    .offer-info{flex:1 1 380px;padding:30px}
-    .offer-info h3{color:#6b45b1;font-size:24px;margin-top:0}
-    .offer-info .precio{font-size:22px;color:#6c2eb9}
-    .offer-img{flex:1 1 300px}
-    .offer-img img{width:100%;height:100%;object-fit:cover;display:block;background:#ddd}
+/* =======================
+   Promos del Mes general
+   ======================= */
+#ofertas .offer-card{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+  padding:16px;
+}
+#ofertas .offer-img{border-radius:var(--radius);overflow:hidden}
 
-    .offer-nav{
-      position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.55);color:#fff;border:0;width:44px;height:44px;border-radius:999px;
-      display:grid;place-items:center;cursor:pointer;box-shadow:0 8px 18px rgba(0,0,0,.28);z-index:5;transition:background .2s;
-    }
-    .offer-nav:hover{background:rgba(0,0,0,.7)}
-    .offer-nav.prev{left:12px}.offer-nav.next{right:12px}
-    .offer-nav svg{width:22px;height:22px}
-    .offer-dots{display:flex;gap:8px;justify-content:center;margin-top:12px}
-    .offer-dots .dot{width:10px;height:10px;border-radius:999px;border:0;cursor:pointer;background:#c9b4f5}
-    .offer-dots .dot[aria-selected="true"]{background:#6b45b1}
+/* =======================
+   LIGHTBOX Galería
+   ======================= */
+dialog#lightbox .lightbox-body{background:#111}
+dialog#lightbox .lightbox-body img,
+dialog#lightbox .lightbox-body video{
+  display:block;margin:0 auto;
+  width:auto;height:auto;
+  max-width:min(100vw,980px);
+  max-height:86vh;
+  object-fit:contain;
+  background:#111;
+}
 
-    /* Galería */
-    .media-grid{display:grid;gap:14px;grid-template-columns:repeat(3,1fr)}
-    .media-grid figure{margin:0;border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 8px 20px rgba(0,0,0,.08);cursor:pointer}
-    .media-grid img{width:100%;height:240px;object-fit:cover;display:block}
-    @media (max-width:900px){.media-grid{grid-template-columns:repeat(2,1fr)}.media-grid img{height:200px}}
-    @media (max-width:520px){.media-grid{grid-template-columns:1fr}.media-grid img{height:220px}}
-
-    /* Lightbox */
-    dialog#lightbox{width:min(980px,92vw);border:0;border-radius:16px;padding:0;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.35);z-index:1000}
-    dialog#lightbox::backdrop{background:rgba(0,0,0,.65)}
-    .lightbox-body{position:relative;background:#000}
-    .lightbox-body img,.lightbox-body video,.lightbox-body iframe{width:100%;height:calc(92vh - 80px);object-fit:contain;border:0;background:#000}
-    .lightbox-close{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.6);color:#fff;border:0;width:36px;height:36px;border-radius:999px;cursor:pointer;font-size:18px;z-index:2}
-
-    /* Sobre + video */
-    #sobre{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:center}
-    #sobre .about-card{background:#fff;border-radius:16px;box-shadow:0 8px 20px rgba(0,0,0,.08);text-align:left;padding:24px}
-    #sobre .about-card h2{margin-top:0}
-    #sobre .about-card p{color:#4a4a4a;line-height:1.7}
-    .video-card{background:#fff;border-radius:16px;box-shadow:0 8px 20px rgba(0,0,0,.08);overflow:hidden;text-align:left}
-    .ratio{position:relative;width:100%;padding-top:56.25%;background:#000}
-    .ratio iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-    .video-actions{display:flex;gap:10px;padding:12px 16px;border-top:1px solid #eee}
-    .video-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:#f3ecff;color:#5d3bb5;border:0;cursor:pointer;font-weight:600;text-decoration:none}
-    .video-btn:hover{filter:brightness(.97)}
-    @media (max-width:900px){#sobre{grid-template-columns:1fr}}
-
-    /* Menú de Servicios (Tabs) */
-    .tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:18px}
-    .tab-btn{border:1px solid #e7d7f3;background:#fff;color:var(--violeta-oscuro);padding:.6rem 1rem;border-radius:999px;font-weight:600;cursor:pointer;transition:.2s}
-    .tab-btn:hover{transform:translateY(-1px)}
-    .tab-btn.active{background:var(--violeta-oscuro);color:#fff;border-color:var(--violeta-oscuro)}
-    .tab-panel.hidden{display:none}
-
-    .srv-grid{display:grid;gap:16px;grid-template-columns:repeat(3,1fr)}
-    @media (max-width:980px){.srv-grid{grid-template-columns:repeat(2,1fr)}}
-    @media (max-width:620px){.srv-grid{grid-template-columns:1fr}}
-    .srv-card{background:#fff;border-radius:14px;box-shadow:0 8px 20px rgba(0,0,0,.08);padding:16px 18px;text-align:left;border:1px solid #f0e7f7}
-    .srv-card h3{margin:0 0 6px;color:var(--violeta-oscuro);font-size:18px}
-    .srv-card p{color:#555;margin:6px 0 10px;font-size:14px;line-height:1.55}
-    .srv-meta{font-size:13px;color:#6b7280;margin-bottom:10px}
-    .srv-cta{display:inline-block;background:linear-gradient(135deg,var(--lavanda),var(--violeta));color:#fff;text-decoration:none;padding:.55rem .9rem;border-radius:999px;font-weight:700;box-shadow:0 6px 14px rgba(0,0,0,.18)}
-    .srv-cta:hover{filter:brightness(.97)}
-
-    /* Footer */
-    .site-footer{background:#222;color:#fff;margin-top:3rem}
-    .footer-inner{max-width:1100px;margin:0 auto;padding:2rem 1rem;display:grid;gap:1.5rem;grid-template-columns:1.2fr 1fr 1.2fr}
-    .site-footer .logo{height:42px;margin-bottom:.5rem;filter:brightness(1000%)}
-    .site-footer .cta{display:inline-block;margin-top:.6rem;background:linear-gradient(135deg,var(--lavanda),var(--violeta));color:#fff;text-decoration:none;padding:.55rem 1rem;border-radius:999px;font-weight:700;box-shadow:0 6px 14px rgba(0,0,0,.18)}
-    .site-footer h4{margin:0 0 .5rem;font-weight:700;color:#fff}
-    .icons{display:flex;gap:10px;flex-wrap:wrap}
-    .icons .ico{
-      display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;
-      background:#fff;color:#4a4a4a;box-shadow:0 6px 14px rgba(0,0,0,.18);transition:.2s
-    }
-    .icons .ico:hover{transform:translateY(-2px);filter:brightness(0.92)}
-    .map-embed{overflow:hidden;border-radius:14px}
-    .directions a{color:#bbb;text-decoration:none}
-    .directions a:hover{text-decoration:underline}
-    .legal{border-top:1px solid rgba(255,255,255,.08);padding:1rem;text-align:center;color:#b9b9c3}
-
-    /* FAB */
-    .fab-stack{position:fixed;right:16px;bottom:18px;display:flex;flex-direction:column;gap:12px;z-index:60}
-    .fab{width:56px;height:56px;border-radius:999px;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 28px rgba(0,0,0,.18);text-decoration:none}
-    .fab svg{width:28px;height:28px;fill:#fff}
-    .fab.menu{background:linear-gradient(135deg,var(--lavanda),var(--violeta))}
-    .fab.waze{background:#2BC3F3}
-    .fab.whatsapp{background:#25D366}
-    @media (max-width:768px){.fab-stack{display:flex}}
-    @media (max-width:480px){header h1{font-size:22px}header img.logo{width:150px}}
-
-    /* ======== MOBILE per PDF ======== */
-
-    /* 1) Ocultar Menú de Servicios sólo en móvil */
-    @media (max-width:640px){ #menu-servicios{ display:none !important; } }
-
-    /* 2) Faciales/Corporales apilados en móvil (sin carrusel) */
-    @media (max-width:640px){
-      #tratamientos-faciales .carousel-nav,
-      #tratamientos-faciales .carousel-dots,
-      #tratamientos-corporales .carousel-nav,
-      #tratamientos-corporales .carousel-dots{ display:none !important; }
-
-      #tratamientos-faciales .carousel-track,
-      #tratamientos-corporales .carousel-track{ transform:none !important; display:block; }
-      #tratamientos-faciales .carousel-slide,
-      #tratamientos-corporales .carousel-slide{ min-width:auto; padding:0; margin-bottom:14px; }
-      #tratamientos-faciales .carousel-grid,
-      #tratamientos-corporales .carousel-grid{ grid-template-columns:1fr !important; gap:14px; }
-    }
-
-    /* 3) Sobre: subtítulo corto + ocultar texto largo en móvil */
-    #sobre .about-card h2 + p::before{
-      content:"Tu Estética y Terapeuta en Parque Lefevre";
-      display:block; font-weight:600; color:#7e63c9; margin-bottom:.35rem;
-    }
-    @media (max-width:640px){
-      #sobre .about-card p{ display:none; }
-    }
-
-    /* 4) Productos en venta */
-    #productos{ padding-top:24px; }
-    .product-scroll{ display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:4px; }
-    .product-scroll::-webkit-scrollbar{ height:6px; }
-    .product-scroll::-webkit-scrollbar-thumb{ background:#c9b4f5; border-radius:999px; }
-    .prod-card{
-      flex:0 0 82%; max-width:82%;
-      background:#fff; border:1px solid #f0e7f7; border-radius:16px;
-      box-shadow:0 8px 18px rgba(0,0,0,.08);
-      display:grid; grid-template-columns:84px 1fr auto; gap:12px; padding:12px; align-items:center;
-      scroll-snap-align:start;
-    }
-    .prod-card img{ width:84px; height:84px; object-fit:cover; border-radius:10px; background:#eee; }
-    .prod-info h3{ margin:.1rem 0; font-size:16px; color:#7e63c9; }
-    .prod-info p{ margin:0; color:#555; font-size:13px; }
-    .prod-price{ font-weight:800; color:#6b45b1; font-size:18px; }
-    .prod-cta{
-      grid-column:1/-1; display:inline-block; text-align:center;
-      background:linear-gradient(135deg,var(--lavanda),var(--violeta));
-      color:#fff; text-decoration:none; padding:.55rem .9rem; border-radius:999px; font-weight:700;
-    }
-    @media (min-width:841px){
-      .product-scroll{ display:grid; grid-template-columns:repeat(3,1fr); overflow:visible; }
-      .prod-card{ flex:none; max-width:100%; }
-    }
-
-    /* 5) Lightbox móvil */
-    @media (max-width:600px){
-      dialog#lightbox{width:100vw;margin:0;border-radius:0;}
-      .lightbox-body img,.lightbox-body video,.lightbox-body iframe{height:calc(100dvh - 56px);}
-      .lightbox-close{width:44px;height:44px;font-size:22px;top:10px;right:10px;background:rgba(0,0,0,.65);}
-    }
-
-    /* 6) UX móvil general */
-    @media (max-width:640px){
-      body{font-size:15px}
-      section{padding:28px 14px}
-      h2{font-size:20px;margin-bottom:18px}
-
-      header{height:320px;padding:26px 14px}
-      header img.logo{width:140px}
-      header h1{font-size:20px;margin:8px 0}
-      header p{font-size:14px}
-
-      .card img{height:180px}
-      .carousel-nav{width:46px;height:46px}
-      .carousel-nav svg{width:22px;height:22px}
-
-      .offer-card{flex-direction:column; align-items:stretch}
-      .offer-info{padding:18px}
-      .offer-img{order:2}
-      .offer-img img{height:200px; border-radius:0 0 18px 18px}
-      .offer-nav{width:46px;height:46px}
-      .offer-nav.prev{left:10px} .offer-nav.next{right:10px}
-
-      .media-grid{grid-template-columns:1fr}
-      .media-grid img{height:240px}
-
-      .fab-stack{ right:0; left:0; bottom:10px; flex-direction:row; justify-content:center; gap:16px; padding:0 12px }
-      .fab{width:56px;height:56px;border-radius:16px}
-    }
-
-    /* Helpers móviles (por si los quieres) */
-    @media (max-width:640px){
-      .m-hide{display:none !important;}
-      .m-only{display:block !important;}
-    }
-    @media (min-width:641px){ .m-only{display:none !important;} }
-
-    /* Micro-mejoras */
-    .offer-img img{object-fit:cover;display:block;background:#e6e6e6}
-    .offers-viewport{scroll-behavior:smooth}
-/* ===== Footer móvil estilo maqueta ===== */
+/* =================================================================
+   MÓVIL (≤640px) – encapsulamos todo lo “oscuro” y los cambios nuevos
+   ================================================================= */
 @media (max-width:640px){
-  .site-footer{ background:#000 !important; }
-  .footer-inner{
-    grid-template-columns:1fr !important;
-    gap:18px !important;
-    text-align:center !important;
-  }
-  .site-footer .logo{
-    height:64px !important;
-    margin:8px auto 10px !important;
-    display:block !important;
-    filter:none !important;
-  }
-  /* Ocultar mapa y enlaces de cómo llegar en móvil */
-  .site-footer .map,
-  .site-footer .directions{ display:none !important; }
 
-  /* Tipografía y espaciado de bloques (HORARIO / UBICACIÓN / CONTACTO) */
-  .footer-info h5{
-    margin:.8rem 0 .2rem !important;
-    font-size:14px !important;
-    letter-spacing:.04em;
-    color:#bdb7ff !important; /* violeta suave */
-    text-transform:uppercase;
-  }
-  .footer-info p{
-    margin:.2rem 0 .6rem !important;
-    color:#eaeaea !important;
-    line-height:1.45;
-    font-size:14px !important;
+  /* Tema oscuro SOLO en móvil */
+  body{ background:var(--bg-dark); color:var(--text-inv) }
+
+  /* Cards claras sobre fondo oscuro */
+  .card,.about-card,.video-card,.offer-card{
+    background:#fff; color:#2b2b2b; box-shadow:var(--shadow);
   }
 
-  /* Redes centradas */
-  .social{ text-align:center !important; }
-  .social h4{ display:none !important; } /* opcional: ocultar título */
-  .icons{ justify-content:center !important; gap:14px !important; }
-  .icons .ico{
-    width:44px !important; height:44px !important; border-radius:14px !important;
-    background:#111 !important; color:#fff !important; box-shadow:none !important;
-    border:1px solid rgba(255,255,255,.12);
-  }
-
-  /* Legal compacto */
-  .legal{ color:#9b9bb5 !important; font-size:12px !important; }
-
-  /* FABs al costado derecho, centrados verticalmente */
-  .fab-stack{
-    right:10px !important; left:auto !important;
-    bottom:auto !important; top:50% !important;
-    transform:translateY(-50%);
-    flex-direction:column !important; gap:12px !important;
-    padding:0 !important;
-  }
-  .fab{ width:54px !important; height:54px !important; border-radius:18px !important; }
-}
-
-    /* ===== Footer escritorio (restaurar 3 columnas elegantes) ===== */
-@media (min-width: 901px){
-  /* Fondo y tipografía general del footer en desktop */
-  .site-footer{
-    background:#222 !important;
-    color:#fff;
-  }
-  .footer-inner{
-    max-width:1100px;
-    margin:0 auto;
-    padding:2rem 1rem;
-    display:grid !important;
-    gap:1.5rem;
-    grid-template-columns:1.2fr 1fr 1.2fr !important; /* 3 columnas */
-    align-items:start;
-    text-align:left !important; /* vuelve a texto a la izquierda */
-  }
-
-  /* Columna 1: marca / info */
-  .footer-inner .brand,
-  .footer-info{ text-align:left !important; }
-  .site-footer .logo{
-    height:42px !important;
-    margin:0 0 .5rem !important;
-    display:block;
-    filter:brightness(1000%); /* logo blanco sobre fondo oscuro */
-  }
-  .site-footer h4{ color:#fff; margin:0 0 .5rem; font-weight:700; }
-
-  /* Columna 2: redes (título visible y alineación izquierda) */
-  .social{ text-align:left !important; }
-  .social h4{ display:block !important; margin-bottom:.5rem; }
-  .icons{ justify-content:flex-start !important; gap:10px !important; }
-  .icons .ico{
-    width:42px !important; height:42px !important; border-radius:12px !important;
-    background:#fff !important; color:#4a4a4a !important;
-    border:0; box-shadow:0 6px 14px rgba(0,0,0,.18);
-  }
-
-  /* Columna 3: mapa / cómo llegar (volver a mostrar en desktop) */
-  .site-footer .map,
-  .site-footer .directions{ display:block !important; }
-  .map-embed{ overflow:hidden; border-radius:14px; }
-  .directions a{ color:#bbb; text-decoration:none; }
-  .directions a:hover{ text-decoration:underline; }
-
-  /* Legal */
-  .legal{
-    border-top:1px solid rgba(255,255,255,.08);
-    padding:1rem;
-    text-align:center;
-    color:#b9b9c3;
-  }
-
-  /* FABs: vuelven a esquina inferior derecha en desktop */
-  .fab-stack{
-    right:16px !important; bottom:18px !important;
-    top:auto !important; transform:none !important;
-    flex-direction:column !important; gap:12px !important;
-  }
-}
-
-/* Pequeño refinamiento para tablets medianas */
-@media (min-width: 641px) and (max-width: 900px){
-  .footer-inner{
-    grid-template-columns:1fr 1fr !important;
-  }
-  .site-footer .map{ grid-column:1 / -1; }
-}
-
-    /* --- Tuning Promos del Mes (solo móvil) --- */
-@media (max-width:640px){
-  .offer-card{
-    flex-direction:column;
-    border-radius:20px;
-    overflow:hidden;                 /* evita esquinas cortadas / desbordes */
-  }
-  .offer-info{
-    padding:16px 16px 8px;           /* menos aire arriba */
-    text-align:left;
-  }
-  .offer-card h3{
-    font-size:22px;
-    line-height:1.2;
-    margin:0 0 6px;
-  }
-  .offer-info p{
-    font-size:14px;
-    margin:.25rem 0;
-    line-height:1.45;
-  }
-
-  .offer-img{ width:100%; order:2; }
-  .offer-img img{
-    width:100%;
-    height:180px;                    /* altura controlada para no “aplastar” */
-    object-fit:cover;
-    display:block;
-  }
-
-  .offer-slide{ padding:0 4px; }     /* menos margen lateral */
-  .offers-viewport{ padding-right:72px; } /* margen por columna FAB */
-  .offer-dots{ margin-top:8px; }
-
-  /* flecha derecha un poco adentro para que no choque con el FAB */
-  .offer-nav.next{ right:76px; }
-  .offer-nav.prev{ left:12px; }
-  .offer-nav{ width:42px; height:42px; }
-}
-
-    /* --- Promos del Mes: tuning móvil pro --- */
-@media (max-width:640px){
-  .offer-card{
-    display:flex;
-    flex-direction:column;
-    border-radius:22px;
-    overflow:hidden;                /* evita “bordes mordidos” */
-    box-shadow:0 10px 24px rgba(0,0,0,.12);
-  }
-  .offer-info{
-    padding:16px 16px 10px;
-    text-align:left;
-  }
-  .offer-card h3{ font-size:22px; line-height:1.2; margin:0 0 6px; }
-  .offer-info p{ font-size:14px; margin:.25rem 0; line-height:1.45; }
-
-  /* Imagen 100% con proporción estable */
-  .offer-img{ width:100%; order:2; aspect-ratio: 16 / 10; }
-  .offer-img img{
-    width:100%; height:100%;
-    object-fit:cover; display:block;
-  }
-  /* Fallback para navegadores sin aspect-ratio (algunos iOS antiguos) */
-  @supports not (aspect-ratio: 1){
-    .offer-img{ height:clamp(160px, 42vw, 240px); }
-    .offer-img img{ height:100%; }
-  }
-
-  /* Evitar choque con la columna FAB */
-  .offers-viewport{ padding-right:74px; }
-  .offer-nav.next{ right:78px; }    /* flecha derecha un poco adentro */
-  .offer-nav.prev{ left:12px; }
-  .offer-nav{ width:42px; height:42px; }
-  .offer-dots{ margin-top:8px; }
-}
-
- /* --- Promos del Mes (forzar layout móvil con alta especificidad) --- */
-@media (max-width:640px){
-  #ofertas .offer-card{
-    display:flex !important;
-    flex-direction:column !important;
-    border-radius:22px !important;
-    overflow:hidden !important;
-    box-shadow:0 10px 24px rgba(0,0,0,.12);
-  }
-  #ofertas .offer-info{
-    padding:16px 16px 10px !important;
-    text-align:left !important;
-  }
-  #ofertas .offer-card h3{
-    font-size:22px !important;
-    line-height:1.2 !important;
-    margin:0 0 6px !important;
-  }
-  #ofertas .offer-info p{
-    font-size:14px !important;
-    margin:.25rem 0 !important;
-    line-height:1.45 !important;
-  }
-
-  /* Imagen 100% con proporción estable */
-  #ofertas .offer-img{
-    width:100% !important;
-    order:2 !important;
-    aspect-ratio:16 / 10 !important;
-  }
-  #ofertas .offer-img img{
-    width:100% !important;
-    height:100% !important;
-    object-fit:cover !important;
-    display:block !important;
-  }
-  /* Fallback iOS antiguos sin aspect-ratio */
-  @supports not (aspect-ratio: 1){
-    #ofertas .offer-img{ height:clamp(170px, 44vw, 240px) !important; }
-    #ofertas .offer-img img{ height:100% !important; }
-  }
-
-  /* Evitar choque con FAB */
-  #ofertas .offers-viewport{ padding-right:78px !important; }
-  #ofertas .offer-nav.next{ right:82px !important; }
-  #ofertas .offer-nav.prev{ left:12px !important; }
-  #ofertas .offer-nav{ width:42px !important; height:42px !important; }
-  #ofertas .offer-dots{ margin-top:10px !important; }
-}
-
-  /* ===== Promos del Mes — versión móvil independiente ===== */
-.offers-mobile{ display:none; }  /* por defecto (desktop) */
-
-@media (max-width:640px){
-  /* Ocultar el carrusel actual SOLO en móvil */
-  #ofertas .offers-carousel{ display:none !important; }
-
-  /* Mostrar el nuevo scroller móvil */
-  #ofertas .offers-mobile{ display:block; }
-
-  #ofertas .offers-mobile .m-scroll{
-    display:flex;
-    gap:14px;
-    overflow-x:auto;
-    scroll-snap-type:x mandatory;
-    padding: 0 82px 10px 12px;          /* +82px a la derecha para no chocar con el FAB */
-    -webkit-overflow-scrolling: touch;
-  }
-  #ofertas .offers-mobile .m-offer{
-    flex: 0 0 88%;
-    scroll-snap-align: center;
-    border-radius:22px;
-    background: linear-gradient(135deg, #fbc2eb, #a18cd1);
-    box-shadow: 0 12px 24px rgba(0,0,0,.12);
-    overflow:hidden;
-    display:flex;
-    flex-direction:column;
-  }
-  #ofertas .offers-mobile .m-body{
-    padding:16px 16px 10px;
-    text-align:left;
-  }
-  #ofertas .offers-mobile h3{
-    font-size:22px;
-    line-height:1.2;
-    margin:0 0 6px;
-    color:#5b3bb6;
-  }
-  #ofertas .offers-mobile p{ margin:.35rem 0; font-size:14px; line-height:1.45; color:#222; }
-  #ofertas .offers-mobile .price b{ color:#5b3bb6; font-size:18px; }
-
-  #ofertas .offers-mobile .m-btn{
-    display:inline-block;
-    margin-top:8px;
-    font-weight:700;
-    background:#5b3bb6;
-    color:#fff;
-    text-decoration:none;
-    padding:10px 14px;
-    border-radius:12px;
-  }
-
-  /* Imagen con proporción estable */
-  #ofertas .offers-mobile .m-img{ width:100%; aspect-ratio: 16 / 10; background:#000; }
-  #ofertas .offers-mobile .m-img img{
-    width:100%; height:100%; object-fit:cover; display:block;
-  }
-  /* Fallback para navegadores sin aspect-ratio */
-  @supports not (aspect-ratio: 1){
-    #ofertas .offers-mobile .m-img{ height:clamp(170px, 44vw, 240px); }
-    #ofertas .offers-mobile .m-img img{ height:100%; }
-  }
-
-  /* Puntos de página (opcionales) */
-  #ofertas .offers-mobile .m-dots{
-    display:flex; gap:8px; justify-content:center; margin:10px 0 0;
-  }
-  #ofertas .offers-mobile .m-dots span{
-    width:8px; height:8px; border-radius:999px; background:#c9b4f5;
-  }
-}
-
-  /* ===== Visor full-screen para Promos (solo móvil) ===== */
-@media (max-width:640px){
-  .promo-modal{ position:fixed; inset:0; z-index:9999; display:none; }
-  .promo-modal.open{ display:block; }
-  .promo-backdrop{ position:absolute; inset:0; background:rgba(0,0,0,.75); }
-
-  .promo-view{
-    position:absolute; inset:4% 4%;
-    background:#fff; border-radius:18px; overflow:hidden;
-    display:flex; flex-direction:column;
-    box-shadow:0 20px 50px rgba(0,0,0,.35);
-  }
-
-  .promo-head{ display:flex; align-items:center; justify-content:space-between;
-    padding:10px 12px; background:#f7f5ff; }
-  .promo-title{ font-weight:700; color:#5b3bb6; font-size:16px; margin:0; }
-  .promo-close{ border:0; width:36px; height:36px; border-radius:999px;
-    background:#000; color:#fff; font-size:18px; display:grid; place-items:center; }
-
-  .promo-viewport{ position:relative; overflow:hidden; flex:1; background:#000; }
-  .promo-track{ height:100%; display:flex; transition:transform .45s ease; }
-
-  .pm-slide{ min-width:100%; height:100%; overflow:auto; background:#fff;
-    display:flex; flex-direction:column; }
-  .pm-body{ padding:16px; background:#fff; }
-  .pm-body h3{ margin:0 0 6px; color:#5b3bb6; font-size:20px; line-height:1.2; }
-  .pm-body p{ margin:.35rem 0; color:#333; }
-  .pm-body .price b{ color:#5b3bb6; }
-
-  .pm-img{ width:100%; aspect-ratio:16/10; background:#000; }
-  .pm-img img{ width:100%; height:100%; object-fit:cover; display:block; }
-  @supports not (aspect-ratio:1){
-    .pm-img{ height:clamp(200px, 48vw, 320px); }
-    .pm-img img{ height:100%; }
-  }
-
-  .promo-dots{ position:absolute; left:0; right:0; bottom:10px;
-    display:flex; justify-content:center; gap:8px; }
-  .promo-dots .dot{ width:8px; height:8px; border-radius:999px; background:#c9b4f5; }
-  .promo-dots .dot[aria-current="true"]{ background:#6b45b1; }
-
-  /* Gestos: área para “arrastrar” (toma toda la zona de contenido) */
-  .pm-slide{ touch-action:pan-y; }
-}
-
-/* Evitar scroll del body cuando el visor está abierto */
-.body-lock{ overflow:hidden; height:100vh; }
-
-  /* ===== REFINES VISOR PROMOS (móvil) – legibilidad y proporción ===== */
-@media (max-width:640px){
-  /* pantalla completa real y segura (iOS safe areas) */
-  .promo-modal.open{ display:block; }
-  .promo-backdrop{ background:rgba(0,0,0,.75); }
-  .promo-view{
-    position:fixed; 
-    inset:0;                               /* full screen */
-    padding-top: max(10px, env(safe-area-inset-top));
-    padding-bottom: max(10px, env(safe-area-inset-bottom));
-    border-radius:0; 
-    background:#fff;
-    display:flex; 
-    flex-direction:column;
-  }
-
-  /* encabezado fijo */
-  .promo-head{
-    position:sticky; 
-    top:0;
-    z-index:2;
-    background:#ffffff;
-    border-bottom:1px solid #eee;
-    padding:12px 14px;
-  }
-  .promo-title{ 
-    margin:0; font-weight:800; 
-    color:#5b3bb6; 
-    font-size:18px; line-height:1.2;
-  }
-  .promo-close{
-    width:40px; height:40px; 
-    border-radius:999px; 
-    background:#111; color:#fff; border:0;
-    font-size:18px;
-  }
-
-  /* área de slides */
-  .promo-viewport{ 
-    position:relative; 
-    flex:1; 
-    overflow:hidden; 
-    background:#fff;
-  }
-  .promo-track{ 
-    height:100%; 
-    display:flex; 
-    will-change:transform; 
-    transition:transform .45s ease;
-  }
-
-  /* slide con scroll vertical propio */
-  .pm-slide{
-    min-width:100%; 
-    height:100%; 
-    display:flex; 
-    flex-direction:column; 
-    overflow:auto; 
-    -webkit-overflow-scrolling:touch;
-    background:#fff;
-  }
-
-  /* texto primero, grande y cómodo de leer */
-  .pm-body{ 
-    padding:18px 16px 12px; 
-  }
-  .pm-body h3{ 
-    margin:0 0 8px; 
-    color:#5b3bb6; 
-    font-size:22px; 
-    line-height:1.25; 
-    letter-spacing:.2px;
-  }
-  .pm-body p{ 
-    margin:.45rem 0; 
-    color:#2b2b2b; 
-    font-size:16px; 
-    line-height:1.55;
-  }
-  .pm-body .price b{ color:#5b3bb6; }
-
-  /* botón grande y contrastado */
-  .pm-body .m-btn{
-    display:inline-block;
-    margin-top:10px;
-    font-weight:800;
-    background:#5b3bb6;
-    color:#fff !important;
-    text-decoration:none;
-    padding:12px 16px;
-    border-radius:12px;
-    font-size:15px;
-  }
-
-  /* imagen con altura controlada (no aplasta) */
-  .pm-img{ 
-    order:2; 
-    width:100%;
-    height: clamp(200px, 42vh, 340px);      /* <- ajustable */
-    background:#000; 
-  }
-  .pm-img img{ 
-    width:100%; height:100%; object-fit:cover; display:block; 
-  }
-
-  /* puntos */
-  .promo-dots{ 
-    position:absolute; left:0; right:0; bottom:12px; 
-    display:flex; justify-content:center; gap:8px; 
-    pointer-events:none;
-  }
-  .promo-dots .dot{ 
-    width:8px; height:8px; border-radius:999px; background:#c9b4f5; 
-  }
-  .promo-dots .dot[aria-current="true"]{ background:#6b45b1; }
-}
-
-/* cuando el visor está abierto, bloquea el scroll del fondo */
-.body-lock{ overflow:hidden; height:100vh; }
-
- /* ===== Móvil: tema oscuro de fondo ===== */
-@media (max-width:640px){
-  body{ background:#0f0f12; color:#e9e9ef; }
-  section{ background:transparent; }
-  .card, .about-card, .video-card, .offer-card{
-    background:#fff; color:#2b2b2b;
-    box-shadow:0 14px 34px rgba(0,0,0,.30);
-  }
-  /* footer dark */
-  .site-footer{ background:#0f0f12 !important; }
+  /* Footer oscuro solo móvil */
+  .site-footer{ background:var(--bg-dark) !important; color:var(--text-inv) }
+  .site-footer a{ color:#bca7ff }
   .site-footer .legal{ border-top-color:rgba(255,255,255,.08) }
-}
-  /* ===== Móvil: espaciado de títulos y divisiones ===== */
-@media (max-width:640px){
+
+  /* Títulos de bloques “Tratamientos …” */
   #tratamientos-faciales > h2,
   #tratamientos-corporales > h2{
     margin-top:28px !important;
     margin-bottom:16px !important;
     letter-spacing:.2px;
   }
-  /* banda gris clarita para cortar entre bloques */
-  #tratamientos-faciales,
-  #tratamientos-corporales{
-    padding-top:10px;
-    background:linear-gradient(#0f0f12 0 0) padding-box,
-               linear-gradient(180deg,#EDEAF6 0,#EDEAF6 10px,transparent 10px) border-box;
-    border-top:10px solid transparent;      /* truco para franja */
-  }
-}
 
-  /* ===== Móvil: visor promos sin distorsión ===== */
-@media (max-width:640px){
-  .pm-img{ width:100%; background:#000; }
-  .pm-img img{
-    width:100%; height:auto; max-height:50vh; /* sin aplastar */
-    object-fit:contain; display:block; background:#000;
-  }
-}
- /* ===== Móvil: limitar a 3 cards por bloque de tratamientos ===== */
-@media (max-width:640px){
+  /* Corte suave entre secciones */
+  #tratamientos-faciales,
+  #tratamientos-corporales{ padding-top:10px }
+
+  /* Limitar a 3 servicios en móvil */
   #tratamientos-faciales .carousel-grid .card:nth-child(n+4),
   #tratamientos-corporales .carousel-grid .card:nth-child(n+4){
     display:none !important;
   }
-}
- /* ===== Móvil: lightbox más limpio ===== */
-@media (max-width:640px){
-  dialog#lightbox .lightbox-body{ background:#111; }
+
+  /* Promos del Mes: imagen estable sin distorsión */
+  #ofertas .offer-img{
+    aspect-ratio:4/3;
+    background:#000;
+    overflow:hidden;
+    border-radius:var(--radius);
+  }
+  #ofertas .offer-img img{
+    width:100%; height:100%; object-fit:cover; display:block;
+  }
+
+  /* Visor de Promos (modal) estable, sin saltos ni “aplastes” */
+  .promo-modal .pm-img{
+    width:100%;
+    max-height:78vh;
+    background:#000;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .promo-modal .pm-img img{
+    max-width:100%; max-height:78vh;
+    width:auto; height:auto;
+    object-fit:contain; display:block;
+  }
+
+  /* Animaciones de entrada/salida del visor */
+  .promo-view{
+    transform:scale(.94);
+    opacity:0;
+    transition: transform .35s ease, opacity .35s ease;
+  }
+  .promo-modal.open .promo-view{ transform:scale(1); opacity:1 }
+  .promo-modal.closing .promo-view{ transform:scale(.98); opacity:0 }
+
+  /* Lightbox Galería móvil */
+  dialog#lightbox .lightbox-body{background:#111}
   dialog#lightbox .lightbox-body img,
   dialog#lightbox .lightbox-body video{
-    display:block; margin:auto; width:100%; height:auto;
-    max-height:82vh; object-fit:contain; background:#111;
+    display:block;margin:0 auto;
+    width:auto;height:auto;
+    max-width:100vw; max-height:86vh;
+    object-fit:contain;background:#111;
   }
-}
-/* ===== Tarjeta keratina (responsive) ===== */
-.keratin-section{ padding:24px 16px; }
-.k-card{
-  display:grid; gap:14px; grid-template-columns:1fr 1fr;
-  background:linear-gradient(135deg,#2a1747,#5b3bb6);
-  color:#fff; border-radius:18px; overflow:hidden;
-  box-shadow:0 12px 28px rgba(0,0,0,.28);
-}
-.k-text{ padding:18px; }
-.k-text h2{ margin:0 0 8px; }
-.k-text p{ margin:0 0 12px; color:#f1eefc; line-height:1.55; }
-.k-text .video-btn{
-  display:inline-block; background:#fff; color:#5b3bb6; font-weight:800;
-  padding:10px 14px; border-radius:12px; text-decoration:none;
 }
 
-/* video responsivo */
-.k-video .ratio{ position:relative; width:100%; padding-top:56.25%; }
-.k-video .ratio iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+/* =================================================================
+   ESCRITORIO (≥641px) – restauramos el look claro y layout original
+   ================================================================= */
+@media (min-width:641px){
+  body{ background:var(--bg); color:var(--text) }
 
-/* móvil: 1 columna */
-@media (max-width:640px){
-  .k-card{ grid-template-columns:1fr; }
-}
-/* ===== Ajuste de estabilidad en visor de Promos ===== */
-@media (max-width:640px){
-  .promo-modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.75);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    overflow: hidden;
-    transition: opacity 0.35s ease-in-out;
-  }
-  .promo-view {
-    background: #fff;
-    border-radius: 16px;
-    max-width: 92%;
-    width: 92%;
-    height: auto;
-    max-height: 90vh;
-    overflow: hidden;
-    transform: scale(1);
-    transition: transform 0.3s ease-out;
-  }
-  .promo-view.open {
-    transform: scale(1);
-  }
-  .promo-view .m-img img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    transition: transform 0.3s ease;
-  }
-  .promo-view .m-body {
-    padding: 16px;
-    background: linear-gradient(180deg, #fff 60%, #f7f4ff 100%);
-    color: #222;
-    overflow-y: auto;
-    max-height: 60vh;
-  }
-  .promo-view h3 {
-    color: #5b3bb6;
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-  .promo-view p {
-    font-size: 0.95rem;
-    line-height: 1.5;
-  }
-  .promo-view .price b {
-    color: #5b3bb6;
-  }
-}
-.promo-view {
-  transform: scale(0.94);
-  opacity: 0;
-  transition: transform 0.35s ease, opacity 0.35s ease;
-}
-.promo-modal.open .promo-view {
-  transform: scale(1);
-  opacity: 1;
-}
+  .site-footer{ background:#fff !important; color:#333 }
+  .site-footer a{ color:var(--violeta) }
+  .site-footer .legal{ border-top-color:#eaeaea }
 
-  </style>
+  .footer-inner{
+    display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px; align-items:start;
+  }
+
+  #ofertas .offer-img img{ object-fit:cover }
+}
+</style>
+
 </head>
 
 <body>
