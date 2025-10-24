@@ -6,199 +6,117 @@
   <title>Figura Rostro KG - Estética Integral</title>
 
   <style>
-    :root {
-      --violeta: #a18cd1;
-      --lavanda: #fbc2eb;
-      --violeta-oscuro: #7e63c9;
-      --gris-texto: #2c2c2c;
-      --gris-suave: #555;
-      --blanco: #ffffff;
+    :root{
+      --violeta:#a18cd1; --lavanda:#fbc2eb; --violeta-oscuro:#7e63c9;
+      --gris-texto:#2c2c2c; --gris-suave:#555; --blanco:#fff;
     }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:"Poppins",sans-serif;background:#f5f5f5;color:var(--gris-texto);text-align:center}
 
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: "Poppins", sans-serif;
-      background-color: #f5f5f5;
-      color: var(--gris-texto);
-      text-align: center;
-    }
-
-    /* ===== HEADER ===== */
+    /* HEADER */
     header{
-      position: relative;
-      width: 100%;
-      height: 420px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
-      padding: 40px 20px;
-      text-align: center;
-      overflow: hidden;
+      position:relative;width:100%;height:420px;display:flex;flex-direction:column;
+      justify-content:center;align-items:center;color:#fff;padding:40px 20px;text-align:center;overflow:hidden;
     }
     header::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: url('header-portada-demo.jpg') center/cover no-repeat;
-      z-index: -2;
+      content:"";position:absolute;inset:0;
+      /* <-- AQUI EL FONDO CORRECTO DEL REPO --> */
+      background:url('header-portada.jpg') center/cover no-repeat;
+      z-index:-2;
     }
     header::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: linear-gradient(135deg,
-        rgba(155,93,229,0.70),
-        rgba(161,140,209,0.70),
-        rgba(251,194,235,0.70)
-      );
-      z-index: -1;
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(135deg,rgba(155,93,229,.70),rgba(161,140,209,.70),rgba(251,194,235,.70));
+      z-index:-1;
     }
-    header img.logo { width: 180px; height: auto; margin-bottom: 16px; }
-    header h1 { font-size: 28px; font-weight: 700; margin: 10px 0; }
-    header p { font-size: 16px; color: #fff; margin: 0; }
+    header img.logo{width:180px;height:auto;margin-bottom:16px}
+    header h1{font-size:28px;font-weight:700;margin:10px 0}
+    header p{font-size:16px;color:#fff;margin:0}
 
-    /* ===== SECCIONES ===== */
-    section { padding: 40px 20px; max-width: 1100px; margin: auto; }
-    h2 { color: var(--violeta-oscuro); font-size: 26px; margin-bottom: 30px; }
+    /* SECCIONES */
+    section{padding:40px 20px;max-width:1100px;margin:auto}
+    h2{color:var(--violeta-oscuro);font-size:26px;margin-bottom:30px}
 
-    /* ===== SERVICIOS (intro) ===== */
-    .services { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-    .service {
-      background: #fff; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,.1);
-      padding: 20px; width: 280px; text-align: left; color: var(--gris-texto);
-    }
-    .service h3 { color: var(--violeta-oscuro); font-size: 18px; margin-bottom: 8px; }
-    .service p { font-size: 15px; color: var(--gris-suave); line-height: 1.6; }
+    /* Tarjetas intro */
+    .services{display:flex;flex-wrap:wrap;justify-content:center;gap:20px}
+    .service{background:#fff;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,.1);padding:20px;width:280px;text-align:left}
+    .service h3{color:var(--violeta-oscuro);font-size:18px;margin:0 0 8px}
+    .service p{font-size:15px;color:var(--gris-suave);line-height:1.6}
 
-    /* ===== CARDS ===== */
-    .card {
-      background:#fff; border-radius:14px; box-shadow:0 8px 20px rgba(0,0,0,.08);
-      text-align:left; overflow:hidden;
-    }
-    .card img{ width:100%; height:200px; object-fit:cover; display:block; background:#eaeaea; }
-    .card .box{ padding:16px 18px; }
-    .card h3{ margin:0 0 6px; color:#7e63c9; font-size:18px; }
-    .card p{ color:#555; margin:10px 0 0; font-size:14px; line-height:1.55; }
+    /* Cards generales */
+    .card{background:#fff;border-radius:14px;box-shadow:0 8px 20px rgba(0,0,0,.08);text-align:left;overflow:hidden}
+    .card img{width:100%;height:200px;object-fit:cover;display:block;background:#eaeaea}
+    .card .box{padding:16px 18px}
+    .card h3{margin:0 0 6px;color:#7e63c9;font-size:18px}
+    .card p{color:#555;margin:10px 0 0;font-size:14px;line-height:1.55}
 
-    /* ===== CARRUSEL (reusable) ===== */
-    .carousel { position: relative; }
-    .carousel-viewport { overflow: hidden; border-radius: 18px; }
-    .carousel-track { display: flex; transition: transform .5s ease; will-change: transform; }
-    .carousel-slide { min-width: 100%; padding: 6px; }
-    .carousel-grid { /* para que dentro de cada slide podamos mostrar varias cards */
-      display: grid; gap: 16px;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-    @media (max-width: 700px){
-      .carousel-grid{ grid-template-columns: 1fr; }
-    }
+    /* Carrusel reutilizable (faciales/corporales) */
+    .carousel{position:relative}
+    .carousel-viewport{overflow:hidden;border-radius:18px}
+    .carousel-track{display:flex;transition:transform .5s ease;will-change:transform}
+    .carousel-slide{min-width:100%;padding:6px}
+    .carousel-grid{display:grid;gap:16px;grid-template-columns:repeat(2,minmax(0,1fr))}
+    @media (max-width:700px){.carousel-grid{grid-template-columns:1fr}}
 
-    .carousel-nav {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      background: rgba(0,0,0,.45); color: #fff; border: 0; width: 40px; height: 40px;
-      border-radius: 999px; display: grid; place-items: center; cursor: pointer;
-      box-shadow: 0 6px 16px rgba(0,0,0,.25);
+    .carousel-nav{
+      position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.45);color:#fff;border:0;width:40px;height:40px;
+      border-radius:999px;display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.25)
     }
-    .carousel-nav:hover { background: rgba(0,0,0,.6); }
-    .carousel-nav.prev { left: 12px; }
-    .carousel-nav.next { right: 12px; }
+    .carousel-nav:hover{background:rgba(0,0,0,.6)}
+    .carousel-nav.prev{left:12px}
+    .carousel-nav.next{right:12px}
+    .carousel-dots{display:flex;gap:8px;justify-content:center;margin-top:14px}
+    .carousel-dots .dot{width:10px;height:10px;border-radius:999px;border:0;cursor:pointer;background:#c9b4f5}
+    .carousel-dots .dot[aria-selected="true"]{background:#6b45b1}
 
-    .carousel-dots { display: flex; gap: 8px; justify-content: center; margin-top: 14px; }
-    .carousel-dots .dot {
-      width: 10px; height: 10px; border-radius: 999px; border: 0; cursor: pointer;
-      background: #c9b4f5;
-    }
-    .carousel-dots .dot[aria-selected="true"] { background: #6b45b1; }
+    /* Ofertas (carrusel existente) */
+    .offers-viewport{overflow:hidden;border-radius:18px}
+    .offers-track{display:flex;transition:transform .5s ease}
+    .offer-slide{min-width:100%}
+    .offer-card{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;background:linear-gradient(135deg,#fbc2eb,#a18cd1);border-radius:18px;box-shadow:0 8px 20px rgba(0,0,0,.12);overflow:hidden;text-align:left;color:#222}
+    .offer-info{flex:1 1 380px;padding:30px}
+    .offer-info h3{color:#6b45b1;font-size:24px;margin-top:0}
+    .offer-info .precio{font-size:22px;color:#6c2eb9}
+    .offer-img{flex:1 1 300px}
+    .offer-img img{width:100%;height:100%;object-fit:cover;display:block;background:#ddd}
+    .offer-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.45);color:#fff;border:0;width:40px;height:40px;border-radius:999px;display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.25)}
+    .offer-nav:hover{background:rgba(0,0,0,.6)}
+    .offer-nav.prev{left:12px}.offer-nav.next{right:12px}
+    .offer-dots{display:flex;gap:8px;justify-content:center;margin-top:12px}
+    .offer-dots .dot{width:10px;height:10px;border-radius:999px;border:0;cursor:pointer;background:#c9b4f5}
+    .offer-dots .dot[aria-selected="true"]{background:#6b45b1}
 
-    /* ===== OFERTAS (carrusel que ya tenías) ===== */
-    #ofertas { padding: 40px 20px; max-width: 1100px; margin: auto; }
-    .offers-carousel { position: relative; }
-    .offers-viewport { overflow: hidden; border-radius: 18px; }
-    .offers-track { display: flex; transition: transform .5s ease; will-change: transform; }
-    .offer-slide { min-width: 100%; }
-    .offer-card {
-      display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
-      background: linear-gradient(135deg, #fbc2eb, #a18cd1);
-      border-radius: 18px; box-shadow: 0 8px 20px rgba(0,0,0,.12);
-      overflow: hidden; text-align: left; color: #222;
-    }
-    .offer-info { flex: 1 1 380px; padding: 30px; }
-    .offer-info h3 { color: #6b45b1; font-size: 24px; margin-top: 0; }
-    .offer-info .precio { font-size: 22px; color: #6c2eb9; }
-    .offer-img { flex: 1 1 300px; }
-    .offer-img img { width: 100%; height: 100%; object-fit: cover; display: block; background:#ddd; }
-    .offer-nav {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      background: rgba(0,0,0,.45); color: #fff; border: 0; width: 40px; height: 40px;
-      border-radius: 999px; display: grid; place-items: center; cursor: pointer;
-      box-shadow: 0 6px 16px rgba(0,0,0,.25);
-    }
-    .offer-nav:hover { background: rgba(0,0,0,.6); }
-    .offer-nav.prev { left: 12px; }
-    .offer-nav.next { right: 12px; }
-    .offer-dots { display: flex; gap: 8px; justify-content: center; margin-top: 12px; }
-    .offer-dots .dot {
-      width: 10px; height: 10px; border-radius: 999px; border: 0; cursor: pointer;
-      background: #c9b4f5;
-    }
-    .offer-dots .dot[aria-selected="true"] { background: #6b45b1; }
+    /* Galería */
+    .media-grid{display:grid;gap:14px;grid-template-columns:repeat(3,1fr)}
+    .media-grid figure{margin:0;border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 8px 20px rgba(0,0,0,.08);cursor:pointer}
+    .media-grid img{width:100%;height:240px;object-fit:cover;display:block}
+    @media (max-width:900px){.media-grid{grid-template-columns:repeat(2,1fr)}.media-grid img{height:200px}}
+    @media (max-width:520px){.media-grid{grid-template-columns:1fr}.media-grid img{height:220px}}
 
-    /* ===== GALERÍA ===== */
-    #galeria { padding: 40px 20px; max-width: 1100px; margin: auto; }
-    .media-grid{
-      display:grid; gap:14px; grid-template-columns: repeat(3, 1fr);
-    }
-    .media-grid figure{
-      margin:0; border-radius:14px; overflow:hidden; background:#fff; box-shadow:0 8px 20px rgba(0,0,0,.08);
-      cursor:pointer;
-    }
-    .media-grid img{ width:100%; height:240px; object-fit:cover; display:block; }
-    @media (max-width:900px){ .media-grid{ grid-template-columns: repeat(2, 1fr);} .media-grid img{ height:200px; } }
-    @media (max-width:520px){ .media-grid{ grid-template-columns: 1fr;} .media-grid img{ height:220px; } }
+    dialog#lightbox{width:min(980px,92vw);border:0;border-radius:16px;padding:0;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.35)}
+    dialog#lightbox::backdrop{background:rgba(0,0,0,.65)}
+    .lightbox-body{position:relative;background:#000}
+    .lightbox-body img,.lightbox-body iframe,.lightbox-body video{width:100%;height:calc(92vh - 80px);object-fit:contain;border:0;background:#000}
+    .lightbox-close{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.6);color:#fff;border:0;width:36px;height:36px;border-radius:999px;cursor:pointer;font-size:18px}
 
-    /* Lightbox */
-    dialog#lightbox{ width:min(980px, 92vw); border:0; border-radius:16px; padding:0; overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,.35); }
-    dialog#lightbox::backdrop{ background: rgba(0,0,0,.65); }
-    .lightbox-body{ position:relative; background:#000; }
-    .lightbox-body img, .lightbox-body iframe, .lightbox-body video{
-      width:100%; height:calc(92vh - 80px); object-fit:contain; border:0; background:#000;
-    }
-    .lightbox-close{
-      position:absolute; top:8px; right:8px; background:rgba(0,0,0,.6); color:#fff;
-      border:0; width:36px; height:36px; border-radius:999px; cursor:pointer; font-size:18px;
-    }
+    /* Sobre + video */
+    #sobre{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:center}
+    #sobre .about-card{background:#fff;border-radius:16px;box-shadow:0 8px 20px rgba(0,0,0,.08);text-align:left;padding:24px}
+    #sobre .about-card h2{margin-top:0}
+    #sobre .about-card p{color:#4a4a4a;line-height:1.7}
+    .video-card{background:#fff;border-radius:16px;box-shadow:0 8px 20px rgba(0,0,0,.08);overflow:hidden;text-align:left}
+    .ratio{position:relative;width:100%;padding-top:56.25%;background:#000}
+    .ratio iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    .video-actions{display:flex;gap:10px;padding:12px 16px;border-top:1px solid #eee}
+    .video-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:#f3ecff;color:#5d3bb5;border:0;cursor:pointer;font-weight:600;text-decoration:none}
+    .video-btn:hover{filter:brightness(.97)}
+    @media (max-width:900px){#sobre{grid-template-columns:1fr}}
 
-    /* ===== SOBRE + VIDEO ===== */
-    #sobre { display:grid; grid-template-columns: 1.2fr 1fr; gap:24px; align-items:center; }
-    #sobre .about-card{
-      background:#fff; border-radius:16px; box-shadow:0 8px 20px rgba(0,0,0,.08);
-      text-align:left; padding:24px;
-    }
-    #sobre .about-card h2{ margin-top:0; }
-    #sobre .about-card p{ color:#4a4a4a; line-height:1.7; }
-    .video-card{
-      background:#fff; border-radius:16px; box-shadow:0 8px 20px rgba(0,0,0,.08); overflow:hidden;
-      text-align:left;
-    }
-    .ratio{ position:relative; width:100%; padding-top:56.25%; background:#000; }
-    .ratio iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
-    .video-actions{ display:flex; gap:10px; padding:12px 16px; border-top:1px solid #eee; }
-    .video-btn{
-      display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:10px;
-      background:#f3ecff; color:#5d3bb5; border:0; cursor:pointer; font-weight:600; text-decoration:none;
-    }
-    .video-btn:hover{ filter:brightness(0.97); }
-    @media (max-width: 900px){ #sobre{ grid-template-columns:1fr; } }
-
-    /* ===== FOOTER ===== */
+    /* Footer */
     .site-footer{background:#222;color:#fff;margin-top:3rem}
     .footer-inner{max-width:1100px;margin:0 auto;padding:2rem 1rem;display:grid;gap:1.5rem;grid-template-columns:1.2fr 1fr 1.2fr}
     .site-footer .logo{height:42px;margin-bottom:.5rem;filter:brightness(1000%)}
-    .site-footer .cta{display:inline-block;margin-top:.6rem;background:linear-gradient(135deg, var(--lavanda), var(--violeta));color:#fff;text-decoration:none;padding:.55rem .9rem;border-radius:999px;font-weight:600;box-shadow:0 6px 14px rgba(0,0,0,.18)}
+    .site-footer .cta{display:inline-block;margin-top:.6rem;background:linear-gradient(135deg,var(--lavanda),var(--violeta));color:#fff;text-decoration:none;padding:.55rem .9rem;border-radius:999px;font-weight:600;box-shadow:0 6px 14px rgba(0,0,0,.18)}
     .site-footer h4{margin:0 0 .5rem;font-weight:700;color:#fff}
     .icons .ico{display:inline-flex;align-items:center;justify-content:center;margin-right:.6rem;opacity:.9;transition:.2s}
     .icons .ico:hover{opacity:1;transform:translateY(-1px)}
@@ -206,16 +124,14 @@
     .directions a{color:#bbb;text-decoration:none}
     .directions a:hover{text-decoration:underline}
     .legal{border-top:1px solid rgba(255,255,255,.08);padding:1rem;text-align:center;color:#b9b9c3}
-    @media (max-width:900px){.footer-inner{grid-template-columns:1fr}}
 
-    /* ===== FAB ===== */
-    .fab-stack{ position:fixed; right:16px; bottom:18px; display:none; flex-direction:column; gap:12px; z-index:60; }
-    .fab{ width:56px; height:56px; border-radius:999px; display:flex; align-items:center; justify-content:center; box-shadow:0 12px 28px rgba(0,0,0,.18); text-decoration:none; }
-    .fab svg{ width:28px; height:28px; fill:#fff; }
-    .fab.waze{ background:#2BC3F3; }
-    .fab.whatsapp{ background:#25D366; }
-    @media (max-width:768px){ .fab-stack{ display:flex; } }
-    @media (max-width:480px){ header h1{font-size:22px;} header img.logo{width:150px;} .service{width:100%;} }
+    /* FAB */
+    .fab-stack{position:fixed;right:16px;bottom:18px;display:none;flex-direction:column;gap:12px;z-index:60}
+    .fab{width:56px;height:56px;border-radius:999px;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 28px rgba(0,0,0,.18);text-decoration:none}
+    .fab svg{width:28px;height:28px;fill:#fff}
+    .fab.waze{background:#2BC3F3}.fab.whatsapp{background:#25D366}
+    @media (max-width:768px){.fab-stack{display:flex}}
+    @media (max-width:480px){header h1{font-size:22px}header img.logo{width:150px}.service{width:100%}}
   </style>
 </head>
 
@@ -226,230 +142,160 @@
     <p>Tu centro de estética integral en Panamá</p>
   </header>
 
-  <!-- ===== SERVICIOS (intro) ===== -->
+  <!-- Intro -->
   <section>
     <h2>Servicios</h2>
     <div class="services">
-      <div class="service">
-        <h3>Tratamientos Faciales</h3>
-        <p>Limpieza facial, dermaplaning, peeling y rejuvenecimiento para tu piel.</p>
-      </div>
-      <div class="service">
-        <h3>Tratamientos Corporales</h3>
-        <p>Masajes terapéuticos, reductores, drenajes y cuidado integral.</p>
-      </div>
-      <div class="service">
-        <h3>Bienestar</h3>
-        <p>Técnicas no invasivas para resultados visibles sin cirugía.</p>
-      </div>
+      <div class="service"><h3>Tratamientos Faciales</h3><p>Limpieza facial, dermaplaning, peeling y rejuvenecimiento para tu piel.</p></div>
+      <div class="service"><h3>Tratamientos Corporales</h3><p>Masajes terapéuticos, reductores, drenajes y cuidado integral.</p></div>
+      <div class="service"><h3>Bienestar</h3><p>Técnicas no invasivas para resultados visibles sin cirugía.</p></div>
     </div>
   </section>
 
-  <!-- ===== TRATAMIENTOS FACIALES (CARRUSEL) ===== -->
+  <!-- FACIALES -->
   <section id="tratamientos-faciales">
     <h2>Tratamientos Faciales</h2>
-
     <div class="carousel" id="facialesCarousel" aria-roledescription="carousel">
       <div class="carousel-viewport" aria-live="polite">
         <div class="carousel-track">
-          <!-- Slide 1 -->
           <div class="carousel-slide" role="group" aria-label="1 de 2">
             <div class="carousel-grid">
               <article class="card">
-                <img src="facial-limpieza.jpg" alt="Limpieza Facial Premium" width="800" height="500" loading="lazy" onerror="this.onerror=null;this.src='banner-spa.png'">
-                <div class="box">
-                  <h3>Limpieza Facial Premium</h3>
-                  <p>Higiene profunda + mascarilla nutritiva. Ideal para piel opaca o con impurezas.</p>
-                </div>
+                <img src="facial-limpieza.jpg" alt="Limpieza Facial Premium" width="800" height="500" loading="lazy" onerror="this.src='banner-spa.png'">
+                <div class="box"><h3>Limpieza Facial Premium</h3><p>Higiene profunda + mascarilla nutritiva. Ideal para piel opaca o con impurezas.</p></div>
               </article>
               <article class="card">
-                <img src="facial-peeling.jpg" alt="Peeling Facial" width="800" height="500" loading="lazy" onerror="this.onerror=null;this.src='banner-spa.png'">
-                <div class="box">
-                  <h3>Peeling Facial</h3>
-                  <p>Renovación de la piel para un tono más uniforme y luminoso desde la primera sesión.</p>
-                </div>
+                <img src="facial-peeling.jpg" alt="Peeling Facial" width="800" height="500" loading="lazy" onerror="this.src='banner-spa.png'">
+                <div class="box"><h3>Peeling Facial</h3><p>Renovación de la piel para un tono más uniforme y luminoso.</p></div>
               </article>
             </div>
           </div>
-
-          <!-- Slide 2 -->
           <div class="carousel-slide" role="group" aria-label="2 de 2">
             <div class="carousel-grid">
               <article class="card">
-                <img src="facial-dermaplaning.jpg" alt="Dermaplaning" width="800" height="500" loading="lazy" onerror="this.onerror=null;this.src='banner-spa.png'">
-                <div class="box">
-                  <h3>Dermaplaning</h3>
-                  <p>Elimina células muertas y vello fino para una piel más suave, lisa y radiante.</p>
-                </div>
+                <img src="facial-dermaplaning.jpg" alt="Dermaplaning" width="800" height="500" loading="lazy" onerror="this.src='banner-spa.png'">
+                <div class="box"><h3>Dermaplaning</h3><p>Elimina células muertas y vello fino para una piel más suave y radiante.</p></div>
               </article>
               <article class="card">
-                <img src="rejuvenecimiento-facial-corporal.jpg" alt="Rejuvenecimiento facial y corporal" width="800" height="500" loading="lazy" onerror="this.onerror=null;this.src='banner-spa.png'">
-                <div class="box">
-                  <h3>Rejuvenecimiento facial y corporal</h3>
-                  <p>Protocolos combinados no invasivos para firmeza, brillo y textura uniforme.</p>
-                </div>
+                <img src="rejuvenecimiento-facial-corporal.jpg" alt="Rejuvenecimiento facial y corporal" width="800" height="500" loading="lazy" onerror="this.src='banner-spa.png'">
+                <div class="box"><h3>Rejuvenecimiento facial y corporal</h3><p>Protocolos combinados no invasivos para firmeza, brillo y textura uniforme.</p></div>
               </article>
             </div>
           </div>
         </div>
       </div>
-
       <button class="carousel-nav prev" aria-label="Anterior">‹</button>
       <button class="carousel-nav next" aria-label="Siguiente">›</button>
       <div class="carousel-dots" role="tablist" aria-label="Paginación"></div>
     </div>
   </section>
 
-  <!-- ===== TRATAMIENTOS CORPORALES (CARRUSEL) ===== -->
+  <!-- CORPORALES -->
   <section id="tratamientos-corporales">
     <h2>Tratamientos Corporales</h2>
-
     <div class="carousel" id="corporalesCarousel" aria-roledescription="carousel">
       <div class="carousel-viewport" aria-live="polite">
         <div class="carousel-track">
-          <!-- Slide 1 -->
           <div class="carousel-slide" role="group" aria-label="1 de 2">
             <div class="carousel-grid">
               <article class="card">
-                <img src="masaje-descontracturante.jpg" alt="Masaje Descontracturante" width="800" height="500" loading="lazy" onerror="this.onerror=null;this.src='banner-spa.png'">
-                <div class="box">
-                  <h3>Masaje Descontracturante</h3>
-                  <p>Focalizado en cuello y espalda para aliviar tensiones y mejorar movilidad.</p>
-                </div>
+                <img src="masaje-descontracturante.jpg" alt="Masaje Descontracturante" width="800" height="500" loading="lazy" onerror="this.src='banner-spa.png'">
+                <div class="box"><h3>Masaje Descontracturante</h3><p>Focalizado en cuello y espalda para aliviar tensiones y mejorar movilidad.</p></div>
               </article>
               <article class="card">
-                <img src="masaje-reductor.jpg" alt="Masaje Reductor" width="800" height="500" loading="lazy" onerror="this.onerror=null;this.src='banner-spa.png'">
-                <div class="box">
-                  <h3>Masaje Reductor</h3>
-                  <p>Maniobras específicas para moldear, activar circulación y mejorar contorno.</p>
-                </div>
+                <img src="masaje-reductor.jpg" alt="Masaje Reductor" width="800" height="500" loading="lazy" onerror="this.src='banner-spa.png'">
+                <div class="box"><h3>Masaje Reductor</h3><p>Maniobras específicas para moldear, activar circulación y mejorar contorno.</p></div>
               </article>
             </div>
           </div>
-
-          <!-- Slide 2 -->
           <div class="carousel-slide" role="group" aria-label="2 de 2">
             <div class="carousel-grid">
               <article class="card">
-                <img src="terapia-adultos-mayores.jpg" alt="Terapia para adultos mayores" width="800" height="500" loading="lazy" onerror="this.onerror=null;this.src='banner-spa.png'">
-                <div class="box">
-                  <h3>Terapia para adultos mayores</h3>
-                  <p>Sesiones suaves y seguras para aliviar dolor, mejorar descanso y bienestar.</p>
-                </div>
+                <img src="terapia-adultos-mayores.jpg" alt="Terapia para adultos mayores" width="800" height="500" loading="lazy" onerror="this.src='banner-spa.png'">
+                <div class="box"><h3>Terapia para adultos mayores</h3><p>Sesiones suaves y seguras para aliviar dolor, mejorar descanso y bienestar.</p></div>
               </article>
               <article class="card">
-                <img src="drenaje-post-operatorio.jpg" alt="Drenajes post operatorios" width="800" height="500" loading="lazy" onerror="this.onerror=null;this.src='banner-spa.png'">
-                <div class="box">
-                  <h3>Drenajes post operatorios</h3>
-                  <p>Apoyo profesional para reducir edema y acelerar recuperación (según indicación).</p>
-                </div>
+                <img src="drenaje-post-operatorio.jpg" alt="Drenajes post operatorios" width="800" height="500" loading="lazy" onerror="this.src='banner-spa.png'">
+                <div class="box"><h3>Drenajes post operatorios</h3><p>Apoyo profesional para reducir edema y acelerar recuperación (según indicación).</p></div>
               </article>
             </div>
           </div>
         </div>
       </div>
-
       <button class="carousel-nav prev" aria-label="Anterior">‹</button>
       <button class="carousel-nav next" aria-label="Siguiente">›</button>
       <div class="carousel-dots" role="tablist" aria-label="Paginación"></div>
     </div>
   </section>
 
-  <!-- ===== PROMOS / CARRUSEL (tu carrusel existente) ===== -->
+  <!-- OFERTAS -->
   <section id="ofertas">
     <h2>Promos del Mes 💎</h2>
-
     <div class="offers-carousel" aria-roledescription="carousel">
       <div class="offers-viewport" aria-live="polite">
         <div class="offers-track">
-          <!-- 1 -->
           <article class="offer-slide" role="group" aria-label="1 de 3">
             <div class="offer-card">
               <div class="offer-info">
                 <h3>✨ Combo Relax Premium</h3>
                 <p>Masaje relajante + limpieza facial premium con mascarilla hidratante.</p>
                 <p>Antes <s>$110</s> · Ahora <b class="precio">$85</b></p>
-                <ul>
-                  <li>Reduce estrés y mejora el descanso</li>
-                  <li>Piel más clara e hidratada</li>
-                </ul>
                 <a href="https://wa.me/50764746168" target="_blank" class="btn">Reservar combo a $85</a>
               </div>
-              <div class="offer-img">
-                <img src="oferta-demo-1.jpg" alt="Promo Combo Relax Premium Figura Rostro KG">
-              </div>
+              <div class="offer-img"><img src="oferta-demo-1.jpg.png" alt="Promo Combo Relax Premium"></div>
             </div>
           </article>
-
-          <!-- 2 -->
           <article class="offer-slide" role="group" aria-label="2 de 3">
             <div class="offer-card">
               <div class="offer-info">
                 <h3>🌟 Peeling Facial Unisex</h3>
                 <p>Renueva tu piel y luce un rostro más luminoso.</p>
                 <p>Antes <s>$120</s> · Ahora <b class="precio">$85</b></p>
-                <ul>
-                  <li>Uniforma tono y textura</li>
-                  <li>Apto para hombres y mujeres</li>
-                  <li>Más luminosidad desde la 1.ª sesión</li>
-                </ul>
                 <a href="https://wa.me/50764746168" target="_blank" class="btn">Tomar peeling a $85</a>
               </div>
-              <div class="offer-img">
-                <img src="oferta-demo-2.jpg" alt="Promo Peeling Facial Unisex Figura Rostro KG">
-              </div>
+              <div class="offer-img"><img src="oferta-demo-2.jpg.png" alt="Promo Peeling Facial Unisex"></div>
             </div>
           </article>
-
-          <!-- 3 -->
           <article class="offer-slide" role="group" aria-label="3 de 3">
             <div class="offer-card">
               <div class="offer-info">
                 <h3>💆 Descontracturante + Limpieza</h3>
                 <p>Alivia tensiones musculares y relaja cuerpo y mente.</p>
                 <p>Antes <s>$110</s> · Ahora <b class="precio">$95</b></p>
-                <ul>
-                  <li>Libera contracturas en cuello y espalda</li>
-                  <li>Higiene facial profunda con mascarilla</li>
-                </ul>
                 <a href="https://wa.me/50764746168" target="_blank" class="btn">Reservar pack a $95</a>
               </div>
-              <div class="offer-img">
-                <img src="banner-spa.png" alt="Promo Masaje Descontracturante + Limpieza (temporal)">
-              </div>
+              <div class="offer-img"><img src="banner-spa.png" alt="Promo Masaje + Limpieza"></div>
             </div>
           </article>
         </div>
       </div>
-
       <button class="offer-nav prev" aria-label="Oferta anterior" title="Anterior">‹</button>
       <button class="offer-nav next" aria-label="Siguiente oferta" title="Siguiente">›</button>
-
       <div class="offer-dots" role="tablist" aria-label="Selector de ofertas">
-        <button class="dot" role="tab" aria-selected="true" aria-controls="oferta-1" title="Oferta 1"></button>
-        <button class="dot" role="tab" aria-selected="false" aria-controls="oferta-2" title="Oferta 2"></button>
-        <button class="dot" role="tab" aria-selected="false" aria-controls="oferta-3" title="Oferta 3"></button>
+        <button class="dot" role="tab" aria-selected="true" title="Oferta 1"></button>
+        <button class="dot" role="tab" aria-selected="false" title="Oferta 2"></button>
+        <button class="dot" role="tab" aria-selected="false" title="Oferta 3"></button>
       </div>
     </div>
   </section>
 
-  <!-- ===== GALERÍA ===== -->
+  <!-- GALERÍA -->
   <section id="galeria">
     <h2>Galería & Instagram</h2>
     <div class="media-grid" id="mediaGrid">
-      <figure data-type="image" data-src="galeria-demo-1.jpg">
-        <img src="galeria-demo-1.jpg" alt="Tratamiento facial premium en Figura Rostro KG">
+      <figure data-type="image" data-src="galeria-demo-1.jpg.png">
+        <img src="galeria-demo-1.jpg.png" alt="Tratamiento facial premium">
       </figure>
-      <figure data-type="image" data-src="galeria-demo-2.jpg">
-        <img src="galeria-demo-2.jpg" alt="Masaje terapéutico relajante en Figura Rostro KG">
+      <figure data-type="image" data-src="galeria-demo-2.jpg.png">
+        <img src="galeria-demo-2.jpg.png" alt="Masaje terapéutico relajante">
       </figure>
       <figure data-type="video" data-src="galeria-video-thumb-demo.jpg.mp4" data-poster="banner-spa.png">
-        <img src="banner-spa.png" alt="Video testimonio cliente Figura Rostro KG">
+        <img src="banner-spa.png" alt="Video testimonio">
       </figure>
     </div>
   </section>
 
-  <!-- ===== TRATAMIENTOS SIN CIRUGÍA ===== -->
+  <!-- SIN CIRUGÍA -->
   <section id="sin-cirugia">
     <h2>Tratamientos sin cirugía</h2>
     <p style="max-width:820px;margin:0 auto 14px;color:#4a4a4a">
@@ -464,19 +310,13 @@
     </ul>
   </section>
 
-  <!-- ===== SOBRE + VIDEO (como ya tenías) ===== -->
+  <!-- SOBRE + VIDEO -->
   <section id="sobre">
     <div class="about-card">
       <h2>Figura Rostro KG</h2>
-      <p>
-        Somos un centro de estética integral ubicado en Royal Park – Av. Ernesto T. Lefevre, Ciudad de Panamá.
-        Combinamos técnicas profesionales con un trato cálido para ayudarte a lograr una piel más luminosa y un bienestar total.
-      </p>
-      <p>
-        En nuestro canal compartimos tips de cuidado facial, rutinas y demostraciones de tratamientos. ¡Suscríbete!
-      </p>
+      <p>Estamos en Royal Park – Av. Ernesto T. Lefevre, Ciudad de Panamá. Técnicas profesionales con trato cálido para una piel más luminosa y bienestar total.</p>
+      <p>En nuestro canal compartimos tips y demostraciones de tratamientos. ¡Suscríbete!</p>
     </div>
-
     <div class="video-card">
       <div class="ratio">
         <iframe id="yt-embed" src="https://www.youtube.com/embed/II9Jexh_MgE?rel=0" title="Video de Figura Rostro KG" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -488,14 +328,7 @@
     </div>
   </section>
 
-  <dialog class="video-modal" id="videoModal" aria-label="Video en pantalla completa">
-    <button class="close-btn" id="videoClose" aria-label="Cerrar">✕</button>
-    <div class="ratio">
-      <iframe id="yt-modal" src="" title="Video de Figura Rostro KG (fullscreen)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    </div>
-  </dialog>
-
-  <!-- ===== FOOTER ===== -->
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="brand">
@@ -504,288 +337,121 @@
         <p>Horario: 8:00 a.m. – 8:00 p.m.</p>
         <a class="cta" href="https://wa.me/50764746168" target="_blank" rel="noopener">💬 Reserva por WhatsApp</a>
       </div>
-
       <div class="social">
         <h4>Síguenos</h4>
         <nav class="icons">
-          <a href="https://instagram.com/figurarostrokg" aria-label="Instagram" target="_blank" rel="noopener" class="ico" title="Instagram">
-            <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm5 5.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5Z"/></svg>
+          <a href="https://instagram.com/figurarostrokg" target="_blank" rel="noopener" class="ico" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" width="26" height="26"><path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm5 5.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5Z"/></svg>
           </a>
-          <a href="https://facebook.com/figurarostrokg" aria-label="Facebook" target="_blank" rel="noopener" class="ico" title="Facebook">
-            <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M22 12a10 10 0 1 0-11.56 9.9v-7H7.9V12h2.54V9.8c0-2.5 1.49-3.9 3.78-3.9 1.1 0 2.25.2 2.25.2v2.48h-1.27c-1.25 0-1.64.78-1.64 1.58V12h2.79l-.45 2.9h-2.34v7A10 10 0 0 0 22 12Z"/></svg>
+          <a href="https://facebook.com/figurarostrokg" target="_blank" rel="noopener" class="ico" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" width="26" height="26"><path fill="currentColor" d="M22 12a10 10 0 1 0-11.56 9.9v-7H7.9V12h2.54V9.8c0-2.5 1.49-3.9 3.78-3.9 1.1 0 2.25.2 2.25.2v2.48h-1.27c-1.25 0-1.64.78-1.64 1.58V12h2.79l-.45 2.9h-2.34v7A10 10 0 0 0 22 12Z"/></svg>
           </a>
-          <a href="https://www.youtube.com/@FiguraRostroKG" aria-label="YouTube" target="_blank" rel="noopener" class="ico" title="YouTube">
-            <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
-              <path fill="currentColor" d="M23 7.5s-.2-1.6-.8-2.3c-.8-.8-1.7-.8-2.1-.9C17.7 4 12 4 12 4h0s-5.7 0-8.1.3c-.4 0-1.3.1-2.1.9C1 5.9.9 7.5.9 7.5S.7 9.4.7 11.3v1.3c0 1.9.2 3.8.2 3.8s.2 1.6.8 2.3c.8.8 1.9.8 2.4.9 1.8.2 7.9.3 7.9.3s5.7 0 8.1-.3c.4 0 1.3-.1 2.1-.9.6-.7.8-2.3.8-2.3s.2-1.9.2-3.8v-1.3c0-1.9-.2-3.8-.2-3.8zM9.8 14.8V8.8l6 3-6 3z"/>
-            </svg>
+          <a href="https://www.youtube.com/@FiguraRostroKG" target="_blank" rel="noopener" class="ico" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" width="26" height="26"><path fill="currentColor" d="M23 7.5s-.2-1.6-.8-2.3c-.8-.8-1.7-.8-2.1-.9C17.7 4 12 4 12 4s-5.7 0-8.1.3c-.4 0-1.3.1-2.1.9C1 5.9.9 7.5.9 7.5s-.2 1.9-.2 3.8v1.3c0 1.9.2 3.8.2 3.8s.2 1.6.8 2.3c.8.8 1.9.8 2.4.9 1.8.2 7.9.3 7.9.3s5.7 0 8.1-.3c.4 0 1.3-.1 2.1-.9.6-.7.8-2.3.8-2.3s.2-1.9.2-3.8v-1.3c0-1.9-.2-3.8-.2-3.8zM9.8 14.8V8.8l6 3-6 3z"/></svg>
           </a>
-          <a href="https://wa.me/50764746168" aria-label="WhatsApp" target="_blank" rel="noopener" class="ico" title="WhatsApp">
-            <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M20.52 3.48A11.86 11.86 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.11 1.61 5.9L0 24l6.25-1.62A12 12 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52Z"/></svg>
+          <a href="https://wa.me/50764746168" target="_blank" rel="noopener" class="ico" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" width="26" height="26"><path fill="currentColor" d="M20.52 3.48A11.86 11.86 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.11 1.61 5.9L0 24l6.25-1.62A12 12 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52Z"/></svg>
           </a>
         </nav>
       </div>
-
       <div class="map">
         <h4>Cómo llegar</h4>
         <div class="map-embed">
-          <iframe
-            src="https://maps.google.com/maps?q=2G42%2BGC%20Panam%C3%A1&output=embed"
-            width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe src="https://maps.google.com/maps?q=2G42%2BGC%20Panam%C3%A1&output=embed" width="100%" height="220" style="border:0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
         <div class="directions">
-          <a href="https://ul.waze.com/ul?q=2G42%2BGC%20Panam%C3%A1&navigate=yes" target="_blank" rel="noopener">Abrir en Waze</a>
-          ·
+          <a href="https://ul.waze.com/ul?q=2G42%2BGC%20Panam%C3%A1&navigate=yes" target="_blank" rel="noopener">Abrir en Waze</a> ·
           <a href="https://maps.google.com/?q=2G42%2BGC%20Panam%C3%A1" target="_blank" rel="noopener">Abrir en Google Maps</a>
         </div>
       </div>
     </div>
-
-    <div class="legal">
-      <small>© <span id="y"></span> Figura Rostro KG · Todos los derechos reservados</small>
-    </div>
+    <div class="legal"><small>© <span id="y"></span> Figura Rostro KG · Todos los derechos reservados</small></div>
   </footer>
 
-  <!-- ===== FAB ===== -->
+  <!-- FAB -->
   <div class="fab-stack">
-    <a class="fab waze"
-      href="https://ul.waze.com/ul?q=2G42%2BGC%20Panam%C3%A1&navigate=yes"
-      target="_blank" rel="noopener" aria-label="Cómo llegar con Waze">
+    <a class="fab waze" href="https://ul.waze.com/ul?q=2G42%2BGC%20Panam%C3%A1&navigate=yes" target="_blank" rel="noopener" aria-label="Cómo llegar con Waze">
       <svg viewBox="0 0 24 24"><path d="M12 3c4.15 0 7.5 3.13 7.5 7 0 2.39-1.35 4.05-2.62 5.2.06.34.12.9.12 1.22 0 .83-.67 1.5-1.5 1.5-.54 0-1.02-.29-1.28-.72-.45.11-.93.17-1.42.17-.48 0-.94-.06-1.38-.18-.24.44-.7.73-1.24.73-.83 0-1.5-.67-1.5-1.5 0-.22.04-.57.11-.88C6.77 14.29 4.5 12.13 4.5 10c0-3.87 3.35-7 7.5-7z" fill="#fff"/><circle cx="9.5" cy="10.4" r="1.1" fill="#2BC3F3"/><circle cx="14.5" cy="10.4" r="1.1" fill="#2BC3F3"/></svg>
     </a>
-
-    <a class="fab whatsapp"
-      href="https://wa.me/50764746168"
-      target="_blank" rel="noopener" aria-label="WhatsApp Figura Rostro KG">
+    <a class="fab whatsapp" href="https://wa.me/50764746168" target="_blank" rel="noopener" aria-label="WhatsApp Figura Rostro KG">
       <svg viewBox="0 0 24 24"><path d="M20.5 3.5A10 10 0 0 0 3.9 17.7L3 21l3.4-.9A10 10 0 1 0 20.5 3.5ZM12 20a8 8 0 0 1-4.1-1.1l-.3-.2-2.4.6.6-2.4-.2-.3A8 8 0 1 1 12 20Zm4-5.3c-.2-.1-1.2-.6-1.4-.7-.2-.1-.4-.1-.6.1l-.5.6c-.1.1-.3.1-.5.1-1 0-2.4-1.1-2.8-1.9-.2-.3-.2-.5 0-.7l.4-.5c.1-.2.1-.3 0-.5l-.7-1.5c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.7.7-1.1 1.6-1.1 2.5 0 .3.1.7.2 1 .6 1.6 2.4 3.3 3.9 3.9.3.1.7.2 1 .2.9 0 1.8-.3 2.5-1.1.2-.2.3-.4.3-.6v-.5c0-.2 0-.4-.2-.6Z" fill="#fff"/></svg>
     </a>
   </div>
 
-  <!-- ===== JS: Carruseles (reusable) ===== -->
+  <!-- JS carruseles reutilizables -->
   <script>
-    function initCarousel(rootId, {autoplayMs = 6000} = {}){
-      const root = document.getElementById(rootId);
-      if(!root) return;
-
-      const track = root.querySelector('.carousel-track');
-      const slides = Array.from(root.querySelectorAll('.carousel-slide'));
-      const prev = root.querySelector('.carousel-nav.prev');
-      const next = root.querySelector('.carousel-nav.next');
-      const dotsWrap = root.querySelector('.carousel-dots');
-      const viewport = root.querySelector('.carousel-viewport');
-
-      // Crear dots según cantidad
-      dotsWrap.innerHTML = '';
-      slides.forEach((_,i)=>{
-        const b = document.createElement('button');
-        b.className = 'dot';
-        b.setAttribute('role','tab');
-        b.setAttribute('aria-selected', i===0 ? 'true' : 'false');
-        b.title = 'Slide ' + (i+1);
-        b.addEventListener('click', ()=>goTo(i));
-        dotsWrap.appendChild(b);
-      });
-      const dots = Array.from(dotsWrap.querySelectorAll('.dot'));
-
-      let index = 0;
-      const count = slides.length;
-      let timer = null;
-      let isPaused = false;
-
-      function update(){
-        track.style.transform = `translateX(-${index * 100}%)`;
-        slides.forEach((el,i)=>el.setAttribute('aria-hidden', i !== index));
-        dots.forEach((d,i)=>d.setAttribute('aria-selected', i===index ? 'true' : 'false'));
-      }
-      function goTo(i){ index = (i + count) % count; update(); }
-      function nextSlide(){ goTo(index+1); }
-      function prevSlide(){ goTo(index-1); }
-
-      next?.addEventListener('click', nextSlide);
-      prev?.addEventListener('click', prevSlide);
-
-      function start(){ if(timer) clearInterval(timer); timer = setInterval(()=>{ if(!isPaused) nextSlide(); }, autoplayMs); }
-      function pause(){ isPaused = true; }
-      function resume(){ isPaused = false; }
-
-      viewport.addEventListener('mouseenter', pause);
-      viewport.addEventListener('mouseleave', resume);
-      viewport.addEventListener('focusin', pause);
-      viewport.addEventListener('focusout', resume);
-
+    function initCarousel(rootId,{autoplayMs=6000}={}){
+      const root=document.getElementById(rootId); if(!root) return;
+      const track=root.querySelector('.carousel-track');
+      const slides=[...root.querySelectorAll('.carousel-slide')];
+      const prev=root.querySelector('.carousel-nav.prev');
+      const next=root.querySelector('.carousel-nav.next');
+      const dotsWrap=root.querySelector('.carousel-dots');
+      const viewport=root.querySelector('.carousel-viewport');
+      dotsWrap.innerHTML=''; slides.forEach((_,i)=>{const b=document.createElement('button');b.className='dot';b.setAttribute('role','tab');b.setAttribute('aria-selected',i===0?'true':'false');b.title='Slide '+(i+1);b.onclick=()=>goTo(i);dotsWrap.appendChild(b);});
+      const dots=[...dotsWrap.querySelectorAll('.dot')];
+      let index=0,count=slides.length,timer=null,isPaused=false;
+      const update=()=>{track.style.transform=`translateX(-${index*100}%)`;slides.forEach((s,i)=>s.setAttribute('aria-hidden',i!==index));dots.forEach((d,i)=>d.setAttribute('aria-selected',i===index?'true':'false'));}
+      const goTo=i=>{index=(i+count)%count;update();}
+      const nextSlide=()=>goTo(index+1), prevSlide=()=>goTo(index-1);
+      next?.addEventListener('click',nextSlide); prev?.addEventListener('click',prevSlide);
+      const start=()=>{clearInterval(timer);timer=setInterval(()=>{if(!isPaused) nextSlide();},autoplayMs);}
+      viewport.addEventListener('mouseenter',()=>isPaused=true);
+      viewport.addEventListener('mouseleave',()=>isPaused=false);
       viewport.setAttribute('tabindex','0');
-      viewport.addEventListener('keydown', (e)=>{
-        if(e.key === 'ArrowRight') nextSlide();
-        if(e.key === 'ArrowLeft') prevSlide();
-      });
-
+      viewport.addEventListener('keydown',e=>{if(e.key==='ArrowRight')nextSlide(); if(e.key==='ArrowLeft')prevSlide();});
       update(); start();
     }
-
-    // Iniciar los carruseles nuevos
-    initCarousel('facialesCarousel', {autoplayMs: 6000});
-    initCarousel('corporalesCarousel', {autoplayMs: 6000});
+    initCarousel('facialesCarousel',{autoplayMs:6000});
+    initCarousel('corporalesCarousel',{autoplayMs:6000});
   </script>
 
-  <!-- ===== JS: Ofertas (tu carrusel existente) ===== -->
+  <!-- JS carrusel de ofertas -->
   <script>
   (function(){
-    const track = document.querySelector('.offers-track');
-    const slides = Array.from(document.querySelectorAll('.offer-slide'));
-    const prev = document.querySelector('.offer-nav.prev');
-    const next = document.querySelector('.offer-nav.next');
-    const dots = Array.from(document.querySelectorAll('.offer-dots .dot'));
-    const viewport = document.querySelector('.offers-viewport');
-
-    let index = 0;
-    const count = slides.length;
-    const dur = 5000; // autoplay (ms)
-    let timer = null;
-    let isPaused = false;
-
-    function update(){
-      track.style.transform = `translateX(-${index * 100}%)`;
-      slides.forEach((el,i)=>{
-        el.setAttribute('aria-hidden', i !== index);
-        el.querySelectorAll('a, button').forEach(ctrl=>{
-          ctrl.tabIndex = (i === index ? 0 : -1);
-        });
-      });
-      dots.forEach((d,i)=>d.setAttribute('aria-selected', i===index));
-    }
-
-    function goTo(i){ index = (i + count) % count; update(); }
-    function nextSlide(){ goTo(index+1); }
-    function prevSlide(){ goTo(index-1); }
-
-    next.addEventListener('click', nextSlide);
-    prev.addEventListener('click', prevSlide);
-    dots.forEach((d,i)=>d.addEventListener('click', ()=>goTo(i)));
-
-    function start(){ if(timer) clearInterval(timer); timer = setInterval(()=>{ if(!isPaused) nextSlide(); }, dur); }
-    function pause(){ isPaused = true; }
-    function resume(){ isPaused = false; }
-
-    viewport.addEventListener('mouseenter', pause);
-    viewport.addEventListener('mouseleave', resume);
-    viewport.addEventListener('focusin', pause);
-    viewport.addEventListener('focusout', resume);
-
-    viewport.setAttribute('tabindex','0');
-    viewport.addEventListener('keydown', (e)=>{
-      if(e.key === 'ArrowRight') nextSlide();
-      if(e.key === 'ArrowLeft') prevSlide();
-    });
-
-    // Swipe táctil
-    let startX = null;
-    viewport.addEventListener('touchstart', (e)=>{ startX = e.touches[0].clientX; pause(); }, {passive:true});
-    viewport.addEventListener('touchend', (e)=>{
-      if(startX===null) return;
-      const endX = e.changedTouches[0].clientX;
-      const dx = endX - startX;
-      if(Math.abs(dx) > 40){ dx < 0 ? nextSlide() : prevSlide(); }
-      startX = null; resume();
-    });
-
+    const track=document.querySelector('.offers-track');
+    const slides=[...document.querySelectorAll('.offer-slide')];
+    const prev=document.querySelector('.offer-nav.prev');
+    const next=document.querySelector('.offer-nav.next');
+    const dots=[...document.querySelectorAll('.offer-dots .dot')];
+    const viewport=document.querySelector('.offers-viewport');
+    let index=0,count=slides.length,timer=null,isPaused=false,dur=5000;
+    function update(){track.style.transform=`translateX(-${index*100}%)`;slides.forEach((el,i)=>{el.setAttribute('aria-hidden',i!==index);el.querySelectorAll('a,button').forEach(c=>c.tabIndex=i===index?0:-1)});dots.forEach((d,i)=>d.setAttribute('aria-selected',i===index))}
+    function goTo(i){index=(i+count)%count;update()}
+    function nextSlide(){goTo(index+1)} function prevSlide(){goTo(index-1)}
+    next.addEventListener('click',nextSlide); prev.addEventListener('click',prevSlide); dots.forEach((d,i)=>d.addEventListener('click',()=>goTo(i)));
+    function start(){clearInterval(timer);timer=setInterval(()=>{if(!isPaused) nextSlide()},dur)}
+    viewport.addEventListener('mouseenter',()=>isPaused=true);
+    viewport.addEventListener('mouseleave',()=>isPaused=false);
+    viewport.setAttribute('tabindex','0'); viewport.addEventListener('keydown',e=>{if(e.key==='ArrowRight')nextSlide(); if(e.key==='ArrowLeft')prevSlide();});
     update(); start();
   })();
   </script>
 
-  <!-- ===== JS: Video modal + Galería / Lightbox ===== -->
+  <!-- JS video + lightbox -->
   <script>
-    // VIDEO MODAL
     (function(){
-      const btnFull = document.getElementById('yt-full');
-      const modal = document.getElementById('videoModal');
-      const closeBtn = document.getElementById('videoClose');
-      const ytInline = document.getElementById('yt-embed');
-      const ytModal = document.getElementById('yt-modal');
-      const openLink = document.getElementById('yt-open');
-
-      function getVideoId(){
-        const url = ytInline.src;
-        const m = url.match(/embed\/([^?]+)/);
-        return m ? m[1] : '';
-      }
-
-      btnFull.addEventListener('click', ()=>{
-        const id = getVideoId();
-        ytModal.src = `https://www.youtube.com/embed/${id}?rel=0&autoplay=1`;
-        modal.showModal();
-      });
-
-      closeBtn.addEventListener('click', ()=>{
-        ytModal.src = '';
-        modal.close();
-      });
-
-      const id = getVideoId();
-      if(id) openLink.href = `https://www.youtube.com/watch?v=${id}`;
+      const btnFull=document.getElementById('yt-full');
+      const modal=document.getElementById('videoModal')||(()=>{const d=document.createElement('dialog');d.id='videoModal';d.className='video-modal';d.innerHTML=`<button class="close-btn" id="videoClose">✕</button><div class="ratio"><iframe id="yt-modal" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>`;document.body.appendChild(d);return d})();
+      const closeBtn=document.getElementById('videoClose');
+      const ytInline=document.getElementById('yt-embed');
+      const ytModal=document.getElementById('yt-modal');
+      function getId(){const m=ytInline.src.match(/embed\/([^?]+)/);return m?m[1]:''}
+      btnFull?.addEventListener('click',()=>{const id=getId();ytModal.src=`https://www.youtube.com/embed/${id}?rel=0&autoplay=1`;modal.showModal();});
+      closeBtn?.addEventListener('click',()=>{ytModal.src='';modal.close();});
+      const a=document.getElementById('yt-open');const id=getId(); if(a&&id) a.href=`https://www.youtube.com/watch?v=${id}`;
     })();
 
-    // GALERÍA / LIGHTBOX
     (function(){
-      const grid = document.getElementById('mediaGrid');
-      if(!grid) return;
-
-      let dialog = document.getElementById('lightbox');
-      if(!dialog){
-        dialog = document.createElement('dialog');
-        dialog.id = 'lightbox';
-        dialog.innerHTML = `
-          <div class="lightbox-body">
-            <button class="lightbox-close" aria-label="Cerrar">✕</button>
-            <div class="ratio">
-              <div id="lightboxContent"></div>
-            </div>
-          </div>`;
-        document.body.appendChild(dialog);
-      }
-
-      const closeBtn = dialog.querySelector('.lightbox-close');
-      const content = dialog.querySelector('#lightboxContent');
-
-      grid.addEventListener('click', (e)=>{
-        const fig = e.target.closest('figure');
-        if(!fig) return;
-        const type = fig.getAttribute('data-type');
-        const src = fig.getAttribute('data-src');
-        const poster = fig.getAttribute('data-poster') || '';
-
-        content.innerHTML = '';
-        if(type === 'image'){
-          const img = document.createElement('img');
-          img.src = src;
-          img.alt = fig.querySelector('img')?.alt || 'Imagen';
-          content.appendChild(img);
-        }else if(type === 'youtube'){
-          const iframe = document.createElement('iframe');
-          iframe.src = src.includes('autoplay=1') ? src : (src + '&autoplay=1');
-          iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-          iframe.allowFullscreen = true;
-          content.appendChild(iframe);
-        }else if(type === 'video'){
-          const video = document.createElement('video');
-          video.src = src;
-          video.controls = true;
-          video.autoplay = true;
-          if(poster) video.poster = poster;
-          content.appendChild(video);
-        }
-        dialog.showModal();
-      });
-
-      closeBtn.addEventListener('click', ()=>{
-        content.innerHTML = '';
-        dialog.close();
-      });
-
-      dialog.addEventListener('close', ()=>{ content.innerHTML = ''; });
+      const grid=document.getElementById('mediaGrid'); if(!grid) return;
+      let dialog=document.getElementById('lightbox'); if(!dialog){dialog=document.createElement('dialog');dialog.id='lightbox';dialog.innerHTML=`<div class="lightbox-body"><button class="lightbox-close" aria-label="Cerrar">✕</button><div class="ratio"><div id="lightboxContent"></div></div></div>`;document.body.appendChild(dialog);}
+      const closeBtn=dialog.querySelector('.lightbox-close'); const content=dialog.querySelector('#lightboxContent');
+      grid.addEventListener('click',e=>{const fig=e.target.closest('figure'); if(!fig) return; const type=fig.dataset.type, src=fig.dataset.src, poster=fig.dataset.poster||''; content.innerHTML=''; if(type==='image'){const img=new Image(); img.src=src; img.alt=fig.querySelector('img')?.alt||'Imagen'; content.appendChild(img);} else if(type==='video'){const v=document.createElement('video'); v.src=src; v.controls=true; v.autoplay=true; if(poster) v.poster=poster; content.appendChild(v);} dialog.showModal();});
+      closeBtn.addEventListener('click',()=>{content.innerHTML='';dialog.close();});
+      dialog.addEventListener('close',()=>content.innerHTML='');
     })();
 
-    // Año del footer
-    document.getElementById('y')?.textContent = new Date().getFullYear();
+    document.getElementById('y')?.append(new Date().getFullYear());
   </script>
 </body>
 </html>
