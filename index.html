@@ -1370,7 +1370,95 @@
     </div>
   </div>
 </div>
- 
+ <script>
+(function(){
+  const mobileOffers = [...document.querySelectorAll('#ofertas .offers-mobile .m-offer')];
+  if (!mobileOffers.length) return;
+
+  const modal   = document.getElementById('promoModal');
+  const track   = document.getElementById('promoTrack');
+  const dotsBox = document.getElementById('promoDots');
+  const titleEl = modal.querySelector('.promo-title');
+  const btnClose= document.getElementById('promoClose');
+  let index = 0, touchStartX = 0, touchDX = 0;
+
+  // Construye slides con el contenido de las tarjetas móviles
+  mobileOffers.forEach((card, i) => {
+    const slide = document.createElement('section');
+    slide.className = 'pm-slide';
+
+    // extrae título, texto, precio, botón e imagen
+    const h3    = card.querySelector('h3')?.outerHTML || '<h3>Promo</h3>';
+    const paras = [...card.querySelectorAll('.m-body p')].map(p=>p.outerHTML).join('');
+    const btn   = card.querySelector('.m-btn')?.outerHTML || '';
+    const img   = card.querySelector('.m-img')?.outerHTML || '';
+
+    slide.innerHTML = `
+      <div class="pm-body">
+        ${h3}
+        ${paras}
+        ${btn}
+      </div>
+      ${img}
+    `;
+    track.appendChild(slide);
+
+    // dot
+    const dot = document.createElement('span');
+    dot.className = 'dot';
+    dot.setAttribute('role','tab');
+    dot.addEventListener('click', ()=> goTo(i));
+    dotsBox.appendChild(dot);
+
+    // abrir visor al tocar una card
+    card.addEventListener('click', ()=> open(i));
+  });
+
+  function update(){
+    track.style.transform = `translateX(-${index*100}%)`;
+    dotsBox.querySelectorAll('.dot').forEach((d,i)=> d.setAttribute('aria-current', i===index ? 'true':'false'));
+    const currentH3 = track.children[index]?.querySelector('h3')?.textContent?.trim() || 'Promoción';
+    titleEl.textContent = currentH3;
+  }
+
+  function open(i=0){
+    index=i; update();
+    modal.classList.add('open');
+    document.documentElement.classList.add('body-lock'); // evita scroll fondo
+    modal.setAttribute('aria-hidden','false');
+  }
+
+  function close(){
+    modal.classList.remove('open');
+    document.documentElement.classList.remove('body-lock');
+    modal.setAttribute('aria-hidden','true');
+  }
+
+  function goTo(i){
+    const count = track.children.length;
+    index = (i + count) % count;
+    update();
+  }
+  function next(){ goTo(index+1); }
+  function prev(){ goTo(index-1); }
+
+  // Cerrar
+  btnClose.addEventListener('click', close);
+  modal.querySelector('.promo-backdrop').addEventListener('click', close);
+  document.addEventListener('keydown', (e)=>{ if(modal.classList.contains('open') && e.key==='Escape') close(); });
+
+  // Gestos táctiles
+  track.addEventListener('touchstart', (e)=>{ touchStartX = e.touches[0].clientX; touchDX=0; }, {passive:true});
+  track.addEventListener('touchmove',  (e)=>{ touchDX = e.touches[0].clientX - touchStartX; }, {passive:true});
+  track.addEventListener('touchend',   ()=>{
+    if (Math.abs(touchDX) > 50){ touchDX<0 ? next() : prev(); }
+  });
+
+  // Evitar scroll del body al hacer scroll horizontal accidental
+  track.addEventListener('wheel',(e)=>{ if(Math.abs(e.deltaX) > Math.abs(e.deltaY)) e.preventDefault(); }, {passive:false});
+})();
+</script>
+
 </body>
 </html>
 
