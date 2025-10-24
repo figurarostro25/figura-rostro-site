@@ -5,178 +5,256 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Figura Rostro KG - Estética Integral</title>
 
-<style>
-/* =======================
-   Base segura (neutra)
-   ======================= */
-:root{
-  --violeta:#5b3bb6;
-  --violeta-osc:#4a2fa0;
-  --gris:#333;
-  --gris-soft:#666;
-  --bg:#f5f5f5;
-  --bg-dark:#0f0f12;
-  --text:#222;
-  --text-inv:#e9e9ef;
-  --card:#fff;
-  --shadow:0 14px 34px rgba(0,0,0,.30);
-  --radius:16px;
-}
+  <style>
+    :root{
+      --violeta:#a18cd1; --lavanda:#fbc2eb; --violeta-oscuro:#7e63c9;
+      --gris-texto:#2c2c2c; --gris-suave:#555; --blanco:#fff;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:"Poppins",sans-serif;background:#f5f5f5;color:var(--gris-texto);text-align:center}
 
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-}
+    /* HEADER */
+    header{
+      position:relative;width:100%;height:420px;display:flex;flex-direction:column;
+      justify-content:center;align-items:center;color:#fff;padding:40px 20px;text-align:center;overflow:hidden;
+    }
+    header::before{
+      content:"";position:absolute;inset:0;background:url('header-portada.jpg') center/cover no-repeat;z-index:-2;
+    }
+    header::after{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(135deg,rgba(155,93,229,.70),rgba(161,140,209,.70),rgba(251,194,235,.70));z-index:-1;
+    }
+    header img.logo{width:180px;height:auto;margin-bottom:16px}
+    header h1{font-size:28px;font-weight:700;margin:10px 0}
+    header p{font-size:16px;color:#fff;margin:0}
 
-img{max-width:100%;height:auto;display:block}
+    /* SECCIONES */
+    section{padding:40px 20px;max-width:1100px;margin:auto}
+    h2{color:var(--violeta-oscuro);font-size:26px;margin-bottom:30px}
 
-/* Titulares */
-h1,h2,h3{margin:0 0 10px 0;color:var(--violeta)}
+    /* Cards generales */
+    .card{background:#fff;border-radius:14px;box-shadow:0 8px 20px rgba(0,0,0,.08);text-align:left;overflow:hidden}
+    .card img{width:100%;height:200px;object-fit:cover;display:block;background:#eaeaea}
+    .card .box{padding:16px 18px}
+    .card h3{margin:0 0 6px;color:#7e63c9;font-size:18px}
+    .card p{color:#555;margin:10px 0 0;font-size:14px;line-height:1.55}
 
-/* Cards genéricas */
-.card,.about-card,.video-card,.offer-card{
-  background:var(--card);
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
-  overflow:hidden;
-}
+    /* Carrusel reutilizable */
+    .carousel{position:relative}
+    .carousel-viewport{overflow:hidden;border-radius:18px}
+    .carousel-track{display:flex;transition:transform .5s ease;will-change:transform}
+    .carousel-slide{min-width:100%;padding:6px}
+    .carousel-grid{display:grid;gap:16px;grid-template-columns:repeat(2,minmax(0,1fr))}
+    @media (max-width:700px){.carousel-grid{grid-template-columns:1fr}}
 
-/* Footer base (escritorio) */
-.site-footer{
-  background:#fff;
-  color:#333;
-}
-.site-footer a{color:var(--violeta)}
-.site-footer .legal{border-top:1px solid #eaeaea}
+    .carousel-nav{
+      position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.55);color:#fff;border:0;width:44px;height:44px;
+      border-radius:999px;display:grid;place-items:center;cursor:pointer;box-shadow:0 8px 18px rgba(0,0,0,.28);z-index:3
+    }
+    .carousel-nav:hover{background:rgba(0,0,0,.7)}
+    .carousel-nav svg{width:22px;height:22px}
+    .carousel-nav.prev{left:12px}
+    .carousel-nav.next{right:12px}
+    .carousel-dots{display:flex;gap:8px;justify-content:center;margin-top:14px}
+    .carousel-dots .dot{width:10px;height:10px;border-radius:999px;border:0;cursor:pointer;background:#c9b4f5}
+    .carousel-dots .dot[aria-selected="true"]{background:#6b45b1}
 
-/* =======================
-   Promos del Mes general
-   ======================= */
-#ofertas .offer-card{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:12px;
-  padding:16px;
-}
-#ofertas .offer-img{border-radius:var(--radius);overflow:hidden}
+    /* Ofertas */
+    .offers-viewport{overflow:hidden;border-radius:18px;position:relative}
+    .offers-track{display:flex;transition:transform .5s ease}
+    .offer-slide{min-width:100%}
+    .offer-card{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;background:linear-gradient(135deg,#fbc2eb,#a18cd1);border-radius:18px;box-shadow:0 8px 20px rgba(0,0,0,.12);overflow:hidden;text-align:left;color:#222}
+    .offer-info{flex:1 1 380px;padding:30px}
+    .offer-info h3{color:#6b45b1;font-size:24px;margin-top:0}
+    .offer-info .precio{font-size:22px;color:#6c2eb9}
+    .offer-img{flex:1 1 300px}
+    .offer-img img{width:100%;height:100%;object-fit:cover;display:block;background:#ddd}
 
-/* =======================
-   LIGHTBOX Galería
-   ======================= */
-dialog#lightbox .lightbox-body{background:#111}
-dialog#lightbox .lightbox-body img,
-dialog#lightbox .lightbox-body video{
-  display:block;margin:0 auto;
-  width:auto;height:auto;
-  max-width:min(100vw,980px);
-  max-height:86vh;
-  object-fit:contain;
-  background:#111;
-}
+    .offer-nav{
+      position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.55);color:#fff;border:0;width:44px;height:44px;border-radius:999px;
+      display:grid;place-items:center;cursor:pointer;box-shadow:0 8px 18px rgba(0,0,0,.28);z-index:5;transition:background .2s;
+    }
+    .offer-nav:hover{background:rgba(0,0,0,.7)}
+    .offer-nav.prev{left:12px}.offer-nav.next{right:12px}
+    .offer-nav svg{width:22px;height:22px}
+    .offer-dots{display:flex;gap:8px;justify-content:center;margin-top:12px}
+    .offer-dots .dot{width:10px;height:10px;border-radius:999px;border:0;cursor:pointer;background:#c9b4f5}
+    .offer-dots .dot[aria-selected="true"]{background:#6b45b1}
 
-/* =================================================================
-   MÓVIL (≤640px) – encapsulamos todo lo “oscuro” y los cambios nuevos
-   ================================================================= */
-@media (max-width:640px){
+    /* Galería */
+    .media-grid{display:grid;gap:14px;grid-template-columns:repeat(3,1fr)}
+    .media-grid figure{margin:0;border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 8px 20px rgba(0,0,0,.08);cursor:pointer}
+    .media-grid img{width:100%;height:240px;object-fit:cover;display:block}
+    @media (max-width:900px){.media-grid{grid-template-columns:repeat(2,1fr)}.media-grid img{height:200px}}
+    @media (max-width:520px){.media-grid{grid-template-columns:1fr}.media-grid img{height:220px}}
 
-  /* Tema oscuro SOLO en móvil */
-  body{ background:var(--bg-dark); color:var(--text-inv) }
+    /* Lightbox */
+    dialog#lightbox{width:min(980px,92vw);border:0;border-radius:16px;padding:0;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.35);z-index:1000}
+    dialog#lightbox::backdrop{background:rgba(0,0,0,.65)}
+    .lightbox-body{position:relative;background:#000}
+    .lightbox-body img,.lightbox-body video,.lightbox-body iframe{width:100%;height:calc(92vh - 80px);object-fit:contain;border:0;background:#000}
+    .lightbox-close{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.6);color:#fff;border:0;width:36px;height:36px;border-radius:999px;cursor:pointer;font-size:18px;z-index:2}
 
-  /* Cards claras sobre fondo oscuro */
-  .card,.about-card,.video-card,.offer-card{
-    background:#fff; color:#2b2b2b; box-shadow:var(--shadow);
-  }
+    /* Sobre + video */
+    #sobre{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:center}
+    #sobre .about-card{background:#fff;border-radius:16px;box-shadow:0 8px 20px rgba(0,0,0,.08);text-align:left;padding:24px}
+    #sobre .about-card h2{margin-top:0}
+    #sobre .about-card p{color:#4a4a4a;line-height:1.7}
+    .video-card{background:#fff;border-radius:16px;box-shadow:0 8px 20px rgba(0,0,0,.08);overflow:hidden;text-align:left}
+    .ratio{position:relative;width:100%;padding-top:56.25%;background:#000}
+    .ratio iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    .video-actions{display:flex;gap:10px;padding:12px 16px;border-top:1px solid #eee}
+    .video-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:#f3ecff;color:#5d3bb5;border:0;cursor:pointer;font-weight:600;text-decoration:none}
+    .video-btn:hover{filter:brightness(.97)}
+    @media (max-width:900px){#sobre{grid-template-columns:1fr}}
 
-  /* Footer oscuro solo móvil */
-  .site-footer{ background:var(--bg-dark) !important; color:var(--text-inv) }
-  .site-footer a{ color:#bca7ff }
-  .site-footer .legal{ border-top-color:rgba(255,255,255,.08) }
+    /* Menú de Servicios (Tabs) */
+    .tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:18px}
+    .tab-btn{border:1px solid #e7d7f3;background:#fff;color:var(--violeta-oscuro);padding:.6rem 1rem;border-radius:999px;font-weight:600;cursor:pointer;transition:.2s}
+    .tab-btn:hover{transform:translateY(-1px)}
+    .tab-btn.active{background:var(--violeta-oscuro);color:#fff;border-color:var(--violeta-oscuro)}
+    .tab-panel.hidden{display:none}
 
-  /* Títulos de bloques “Tratamientos …” */
-  #tratamientos-faciales > h2,
-  #tratamientos-corporales > h2{
-    margin-top:28px !important;
-    margin-bottom:16px !important;
-    letter-spacing:.2px;
-  }
+    .srv-grid{display:grid;gap:16px;grid-template-columns:repeat(3,1fr)}
+    @media (max-width:980px){.srv-grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:620px){.srv-grid{grid-template-columns:1fr}}
+    .srv-card{background:#fff;border-radius:14px;box-shadow:0 8px 20px rgba(0,0,0,.08);padding:16px 18px;text-align:left;border:1px solid #f0e7f7}
+    .srv-card h3{margin:0 0 6px;color:var(--violeta-oscuro);font-size:18px}
+    .srv-card p{color:#555;margin:6px 0 10px;font-size:14px;line-height:1.55}
+    .srv-meta{font-size:13px;color:#6b7280;margin-bottom:10px}
+    .srv-cta{display:inline-block;background:linear-gradient(135deg,var(--lavanda),var(--violeta));color:#fff;text-decoration:none;padding:.55rem .9rem;border-radius:999px;font-weight:700;box-shadow:0 6px 14px rgba(0,0,0,.18)}
+    .srv-cta:hover{filter:brightness(.97)}
 
-  /* Corte suave entre secciones */
-  #tratamientos-faciales,
-  #tratamientos-corporales{ padding-top:10px }
+    /* Footer */
+    .site-footer{background:#222;color:#fff;margin-top:3rem}
+    .footer-inner{max-width:1100px;margin:0 auto;padding:2rem 1rem;display:grid;gap:1.5rem;grid-template-columns:1.2fr 1fr 1.2fr}
+    .site-footer .logo{height:42px;margin-bottom:.5rem;filter:brightness(1000%)}
+    .site-footer .cta{display:inline-block;margin-top:.6rem;background:linear-gradient(135deg,var(--lavanda),var(--violeta));color:#fff;text-decoration:none;padding:.55rem 1rem;border-radius:999px;font-weight:700;box-shadow:0 6px 14px rgba(0,0,0,.18)}
+    .site-footer h4{margin:0 0 .5rem;font-weight:700;color:#fff}
+    .icons{display:flex;gap:10px;flex-wrap:wrap}
+    .icons .ico{
+      display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;
+      background:#fff;color:#4a4a4a;box-shadow:0 6px 14px rgba(0,0,0,.18);transition:.2s
+    }
+    .icons .ico:hover{transform:translateY(-2px);filter:brightness(0.92)}
+    .map-embed{overflow:hidden;border-radius:14px}
+    .directions a{color:#bbb;text-decoration:none}
+    .directions a:hover{text-decoration:underline}
+    .legal{border-top:1px solid rgba(255,255,255,.08);padding:1rem;text-align:center;color:#b9b9c3}
 
-  /* Limitar a 3 servicios en móvil */
-  #tratamientos-faciales .carousel-grid .card:nth-child(n+4),
-  #tratamientos-corporales .carousel-grid .card:nth-child(n+4){
-    display:none !important;
-  }
+    /* FAB */
+    .fab-stack{position:fixed;right:16px;bottom:18px;display:flex;flex-direction:column;gap:12px;z-index:60}
+    .fab{width:56px;height:56px;border-radius:999px;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 28px rgba(0,0,0,.18);text-decoration:none}
+    .fab svg{width:28px;height:28px;fill:#fff}
+    .fab.menu{background:linear-gradient(135deg,var(--lavanda),var(--violeta))}
+    .fab.waze{background:#2BC3F3}
+    .fab.whatsapp{background:#25D366}
+    @media (max-width:768px){.fab-stack{display:flex}}
+    @media (max-width:480px){header h1{font-size:22px}header img.logo{width:150px}}
 
-  /* Promos del Mes: imagen estable sin distorsión */
-  #ofertas .offer-img{
-    aspect-ratio:4/3;
-    background:#000;
-    overflow:hidden;
-    border-radius:var(--radius);
-  }
-  #ofertas .offer-img img{
-    width:100%; height:100%; object-fit:cover; display:block;
-  }
+    /* ======== MOBILE per PDF ======== */
 
-  /* Visor de Promos (modal) estable, sin saltos ni “aplastes” */
-  .promo-modal .pm-img{
-    width:100%;
-    max-height:78vh;
-    background:#000;
-    display:flex; align-items:center; justify-content:center;
-  }
-  .promo-modal .pm-img img{
-    max-width:100%; max-height:78vh;
-    width:auto; height:auto;
-    object-fit:contain; display:block;
-  }
+    /* 1) Ocultar Menú de Servicios sólo en móvil */
+    @media (max-width:640px){ #menu-servicios{ display:none !important; } }
 
-  /* Animaciones de entrada/salida del visor */
-  .promo-view{
-    transform:scale(.94);
-    opacity:0;
-    transition: transform .35s ease, opacity .35s ease;
-  }
-  .promo-modal.open .promo-view{ transform:scale(1); opacity:1 }
-  .promo-modal.closing .promo-view{ transform:scale(.98); opacity:0 }
+    /* 2) Faciales/Corporales apilados en móvil (sin carrusel) */
+    @media (max-width:640px){
+      #tratamientos-faciales .carousel-nav,
+      #tratamientos-faciales .carousel-dots,
+      #tratamientos-corporales .carousel-nav,
+      #tratamientos-corporales .carousel-dots{ display:none !important; }
 
-  /* Lightbox Galería móvil */
-  dialog#lightbox .lightbox-body{background:#111}
-  dialog#lightbox .lightbox-body img,
-  dialog#lightbox .lightbox-body video{
-    display:block;margin:0 auto;
-    width:auto;height:auto;
-    max-width:100vw; max-height:86vh;
-    object-fit:contain;background:#111;
-  }
-}
+      #tratamientos-faciales .carousel-track,
+      #tratamientos-corporales .carousel-track{ transform:none !important; display:block; }
+      #tratamientos-faciales .carousel-slide,
+      #tratamientos-corporales .carousel-slide{ min-width:auto; padding:0; margin-bottom:14px; }
+      #tratamientos-faciales .carousel-grid,
+      #tratamientos-corporales .carousel-grid{ grid-template-columns:1fr !important; gap:14px; }
+    }
 
-/* =================================================================
-   ESCRITORIO (≥641px) – restauramos el look claro y layout original
-   ================================================================= */
-@media (min-width:641px){
-  body{ background:var(--bg); color:var(--text) }
+    /* 3) Sobre: subtítulo corto + ocultar texto largo en móvil */
+    #sobre .about-card h2 + p::before{
+      content:"Tu Estética y Terapeuta en Parque Lefevre";
+      display:block; font-weight:600; color:#7e63c9; margin-bottom:.35rem;
+    }
+    @media (max-width:640px){
+      #sobre .about-card p{ display:none; }
+    }
 
-  .site-footer{ background:#fff !important; color:#333 }
-  .site-footer a{ color:var(--violeta) }
-  .site-footer .legal{ border-top-color:#eaeaea }
+    /* 4) Productos en venta */
+    #productos{ padding-top:24px; }
+    .product-scroll{ display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:4px; }
+    .product-scroll::-webkit-scrollbar{ height:6px; }
+    .product-scroll::-webkit-scrollbar-thumb{ background:#c9b4f5; border-radius:999px; }
+    .prod-card{
+      flex:0 0 82%; max-width:82%;
+      background:#fff; border:1px solid #f0e7f7; border-radius:16px;
+      box-shadow:0 8px 18px rgba(0,0,0,.08);
+      display:grid; grid-template-columns:84px 1fr auto; gap:12px; padding:12px; align-items:center;
+      scroll-snap-align:start;
+    }
+    .prod-card img{ width:84px; height:84px; object-fit:cover; border-radius:10px; background:#eee; }
+    .prod-info h3{ margin:.1rem 0; font-size:16px; color:#7e63c9; }
+    .prod-info p{ margin:0; color:#555; font-size:13px; }
+    .prod-price{ font-weight:800; color:#6b45b1; font-size:18px; }
+    .prod-cta{
+      grid-column:1/-1; display:inline-block; text-align:center;
+      background:linear-gradient(135deg,var(--lavanda),var(--violeta));
+      color:#fff; text-decoration:none; padding:.55rem .9rem; border-radius:999px; font-weight:700;
+    }
+    @media (min-width:841px){
+      .product-scroll{ display:grid; grid-template-columns:repeat(3,1fr); overflow:visible; }
+      .prod-card{ flex:none; max-width:100%; }
+    }
 
-  .footer-inner{
-    display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px; align-items:start;
-  }
+    /* 5) Lightbox móvil */
+    @media (max-width:600px){
+      dialog#lightbox{width:100vw;margin:0;border-radius:0;}
+      .lightbox-body img,.lightbox-body video,.lightbox-body iframe{height:calc(100dvh - 56px);}
+      .lightbox-close{width:44px;height:44px;font-size:22px;top:10px;right:10px;background:rgba(0,0,0,.65);}
+    }
 
-  #ofertas .offer-img img{ object-fit:cover }
-}
-</style>
+    /* 6) UX móvil general */
+    @media (max-width:640px){
+      body{font-size:15px}
+      section{padding:28px 14px}
+      h2{font-size:20px;margin-bottom:18px}
 
+      header{height:320px;padding:26px 14px}
+      header img.logo{width:140px}
+      header h1{font-size:20px;margin:8px 0}
+      header p{font-size:14px}
+
+      .card img{height:180px}
+      .carousel-nav{width:46px;height:46px}
+      .carousel-nav svg{width:22px;height:22px}
+
+      .offer-card{flex-direction:column; align-items:stretch}
+      .offer-info{padding:18px}
+      .offer-img{order:2}
+      .offer-img img{height:200px; border-radius:0 0 18px 18px}
+      .offer-nav{width:46px;height:46px}
+      .offer-nav.prev{left:10px} .offer-nav.next{right:10px}
+
+      .media-grid{grid-template-columns:1fr}
+      .media-grid img{height:240px}
+
+      .fab-stack{ right:0; left:0; bottom:10px; flex-direction:row; justify-content:center; gap:16px; padding:0 12px }
+      .fab{width:56px;height:56px;border-radius:16px}
+    }
+
+    /* Helpers móviles (por si los quieres) */
+    @media (max-width:640px){
+      .m-hide{display:none !important;}
+      .m-only{display:block !important;}
+    }
+    @media (min-width:641px){ .m-only{display:none !important;} }
+
+    /* Micro-mejoras */
+    .offer-img img{object-fit:cover;display:block;background:#e6e6e6}
+    .offers-viewport{scroll-behavior:smooth}
+  </style>
 </head>
 
 <body>
@@ -189,7 +267,7 @@ dialog#lightbox .lightbox-body video{
   <!-- SOBRE + VIDEO -->
   <section id="sobre">
     <div class="about-card">
-      <h2>Somos tu Estética Integral en Parque Lefevre</h2>
+      <h2>Figura Rostro KG</h2>
       <p>Estamos en Royal Park – Av. Ernesto T. Lefevre, Ciudad de Panamá. Técnicas profesionales con trato cálido para una piel más luminosa y bienestar total.</p>
       <p>En nuestro canal compartimos tips y demostraciones de tratamientos. ¡Suscríbete!</p>
     </div>
@@ -478,84 +556,6 @@ dialog#lightbox .lightbox-body video{
         <button class="dot" role="tab" aria-selected="false" title="Oferta 3"></button>
       </div>
     </div>
-
-  <!-- Promos (versión móvil por scroll-snap) -->
-<div class="offers-mobile">
-  <div class="m-scroll">
-
-    <!-- Promo 1 -->
-    <article class="m-offer">
-      <div class="m-body">
-        <h3>✨ Combo Relax Premium</h3>
-        <p>Masaje relajante + limpieza facial premium con mascarilla hidratante.</p>
-        <p class="price">Antes <s>$110</s> · Ahora <b>$85</b></p>
-        <a href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20quiero%20reservar%20el%20Combo%20Relax%20Premium%20a%2085" target="_blank" class="m-btn">Reservar combo a $85</a>
-      </div>
-      <div class="m-img">
-        <img src="promo-masaje-limpieza.jpg" alt="Promo Combo Relax Premium">
-      </div>
-    </article>
-
-    <!-- Promo 2 -->
-    <article class="m-offer">
-      <div class="m-body">
-        <h3>🌟 Peeling Facial Unisex</h3>
-        <p>Renueva tu piel y luce un rostro más luminoso.</p>
-        <p class="price">Antes <s>$120</s> · Ahora <b>$85</b></p>
-        <a href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20quiero%20tomar%20el%20Peeling%20Facial%20a%2085" target="_blank" class="m-btn">Tomar peeling a $85</a>
-      </div>
-      <div class="m-img">
-        <img src="oferta-demo-2.jpg.png" alt="Promo Peeling Facial Unisex">
-      </div>
-    </article>
-
-    <!-- Promo 3 -->
-    <article class="m-offer">
-      <div class="m-body">
-        <h3>💆 Descontracturante + Limpieza</h3>
-        <p>Alivia tensiones musculares y relaja cuerpo y mente.</p>
-        <p class="price">Antes <s>$110</s> · Ahora <b>$95</b></p>
-        <a href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20quiero%20reservar%20el%20pack%20Descontracturante%20%2B%20Limpieza%20a%2095" target="_blank" class="m-btn">Reservar pack a $95</a>
-      </div>
-      <div class="m-img">
-        <img src="banner-spa.png" alt="Promo Masaje + Limpieza">
-      </div>
-    </article>
-
-  </div>
-  <!-- puntos decorativos -->
-  <div class="m-dots"><span></span><span></span><span></span></div>
-</div>
-<!-- Promo 1 -->
-<article class="m-offer">
-  ...
-  <div class="m-img">
-    <img src="promo-masaje-limpieza.jpg"
-         alt="Promo Combo Relax Premium"
-         onerror="this.src='banner-spa.png'">
-  </div>
-</article>
-
-<!-- Promo 2 -->
-<article class="m-offer">
-  ...
-  <div class="m-img">
-    <img src="oferta-demo-2.jpg.png"
-         alt="Promo Peeling Facial Unisex"
-         onerror="this.src='banner-spa.png'">
-  </div>
-</article>
-
-<!-- Promo 3 -->
-<article class="m-offer">
-  ...
-  <div class="m-img">
-    <img src="banner-spa.png"
-         alt="Promo Masaje + Limpieza"
-         onerror="this.src='banner-spa.png'">
-  </div>
-</article>
-
   </section>
 
   <!-- PRODUCTOS EN VENTA -->
@@ -593,27 +593,6 @@ dialog#lightbox .lightbox-body video{
       </article>
     </div>
   </section>
-<!-- KERATINA ORGÁNICA (móvil y desktop) -->
-<section id="keratina" class="keratin-section">
-  <div class="k-card">
-    <div class="k-text">
-      <h2>Keratina Orgánica</h2>
-      <p>
-        Tratamiento de suavizado y control del frizz con fórmulas sin formaldehído.
-        Ayuda a dejar el cabello más manejable, con brillo y apariencia saludable.
-        Trabajamos con la línea <b>Bio Tanix</b>.
-      </p>
-      <a class="video-btn" href="https://www.youtube.com/watch?v=XXXXXXXX" target="_blank" rel="noopener">Ver video</a>
-    </div>
-    <div class="k-video">
-      <div class="ratio">
-        <iframe src="https://www.youtube.com/embed/XXXXXXXX?rel=0"
-                title="Keratina Orgánica Bio Tanix" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
-      </div>
-    </div>
-  </div>
-</section>
 
   <!-- GALERÍA -->
   <section id="galeria">
@@ -633,58 +612,54 @@ dialog#lightbox .lightbox-body video{
 
   <!-- FOOTER -->
   <footer class="site-footer">
-    <footer class="site-footer">
-  <div class="footer-inner">
+    <div class="footer-inner">
+      <div class="brand">
+        <img src="logo-horizontal.png" alt="Figura Rostro KG" class="logo" />
+        <p>Royal Park – Av. Ernesto T. Lefevre, Ciudad de Panamá</p>
+        <p>Email: <a href="mailto:figurarostro25@gmail.com" style="color:#fff;text-decoration:underline">figurarostro25@gmail.com</a></p>
+        <a class="cta" href="https://wa.me/50764746168" target="_blank" rel="noopener">💬 Citas urgentes</a>
+        <p style="margin:.5rem 0 0;color:#d7d7df;font-size:.9rem"><em>Solo para clientes que reserven por Directorio Yappi o clientes frecuentes.</em></p>
+        <!-- Info compacta para móvil -->
+        <div class="footer-info">
+          <h5>Horario</h5>
+          <p>Lun–Sáb 9:00–18:00</p>
+          <h5>Ubicación</h5>
+          <p>Royal Park – Parque Lefevre</p>
+          <h5>Contacto</h5>
+          <p>WhatsApp: +507 6474-6168</p>
+        </div>
+      </div>
 
-    <!-- LOGO ARRIBA -->
-    <div class="footer-info">
-      <img src="logo-horizontal.png" alt="Figura Rostro KG" class="logo" />
+      <div class="social">
+        <h4>Síguenos</h4>
+        <nav class="icons">
+          <a href="https://instagram.com/figurarostrokg" target="_blank" rel="noopener" class="ico" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm5 5.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 7.5Z"/></svg>
+          </a>
+          <a href="https://facebook.com/figurarostrokg" target="_blank" rel="noopener" class="ico" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M22 12a10 10 0 1 0-11.56 9.9v-7H7.9V12h2.54V9.8c0-2.5 1.49-3.9 3.78-3.9 1.1 0 2.25.2 2.25.2v2.48h-1.27c-1.25 0-1.64.78-1.64 1.58V12h2.79l-.45 2.9h-2.34v7A10 10 0 0 0 22 12Z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@FiguraRostroKG" target="_blank" rel="noopener" class="ico" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M23 7.5s-.2-1.6-.8-2.3c-.8-.8-1.7-.8-2.1-.9C17.7 4 12 4 12 4s-5.7 0-8.1.3c-.4 0-1.3.1-2.1.9C1 5.9.9 7.5.9 7.5s-.2 1.9-.2 3.8v1.3c0 1.9.2 3.8.2 3.8s.2 1.6.8 2.3c.8.8 1.9.8 2.4.9 1.8.2 7.9.3 7.9.3s5.7 0 8.1-.3c.4 0 1.3-.1 2.1-.9.6-.7.8-2.3.8-2.3s.2-1.9.2-3.8v-1.3c0-1.9-.2-3.8-.2-3.8zM9.8 14.8V8.8l6 3-6 3z"/></svg>
+          </a>
+          <a href="https://wa.me/50764746168" target="_blank" rel="noopener" class="ico" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M20.5 3.5A10 10 0 0 0 3.9 17.7L3 21l3.4-.9A10 10 0 1 0 20.5 3.5ZM12 20a8 8 0 0 1-4.1-1.1l-.3-.2-2.4 .6 .6 -2.4 -.2 -.3 A8 8 0 1 1 12 20Zm4-5.3c-.2-.1-1.2-.6-1.4-.7-.2-.1-.4-.1-.6.1l-.5.6c-.1.1-.3.1-.5.1-1 0-2.4-1.1-2.8-1.9-.2-.3-.2-.5 0-.7l.4-.5c.1-.2.1-.3 0-.5l-.7-1.5c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.7.7-1.1 1.6-1.1 2.5 0 .3.1 .7.2 1 .6 1.6 2.4 3.3 3.9 3.9 .3 .1 .7 .2 1 .2 .9 0 1.8 -.3 2.5 -1.1 .2 -.2 .3 -.4 .3 -.6 v-.5 c0 -.2 0 -.4 -.2 -.6 Z" fill="#fff"/></svg>
+          </a>
+        </nav>
+      </div>
 
-      <h5>Horario</h5>
-      <p>
-        Lun – Vie: 6 AM – 8 PM<br>
-        Sáb: 9 AM – 8 PM · Dom: 10 AM – 5 PM
-      </p>
-
-      <h5>Ubicación</h5>
-      <p>
-        Ave. Ernesto T. Lefevre, PH Royal Park, Local 15PB,<br>
-        Ciudad de Panamá
-      </p>
-
-      <h5>Contacto</h5>
-      <p>
-        <a href="tel:+50764746168" style="color:#fff;text-decoration:underline;">+507 6474-6168</a><br>
-        <a href="mailto:figurarostro25@gmail.com" style="color:#fff;text-decoration:underline;">figurarostro25@gmail.com</a>
-      </p>
-    </div>
-
-    <!-- ICONOS DE REDES SOCIALES -->
-    <div class="social">
-      <div class="icons">
-        <a href="https://www.instagram.com/figurarostrokg" class="ico" target="_blank" aria-label="Instagram">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://www.facebook.com/figurarostrokg" class="ico" target="_blank" aria-label="Facebook">
-          <i class="fab fa-facebook"></i>
-        </a>
-        <a href="https://www.youtube.com/@figurarostrokg" class="ico" target="_blank" aria-label="YouTube">
-          <i class="fab fa-youtube"></i>
-        </a>
-        <a href="https://wa.me/50764746168" class="ico" target="_blank" aria-label="WhatsApp">
-          <i class="fab fa-whatsapp"></i>
-        </a>
+      <div class="map">
+        <h4>Cómo llegar</h4>
+        <div class="map-embed">
+          <iframe src="https://maps.google.com/maps?q=2G42%2BGC%20Panam%C3%A1&output=embed" width="100%" height="220" style="border:0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="directions">
+          <a href="https://ul.waze.com/ul?q=2G42%2BGC%20Panam%C3%A1&navigate=yes" target="_blank" rel="noopener">Abrir en Waze</a> ·
+          <a href="https://maps.google.com/?q=2G42%2BGC%20Panam%C3%A1" target="_blank" rel="noopener">Abrir en Google Maps</a>
+        </div>
       </div>
     </div>
-
-    <!-- COPYRIGHT -->
-    <div class="legal">
-      © 2025 Figura Rostro KG · Todos los derechos reservados
-    </div>
-
-  </div>
-</footer>
-
+    <div class="legal"><small>© <span id="y"></span> Figura Rostro KG · Todos los derechos reservados</small></div>
   </footer>
 
   <!-- FABs -->
@@ -766,115 +741,28 @@ dialog#lightbox .lightbox-body video{
   </script>
 
   <!-- JS carrusel de ofertas -->
- <script>
-/* =========================================================
-   JS seguro + visor de Promos con cierre suave
-   ========================================================= */
-
-/* Utilidad: obtiene elemento o null */
-const $ = (sel, ctx=document) => ctx.querySelector(sel);
-const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
-
-/* ----------------------------
-   WhatsApp “Solicitar” (productos)
-   ---------------------------- */
-(function setupWA(){
-  const cards = $$('.prod-card,[data-producto],[data-precio]');
-  cards.forEach(card=>{
-    const btn = card.querySelector('.prod-cta,[data-whatsapp]');
-    if(!btn) return;
-    btn.addEventListener('click', e=>{
-      e.preventDefault();
-      const nombre = card?.dataset?.producto || 'Producto';
-      const precio = card?.dataset?.precio ? `$${card.dataset.precio}` : '';
-      const url = `https://wa.me/50764746168?text=Hola,%20me%20interesa%20el%20producto:%20${encodeURIComponent(nombre)}%20${precio? '('+encodeURIComponent(precio)+')':''}%20de%20Figura%20Rostro%20KG.`;
-      window.open(url,'_blank','noopener');
-    });
-  });
-})();
-
-/* ----------------------------
-   Promos del Mes – visor modal
-   Estructura esperada en tu HTML:
-   <div id="promoModal" class="promo-modal" aria-hidden="true">
-     <div class="promo-backdrop"></div>
-     <div class="promo-view" role="dialog" aria-modal="true">
-       <button id="promoClose" class="promo-close">X</button>
-       <div id="promoViewport" class="promo-viewport">
-         <div id="promoTrack" class="promo-track"> ... slides ... </div>
-         <div id="promoDots"  class="promo-dots"></div>
-       </div>
-     </div>
-   </div>
-   ---------------------------- */
-(function promoViewer(){
-  const modal = $('#promoModal');
-  if(!modal) return;
-
-  const closeBtn = $('#promoClose', modal);
-  const backdrop = $('.promo-backdrop', modal);
-  const track = $('#promoTrack', modal);
-
-  function open(){
-    modal.classList.remove('closing');
-    modal.classList.add('open');
-    modal.setAttribute('aria-hidden','false');
-  }
-  function close(){
-    modal.classList.add('closing'); // animación de salida
-    setTimeout(()=>{
-      modal.classList.remove('open','closing');
-      modal.setAttribute('aria-hidden','true');
-      if(track){ track.scrollLeft = track.scrollLeft } // evita “salto” residual
-    }, 220); // ligeramente menor al .35s del CSS → cierre fluido
-  }
-
-  // Exponer para usos existentes (por si llamas open/close externamente)
-  window.promoOpen = open;
-  window.promoClose = close;
-
-  // Clicks de cerrar
-  if(closeBtn) closeBtn.addEventListener('click', close);
-  if(backdrop) backdrop.addEventListener('click', close);
-
-  // Tecla ESC
-  document.addEventListener('keydown', (e)=>{
-    if(e.key === 'Escape' && modal.classList.contains('open')) close();
-  });
-
-  // Gesto táctil: umbral un poco mayor para evitar cambios involuntarios
-  if(track){
-    let startX = 0, dx = 0;
-    const next = ()=> track.scrollBy({left: track.clientWidth, behavior:'smooth'});
-    const prev = ()=> track.scrollBy({left:-track.clientWidth, behavior:'smooth'});
-
-    track.addEventListener('touchstart', e=>{ startX = e.touches[0].clientX; dx = 0 }, {passive:true});
-    track.addEventListener('touchmove',  e=>{ dx = e.touches[0].clientX - startX }, {passive:true});
-    track.addEventListener('touchend',   ()=>{
-      if(Math.abs(dx) > 70){ dx>0 ? prev() : next() }
-      // reestabiliza el alto tras un instante
-      setTimeout(()=>{ if(track) track.scrollLeft = track.scrollLeft }, 120);
-    });
-
-    // Evitar scroll vertical del body si se hace scroll horizontal “fuerte”
-    track.addEventListener('wheel', (e)=>{
-      if(Math.abs(e.deltaX) > Math.abs(e.deltaY)){ e.preventDefault() }
-    }, {passive:false});
-  }
-})();
-
-/* ----------------------------
-   Lightbox de Galería (si lo usas)
-   ---------------------------- */
-// Mantén tu implementación actual. Con el CSS nuevo
-// ya queda centrado y sin bandas negras raras.
-
-/* ----------------------------
-   Cualquier JS extra tuyo (sliders, tabs, etc.)
-   ---------------------------- */
-// (Si tienes más código, colócalo aquí debajo…)
-</script>
-
+  <script>
+  (function(){
+    const track=document.querySelector('.offers-track');
+    const slides=[...document.querySelectorAll('.offer-slide')];
+    const prev=document.querySelector('.offer-nav.prev');
+    const next=document.querySelector('.offer-nav.next');
+    const dots=[...document.querySelectorAll('.offer-dots .dot')];
+    const viewport=document.querySelector('.offers-viewport');
+    let index=0,count=slides.length,timer=null,isPaused=false,dur=6000;
+    function update(){track.style.transform=`translateX(-${index*100}%)`;
+      slides.forEach((el,i)=>{el.setAttribute('aria-hidden',i!==index);el.querySelectorAll('a,button').forEach(c=>c.tabIndex=i===index?0:-1)});
+      dots.forEach((d,i)=>d.setAttribute('aria-selected',i===index)) }
+    function goTo(i){index=(i+count)%count;update()}
+    function nextSlide(){goTo(index+1)} function prevSlide(){goTo(index-1)}
+    next.addEventListener('click',nextSlide); prev.addEventListener('click',prevSlide); dots.forEach((d,i)=>d.addEventListener('click',()=>goTo(i)));
+    function start(){clearInterval(timer);timer=setInterval(()=>{if(!isPaused) nextSlide()},dur)}
+    viewport.addEventListener('mouseenter',()=>isPaused=true);
+    viewport.addEventListener('mouseleave',()=>isPaused=false);
+    viewport.setAttribute('tabindex','0'); viewport.addEventListener('keydown',e=>{if(e.key==='ArrowRight')nextSlide(); if(e.key==='ArrowLeft')prevSlide();});
+    update(); start();
+  })();
+  </script>
 
   <!-- JS video + lightbox -->
   <script>
@@ -1042,173 +930,6 @@ const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
       });
     })();
   </script>
- <!-- Visor full-screen de Promos (móvil) -->
-<div id="promoModal" class="promo-modal" aria-hidden="true">
-  <div class="promo-backdrop"></div>
-  <div class="promo-view" role="dialog" aria-modal="true" aria-label="Visor de promociones">
-    <div class="promo-head">
-      <h4 class="promo-title">Promoción</h4>
-      <button class="promo-close" id="promoClose" aria-label="Cerrar">✕</button>
-    </div>
-    <div class="promo-viewport">
-      <div class="promo-track" id="promoTrack"><!-- slides dinámicos --></div>
-      <div class="promo-dots" id="promoDots"></div>
-    </div>
-  </div>
-</div>
- <script>
-(function(){
-  const mobileOffers = [...document.querySelectorAll('#ofertas .offers-mobile .m-offer')];
-  if (!mobileOffers.length) return;
-
-  const modal   = document.getElementById('promoModal');
-  const track   = document.getElementById('promoTrack');
-  const dotsBox = document.getElementById('promoDots');
-  const titleEl = modal.querySelector('.promo-title');
-  const btnClose= document.getElementById('promoClose');
-  let index = 0, touchStartX = 0, touchDX = 0;
-
-  // Construye slides con el contenido de las tarjetas móviles
-  mobileOffers.forEach((card, i) => {
-    const slide = document.createElement('section');
-    slide.className = 'pm-slide';
-
-    // extrae título, texto, precio, botón e imagen
-    const h3    = card.querySelector('h3')?.outerHTML || '<h3>Promo</h3>';
-    const paras = [...card.querySelectorAll('.m-body p')].map(p=>p.outerHTML).join('');
-    const btn   = card.querySelector('.m-btn')?.outerHTML || '';
-    const img   = card.querySelector('.m-img')?.outerHTML || '';
-
-    slide.innerHTML = `
-      <div class="pm-body">
-        ${h3}
-        ${paras}
-        ${btn}
-      </div>
-      ${img}
-    `;
-    track.appendChild(slide);
-
-    // dot
-    const dot = document.createElement('span');
-    dot.className = 'dot';
-    dot.setAttribute('role','tab');
-    dot.addEventListener('click', ()=> goTo(i));
-    dotsBox.appendChild(dot);
-
-    // abrir visor al tocar una card
-    card.addEventListener('click', ()=> open(i));
-  });
-
-  function update(){
-    track.style.transform = `translateX(-${index*100}%)`;
-    dotsBox.querySelectorAll('.dot').forEach((d,i)=> d.setAttribute('aria-current', i===index ? 'true':'false'));
-    const currentH3 = track.children[index]?.querySelector('h3')?.textContent?.trim() || 'Promoción';
-    titleEl.textContent = currentH3;
-  }
-
-  function open(i=0){
-    index=i; update();
-    modal.classList.add('open');
-    document.documentElement.classList.add('body-lock'); // evita scroll fondo
-    modal.setAttribute('aria-hidden','false');
-  }
-
-  function close(){
-    modal.classList.remove('open');
-    document.documentElement.classList.remove('body-lock');
-    modal.setAttribute('aria-hidden','true');
-  }
-
-  function goTo(i){
-    const count = track.children.length;
-    index = (i + count) % count;
-    update();
-  }
-  function next(){ goTo(index+1); }
-  function prev(){ goTo(index-1); }
-
-  // Cerrar
-  btnClose.addEventListener('click', close);
-  modal.querySelector('.promo-backdrop').addEventListener('click', close);
-  document.addEventListener('keydown', (e)=>{ if(modal.classList.contains('open') && e.key==='Escape') close(); });
-
-  // Gestos táctiles
-  track.addEventListener('touchstart', (e)=>{ touchStartX = e.touches[0].clientX; touchDX=0; }, {passive:true});
-  track.addEventListener('touchmove',  (e)=>{ touchDX = e.touches[0].clientX - touchStartX; }, {passive:true});
-  track.addEventListener('touchend',   ()=>{
-    if (Math.abs(touchDX) > 50){ touchDX<0 ? next() : prev(); }
-  });
-
-  // Evitar scroll del body al hacer scroll horizontal accidental
-  track.addEventListener('wheel',(e)=>{ if(Math.abs(e.deltaX) > Math.abs(e.deltaY)) e.preventDefault(); }, {passive:false});
-})();
-</script>
-<script>
-(function(){
-  // si no existe el visor, no hace nada
-  const modal = document.getElementById('promoModal');
-  if(!modal) return;
-  const track = document.getElementById('promoTrack');
-  const titleEl = modal.querySelector('.promo-title');
-  let index = 0, startX = 0, dx = 0;
-
-  // helper: actualiza (relee index que ya maneja el script anterior)
-  function _currentIndex(){
-    // intentar inferir índice desde transform actual
-    const m = /translateX\\(-([\\d.]+)%\\)/.exec(track.style.transform||'');
-    return m ? Math.round(parseFloat(m[1])/100) : index;
-  }
-  function ensureReadable(){
-    index = _currentIndex();
-    const slide = track.children[index];
-    if(slide){ slide.scrollTo({top:0, behavior:'instant'}); }
-    const h3 = slide?.querySelector('h3')?.textContent?.trim() || 'Promoción';
-    titleEl.textContent = h3;
-  }
-
-  // enganche simple a apertura: cuando el modal entra en DOM abierto
-  const obs = new MutationObserver(()=>{
-    if(modal.classList.contains('open')){ 
-      setTimeout(ensureReadable, 50);
-    }
-  });
-  obs.observe(modal, { attributes:true, attributeFilter:['class'] });
-
-  // gesto con umbral un poco mayor para evitar cambios involuntarios
-  track.addEventListener('touchstart', e=>{ startX=e.touches[0].clientX; dx=0; }, {passive:true});
-  track.addEventListener('touchmove',  e=>{ dx = e.touches[0].clientX - startX; }, {passive:true});
-  track.addEventListener('touchend',   ()=>{
-    if(Math.abs(dx) > 70){ /* <- umbral mayor */
-      // dejamos que el script de navegación existente haga next/prev
-      // aquí solo reseteamos scroll del nuevo slide tras 120ms
-      setTimeout(ensureReadable, 120);
-    }
-  });
-})();
-</script>
-<script>
-  const promos = document.querySelectorAll('.offer-card img');
-  const modal = document.getElementById('promoModal');
-  const body = document.body;
-
-  promos.forEach(img => {
-    img.addEventListener('click', () => {
-      modal.removeAttribute('aria-hidden');
-      modal.classList.add('open');
-      body.style.overflow = 'hidden';
-    });
-  });
-
-  const closeBtn = document.getElementById('promoClose');
-  closeBtn.addEventListener('click', () => {
-    modal.setAttribute('aria-hidden', 'true');
-    modal.classList.remove('open');
-    body.style.overflow = '';
-  });
-</script>
-
 </body>
 </html>
-
 
