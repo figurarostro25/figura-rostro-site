@@ -776,7 +776,16 @@
     border-top:10px solid transparent;      /* truco para franja */
   }
 }
- 
+
+  /* ===== Móvil: visor promos sin distorsión ===== */
+@media (max-width:640px){
+  .pm-img{ width:100%; background:#000; }
+  .pm-img img{
+    width:100%; height:auto; max-height:50vh; /* sin aplastar */
+    object-fit:contain; display:block; background:#000;
+  }
+}
+  
   </style>
 </head>
 
