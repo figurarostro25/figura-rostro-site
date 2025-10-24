@@ -254,6 +254,63 @@
     /* Micro-mejoras */
     .offer-img img{object-fit:cover;display:block;background:#e6e6e6}
     .offers-viewport{scroll-behavior:smooth}
+/* ===== Footer móvil estilo maqueta ===== */
+@media (max-width:640px){
+  .site-footer{ background:#000 !important; }
+  .footer-inner{
+    grid-template-columns:1fr !important;
+    gap:18px !important;
+    text-align:center !important;
+  }
+  .site-footer .logo{
+    height:64px !important;
+    margin:8px auto 10px !important;
+    display:block !important;
+    filter:none !important;
+  }
+  /* Ocultar mapa y enlaces de cómo llegar en móvil */
+  .site-footer .map,
+  .site-footer .directions{ display:none !important; }
+
+  /* Tipografía y espaciado de bloques (HORARIO / UBICACIÓN / CONTACTO) */
+  .footer-info h5{
+    margin:.8rem 0 .2rem !important;
+    font-size:14px !important;
+    letter-spacing:.04em;
+    color:#bdb7ff !important; /* violeta suave */
+    text-transform:uppercase;
+  }
+  .footer-info p{
+    margin:.2rem 0 .6rem !important;
+    color:#eaeaea !important;
+    line-height:1.45;
+    font-size:14px !important;
+  }
+
+  /* Redes centradas */
+  .social{ text-align:center !important; }
+  .social h4{ display:none !important; } /* opcional: ocultar título */
+  .icons{ justify-content:center !important; gap:14px !important; }
+  .icons .ico{
+    width:44px !important; height:44px !important; border-radius:14px !important;
+    background:#111 !important; color:#fff !important; box-shadow:none !important;
+    border:1px solid rgba(255,255,255,.12);
+  }
+
+  /* Legal compacto */
+  .legal{ color:#9b9bb5 !important; font-size:12px !important; }
+
+  /* FABs al costado derecho, centrados verticalmente */
+  .fab-stack{
+    right:10px !important; left:auto !important;
+    bottom:auto !important; top:50% !important;
+    transform:translateY(-50%);
+    flex-direction:column !important; gap:12px !important;
+    padding:0 !important;
+  }
+  .fab{ width:54px !important; height:54px !important; border-radius:18px !important; }
+}
+
   </style>
 </head>
 
