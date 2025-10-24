@@ -192,6 +192,62 @@
   .f-col{ text-align:left; }
   .f-logo{ margin:0 auto 18px; }
 }
+/* ===== Ajuste Footer: móvil sin logo + todo centrado ===== */
+@media (max-width:640px){
+  .site-footer .footer-grid{
+    grid-template-columns: 1fr;     /* una sola columna */
+    text-align: center;              /* centra todos los textos */
+  }
+
+  /* Oculta el logo sólo en móvil */
+  .site-footer .footer-brand{
+    display: none !important;
+  }
+
+  /* Quita márgenes laterales y centra las columnas */
+  .site-footer .footer-col{
+    margin: 0 auto;
+    max-width: 520px;                /* limita ancho para lectura */
+  }
+
+  /* Títulos un poco más compactos */
+  .site-footer h3{
+    font-size: 20px;
+    margin: 8px 0 12px;
+  }
+
+  /* Espaciados del bloque de horarios, ubicación, contacto */
+  .site-footer .footer-col p{
+    margin: 6px 0;
+  }
+
+  /* Íconos sociales centrados */
+  .site-footer .social{
+    justify-content: center;
+    gap: 14px;
+    margin-top: 10px;
+  }
+
+  /* Botones (si hay) en una sola columna */
+  .site-footer .footer-actions{
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+/* ===== Escritorio: logo y columnas mejor balanceadas ===== */
+@media (min-width:641px){
+  .site-footer .footer-grid{
+    grid-template-columns: 220px 1fr 1fr; /* Logo | Info | Info */
+    align-items: start;
+    gap: 28px;
+  }
+  .site-footer .footer-brand img{
+    max-width: 200px;
+    height: auto;
+    display: block;
+  }
+}
 
   </style>
 </head>
