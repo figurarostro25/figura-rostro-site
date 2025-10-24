@@ -766,28 +766,115 @@ dialog#lightbox .lightbox-body video{
   </script>
 
   <!-- JS carrusel de ofertas -->
-  <script>
-  (function(){
-    const track=document.querySelector('.offers-track');
-    const slides=[...document.querySelectorAll('.offer-slide')];
-    const prev=document.querySelector('.offer-nav.prev');
-    const next=document.querySelector('.offer-nav.next');
-    const dots=[...document.querySelectorAll('.offer-dots .dot')];
-    const viewport=document.querySelector('.offers-viewport');
-    let index=0,count=slides.length,timer=null,isPaused=false,dur=6000;
-    function update(){track.style.transform=`translateX(-${index*100}%)`;
-      slides.forEach((el,i)=>{el.setAttribute('aria-hidden',i!==index);el.querySelectorAll('a,button').forEach(c=>c.tabIndex=i===index?0:-1)});
-      dots.forEach((d,i)=>d.setAttribute('aria-selected',i===index)) }
-    function goTo(i){index=(i+count)%count;update()}
-    function nextSlide(){goTo(index+1)} function prevSlide(){goTo(index-1)}
-    next.addEventListener('click',nextSlide); prev.addEventListener('click',prevSlide); dots.forEach((d,i)=>d.addEventListener('click',()=>goTo(i)));
-    function start(){clearInterval(timer);timer=setInterval(()=>{if(!isPaused) nextSlide()},dur)}
-    viewport.addEventListener('mouseenter',()=>isPaused=true);
-    viewport.addEventListener('mouseleave',()=>isPaused=false);
-    viewport.setAttribute('tabindex','0'); viewport.addEventListener('keydown',e=>{if(e.key==='ArrowRight')nextSlide(); if(e.key==='ArrowLeft')prevSlide();});
-    update(); start();
-  })();
-  </script>
+ <script>
+/* =========================================================
+   JS seguro + visor de Promos con cierre suave
+   ========================================================= */
+
+/* Utilidad: obtiene elemento o null */
+const $ = (sel, ctx=document) => ctx.querySelector(sel);
+const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
+
+/* ----------------------------
+   WhatsApp “Solicitar” (productos)
+   ---------------------------- */
+(function setupWA(){
+  const cards = $$('.prod-card,[data-producto],[data-precio]');
+  cards.forEach(card=>{
+    const btn = card.querySelector('.prod-cta,[data-whatsapp]');
+    if(!btn) return;
+    btn.addEventListener('click', e=>{
+      e.preventDefault();
+      const nombre = card?.dataset?.producto || 'Producto';
+      const precio = card?.dataset?.precio ? `$${card.dataset.precio}` : '';
+      const url = `https://wa.me/50764746168?text=Hola,%20me%20interesa%20el%20producto:%20${encodeURIComponent(nombre)}%20${precio? '('+encodeURIComponent(precio)+')':''}%20de%20Figura%20Rostro%20KG.`;
+      window.open(url,'_blank','noopener');
+    });
+  });
+})();
+
+/* ----------------------------
+   Promos del Mes – visor modal
+   Estructura esperada en tu HTML:
+   <div id="promoModal" class="promo-modal" aria-hidden="true">
+     <div class="promo-backdrop"></div>
+     <div class="promo-view" role="dialog" aria-modal="true">
+       <button id="promoClose" class="promo-close">X</button>
+       <div id="promoViewport" class="promo-viewport">
+         <div id="promoTrack" class="promo-track"> ... slides ... </div>
+         <div id="promoDots"  class="promo-dots"></div>
+       </div>
+     </div>
+   </div>
+   ---------------------------- */
+(function promoViewer(){
+  const modal = $('#promoModal');
+  if(!modal) return;
+
+  const closeBtn = $('#promoClose', modal);
+  const backdrop = $('.promo-backdrop', modal);
+  const track = $('#promoTrack', modal);
+
+  function open(){
+    modal.classList.remove('closing');
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+  }
+  function close(){
+    modal.classList.add('closing'); // animación de salida
+    setTimeout(()=>{
+      modal.classList.remove('open','closing');
+      modal.setAttribute('aria-hidden','true');
+      if(track){ track.scrollLeft = track.scrollLeft } // evita “salto” residual
+    }, 220); // ligeramente menor al .35s del CSS → cierre fluido
+  }
+
+  // Exponer para usos existentes (por si llamas open/close externamente)
+  window.promoOpen = open;
+  window.promoClose = close;
+
+  // Clicks de cerrar
+  if(closeBtn) closeBtn.addEventListener('click', close);
+  if(backdrop) backdrop.addEventListener('click', close);
+
+  // Tecla ESC
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape' && modal.classList.contains('open')) close();
+  });
+
+  // Gesto táctil: umbral un poco mayor para evitar cambios involuntarios
+  if(track){
+    let startX = 0, dx = 0;
+    const next = ()=> track.scrollBy({left: track.clientWidth, behavior:'smooth'});
+    const prev = ()=> track.scrollBy({left:-track.clientWidth, behavior:'smooth'});
+
+    track.addEventListener('touchstart', e=>{ startX = e.touches[0].clientX; dx = 0 }, {passive:true});
+    track.addEventListener('touchmove',  e=>{ dx = e.touches[0].clientX - startX }, {passive:true});
+    track.addEventListener('touchend',   ()=>{
+      if(Math.abs(dx) > 70){ dx>0 ? prev() : next() }
+      // reestabiliza el alto tras un instante
+      setTimeout(()=>{ if(track) track.scrollLeft = track.scrollLeft }, 120);
+    });
+
+    // Evitar scroll vertical del body si se hace scroll horizontal “fuerte”
+    track.addEventListener('wheel', (e)=>{
+      if(Math.abs(e.deltaX) > Math.abs(e.deltaY)){ e.preventDefault() }
+    }, {passive:false});
+  }
+})();
+
+/* ----------------------------
+   Lightbox de Galería (si lo usas)
+   ---------------------------- */
+// Mantén tu implementación actual. Con el CSS nuevo
+// ya queda centrado y sin bandas negras raras.
+
+/* ----------------------------
+   Cualquier JS extra tuyo (sliders, tabs, etc.)
+   ---------------------------- */
+// (Si tienes más código, colócalo aquí debajo…)
+</script>
+
 
   <!-- JS video + lightbox -->
   <script>
