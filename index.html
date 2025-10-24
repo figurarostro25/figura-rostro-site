@@ -825,6 +825,69 @@
 @media (max-width:640px){
   .k-card{ grid-template-columns:1fr; }
 }
+/* ===== Ajuste de estabilidad en visor de Promos ===== */
+@media (max-width:640px){
+  .promo-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    overflow: hidden;
+    transition: opacity 0.35s ease-in-out;
+  }
+  .promo-view {
+    background: #fff;
+    border-radius: 16px;
+    max-width: 92%;
+    width: 92%;
+    height: auto;
+    max-height: 90vh;
+    overflow: hidden;
+    transform: scale(1);
+    transition: transform 0.3s ease-out;
+  }
+  .promo-view.open {
+    transform: scale(1);
+  }
+  .promo-view .m-img img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+  .promo-view .m-body {
+    padding: 16px;
+    background: linear-gradient(180deg, #fff 60%, #f7f4ff 100%);
+    color: #222;
+    overflow-y: auto;
+    max-height: 60vh;
+  }
+  .promo-view h3 {
+    color: #5b3bb6;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .promo-view p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .promo-view .price b {
+    color: #5b3bb6;
+  }
+}
+.promo-view {
+  transform: scale(0.94);
+  opacity: 0;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+.promo-modal.open .promo-view {
+  transform: scale(1);
+  opacity: 1;
+}
 
   </style>
 </head>
@@ -1749,6 +1812,26 @@
     }
   });
 })();
+</script>
+<script>
+  const promos = document.querySelectorAll('.offer-card img');
+  const modal = document.getElementById('promoModal');
+  const body = document.body;
+
+  promos.forEach(img => {
+    img.addEventListener('click', () => {
+      modal.removeAttribute('aria-hidden');
+      modal.classList.add('open');
+      body.style.overflow = 'hidden';
+    });
+  });
+
+  const closeBtn = document.getElementById('promoClose');
+  closeBtn.addEventListener('click', () => {
+    modal.setAttribute('aria-hidden', 'true');
+    modal.classList.remove('open');
+    body.style.overflow = '';
+  });
 </script>
 
 </body>
