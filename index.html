@@ -626,6 +626,126 @@
 
 /* Evitar scroll del body cuando el visor está abierto */
 .body-lock{ overflow:hidden; height:100vh; }
+
+  /* ===== REFINES VISOR PROMOS (móvil) – legibilidad y proporción ===== */
+@media (max-width:640px){
+  /* pantalla completa real y segura (iOS safe areas) */
+  .promo-modal.open{ display:block; }
+  .promo-backdrop{ background:rgba(0,0,0,.75); }
+  .promo-view{
+    position:fixed; 
+    inset:0;                               /* full screen */
+    padding-top: max(10px, env(safe-area-inset-top));
+    padding-bottom: max(10px, env(safe-area-inset-bottom));
+    border-radius:0; 
+    background:#fff;
+    display:flex; 
+    flex-direction:column;
+  }
+
+  /* encabezado fijo */
+  .promo-head{
+    position:sticky; 
+    top:0;
+    z-index:2;
+    background:#ffffff;
+    border-bottom:1px solid #eee;
+    padding:12px 14px;
+  }
+  .promo-title{ 
+    margin:0; font-weight:800; 
+    color:#5b3bb6; 
+    font-size:18px; line-height:1.2;
+  }
+  .promo-close{
+    width:40px; height:40px; 
+    border-radius:999px; 
+    background:#111; color:#fff; border:0;
+    font-size:18px;
+  }
+
+  /* área de slides */
+  .promo-viewport{ 
+    position:relative; 
+    flex:1; 
+    overflow:hidden; 
+    background:#fff;
+  }
+  .promo-track{ 
+    height:100%; 
+    display:flex; 
+    will-change:transform; 
+    transition:transform .45s ease;
+  }
+
+  /* slide con scroll vertical propio */
+  .pm-slide{
+    min-width:100%; 
+    height:100%; 
+    display:flex; 
+    flex-direction:column; 
+    overflow:auto; 
+    -webkit-overflow-scrolling:touch;
+    background:#fff;
+  }
+
+  /* texto primero, grande y cómodo de leer */
+  .pm-body{ 
+    padding:18px 16px 12px; 
+  }
+  .pm-body h3{ 
+    margin:0 0 8px; 
+    color:#5b3bb6; 
+    font-size:22px; 
+    line-height:1.25; 
+    letter-spacing:.2px;
+  }
+  .pm-body p{ 
+    margin:.45rem 0; 
+    color:#2b2b2b; 
+    font-size:16px; 
+    line-height:1.55;
+  }
+  .pm-body .price b{ color:#5b3bb6; }
+
+  /* botón grande y contrastado */
+  .pm-body .m-btn{
+    display:inline-block;
+    margin-top:10px;
+    font-weight:800;
+    background:#5b3bb6;
+    color:#fff !important;
+    text-decoration:none;
+    padding:12px 16px;
+    border-radius:12px;
+    font-size:15px;
+  }
+
+  /* imagen con altura controlada (no aplasta) */
+  .pm-img{ 
+    order:2; 
+    width:100%;
+    height: clamp(200px, 42vh, 340px);      /* <- ajustable */
+    background:#000; 
+  }
+  .pm-img img{ 
+    width:100%; height:100%; object-fit:cover; display:block; 
+  }
+
+  /* puntos */
+  .promo-dots{ 
+    position:absolute; left:0; right:0; bottom:12px; 
+    display:flex; justify-content:center; gap:8px; 
+    pointer-events:none;
+  }
+  .promo-dots .dot{ 
+    width:8px; height:8px; border-radius:999px; background:#c9b4f5; 
+  }
+  .promo-dots .dot[aria-current="true"]{ background:#6b45b1; }
+}
+
+/* cuando el visor está abierto, bloquea el scroll del fondo */
+.body-lock{ overflow:hidden; height:100vh; }
   
   </style>
 </head>
@@ -1456,6 +1576,49 @@
 
   // Evitar scroll del body al hacer scroll horizontal accidental
   track.addEventListener('wheel',(e)=>{ if(Math.abs(e.deltaX) > Math.abs(e.deltaY)) e.preventDefault(); }, {passive:false});
+})();
+</script>
+<script>
+(function(){
+  // si no existe el visor, no hace nada
+  const modal = document.getElementById('promoModal');
+  if(!modal) return;
+  const track = document.getElementById('promoTrack');
+  const titleEl = modal.querySelector('.promo-title');
+  let index = 0, startX = 0, dx = 0;
+
+  // helper: actualiza (relee index que ya maneja el script anterior)
+  function _currentIndex(){
+    // intentar inferir índice desde transform actual
+    const m = /translateX\\(-([\\d.]+)%\\)/.exec(track.style.transform||'');
+    return m ? Math.round(parseFloat(m[1])/100) : index;
+  }
+  function ensureReadable(){
+    index = _currentIndex();
+    const slide = track.children[index];
+    if(slide){ slide.scrollTo({top:0, behavior:'instant'}); }
+    const h3 = slide?.querySelector('h3')?.textContent?.trim() || 'Promoción';
+    titleEl.textContent = h3;
+  }
+
+  // enganche simple a apertura: cuando el modal entra en DOM abierto
+  const obs = new MutationObserver(()=>{
+    if(modal.classList.contains('open')){ 
+      setTimeout(ensureReadable, 50);
+    }
+  });
+  obs.observe(modal, { attributes:true, attributeFilter:['class'] });
+
+  // gesto con umbral un poco mayor para evitar cambios involuntarios
+  track.addEventListener('touchstart', e=>{ startX=e.touches[0].clientX; dx=0; }, {passive:true});
+  track.addEventListener('touchmove',  e=>{ dx = e.touches[0].clientX - startX; }, {passive:true});
+  track.addEventListener('touchend',   ()=>{
+    if(Math.abs(dx) > 70){ /* <- umbral mayor */
+      // dejamos que el script de navegación existente haga next/prev
+      // aquí solo reseteamos scroll del nuevo slide tras 120ms
+      setTimeout(ensureReadable, 120);
+    }
+  });
 })();
 </script>
 
