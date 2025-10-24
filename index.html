@@ -33,7 +33,7 @@
     section{padding:40px 20px;max-width:1100px;margin:auto}
     h2{color:var(--violeta-oscuro);font-size:26px;margin-bottom:30px}
 
-    /* Cards generales */
+    /* Cards generales (para carruseles) */
     .card{background:#fff;border-radius:14px;box-shadow:0 8px 20px rgba(0,0,0,.08);text-align:left;overflow:hidden}
     .card img{width:100%;height:200px;object-fit:cover;display:block;background:#eaeaea}
     .card .box{padding:16px 18px}
@@ -73,7 +73,7 @@
 
     .offer-nav{
       position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.55);color:#fff;border:0;width:44px;height:44px;border-radius:999px;
-      display:grid;place-items:center;cursor:pointer;box-shadow:0 8px 18px rgba(0,0,0,.28);z-index:5;transition:background .2s;
+      display:grid;place-items:center;cursor:pointer;box-shadow:0 8px 18px rgba(0,0,0,.28);z-index:3
     }
     .offer-nav:hover{background:rgba(0,0,0,.7)}
     .offer-nav.prev{left:12px}.offer-nav.next{right:12px}
@@ -96,6 +96,13 @@
     .lightbox-body img,.lightbox-body video,.lightbox-body iframe{width:100%;height:calc(92vh - 80px);object-fit:contain;border:0;background:#000}
     .lightbox-close{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.6);color:#fff;border:0;width:36px;height:36px;border-radius:999px;cursor:pointer;font-size:18px;z-index:2}
 
+    /* Fix móvil: 100dvh y botón grande */
+    @media (max-width:600px){
+      dialog#lightbox{width:100vw;margin:0;border-radius:0;}
+      .lightbox-body img,.lightbox-body video,.lightbox-body iframe{height:calc(100dvh - 56px);}
+      .lightbox-close{width:44px;height:44px;font-size:22px;top:10px;right:10px;background:rgba(0,0,0,.65);}
+    }
+
     /* Sobre + video */
     #sobre{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:center}
     #sobre .about-card{background:#fff;border-radius:16px;box-shadow:0 8px 20px rgba(0,0,0,.08);text-align:left;padding:24px}
@@ -108,23 +115,6 @@
     .video-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:#f3ecff;color:#5d3bb5;border:0;cursor:pointer;font-weight:600;text-decoration:none}
     .video-btn:hover{filter:brightness(.97)}
     @media (max-width:900px){#sobre{grid-template-columns:1fr}}
-
-    /* Menú de Servicios (Tabs) */
-    .tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:18px}
-    .tab-btn{border:1px solid #e7d7f3;background:#fff;color:var(--violeta-oscuro);padding:.6rem 1rem;border-radius:999px;font-weight:600;cursor:pointer;transition:.2s}
-    .tab-btn:hover{transform:translateY(-1px)}
-    .tab-btn.active{background:var(--violeta-oscuro);color:#fff;border-color:var(--violeta-oscuro)}
-    .tab-panel.hidden{display:none}
-
-    .srv-grid{display:grid;gap:16px;grid-template-columns:repeat(3,1fr)}
-    @media (max-width:980px){.srv-grid{grid-template-columns:repeat(2,1fr)}}
-    @media (max-width:620px){.srv-grid{grid-template-columns:1fr}}
-    .srv-card{background:#fff;border-radius:14px;box-shadow:0 8px 20px rgba(0,0,0,.08);padding:16px 18px;text-align:left;border:1px solid #f0e7f7}
-    .srv-card h3{margin:0 0 6px;color:var(--violeta-oscuro);font-size:18px}
-    .srv-card p{color:#555;margin:6px 0 10px;font-size:14px;line-height:1.55}
-    .srv-meta{font-size:13px;color:#6b7280;margin-bottom:10px}
-    .srv-cta{display:inline-block;background:linear-gradient(135deg,var(--lavanda),var(--violeta));color:#fff;text-decoration:none;padding:.55rem .9rem;border-radius:999px;font-weight:700;box-shadow:0 6px 14px rgba(0,0,0,.18)}
-    .srv-cta:hover{filter:brightness(.97)}
 
     /* Footer */
     .site-footer{background:#222;color:#fff;margin-top:3rem}
@@ -153,186 +143,22 @@
     @media (max-width:768px){.fab-stack{display:flex}}
     @media (max-width:480px){header h1{font-size:22px}header img.logo{width:150px}}
 
-    /* ======== MOBILE per PDF ======== */
+    /* ==== Menú de Servicios (Tabs) ==== */
+    .tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:18px}
+    .tab-btn{border:1px solid #e7d7f3;background:#fff;color:var(--violeta-oscuro);padding:.6rem 1rem;border-radius:999px;font-weight:600;cursor:pointer;transition:.2s}
+    .tab-btn:hover{transform:translateY(-1px)}
+    .tab-btn.active{background:var(--violeta-oscuro);color:#fff;border-color:var(--violeta-oscuro)}
+    .tab-panel.hidden{display:none}
 
-    /* 1) Ocultar Menú de Servicios sólo en móvil */
-    @media (max-width:640px){ #menu-servicios{ display:none !important; } }
-
-    /* 2) Faciales/Corporales apilados en móvil (sin carrusel) */
-    @media (max-width:640px){
-      #tratamientos-faciales .carousel-nav,
-      #tratamientos-faciales .carousel-dots,
-      #tratamientos-corporales .carousel-nav,
-      #tratamientos-corporales .carousel-dots{ display:none !important; }
-
-      #tratamientos-faciales .carousel-track,
-      #tratamientos-corporales .carousel-track{ transform:none !important; display:block; }
-      #tratamientos-faciales .carousel-slide,
-      #tratamientos-corporales .carousel-slide{ min-width:auto; padding:0; margin-bottom:14px; }
-      #tratamientos-faciales .carousel-grid,
-      #tratamientos-corporales .carousel-grid{ grid-template-columns:1fr !important; gap:14px; }
-    }
-
-    /* 3) Sobre: subtítulo corto + ocultar texto largo en móvil */
-    #sobre .about-card h2 + p::before{
-      content:"Tu Estética y Terapeuta en Parque Lefevre";
-      display:block; font-weight:600; color:#7e63c9; margin-bottom:.35rem;
-    }
-    @media (max-width:640px){
-      #sobre .about-card p{ display:none; }
-    }
-
-    /* 4) Productos en venta */
-    #productos{ padding-top:24px; }
-    .product-scroll{ display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:4px; }
-    .product-scroll::-webkit-scrollbar{ height:6px; }
-    .product-scroll::-webkit-scrollbar-thumb{ background:#c9b4f5; border-radius:999px; }
-    .prod-card{
-      flex:0 0 82%; max-width:82%;
-      background:#fff; border:1px solid #f0e7f7; border-radius:16px;
-      box-shadow:0 8px 18px rgba(0,0,0,.08);
-      display:grid; grid-template-columns:84px 1fr auto; gap:12px; padding:12px; align-items:center;
-      scroll-snap-align:start;
-    }
-    .prod-card img{ width:84px; height:84px; object-fit:cover; border-radius:10px; background:#eee; }
-    .prod-info h3{ margin:.1rem 0; font-size:16px; color:#7e63c9; }
-    .prod-info p{ margin:0; color:#555; font-size:13px; }
-    .prod-price{ font-weight:800; color:#6b45b1; font-size:18px; }
-    .prod-cta{
-      grid-column:1/-1; display:inline-block; text-align:center;
-      background:linear-gradient(135deg,var(--lavanda),var(--violeta));
-      color:#fff; text-decoration:none; padding:.55rem .9rem; border-radius:999px; font-weight:700;
-    }
-    @media (min-width:841px){
-      .product-scroll{ display:grid; grid-template-columns:repeat(3,1fr); overflow:visible; }
-      .prod-card{ flex:none; max-width:100%; }
-    }
-
-    /* 5) Lightbox móvil */
-    @media (max-width:600px){
-      dialog#lightbox{width:100vw;margin:0;border-radius:0;}
-      .lightbox-body img,.lightbox-body video,.lightbox-body iframe{height:calc(100dvh - 56px);}
-      .lightbox-close{width:44px;height:44px;font-size:22px;top:10px;right:10px;background:rgba(0,0,0,.65);}
-    }
-
-    /* 6) UX móvil general */
-    @media (max-width:640px){
-      body{font-size:15px}
-      section{padding:28px 14px}
-      h2{font-size:20px;margin-bottom:18px}
-
-      header{height:320px;padding:26px 14px}
-      header img.logo{width:140px}
-      header h1{font-size:20px;margin:8px 0}
-      header p{font-size:14px}
-
-      .card img{height:180px}
-      .carousel-nav{width:46px;height:46px}
-      .carousel-nav svg{width:22px;height:22px}
-
-      .offer-card{flex-direction:column; align-items:stretch}
-      .offer-info{padding:18px}
-      .offer-img{order:2}
-      .offer-img img{height:200px; border-radius:0 0 18px 18px}
-      .offer-nav{width:46px;height:46px}
-      .offer-nav.prev{left:10px} .offer-nav.next{right:10px}
-
-      .media-grid{grid-template-columns:1fr}
-      .media-grid img{height:240px}
-
-      .fab-stack{ right:0; left:0; bottom:10px; flex-direction:row; justify-content:center; gap:16px; padding:0 12px }
-      .fab{width:56px;height:56px;border-radius:16px}
-    }
-
-    /* Helpers móviles (por si los quieres) */
-    @media (max-width:640px){
-      .m-hide{display:none !important;}
-      .m-only{display:block !important;}
-    }
-    @media (min-width:641px){ .m-only{display:none !important;} }
-
-    /* Micro-mejoras */
-    .offer-img img{object-fit:cover;display:block;background:#e6e6e6}
-    .offers-viewport{scroll-behavior:smooth}
-  /* ====== Promos del Mes: versión móvil estable ====== */
-@media (max-width:640px){
-  /* El viewport del carrusel no recorta ni “salta” */
-  #ofertas .offers-viewport{ overflow:hidden; }
-
-  /* Track horizontal con snap; NO usar JS para moverlo */
-  #ofertas .offers-track{
-    display:flex;
-    gap:14px;
-    scroll-snap-type:x mandatory;
-    -webkit-overflow-scrolling:touch;
-  }
-
-  /* Cada card ocupa casi toda la pantalla y hace snap centrado */
-  #ofertas .offer-card{
-    flex:0 0 88vw;
-    scroll-snap-align:center;
-    border-radius:18px;
-    background:#fff;
-    overflow:hidden;
-    box-shadow:0 8px 28px rgba(0,0,0,.08);
-  }
-
-  /* Imagen con proporción estable (no se “alarga”) */
-  #ofertas .m-img{ aspect-ratio:16/10; background:#000; }
-  #ofertas .m-img img{
-    width:100%; height:100%;
-    object-fit:cover; display:block;
-  }
-
-  /* Texto y botón más cómodos */
-  #ofertas .m-body{ padding:14px 16px; }
-  #ofertas .m-body h3{
-    font-size:22px; line-height:1.2;
-    margin:0 0 6px; color:#5b3bb6;
-  }
-  #ofertas .m-body p{ margin:.4rem 0 .2rem; color:#444; }
-  #ofertas .m-body .price b{ color:#5b3bb6; font-size:18px; }
-
-  #ofertas .m-btn{
-    display:inline-block; margin-top:10px;
-    background:#5b3bb6; color:#fff; font-weight:700;
-    padding:10px 14px; border-radius:12px;
-    text-decoration:none;
-  }
-
-  /* Puntos / bullets, por si los usas */
-  #ofertas .m-dots{ display:flex; justify-content:center; gap:6px; padding:8px 0 0; }
-  #ofertas .m-dots span{
-    width:6px; height:6px; border-radius:999px; background:#d9d9d9;
-  }
-  #ofertas .m-dots span.is-active{ background:#5b3bb6; }
-}
-
-/* Seguridad por si alguna imagen falla */
-#ofertas .m-img img[onerror]{ background:#000; }
-/* ====== Footer limpio sin mapa ====== */
-.site-footer{ background:#000; color:#fff; padding:28px 16px 32px; }
-.footer-inner{ max-width:980px; margin:0 auto; text-align:center; }
-.f-logo{ width:140px; margin:0 auto 12px; display:block; }
-
-.footer-inner .f-col{ margin:16px 0; }
-.footer-inner h3{
-  color:#a78bfa; font-size:18px; letter-spacing:.3px;
-  margin:0 0 6px; text-transform:uppercase;
-}
-.footer-inner p, .footer-inner a{ color:#e6e6e6; text-decoration:none; }
-.footer-inner a:hover{ text-decoration:underline; }
-
-.f-social{ display:flex; justify-content:center; gap:14px; margin:10px 0 8px; }
-.f-social img{ width:28px; height:28px; display:block; filter:brightness(100%); }
-
-.legal{ margin-top:16px; color:#aaa; font-size:12px; }
-
-/* Escritorio: mismo diseño, solo más aire si quieres */
-@media (min-width:768px){
-  .footer-inner{ text-align:center; }
-}
-
+    .srv-grid{display:grid;gap:16px;grid-template-columns:repeat(3,1fr)}
+    @media (max-width:980px){.srv-grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:620px){.srv-grid{grid-template-columns:1fr}}
+    .srv-card{background:#fff;border-radius:14px;box-shadow:0 8px 20px rgba(0,0,0,.08);padding:16px 18px;text-align:left;border:1px solid #f0e7f7}
+    .srv-card h3{margin:0 0 6px;color:var(--violeta-oscuro);font-size:18px}
+    .srv-card p{color:#555;margin:6px 0 10px;font-size:14px;line-height:1.55}
+    .srv-meta{font-size:13px;color:#6b7280;margin-bottom:10px}
+    .srv-cta{display:inline-block;background:linear-gradient(135deg,var(--lavanda),var(--violeta));color:#fff;text-decoration:none;padding:.55rem .9rem;border-radius:999px;font-weight:700;box-shadow:0 6px 14px rgba(0,0,0,.18)}
+    .srv-cta:hover{filter:brightness(.97)}
   </style>
 </head>
 
@@ -343,7 +169,7 @@
     <p>Tu centro de estética integral en Panamá</p>
   </header>
 
-  <!-- SOBRE + VIDEO -->
+  <!-- SOBRE + VIDEO (PRIMERO) -->
   <section id="sobre">
     <div class="about-card">
       <h2>Figura Rostro KG</h2>
@@ -361,7 +187,7 @@
     </div>
   </section>
 
-  <!-- MENÚ DE SERVICIOS (solo visible en desktop por CSS) -->
+  <!-- MENÚ DE SERVICIOS (TABS, 6 POR PESTAÑA) -->
   <section id="menu-servicios">
     <h2>Menú de Servicios</h2>
 
@@ -496,6 +322,10 @@
         </article>
       </div>
     </div>
+
+    <p style="margin-top:16px;color:#6b7280;font-size:14px;">
+      💜 <b>Beneficio:</b> Ahorra más reservando por el <a href="#" style="text-decoration:underline">Directorio Yappi</a> (cupos limitados).
+    </p>
   </section>
 
   <!-- FACIALES (CARRUSEL) -->
@@ -596,7 +426,7 @@
                 <p>Antes <s>$110</s> · Ahora <b class="precio">$85</b></p>
                 <a href="https://wa.me/50764746168" target="_blank" class="btn">Reservar combo a $85</a>
               </div>
-              <div class="offer-img"><img src="oferta-demo-1.jpg.png" alt="Promo Combo Relax Premium" loading="lazy"></div>
+              <div class="offer-img"><img src="oferta-demo-1.jpg.png" alt="Promo Combo Relax Premium"></div>
             </div>
           </article>
           <article class="offer-slide" role="group" aria-label="2 de 3">
@@ -607,7 +437,7 @@
                 <p>Antes <s>$120</s> · Ahora <b class="precio">$85</b></p>
                 <a href="https://wa.me/50764746168" target="_blank" class="btn">Tomar peeling a $85</a>
               </div>
-              <div class="offer-img"><img src="oferta-demo-2.jpg.png" alt="Promo Peeling Facial Unisex" loading="lazy"></div>
+              <div class="offer-img"><img src="oferta-demo-2.jpg.png" alt="Promo Peeling Facial Unisex"></div>
             </div>
           </article>
           <article class="offer-slide" role="group" aria-label="3 de 3">
@@ -618,7 +448,7 @@
                 <p>Antes <s>$110</s> · Ahora <b class="precio">$95</b></p>
                 <a href="https://wa.me/50764746168" target="_blank" class="btn">Reservar pack a $95</a>
               </div>
-              <div class="offer-img"><img src="promo-masaje-limpieza.jpg" alt="Promo Masaje + Limpieza" loading="lazy"></div>
+              <div class="offer-img"><img src="banner-spa.png" alt="Promo Masaje + Limpieza"></div>
             </div>
           </article>
         </div>
@@ -634,42 +464,6 @@
         <button class="dot" role="tab" aria-selected="false" title="Oferta 2"></button>
         <button class="dot" role="tab" aria-selected="false" title="Oferta 3"></button>
       </div>
-    </div>
-  </section>
-
-  <!-- PRODUCTOS EN VENTA -->
-  <section id="productos">
-    <h2>Productos en venta</h2>
-    <div class="product-scroll">
-      <article class="prod-card" data-producto="Gel Limpiador Facial" data-precio="18">
-        <img src="producto-gel-limpiador.jpg" alt="Gel Limpiador Facial" onerror="this.src='banner-spa.png'">
-        <div class="prod-info">
-          <h3>Gel Limpiador Facial</h3>
-          <p>Suave, todo tipo de piel.</p>
-        </div>
-        <div class="prod-price">$18</div>
-        <a href="#" class="prod-cta" data-whatsapp>Solicitar</a>
-      </article>
-
-      <article class="prod-card" data-producto="Sérum Vitamina C" data-precio="28">
-        <img src="producto-serum-vitamina-c.jpg" alt="Sérum Vitamina C" onerror="this.src='banner-spa.png'">
-        <div class="prod-info">
-          <h3>Sérum Vitamina C</h3>
-          <p>Luminosidad y antioxidantes.</p>
-        </div>
-        <div class="prod-price">$28</div>
-        <a href="#" class="prod-cta" data-whatsapp>Solicitar</a>
-      </article>
-
-      <article class="prod-card" data-producto="Crema Hidratante SPF" data-precio="24">
-        <img src="producto-crema-spf.jpg" alt="Crema Hidratante SPF" onerror="this.src='banner-spa.png'">
-        <div class="prod-info">
-          <h3>Crema Hidratante SPF</h3>
-          <p>Hidratación + protección diaria.</p>
-        </div>
-        <div class="prod-price">$24</div>
-        <a href="#" class="prod-cta" data-whatsapp>Solicitar</a>
-      </article>
     </div>
   </section>
 
@@ -690,39 +484,47 @@
   </section>
 
   <!-- FOOTER -->
-<footer class="site-footer">
-  <div class="footer-inner">
-    <img src="logo-horizontal.png" alt="Figura Rostro KG" class="f-logo">
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="brand">
+        <img src="logo-horizontal.png" alt="Figura Rostro KG" class="logo" />
+        <p>Royal Park – Av. Ernesto T. Lefevre, Ciudad de Panamá</p>
+        <p>Email: <a href="mailto:figurarostro25@gmail.com" style="color:#fff;text-decoration:underline">figurarostro25@gmail.com</a></p>
+        <a class="cta" href="https://wa.me/50764746168" target="_blank" rel="noopener">💬 Citas urgentes</a>
+        <p style="margin:.5rem 0 0;color:#d7d7df;font-size:.9rem"><em>Solo para clientes que reserven por Directorio Yappi o clientes frecuentes.</em></p>
+      </div>
 
-    <div class="f-col">
-      <h3>HORARIO</h3>
-      <p>Lun – Vie: 6 AM – 8 PM<br>Sáb: 9 AM – 8 PM · Dom: 10 AM – 5 PM</p>
+      <div class="social">
+        <h4>Síguenos</h4>
+        <nav class="icons">
+          <a href="https://instagram.com/figurarostrokg" target="_blank" rel="noopener" class="ico" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm5 5.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 7.5Z"/></svg>
+          </a>
+          <a href="https://facebook.com/figurarostrokg" target="_blank" rel="noopener" class="ico" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M22 12a10 10 0 1 0-11.56 9.9v-7H7.9V12h2.54V9.8c0-2.5 1.49-3.9 3.78-3.9 1.1 0 2.25.2 2.25.2v2.48h-1.27c-1.25 0-1.64.78-1.64 1.58V12h2.79l-.45 2.9h-2.34v7A10 10 0 0 0 22 12Z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@FiguraRostroKG" target="_blank" rel="noopener" class="ico" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M23 7.5s-.2-1.6-.8-2.3c-.8-.8-1.7-.8-2.1-.9C17.7 4 12 4 12 4s-5.7 0-8.1.3c-.4 0-1.3.1-2.1.9C1 5.9.9 7.5.9 7.5s-.2 1.9-.2 3.8v1.3c0 1.9.2 3.8.2 3.8s.2 1.6.8 2.3c.8.8 1.9.8 2.4.9 1.8.2 7.9.3 7.9.3s5.7 0 8.1-.3c.4 0 1.3-.1 2.1-.9.6-.7.8-2.3.8-2.3s.2-1.9.2-3.8v-1.3c0-1.9-.2-3.8-.2-3.8zM9.8 14.8V8.8l6 3-6 3z"/></svg>
+          </a>
+          <a href="https://wa.me/50764746168" target="_blank" rel="noopener" class="ico" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M20.5 3.5A10 10 0 0 0 3.9 17.7L3 21l3.4-.9A10 10 0 1 0 20.5 3.5ZM12 20a8 8 0 0 1-4.1-1.1l-.3-.2-2.4.6.6-2.4-.2-.3A8 8 0 1 1 12 20Zm4-5.3c-.2-.1-1.2-.6-1.4-.7-.2-.1-.4-.1-.6.1l-.5.6c-.1.1-.3.1-.5.1-1 0-2.4-1.1-2.8-1.9-.2-.3-.2-.5 0-.7l.4-.5c.1-.2.1-.3 0-.5l-.7-1.5c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.7.7-1.1 1.6-1.1 2.5 0 .3.1 .7.2 1 .6 1.6 2.4 3.3 3.9 3.9 .3 .1 .7 .2 1 .2 .9 0 1.8 -.3 2.5 -1.1 .2 -.2 .3 -.4 .3 -.6 v-.5 c0 -.2 0 -.4 -.2 -.6 Z" fill="#fff"/></svg>
+          </a>
+        </nav>
+      </div>
+
+      <div class="map">
+        <h4>Cómo llegar</h4>
+        <div class="map-embed">
+          <iframe src="https://maps.google.com/maps?q=2G42%2BGC%20Panam%C3%A1&output=embed" width="100%" height="220" style="border:0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="directions">
+          <a href="https://ul.waze.com/ul?q=2G42%2BGC%20Panam%C3%A1&navigate=yes" target="_blank" rel="noopener">Abrir en Waze</a> ·
+          <a href="https://maps.google.com/?q=2G42%2BGC%20Panam%C3%A1" target="_blank" rel="noopener">Abrir en Google Maps</a>
+        </div>
+      </div>
     </div>
-
-    <div class="f-col">
-      <h3>UBICACIÓN</h3>
-      <p>Ave. Ernesto T. Lefevre, PH Royal Park, Local 15PB,<br>Ciudad de Panamá</p>
-    </div>
-
-    <div class="f-col">
-      <h3>CONTACTO</h3>
-      <p>
-        <a href="tel:+50764746168">+507 6474-6168</a><br>
-        <a href="mailto:figurarostro25@gmail.com">figurarostro25@gmail.com</a>
-      </p>
-    </div>
-
-    <!-- Íconos sociales -->
-    <div class="f-social">
-      <!-- Cambia los href por tus enlaces y los src por tus íconos -->
-      <a href="https://wa.me/50764746168" target="_blank" aria-label="WhatsApp"><img src="icon-wa.svg" alt=""></a>
-      <a href="https://www.instagram.com/figurarostrokg" target="_blank" aria-label="Instagram"><img src="icon-ig.svg" alt=""></a>
-      <a href="https://www.youtube.com/@figurarostrokg" target="_blank" aria-label="YouTube"><img src="icon-yt.svg" alt=""></a>
-    </div>
-
-    <p class="legal">© 2025 Figura Rostro KG</p>
-  </div>
-</footer>
+    <div class="legal"><small>© <span id="y"></span> Figura Rostro KG · Todos los derechos reservados</small></div>
+  </footer>
 
   <!-- FABs -->
   <div class="fab-stack" aria-label="Accesos rápidos">
@@ -737,22 +539,8 @@
     </a>
   </div>
 
-  <!-- MODAL RESERVA PROMOS -->
-  <dialog id="reserveModal" style="border:0;border-radius:16px;max-width:min(520px,92vw);padding:0;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.35)">
-    <div style="padding:18px">
-      <button id="reserveClose" style="position:absolute;top:8px;right:8px;background:#0008;color:#fff;border:0;width:36px;height:36px;border-radius:999px;cursor:pointer">✕</button>
-      <h3 id="reserveTitle" style="margin:.3rem 0 0;color:#7e63c9">Reserva</h3>
-      <p id="reserveDesc" style="color:#555;margin:.4rem 0 1rem">¿Quieres reservar esta promoción?</p>
-      <a id="reserveWhats" href="#" target="_blank" rel="noopener"
-         style="display:inline-block;background:linear-gradient(135deg,var(--lavanda),var(--violeta));color:#fff;text-decoration:none;padding:.6rem 1rem;border-radius:999px;font-weight:700">
-         Reservar por WhatsApp
-      </a>
-    </div>
-  </dialog>
-
-  <!-- JS carruseles reutilizables -->
+  <!-- JS carruseles reutilizables (con API pública) -->
   <script>
-    // Registro simple para poder mover carruseles desde el menú
     window.__carousels = {};
     function registerCarousel(id, api){ window.__carousels[id]=api; }
     function goCarousel(id, slide){ const c=window.__carousels[id]; if(c && typeof slide==='number') c.goTo(slide); }
@@ -811,10 +599,8 @@
     const next=document.querySelector('.offer-nav.next');
     const dots=[...document.querySelectorAll('.offer-dots .dot')];
     const viewport=document.querySelector('.offers-viewport');
-    let index=0,count=slides.length,timer=null,isPaused=false,dur=6000;
-    function update(){track.style.transform=`translateX(-${index*100}%)`;
-      slides.forEach((el,i)=>{el.setAttribute('aria-hidden',i!==index);el.querySelectorAll('a,button').forEach(c=>c.tabIndex=i===index?0:-1)});
-      dots.forEach((d,i)=>d.setAttribute('aria-selected',i===index)) }
+    let index=0,count=slides.length,timer=null,isPaused=false,dur=5000;
+    function update(){track.style.transform=`translateX(-${index*100}%)`;slides.forEach((el,i)=>{el.setAttribute('aria-hidden',i!==index);el.querySelectorAll('a,button').forEach(c=>c.tabIndex=i===index?0:-1)});dots.forEach((d,i)=>d.setAttribute('aria-selected',i===index))}
     function goTo(i){index=(i+count)%count;update()}
     function nextSlide(){goTo(index+1)} function prevSlide(){goTo(index-1)}
     next.addEventListener('click',nextSlide); prev.addEventListener('click',prevSlide); dots.forEach((d,i)=>d.addEventListener('click',()=>goTo(i)));
@@ -826,7 +612,7 @@
   })();
   </script>
 
-  <!-- JS video + lightbox -->
+  <!-- JS video + lightbox (corregido móvil) -->
   <script>
     (function(){
       const btnFull=document.getElementById('yt-full');
@@ -876,7 +662,7 @@
 
     document.getElementById('y')?.append(new Date().getFullYear());
 
-    // Tabs + scroll suave + CTA sincronizado con carruseles
+    // Tabs + scroll suave + highlight + CTAs que sincronizan carrusel
     (function(){
       const btns=[...document.querySelectorAll('#menu-servicios .tab-btn')];
       const panels=[...document.querySelectorAll('#menu-servicios .tab-panel')];
@@ -899,99 +685,12 @@
         setTimeout(()=>{ window.open(a.href,'_blank','noopener'); }, 600);
       }, true);
 
-      // FAB: en móvil → Faciales, en desktop → Menú
       const toMenu=document.getElementById('fabMenu');
+      const section=document.getElementById('menu-servicios');
       toMenu?.addEventListener('click',function(e){
-        e.preventDefault();
-        const isMobile = window.matchMedia('(max-width:640px)').matches;
-        const targetId = isMobile ? 'tratamientos-faciales' : 'menu-servicios';
-        document.getElementById(targetId)?.scrollIntoView({behavior:'smooth', block:'start'});
-      });
-    })();
-  </script>
-
-  <!-- SWIPE & UX ENHANCEMENTS (Promos) -->
-  <script>
-  (function(){
-    function addSwipe(container, onPrev, onNext){
-      if(!container) return;
-      let x0=null, y0=null, lock=false;
-      const TH=18;
-      container.addEventListener('touchstart',e=>{
-        const t=e.changedTouches[0]; x0=t.clientX; y0=t.clientY; lock=false;
-      },{passive:true});
-      container.addEventListener('touchmove',e=>{
-        if(x0===null || lock) return;
-        const t=e.changedTouches[0], dx=t.clientX-x0, dy=t.clientY-y0;
-        if(Math.abs(dy)>Math.abs(dx)) { lock=true; return; }
-        if(Math.abs(dx)>TH){ dx<0 ? onNext?.() : onPrev?.(); x0=null; }
-      },{passive:true});
-    }
-
-    const offViewport = document.querySelector('.offers-viewport');
-    const offPrev = document.querySelector('.offer-nav.prev');
-    const offNext = document.querySelector('.offer-nav.next');
-
-    addSwipe(offViewport, ()=>offPrev?.click(), ()=>offNext?.click());
-
-    document.addEventListener('visibilitychange', ()=>{
-      const evt = new Event(document.hidden ? 'mouseenter' : 'mouseleave');
-      offViewport?.dispatchEvent(evt);
-    });
-  })();
-  </script>
-
-  <!-- WhatsApp helpers (promos + productos) -->
-  <script>
-    const WA_NUMBER = "50764746168";
-    function waLink(text){
-      const t = encodeURIComponent(text);
-      return `https://wa.me/${WA_NUMBER}?text=${t}`;
-    }
-
-    // Promos → Modal de reserva con WhatsApp
-    (function(){
-      const modal = document.getElementById('reserveModal');
-      const closeBtn = document.getElementById('reserveClose');
-      const title = document.getElementById('reserveTitle');
-      const desc = document.getElementById('reserveDesc');
-      const btn = document.getElementById('reserveWhats');
-      const slides = document.querySelectorAll('.offer-slide');
-
-      slides.forEach(slide=>{
-        slide.addEventListener('click', e=>{
-          if(e.target.closest('a,button')) return; // evitar doble click
-          const name = slide.querySelector('h3')?.textContent?.trim() || 'Promoción';
-          title.textContent = name;
-          desc.textContent = '¿Deseas reservar esta promoción? Te atendemos por WhatsApp.';
-          btn.href = waLink(`Hola, me interesa la promoción: ${name} en Figura Rostro KG.`);
-          modal.showModal();
-          document.documentElement.style.overflow='hidden';
-        });
-      });
-      closeBtn?.addEventListener('click', ()=>{ modal.close(); document.documentElement.style.overflow=''; });
-      modal?.addEventListener('click', (e)=>{
-        const box = modal.getBoundingClientRect();
-        if(e.clientY < box.top || e.clientY > box.bottom || e.clientX < box.left || e.clientX > box.right){
-          modal.close(); document.documentElement.style.overflow='';
-        }
-      });
-    })();
-
-    // Productos → botón Solicitar con mensaje prellenado
-    (function(){
-      document.querySelectorAll('[data-whatsapp]').forEach(btn=>{
-        btn.addEventListener('click', (e)=>{
-          e.preventDefault();
-          const card = btn.closest('.prod-card');
-          const nombre = card?.dataset.producto || 'Producto';
-          const precio = card?.dataset.precio ? `$${card.dataset.precio}` : '';
-          const url = waLink(`Hola, me interesa el producto: ${nombre} ${precio ? '('+precio+')' : ''} de Figura Rostro KG.`);
-          window.open(url, '_blank', 'noopener');
-        });
+        e.preventDefault(); section.scrollIntoView({behavior:'smooth', block:'start'}); highlight(section.querySelector('h2')||section); history.pushState(null,'','#menu-servicios');
       });
     })();
   </script>
 </body>
 </html>
-
