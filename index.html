@@ -33,13 +33,7 @@
     section{padding:40px 20px;max-width:1100px;margin:auto}
     h2{color:var(--violeta-oscuro);font-size:26px;margin-bottom:30px}
 
-    /* Tarjetas intro */
-    .services{display:flex;flex-wrap:wrap;justify-content:center;gap:20px}
-    .service{background:#fff;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,.1);padding:20px;width:280px;text-align:left}
-    .service h3{color:var(--violeta-oscuro);font-size:18px;margin:0 0 8px}
-    .service p{font-size:15px;color:var(--gris-suave);line-height:1.6}
-
-    /* Cards generales */
+    /* Cards generales (carruseles) */
     .card{background:#fff;border-radius:14px;box-shadow:0 8px 20px rgba(0,0,0,.08);text-align:left;overflow:hidden}
     .card img{width:100%;height:200px;object-fit:cover;display:block;background:#eaeaea}
     .card .box{padding:16px 18px}
@@ -77,7 +71,7 @@
     .offer-img{flex:1 1 300px}
     .offer-img img{width:100%;height:100%;object-fit:cover;display:block;background:#ddd}
 
-    /* Flechas ofertas (más visibles) */
+    /* Flechas ofertas */
     .offer-nav{
       position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.55);color:#fff;border:0;width:44px;height:44px;border-radius:999px;
       display:grid;place-items:center;cursor:pointer;box-shadow:0 8px 18px rgba(0,0,0,.28);z-index:3
@@ -140,7 +134,7 @@
     .fab.waze{background:#2BC3F3}
     .fab.whatsapp{background:#25D366}
     @media (max-width:768px){.fab-stack{display:flex}}
-    @media (max-width:480px){header h1{font-size:22px}header img.logo{width:150px}.service{width:100%}}
+    @media (max-width:480px){header h1{font-size:22px}header img.logo{width:150px}}
 
     /* ==== Menú de Servicios (Tabs) ==== */
     .tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:18px}
@@ -168,159 +162,7 @@
     <p>Tu centro de estética integral en Panamá</p>
   </header>
 
-  <!-- Intro -->
-  <section>
-    <h2>Servicios</h2>
-    <div class="services">
-      <div class="service">
-        <h3>Tratamientos Faciales</h3>
-        <p>Limpieza facial, dermaplaning, peeling y rejuvenecimiento para tu piel.</p>
-      </div>
-      <div class="service">
-        <h3>Tratamientos Corporales</h3>
-        <p>Masajes terapéuticos, reductores, drenajes y cuidado integral.</p>
-      </div>
-      <div class="service">
-        <h3>Servicio Belleza Express</h3>
-        <p>Cepillado, limpieza facial, maquillaje, manicura y masajes para moldear.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- MENÚ DE SERVICIOS (TABS) - NUEVO -->
-  <section id="menu-servicios">
-    <h2>Menú de Servicios</h2>
-
-    <div class="tabs" role="tablist" aria-label="Categorías de servicios">
-      <button class="tab-btn active" data-tab="faciales-tab" role="tab" aria-selected="true">Faciales</button>
-      <button class="tab-btn" data-tab="masajes-tab" role="tab" aria-selected="false">Masajes y Terapias</button>
-      <button class="tab-btn" data-tab="especiales-tab" role="tab" aria-selected="false">Especializados</button>
-    </div>
-
-    <!-- FACIALES -->
-    <div id="faciales-tab" class="tab-panel">
-      <div class="srv-grid">
-        <article class="srv-card">
-          <h3>Limpieza Facial con Extracción</h3>
-          <div class="srv-meta">45–60 min aprox.</div>
-          <p>Higiene profunda, extracción, mascarilla hidratante y Vitamina C.</p>
-          <a class="srv-cta" href="https://wa.me/50764746168" target="_blank" rel="noopener"
-             data-go='{"section":"tratamientos-faciales","carousel":"facialesCarousel","slide":0}'>
-             Reservar por WhatsApp
-          </a>
-        </article>
-        <article class="srv-card">
-          <h3>Facial con Dermaplaning</h3>
-          <div class="srv-meta">50 min aprox.</div>
-          <p>Piel más suave y luminosa; ayuda a reducir marcas leves de acné.</p>
-          <a class="srv-cta" href="https://wa.me/50764746168" target="_blank" rel="noopener"
-             data-go='{"section":"tratamientos-faciales","carousel":"facialesCarousel","slide":1}'>
-             Reservar por WhatsApp
-          </a>
-        </article>
-        <article class="srv-card">
-          <h3>Hilos de Colágeno sin Agujas</h3>
-          <div class="srv-meta">Sesión personalizada</div>
-          <p>Efecto rejuvenecedor visible desde la primera sesión (costo según evaluación).</p>
-          <a class="srv-cta" href="https://wa.me/50764746168" target="_blank" rel="noopener"
-             data-go='{"section":"tratamientos-faciales"}'>
-             Agendar evaluación
-          </a>
-        </article>
-        <article class="srv-card">
-          <h3>Peeling + Limpieza Profunda</h3>
-          <div class="srv-meta">50–60 min aprox.</div>
-          <p>Reduce manchas y líneas finas; mejora textura y luminosidad.</p>
-          <a class="srv-cta" href="https://wa.me/50764746168" target="_blank" rel="noopener"
-             data-go='{"section":"tratamientos-faciales","carousel":"facialesCarousel","slide":0}'>
-             Reservar
-          </a>
-        </article>
-      </div>
-    </div>
-
-    <!-- MASAJES Y TERAPIAS -->
-    <div id="masajes-tab" class="tab-panel hidden">
-      <div class="srv-grid">
-        <article class="srv-card">
-          <h3>Relajante Completo</h3>
-          <div class="srv-meta">60 min aprox.</div>
-          <p>Técnicas terapéuticas para aliviar tensión y equilibrar el cuerpo.</p>
-          <a class="srv-cta" href="https://wa.me/50764746168" target="_blank" rel="noopener"
-             data-go='{"section":"tratamientos-corporales"}'>
-             Reservar
-          </a>
-        </article>
-        <article class="srv-card">
-          <h3>Piernas y Espalda Cansada</h3>
-          <div class="srv-meta">50 min aprox.</div>
-          <p>Alivia pesadez y mejora la circulación con enfoque localizado.</p>
-          <a class="srv-cta" href="https://wa.me/50764746168" target="_blank" rel="noopener"
-             data-go='{"section":"tratamientos-corporales","carousel":"corporalesCarousel","slide":0}'>
-             Reservar
-          </a>
-        </article>
-        <article class="srv-card">
-          <h3>Masaje Reductor</h3>
-          <div class="srv-meta">45 min aprox.</div>
-          <p>Apoya el modelado corporal con maniobras específicas.</p>
-          <a class="srv-cta" href="https://wa.me/50764746168" target="_blank" rel="noopener"
-             data-go='{"section":"tratamientos-corporales","carousel":"corporalesCarousel","slide":0}'>
-             Reservar
-          </a>
-        </article>
-        <article class="srv-card">
-          <h3>Levantamiento de Glúteos</h3>
-          <div class="srv-meta">No quirúrgico</div>
-          <p>Técnicas para realce y firmeza sin cirugía.</p>
-          <a class="srv-cta" href="https://wa.me/50764746168" target="_blank" rel="noopener"
-             data-go='{"section":"tratamientos-corporales"}'>
-             Consultar
-          </a>
-        </article>
-      </div>
-    </div>
-
-    <!-- ESPECIALIZADOS -->
-    <div id="especiales-tab" class="tab-panel hidden">
-      <div class="srv-grid">
-        <article class="srv-card">
-          <h3>Membresía VIP</h3>
-          <div class="srv-meta">Mensual / anual</div>
-          <p>Ahorra durante todo el año en tus tratamientos favoritos.</p>
-          <a class="srv-cta" href="https://wa.me/50764746168" target="_blank" rel="noopener"
-             data-go='{"section":"tratamientos-faciales"}'>
-             Solicitar info
-          </a>
-        </article>
-        <article class="srv-card">
-          <h3>Hialuron Pen</h3>
-          <div class="srv-meta">Sesión personalizada</div>
-          <p>Hidratación y volumen de labios sin agujas.</p>
-          <a class="srv-cta" href="https://wa.me/50764746168" target="_blank" rel="noopener"
-             data-go='{"section":"tratamientos-faciales"}'>
-             Agendar consulta
-          </a>
-        </article>
-        <article class="srv-card">
-          <h3>Plasma Rico en Plaquetas</h3>
-          <div class="srv-meta">Sesión personalizada</div>
-          <p>Mejora de piel y estimulación capilar; apoyo a la cicatrización.</p>
-          <a class="srv-cta" href="https://wa.me/50764746168" target="_blank" rel="noopener"
-             data-go='{"section":"tratamientos-faciales"}'>
-             Agendar consulta
-          </a>
-        </article>
-      </div>
-    </div>
-
-    <p style="margin-top:16px;color:#6b7280;font-size:14px;">
-      💜 <b>Beneficio:</b> Ahorra más reservando por el <a href="#" style="text-decoration:underline">Directorio Yappi</a> (cupos limitados).
-    </p>
-  </section>
-  <!-- /MENÚ DE SERVICIOS (TABS) - NUEVO -->
-
-  <!-- SOBRE + VIDEO (ARRIBA) -->
+  <!-- SOBRE + VIDEO (AHORA PRIMERO) -->
   <section id="sobre">
     <div class="about-card">
       <h2>Figura Rostro KG</h2>
@@ -338,7 +180,166 @@
     </div>
   </section>
 
-  <!-- FACIALES -->
+  <!-- MENÚ DE SERVICIOS (TABS) -->
+  <section id="menu-servicios">
+    <h2>Menú de Servicios</h2>
+
+    <div class="tabs" role="tablist" aria-label="Categorías de servicios">
+      <button class="tab-btn active" data-tab="faciales-tab" role="tab" aria-selected="true">Faciales</button>
+      <button class="tab-btn" data-tab="masajes-tab" role="tab" aria-selected="false">Masajes y Terapias</button>
+      <button class="tab-btn" data-tab="especiales-tab" role="tab" aria-selected="false">Especializados</button>
+    </div>
+
+    <!-- FACIALES (6) -->
+    <div id="faciales-tab" class="tab-panel">
+      <div class="srv-grid">
+        <article class="srv-card">
+          <h3>Limpieza Facial con Extracción</h3>
+          <div class="srv-meta">45–60 min aprox.</div>
+          <p>Higiene profunda, extracción, mascarilla hidratante y Vitamina C.</p>
+          <a class="srv-cta" href="https://wa.me/50764746168" target="_blank" rel="noopener"
+             data-go='{"section":"tratamientos-faciales","carousel":"facialesCarousel","slide":0}'>Reservar por WhatsApp</a>
+        </article>
+        <article class="srv-card">
+          <h3>Facial con Dermaplaning</h3>
+          <div class="srv-meta">50 min aprox.</div>
+          <p>Piel más suave y luminosa; ayuda a reducir marcas leves de acné.</p>
+          <a class="srv-cta" href="https://wa.me/50764746168" target="_blank" rel="noopener"
+             data-go='{"section":"tratamientos-faciales","carousel":"facialesCarousel","slide":1}'>Reservar por WhatsApp</a>
+        </article>
+        <article class="srv-card">
+          <h3>Hilos de Colágeno sin Agujas</h3>
+          <div class="srv-meta">Sesión personalizada</div>
+          <p>Efecto rejuvenecedor visible desde la primera sesión (costo según evaluación).</p>
+          <a class="srv-cta" href="https://wa.me/50764746168" target="_blank" rel="noopener"
+             data-go='{"section":"tratamientos-faciales"}'>Agendar evaluación</a>
+        </article>
+        <article class="srv-card">
+          <h3>Peeling + Limpieza Profunda</h3>
+          <div class="srv-meta">50–60 min aprox.</div>
+          <p>Reduce manchas y líneas finas; mejora textura y luminosidad.</p>
+          <a class="srv-cta" href="https://wa.me/50764746168" target="_blank" rel="noopener"
+             data-go='{"section":"tratamientos-faciales","carousel":"facialesCarousel","slide":0}'>Reservar</a>
+        </article>
+        <article class="srv-card">
+          <h3>Microdermoabrasión</h3>
+          <div class="srv-meta">45 min aprox.</div>
+          <p>Exfoliación controlada para suavizar poros y renovar el tono de la piel.</p>
+          <a class="srv-cta" href="https://wa.me/50764746168" target="_blank" rel="noopener"
+             data-go='{"section":"tratamientos-faciales"}'>Reservar</a>
+        </article>
+        <article class="srv-card">
+          <h3>Radiofrecuencia Facial</h3>
+          <div class="srv-meta">45–60 min aprox.</div>
+          <p>Estimulación térmica para firmeza y apariencia más compacta.</p>
+          <a class="srv-cta" href="https://wa.me/50764746168" target="_blank" rel="noopener"
+             data-go='{"section":"tratamientos-faciales"}'>Reservar</a>
+        </article>
+      </div>
+    </div>
+
+    <!-- MASAJES Y TERAPIAS (6) -->
+    <div id="masajes-tab" class="tab-panel hidden">
+      <div class="srv-grid">
+        <article class="srv-card">
+          <h3>Relajante Completo</h3>
+          <div class="srv-meta">60 min aprox.</div>
+          <p>Técnicas terapéuticas para aliviar tensión y equilibrar el cuerpo.</p>
+          <a class="srv-cta" href="https://wa.me/50764746168" target="_blank" rel="noopener"
+             data-go='{"section":"tratamientos-corporales"}'>Reservar</a>
+        </article>
+        <article class="srv-card">
+          <h3>Masaje Descontracturante</h3>
+          <div class="srv-meta">45–60 min aprox.</div>
+          <p>Focalizado en cuello y espalda para aliviar tensiones y mejorar movilidad.</p>
+          <a class="srv-cta" href="https://wa.me/50764746168" target="_blank" rel="noopener"
+             data-go='{"section":"tratamientos-corporales","carousel":"corporalesCarousel","slide":0}'>Reservar</a>
+        </article>
+        <article class="srv-card">
+          <h3>Masaje Reductor</h3>
+          <div class="srv-meta">45 min aprox.</div>
+          <p>Maniobras específicas para moldear, activar circulación y mejorar contorno.</p>
+          <a class="srv-cta" href="https://wa.me/50764746168" target="_blank" rel="noopener"
+             data-go='{"section":"tratamientos-corporales","carousel":"corporalesCarousel","slide":0}'>Reservar</a>
+        </article>
+        <article class="srv-card">
+          <h3>Piernas y Espalda Cansada</h3>
+          <div class="srv-meta">50 min aprox.</div>
+          <p>Alivio de pesadez y descanso muscular en zonas clave.</p>
+          <a class="srv-cta" href="https://wa.me/50764746168" target="_blank" rel="noopener"
+             data-go='{"section":"tratamientos-corporales"}'>Reservar</a>
+        </article>
+        <article class="srv-card">
+          <h3>Drenaje Post Operatorio</h3>
+          <div class="srv-meta">Sesión según indicación</div>
+          <p>Apoyo profesional para reducir edema y favorecer recuperación.</p>
+          <a class="srv-cta" href="https://wa.me/50764746168" target="_blank" rel="noopener"
+             data-go='{"section":"tratamientos-corporales","carousel":"corporalesCarousel","slide":1}'>Reservar</a>
+        </article>
+        <article class="srv-card">
+          <h3>Terapia para Adultos Mayores</h3>
+          <div class="srv-meta">Sesión personalizada</div>
+          <p>Maniobras suaves y seguras para bienestar, movilidad y descanso.</p>
+          <a class="srv-cta" href="https://wa.me/50764746168" target="_blank" rel="noopener"
+             data-go='{"section":"tratamientos-corporales","carousel":"corporalesCarousel","slide":1}'>Reservar</a>
+        </article>
+      </div>
+    </div>
+
+    <!-- ESPECIALIZADOS (6) -->
+    <div id="especiales-tab" class="tab-panel hidden">
+      <div class="srv-grid">
+        <article class="srv-card">
+          <h3>Membresía VIP</h3>
+          <div class="srv-meta">Mensual / anual</div>
+          <p>Ahorra durante todo el año en tus tratamientos favoritos.</p>
+          <a class="srv-cta" href="https://wa.me/50764746168" target="_blank" rel="noopener"
+             data-go='{"section":"tratamientos-faciales"}'>Solicitar info</a>
+        </article>
+        <article class="srv-card">
+          <h3>Hialuron Pen</h3>
+          <div class="srv-meta">Sesión personalizada</div>
+          <p>Hidratación y volumen de labios sin agujas, de forma no invasiva.</p>
+          <a class="srv-cta" href="https://wa.me/50764746168" target="_blank" rel="noopener"
+             data-go='{"section":"tratamientos-faciales"}'>Agendar consulta</a>
+        </article>
+        <article class="srv-card">
+          <h3>Plasma Rico en Plaquetas</h3>
+          <div class="srv-meta">Sesión personalizada</div>
+          <p>Bioestimulación para mejorar aspecto de piel y estimular el cabello.</p>
+          <a class="srv-cta" href="https://wa.me/50764746168" target="_blank" rel="noopener"
+             data-go='{"section":"tratamientos-faciales"}'>Agendar consulta</a>
+        </article>
+        <article class="srv-card">
+          <h3>Rejuvenecimiento Facial y Corporal</h3>
+          <div class="srv-meta">Plan de sesiones</div>
+          <p>Protocolos combinados no invasivos para firmeza y luminosidad.</p>
+          <a class="srv-cta" href="https://wa.me/50764746168" target="_blank" rel="noopener"
+             data-go='{"section":"tratamientos-faciales","carousel":"facialesCarousel","slide":1}'>Conocer plan</a>
+        </article>
+        <article class="srv-card">
+          <h3>Tratamiento Antiacné</h3>
+          <div class="srv-meta">Sesión + plan</div>
+          <p>Limpieza activa y cuidado de apoyo para piel con tendencia acneica.</p>
+          <a class="srv-cta" href="https://wa.me/50764746168" target="_blank" rel="noopener"
+             data-go='{"section":"tratamientos-faciales"}'>Evaluación</a>
+        </article>
+        <article class="srv-card">
+          <h3>Glow Express (Evento)</h3>
+          <div class="srv-meta">40–50 min aprox.</div>
+          <p>Ilumina y alisa la piel para ocasiones especiales, sin tiempo de baja.</p>
+          <a class="srv-cta" href="https://wa.me/50764746168" target="_blank" rel="noopener"
+             data-go='{"section":"tratamientos-faciales"}'>Reservar</a>
+        </article>
+      </div>
+    </div>
+
+    <p style="margin-top:16px;color:#6b7280;font-size:14px;">
+      💜 <b>Beneficio:</b> Ahorra más reservando por el <a href="#" style="text-decoration:underline">Directorio Yappi</a> (cupos limitados).
+    </p>
+  </section>
+
+  <!-- FACIALES (CARRUSEL) -->
   <section id="tratamientos-faciales">
     <h2>Tratamientos Faciales</h2>
     <div class="carousel" id="facialesCarousel" aria-roledescription="carousel">
@@ -380,7 +381,7 @@
     </div>
   </section>
 
-  <!-- CORPORALES -->
+  <!-- CORPORALES (CARRUSEL) -->
   <section id="tratamientos-corporales">
     <h2>Tratamientos Corporales</h2>
     <div class="carousel" id="corporalesCarousel" aria-roledescription="carousel">
@@ -538,16 +539,15 @@
 
   <!-- FABs -->
   <div class="fab-stack" aria-label="Accesos rápidos">
-    <!-- Nuevo: Ver Menú -->
+    <!-- Ver Menú -->
     <a class="fab menu" href="#menu-servicios" id="fabMenu" aria-label="Ver menú de servicios" title="Ver menú">
-      <!-- icono menú -->
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v2H3V6Zm0 5h18v2H3v-2Zm0 5h18v2H3v-2Z"/></svg>
     </a>
     <a class="fab waze" href="https://ul.waze.com/ul?q=2G42%2BGC%20Panam%C3%A1&navigate=yes" target="_blank" rel="noopener" aria-label="Cómo llegar con Waze" title="Waze">
       <svg viewBox="0 0 24 24"><path d="M12 3c4.15 0 7.5 3.13 7.5 7 0 2.39-1.35 4.05-2.62 5.2.06.34.12.9.12 1.22 0 .83-.67 1.5-1.5 1.5-.54 0-1.02-.29-1.28-.72-.45.11-.93.17-1.42.17-.48 0-.94-.06-1.38-.18-.24.44-.7.73-1.24.73-.83 0-1.5-.67-1.5-1.5 0-.22.04-.57.11-.88C6.77 14.29 4.5 12.13 4.5 10c0-3.87 3.35-7 7.5-7z" fill="#fff"/><circle cx="9.5" cy="10.4" r="1.1" fill="#2BC3F3"/><circle cx="14.5" cy="10.4" r="1.1" fill="#2BC3F3"/></svg>
     </a>
     <a class="fab whatsapp" href="https://wa.me/50764746168" target="_blank" rel="noopener" aria-label="WhatsApp Figura Rostro KG" title="WhatsApp">
-      <svg viewBox="0 0 24 24"><path d="M20.5 3.5A10 10 0 0 0 3.9 17.7L3 21l3.4-.9A10 10 0 1 0 20.5 3.5ZM12 20a8 8 0 0 1-4.1-1.1l-.3-.2-2.4.6.6-2.4-.2-.3A8 8 0 1 1 12 20Zm4-5.3c-.2-.1-1.2-.6-1.4-.7-.2-.1-.4-.1-.6.1l-.5.6c-.1.1-.3.1-.5.1-1 0-2.4-1.1-2.8-1.9-.2-.3-.2-.5 0-.7l.4-.5c.1-.2.1-.3 0-.5l-.7-1.5c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.7.7-1.1 1.6-1.1 2.5 0 .3.1.7.2 1 .6 1.6 2.4 3.3 3.9 3.9.3.1.7.2 1 .2.9 0 1.8-.3 2.5-1.1.2-.2.3-.4.3-.6v-.5c0-.2 0-.4-.2-.6Z" fill="#fff"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M20.5 3.5A10 10 0 0 0 3.9 17.7L3 21l3.4-.9A10 10 0 1 0 20.5 3.5ZM12 20a8 8 0 0 1-4.1-1.1l-.3-.2-2.4.6.6-2.4-.2-.3A8 8 0 1 1 12 20Zm4-5.3c-.2-.1-1.2-.6-1.4-.7-.2-.1-.4-.1-.6.1l-.5.6c-.1.1-.3.1-.5.1-1 0-2.4-1.1-2.8-1.9-.2-.3-.2-.5 0-.7l.4-.5c.1-.2.1-.3 0-.5l-.7-1.5c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.7.7-1.1 1.6-1.1 2.5 0 .3.1 .7.2 1 .6 1.6 2.4 3.3 3.9 3.9 .3 .1 .7 .2 1 .2 .9 0 1.8 -.3 2.5 -1.1 .2 -.2 .3 -.4 .3 -.6 v-.5 c0 -.2 0 -.4 -.2 -.6 Z" fill="#fff"/></svg>
     </a>
   </div>
 
@@ -609,7 +609,7 @@
     initCarousel('corporalesCarousel',{autoplayMs:6000});
   </script>
 
-  <!-- JS carrusel de ofertas (con flechas) -->
+  <!-- JS carrusel de ofertas -->
   <script>
   (function(){
     const track=document.querySelector('.offers-track');
@@ -657,7 +657,7 @@
     document.getElementById('y')?.append(new Date().getFullYear());
   </script>
 
-  <!-- JS Tabs del Menú de Servicios + Scroll amigable + FAB "Ver Menú" -->
+  <!-- JS Tabs + Scroll amigable + FAB "Ver Menú" -->
   <script>
     // Tabs de categorías
     (function(){
@@ -713,10 +713,10 @@
         e.preventDefault();
         section.scrollIntoView({behavior:'smooth', block:'start'});
         highlight(section.querySelector('h2') || section);
-        // actualiza hash sin salto brusco
         history.pushState(null, '', '#menu-servicios');
       });
     })();
   </script>
 </body>
 </html>
+
