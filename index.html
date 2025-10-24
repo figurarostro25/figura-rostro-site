@@ -759,7 +759,24 @@
   .site-footer{ background:#0f0f12 !important; }
   .site-footer .legal{ border-top-color:rgba(255,255,255,.08) }
 }
-   
+  /* ===== Móvil: espaciado de títulos y divisiones ===== */
+@media (max-width:640px){
+  #tratamientos-faciales > h2,
+  #tratamientos-corporales > h2{
+    margin-top:28px !important;
+    margin-bottom:16px !important;
+    letter-spacing:.2px;
+  }
+  /* banda gris clarita para cortar entre bloques */
+  #tratamientos-faciales,
+  #tratamientos-corporales{
+    padding-top:10px;
+    background:linear-gradient(#0f0f12 0 0) padding-box,
+               linear-gradient(180deg,#EDEAF6 0,#EDEAF6 10px,transparent 10px) border-box;
+    border-top:10px solid transparent;      /* truco para franja */
+  }
+}
+ 
   </style>
 </head>
 
