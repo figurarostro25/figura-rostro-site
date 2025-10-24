@@ -457,6 +457,56 @@
   .offer-dots{ margin-top:8px; }
 }
 
+ /* --- Promos del Mes (forzar layout móvil con alta especificidad) --- */
+@media (max-width:640px){
+  #ofertas .offer-card{
+    display:flex !important;
+    flex-direction:column !important;
+    border-radius:22px !important;
+    overflow:hidden !important;
+    box-shadow:0 10px 24px rgba(0,0,0,.12);
+  }
+  #ofertas .offer-info{
+    padding:16px 16px 10px !important;
+    text-align:left !important;
+  }
+  #ofertas .offer-card h3{
+    font-size:22px !important;
+    line-height:1.2 !important;
+    margin:0 0 6px !important;
+  }
+  #ofertas .offer-info p{
+    font-size:14px !important;
+    margin:.25rem 0 !important;
+    line-height:1.45 !important;
+  }
+
+  /* Imagen 100% con proporción estable */
+  #ofertas .offer-img{
+    width:100% !important;
+    order:2 !important;
+    aspect-ratio:16 / 10 !important;
+  }
+  #ofertas .offer-img img{
+    width:100% !important;
+    height:100% !important;
+    object-fit:cover !important;
+    display:block !important;
+  }
+  /* Fallback iOS antiguos sin aspect-ratio */
+  @supports not (aspect-ratio: 1){
+    #ofertas .offer-img{ height:clamp(170px, 44vw, 240px) !important; }
+    #ofertas .offer-img img{ height:100% !important; }
+  }
+
+  /* Evitar choque con FAB */
+  #ofertas .offers-viewport{ padding-right:78px !important; }
+  #ofertas .offer-nav.next{ right:82px !important; }
+  #ofertas .offer-nav.prev{ left:12px !important; }
+  #ofertas .offer-nav{ width:42px !important; height:42px !important; }
+  #ofertas .offer-dots{ margin-top:10px !important; }
+}
+   
   </style>
 </head>
 
