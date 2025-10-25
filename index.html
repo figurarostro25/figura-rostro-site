@@ -109,6 +109,25 @@ header .btn-primary:hover{
 @media (max-width:480px){
   .brand img{height:40px !important;}
 }
+/* ===== Carrusel Hero (extiende tu estilo actual) ===== */
+.hero{position:relative;min-height:58vh;display:flex;align-items:center;isolation:isolate;background:linear-gradient(180deg,#3b1d52 0%,#2a1438 50%,#1a0d24 100%);overflow:hidden}
+.hero-track{display:flex;height:100%;width:100%;position:absolute;inset:0;transition:transform .5s ease}
+.hero-slide{min-width:100%;height:100%;object-fit:cover;filter:brightness(.78)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.45));pointer-events:none}
+
+.hero .content{position:relative;color:#fff;padding:64px 0}
+.hero .badge{font-size:.75rem;letter-spacing:.15em;opacity:.9}
+.hero h1{font-size:clamp(32px,6vw,56px);line-height:1.05;margin:.6rem 0 1rem;font-weight:800}
+.grad{background:linear-gradient(90deg,#f0abfc,#fecdd3);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn-ghost{border:1px solid rgba(255,255,255,.65);color:#fff;padding:12px 18px;border-radius:14px;text-decoration:none}
+
+.hero-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:40px;height:40px;border-radius:999px;background:rgba(0,0,0,.35);color:#fff;border:0;font-size:26px;cursor:pointer}
+.hero-arrow.left{left:10px} .hero-arrow.right{right:10px}
+.hero-arrow:hover{background:rgba(0,0,0,.55)}
+
+.hero-dots{position:absolute;left:0;right:0;bottom:12px;display:flex;gap:8px;justify-content:center;z-index:2}
+.hero-dots button{width:9px;height:9px;border-radius:999px;border:0;background:rgba(255,255,255,.45);cursor:pointer}
+.hero-dots button[aria-current="true"]{background:#fff}
 
   </style>
 </head>
@@ -134,18 +153,34 @@ header .btn-primary:hover{
   </header>
 
   <!-- Hero -->
-  <section class="hero" id="inicio">
-    <img class="bg" src="hero.jpg" alt="Spa y estética – Figura Rostro KG">
-    <div class="container content">
-      <span class="badge">Royal Park · Panamá</span>
-      <h1>Belleza real, resultados <span class="grad">visibles</span></h1>
-      <p style="max-width:680px;opacity:.9">Tratamientos faciales, masajes terapéuticos y rejuvenecimiento no invasivo en un ambiente cálido y profesional.</p>
-      <div class="cta" style="margin-top:14px">
-        <a href="#promos" class="btn-primary">Ver promociones</a>
-        <a href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" class="btn-ghost" target="_blank" rel="noopener">Cómo llegar</a>
-      </div>
+ <section class="hero" id="inicio" aria-label="Carrusel principal">
+  <!-- Pista deslizante -->
+  <div class="hero-track" id="heroTrack">
+    <!-- Estas imágenes ya las subiste. Puedes usar hero.jpg, hero-1.jpg, hero-2.jpg, hero-3.jpg -->
+    <img src="hero.jpg"    alt="Figura Rostro KG – Belleza real" class="hero-slide">
+    <img src="hero-1.jpg"  alt="Figura Rostro KG – Limpieza facial" class="hero-slide">
+    <img src="hero-2.jpg"  alt="Figura Rostro KG – Masaje relajante" class="hero-slide">
+  </div>
+
+  <!-- Contenido dinámico encima (título, texto y botones) -->
+  <div class="container content" id="heroContent">
+    <span class="badge">Royal Park · Panamá</span>
+    <h1 id="heroTitle">Belleza real, resultados <span class="grad">visibles</span></h1>
+    <p id="heroText" style="max-width:680px;opacity:.9">
+      Tratamientos faciales, masajes terapéuticos y rejuvenecimiento no invasivo en un ambiente cálido y profesional.
+    </p>
+    <div class="cta" style="margin-top:14px">
+      <a href="#promos" class="btn-primary">Ver promociones</a>
+      <a href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" class="btn-ghost" target="_blank" rel="noopener">Cómo llegar</a>
     </div>
-  </section>
+  </div>
+
+  <!-- Controles -->
+  <button class="hero-arrow left"  aria-label="Anterior" id="heroPrev">‹</button>
+  <button class="hero-arrow right" aria-label="Siguiente" id="heroNext">›</button>
+  <div class="hero-dots" id="heroDots" aria-label="Indicadores"></div>
+</section>
+
 
   <!-- Sobre nosotros -->
   <section id="sobre">
@@ -370,5 +405,99 @@ header .btn-primary:hover{
     // Año automático
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+<script>
+(function(){
+  // Contenido por slide (títulos y textos). Ajusta si quieres.
+  const slidesMeta = [
+    {
+      title: 'Belleza real, resultados <span class="grad">visibles</span>',
+      text:  'Tratamientos faciales, masajes terapéuticos y rejuvenecimiento no invasivo en un ambiente cálido y profesional.'
+    },
+    {
+      title: 'Limpieza facial <span class="grad">premium</span>',
+      text:  'Higiene profunda + mascarilla nutritiva: piel más clara e hidratada desde la primera sesión.'
+    },
+    {
+      title: 'Masaje <span class="grad">relajante</span> que libera tensión',
+      text:  'Desconecta, mejora tu descanso y equilibra cuerpo y mente con técnicas seguras.'
+    }
+    // Si agregas hero-3.jpg, añade otro objeto aquí con su title/text
+  ];
+
+  const track = document.getElementById('heroTrack');
+  const slides = Array.from(track.children);
+  const btnPrev = document.getElementById('heroPrev');
+  const btnNext = document.getElementById('heroNext');
+  const dotsWrap = document.getElementById('heroDots');
+  const titleEl = document.getElementById('heroTitle');
+  const textEl  = document.getElementById('heroText');
+
+  let idx = 0, timer = null, touchStartX = 0, touchDelta = 0;
+
+  // Dots
+  slides.forEach((_,i)=>{
+    const b = document.createElement('button');
+    b.setAttribute('aria-label', 'Ir al slide ' + (i+1));
+    b.addEventListener('click', ()=>go(i,true));
+    dotsWrap.appendChild(b);
+  });
+
+  function updateUI(){
+    track.style.transform = `translateX(-${idx*100}%)`;
+    [...dotsWrap.children].forEach((d,i)=>d.setAttribute('aria-current', i===idx ? 'true' : 'false'));
+
+    // Actualiza textos por slide (si no hay meta, usa la primera como fallback)
+    const meta = slidesMeta[idx] || slidesMeta[0];
+    if (meta) {
+      titleEl.innerHTML = meta.title;
+      textEl.textContent = meta.text;
+    }
+  }
+
+  function go(n, user=false){
+    idx = (n + slides.length) % slides.length;
+    updateUI();
+    if(user) restart();
+  }
+  function next(){ go(idx+1) }
+  function prev(){ go(idx-1) }
+
+  btnNext.addEventListener('click', ()=>go(idx+1,true));
+  btnPrev.addEventListener('click', ()=>go(idx-1,true));
+
+  // Auto-rotate
+  function start(){ timer = setInterval(next, 5000) } // cada 5 s
+  function stop(){ clearInterval(timer) }
+  function restart(){ stop(); start() }
+
+  // Swipe táctil
+  track.addEventListener('touchstart', e => {
+    stop();
+    touchStartX = e.touches[0].clientX;
+    touchDelta = 0;
+  }, {passive:true});
+
+  track.addEventListener('touchmove', e => {
+    touchDelta = e.touches[0].clientX - touchStartX;
+  }, {passive:true});
+
+  track.addEventListener('touchend', () => {
+    if (Math.abs(touchDelta) > 50) {
+      if (touchDelta < 0) next(); else prev();
+    }
+    restart();
+  });
+
+  // Teclado (accesibilidad)
+  window.addEventListener('keydown', e=>{
+    if(e.key==='ArrowRight') go(idx+1,true);
+    if(e.key==='ArrowLeft')  go(idx-1,true);
+  });
+
+  // Inicia
+  updateUI(); start();
+})();
+</script>
+  
 </body>
 </html>
