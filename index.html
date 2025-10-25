@@ -229,6 +229,37 @@ header .btn-primary:hover{
     display: block;
   }
 }
+/* === Ajuste del hero en pantallas móviles === */
+@media (max-width: 768px) {
+  .hero {
+    height: 88vh; /* un poco menos alto que pantalla completa */
+  }
+
+  .hero-content {
+    padding: 0 1.5rem;
+  }
+
+  .hero-content h1 {
+    font-size: 1.8rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 10px;
+  }
+
+  .hero-content p {
+    font-size: 1rem !important;
+    line-height: 1.4 !important;
+  }
+
+  .hero-content .cta {
+    margin-top: 10px !important;
+  }
+
+  .hero-slide img,
+  .hero-slide {
+    object-fit: cover;
+    object-position: center;
+  }
+}
 
   </style>
 </head>
