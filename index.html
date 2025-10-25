@@ -260,6 +260,28 @@ header .btn-primary:hover{
     object-position: center;
   }
 }
+/* Móvil: logo centrado, SIN botón hamburguesa, nav oculto */
+@media (max-width: 900px){
+  .header-inner{ justify-content:center; position:relative; }
+  .brand{ margin:0 auto; }
+  .btn-primary{ display:none !important; }     /* oculta "Reservar cita" en móvil */
+  .nav-toggle{ display:none !important; }      /* oculta el botón ☰ en móvil */
+  nav{ display:none !important; }              /* oculta el menú en móvil */
+}
+/* Footer: evitar desbordes y dar aire en móvil */
+footer .container{
+  padding-bottom: 120px; /* deja espacio para los FAB (WhatsApp/Waze) */
+}
+footer p, footer a{
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  line-height: 1.45;
+}
+@media (max-width: 900px){
+  footer p, footer a{
+    font-size: 0.95rem;
+  }
+}
 
   </style>
 </head>
@@ -494,10 +516,24 @@ header .btn-primary:hover{
           <input id="frm-nombre" type="text" placeholder="Nombre" required style="padding:12px;border-radius:12px;border:1px solid #e5e3ea">
           <input id="frm-telefono" type="tel" placeholder="Teléfono" required style="padding:12px;border-radius:12px;border:1px solid #e5e3ea">
           <select id="frm-servicio" style="padding:12px;border-radius:12px;border:1px solid #e5e3ea">
-            <option value="una limpieza facial">Limpieza Facial</option>
-            <option value="un masaje relajante">Masaje Relajante</option>
-            <option value="un tratamiento de rejuvenecimiento">Rejuvenecimiento</option>
-          </select>
+  <option value="un masaje relajante">Masaje relajante</option>
+  <option value="un masaje descontracturante">Masaje descontracturante</option>
+  <option value="una limpieza facial">Limpieza facial</option>
+  <option value="una limpieza facial profunda">Limpieza facial profunda</option>
+  <option value="una limpieza con punta de diamante">Limpieza con punta de diamante</option>
+  <option value="un peeling facial">Peeling facial</option>
+  <option value="masajes reductores">Masajes reductores</option>
+  <option value="un masaje para adultos mayores">Masaje para adultos mayores</option>
+  <option value="una keratina orgánica">Keratina orgánica</option>
+  <option value="un rejuvenecimiento facial">Rejuvenecimiento facial</option>
+  <option value="un rejuvenecimiento corporal">Rejuvenecimiento corporal</option>
+  <option value="eliminación de lunares y verrugas">Eliminación de lunares y verrugas</option>
+  <option value="un masaje exprés">Masaje exprés</option>
+  <option value="maquillaje">Maquillaje</option>
+  <option value="uñas">Uñas</option>
+  <option value="otros tratamientos">Otros tratamientos</option>
+</select>
+
           <textarea id="frm-mensaje" placeholder="Mensaje (opcional)" rows="4" style="padding:12px;border-radius:12px;border:1px solid #e5e3ea"></textarea>
 
           <!-- Botón que abre WhatsApp (simple y seguro) -->
