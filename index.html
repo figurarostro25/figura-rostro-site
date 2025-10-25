@@ -128,6 +128,26 @@ header .btn-primary:hover{
 .hero-dots{position:absolute;left:0;right:0;bottom:12px;display:flex;gap:8px;justify-content:center;z-index:2}
 .hero-dots button{width:9px;height:9px;border-radius:999px;border:0;background:rgba(255,255,255,.45);cursor:pointer}
 .hero-dots button[aria-current="true"]{background:#fff}
+/* === Mejora de visibilidad del texto en el carrusel === */
+.hero-slide::before {
+  background: rgba(0,0,0,0.45) !important; /* reduce la opacidad del filtro */
+}
+
+.hero-content h1 {
+  color: #ffffff !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+  font-weight: 800;
+}
+
+.hero-content p {
+  color: #f0f0f0 !important;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.3);
+}
+
+.hero-content .grad {
+  color: #d9b3ff !important; /* conserva el toque morado */
+  font-weight: 800;
+}
 
   </style>
 </head>
