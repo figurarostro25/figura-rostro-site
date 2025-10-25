@@ -68,6 +68,48 @@
     .fr-wa{background:#25D366}  /* WhatsApp */
     .fr-waze{background:#2962ff} /* Waze */
     @media (max-width:480px){ .fr-btn{min-width:44px;height:44px;padding:0 12px;font-size:14px} }
+  /* ===== Header oscuro con logo blanco ===== */
+header{
+  background: linear-gradient(180deg,#160c1f 0%, #241235 100%) !important;
+  border-bottom: 1px solid rgba(255,255,255,.08) !important;
+}
+.header-inner{
+  padding-top: 18px !important;
+  padding-bottom: 18px !important;
+}
+.brand img{
+  height: 44px !important;
+  width: auto !important;
+}
+
+/* Menú en blanco */
+header nav a{
+  color:#ffffff !important;
+  opacity:.95;
+  text-decoration:none;
+  font-weight:600;
+}
+header nav a:hover{
+  opacity:1;
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+
+/* Botón “Reservar cita”: fondo blanco, texto morado */
+header .btn-primary{
+  background:#ffffff !important;
+  color: var(--brand) !important;
+  border: 1px solid rgba(255,255,255,0) !important;
+}
+header .btn-primary:hover{
+  filter: brightness(0.95);
+}
+
+/* Ajuste opcional para móviles */
+@media (max-width:480px){
+  .brand img{height:40px !important;}
+}
+
   </style>
 </head>
 <body>
