@@ -171,6 +171,64 @@ header .btn-primary:hover{
   /* cuando abre */
   header.open nav{ display:block; }
 }
+/* === Versión móvil: logo centrado, menú hamburguesa, ocultar botón "Reservar cita" === */
+@media (max-width: 900px){
+  .header-inner{
+    justify-content: center;
+    position: relative;
+  }
+
+  /* Centrar logo */
+  .brand{
+    margin: 0 auto;
+  }
+
+  /* Ocultar botón "Reservar cita" */
+  .btn-primary{
+    display: none !important;
+  }
+
+  /* Mostrar botón hamburguesa */
+  .nav-toggle{
+    display: inline-block;
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.5);
+    color: #fff;
+    font-size: 22px;
+    border-radius: 8px;
+    padding: 6px 10px;
+    z-index: 50;
+  }
+
+  /* Menú desplegable */
+  nav{
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: rgba(25, 10, 35, 0.98);
+    padding: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+  }
+  nav a{
+    display: block;
+    color: #fff !important;
+    padding: 12px 0;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  /* Mostrar menú al abrir */
+  header.open nav{
+    display: block;
+  }
+}
 
   </style>
 </head>
