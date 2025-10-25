@@ -282,6 +282,47 @@ footer p, footer a{
     font-size: 0.95rem;
   }
 }
+/* === Hero móvil: centrado, tamaño más compacto y mejor encuadre === */
+@media (max-width: 768px){
+  .hero{ height: 82vh; }                 /* un poco más bajo */
+  .hero .content{ 
+    text-align:center; 
+    padding: 24px 16px !important; 
+    max-width: 92vw; 
+    margin: 0 auto; 
+  }
+  .hero .badge{ 
+    display:inline-block; 
+    font-size:.72rem !important; 
+    opacity:.95; 
+    margin-bottom:6px;
+  }
+  .hero h1{ 
+    font-size: 1.7rem !important;        /* título más chico */
+    line-height: 1.15 !important; 
+    margin: 6px 0 8px !important; 
+    font-weight: 800;
+  }
+  #heroText{ 
+    font-size: .98rem !important;        /* párrafo más chico */
+    line-height: 1.35 !important; 
+    max-width: 90vw; 
+    margin: 0 auto 10px;
+  }
+  .hero .cta{ 
+    justify-content: center; 
+    gap: 8px !important; 
+    flex-wrap: wrap; 
+    margin-top: 10px !important; 
+  }
+  .hero .cta a{ 
+    padding: 10px 14px !important;       /* botones más compactos */
+    border-radius: 12px !important; 
+    font-weight: 700;
+  }
+  /* flechas un poco más pequeñas para no tapar texto */
+  .hero-arrow{ width:34px;height:34px;font-size:22px }
+}
 
   </style>
 </head>
