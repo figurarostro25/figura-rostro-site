@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Evitar rastrear carpetas internas sin contenido público
+Disallow: /assets/
+
+# Enlace al mapa del sitio
+Sitemap: https://figurarostro.life/sitemap.xml
