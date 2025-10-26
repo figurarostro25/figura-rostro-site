@@ -379,6 +379,32 @@ footer p, footer a{
   color:#fff;
   opacity:.98;
 }
+/* ==== Ajuste de altura del hero en móvil ==== */
+.hero {
+  min-height: 80vh; /* altura estándar en escritorio */
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 65vh; /* reduce altura en pantallas pequeñas */
+  }
+
+  .hero .content {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .hero .content h1 {
+    font-size: 1.8rem; /* reduce el tamaño del título */
+    line-height: 1.2;
+  }
+
+  .hero .content p {
+    font-size: 0.95rem;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+}
 
   </style>
 </head>
