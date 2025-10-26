@@ -452,6 +452,66 @@ header .brand img {
     margin: 0 auto;
   }
 }
+/* ===== Overlay del hero un poco más claro ===== */
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  /* suaviza el overlay para que se lea mejor sin opacar tanto */
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,.12) 0%,
+    rgba(0,0,0,.24) 100%
+  );
+  pointer-events:none;
+}
+
+/* ===== Tamaño/altura del hero (banner) ===== */
+.hero{
+  position: relative;
+  min-height: 68vh;  /* desktop/tablet */
+  display: grid;
+  align-items: center;
+}
+@media (max-width: 768px){
+  .hero{
+    min-height: 62vh; /* móvil: más bajo para que no “llene” toda la pantalla */
+  }
+}
+
+/* Espaciado del contenido del hero para centrar mejor el texto/CTAs */
+.hero .content{
+  position: relative;
+  z-index: 1;
+  padding: 18vh 0 12vh; /* ajusta si lo quieres más arriba/abajo */
+}
+
+/* Texto del hero un poquito más nítido y legible sobre la foto */
+.hero .content h1{
+  color:#fff;
+  text-shadow: 0 2px 12px rgba(0,0,0,.18);
+}
+.hero .content p{
+  color: rgba(255,255,255,.92);
+  text-shadow: 0 2px 8px rgba(0,0,0,.12);
+}
+
+/* ===== Header/Logo más vistoso ===== */
+.header-inner{
+  align-items: center;
+  padding: 10px 0;
+}
+
+/* Tamaño del logo (desktop) */
+.brand img{
+  height: 40px;
+}
+
+/* En móvil, un poco más grande para destacarlo */
+@media (max-width: 768px){
+  .header-inner{ padding: 12px 0; }
+  .brand img{ height: 36px; }
+}
     
   </style>
 </head>
@@ -472,6 +532,11 @@ header .brand img {
 <nav>
   <a href="#sobre">Sobre nosotros</a>
   <a href="#servicios">Servicios</a>
+
+  <!-- Enlaces REALES a páginas internas -->
+  <a href="/masajes-terapeuticos/">Masajes</a>
+  <a href="/tratamientos-faciales/">Tratamientos faciales</a>
+
   <a href="#promos">Promos del mes</a>
   <a href="#productos">Productos</a>
   <a href="#galeria">Galería</a>
@@ -479,40 +544,31 @@ header .brand img {
 </nav>
 
 
+
       <a class="btn-primary" href="https://wa.me/50764746168?text=Hola%20quiero%20reservar%20una%20cita" target="_blank" rel="noopener">Reservar cita</a>
     </div>
   </header>
 
-  <!-- Hero -->
- <section class="hero" id="inicio" aria-label="Carrusel principal">
-  <!-- Pista deslizante -->
-  <div class="hero-track" id="heroTrack">
-    <!-- Estas imágenes ya las subiste. Puedes usar hero.jpg, hero-1.jpg, hero-2.jpg, hero-3.jpg -->
-    <img src="hero.jpg"    alt="Figura Rostro KG – Belleza real" class="hero-slide">
-    <img src="hero-1.jpg"  alt="Figura Rostro KG – Limpieza facial" class="hero-slide">
-    <img src="hero-2.jpg"  alt="Figura Rostro KG – Masaje relajante" class="hero-slide">
+<!-- Hero -->
+<section class="hero">
+  <img class="bg" src="banner-spa.png" alt="Spa y estética - Figura Rostro KG" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
+  <div class="container">
+    <div class="content">
+      <span class="badge">Royal Park · Panamá</span>
+      <h1>
+        Belleza real, resultados <span class="grad">visibles</span>
+      </h1>
+      <p style="max-width:680px;opacity:.94;">
+        Tratamientos faciales, masajes terapéuticos y rejuvenecimiento no invasivo en un ambiente cálido y profesional.
+      </p>
+      <div class="cta" style="margin-top:14px;">
+        <a href="#promos" class="btn-primary">Ver promociones</a>
+        <a href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" class="btn-ghost" target="_blank" rel="noopener">Cómo llegar</a>
+      </div>
+    </div>
   </div>
-
-  <!-- Contenido dinámico encima (título, texto y botones) -->
-  <div class="container content" id="heroContent">
-    <span class="badge">Royal Park · Panamá</span>
-    <h1 id="heroTitle">Belleza real, resultados <span class="grad">visibles</span></h1>
-    <p id="heroText" style="max-width:680px;opacity:.9">
-      Tratamientos faciales, masajes terapéuticos y rejuvenecimiento no invasivo en un ambiente cálido y profesional.
-    </p>
-  <div class="cta" style="margin-top:14px">
-  <a href="https://wa.me/50764746168?text=Hola%20quiero%20agendar%20una%20cita" class="btn-primary" target="_blank" rel="noopener">Agendar</a>
-  <a href="#promos" class="btn-primary">Ver promociones</a>
-  <a href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" class="btn-ghost" target="_blank" rel="noopener">Cómo llegar</a>
-</div>
-
-  </div>
-
-  <!-- Controles -->
-  <button class="hero-arrow left"  aria-label="Anterior" id="heroPrev">‹</button>
-  <button class="hero-arrow right" aria-label="Siguiente" id="heroNext">›</button>
-  <div class="hero-dots" id="heroDots" aria-label="Indicadores"></div>
 </section>
+
 
 
   <!-- Sobre nosotros -->
@@ -736,6 +792,12 @@ header .brand img {
     <a href="/masajes-terapeuticos/" style="color:#5b2580; text-decoration:none; margin:0 8px;">Masajes terapéuticos</a> |
     <a href="/tratamientos-faciales/" style="color:#5b2580; text-decoration:none; margin:0 8px;">Tratamientos faciales</a>
   </div>
+<!-- Enlaces internos (SEO / navegación) -->
+<div style="margin-top:10px;">
+  <a href="/masajes-terapeuticos/" style="color:#5b2580; text-decoration:none; margin-right:10px;">Masajes terapéuticos</a>
+  <a href="/tratamientos-faciales/" style="color:#5b2580; text-decoration:none; margin-left:10px;">Tratamientos faciales</a>
+</div>
+   
 </footer>
 
   <!-- FAB: WhatsApp + Waze -->
