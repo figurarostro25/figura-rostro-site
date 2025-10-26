@@ -406,6 +406,53 @@ footer p, footer a{
   }
 }
 
+/* ===== Ajuste del header y hero ===== */
+
+/* Header más alto y logo más visible */
+header {
+  padding: 18px 0; /* antes probablemente tenías 10px o 12px */
+}
+
+header .brand img {
+  height: 40px; /* aumenta ligeramente el tamaño del logo */
+}
+
+/* Hero general */
+.hero {
+  min-height: 80vh; /* escritorio */
+}
+
+/* Versión móvil */
+@media (max-width: 768px) {
+  header {
+    padding: 20px 0;
+  }
+
+  header .brand img {
+    height: 44px; /* un poco más grande en móviles */
+  }
+
+  .hero {
+    min-height: 60vh; /* reduce altura total del banner */
+  }
+
+  .hero .content {
+    padding-top: 30px;
+    padding-bottom: 20px;
+  }
+
+  .hero .content h1 {
+    font-size: 1.6rem;
+    line-height: 1.2;
+  }
+
+  .hero .content p {
+    font-size: 0.9rem;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+}
+    
   </style>
 </head>
 <body>
