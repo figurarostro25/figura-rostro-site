@@ -512,6 +512,53 @@ header .brand img {
   .header-inner{ padding: 12px 0; }
   .brand img{ height: 36px; }
 }
+/* ===== HERO (banner) más luminoso y más bajo ===== */
+.hero{
+  position: relative;
+  display: grid;
+  align-items: center;
+  min-height: 68vh;              /* escritorio */
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(180deg, rgba(0,0,0,.12) 0%, rgba(0,0,0,.24) 100%);
+  pointer-events:none;
+}
+@media (max-width: 768px){
+  .hero{ min-height: 62vh; }     /* móvil: menos alto */
+}
+
+/* Texto del hero más legible */
+.hero .content h1{
+  color:#fff;
+  text-shadow: 0 2px 12px rgba(0,0,0,.18);
+}
+.hero .content p{
+  color: rgba(255,255,255,.92);
+  text-shadow: 0 2px 8px rgba(0,0,0,.12);
+  /* si tu <p> tenía style="opacity:.9", quítalo en el HTML */
+}
+
+/* ===== Header / logo más vistoso ===== */
+.header-inner{ align-items:center; padding: 12px 0; }
+.brand img{ height: 40px; }
+@media (max-width: 768px){
+  .header-inner{ padding: 14px 0; }
+  .brand img{ height: 36px; }
+}
+
+/* ===== Nav: espaciado cómodo y clics fáciles ===== */
+nav{ display:flex; gap:22px; align-items:center; }
+nav a{ text-decoration:none; font-weight:600; opacity:.92 }
+nav a:hover{ opacity:1 }
+
+/* ===== Ajustes tipográficos suaves (móvil) ===== */
+@media (max-width: 768px){
+  .hero .content h1{ font-size: 1.6rem; line-height: 1.2; }
+  .hero .content p{ font-size: .95rem; max-width: 90%; margin: 0 auto; }
+}
     
   </style>
 </head>
@@ -533,7 +580,7 @@ header .brand img {
   <a href="#sobre">Sobre nosotros</a>
   <a href="#servicios">Servicios</a>
 
-  <!-- Enlaces REALES a páginas internas -->
+  <!-- Enlaces REALES -->
   <a href="/masajes-terapeuticos/">Masajes</a>
   <a href="/tratamientos-faciales/">Tratamientos faciales</a>
 
@@ -542,8 +589,6 @@ header .brand img {
   <a href="#galeria">Galería</a>
   <a href="#contacto">Contacto</a>
 </nav>
-
-
 
       <a class="btn-primary" href="https://wa.me/50764746168?text=Hola%20quiero%20reservar%20una%20cita" target="_blank" rel="noopener">Reservar cita</a>
     </div>
@@ -575,7 +620,7 @@ header .brand img {
   <section id="sobre">
     <div class="container">
       <h2 class="muted" style="font-size:40px;margin:0 0 10px">Sobre nosotros</h2>
-      <p style="max-width:800px;">
+      <p style="max-width:800px;">…</p>
         En Figura Rostro KG combinamos ciencia, técnicas manuales y aparatología no invasiva para realzar tu
         belleza sin sacrificar la salud de tu piel. Trabajamos con protocolos claros y productos profesionales.
       </p>
@@ -794,6 +839,11 @@ header .brand img {
   </div>
 <!-- Enlaces internos (SEO / navegación) -->
 <div style="margin-top:10px;">
+  <a href="/masajes-terapeuticos/" style="color:#5b2580; text-decoration:none; margin-right:10px;">Masajes terapéuticos</a>
+  <a href="/tratamientos-faciales/" style="color:#5b2580; text-decoration:none; margin-left:10px;">Tratamientos faciales</a>
+</div>
+<!-- Enlaces internos (SEO / navegación) -->
+<div style="margin-top:10px; text-align:center;">
   <a href="/masajes-terapeuticos/" style="color:#5b2580; text-decoration:none; margin-right:10px;">Masajes terapéuticos</a>
   <a href="/tratamientos-faciales/" style="color:#5b2580; text-decoration:none; margin-left:10px;">Tratamientos faciales</a>
 </div>
