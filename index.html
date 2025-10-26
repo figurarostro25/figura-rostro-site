@@ -355,6 +355,30 @@ footer p, footer a{
   /* flechas un poco más pequeñas para no tapar texto */
   .hero-arrow{ width:34px;height:34px;font-size:22px }
 }
+/* Brillo del hero: overlay más claro */
+.hero::before {
+  /* si ya existe, reemplaza su background por esta versión */
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,.12) 0%,
+    rgba(0,0,0,.28) 100%
+  );
+  /* por si no lo tenías */
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+
+/* Texto un poquito más nítido */
+.hero .content h1 {
+  color:#fff;
+  text-shadow: 0 2px 12px rgba(0,0,0,.18);
+}
+.hero .content p {
+  color:#fff;
+  opacity:.98;
+}
 
   </style>
 </head>
