@@ -342,6 +342,25 @@ nav a[href="#sobre"] {
   .hero p{  font-size: 14px; opacity: .92; }
   .btn-ghost, .btn-primary{ padding: 10px 14px; border-radius: 12px; }
 }
+/* ==== Móvil: ocultar "Sobre nosotros" y hacer clicables las promos ==== */
+@media (max-width: 768px){
+  /* Oculta la sección "Sobre nosotros" en móvil */
+  #sobre{ display:none !important; }
+
+  /* El overlay clicable para las promos */
+  .promos .card.promo{ position:relative; }
+  .promos .card.promo a.promo-link{
+    position:absolute;
+    inset:0;                 /* cubre toda la tarjeta */
+    border-radius:12px;      /* respeta esquinas redondeadas */
+    z-index:5;
+  }
+  /* Opcional: oculta el botón para no duplicar la acción en móvil */
+  .promos .card.promo .btn-primary{ display:none; }
+
+  /* Feedback visual */
+  .promos .card.promo img{ cursor:pointer; }
+}
  
   </style>
 </head>
@@ -409,14 +428,19 @@ nav a[href="#sobre"] {
       <p style="opacity:.85;margin-bottom:16px">Cupos limitados. Precios especiales reservando por WhatsApp.</p>
 
       <div class="promos">
-        <article class="card promo">
-          <img src="promo-relax.jpg" alt="Combo Relax Premium">
-          <h3>✨ Combo Relax Premium</h3>
-          <p>Masaje relajante + limpieza facial premium con mascarilla hidratante.</p>
-          <p style="font-weight:700;margin:.5rem 0">Antes <span style="text-decoration:line-through">$110</span> · Ahora <span style="color:#0a7b2d">$85</span></p>
-          <a class="btn-primary" href="https://wa.me/50764746168?text=Hola%20quiero%20el%20Combo%20Relax%20Premium%20de%20$85" target="_blank" rel="noopener">Reservar</a>
-        </article>
+       <article class="card promo">
+  <img src="promo-relax.jpg" alt="Combo Relax Premium">
+  <h3>Combo Relax Premium</h3>
+  <p>Masaje + limpieza facial + aromaterapia</p>
+  <p><strong>$85</strong></p>
 
+  <!-- Enlace invisible clicable -->
+  <a class="promo-link"
+     href="https://wa.me/50764746168?text=Hola%20quiero%20el%20Combo%20Relax%20Premium%20de%20$85"
+     target="_blank" rel="noopener"
+     aria-label="Reservar Combo Relax Premium por WhatsApp"></a>
+</article>
+ 
         <article class="card promo">
           <img src="promo-peeling.jpg" alt="Peeling facial unisex">
           <h3>Peeling Facial Unisex</h3>
