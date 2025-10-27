@@ -326,6 +326,23 @@ nav a[href="#galeria"],
 nav a[href="#sobre"] {
   display: none !important;
 }   
+   /* ==== HERO compacto en móvil (no afecta escritorio) ==== */
+@media (max-width: 768px){
+  .hero{
+    min-height: 44vh;              /* ~mitad de pantalla, look 16:9 compacto */
+    background-size: cover;        /* mantiene calidad */
+    background-position: center 40%;
+  }
+  .hero .content{
+    padding: 16px 0;               /* menos aire para que el contenido suba */
+    max-width: 90%;
+    margin-inline: auto;
+  }
+  .hero h1{ font-size: clamp(22px, 6.5vw, 28px); line-height: 1.15; }
+  .hero p{  font-size: 14px; opacity: .92; }
+  .btn-ghost, .btn-primary{ padding: 10px 14px; border-radius: 12px; }
+}
+ 
   </style>
 </head>
 <body>
@@ -369,7 +386,56 @@ nav a[href="#sobre"] {
     <a href="#contacto" class="btn-ghost">Cómo llegar</a>
   </div>
 </section>
+<!-- ==== Video destacado ==== -->
+<section id="video" class="video-hero">
+  <div class="container">
+    <div class="video-wrap" aria-label="Video de presentación">
+      <!-- Reemplaza la URL con la de tu video: usa formato /embed/ -->
+      <iframe
+        src="https://www.youtube.com/embed/VIDEO_ID?rel=0&modestbranding=1"
+        title="Figura Rostro KG - Presentación"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</section>
+  <!-- Promos del mes -->
+  <section id="promos" style="background:#faf7ff">
+    <div class="container">
+      <h2 class="muted" style="font-size:34px;margin:0 0 10px">Promos del mes</h2>
+      <p style="opacity:.85;margin-bottom:16px">Cupos limitados. Precios especiales reservando por WhatsApp.</p>
 
+      <div class="promos">
+        <article class="card promo">
+          <img src="promo-relax.jpg" alt="Combo Relax Premium">
+          <h3>✨ Combo Relax Premium</h3>
+          <p>Masaje relajante + limpieza facial premium con mascarilla hidratante.</p>
+          <p style="font-weight:700;margin:.5rem 0">Antes <span style="text-decoration:line-through">$110</span> · Ahora <span style="color:#0a7b2d">$85</span></p>
+          <a class="btn-primary" href="https://wa.me/50764746168?text=Hola%20quiero%20el%20Combo%20Relax%20Premium%20de%20$85" target="_blank" rel="noopener">Reservar</a>
+        </article>
+
+        <article class="card promo">
+          <img src="promo-peeling.jpg" alt="Peeling facial unisex">
+          <h3>Peeling Facial Unisex</h3>
+          <p>Renueva tu piel y luce un rostro más luminoso.</p>
+          <p style="font-weight:700;margin:.5rem 0">Antes <span style="text-decoration:line-through">$120</span> · Ahora <span style="color:#0a7b2d">$85</span></p>
+          <a class="btn-primary" href="https://wa.me/50764746168?text=Hola%20quiero%20el%20Peeling%20Facial%20a%20$85" target="_blank" rel="noopener">Reservar</a>
+        </article>
+
+        <article class="card promo">
+          <img src="promo-descontracturante.jpg" alt="Descontracturante + limpieza">
+          <h3>Descontracturante + Limpieza</h3>
+          <p>Alivia tensiones musculares y relaja cuerpo y mente.</p>
+          <p style="font-weight:700;margin:.5rem 0">Antes <span style="text-decoration:line-through">$110</span> · Ahora <span style="color:#0a7b2d">$95</span></p>
+          <a class="btn-primary" href="https://wa.me/50764746168?text=Hola%20quiero%20el%20pack%20Descontracturante%20+%20Limpieza%20a%20$95" target="_blank" rel="noopener">Reservar</a>
+        </article>
+      </div>
+    </div>
+  </section>
+S
   <!-- Sobre nosotros -->
   <section id="sobre">
     <div class="container">
@@ -471,39 +537,7 @@ nav a[href="#sobre"] {
     </div>
   </section>
 
-  <!-- Promos del mes -->
-  <section id="promos" style="background:#faf7ff">
-    <div class="container">
-      <h2 class="muted" style="font-size:34px;margin:0 0 10px">Promos del mes</h2>
-      <p style="opacity:.85;margin-bottom:16px">Cupos limitados. Precios especiales reservando por WhatsApp.</p>
-
-      <div class="promos">
-        <article class="card promo">
-          <img src="promo-relax.jpg" alt="Combo Relax Premium">
-          <h3>✨ Combo Relax Premium</h3>
-          <p>Masaje relajante + limpieza facial premium con mascarilla hidratante.</p>
-          <p style="font-weight:700;margin:.5rem 0">Antes <span style="text-decoration:line-through">$110</span> · Ahora <span style="color:#0a7b2d">$85</span></p>
-          <a class="btn-primary" href="https://wa.me/50764746168?text=Hola%20quiero%20el%20Combo%20Relax%20Premium%20de%20$85" target="_blank" rel="noopener">Reservar</a>
-        </article>
-
-        <article class="card promo">
-          <img src="promo-peeling.jpg" alt="Peeling facial unisex">
-          <h3>Peeling Facial Unisex</h3>
-          <p>Renueva tu piel y luce un rostro más luminoso.</p>
-          <p style="font-weight:700;margin:.5rem 0">Antes <span style="text-decoration:line-through">$120</span> · Ahora <span style="color:#0a7b2d">$85</span></p>
-          <a class="btn-primary" href="https://wa.me/50764746168?text=Hola%20quiero%20el%20Peeling%20Facial%20a%20$85" target="_blank" rel="noopener">Reservar</a>
-        </article>
-
-        <article class="card promo">
-          <img src="promo-descontracturante.jpg" alt="Descontracturante + limpieza">
-          <h3>Descontracturante + Limpieza</h3>
-          <p>Alivia tensiones musculares y relaja cuerpo y mente.</p>
-          <p style="font-weight:700;margin:.5rem 0">Antes <span style="text-decoration:line-through">$110</span> · Ahora <span style="color:#0a7b2d">$95</span></p>
-          <a class="btn-primary" href="https://wa.me/50764746168?text=Hola%20quiero%20el%20pack%20Descontracturante%20+%20Limpieza%20a%20$95" target="_blank" rel="noopener">Reservar</a>
-        </article>
-      </div>
-    </div>
-  </section>
+  
 
   <!-- Galería -->
   <section id="galeria">
