@@ -176,6 +176,24 @@ nav a[href="#productos"] {
       .btn-primary{display:none} /* oculta reservar en móvil para dejar aire */
       .header-inner{justify-content:space-between}
     }
+ /* Móvil: oculta leyendas y vuelve tocable toda la tarjeta */
+@media (max-width: 768px){
+  #servicios .card p{ display:none; }                 /* oculta la descripción */
+  #servicios .card{ position:relative; }              /* contenedor para overlay */
+  #servicios .card a.card-link{
+    display:block;
+    position:absolute;
+    inset:0;                                          /* ocupa toda la tarjeta */
+    border-radius:18px;                               /* respeta esquinas redondeadas */
+    z-index:5;
+  }
+}
+
+/* Escritorio: el overlay no se muestra (el click se mantiene como ahora) */
+@media (min-width: 769px){
+  #servicios .card a.card-link{ display:none; }
+}
+   
   </style>
 </head>
 
@@ -267,22 +285,28 @@ nav a[href="#productos"] {
 
       <h3 style="margin:18px 0 8px">Faciales</h3>
       <div class="cards">
-        <article class="card">
-          <img src="facial-limpieza.jpg" alt="Limpieza facial premium">
-          <h3>Limpieza Facial Premium</h3>
-          <p>Higiene profunda + mascarilla nutritiva. Ideal para piel opaca o con impurezas.</p>
-        </article>
-        <article class="card">
-          <img src="peeling.jpg" alt="Peeling facial">
-          <h3>Peeling Facial</h3>
-          <p>Renovación de la piel para un tono más uniforme y luminoso. Unisex.</p>
-        </article>
-        <article class="card">
-          <img src="dermaplaning.jpg" alt="Dermaplaning">
-          <h3>Dermaplaning</h3>
-          <p>Elimina células muertas y vello fino para una piel más suave y brillante.</p>
-        </article>
-      </div>
+        <!-- Faciales -->
+<article class="card">
+  <img src="facial-limpieza.jpg" alt="Limpieza facial premium">
+  <h3>Limpieza Facial Premium</h3>
+  <p>Higiene profunda + mascarilla nutritiva. Ideal para piel opaca o con impurezas.</p>
+  <a class="card-link" href="/tratamientos-faciales/"></a>
+</article>
+
+<article class="card">
+  <img src="peeling.jpg" alt="Peeling facial">
+  <h3>Peeling Facial</h3>
+  <p>Renovación de la piel para un tono más uniforme y luminoso. Unisex.</p>
+  <a class="card-link" href="/tratamientos-faciales/"></a>
+</article>
+
+<article class="card">
+  <img src="dermaplaning.jpg" alt="Dermaplaning">
+  <h3>Dermaplaning</h3>
+  <p>Elimina células muertas y vello fino para una piel más suave y brillante.</p>
+  <a class="card-link" href="/tratamientos-faciales/"></a>
+</article>
+
 
       <h3 style="margin:28px 0 8px">Masajes y terapias</h3>
       <div class="cards">
