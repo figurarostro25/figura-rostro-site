@@ -1,4 +1,4 @@
-<!doctype html>
+<!doctype html>f
 <html lang="es">
 <head>
   <meta charset="utf-8" />
@@ -39,15 +39,78 @@
     body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:#fff;color:#1b0f26}
     .container{max-width:1150px;margin:0 auto;padding:0 16px}
 
-    /* ===== HEADER (oscuro) ===== */
-    header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,#160c1f 0%, #241235 100%);border-bottom:1px solid rgba(255,255,255,.08)}
-    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-    .brand img{height:40px;width:auto}
-    nav{display:flex;gap:22px;align-items:center}
-    nav a{color:#ffffff;text-decoration:none;font-weight:600;opacity:.95}
-    nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:3px}
-    .btn-primary{background:#fff;color:var(--brand);border:0;padding:12px 18px;border-radius:14px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
-    @media (max-width:768px){ .header-inner{padding:16px 0} .brand img{height:36px} }
+/* ===== HEADER (oscuro) ===== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: linear-gradient(180deg, #160c1f 0%, #241235 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+
+/* Ajuste de altura y alineación */
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 0; /* Aumentado (antes 14px) para dar más aire */
+}
+
+/* Logo más grande */
+.brand img {
+  height: 58px;  /* antes: 40px */
+  width: auto;
+}
+
+/* Menú */
+nav {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  opacity: .95;
+  transition: opacity .2s ease;
+}
+
+nav a:hover {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Ocultar pestaña “Productos” */
+nav a[href="#productos"] {
+  display: none !important;
+}
+
+/* Botón principal */
+.btn-primary {
+  background: #fff;
+  color: var(--brand);
+  border: 0;
+  padding: 12px 20px;
+  border-radius: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Ajustes en móviles */
+@media (max-width: 768px) {
+  .header-inner {
+    padding: 16px 0;
+  }
+  .brand img {
+    height: 48px;
+  }
+}
 
     /* ===== HERO (con imagen de fondo por CSS) ===== */
     .hero{
