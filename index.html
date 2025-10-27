@@ -114,84 +114,98 @@ nav a[href="#productos"] {
 
     /* ===== HERO (con imagen de fondo por CSS) ===== */
 /* ===== HERO con 3 banners ===== */
+/* ===== HERO (banners elegantes) ===== */
 .hero {
   position: relative;
   display: grid;
   align-items: center;
-  min-height: 68vh;
-  background-image: url('hero-1.jpg');
+  justify-content: center;
+  text-align: center;
+  min-height: 75vh;
+  color: #fff;
   background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-position: center center;
   animation: changeHero 18s infinite ease-in-out;
-  isolation: isolate;
+  transition: background-image 1s ease-in-out;
 }
-
 @keyframes changeHero {
-  0%, 33% {
-    background-image: url('hero-1.jpg');
-  }
-  34%, 66% {
-    background-image: url('hero-2.jpg');
-  }
-  67%, 100% {
-    background-image: url('hero-3.jpg');
-  }
+  0%, 33% { background-image: url('hero-1.jpg'); background-position: center 35%; }
+  34%, 66% { background-image: url('hero-2.jpg'); background-position: center 40%; }
+  67%, 100% { background-image: url('hero-3.jpg'); background-position: center 30%; }
+}    
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20, 10, 35, 0.7), rgba(30, 10, 40, 0.5));
+  z-index: 1;
 }
 
-/* ===== HERO: “alejar” imagen y dar aire al texto ===== */
-.hero{
-  min-height: 64vh;                 /* antes 80vh */
-  background-size: cover;           /* mantiene cobertura sin deformar */
-  background-position: 50% 30%;     /* sube el encuadre (se “aleja” del primer plano) */
-}
-@media (max-width: 900px){
-  .hero{ 
-    min-height: 68vh;
-    background-position: 50% 25%;   /* un poco más arriba en móvil */
-  }
-}
-.hero .content{
-  max-width: 720px;                 /* texto más cómodo */
-  padding: 20px 24px;               /* aire lateral */
-  margin-left: 4%;                  /* despega del borde izquierdo */
+.hero .content {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+  padding: 40px 20px;
 }
 
-/* ===== Menú: ocultar “Galería” y “Sobre nosotros” ===== */
-nav a[href="#galeria"],
-nav a[href="#sobre"]{
-  display: none !important;
+.hero h1 {
+  font-size: clamp(36px, 6vw, 60px);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #fff, #e5c2ff);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
-/* ===== FAB centrado con iconos redondos ===== */
-.fr-fab{
+.hero p {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.92);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.25);
+}
+
+/* ===== FAB centrado con íconos circulares ===== */
+.fr-fab {
   position: fixed;
   left: 50%;
+  bottom: 24px;
   transform: translateX(-50%);
-  bottom: 22px;
-  z-index: 9999;
   display: flex;
-  gap: 14px;
-  flex-direction: row;              /* en fila, centrados */
+  gap: 18px;
+  z-index: 999;
 }
 
-.fr-ic{
-  width: 56px; height: 56px;
-  border-radius: 999px;
-  display: inline-flex;
-  align-items: center; justify-content: center;
-  text-decoration: none;
-  box-shadow: 0 8px 20px rgba(0,0,0,.22);
+.fr-fab a {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-.fr-wa{ background: #25D366; }      /* WhatsApp verde */
-.fr-waze{ background: #2F80ED; }    /* Waze celeste */
-.fr-ic svg{ width: 28px; height: 28px; fill:#fff; }
 
-/* en pantallas muy pequeñas, un pelín más chicos */
-@media (max-width:480px){
-  .fr-ic{ width: 50px; height: 50px; }
-  .fr-ic svg{ width: 24px; height: 24px; }
+.fr-fab a:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.35);
 }
+
+.fr-wa {
+  background-color: #25D366;
+}
+
+.fr-waze {
+  background-color: #0099ff;
+}
+
+.fr-fab svg {
+  fill: #fff;
+  width: 26px;
+  height: 26px;
+}
+
 
 
     /* ===== SECCIONES ===== */
@@ -262,11 +276,22 @@ nav a[href="#sobre"]{
 
 /* evita desplazamiento lateral accidental en iOS */
 html, body{ overflow-x:hidden; }
+/* Oculta temporalmente enlaces no usados */
+nav a[href="#galeria"],
+nav a[href="#sobre"] {
+  display: none !important;
+}
    
   </style>
 </head>
 <body>
   <!-- Header -->
+/* Oculta temporalmente enlaces no usados */
+nav a[href="#galeria"],
+nav a[href="#sobre"] {
+  display: none !important;
+}
+ 
   <header>
     <div class="container header-inner">
       <a href="#" class="brand">
