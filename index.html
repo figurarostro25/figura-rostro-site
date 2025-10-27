@@ -193,18 +193,27 @@ nav a[href="#productos"] {
 @media (min-width: 769px){
   #servicios .card a.card-link{ display:none; }
 }
+/* === MOBILE: sin menú ni botón === */
+@media (max-width: 900px){
+  .nav-toggle{ display:none !important; }
+  header.open nav{ display:none !important; }
+  nav{ display:none !important; }
+  .btn-primary{ display:none !important; } /* si también quieres ocultar “Reservar cita” */
+}
+
+/* evita desplazamiento lateral accidental en iOS */
+html, body{ overflow-x:hidden; }
    
   </style>
 </head>
-
 <body>
-
   <!-- Header -->
   <header>
     <div class="container header-inner">
       <a href="#" class="brand">
-  <img src="logo-header-white.png" alt="Figura Rostro KG" />
-</a>
+        <img src="logo-header-white.png" alt="Figura Rostro KG">
+      </a>
+      
 <!-- Botón hamburguesa (solo móvil) -->
 <!-- Botón hamburguesa (solo móvil) -->
 <button id="navToggle" aria-label="Abrir menú" class="nav-toggle">
@@ -229,23 +238,14 @@ nav a[href="#productos"] {
     </div>
   </header>
 
-<!-- Hero -->
+<!-- ===== HERO con 3 banners rotativos ===== -->
 <section class="hero">
-  <div class="container">
-    <div class="content">
-      <span class="badge">Royal Park · Panamá</span>
-      <h1>Belleza real, resultados <span class="grad">visibles</span></h1>
-      <p style="max-width:680px;">Tratamientos faciales, masajes terapéuticos y rejuvenecimiento no invasivo en un ambiente cálido y profesional.</p>
-      <div class="cta" style="margin-top:14px;">
-        <a href="#promos" class="btn-primary">Ver promociones</a>
-        <a href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" class="btn-ghost" target="_blank" rel="noopener">Cómo llegar</a>
-      </div>
-    </div>
+  <div class="content">
+    <h1>Belleza real, resultados visibles</h1>
+    <p>Tratamientos faciales, masajes terapéuticos y rejuvenecimiento no invasivo en un ambiente cálido y profesional.</p>
+    <a href="#contacto" class="btn">Cómo llegar</a>
   </div>
 </section>
-
-
-
 
   <!-- Sobre nosotros -->
   <section id="sobre">
