@@ -113,15 +113,32 @@ nav a[href="#productos"] {
 }
 
     /* ===== HERO (con imagen de fondo por CSS) ===== */
-    .hero{
-      position:relative;display:grid;align-items:center;
-      min-height:62vh; /* móvil */
-      background:
-  linear-gradient(180deg,rgba(0,0,0,.12) 0%, rgba(0,0,0,.24) 100%),
-  url('/assets/home-hero.jpg') center 35%/cover no-repeat;
+/* ===== HERO con 3 banners ===== */
+.hero {
+  position: relative;
+  display: grid;
+  align-items: center;
+  min-height: 68vh;
+  background-image: url('home-hero-1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: changeHero 18s infinite ease-in-out;
+  isolation: isolate;
+}
 
-      isolation:isolate;
-    }
+@keyframes changeHero {
+  0%, 33% {
+    background-image: url('home-hero-1.jpg');
+  }
+  34%, 66% {
+    background-image: url('home-hero-2.jpg');
+  }
+  67%, 100% {
+    background-image: url('home-hero-3.jpg');
+  }
+}
+
     @media (min-width:769px){ .hero{ min-height:68vh } }
     .hero .content{color:#fff;padding:48px 0;position:relative;z-index:1}
     .hero .badge{font-size:.75rem;letter-spacing:.15em;opacity:.95}
