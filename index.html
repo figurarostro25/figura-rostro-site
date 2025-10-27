@@ -230,11 +230,56 @@ nav a[href="#productos"] {
     footer p, footer a{word-break:break-word;overflow-wrap:anywhere;line-height:1.45}
     @media (max-width:900px){ footer p, footer a{font-size:.95rem} }
 
-    /* ===== FAB ===== */
-    .fr-fab{position:fixed;right:18px;bottom:18px;z-index:9999;display:flex;flex-direction:column;gap:12px}
-    .fr-btn{display:inline-flex;align-items:center;justify-content:center;min-width:48px;height:48px;padding:0 16px;border-radius:999px;font-weight:700;color:#fff;text-decoration:none;box-shadow:0 6px 15px rgba(0,0,0,.2)}
-    .fr-wa{background:#25D366}.fr-waze{background:#2962ff}
-    @media (max-width:480px){ .fr-btn{min-width:44px;height:44px;padding:0 12px;font-size:14px} }
+/* === FAB centrado a la derecha === */
+.fr-fab{
+  position: fixed;
+  right: 22px;
+  top: 50%;
+  bottom: auto !important;          /* por si había bottom antes */
+  transform: translateY(-50%);      /* centra verticalmente */
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-end;
+}
+
+/* Botones redondos y limpios */
+.fr-btn{
+  min-width: 56px;                  /* igual ancho/alto -> círculo */
+  height: 56px;
+  padding: 0;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 18px rgba(0,0,0,.18);
+  text-decoration: none;
+}
+
+/* Tamaño de los íconos SVG internos */
+.fr-btn svg{
+  width: 26px;
+  height: 26px;
+  display: block;
+}
+
+/* Un poco más compacto en pantallas pequeñas */
+@media (max-width: 768px){
+  .fr-fab{
+    right: 14px;
+    gap: 12px;
+    top: calc(50% + 0px);
+    transform: translateY(-50%);
+  }
+  .fr-btn{
+    min-width: 52px;
+    height: 52px;
+    box-shadow: 0 8px 14px rgba(0,0,0,.18);
+  }
+  .fr-btn svg{ width: 24px; height: 24px; }
+}
+
 
     /* ===== NAV móvil (simple toggle) ===== */
     .nav-toggle{display:none}
