@@ -6,122 +6,140 @@
   <title>Chat Citas · Figura Rostro KG</title>
   <meta name="theme-color" content="#5b2580" />
   <style>
-    :root{ --brand:#5b2580; --brand2:#a66cd4; --overlay:rgba(0,0,0,.65); }
-    *{box-sizing:border-box} html,body{height:100%}
-    body{
-      margin:0; color:#fff; font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial,sans-serif;
-      display:grid; place-items:center; text-align:center; background:#1b1322;
-      background-size:cover; background-position:center; background-repeat:no-repeat;
+    :root {
+      --brand: #5b2580;
+      --brand2: #a66cd4;
+      --overlay: rgba(0,0,0,0.6);
     }
-    .shade{position:fixed; inset:0; background:linear-gradient(var(--overlay),var(--overlay));}
-    .card{
-      position:relative; z-index:1; width:min(92vw,480px);
-      background:rgba(255,255,255,.08); backdrop-filter:blur(10px);
-      border:1px solid rgba(255,255,255,.18); border-radius:22px; padding:28px 22px 20px;
-      box-shadow:0 10px 40px rgba(0,0,0,.35);
-      animation:fade .7s ease both;
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; font-family: "Poppins", sans-serif; }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(var(--overlay), var(--overlay)), url('hero 3.jpg') center/cover no-repeat;
+      color: #fff;
+      text-align: center;
+      position: relative;
     }
-    @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-    .logo{width:150px; margin:6px auto 14px; display:block; filter:drop-shadow(0 2px 8px rgba(0,0,0,.35))}
-    .avatar{width:118px; height:118px; border-radius:50%; object-fit:cover; border:3px solid rgba(255,255,255,.55); outline:3px solid rgba(91,37,128,.45); box-shadow:0 8px 22px rgba(0,0,0,.35); margin-bottom:10px}
-    h1{font-size:1.35rem;margin:6px 0 2px} .sub{opacity:.9;margin:0 0 10px}
-    p{opacity:.92;margin:0 0 12px}
-    .options{display:grid; gap:10px; margin-top:10px}
-    .btn{border:0;border-radius:28px;padding:12px 16px;font-weight:700;cursor:pointer;color:#fff;
-      background:linear-gradient(135deg,var(--brand),var(--brand2));
-      box-shadow:0 8px 20px rgba(91,37,128,.35); transition:transform .18s ease, box-shadow .18s ease}
-    .btn:hover{transform:translateY(-2px); box-shadow:0 12px 28px rgba(91,37,128,.45)}
-    .close{position:fixed; top:18px; right:18px; z-index:2; width:40px; height:40px; border-radius:50%;
-      display:grid; place-items:center; color:#fff; text-decoration:none; border:1px solid rgba(255,255,255,.3);
-      background:rgba(255,255,255,.12); backdrop-filter:blur(4px); font-size:22px}
-    .close:hover{background:rgba(255,255,255,.2)}
-    footer{margin-top:12px; font-size:.8rem; opacity:.9}
-    footer a{color:#e3cfff; text-decoration:none}
+
+    .chat-card {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 40px 30px;
+      width: 90%;
+      max-width: 420px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.4);
+    }
+
+    .logo {
+      width: 140px;
+      margin-bottom: 15px;
+      filter: drop-shadow(0 3px 8px rgba(0,0,0,0.4));
+    }
+
+    .assistant-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--brand2);
+      margin-bottom: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: #e7e3f1;
+      margin-bottom: 20px;
+    }
+
+    .btn-option {
+      display: block;
+      width: 90%;
+      margin: 10px auto;
+      padding: 12px 18px;
+      border-radius: 25px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      color: white;
+      transition: all 0.3s ease;
+    }
+    .btn-option:hover {
+      transform: translateY(-2px);
+      background: linear-gradient(135deg, var(--brand2), var(--brand));
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      background: rgba(255, 255, 255, 0.15);
+      border: none;
+      color: white;
+      font-size: 22px;
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .close-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    footer {
+      position: absolute;
+      bottom: 15px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #ccc;
+    }
+    footer a { color: #c5a6e6; text-decoration: none; }
   </style>
 </head>
 <body>
-  <a class="close" href="https://figurarostro.life" aria-label="Cerrar y ver sitio completo">×</a>
-  <div class="shade" aria-hidden="true"></div>
 
-  <main class="card" role="dialog" aria-label="Chat Citas Figura Rostro KG">
-    <!-- LOGO local (se setea por JS) -->
-    <img id="logoFR" class="logo" alt="Figura Rostro KG" />
+  <!-- Botón cerrar -->
+  <button class="close-btn" onclick="window.location.href='https://figurarostro.life'">×</button>
 
-    <!-- Puedes cambiar esta foto por una tuya si luego subes /asistente.jpg -->
-    <img class="avatar" id="avatar" src="asistente.jpg" alt="Asistente de spa" onerror="this.src='hero_1.jpg';" />
+  <div class="chat-card">
+    <!-- Logo local -->
+    <img src="logo header white.png" alt="Figura Rostro KG" class="logo">
+    
+    <!-- Asistente usando imagen de tu carpeta -->
+    <img src="hero 4.jpg" alt="Asistente Spa" class="assistant-img">
 
-    <h1>Hola, soy Valentina 🌸</h1>
-    <p class="sub">Tu asistente para agendar y resolver dudas</p>
-    <p>¡Un gusto conocerte! Elige una opción y abrimos WhatsApp con tu mensaje listo:</p>
+    <h2>Hola, soy Valentina 🌸</h2>
+    <p>Un gusto conocerte. Estoy aquí para ayudarte a reservar tu cita o conocer nuestras promociones.</p>
 
-    <div class="options">
-      <button class="btn" onclick="abrirChat('masaje')">💆 Promo Masaje Relajante</button>
-      <button class="btn" onclick="abrirChat('facial')">💖 Tratamiento Facial</button>
-      <button class="btn" onclick="abrirChat('otras')">✨ Otras Promos</button>
-    </div>
+    <button class="btn-option" onclick="abrirChat('masaje')">💆 Promo Masaje Relajante</button>
+    <button class="btn-option" onclick="abrirChat('facial')">💖 Tratamiento Facial</button>
+    <button class="btn-option" onclick="abrirChat('otras')">✨ Otras Promos</button>
+  </div>
 
-    <footer>© Figura Rostro KG — <a href="https://figurarostro.life">Ver sitio completo</a></footer>
-  </main>
+  <footer>© Figura Rostro KG — <a href="https://figurarostro.life">Ver sitio completo</a></footer>
 
   <script>
-    // NÚMERO DE WHATSAPP
-    const WA = "50764746168";
-
-    // 1) POSIBLES NOMBRES DE ARCHIVOS EN TU REPO (logo y fondo flores)
-    //    *Puedes editar/ordenar estas listas si el archivo tiene otro nombre*
-    const LOGOS = [
-      "logo header white.png", "logo-header-white.png", "logo header white.jpg",
-      "logo horizontal.png", "logo-horizontal.png", "logo-butterfly.png", "logo butterfly.png",
-      "logo.png", "logo.svg"
-    ];
-    const FLORES = [
-      "flores.jpg", "flores.png", "flowers.jpg", "flowers.png",
-      "hero 4.jpg", "hero_4.jpg", "hero 5.jpg", "hero_5.jpg",
-      "header portada.jpg", "header_portada.jpg", "hero 3.jpg", "hero_3.jpg"
-    ];
-
-    // 2) Utilidad: probar una lista y devolver la primera que cargue
-    function pickFirstExisting(candidates){
-      return new Promise(resolve=>{
-        let i=0;
-        const tryNext=()=>{
-          if(i>=candidates.length){ resolve(null); return; }
-          const src = encodeURI(candidates[i++]); // maneja espacios
-          const img = new Image();
-          img.onload = ()=> resolve(src);
-          img.onerror = tryNext;
-          img.src = src + (src.includes('?')?'':'?v=' + Date.now()); // evita cache agresivo
-        };
-        tryNext();
-      });
-    }
-
-    // 3) Cargar LOGO y FONDO automáticamente
-    (async function initAssets(){
-      const logoSrc = await pickFirstExisting(LOGOS);
-      if(logoSrc) document.getElementById('logoFR').src = logoSrc;
-
-      const bgSrc = await pickFirstExisting(FLORES);
-      if(bgSrc){
-        document.body.style.backgroundImage = `linear-gradient(var(--overlay),var(--overlay)), url('${bgSrc}')`;
-      } else {
-        // Fallback si no se encuentran flores (sigue funcionando)
-        document.body.style.backgroundImage =
-          "linear-gradient(var(--overlay),var(--overlay)), url('hero_1.jpg')";
-      }
-    })();
-
-    // 4) WhatsApp con mensajes distintos por botón
-    const mensajes = {
-      masaje: "¡Hola! Me interesa la *Promo de Masaje Relajante*. ¿Podrían contarme más y ayudarme a agendar?",
-      facial: "¡Hola! Me gustaría información sobre los *Tratamientos Faciales* disponibles. ¿Qué recomiendan y cuándo puedo agendar?",
-      otras : "¡Hola! Quiero conocer las *otras promociones y paquetes* vigentes esta semana."
-    };
-    function abrirChat(tipo){
-      const saludo = "Hola, soy Valentina de Figura Rostro KG. ";
-      const texto = saludo + (mensajes[tipo] || "Me gustaría más información, por favor.");
-      const url = `https://wa.me/${WA}?text=${encodeURIComponent(texto)}`;
-      window.open(url, "_blank", "noopener");
+    const whatsappNumber = "50764746168";
+    function abrirChat(opcion) {
+      let mensaje = "";
+      if (opcion === "masaje") mensaje = "¡Hola! Me interesa la *Promo de Masaje Relajante*. ¿Podrías contarme más y ayudarme a agendar?";
+      else if (opcion === "facial") mensaje = "¡Hola! Me gustaría información sobre los *Tratamientos Faciales* disponibles en Figura Rostro KG.";
+      else mensaje = "¡Hola! Quisiera conocer las *otras promociones y paquetes* disponibles esta semana.";
+      const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, "_blank");
     }
   </script>
 </body>
