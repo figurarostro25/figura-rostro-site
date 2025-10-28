@@ -428,6 +428,31 @@ nav a[href="#galeria"] {
   transform: scale(1.08);
   box-shadow: 0 6px 14px rgba(0,0,0,.4);
 }
+/* Botón Instagram en header (mismo alto que .btn-primary) */
+.btn-ig{
+  background: linear-gradient(45deg,#F58529,#DD2A7B,#8134AF,#515BD4);
+  color:#fff;
+  border:0;
+  padding: 12px 20px;          /* igual que .btn-primary */
+  border-radius:14px;          /* igual que .btn-primary */
+  font-weight:700;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  box-shadow:0 6px 18px rgba(0,0,0,.18);
+  transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+}
+.btn-ig:hover{
+  transform: translateY(-1px);
+  box-shadow:0 8px 22px rgba(0,0,0,.24);
+  opacity: .95;
+}
+
+/* En móvil, oculta el texto “Síguenos:” para ahorrar espacio (ya lo tienes, lo dejo aquí por claridad) */
+@media (max-width:768px){
+  .social-header span{ display:none; }
+}
 
   </style>
 </head>
@@ -454,27 +479,19 @@ nav a[href="#galeria"] {
   <a href="#contacto">Contacto</a>
 </nav>
 <!-- Redes sociales en header -->
+<!-- Redes sociales en header -->
 <div class="social-header" style="display:flex;align-items:center;gap:10px;">
   <span style="color:white;font-weight:600;font-size:15px;">Síguenos:</span>
 
-  <!-- Instagram -->
-  <a href="https://instagram.com/figurarostrokg" target="_blank" rel="noopener" title="Instagram Figura Rostro KG"
-     style="width:38px;height:38px;display:flex;align-items:center;justify-content:center;background:linear-gradient(45deg,#F58529,#DD2A7B,#8134AF,#515BD4);border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,.3);transition:transform .25s ease;">
-     <img src="icono-instagram.png" alt="Instagram" style="width:22px;height:22px;filter:brightness(0) invert(1);">
-  </a>
-
-  <!-- WhatsApp -->
-  <a href="https://wa.me/50764746168" target="_blank" rel="noopener" title="WhatsApp Figura Rostro KG"
-     style="width:38px;height:38px;display:flex;align-items:center;justify-content:center;background:#25D366;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,.3);transition:transform .25s ease;">
-     <img src="icono-whastapp.jpg" alt="WhatsApp" style="width:22px;height:22px;">
-  </a>
-
-  <!-- Waze -->
-  <a href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noopener" title="Waze Figura Rostro KG"
-     style="width:38px;height:38px;display:flex;align-items:center;justify-content:center;background:#0099ff;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,.3);transition:transform .25s ease;">
-     <img src="icono-waze.png" alt="Waze" style="width:22px;height:22px;">
+  <!-- Botón Instagram tipo “Agendar” -->
+  <a class="btn-ig" href="https://instagram.com/figurarostrokg" target="_blank" rel="noopener" aria-label="Instagram Figura Rostro KG">
+    Instagram
   </a>
 </div>
+
+<!-- Botón Agendar (ya con tu nuevo link) -->
+<a class="btn-primary" href="https://figurarostro.life/chat-citas.html" target="_blank" rel="noopener">Agendar</a>
+
 
      
 <a class="btn-primary" href="https://figurarostro.life/chat-citas.html" target="_blank" rel="noopener">
