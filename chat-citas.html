@@ -31,6 +31,12 @@
       width: 90%;
       max-width: 420px;
       box-shadow: 0 0 25px rgba(0,0,0,0.4);
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .logo {
@@ -122,7 +128,9 @@
     <img src="hero 4.jpg" alt="Asistente Spa" class="assistant-img">
 
     <h2>Hola, soy Valentina 🌸</h2>
-    <p>Un gusto conocerte. Estoy aquí para ayudarte a reservar tu cita o conocer nuestras promociones.</p>
+    <p class="sub">Estoy para asistirte según la opción que elijas.<br>🌷 ¡Es un placer atenderte!</p>
+
+    <p>Elige una opción y abriremos el chat de WhatsApp con tu mensaje listo:</p>
 
     <button class="btn-option" onclick="abrirChat('masaje')">💆 Promo Masaje Relajante</button>
     <button class="btn-option" onclick="abrirChat('facial')">💖 Tratamiento Facial</button>
