@@ -117,6 +117,24 @@ nav a[href="#productos"] {
     display: none;
   }
 }
+/* Centrar el logo en el header (solo móvil) */
+@media (max-width: 768px){
+  .header-inner{
+    justify-content: center;
+    position: relative;
+  }
+  .brand{
+    margin: 0 auto;
+  }
+  .brand img{
+    display: block;
+  }
+
+  /* Ocultar elementos laterales en móvil */
+  nav, .social-header, .btn-ig{
+    display: none !important;
+  }
+}
     
 
     /* ===== HERO (con imagen de fondo por CSS) ===== */
