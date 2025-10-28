@@ -360,7 +360,59 @@ nav a[href="#galeria"] {
   /* Feedback visual */
   .promos .card.promo img{ cursor:pointer; }
 }
- 
+ /* ===== Badges para Promos ===== */
+.promo {
+  position: relative;
+  overflow: hidden;
+}
+.promo .badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #1f2937;            /* gris oscuro elegante */
+  color: #fff;
+  padding: 6px 10px;
+  font-weight: 700;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  box-shadow: 0 6px 14px rgba(0,0,0,.18);
+}
+.promo .subbadge {
+  position: absolute;
+  top: 48px;
+  right: 10px;
+  background: #5b2580;            /* color de marca */
+  color: #fff;
+  padding: 4px 10px;
+  font-weight: 600;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  opacity: .95;
+}
+.promo .price-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px;
+  margin: .5rem 0;
+  font-weight: 700;
+}
+.promo .price-row .old {
+  color: #6b7280;
+  text-decoration: line-through;
+  font-weight: 600;
+}
+.promo .price-row .now {
+  color: #059669;                  /* verde “oferta” */
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+.promo .note {
+  font-size: .85rem;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
   </style>
 </head>
 <body>
@@ -421,43 +473,60 @@ nav a[href="#galeria"] {
     <p style="opacity:.85;margin-bottom:16px">Cupos limitados. Precios especiales reservando por WhatsApp.</p>
 
     <div class="promos">
-      <!-- 1) Combo Relax Unisex -->
-      <article class="card promo">
-        <img src="promo-relax.jpg" alt="Combo Relax Unisex">
-        <h3>Combo Relax Unisex</h3>
-        <p>Masaje relajante + limpieza facial premium + copa de vino.</p>
-        <p style="font-weight:700;margin:.5rem 0">Desde <span>$69</span></p>
-        <!-- Clic en toda la tarjeta (móvil) -->
-        <a class="promo-link"
-           href="https://wa.me/50764746168?text=Hola%20quiero%20el%20Combo%20Relax%20Unisex%20(Desde%20$69)"
-           target="_blank" rel="noopener"
-           aria-label="Reservar Combo Relax Unisex por WhatsApp"></a>
-      </article>
+  <!-- 1) Masaje Relajante Premium (promo a 59.95) -->
+  <article class="card promo">
+    <img src="promo-relax.jpg" alt="Masaje Relajante Premium">
+    <h3>Masaje Relajante Premium</h3>
+    <p>60 minutos de relajación total. Ideal para estrés laboral y tensión muscular.</p>
 
-      <!-- 2) Peeling Facial Unisex -->
-      <article class="card promo">
-        <img src="promo-peeling.jpg" alt="Peeling Facial Unisex">
-        <h3>Peeling Facial Unisex</h3>
-        <p>Disminuye manchas y acné, suaviza líneas finas y deja tu piel más clara y uniforme.</p>
-        <p style="font-weight:700;margin:.5rem 0">Ahora <span>$85</span></p>
-        <a class="promo-link"
-           href="https://wa.me/50764746168?text=Hola%20quiero%20el%20Peeling%20Facial%20Unisex%20($85)"
-           target="_blank" rel="noopener"
-           aria-label="Reservar Peeling Facial Unisex por WhatsApp"></a>
-      </article>
-
-      <!-- 3) Tratamientos VIP Unisex -->
-      <article class="card promo">
-        <img src="promo-descontracturante.jpg" alt="Tratamientos VIP Unisex">
-        <h3>Tratamientos VIP Unisex</h3>
-        <p>Di adiós a arrugas, patas de gallo y flacidez. Eliminación de lunares y verrugas sin cirugía. Incluye evaluación + limpieza facial premium.</p>
-        <p style="font-weight:700;margin:.5rem 0">Desde <span>$26.50</span></p>
-        <a class="promo-link"
-           href="https://wa.me/50764746168?text=Hola%20quiero%20informaci%C3%B3n%20de%20los%20Tratamientos%20VIP%20Unisex%20(Desde%20$26.50)"
-           target="_blank" rel="noopener"
-           aria-label="Reservar Tratamientos VIP Unisex por WhatsApp"></a>
-      </article>
+    <div class="price-row">
+      <span class="old">$89.00</span>
+      <span class="now">$59.95</span>
     </div>
+    <p class="note">Precio con código <strong>KG-31</strong> (muestra captura o menciona el código).</p>
+
+    <!-- Click en toda la tarjeta (móvil) -->
+    <a class="promo-link"
+       href="https://wa.me/50764746168?text=Hola%20quiero%20el%20Masaje%20Relajante%20Premium%20a%20$59.95%20con%20c%C3%B3digo%20KG-31"
+       target="_blank" rel="noopener"
+       aria-label="Reservar Masaje Relajante Premium por WhatsApp"></a>
+  </article>
+
+  <!-- 2) Peeling Facial Unisex (-30% hasta 31 oct.) -->
+  <article class="card promo">
+    <span class="badge">−30%</span>
+    <span class="subbadge">Hasta 31 oct.</span>
+
+    <img src="promo-peeling.jpg" alt="Peeling Facial Unisex">
+    <h3>Peeling Facial Unisex</h3>
+    <p>Disminuye manchas y acné, suaviza líneas finas y deja tu piel uniforme.</p>
+
+    <div class="price-row">
+      <span class="old">$85.00</span>
+      <span class="now">$59.50</span>
+    </div>
+    <p class="note">Cupos limitados. Reservando por WhatsApp.</p>
+
+    <a class="promo-link"
+       href="https://wa.me/50764746168?text=Hola%20quiero%20el%20Peeling%20Facial%20con%20-30%%20(hasta%2031%20oct.)"
+       target="_blank" rel="noopener"
+       aria-label="Reservar Peeling Facial Unisex por WhatsApp"></a>
+  </article>
+
+  <!-- 3) Tratamientos VIP Unisex (se mantiene) -->
+  <article class="card promo">
+    <img src="promo-descontracturante.jpg" alt="Tratamientos VIP Unisex">
+    <h3>Tratamientos VIP Unisex</h3>
+    <p>Anti-edad y reafirmación. Eliminación de lunares/ verrugas sin cirugía.</p>
+    <p style="font-weight:700;margin:.5rem 0">Desde <span>$26.50</span></p>
+
+    <a class="promo-link"
+       href="https://wa.me/50764746168?text=Hola%20quiero%20informaci%C3%B3n%20de%20los%20Tratamientos%20VIP%20Unisex%20(Desde%20$26.50)"
+       target="_blank" rel="noopener"
+       aria-label="Reservar Tratamientos VIP Unisex por WhatsApp"></a>
+  </article>
+</div>
+
   </div>
 </section>
 
