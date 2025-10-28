@@ -491,6 +491,37 @@ nav a[href="#galeria"] {
 @media (max-width: 768px){
   .btn-ig{ display:none !important; }
 }
+/* ===== NAV CON SUBMENÚS (solo escritorio) ===== */
+.site-nav { display:flex; align-items:center; }
+.site-nav .menu { display:flex; gap:24px; list-style:none; padding:0; margin:0; }
+.site-nav .menu > li { position:relative; }
+.site-nav a { color:#fff; font-weight:600; text-decoration:none; opacity:.95; }
+.site-nav a:hover { opacity:1; text-decoration:underline; text-underline-offset:3px; }
+
+/* Submenú */
+.site-nav .submenu{
+  position:absolute; top:100%; left:0; min-width:220px;
+  background:#1e0f2b; border:1px solid rgba(255,255,255,.12);
+  border-radius:12px; padding:8px; list-style:none; margin:8px 0 0;
+  box-shadow:0 14px 34px rgba(0,0,0,.28);
+  display:none; z-index:60;
+}
+.site-nav .submenu li a{
+  display:block; padding:10px 12px; border-radius:8px; opacity:.95;
+}
+.site-nav .submenu li a:hover{
+  background:rgba(255,255,255,.08); opacity:1; text-decoration:none;
+}
+
+/* Mostrar submenú en hover o focus (accesible con teclado) */
+.site-nav .has-sub:hover > .submenu,
+.site-nav .has-sub:focus-within > .submenu{ display:block; }
+
+/* Móvil: oculta nav para mantener la versión minimal (usas el grid de servicios) */
+@media (max-width: 900px){
+  .site-nav { display:none !important; }
+  /* ya tienes logo centrado y CTA oculto/ajustado en móvil en tu CSS */
+}
 
   </style>
 </head>
@@ -509,13 +540,42 @@ nav a[href="#galeria"] {
   ☰
 </button>
 
-<nav>
-  <a href="#sobre">Nosotros</a>
-  <a href="/tratamientos-faciales/">Faciales</a>
-  <a href="/masajes-terapeuticos/">Masajes</a>
-  <a href="#promos">Promociones</a>
-  <a href="#contacto">Contacto</a>
+<nav class="site-nav">
+  <ul class="menu">
+    <li><a href="#promos">Promociones</a></li>
+
+    <li class="has-sub">
+      <a href="/tratamientos-faciales/">Faciales</a>
+      <ul class="submenu">
+        <li><a href="/peeling-facial.html">Peeling Facial</a></li>
+        <li><a href="/fibroblast.html">Plasma Fibroblast</a></li>
+        <li><a href="/radiofrecuencia-facial.html">Radiofrecuencia Facial</a></li>
+        <li><a href="/lifting-sin-cirugia.html">Lifting sin cirugía</a></li>
+      </ul>
+    </li>
+
+    <li class="has-sub">
+      <a href="/masajes-terapeuticos/">Masajes</a>
+      <ul class="submenu">
+        <li><a href="/masaje-relajante.html">Masaje Relajante</a></li>
+        <li><a href="/masajes-terapeuticos/">Descontracturante</a></li>
+        <li><a href="/masajes-terapeuticos/">Drenaje linfático</a></li>
+        <li><a href="/masaje-terapeutico-adultos-mayores.html">Adultos Mayores</a></li>
+        <li><a href="/terapia-masaje-discapacidad.html">Terapia adaptada</a></li>
+      </ul>
+    </li>
+
+    <li class="has-sub">
+      <a href="/keratina-organica-biotanix.html">Salón</a>
+      <ul class="submenu">
+        <li><a href="/keratina-organica-biotanix.html">Keratina Orgánica Biotanix</a></li>
+      </ul>
+    </li>
+
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
 </nav>
+
 <!-- Redes sociales en header -->
 <!-- Redes sociales en header -->
 <div class="social-header" style="display:flex;align-items:center;gap:10px;">
