@@ -522,6 +522,50 @@ nav a[href="#galeria"] {
   .site-nav { display:none !important; }
   /* ya tienes logo centrado y CTA oculto/ajustado en móvil en tu CSS */
 }
+/* ===== Footer oscuro ===== */
+.site-footer.dark{
+  background: linear-gradient(180deg, #160c1f 0%, #241235 100%);
+  color:#fff;
+}
+.site-footer a{ color:#e9d9ff; text-decoration:none; }
+.site-footer a:hover{ text-decoration:underline; text-underline-offset:3px; }
+
+.footer-grid{
+  display:grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.6fr;
+  gap:28px;
+  padding:40px 0 18px;
+}
+@media (max-width: 900px){
+  .footer-grid{
+    grid-template-columns: 1fr 1fr;
+  }
+  .site-footer .map-wrap{ display:none; }   /* ocultar mapa en móvil */
+}
+
+.site-footer .f-col h4{
+  font-size:1rem; margin:0 0 10px; color:#f5eaff;
+}
+.site-footer .f-col ul{ list-style:none; padding:0; margin:0; }
+.site-footer .f-col li{ margin:6px 0; }
+
+.brand-line{ display:flex; gap:12px; align-items:flex-start; }
+.f-logo{ height:40px; width:auto; display:block; }
+
+.f-social{ margin-top:10px; opacity:.9; }
+.f-social a{ color:#fff; }
+.f-social span{ margin:0 6px; opacity:.6; }
+
+.map-wrap iframe{
+  width:100%; height:200px; border:0; border-radius:12px;
+  box-shadow:0 8px 24px rgba(0,0,0,.25);
+}
+.map-links{ margin-top:8px; font-size:.95rem; opacity:.95; }
+
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.12);
+  padding:14px 0; text-align:center; opacity:.9;
+}
 
   </style>
 </head>
@@ -861,53 +905,7 @@ nav a[href="#galeria"] {
         </div>
       </form>
     </div>
-  </section>
-
-/* ===== Footer oscuro ===== */
-.site-footer.dark{
-  background: linear-gradient(180deg, #160c1f 0%, #241235 100%);
-  color:#fff;
-}
-.site-footer a{ color:#e9d9ff; text-decoration:none; }
-.site-footer a:hover{ text-decoration:underline; text-underline-offset:3px; }
-
-.footer-grid{
-  display:grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1.6fr;
-  gap:28px;
-  padding:40px 0 18px;
-}
-@media (max-width: 900px){
-  .footer-grid{
-    grid-template-columns: 1fr 1fr;
-  }
-  .site-footer .map-wrap{ display:none; }   /* ocultar mapa en móvil */
-}
-
-.site-footer .f-col h4{
-  font-size:1rem; margin:0 0 10px; color:#f5eaff;
-}
-.site-footer .f-col ul{ list-style:none; padding:0; margin:0; }
-.site-footer .f-col li{ margin:6px 0; }
-
-.brand-line{ display:flex; gap:12px; align-items:flex-start; }
-.f-logo{ height:40px; width:auto; display:block; }
-
-.f-social{ margin-top:10px; opacity:.9; }
-.f-social a{ color:#fff; }
-.f-social span{ margin:0 6px; opacity:.6; }
-
-.map-wrap iframe{
-  width:100%; height:200px; border:0; border-radius:12px;
-  box-shadow:0 8px 24px rgba(0,0,0,.25);
-}
-.map-links{ margin-top:8px; font-size:.95rem; opacity:.95; }
-
-.footer-bottom{
-  border-top:1px solid rgba(255,255,255,.12);
-  padding:14px 0; text-align:center; opacity:.9;
-}
-  
+  </section>  
 
 <script>
   const y = document.getElementById('year');
