@@ -1,579 +1,293 @@
 <!doctype html>
 <html lang="es">
-<!-- HEADER -->
-<header class="sticky top-0 z-40 sticky-blur border-b border-slate-200">
-  <div class="mx-auto max-w-6xl px-4 py-3 flex items-center gap-3">
-    <!-- Logo -->
-    <a href="/" class="inline-flex items-center gap-2">
-      <img src="/logo-header-white.png" alt="Figura Rostro KG" class="h-8 w-auto">
-    </a>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Menú de Servicios | Figura Rostro KG</title>
 
-    <!-- Nav -->
-    <nav class="ml-auto flex items-center gap-2">
-      <a href="/#categorias" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-slate-100">Categorías</a>
-      <a href="/menu.html" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-slate-100">Menú</a>
-      <a href="/#contacto" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-slate-100">Contacto</a>
-      <a id="btnCompartir" class="px-3 py-2 rounded-lg text-sm font-semibold text-white" style="background:#5b2580">Compartir</a>
-    </nav>
-  </div>
-</header>
+  <!-- Fuerza rutas absolutas desde la raíz del dominio -->
+  <base href="/" />
 
+  <!-- Tailwind (estilos) -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Hero -->
-  <section class="grad-fr text-white">
-    <div class="mx-auto max-w-6xl px-4 py-14">
-      <p class="uppercase tracking-widest/relaxed text-sm/6 text-white/80">Figura Rostro KG</p>
+  <style>
+    :root{--primario:#5b2580}
+    .sticky-blur{backdrop-filter:saturate(180%) blur(12px); background:rgba(255,255,255,.8)}
+    /* FAB (botones flotantes) */
+    .fr-fab{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:9999;display:flex;flex-direction:column;gap:14px;align-items:flex-end}
+    .fr-ic{min-width:56px;height:56px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 10px 18px rgba(0,0,0,.18)}
+    .fr-ic svg{fill:#fff;width:26px;height:26px}
+    .fr-wa{background:#25D366}
+    .fr-waze{background:#0099ff}
+    .fr-ig{background:linear-gradient(45deg,#F58529,#DD2A7B,#8134AF,#515BD4)}
+    .fr-call{background:#4CAF50}
+    .fr-ic:hover{transform:scale(1.08);box-shadow:0 12px 22px rgba(0,0,0,.22)}
+    /* Badges */
+    .badge{font-size:.72rem;padding:.18rem .5rem;border-radius:999px;border:1px solid rgba(0,0,0,.08);background:#f8fafc}
+    /* Tarjetas */
+    .card{border:1px solid #e5e7eb;border-radius:14px;background:#fff;box-shadow:0 10px 24px rgba(0,0,0,.04)}
+  </style>
+</head>
+<body class="bg-white text-slate-900">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 sticky-blur border-b border-slate-200">
+    <div class="mx-auto max-w-6xl px-4 py-3 flex items-center gap-3">
+      <a href="/" class="inline-flex items-center gap-2">
+        <img src="/logo-header-white.png" alt="Figura Rostro KG" class="h-8 w-auto">
+        <span class="sr-only">Figura Rostro KG</span>
+      </a>
+
+      <nav class="ml-auto flex items-center gap-2">
+        <a href="#categorias" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-slate-100">Categorías</a>
+        <a href="/menu.html" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-slate-100">Menú</a>
+        <a href="#contacto" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-slate-100">Contacto</a>
+        <button id="btnCompartir" class="px-3 py-2 rounded-lg text-sm font-semibold text-white" style="background:#5b2580">Compartir</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="bg-[--primario] text-white">
+    <div class="mx-auto max-w-6xl px-4 py-10">
+      <p class="uppercase tracking-widest text-sm/6 text-white/80">Figura Rostro KG</p>
       <h1 class="text-3xl md:text-5xl font-semibold leading-tight">Menú de Servicios</h1>
-      <p class="mt-3 max-w-2xl text-white/90">Tratamientos faciales, masajes terapéuticos, cuidado corporal y capilar. Explora, guarda y agenda en un clic.</p>
+      <p class="mt-3 max-w-2xl text-white/90">
+        Tratamientos faciales, masajes terapéuticos y cuidado capilar. Explora, guarda y agenda en un clic.
+      </p>
       <div class="mt-6 flex flex-col sm:flex-row gap-3">
         <a href="#menu" class="inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold bg-white text-slate-900 hover:bg-slate-100">Ver menú</a>
-        <a href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG,%20quiero%20agendar%20un%20servicio" target="_blank" rel="noreferrer" class="inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold border border-white/70">Agendar por WhatsApp</a>
+        <a href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG,%20quiero%20agendar" target="_blank" rel="noreferrer" class="inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold border border-white/70">Agendar por WhatsApp</a>
       </div>
     </div>
   </section>
 
-  <!-- Buscador & Categorías -->
-  <section id="categorias" class="mx-auto max-w-6xl px-4 py-8">
-    <div class="flex flex-col sm:flex-row gap-3 sm:items-center">
-      <div class="relative flex-1">
-        <input id="buscador" type="search" placeholder="Buscar por nombre, objetivo o duración…" class="w-full rounded-xl border border-slate-300 px-4 py-3 pr-10 focus:outline-none focus:ring-2 focus:ring-[--primario]" />
-        <svg class="w-5 h-5 absolute right-3 top-1/2 -translate-y-1/2 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m21 21-4.3-4.3M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
-      </div>
-      <div class="flex gap-2 overflow-x-auto" role="tablist" aria-label="Categorías">
-        <button class="tab-btn px-3 py-2 rounded-xl border" role="tab" aria-selected="true" data-cat="todas">Todas</button>
-        <button class="tab-btn px-3 py-2 rounded-xl border" role="tab" aria-selected="false" data-cat="faciales">Faciales</button>
-        <button class="tab-btn px-3 py-2 rounded-xl border" role="tab" aria-selected="false" data-cat="masajes">Masajes</button>
-        <button class="tab-btn px-3 py-2 rounded-xl border" role="tab" aria-selected="false" data-cat="corporales">Corporales</button>
-        <button class="tab-btn px-3 py-2 rounded-xl border" role="tab" aria-selected="false" data-cat="salon">Salón</button>
-        <button class="tab-btn px-3 py-2 rounded-xl border" role="tab" aria-selected="false" data-cat="paquetes">Paquetes</button>
-        <button class="tab-btn px-3 py-2 rounded-xl border" role="tab" aria-selected="false" data-cat="promos">Promos</button>
+  <!-- CONTROLES MENÚ -->
+  <section id="menu" class="mx-auto max-w-6xl px-4 py-8">
+    <!-- Buscador -->
+    <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+      <input id="buscador" type="text" placeholder="Buscar por nombre, objetivo o duración..." class="w-full md:max-w-lg px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[--primario]" />
+      <div class="flex gap-2">
+        <a href="#menu" class="px-4 py-2 rounded-xl text-sm font-semibold border border-slate-200 hover:bg-slate-50">Ver menú</a>
+        <a href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG,%20quiero%20agendar" target="_blank" class="px-4 py-2 rounded-xl text-sm font-semibold text-white" style="background:#5b2580">Agendar por WhatsApp</a>
       </div>
     </div>
-  </section>
 
-  <!-- Menú -->
-  <section id="menu" class="mx-auto max-w-6xl px-4 pb-16">
-    <div id="contenedor-cards" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      <!-- === EJEMPLOS (puedes duplicar y editar) === -->
-      <!-- FACIALES -->
-      <article class="card rounded-2xl border p-5" data-cat="faciales" data-duration="60" data-price="55">
-        <div class="flex items-start justify-between gap-3">
-          <h3 class="text-lg font-semibold">Limpieza facial profunda hidratante</h3>
-          <span class="text-sm px-2 py-1 rounded-full bg-violet-100 text-[--primario]">Facial</span>
+    <!-- Filtros -->
+    <div id="categorias" class="mt-6 flex flex-wrap gap-2">
+      <button data-filter="*" class="px-3 py-2 rounded-lg text-sm border border-slate-200 bg-white font-semibold">Todas</button>
+      <button data-filter="facial" class="px-3 py-2 rounded-lg text-sm border border-slate-200 bg-white">Faciales</button>
+      <button data-filter="masaje" class="px-3 py-2 rounded-lg text-sm border border-slate-200 bg-white">Masajes</button>
+      <button data-filter="corporal" class="px-3 py-2 rounded-lg text-sm border border-slate-200 bg-white">Corporales</button>
+      <button data-filter="salon" class="px-3 py-2 rounded-lg text-sm border border-slate-200 bg-white">Salón</button>
+      <button data-filter="paquete" class="px-3 py-2 rounded-lg text-sm border border-slate-200 bg-white">Paquetes</button>
+      <button data-filter="promo" class="px-3 py-2 rounded-lg text-sm border border-slate-200 bg-white">Promos</button>
+    </div>
+
+    <!-- GRID DE TARJETAS -->
+    <div id="grid" class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+      <!-- ====== EJEMPLOS (puedes duplicar/editar) ====== -->
+
+      <!-- FACIAL -->
+      <article class="card p-4" data-cat="facial" data-text="limpieza facial hidratante brillo mascarilla 60 min">
+        <div class="flex items-start justify-between">
+          <h3 class="font-semibold text-lg">Limpieza facial profunda hidratante</h3>
+          <span class="badge">Facial</span>
         </div>
-        <p class="mt-2 text-sm text-slate-600">Exfoliación, extracción suave, suero y mascarilla para luminosidad inmediata.</p>
-        <div class="mt-4 flex items-center justify-between text-sm">
-          <span class="font-medium">60 min</span>
-          <span class="font-bold">$55</span>
+        <p class="mt-2 text-sm text-slate-600">Exfoliación, extracción suave y mascarilla para luminosidad inmediata.</p>
+        <div class="mt-3 flex items-center justify-between text-sm">
+          <span class="text-slate-500">60 min</span>
+          <span class="font-semibold">$55</span>
         </div>
-        <div class="mt-4 flex items-center gap-2">
-          <a class="px-3 py-2 rounded-lg text-sm font-semibold text-white" style="background:#5b2580" target="_blank" rel="noreferrer" href="https://wa.me/50764746168?text=Hola,%20quiero%20agendar%20Limpieza%20facial%20profunda%20hidratante">Agendar</a>
-          <button class="px-3 py-2 rounded-lg text-sm font-medium border">Añadir + info</button>
+        <div class="mt-4 flex gap-2">
+          <a href="https://wa.me/50764746168?text=Limpieza%20facial%20profunda%20hidratante" target="_blank" class="px-3 py-2 rounded-lg text-sm font-semibold text-white" style="background:#5b2580">Agendar</a>
+          <a href="/peeling-facial.html" class="px-3 py-2 rounded-lg text-sm border border-slate-200">Detalles</a>
         </div>
       </article>
 
-      <article class="card rounded-2xl border p-5" data-cat="faciales" data-duration="45" data-price="70">
-        <div class="flex items-start justify-between gap-3">
-          <h3 class="text-lg font-semibold">Peeling facial renovador</h3>
-          <span class="text-sm px-2 py-1 rounded-full bg-violet-100 text-[--primario]">Facial</span>
-        </div>
-        <p class="mt-2 text-sm text-slate-600">Protocolos de exfoliación controlada para textura uniforme y brillo saludable.</p>
-        <div class="mt-4 flex items-center justify-between text-sm">
-          <span class="font-medium">45 min</span>
-          <span class="font-bold">$70</span>
-        </div>
-        <div class="mt-4 flex items-center gap-2">
-          <a class="px-3 py-2 rounded-lg text-sm font-semibold text-white" style="background:#5b2580" target="_blank" rel="noreferrer" href="https://wa.me/50764746168?text=Hola,%20quiero%20agendar%20Peeling%20facial%20renovador">Agendar</a>
-          <button class="px-3 py-2 rounded-lg text-sm font-medium border">Protocolos</button>
-        </div>
-      </article>
-
-      <!-- MASAJES -->
-      <article class="card rounded-2xl border p-5" data-cat="masajes" data-duration="60" data-price="65">
-        <div class="flex items-start justify-between gap-3">
-          <h3 class="text-lg font-semibold">Masaje relajante</h3>
-          <span class="text-sm px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">Masaje</span>
+      <!-- MASAJE -->
+      <article class="card p-4" data-cat="masaje" data-text="masaje relajante reduce estrés descanso 60 min">
+        <div class="flex items-start justify-between">
+          <h3 class="font-semibold text-lg">Masaje relajante</h3>
+          <span class="badge">Masaje</span>
         </div>
         <p class="mt-2 text-sm text-slate-600">Técnicas suaves para soltar tensión y equilibrar cuerpo y mente.</p>
-        <div class="mt-4 flex items-center justify-between text-sm">
-          <span class="font-medium">60 min</span>
-          <span class="font-bold">$65</span>
+        <div class="mt-3 flex items-center justify-between text-sm">
+          <span class="text-slate-500">60 min</span>
+          <span class="font-semibold">$65</span>
         </div>
-        <div class="mt-4 flex items-center gap-2">
-          <a class="px-3 py-2 rounded-lg text-sm font-semibold text-white" style="background:#5b2580" target="_blank" rel="noreferrer" href="https://wa.me/50764746168?text=Hola,%20quiero%20agendar%20Masaje%20relajante%2060%20min">Agendar</a>
-          <button class="px-3 py-2 rounded-lg text-sm font-medium border">Opciones</button>
-        </div>
-      </article>
-
-      <article class="card rounded-2xl border p-5" data-cat="masajes" data-duration="50" data-price="70">
-        <div class="flex items-start justify-between gap-3">
-          <h3 class="text-lg font-semibold">Masaje descontracturante</h3>
-          <span class="text-sm px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">Masaje</span>
-        </div>
-        <p class="mt-2 text-sm text-slate-600">Trabajo localizado en cuello, espalda y hombros para liberar nudos musculares.</p>
-        <div class="mt-4 flex items-center justify-between text-sm">
-          <span class="font-medium">50 min</span>
-          <span class="font-bold">$70</span>
-        </div>
-        <div class="mt-4 flex items-center gap-2">
-          <a class="px-3 py-2 rounded-lg text-sm font-semibold text-white" style="background:#5b2580" target="_blank" rel="noreferrer" href="https://wa.me/50764746168?text=Hola,%20quiero%20agendar%20Masaje%20descontracturante">Agendar</a>
-          <button class="px-3 py-2 rounded-lg text-sm font-medium border">Indicaciones</button>
+        <div class="mt-4 flex gap-2">
+          <a href="/masaje-relajante.html" class="px-3 py-2 rounded-lg text-sm border border-slate-200">Opciones</a>
+          <a href="https://wa.me/50764746168?text=Masaje%20relajante%2060%20min" target="_blank" class="px-3 py-2 rounded-lg text-sm font-semibold text-white" style="background:#5b2580">Agendar</a>
         </div>
       </article>
 
-      <!-- CORPORALES -->
-      <article class="card rounded-2xl border p-5" data-cat="corporales" data-duration="45" data-price="55">
-        <div class="flex items-start justify-between gap-3">
-          <h3 class="text-lg font-semibold">Tratamiento reductor por zonas</h3>
-          <span class="text-sm px-2 py-1 rounded-full bg-amber-100 text-amber-700">Corporal</span>
+      <!-- CORPORAL -->
+      <article class="card p-4" data-cat="corporal" data-text="tratamiento reductor zonas combinado manual aparatología 45 min">
+        <div class="flex items-start justify-between">
+          <h3 class="font-semibold text-lg">Tratamiento reductor por zonas</h3>
+          <span class="badge">Corporal</span>
         </div>
         <p class="mt-2 text-sm text-slate-600">Técnicas combinadas (manual + aparatología) según evaluación.</p>
-        <div class="mt-4 flex items-center justify-between text-sm">
-          <span class="font-medium">45 min</span>
-          <span class="font-bold">$55</span>
+        <div class="mt-3 flex items-center justify-between text-sm">
+          <span class="text-slate-500">45 min</span>
+          <span class="font-semibold">$55</span>
         </div>
-        <div class="mt-4 flex items-center gap-2">
-          <a class="px-3 py-2 rounded-lg text-sm font-semibold text-white" style="background:#5b2580" target="_blank" rel="noreferrer" href="https://wa.me/50764746168?text=Hola,%20quiero%20agendar%20Tratamiento%20reductor%20por%20zonas">Agendar</a>
-          <button class="px-3 py-2 rounded-lg text-sm font-medium border">Incluye</button>
-        </div>
-      </article>
-
-      <!-- CAPILAR / KERATINA -->
-      <article class="card rounded-2xl border p-5" data-cat="capilar" data-duration="120" data-price="89.95">
-        <div class="flex items-start justify-between gap-3">
-          <h3 class="text-lg font-semibold">Keratina orgánica Biotanix (desde)</h3>
-          <span class="text-sm px-2 py-1 rounded-full bg-pink-100 text-pink-700">Capilar</span>
-        </div>
-        <p class="mt-2 text-sm text-slate-600">Alisado y brillo saludable con fórmulas de alta calidad. Precio según largo y densidad.</p>
-        <div class="mt-4 flex items-center justify-between text-sm">
-          <span class="font-medium">120-180 min</span>
-          <span class="font-bold">desde $89.95</span>
-        </div>
-        <div class="mt-4 flex items-center gap-2">
-          <a class="px-3 py-2 rounded-lg text-sm font-semibold text-white" style="background:#5b2580" target="_blank" rel="noreferrer" href="https://wa.me/50764746168?text=Hola,%20quiero%20agendar%20Keratina%20Biotanix">Agendar</a>
-          <button class="px-3 py-2 rounded-lg text-sm font-medium border">Guía de tallas</button>
+        <div class="mt-4 flex gap-2">
+          <a href="https://wa.me/50764746168?text=Tratamiento%20reductor%20por%20zonas" target="_blank" class="px-3 py-2 rounded-lg text-sm font-semibold text-white" style="background:#5b2580">Agendar</a>
+          <span class="px-3 py-2 rounded-lg text-sm border border-slate-200">Incluye</span>
         </div>
       </article>
 
-      <!-- PAQUETES / PROMOS -->
-      <article class="card rounded-2xl border p-5" data-cat="paquetes" data-duration="120" data-price="95">
-        <div class="flex items-start justify-between gap-3">
-          <h3 class="text-lg font-semibold">Pack Glow: Facial profunda + Yoga facial</h3>
-          <span class="text-sm px-2 py-1 rounded-full bg-indigo-100 text-indigo-700">Paquete</span>
+      <!-- SALÓN -->
+      <article class="card p-4" data-cat="salon" data-text="keratina orgánica biotanix brillo saludable">
+        <div class="flex items-start justify-between">
+          <h3 class="font-semibold text-lg">Keratina orgánica Biotanix</h3>
+          <span class="badge">Capilar</span>
+        </div>
+        <p class="mt-2 text-sm text-slate-600">Aliado y brillo saludable con fórmulas de alta calidad.</p>
+        <div class="mt-3 flex items-center justify-between text-sm">
+          <span class="text-slate-500">120–180 min</span>
+          <span class="font-semibold">desde $89.95</span>
+        </div>
+        <div class="mt-4 flex gap-2">
+          <a href="https://wa.me/50764746168?text=Keratina%20org%C3%A1nica%20Biotanix" target="_blank" class="px-3 py-2 rounded-lg text-sm font-semibold text-white" style="background:#5b2580">Agendar</a>
+          <a href="#" class="px-3 py-2 rounded-lg text-sm border border-slate-200">Guía de tallas</a>
+        </div>
+      </article>
+
+      <!-- PAQUETE -->
+      <article class="card p-4" data-cat="paquete" data-text="pack glow limpieza tonificación velos 120 min">
+        <div class="flex items-start justify-between">
+          <h3 class="font-semibold text-lg">Pack Glow: Facial + Yoga facial</h3>
+          <span class="badge">Paquete</span>
         </div>
         <p class="mt-2 text-sm text-slate-600">Textura más lisa, luminosidad y tonificación. Ideal antes de eventos.</p>
-        <div class="mt-4 flex items-center justify-between text-sm">
-          <span class="font-medium">120 min</span>
-          <span class="font-bold">$95</span>
+        <div class="mt-3 flex items-center justify-between text-sm">
+          <span class="text-slate-500">120 min</span>
+          <span class="font-semibold">$95</span>
         </div>
-        <div class="mt-4 flex items-center gap-2">
-          <a class="px-3 py-2 rounded-lg text-sm font-semibold text-white" style="background:#5b2580" target="_blank" rel="noreferrer" href="https://wa.me/50764746168?text=Hola,%20quiero%20agendar%20Pack%20Glow">Agendar</a>
-          <button class="px-3 py-2 rounded-lg text-sm font-medium border">Detalles</button>
-        </div>
-      </article>
-
-      <article class="card rounded-2xl border p-5" data-cat="promos" data-duration="90" data-price="65">
-        <div class="flex items-start justify-between gap-3">
-          <h3 class="text-lg font-semibold">Hoy: Masaje relajante + facial básico</h3>
-          <span class="text-sm px-2 py-1 rounded-full bg-fuchsia-100 text-fuchsia-700">Promo</span>
-        </div>
-        <p class="mt-2 text-sm text-slate-600">Combinación ideal para reset de cuerpo y rostro. Sólo por hoy.</p>
-        <div class="mt-4 flex items-center justify-between text-sm">
-          <span class="font-medium">90 min</span>
-          <span class="font-bold">$65</span>
-        </div>
-        <div class="mt-4 flex items-center gap-2">
-          <a class="px-3 py-2 rounded-lg text-sm font-semibold text-white" style="background:#5b2580" target="_blank" rel="noreferrer" href="https://wa.me/50764746168?text=Hola,%20quiero%20aprovechar%20la%20promo%20de%20hoy">Agendar</a>
-          <button class="px-3 py-2 rounded-lg text-sm font-medium border">Condiciones</button>
+        <div class="mt-4 flex gap-2">
+          <a href="https://wa.me/50764746168?text=Pack%20Glow%20Facial%20%2B%20Yoga%20facial" target="_blank" class="px-3 py-2 rounded-lg text-sm font-semibold text-white" style="background:#5b2580">Agendar</a>
+          <a href="#" class="px-3 py-2 rounded-lg text-sm border border-slate-200">Detalles</a>
         </div>
       </article>
 
-      <!-- ====== NUEVOS: FACIALES EN TENDENCIA ====== -->
-      <article class="card rounded-2xl border p-5" data-cat="faciales" data-duration="60" data-price="120">
-        <figure class="mb-3"><img src="/assets/menu/facial-bioestimulador-colageno.jpg" alt="Bioestimulador de colágeno facial" class="w-full h-44 object-cover rounded-xl"></figure>
-        <div class="flex items-start justify-between gap-3">
-          <h3 class="text-lg font-semibold">Bio‑estimulador de colágeno facial</h3>
-          <span class="text-sm px-2 py-1 rounded-full bg-violet-100 text-[--primario]">Facial</span>
+      <!-- PROMO -->
+      <article class="card p-4" data-cat="promo" data-text="promoción bioestimulador de colágeno facial 60 min">
+        <div class="flex items-start justify-between">
+          <h3 class="font-semibold text-lg">Bio-estimulador de colágeno facial (Promo)</h3>
+          <span class="badge">Facial</span>
         </div>
-        <p class="mt-2 text-sm text-slate-600">Aparatología + activos pro‑colágeno para firmeza, elasticidad y textura más uniforme.</p>
-        <div class="mt-4 flex items-center justify-between text-sm">
-          <span class="font-medium">60 min</span>
-          <span class="font-bold">$120</span>
+        <p class="mt-2 text-sm text-slate-600">Piel firme, elástica y textura más uniforme.</p>
+        <div class="mt-3 flex items-center justify-between text-sm">
+          <span class="text-slate-500">60 min</span>
+          <span class="font-semibold">$120</span>
         </div>
-        <div class="mt-4 flex items-center gap-2">
-          <a class="px-3 py-2 rounded-lg text-sm font-semibold text-white" style="background:#5b2580" target="_blank" rel="noreferrer" href="https://wa.me/50764746168?text=Hola,%20quiero%20agendar%20Bioestimulador%20de%20col%C3%A1geno%20facial">Agendar</a>
-          <button class="px-3 py-2 rounded-lg text-sm font-medium border">Indicaciones</button>
-        </div>
-      </article>
-
-      <article class="card rounded-2xl border p-5" data-cat="faciales" data-duration="50" data-price="110">
-        <figure class="mb-3"><img src="/assets/menu/facial-reafirmante-cuello-papada.jpg" alt="Reafirmante cuello y papada" class="w-full h-44 object-cover rounded-xl"></figure>
-        <div class="flex items-start justify-between gap-3">
-          <h3 class="text-lg font-semibold">Reafirmante cuello y papada sin cirugía</h3>
-          <span class="text-sm px-2 py-1 rounded-full bg-violet-100 text-[--primario]">Facial</span>
-        </div>
-        <p class="mt-2 text-sm text-slate-600">Ultrasonido focalizado + radiofrecuencia para contorno definido y piel más tensa.</p>
-        <div class="mt-4 flex items-center justify-between text-sm">
-          <span class="font-medium">50 min</span>
-          <span class="font-bold">$110</span>
-        </div>
-        <div class="mt-4 flex items-center gap-2">
-          <a class="px-3 py-2 rounded-lg text-sm font-semibold text-white" style="background:#5b2580" target="_blank" rel="noreferrer" href="https://wa.me/50764746168?text=Hola,%20quiero%20agendar%20Reafirmante%20cuello%20y%20papada">Agendar</a>
-          <button class="px-3 py-2 rounded-lg text-sm font-medium border">Zonas</button>
+        <div class="mt-4 flex gap-2">
+          <a href="https://wa.me/50764746168?text=Promo%20Bioestimulador%20de%20col%C3%A1geno%20facial" target="_blank" class="px-3 py-2 rounded-lg text-sm font-semibold text-white" style="background:#5b2580">Agendar</a>
+          <a href="#" class="px-3 py-2 rounded-lg text-sm border border-slate-200">Indicaciones</a>
         </div>
       </article>
 
-      <article class="card rounded-2xl border p-5" data-cat="faciales" data-duration="45" data-price="95">
-        <figure class="mb-3"><img src="/assets/menu/facial-peeling-microneedling.jpg" alt="Peeling + microagujas revitalizante" class="w-full h-44 object-cover rounded-xl"></figure>
-        <div class="flex items-start justify-between gap-3">
-          <h3 class="text-lg font-semibold">Peeling + micro‑agujas revitalizante</h3>
-          <span class="text-sm px-2 py-1 rounded-full bg-violet-100 text-[--primario]">Facial</span>
-        </div>
-        <p class="mt-2 text-sm text-slate-600">Combo para manchas, poros y textura; impulsa renovación y brillo saludable.</p>
-        <div class="mt-4 flex items-center justify-between text-sm">
-          <span class="font-medium">45 min</span>
-          <span class="font-bold">$95</span>
-        </div>
-        <div class="mt-4 flex items-center gap-2">
-          <a class="px-3 py-2 rounded-lg text-sm font-semibold text-white" style="background:#5b2580" target="_blank" rel="noreferrer" href="https://wa.me/50764746168?text=Hola,%20quiero%20agendar%20Peeling%20%2B%20microagujas">Agendar</a>
-          <button class="px-3 py-2 rounded-lg text-sm font-medium border">Cuidados</button>
-        </div>
-      </article>
+      <!-- ====== /EJEMPLOS ====== -->
 
-      <article class="card rounded-2xl border p-5" data-cat="faciales" data-duration="40" data-price="100">
-        <figure class="mb-3"><img src="/assets/menu/facial-despigmentante.jpg" alt="Tratamiento despigmentante avanzado" class="w-full h-44 object-cover rounded-xl"></figure>
-        <div class="flex items-start justify-between gap-3">
-          <h3 class="text-lg font-semibold">Tratamiento despigmentante avanzado</h3>
-          <span class="text-sm px-2 py-1 rounded-full bg-violet-100 text-[--primario]">Facial</span>
-        </div>
-        <p class="mt-2 text-sm text-slate-600">Protocolo para melasma y manchas; mejora el tono y la uniformidad de la piel.</p>
-        <div class="mt-4 flex items-center justify-between text-sm">
-          <span class="font-medium">40 min</span>
-          <span class="font-bold">$100</span>
-        </div>
-        <div class="mt-4 flex items-center gap-2">
-          <a class="px-3 py-2 rounded-lg text-sm font-semibold text-white" style="background:#5b2580" target="_blank" rel="noreferrer" href="https://wa.me/50764746168?text=Hola,%20quiero%20agendar%20Despigmentante%20avanzado">Agendar</a>
-          <button class="px-3 py-2 rounded-lg text-sm font-medium border">Plan</button>
-        </div>
-      </article>
-
-      <article class="card rounded-2xl border p-5" data-cat="faciales" data-duration="60" data-price="70">
-        <figure class="mb-3"><img src="/assets/menu/facial-limpieza-colageno.jpg" alt="Limpieza facial + mascarilla de colágeno" class="w-full h-44 object-cover rounded-xl"></figure>
-        <div class="flex items-start justify-between gap-3">
-          <h3 class="text-lg font-semibold">Limpieza profunda + mascarilla de colágeno</h3>
-          <span class="text-sm px-2 py-1 rounded-full bg-violet-100 text-[--primario]">Facial</span>
-        </div>
-        <p class="mt-2 text-sm text-slate-600">Limpieza completa con plus de colágeno para suavidad y glow inmediato.</p>
-        <div class="mt-4 flex items-center justify-between text-sm">
-          <span class="font-medium">60 min</span>
-          <span class="font-bold">$70</span>
-        </div>
-        <div class="mt-4 flex items-center gap-2">
-          <a class="px-3 py-2 rounded-lg text-sm font-semibold text-white" style="background:#5b2580" target="_blank" rel="noreferrer" href="https://wa.me/50764746168?text=Hola,%20quiero%20agendar%20Limpieza%20%2B%20mascarilla%20de%20col%C3%A1geno">Agendar</a>
-          <button class="px-3 py-2 rounded-lg text-sm font-medium border">Detalles</button>
-        </div>
-      </article>
-
-      <!-- ====== NUEVOS: SALÓN / BELLEZA INTEGRAL ====== -->
-      <article class="card rounded-2xl border p-5" data-cat="salon" data-duration="45" data-price="35">
-        <figure class="mb-3"><img src="/assets/menu/salon-manicura-gel.jpg" alt="Manicura gel + diseño" class="w-full h-44 object-cover rounded-xl"></figure>
-        <div class="flex items-start justify-between gap-3">
-          <h3 class="text-lg font-semibold">Manicura gel + diseño</h3>
-          <span class="text-sm px-2 py-1 rounded-full bg-pink-100 text-pink-700">Salón</span>
-        </div>
-        <p class="mt-2 text-sm text-slate-600">Corte, cutícula, esmaltado gel y toque creativo. Duración prolongada.</p>
-        <div class="mt-4 flex items-center justify-between text-sm">
-          <span class="font-medium">45 min</span>
-          <span class="font-bold">$35</span>
-        </div>
-        <div class="mt-4 flex items-center gap-2">
-          <a class="px-3 py-2 rounded-lg text-sm font-semibold text-white" style="background:#5b2580" target="_blank" rel="noreferrer" href="https://wa.me/50764746168?text=Hola,%20quiero%20agendar%20Manicura%20gel">Agendar</a>
-          <button class="px-3 py-2 rounded-lg text-sm font-medium border">Paleta</button>
-        </div>
-      </article>
-
-      <article class="card rounded-2xl border p-5" data-cat="salon" data-duration="60" data-price="45">
-        <figure class="mb-3"><img src="/assets/menu/salon-pedicura-spa.jpg" alt="Pedicura spa + exfoliación" class="w-full h-44 object-cover rounded-xl"></figure>
-        <div class="flex items-start justify-between gap-3">
-          <h3 class="text-lg font-semibold">Pedicura spa + exfoliación</h3>
-          <span class="text-sm px-2 py-1 rounded-full bg-pink-100 text-pink-700">Salón</span>
-        </div>
-        <p class="mt-2 text-sm text-slate-600">Baño relajante, limado, cutícula, exfoliación e hidratación profunda.</p>
-        <div class="mt-4 flex items-center justify-between text-sm">
-          <span class="font-medium">60 min</span>
-          <span class="font-bold">$45</span>
-        </div>
-        <div class="mt-4 flex items-center gap-2">
-          <a class="px-3 py-2 rounded-lg text-sm font-semibold text-white" style="background:#5b2580" target="_blank" rel="noreferrer" href="https://wa.me/50764746168?text=Hola,%20quiero%20agendar%20Pedicura%20spa">Agendar</a>
-          <button class="px-3 py-2 rounded-lg text-sm font-medium border">Opciones</button>
-        </div>
-      </article>
-
-      <article class="card rounded-2xl border p-5" data-cat="salon" data-duration="90" data-price="80">
-        <figure class="mb-3"><img src="/assets/menu/salon-extensiones-pestanas.jpg" alt="Extensiones de pestañas volumen" class="w-full h-44 object-cover rounded-xl"></figure>
-        <div class="flex items-start justify-between gap-3">
-          <h3 class="text-lg font-semibold">Extensiones de pestañas volumen</h3>
-          <span class="text-sm px-2 py-1 rounded-full bg-pink-100 text-pink-700">Salón</span>
-        </div>
-        <p class="mt-2 text-sm text-slate-600">Volumen y definición con técnica especializada. Look a medida.</p>
-        <div class="mt-4 flex items-center justify-between text-sm">
-          <span class="font-medium">90 min</span>
-          <span class="font-bold">$80</span>
-        </div>
-        <div class="mt-4 flex items-center gap-2">
-          <a class="px-3 py-2 rounded-lg text-sm font-semibold text-white" style="background:#5b2580" target="_blank" rel="noreferrer" href="https://wa.me/50764746168?text=Hola,%20quiero%20agendar%20Extensiones%20de%20pesta%C3%B1as">Agendar</a>
-          <button class="px-3 py-2 rounded-lg text-sm font-medium border">Mantenimiento</button>
-        </div>
-      </article>
-
-      <article class="card rounded-2xl border p-5" data-cat="salon" data-duration="40" data-price="30">
-        <figure class="mb-3"><img src="/assets/menu/salon-laminado-cejas.jpg" alt="Laminado de cejas + tinte" class="w-full h-44 object-cover rounded-xl"></figure>
-        <div class="flex items-start justify-between gap-3">
-          <h3 class="text-lg font-semibold">Laminado de cejas + tinte</h3>
-          <span class="text-sm px-2 py-1 rounded-full bg-pink-100 text-pink-700">Salón</span>
-        </div>
-        <p class="mt-2 text-sm text-slate-600">Efecto peinado y definición para cejas perfectas por semanas.</p>
-        <div class="mt-4 flex items-center justify-between text-sm">
-          <span class="font-medium">40 min</span>
-          <span class="font-bold">$30</span>
-        </div>
-        <div class="mt-4 flex items-center gap-2">
-          <a class="px-3 py-2 rounded-lg text-sm font-semibold text-white" style="background:#5b2580" target="_blank" rel="noreferrer" href="https://wa.me/50764746168?text=Hola,%20quiero%20agendar%20Laminado%20de%20cejas">Agendar</a>
-          <button class="px-3 py-2 rounded-lg text-sm font-medium border">Duración</button>
-        </div>
-      </article>
-
-      <article class="card rounded-2xl border p-5" data-cat="salon" data-duration="75" data-price="90">
-        <figure class="mb-3"><img src="/assets/menu/salon-maquillaje-evento.jpg" alt="Maquillaje de evento" class="w-full h-44 object-cover rounded-xl"></figure>
-        <div class="flex items-start justify-between gap-3">
-          <h3 class="text-lg font-semibold">Maquillaje de evento</h3>
-          <span class="text-sm px-2 py-1 rounded-full bg-pink-100 text-pink-700">Salón</span>
-        </div>
-        <p class="mt-2 text-sm text-slate-600">Ocasiones especiales: novia, quinceaños, corporativo. Prueba de look incluida.</p>
-        <div class="mt-4 flex items-center justify-between text-sm">
-          <span class="font-medium">75 min</span>
-          <span class="font-bold">$90</span>
-        </div>
-        <div class="mt-4 flex items-center gap-2">
-          <a class="px-3 py-2 rounded-lg text-sm font-semibold text-white" style="background:#5b2580" target="_blank" rel="noreferrer" href="https://wa.me/50764746168?text=Hola,%20quiero%20agendar%20Maquillaje%20de%20evento">Agendar</a>
-          <button class="px-3 py-2 rounded-lg text-sm font-medium border">Prueba</button>
-        </div>
-      </article>
-
-      <article class="card rounded-2xl border p-5" data-cat="salon" data-duration="120" data-price="120">
-        <figure class="mb-3"><img src="/assets/menu/salon-reconstruccion-capilar.jpg" alt="Reconstrucción capilar intensiva" class="w-full h-44 object-cover rounded-xl"></figure>
-        <div class="flex items-start justify-between gap-3">
-          <h3 class="text-lg font-semibold">Reconstrucción capilar intensiva</h3>
-          <span class="text-sm px-2 py-1 rounded-full bg-pink-100 text-pink-700">Salón</span>
-        </div>
-        <p class="mt-2 text-sm text-slate-600">Protocolo nutritivo para recuperar fuerza y brillo. Ideal post‑química.</p>
-        <div class="mt-4 flex items-center justify-between text-sm">
-          <span class="font-medium">120 min</span>
-          <span class="font-bold">$120</span>
-        </div>
-        <div class="mt-4 flex items-center gap-2">
-          <a class="px-3 py-2 rounded-lg text-sm font-semibold text-white" style="background:#5b2580" target="_blank" rel="noreferrer" href="https://wa.me/50764746168?text=Hola,%20quiero%20agendar%20Reconstrucci%C3%B3n%20capilar">Agendar</a>
-          <button class="px-3 py-2 rounded-lg text-sm font-medium border">Incluye</button>
-        </div>
-      </article>
-
-      <!-- ====== AGREGA MÁS SERVICIOS DUPLICANDO ARTÍCULOS ====== -->
-      
-      <!-- MARCADOR: AGREGAR_MAS_ITEMS_AQUI -->
-
-    </div>
-
-    <!-- Controles secundarios -->
-    <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-3">
-      <div class="flex items-center gap-2 text-sm">
-        <label for="orden" class="text-slate-600">Ordenar por:</label>
-        <select id="orden" class="rounded-lg border px-3 py-2">
-          <option value="relevancia">Relevancia</option>
-          <option value="precio-asc">Precio: menor a mayor</option>
-          <option value="precio-desc">Precio: mayor a menor</option>
-          <option value="duracion-asc">Duración: menor a mayor</option>
-          <option value="duracion-desc">Duración: mayor a menor</option>
-        </select>
-      </div>
-      <div class="flex items-center gap-2">
-        <button id="btnImprimir" class="px-3 py-2 rounded-lg border text-sm">Imprimir</button>
-        <a href="https://wa.me/50764746168?text=Hola,%20quiero%20información%20sobre%20el%20menú%20de%20servicios" target="_blank" rel="noreferrer" class="px-3 py-2 rounded-lg text-sm font-semibold text-white" style="background:#5b2580">¿Dudas? Escríbenos</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contacto -->
-  <section id="contacto" class="bg-slate-50 py-10">
-    <div class="mx-auto max-w-6xl px-4 grid sm:grid-cols-2 gap-8">
-      <div>
-        <h2 class="text-xl font-semibold">Contacto</h2>
-        <p class="mt-2 text-sm text-slate-600">Royal Park, Parque Lefevre – Ciudad de Panamá</p>
-        <p class="mt-1 text-sm"><a class="underline" href="tel:+50764746168">(+507) 647-46168</a></p>
-        <div class="mt-3 flex gap-2">
-          <a class="px-3 py-2 rounded-lg text-sm font-semibold text-white" style="background:#5b2580" href="https://wa.me/50764746168" target="_blank" rel="noreferrer">WhatsApp</a>
-          <a class="px-3 py-2 rounded-lg text-sm border" href="https://maps.app.goo.gl/" target="_blank" rel="noreferrer">Cómo llegar</a>
-        </div>
-      </div>
-      <div>
-        <h3 class="text-base font-semibold">Notas</h3>
-        <ul class="mt-2 text-sm text-slate-600 list-disc pl-5 space-y-1">
-          <li>Precios en USD. Algunos servicios varían según evaluación.</li>
-          <li>Promociones sujetas a disponibilidad.</li>
-          <li>Recomendamos reservar con antelación.</li>
-        </ul>
-      </div>
+      <!--
+        TIP: Reemplaza/duplica las tarjetas de arriba con tu inventario completo.
+        Para que la búsqueda/filtros funcionen:
+        - data-cat="facial|masaje|corporal|salon|paquete|promo"
+        - data-text="palabras clave para búsqueda"
+      -->
     </div>
   </section>
 
   <!-- FOOTER -->
-<footer style="background:#0f0817; color:#cfc9d9;">
-  <div class="wrap" style="padding:48px 16px; max-width:1150px; margin:auto;">
-    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:26px;">
-      <div>
-        <img src="/logo-header-white.png" alt="Figura Rostro KG" style="height:40px; width:auto; margin-bottom:10px;">
-        <p style="opacity:.9;">Estética integral en <b>Royal Park</b>, Parque Lefevre. Faciales, masajes y belleza integral con enfoque profesional.</p>
-      </div>
-
-      <div>
-        <h4 style="margin:0 0 10px; color:#fff;">Enlaces</h4>
-        <ul style="list-style:none; padding:0; margin:0;">
-          <li><a href="/menu.html" style="color:#cfc9d9">Menú de Servicios</a></li>
-          <li><a href="/tratamientos-faciales/" style="color:#cfc9d9">Faciales</a></li>
-          <li><a href="/masajes-terapeuticos/" style="color:#cfc9d9">Masajes</a></li>
-          <li><a href="/salon/" style="color:#cfc9d9">Salón</a></li>
-          <li><a href="/#promos" style="color:#cfc9d9">Promos</a></li>
-          <li><a href="/chat-citas.html" style="color:#cfc9d9">Agendar</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4 style="margin:0 0 10px; color:#fff;">Contacto</h4>
-        <p style="margin:0 0 6px;">Royal Park – Parque Lefevre</p>
-        <p style="margin:0 0 6px;"><a href="tel:+50764746168" style="color:#cfc9d9">Tel: (+507) 647-46168</a></p>
-        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
-          <a style="color:#cfc9d9" href="https://wa.me/50764746168" target="_blank" rel="noreferrer">WhatsApp</a>·
-          <a style="color:#cfc9d9" href="https://instagram.com/figurarostrokg" target="_blank" rel="noreferrer">Instagram</a>·
-          <a style="color:#cfc9d9" href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noreferrer">Cómo llegar</a>
-        </div>
-      </div>
-
-      <div>
-        <h4 style="margin:0 0 10px; color:#fff;">Horario</h4>
-        <p style="margin:0">Lun–Sáb: 8:00 a. m. – 8:00 p. m.</p>
-        <p style="margin:4px 0 0">Domingo: con cita previa</p>
-      </div>
+  <footer class="py-8 border-t text-center text-sm text-slate-500">
+    <p>© <span id="anio"></span> Figura Rostro KG · Todos los derechos reservados</p>
+    <p>Royal Park – <a class="underline" href="https://maps.app.goo.gl/muFVBY4QFqEDNeQ38" target="_blank" rel="noreferrer">Av. Ernesto T. Lefevre, Ciudad de Panamá</a></p>
+    <div class="mt-3 flex flex-wrap gap-3 justify-center">
+      <a href="/#sobre" class="text-[--primario]">Nosotros</a>
+      <a href="/masajes-terapeuticos/" class="text-[--primario]">Masajes terapéuticos</a>
+      <a href="/masaje-relajante.html" class="font-semibold text-[--primario]">Masaje relajante</a>
+      <a href="/masaje-terapeutico-adultos-mayores.html" class="text-[--primario]">Masaje para adultos mayores</a>
+      <a href="/terapia-masaje-discapacidad.html" class="text-[--primario]">Terapia adaptada</a>
+      <a href="/peeling-facial.html" class="text-[--primario]">Peeling Facial</a>
+      <a href="/lifting-sin-cirugia.html" class="text-[--primario]">Lifting sin cirugía</a>
+      <a href="/chat-citas.html" class="text-[--primario]">Agendar</a>
     </div>
+  </footer>
 
-    <div style="border-top:1px solid rgba(255,255,255,.08); text-align:center; padding:16px;">
-      <small>© <span id="anio"></span> Figura Rostro KG · Todos los derechos reservados</small>
-    </div>
+  <!-- FAB flotantes -->
+  <div class="fr-fab">
+    <a class="fr-ic fr-wa" href="https://wa.me/50764746168" target="_blank" aria-label="WhatsApp" title="WhatsApp">
+      <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.94 14.5L2 22l5.7-1.5A10 10 0 1 0 12 2zm5.5 14.1c-.24.68-1.4 1.3-1.96 1.34-.5.03-1.14.05-1.84-.12-.42-.1-.97-.31-1.67-.61-2.94-1.27-4.86-4.2-5.01-4.4-.15-.2-1.2-1.6-1.2-3.06 0-1.45.76-2.16 1.03-2.45.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.24.59.82 2.05.9 2.2.07.15.12.33.01.53-.1.2-.15.33-.3.51-.15.18-.31.4-.44.54-.15.15-.31.32-.13.62.18.3.8 1.3 1.71 2.1 1.18 1.05 2.17 1.37 2.47 1.52.3.15.48.13.66-.08.18-.2.76-.89.96-1.2.2-.3.41-.26.67-.15.26.1 1.64.77 1.92.91.29.15.48.22.55.34.07.12.07.7-.17 1.38z"/></svg>
+    </a>
+    <a class="fr-ic fr-waze" href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" aria-label="Waze" title="Waze">
+      <svg viewBox="0 0 24 24"><path d="M12 2c5.5 0 10 3.9 10 8.7 0 3.9-3 7.2-7.2 8.2-.5.1-.7.4-.9.8-.5 1-1.4 2.1-2.9 2.1-1.6 0-2.4-1.1-2.9-2.1-.2-.4-.4-.7-.9-.8C5 17.9 2 14.6 2 10.7 2 5.9 6.5 2 12 2z"/></svg>
+    </a>
+    <a class="fr-ic fr-ig" href="https://instagram.com/figurarostrokg" target="_blank" aria-label="Instagram" title="Instagram">
+      <svg viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm4.25 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10z"/></svg>
+    </a>
+    <a class="fr-ic fr-call" href="tel:+50764746168" aria-label="Llamar" title="Llamar">
+      <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1v3.5c0 .55-.45 1-1 1A17.92 17.92 0 0 1 2 6c0-.55.45-1 1-1H6.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.12.35.03.75-.24 1.02l-2.2 2.2z"/></svg>
+    </a>
   </div>
-</footer>
 
+  <!-- SCRIPTS -->
   <script>
-  // Año en footer
-  const y = document.getElementById('anio'); if (y) y.textContent = new Date().getFullYear();
+    // Año en footer
+    const anioEl = document.getElementById('anio');
+    if (anioEl) anioEl.textContent = new Date().getFullYear();
 
-  // Compartir / copiar enlace
-  const btnCompartir = document.getElementById('btnCompartir');
-  if (btnCompartir) {
-    btnCompartir.addEventListener('click', async () => {
-      const url = window.location.href;
-      try {
-        if (navigator.share) {
-          await navigator.share({ title: 'Menú de Servicios — Figura Rostro KG', url });
-        } else {
-          await navigator.clipboard.writeText(url);
-          btnCompartir.textContent = '¡Enlace copiado!';
-          setTimeout(() => btnCompartir.textContent = 'Compartir', 1800);
-        }
-      } catch(e) { console.error(e); }
+    // Compartir / copiar enlace
+    const btnCompartir = document.getElementById('btnCompartir');
+    if (btnCompartir) {
+      btnCompartir.addEventListener('click', async () => {
+        const url = window.location.href;
+        try {
+          if (navigator.share) {
+            await navigator.share({ title: 'Menú de Servicios — Figura Rostro KG', url });
+          } else {
+            await navigator.clipboard.writeText(url);
+            btnCompartir.textContent = '¡Enlace copiado!';
+            setTimeout(() => btnCompartir.textContent = 'Compartir', 1500);
+          }
+        } catch(e){ console.error(e); }
+      });
+    }
+
+    // Búsqueda y filtros
+    const grid = document.getElementById('grid');
+    const tarjetas = Array.from(grid.querySelectorAll('[data-cat]'));
+    const buscador = document.getElementById('buscador');
+    const filtros = Array.from(document.querySelectorAll('[data-filter]'));
+
+    let filtroActivo = '*';
+    let texto = '';
+
+    function aplicaFiltros() {
+      tarjetas.forEach(t => {
+        const coincideCat = filtroActivo === '*' || t.dataset.cat === filtroActivo;
+        const coincideTexto = t.dataset.text.toLowerCase().includes(texto);
+        t.style.display = (coincideCat && coincideTexto) ? '' : 'none';
+      });
+    }
+
+    filtros.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filtros.forEach(b => b.classList.remove('font-semibold','border-[--primario]'));
+        btn.classList.add('font-semibold','border-[--primario]');
+        filtroActivo = btn.dataset.filter;
+        aplicaFiltros();
+      });
     });
-  }
-</script>
 
-  <!-- RECOMENDACIÓN DE MEDIDAS DE IMAGENES (puedes reemplazar libremente) -->
-  <!--
-    Hero principal:        1600x900 px (JPEG alta calidad)
-    Imágenes de tarjetas:  1200x800 px (se usan recortadas a 16:9 aprox)
-    Logos (oscuro/claro):   640x200 px (SVG recomendado)
-    Banners/promos:        1600x600 px
-    NOTA: Coloca las imágenes en /assets/menu/ con los mismos nombres usados en los src de ejemplo.
-  -->
- <!-- BOTONES FLOTANTES -->
-<div class="fr-fab">
-  <a class="fr-ic fr-wa" href="https://wa.me/50764746168" target="_blank" aria-label="WhatsApp" title="WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.94 14.5L2 22l5.7-1.5A10 10 0 1 0 12 2zm5.5 14.1c-.24.68-1.4 1.3-1.96 1.34-.5.03-1.14.05-1.84-.12-.42-.1-.97-.31-1.67-.61-2.94-1.27-4.86-4.2-5.01-4.4-.15-.2-1.2-1.6-1.2-3.06 0-1.45.76-2.16 1.03-2.45.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.24.59.82 2.05.9 2.2.07.15.12.33.01.53-.1.2-.15.33-.3.51-.15.18-.31.4-.44.54-.15.15-.31.32-.13.62.18.3.8 1.3 1.71 2.1 1.18 1.05 2.17 1.37 2.47 1.52.3.15.48.13.66-.08.18-.2.76-.89.96-1.2.2-.3.41-.26.67-.15.26.1 1.64.77 1.92.91.29.15.48.22.55.34.07.12.07.7-.17 1.38z"/></svg>
-  </a>
-
-  <a class="fr-ic fr-waze" href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" aria-label="Waze" title="Cómo llegar">
-    <svg viewBox="0 0 24 24"><path d="M12 2c5.5 0 10 3.9 10 8.7 0 3.9-3 7.2-7.2 8.2-.5.1-.7.4-.9.8-.5 1-1.4 2.1-2.9 2.1-1.6 0-2.4-1.1-2.9-2.1-.2-.4-.4-.7-.9-.8C5 17.9 2 14.6 2 10.7 2 5.9 6.5 2 12 2z"/></svg>
-  </a>
-
-  <a class="fr-ic fr-ig" href="https://instagram.com/figurarostrokg" target="_blank" aria-label="Instagram" title="Instagram">
-    <svg viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm4.25 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10z"/></svg>
-  </a>
-
-  <a class="fr-ic fr-call" href="tel:+50764746168" aria-label="Llamar" title="Llamar">
-    <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1v3.5c0 .55-.45 1-1 1A17.92 17.92 0 0 1 2 6c0-.55.45-1 1-1H6.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.12.35.03.75-.24 1.02l-2.2 2.2z"/></svg>
-  </a>
-</div>
-<style>
-/* FAB (botones flotantes) */
-.fr-fab {
-  position: fixed;
-  right: 22px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 9999;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  align-items: flex-end;
-}
-.fr-ic {
-  min-width: 56px;
-  height: 56px;
-  border-radius: 14px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
-}
-.fr-ic svg {
-  fill: #fff;
-  width: 26px;
-  height: 26px;
-}
-.fr-wa { background: #25d366; } /* WhatsApp */
-.fr-waze { background: #0099ff; } /* Waze */
-.fr-ig {
-  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
-} /* Instagram */
-.fr-call { background: #4caf50; } /* Llamar */
-.fr-ic:hover {
-  transform: scale(1.08);
-  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.22);
-}
-</style>
-<!-- BOTONES FLOTANTES -->
-<div class="fr-fab">
-  <a class="fr-ic fr-wa" href="https://wa.me/50764746168" target="_blank" aria-label="WhatsApp" title="WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M12 2.1C6.48 2.1 2 6.36 2 11.67c0 1.83.49 3.55 1.34 5.06L2 22l5.45-1.43a9.91 9.91 0 004.55 1.1c5.52 0 10-4.26 10-9.57S17.52 2.1 12 2.1zm5.18 13.82c-.23.65-1.34 1.24-1.84 1.32-.49.08-1.07.12-1.72-.1a8.1 8.1 0 01-3.26-1.7 9.18 9.18 0 01-1.74-2.07 4.2 4.2 0 01-.63-1.6c-.06-.28 0-.52.09-.73.09-.2.49-.8.68-1.09.19-.28.29-.45.49-.5.15-.03.33-.03.5-.03.16 0 .39-.06.61.47.23.52.78 1.77.85 1.9.07.12.12.27.02.44-.1.17-.16.27-.31.41-.16.15-.33.33-.47.45-.16.14-.33.29-.15.57.19.28.82 1.35 1.76 2.18 1.2 1.06 2.2 1.38 2.5 1.52.31.13.5.11.68-.07.19-.19.78-.89.99-1.19.21-.29.42-.25.7-.15.28.1 1.76.83 2.06.99.31.15.51.22.59.34.07.12.07.67-.16 1.32z"/></svg>
-  </a>
-
-  <a class="fr-ic fr-waze" href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama" target="_blank" aria-label="Waze" title="Cómo llegar">
-    <svg viewBox="0 0 24 24"><path d="M12.002 3C7.59 3 4 6.493 4 10.717c0 .577.07 1.137.2 1.67l-.91 2.292a.67.67 0 00.63.91h2.105a8.02 8.02 0 004.03 2.157l.252.049v.363c0 .384.31.692.692.692h.924c.383 0 .692-.31.692-.692v-.346l.256-.045a8.04 8.04 0 004.017-2.151h2.107a.67.67 0 00.63-.91l-.91-2.292c.13-.534.2-1.094.2-1.67C20 6.493 16.414 3 12.002 3z"/></svg>
-  </a>
-
-  <a class="fr-ic fr-ig" href="https://instagram.com/figurarostrokg" target="_blank" aria-label="Instagram" title="Instagram">
-    <svg viewBox="0 0 24 24"><path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 2c1.654 0 3 1.346 3 3v10c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm4.5-.5a1 1 0 100 2 1 1 0 000-2z"/></svg>
-  </a>
-
-  <a class="fr-ic fr-call" href="tel:+50764746168" aria-label="Llamar" title="Llamar">
-    <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.21.49 2.54.76 3.9.76a1 1 0 011 1V21a1 1 0 01-1 1C10.07 22 2 13.93 2 3a1 1 0 011-1h3.75a1 1 0 011 1c0 1.36.26 2.69.76 3.9a1 1 0 01-.21 1.11l-2.2 2.2z"/></svg>
-  </a>
-</div>
- 
+    buscador.addEventListener('input', (e) => {
+      texto = e.target.value.trim().toLowerCase();
+      aplicaFiltros();
+    });
+  </script>
 </body>
 </html>
