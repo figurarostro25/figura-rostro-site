@@ -257,5 +257,81 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+  <script>
+(function() {
+  const CANDIDATE_DIRS = ["", "/", "./", "/assets/masajes/", "/assets/"];
+  const CANDIDATE_EXTS = [".jpg", ".jpeg", ".JPG", ".webp"];
+
+  function tryLoad(img, baseName) {
+    let tried = 0;
+    function next() {
+      if (tried >= CANDIDATE_DIRS.length * CANDIDATE_EXTS.length) {
+        console.warn("[IMG] No se encontró:", baseName, "último intento:", img.src);
+        img.removeAttribute('loading'); // evita reintentos infinitos
+        return;
+      }
+      const dir = CANDIDATE_DIRS[Math.floor(tried / CANDIDATE_EXTS.length)];
+      const ext = CANDIDATE_EXTS[tried % CANDIDATE_EXTS.length];
+      tried++;
+
+      const url = dir + baseName + ext;
+      // Evita bucles si ya es el mismo
+      if (img.src.endsWith(url)) return next();
+
+      const probe = new Image();
+      probe.onload = () => { img.src = url; };
+      probe.onerror = next;
+      probe.src = url + "?v=" + Date.now(); // evitar caché
+    }
+    next();
+  }
+
+  // 1) Fallback para todas las <img>
+  document.querySelectorAll("img[src]").forEach(img => {
+    const src = img.getAttribute("src");
+    // Si ya es absoluta (http) no tocar
+    if (/^https?:\/\//i.test(src)) return;
+    const clean = src.replace(/^\//, "").replace(/\.(jpg|jpeg|JPG|webp)$/i, "");
+    img.setAttribute("loading", "lazy");
+    img.onerror = () => tryLoad(img, clean);
+    // Dispara chequeo inmediato (por si ya falla)
+    const test = new Image();
+    test.onload = () => {}; // todo bien
+    test.onerror = () => tryLoad(img, clean);
+    test.src = img.src + "?v=" + Date.now();
+  });
+
+  // 2) Fallback para el HERO en background
+  const hero = document.querySelector(".hero");
+  if (hero) {
+    // extrae el nombre del CSS: url('banner-masaje-relajante.jpg')
+    const css = getComputedStyle(hero).backgroundImage;
+    const match = css.match(/url\(["']?([^"')]+)["']?\)/i);
+    const current = match ? match[1] : "";
+    const baseName = current ? current.split("/").pop().replace(/^\//, "").replace(/\.(jpg|jpeg|JPG|webp)$/i,"") : "banner-masaje-relajante";
+    let tried = 0;
+    (function nextBg(){
+      if (tried >= CANDIDATE_DIRS.length * CANDIDATE_EXTS.length) {
+        console.warn("[HERO] No se encontró imagen de fondo:", baseName);
+        return;
+      }
+      const dir = CANDIDATE_DIRS[Math.floor(tried / CANDIDATE_EXTS.length)];
+      const ext = CANDIDATE_EXTS[tried % CANDIDATE_EXTS.length];
+      tried++;
+      const url = dir + baseName + ext + "?v=" + Date.now();
+      const probe = new Image();
+      probe.onload = () => {
+        hero.style.backgroundImage = `url('${url}')`;
+      };
+      probe.onerror = nextBg;
+      probe.src = url;
+    })();
+  }
+
+  // 3) Log útil en consola
+  console.log("%cFigura Rostro KG","background:#5b2580;color:#fff;padding:2px 6px;border-radius:6px", "Cargando imágenes con fallback de rutas/extensiones…");
+})();
+</script>
+
 </body>
 </html>
