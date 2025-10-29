@@ -77,27 +77,98 @@
     @media (max-width:768px){
       .header-inner{padding:16px;justify-content:center;gap:10px}
     }
+ /* === NAV con submenús === */
+.navbar {display:flex; gap:22px; align-items:center}
+.navbar > li {position:relative; list-style:none}
+.navbar > li > a {color:#fff; font-weight:700; padding:10px 6px; display:inline-block}
+
+/* Submenús */
+.submenu {
+  position:absolute; top:100%; left:0; min-width:240px;
+  background:#1b0f26; border:1px solid rgba(255,255,255,.08);
+  border-radius:12px; padding:10px; display:none;
+  box-shadow:0 14px 32px rgba(0,0,0,.25); z-index:60;
+}
+.submenu a{
+  color:#fff; display:block; padding:10px 12px; border-radius:10px; font-weight:600;
+}
+.submenu a:hover{ background:rgba(255,255,255,.08) }
+
+/* Mostrar en hover (desktop) */
+.navbar > li:hover > .submenu {display:block}
+
+/* Botón hamburguesa móvil */
+.nav-toggle{display:none}
+@media (max-width: 980px){
+  .nav-toggle{display:inline-flex; align-items:center; gap:8px; color:#fff; font-weight:800; border:1px solid rgba(255,255,255,.2); border-radius:12px; padding:10px 12px}
+  .nav-wrap{display:none; width:100%}
+  .nav-wrap.open{display:block}
+  .navbar{flex-direction:column; align-items:stretch; gap:6px; margin-top:10px}
+  .navbar > li {width:100%}
+  .navbar > li > a{padding:12px}
+  .submenu{position:static; display:block; background:transparent; border:0; box-shadow:none; padding:0}
+  .submenu a{padding:10px 14px}
+}
+   
   </style>
 </head>
 <body>
 
   <!-- HEADER -->
-  <header>
-    <div class="header-inner">
-      <a href="/" class="brand"><img src="/logo-header-white.png" alt="Figura Rostro KG"></a>
-      <nav>
-        <a href="/#sobre">Nosotros</a>
-        <a href="/tratamientos-faciales/">Faciales</a>
-        <a href="/masajes-terapeuticos/">Masajes</a>
-        <a href="/#promos">Promociones</a>
-        <a href="/#contacto">Contacto</a>
-      </nav>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;">
-        <a class="btn-ghost" href="/masajes-terapeuticos/">Catálogo de Masajes</a>
-        <a class="btn-primary" href="/chat-citas.html" target="_blank" rel="noopener">Agendar</a>
-      </div>
+<header>
+  <div class="header-inner" style="gap:14px;">
+    <a href="/" class="brand">
+      <img src="/logo-header-white.png" alt="Figura Rostro KG">
+    </a>
+
+    <!-- Toggle móvil -->
+    <button id="btnNav" class="nav-toggle" aria-expanded="false" aria-controls="navWrap">
+      ☰ Menú
+    </button>
+
+    <!-- Navegación -->
+    <div id="navWrap" class="nav-wrap" aria-label="Principal">
+      <ul class="navbar">
+        <li><a href="/#sobre">Nosotros</a></li>
+
+        <li>
+          <a href="/tratamientos-faciales/">Faciales ▾</a>
+          <div class="submenu" role="menu">
+            <a href="/peeling-facial.html">Peeling Facial</a>
+            <a href="/limpieza-facial-profunda.html">Limpieza facial profunda</a>
+            <a href="/lifting-sin-cirugia.html">Lifting sin cirugía</a>
+            <!-- Puedes añadir más aquí -->
+          </div>
+        </li>
+
+        <li>
+          <a href="/masajes-terapeuticos/">Masajes ▾</a>
+          <div class="submenu" role="menu">
+            <a href="/masaje-relajante.html">Masaje Relajante</a>
+            <a href="/masaje-terapeutico-adultos-mayores.html">Adultos mayores</a>
+            <a href="/descontracturante.html">Descontracturante</a>
+            <a href="/drenaje-linfatico.html">Drenaje linfático</a>
+          </div>
+        </li>
+
+        <li>
+          <a href="/salon/">Salón ▾</a>
+          <div class="submenu" role="menu">
+            <a href="/keratina-biotanix.html">Keratina Biotanix</a>
+            <a href="/manicura.html">Manicura</a>
+            <a href="/pedicura.html">Pedicura</a>
+            <a href="/maquillaje.html">Maquillaje</a>
+          </div>
+        </li>
+
+        <li><a href="/#promos">Promociones</a></li>
+        <li><a href="/#contacto">Contacto</a></li>
+        <li><a href="/menu.html" class="btn-ghost">Menú de Servicios</a></li>
+        <li><a href="/chat-citas.html" class="btn-primary" target="_blank" rel="noopener">Agendar</a></li>
+      </ul>
     </div>
-  </header>
+  </div>
+</header>
 
   <!-- HERO -->
   <section class="hero">
@@ -218,13 +289,63 @@
   </section>
 
   <!-- FOOTER -->
-  <footer>
-    <p>© <span id="year"></span> Figura Rostro KG · Todos los derechos reservados</p>
-    <p>Royal Park – <a href="https://maps.app.goo.gl/muFVBY4QFqEDNeQ38" target="_blank">Av. Ernesto T. Lefevre, Ciudad de Panamá</a></p>
-  </footer>
+ <footer style="background:#0f0817; color:#cfc9d9;">
+  <div class="wrap" style="padding:48px 16px; max-width:1150px; margin:auto;">
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:26px;">
+      <div>
+        <img src="/logo-header-white.png" alt="Figura Rostro KG" style="height:46px; width:auto; margin-bottom:10px;">
+        <p style="opacity:.9">Estética integral en Royal Park, Parque Lefevre. Faciales, masajes y belleza integral con trato cálido y profesional.</p>
+      </div>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+      <div>
+        <h4 style="margin:0 0 10px; color:#fff;">Enlaces</h4>
+        <ul style="list-style:none; padding:0; margin:0;">
+          <li><a href="/menu.html" style="color:#cfc9d9">Menú de Servicios</a></li>
+          <li><a href="/tratamientos-faciales/" style="color:#cfc9d9">Faciales</a></li>
+          <li><a href="/masajes-terapeuticos/" style="color:#cfc9d9">Masajes</a></li>
+          <li><a href="/salon/" style="color:#cfc9d9">Salón</a></li>
+          <li><a href="/#promos" style="color:#cfc9d9">Promos</a></li>
+          <li><a href="/chat-citas.html" style="color:#cfc9d9">Agendar</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 style="margin:0 0 10px; color:#fff;">Contacto</h4>
+        <p style="margin:0 0 6px;">Royal Park – Parque Lefevre</p>
+        <p style="margin:0 0 10px;"><a href="tel:+50764746168" style="color:#cfc9d9">(+507) 647-46168</a></p>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <a class="btn-ghost" href="https://wa.me/50764746168" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn-ghost" href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noopener">Cómo llegar</a>
+          <a class="btn-primary" href="/chat-citas.html" target="_blank" rel="noopener">Reservar</a>
+        </div>
+      </div>
+
+      <div>
+        <h4 style="margin:0 0 10px; color:#fff;">Horario</h4>
+        <p style="margin:0">Lun–Sáb: 8:00 a.m. – 8:00 p.m.</p>
+        <p style="margin:4px 0 0">Domingo: con cita previa</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid rgba(255,255,255,.08); text-align:center; padding:16px;">
+    <small>© <span id="year"></span> Figura Rostro KG · Todos los derechos reservados</small>
+  </div>
+</footer>
+
+<script>
+  // Año en footer
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Toggle móvil
+  const btn = document.getElementById('btnNav');
+  const wrap = document.getElementById('navWrap');
+  if (btn && wrap){
+    btn.addEventListener('click', () => {
+      const open = wrap.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+</script>
 </body>
 </html>
