@@ -13,7 +13,6 @@
 
   <style>
     :root{ --primario:#5b2580 }
-
     .sticky-blur{ backdrop-filter:saturate(180%) blur(12px); background:rgba(255,255,255,.8) }
 
     /* FAB */
@@ -28,13 +27,11 @@
 
     /* Badges + tarjetas */
     .badge{font-size:.72rem;padding:.18rem .5rem;border-radius:999px;border:1px solid rgba(0,0,0,.08);background:#f8fafc}
+    .chip{display:inline-flex;align-items:center;gap:.4rem;padding:.28rem .55rem;border-radius:999px;background:#f3eafa;color:#5b2580;font-weight:700;font-size:.72rem}
+    .chip svg{width:14px;height:14px}
     .card{border:1px solid #e5e7eb;border-radius:14px;background:#fff;box-shadow:0 10px 24px rgba(0,0,0,.04)}
 
-    /* === Paleta y componentes extra === */
-    :root{
-      --primario-700:#471e68;
-      --primario-50:#f3eafa;
-    }
+    :root{ --primario-700:#471e68; --primario-50:#f3eafa; }
 
     /* Franja/hero morado oscuro */
     .hero-franja{
@@ -58,15 +55,6 @@
     .btn-ghost{ background:#fff; color:var(--primario); border-color:var(--primario); }
     .btn-ghost:hover{ background:var(--primario-50); }
 
-    /* Chips de icono (sin imágenes) */
-    .chip{
-      display:inline-flex;align-items:center;gap:.4rem;
-      padding:.28rem .55rem;border-radius:999px;
-      background:var(--primario-50);color:var(--primario);
-      font-weight:600;font-size:.8rem;
-    }
-    .chip svg{width:14px;height:14px}
-
     /* 'Ver más' deshabilitado */
     .btn-more[disabled]{ opacity:.45; cursor:default; pointer-events:none; }
   </style>
@@ -88,7 +76,7 @@
     </div>
   </header>
 
-  <!-- HERO (sin botón 'Ver menú') -->
+  <!-- HERO -->
   <section class="hero-franja text-white">
     <div class="mx-auto max-w-6xl px-4 py-10">
       <p class="uppercase tracking-widest text-sm/6 text-white/80">Figura Rostro KG</p>
@@ -102,7 +90,7 @@
 
   <!-- CONTROLES MENÚ -->
   <section id="menu" class="mx-auto max-w-6xl px-4 py-8">
-    <!-- Buscador (sin 'Ver menú') -->
+    <!-- Buscador -->
     <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
       <input id="buscador" type="text" placeholder="Buscar por nombre, objetivo o duración..." class="w-full md:max-w-lg px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[--primario]" />
       <div class="flex gap-2">
@@ -110,14 +98,13 @@
       </div>
     </div>
 
-    <!-- Filtros -->
+    <!-- Filtros (sin 'Salón', 'Paquetes' -> 'Combos') -->
     <div id="categorias" class="mt-6 flex flex-wrap gap-2">
       <button data-filter="*" class="px-3 py-2 rounded-lg text-sm border border-slate-200 bg-white font-semibold">Todas</button>
       <button data-filter="facial" class="px-3 py-2 rounded-lg text-sm border border-slate-200 bg-white">Faciales</button>
       <button data-filter="masaje" class="px-3 py-2 rounded-lg text-sm border border-slate-200 bg-white">Masajes</button>
       <button data-filter="corporal" class="px-3 py-2 rounded-lg text-sm border border-slate-200 bg-white">Corporales</button>
-      <button data-filter="salon" class="px-3 py-2 rounded-lg text-sm border border-slate-200 bg-white">Salón</button>
-      <button data-filter="paquete" class="px-3 py-2 rounded-lg text-sm border border-slate-200 bg-white">Paquetes</button>
+      <button data-filter="combo" class="px-3 py-2 rounded-lg text-sm border border-slate-200 bg-white">Combos</button>
       <button data-filter="especial" class="px-3 py-2 rounded-lg text-sm border border-slate-200 bg-white">Especiales</button>
       <button data-filter="promo" class="px-3 py-2 rounded-lg text-sm border border-slate-200 bg-white">Promos</button>
     </div>
@@ -125,17 +112,16 @@
     <!-- GRID -->
     <div id="grid" class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
 
-      <!-- ============ FACIALES (tendencia) ============ -->
+      <!-- ============ FACIALES ============ -->
       <article class="card p-4" data-cat="facial" data-text="Peeling Facial antiacné manchas rejuvenecimiento 60 min">
         <div class="flex items-start justify-between">
           <h3 class="font-semibold text-lg">Peeling Facial de Alta Gama</h3>
-          <span class="chip">
-            <!-- ícono -->
-            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a5 5 0 0 1 5 5v4h1a2 2 0 1 1 0 4h-1v2a5 5 0 0 1-10 0v-2H6a2 2 0 1 1 0-4h1V7a5 5 0 0 1 5-5Z"/></svg>
-            Facial
+          <span class="chip" title="Servicio en tendencia">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+            Tendencia
           </span>
         </div>
-        <p class="mt-2 text-sm text-slate-600">Renovación de piel con ácidos médicos. Manchas, textura y luminosidad.</p>
+        <p class="mt-2 text-sm text-slate-600">Renovación de piel con ácidos profesionales. Manchas, textura y luminosidad.</p>
         <div class="mt-3 flex items-center justify-between text-sm">
           <span class="text-slate-500">45–60 min</span>
           <span class="font-semibold">desde $89</span>
@@ -149,9 +135,9 @@
       <article class="card p-4" data-cat="facial" data-text="lifting sin cirugia radiofrecuencia tensado colágeno 60 min">
         <div class="flex items-start justify-between">
           <h3 class="font-semibold text-lg">Lifting sin cirugía</h3>
-          <span class="chip">
+          <span class="chip" title="Servicio en tendencia">
             <svg viewBox="0 0 24 24"><path fill="currentColor" d="M3 12h18M12 3v18"/></svg>
-            Facial
+            Tendencia
           </span>
         </div>
         <p class="mt-2 text-sm text-slate-600">Tensado facial y estímulo de colágeno. Efecto glow inmediato.</p>
@@ -165,21 +151,18 @@
         </div>
       </article>
 
-      <article class="card p-4" data-cat="facial" data-text="fibroblast plasma pen párpados arrugas código de barras 90 min">
+      <article class="card p-4" data-cat="facial" data-text="radiofrecuencia facial colágeno firmeza 45 min">
         <div class="flex items-start justify-between">
-          <h3 class="font-semibold text-lg">Fibroblast</h3>
-          <span class="chip">
-            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
-            Tendencia
-          </span>
+          <h3 class="font-semibold text-lg">Radiofrecuencia Facial</h3>
+          <span class="badge">Facial</span>
         </div>
-        <p class="mt-2 text-sm text-slate-600">Rejuvenecimiento no invasivo para párpados, arrugas finas y cicatrices.</p>
+        <p class="mt-2 text-sm text-slate-600">Firmeza y textura uniforme con estimulación de colágeno.</p>
         <div class="mt-3 flex items-center justify-between text-sm">
-          <span class="text-slate-500">90 min</span>
-          <span class="font-semibold">desde $199</span>
+          <span class="text-slate-500">45–60 min</span>
+          <span class="font-semibold">desde $69</span>
         </div>
         <div class="mt-4 flex gap-2">
-          <a target="_blank" href="https://wa.me/50764746168?text=Fibroblast%20Plasma%20Pen" class="btn btn-primary">Agendar</a>
+          <a target="_blank" href="https://wa.me/50764746168?text=Radiofrecuencia%20facial" class="btn btn-primary">Agendar</a>
           <button class="btn btn-ghost btn-more" data-url="">Ver más</button>
         </div>
       </article>
@@ -197,6 +180,105 @@
         <div class="mt-4 flex gap-2">
           <a target="_blank" href="https://wa.me/50764746168?text=Limpieza%20facial%20profunda%20hidratante" class="btn btn-primary">Agendar</a>
           <button class="btn btn-ghost btn-more" data-url="/peeling-facial.html">Ver más</button>
+        </div>
+      </article>
+
+      <article class="card p-4" data-cat="facial" data-text="hidratación intensiva mascarilla vitamina antioxidantes 45 min">
+        <div class="flex items-start justify-between">
+          <h3 class="font-semibold text-lg">Hidratación Intensiva</h3>
+          <span class="badge">Facial</span>
+        </div>
+        <p class="mt-2 text-sm text-slate-600">Reposición de agua y barrera cutánea con activos restauradores.</p>
+        <div class="mt-3 flex items-center justify-between text-sm">
+          <span class="text-slate-500">45 min</span>
+          <span class="font-semibold">desde $59</span>
+        </div>
+        <div class="mt-4 flex gap-2">
+          <a target="_blank" href="https://wa.me/50764746168?text=Hidrataci%C3%B3n%20intensiva%20facial" class="btn btn-primary">Agendar</a>
+          <button class="btn btn-ghost btn-more" data-url="">Ver más</button>
+        </div>
+      </article>
+
+      <article class="card p-4" data-cat="facial" data-text="antiedad colágeno ácido hialurónico luminosidad 60 min">
+        <div class="flex items-start justify-between">
+          <h3 class="font-semibold text-lg">Antiedad Colágeno & Ácido Hialurónico</h3>
+          <span class="badge">Facial</span>
+        </div>
+        <p class="mt-2 text-sm text-slate-600">Relleno superficial, hidratación y mejora de elasticidad.</p>
+        <div class="mt-3 flex items-center justify-between text-sm">
+          <span class="text-slate-500">60 min</span>
+          <span class="font-semibold">desde $95</span>
+        </div>
+        <div class="mt-4 flex gap-2">
+          <a target="_blank" href="https://wa.me/50764746168?text=Antiedad%20col%C3%A1geno%20%2B%20hialur%C3%B3nico" class="btn btn-primary">Agendar</a>
+          <button class="btn btn-ghost btn-more" data-url="">Ver más</button>
+        </div>
+      </article>
+
+      <article class="card p-4" data-cat="facial" data-text="aclarante despigmentante manchas tono uniforme 60 min">
+        <div class="flex items-start justify-between">
+          <h3 class="font-semibold text-lg">Aclarantes & Despigmentantes</h3>
+        <span class="badge">Facial</span>
+        </div>
+        <p class="mt-2 text-sm text-slate-600">Unifica tono y mejora luminosidad con protocolos específicos.</p>
+        <div class="mt-3 flex items-center justify-between text-sm">
+          <span class="text-slate-500">60 min</span>
+          <span class="font-semibold">desde $79</span>
+        </div>
+        <div class="mt-4 flex gap-2">
+          <a target="_blank" href="https://wa.me/50764746168?text=Tratamiento%20aclarante%20facial" class="btn btn-primary">Agendar</a>
+          <button class="btn btn-ghost btn-more" data-url="">Ver más</button>
+        </div>
+      </article>
+
+      <article class="card p-4" data-cat="facial" data-text="yoga facial tonificación muscular drenaje 30 min">
+        <div class="flex items-start justify-between">
+          <h3 class="font-semibold text-lg">Yoga Facial</h3>
+          <span class="badge">Facial</span>
+        </div>
+        <p class="mt-2 text-sm text-slate-600">Tonificación muscular y drenaje para contorno más definido.</p>
+        <div class="mt-3 flex items-center justify-between text-sm">
+          <span class="text-slate-500">30–45 min</span>
+          <span class="font-semibold">desde $49</span>
+        </div>
+        <div class="mt-4 flex gap-2">
+          <a target="_blank" href="https://wa.me/50764746168?text=Yoga%20facial" class="btn btn-primary">Agendar</a>
+          <button class="btn btn-ghost btn-more" data-url="">Ver más</button>
+        </div>
+      </article>
+
+      <article class="card p-4" data-cat="facial" data-text="fibroblast plasma pen párpados arrugas código de barras 90 min">
+        <div class="flex items-start justify-between">
+          <h3 class="font-semibold text-lg">Fibroblast</h3>
+          <span class="chip" title="Servicio en tendencia">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+            Tendencia
+          </span>
+        </div>
+        <p class="mt-2 text-sm text-slate-600">Rejuvenecimiento no invasivo para párpados, arrugas finas y cicatrices.</p>
+        <div class="mt-3 flex items-center justify-between text-sm">
+          <span class="text-slate-500">90 min</span>
+          <span class="font-semibold">desde $199</span>
+        </div>
+        <div class="mt-4 flex gap-2">
+          <a target="_blank" href="https://wa.me/50764746168?text=Fibroblast%20Plasma%20Pen" class="btn btn-primary">Agendar</a>
+          <button class="btn btn-ghost btn-more" data-url="">Ver más</button>
+        </div>
+      </article>
+
+      <article class="card p-4" data-cat="promo" data-text="bioestimulador colágeno facial 60 min">
+        <div class="flex items-start justify-between">
+          <h3 class="font-semibold text-lg">Bio-estimulador de Colágeno Facial</h3>
+          <span class="badge">Facial</span>
+        </div>
+        <p class="mt-2 text-sm text-slate-600">Piel más firme, elástica y con textura uniforme.</p>
+        <div class="mt-3 flex items-center justify-between text-sm">
+          <span class="text-slate-500">60 min</span>
+          <span class="font-semibold">$120</span>
+        </div>
+        <div class="mt-4 flex gap-2">
+          <a target="_blank" href="https://wa.me/50764746168?text=Bioestimulador%20de%20col%C3%A1geno%20facial" class="btn btn-primary">Agendar</a>
+          <button class="btn btn-ghost btn-more" data-url="">Ver más</button>
         </div>
       </article>
 
@@ -219,7 +301,7 @@
 
       <article class="card p-4" data-cat="masaje" data-text="masaje descontracturante dolor cuello espalda 60 min">
         <div class="flex items-start justify-between">
-          <h3 class="font-semibold text-lg">Masaje descontracturante</h3>
+          <h3 class="font-semibold text-lg">Masaje Descontracturante</h3>
           <span class="badge">Masaje</span>
         </div>
         <p class="mt-2 text-sm text-slate-600">Trabajo profundo en contracturas y sobrecarga muscular.</p>
@@ -233,90 +315,212 @@
         </div>
       </article>
 
-      <!-- ============ CORPORALES ============ -->
-      <article class="card p-4" data-cat="corporal" data-text="reductor por zonas manual aparatología 45 min">
+      <article class="card p-4" data-cat="masaje" data-text="drenaje linfático piernas abdomen detox 60 min">
         <div class="flex items-start justify-between">
-          <h3 class="font-semibold text-lg">Masajes y Planes Reductivos</h3>
+          <h3 class="font-semibold text-lg">Drenaje Linfático Manual</h3>
+          <span class="badge">Masaje</span>
+        </div>
+        <p class="mt-2 text-sm text-slate-600">Ligereza, descongestión y mejora del retorno linfático.</p>
+        <div class="mt-3 flex items-center justify-between text-sm">
+          <span class="text-slate-500">60 min</span>
+          <span class="font-semibold">desde $75</span>
+        </div>
+        <div class="mt-4 flex gap-2">
+          <a target="_blank" href="https://wa.me/50764746168?text=Drenaje%20linf%C3%A1tico%20manual" class="btn btn-primary">Agendar</a>
+          <button class="btn btn-ghost btn-more" data-url="">Ver más</button>
+        </div>
+      </article>
+
+      <article class="card p-4" data-cat="masaje" data-text="piedras calientes relajación profunda 60 min">
+        <div class="flex items-start justify-between">
+          <h3 class="font-semibold text-lg">Masaje con Piedras Calientes</h3>
+          <span class="chip" title="Servicio en tendencia">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+            Tendencia
+          </span>
+        </div>
+        <p class="mt-2 text-sm text-slate-600">Relajación profunda y alivio de tensión muscular.</p>
+        <div class="mt-3 flex items-center justify-between text-sm">
+          <span class="text-slate-500">60 min</span>
+          <span class="font-semibold">$89</span>
+        </div>
+        <div class="mt-4 flex gap-2">
+          <a target="_blank" href="https://wa.me/50764746168?text=Piedras%20calientes" class="btn btn-primary">Agendar</a>
+          <button class="btn btn-ghost btn-more" data-url="">Ver más</button>
+        </div>
+      </article>
+
+      <article class="card p-4" data-cat="masaje" data-text="masaje con velas aromáticas relax 60 min">
+        <div class="flex items-start justify-between">
+          <h3 class="font-semibold text-lg">Masaje con Velas Aromáticas</h3>
+          <span class="chip" title="Servicio en tendencia">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+            Tendencia
+          </span>
+        </div>
+        <p class="mt-2 text-sm text-slate-600">Experiencia sensorial, piel sedosa y descanso profundo.</p>
+        <div class="mt-3 flex items-center justify-between text-sm">
+          <span class="text-slate-500">60 min</span>
+          <span class="font-semibold">$89</span>
+        </div>
+        <div class="mt-4 flex gap-2">
+          <a target="_blank" href="https://wa.me/50764746168?text=Masaje%20con%20velas" class="btn btn-primary">Agendar</a>
+          <button class="btn btn-ghost btn-more" data-url="">Ver más</button>
+        </div>
+      </article>
+
+      <article class="card p-4" data-cat="masaje" data-text="reflexología podal pies puntos presión 40 min">
+        <div class="flex items-start justify-between">
+          <h3 class="font-semibold text-lg">Reflexología Podal</h3>
+          <span class="badge">Masaje</span>
+        </div>
+        <p class="mt-2 text-sm text-slate-600">Estimulación de puntos reflejos para equilibrio y bienestar.</p>
+        <div class="mt-3 flex items-center justify-between text-sm">
+          <span class="text-slate-500">40–50 min</span>
+          <span class="font-semibold">$49</span>
+        </div>
+        <div class="mt-4 flex gap-2">
+          <a target="_blank" href="https://wa.me/50764746168?text=Reflexolog%C3%ADa%20podal" class="btn btn-primary">Agendar</a>
+          <button class="btn btn-ghost btn-more" data-url="">Ver más</button>
+        </div>
+      </article>
+
+      <article class="card p-4" data-cat="masaje" data-text="deportivo descarga muscular 60 min">
+        <div class="flex items-start justify-between">
+          <h3 class="font-semibold text-lg">Masaje Deportivo</h3>
+          <span class="badge">Masaje</span>
+        </div>
+        <p class="mt-2 text-sm text-slate-600">Descarga muscular para rendimiento y recuperación.</p>
+        <div class="mt-3 flex items-center justify-between text-sm">
+          <span class="text-slate-500">60 min</span>
+          <span class="font-semibold">$79</span>
+        </div>
+        <div class="mt-4 flex gap-2">
+          <a target="_blank" href="https://wa.me/50764746168?text=Masaje%20deportivo" class="btn btn-primary">Agendar</a>
+          <button class="btn btn-ghost btn-more" data-url="">Ver más</button>
+        </div>
+      </article>
+
+      <!-- ============ CORPORALES ESTÉTICOS ============ -->
+      <article class="card p-4" data-cat="corporal" data-text="cavitación grasa localizada abdomen muslos 45 min">
+        <div class="flex items-start justify-between">
+          <h3 class="font-semibold text-lg">Cavitación por Zona</h3>
+          <span class="chip" title="Servicio en tendencia">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+            Tendencia
+          </span>
+        </div>
+        <p class="mt-2 text-sm text-slate-600">Modelado no invasivo para grasa localizada (abdomen, muslos, brazos).</p>
+        <div class="mt-3 flex items-center justify-between text-sm">
+          <span class="text-slate-500">40–50 min</span>
+          <span class="font-semibold">desde $69</span>
+        </div>
+        <div class="mt-4 flex gap-2">
+          <a target="_blank" href="https://wa.me/50764746168?text=Cavitaci%C3%B3n%20por%20zona" class="btn btn-primary">Agendar</a>
+          <button class="btn btn-ghost btn-more" data-url="">Ver más</button>
+        </div>
+      </article>
+
+      <article class="card p-4" data-cat="corporal" data-text="radiofrecuencia corporal reafirmante por zona 45 min">
+        <div class="flex items-start justify-between">
+          <h3 class="font-semibold text-lg">Radiofrecuencia Corporal</h3>
           <span class="badge">Corporal</span>
         </div>
-        <p class="mt-2 text-sm text-slate-600">Planes a Medida para lograr objetivos según evaluación.</p>
+        <p class="mt-2 text-sm text-slate-600">Firmeza, textura y efecto lifting por zonas específicas.</p>
         <div class="mt-3 flex items-center justify-between text-sm">
-          <span class="text-slate-500">45 min</span>
-          <span class="font-semibold">$55</span>
+          <span class="text-slate-500">40–50 min</span>
+          <span class="font-semibold">desde $75</span>
         </div>
         <div class="mt-4 flex gap-2">
-          <a target="_blank" href="https://wa.me/50764746168?text=Tratamiento%20reductor%20por%20zonas" class="btn btn-primary">Agendar</a>
+          <a target="_blank" href="https://wa.me/50764746168?text=Radiofrecuencia%20corporal" class="btn btn-primary">Agendar</a>
           <button class="btn btn-ghost btn-more" data-url="">Ver más</button>
         </div>
       </article>
 
-      <!-- ============ SALÓN ============ -->
-      <article class="card p-4" data-cat="salon" data-text="keratina Orgánica biotanix brillo saludable 120 180 min">
+      <article class="card p-4" data-cat="corporal" data-text="vacumterapia celulitis drenaje 45 min">
         <div class="flex items-start justify-between">
-          <h3 class="font-semibold text-lg">Keratina Orgánica Biotanix</h3>
-          <span class="badge">Capilar</span>
+          <h3 class="font-semibold text-lg">Vacumterapia</h3>
+          <span class="badge">Corporal</span>
         </div>
-        <p class="mt-2 text-sm text-slate-600">Aliado y brillo saludable con fórmulas de alta calidad.</p>
+        <p class="mt-2 text-sm text-slate-600">Mejora apariencia de celulitis y favorece drenaje por succión controlada.</p>
         <div class="mt-3 flex items-center justify-between text-sm">
-          <span class="text-slate-500">120–180 min</span>
-          <span class="font-semibold">desde $89.95</span>
+          <span class="text-slate-500">40–50 min</span>
+          <span class="font-semibold">desde $55</span>
         </div>
         <div class="mt-4 flex gap-2">
-          <a target="_blank" href="https://wa.me/50764746168?text=Keratina%20org%C3%A1nica%20Biotanix" class="btn btn-primary">Agendar</a>
+          <a target="_blank" href="https://wa.me/50764746168?text=Vacumterapia" class="btn btn-primary">Agendar</a>
           <button class="btn btn-ghost btn-more" data-url="">Ver más</button>
         </div>
       </article>
 
-      <article class="card p-4" data-cat="salon" data-text="bótox capilar hidratación brillo anti frizz 90 min">
+      <article class="card p-4" data-cat="corporal" data-text="maderoterapia contorno reductor 45 min">
         <div class="flex items-start justify-between">
-          <h3 class="font-semibold text-lg">Bótox capilar</h3>
-          <span class="badge">Capilar</span>
+          <h3 class="font-semibold text-lg">Maderoterapia</h3>
+          <span class="chip" title="Servicio en tendencia">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+            Tendencia
+          </span>
         </div>
-        <p class="mt-2 text-sm text-slate-600">Reparación intensa, brillo y control del frizz.</p>
+        <p class="mt-2 text-sm text-slate-600">Definición de contorno y ayuda reductora con instrumental de madera.</p>
         <div class="mt-3 flex items-center justify-between text-sm">
-          <span class="text-slate-500">90 min</span>
+          <span class="text-slate-500">45–60 min</span>
+          <span class="font-semibold">desde $65</span>
+        </div>
+        <div class="mt-4 flex gap-2">
+          <a target="_blank" href="https://wa.me/50764746168?text=Maderoterapia" class="btn btn-primary">Agendar</a>
+          <button class="btn btn-ghost btn-more" data-url="">Ver más</button>
+        </div>
+      </article>
+
+      <article class="card p-4" data-cat="corporal" data-text="envolturas detox reafirmantes 60 min">
+        <div class="flex items-start justify-between">
+          <h3 class="font-semibold text-lg">Envolturas Detox/Reafirmantes</h3>
+          <span class="badge">Corporal</span>
+        </div>
+        <p class="mt-2 text-sm text-slate-600">Minerales y fitoactivos para detox y firmeza corporal global.</p>
+        <div class="mt-3 flex items-center justify-between text-sm">
+          <span class="text-slate-500">60–75 min</span>
+          <span class="font-semibold">desde $79</span>
+        </div>
+        <div class="mt-4 flex gap-2">
+          <a target="_blank" href="https://wa.me/50764746168?text=Envolturas%20detox%20reafirmantes" class="btn btn-primary">Agendar</a>
+          <button class="btn btn-ghost btn-more" data-url="">Ver más</button>
+        </div>
+      </article>
+
+      <article class="card p-4" data-cat="corporal" data-text="crioterapia localizada inflamación tonificación 30 min">
+        <div class="flex items-start justify-between">
+          <h3 class="font-semibold text-lg">Crioterapia Localizada</h3>
+          <span class="badge">Corporal</span>
+        </div>
+        <p class="mt-2 text-sm text-slate-600">Frío controlado para tonificación y apoyo desinflamatorio por zonas.</p>
+        <div class="mt-3 flex items-center justify-between text-sm">
+          <span class="text-slate-500">30–40 min</span>
           <span class="font-semibold">desde $59</span>
         </div>
         <div class="mt-4 flex gap-2">
-          <a target="_blank" href="https://wa.me/50764746168?text=B%C3%B3tox%20capilar" class="btn btn-primary">Agendar</a>
+          <a target="_blank" href="https://wa.me/50764746168?text=Crioterapia%20localizada" class="btn btn-primary">Agendar</a>
           <button class="btn btn-ghost btn-more" data-url="">Ver más</button>
         </div>
       </article>
 
-      <!-- ============ PAQUETES ============ -->
-      <article class="card p-4" data-cat="paquete" data-text="pack glow limpieza yoga facial 120 min">
+      <article class="card p-4" data-cat="corporal" data-text="reafirmantes glúteos piernas brazos 45 min">
         <div class="flex items-start justify-between">
-          <h3 class="font-semibold text-lg">Pack Glow: Facial + Yoga facial</h3>
-          <span class="badge">Paquete</span>
+          <h3 class="font-semibold text-lg">Tratamientos Reafirmantes</h3>
+          <span class="badge">Corporal</span>
         </div>
-        <p class="mt-2 text-sm text-slate-600">Textura más lisa, luminosidad y tonificación. Ideal antes de eventos.</p>
+        <p class="mt-2 text-sm text-slate-600">Protocolos para flacidez localizada y mejora de textura.</p>
         <div class="mt-3 flex items-center justify-between text-sm">
-          <span class="text-slate-500">120 min</span>
-          <span class="font-semibold">$95</span>
+          <span class="text-slate-500">45–60 min</span>
+          <span class="font-semibold">desde $79</span>
         </div>
         <div class="mt-4 flex gap-2">
-          <a target="_blank" href="https://wa.me/50764746168?text=Pack%20Glow%20Facial%20%2B%20Yoga%20facial" class="btn btn-primary">Agendar</a>
+          <a target="_blank" href="https://wa.me/50764746168?text=Reafirmantes%20corporales" class="btn btn-primary">Agendar</a>
           <button class="btn btn-ghost btn-more" data-url="">Ver más</button>
         </div>
       </article>
 
-      <article class="card p-4" data-cat="paquete" data-text="relax duo pareja spa 60 min">
-        <div class="flex items-start justify-between">
-          <h3 class="font-semibold text-lg">Masaje en Pareja</h3>
-          <span class="badge">Paquete</span>
-        </div>
-        <p class="mt-2 text-sm text-slate-600">Masaje relajante para dos. Ambiente aromático y música terapéutica.</p>
-        <div class="mt-3 flex items-center justify-between text-sm">
-          <span class="text-slate-500">60 min</span>
-          <span class="font-semibold">desde $119</span>
-        </div>
-        <div class="mt-4 flex gap-2">
-          <a target="_blank" href="https://wa.me/50764746168?text=Relax%20Duo%20(pareja)" class="btn btn-primary">Agendar</a>
-          <button class="btn btn-ghost btn-more" data-url="">Ver más</button>
-        </div>
-      </article>
-
-      <!-- ============ ESPECIALES (Adultos mayores / diversidad funcional) ============ -->
+      <!-- ============ ESPECIALES ============ -->
       <article class="card p-4" data-cat="especial" data-text="terapia Adultos Mayores dolor articular movilidad 45 60 min">
         <div class="flex items-start justify-between">
           <h3 class="font-semibold text-lg">Terapia para Adultos Mayores</h3>
@@ -335,7 +539,7 @@
 
       <article class="card p-4" data-cat="especial" data-text="terapia adaptada discapacidad amputación rehabilitación 60 min">
         <div class="flex items-start justify-between">
-          <h3 class="font-semibold text-lg">Terapia adaptada</h3>
+          <h3 class="font-semibold text-lg">Terapia Adaptada</h3>
           <span class="badge">Especial</span>
         </div>
         <p class="mt-2 text-sm text-slate-600">Masaje/terapia personalizada para movilidad reducida o amputación.</p>
@@ -351,8 +555,8 @@
 
       <article class="card p-4" data-cat="especial" data-text="drenaje post operatorio recuperación edema 45 min">
         <div class="flex items-start justify-between">
-          <h3 class="font-semibold text-lg">Drenaje post-operatorio</h3>
-        <span class="badge">Especial</span>
+          <h3 class="font-semibold text-lg">Drenaje Post-operatorio</h3>
+          <span class="badge">Especial</span>
         </div>
         <p class="mt-2 text-sm text-slate-600">Técnicas suaves para edema y recuperación más confortable.</p>
         <div class="mt-3 flex items-center justify-between text-sm">
@@ -365,23 +569,119 @@
         </div>
       </article>
 
-      <!-- ============ PROMO ============ -->
-      <article class="card p-4" data-cat="promo" data-text="bioestimulador colágeno facial 60 min">
+      <article class="card p-4" data-cat="especial" data-text="rehabilitación post accidente descarga muscular 60 min">
         <div class="flex items-start justify-between">
-          <h3 class="font-semibold text-lg">Bio-estimulador de Colágeno Facial</h3>
-          <span class="badge">Facial</span>
+          <h3 class="font-semibold text-lg">Rehabilitación Post-Accidente</h3>
+          <span class="badge">Especial</span>
         </div>
-        <p class="mt-2 text-sm text-slate-600">Piel más firme, elástica y con textura uniforme.</p>
+        <p class="mt-2 text-sm text-slate-600">Sesión enfocada en recuperación funcional y alivio del dolor.</p>
         <div class="mt-3 flex items-center justify-between text-sm">
           <span class="text-slate-500">60 min</span>
-          <span class="font-semibold">$120</span>
+          <span class="font-semibold">$65</span>
         </div>
         <div class="mt-4 flex gap-2">
-          <a target="_blank" href="https://wa.me/50764746168?text=Promo%20Bioestimulador%20de%20col%C3%A1geno%20facial" class="btn btn-primary">Agendar</a>
+          <a target="_blank" href="https://wa.me/50764746168?text=Rehabilitaci%C3%B3n%20post%20accidente" class="btn btn-primary">Agendar</a>
           <button class="btn btn-ghost btn-more" data-url="">Ver más</button>
         </div>
       </article>
-      <!-- ============ /FIN GRID ============ -->
+
+      <!-- ============ COMBOS ============ -->
+      <article class="card p-4" data-cat="combo" data-text="pack glow limpieza yoga facial 120 min">
+        <div class="flex items-start justify-between">
+          <h3 class="font-semibold text-lg">Combo Glow: Limpieza + Yoga Facial</h3>
+          <span class="badge">Combo</span>
+        </div>
+        <p class="mt-2 text-sm text-slate-600">Textura lisa, luminosidad y tonificación. Ideal antes de eventos.</p>
+        <div class="mt-3 flex items-center justify-between text-sm">
+          <span class="text-slate-500">120 min</span>
+          <span class="font-semibold">$95</span>
+        </div>
+        <div class="mt-4 flex gap-2">
+          <a target="_blank" href="https://wa.me/50764746168?text=Combo%20Glow%20(Limpieza%20%2B%20Yoga%20facial)" class="btn btn-primary">Agendar</a>
+          <button class="btn btn-ghost btn-more" data-url="">Ver más</button>
+        </div>
+      </article>
+
+      <article class="card p-4" data-cat="combo" data-text="bienestar full body facial 120 min">
+        <div class="flex items-start justify-between">
+          <h3 class="font-semibold text-lg">Combo Bienestar: Full Body + Facial</h3>
+          <span class="badge">Combo</span>
+        </div>
+        <p class="mt-2 text-sm text-slate-600">Relajación total con masaje corporal y protocolo facial de brillo.</p>
+        <div class="mt-3 flex items-center justify-between text-sm">
+          <span class="text-slate-500">120 min</span>
+          <span class="font-semibold">desde $149</span>
+        </div>
+        <div class="mt-4 flex gap-2">
+          <a target="_blank" href="https://wa.me/50764746168?text=Combo%20Bienestar%20Full%20Body%20%2B%20Facial" class="btn btn-primary">Agendar</a>
+          <button class="btn btn-ghost btn-more" data-url="">Ver más</button>
+        </div>
+      </article>
+
+      <article class="card p-4" data-cat="combo" data-text="detox cavitación radiofrecuencia vacumterapia 150 min">
+        <div class="flex items-start justify-between">
+          <h3 class="font-semibold text-lg">Combo Detox Reductor</h3>
+          <span class="badge">Combo</span>
+        </div>
+        <p class="mt-2 text-sm text-slate-600">Cavitación + Radiofrecuencia + Vacumterapia por zonas seleccionadas.</p>
+        <div class="mt-3 flex items-center justify-between text-sm">
+          <span class="text-slate-500">150 min</span>
+          <span class="font-semibold">desde $159</span>
+        </div>
+        <div class="mt-4 flex gap-2">
+          <a target="_blank" href="https://wa.me/50764746168?text=Combo%20Detox%20Reductor" class="btn btn-primary">Agendar</a>
+          <button class="btn btn-ghost btn-more" data-url="">Ver más</button>
+        </div>
+      </article>
+
+      <article class="card p-4" data-cat="combo" data-text="lifting radiofrecuencia facial 90 min">
+        <div class="flex items-start justify-between">
+          <h3 class="font-semibold text-lg">Combo Lifting + Radiofrecuencia Facial</h3>
+          <span class="badge">Combo</span>
+        </div>
+        <p class="mt-2 text-sm text-slate-600">Tensado y estímulo de colágeno con efecto inmediato y progresivo.</p>
+        <div class="mt-3 flex items-center justify-between text-sm">
+          <span class="text-slate-500">90–100 min</span>
+          <span class="font-semibold">$169</span>
+        </div>
+        <div class="mt-4 flex gap-2">
+          <a target="_blank" href="https://wa.me/50764746168?text=Combo%20Lifting%20%2B%20Radiofrecuencia%20facial" class="btn btn-primary">Agendar</a>
+          <button class="btn btn-ghost btn-more" data-url="">Ver más</button>
+        </div>
+      </article>
+
+      <article class="card p-4" data-cat="combo" data-text="relax duo pareja spa 60 min">
+        <div class="flex items-start justify-between">
+          <h3 class="font-semibold text-lg">Masaje en Pareja</h3>
+          <span class="badge">Combo</span>
+        </div>
+        <p class="mt-2 text-sm text-slate-600">Masaje relajante para dos. Ambiente aromático y música terapéutica.</p>
+        <div class="mt-3 flex items-center justify-between text-sm">
+          <span class="text-slate-500">60 min</span>
+          <span class="font-semibold">desde $119</span>
+        </div>
+        <div class="mt-4 flex gap-2">
+          <a target="_blank" href="https://wa.me/50764746168?text=Masaje%20en%20pareja" class="btn btn-primary">Agendar</a>
+          <button class="btn btn-ghost btn-more" data-url="">Ver más</button>
+        </div>
+      </article>
+
+      <!-- ============ PLAN REDUCTOR (existente) ============ -->
+      <article class="card p-4" data-cat="corporal" data-text="reductor por zonas manual aparatología 45 min">
+        <div class="flex items-start justify-between">
+          <h3 class="font-semibold text-lg">Masajes y Planes Reductivos</h3>
+          <span class="badge">Corporal</span>
+        </div>
+        <p class="mt-2 text-sm text-slate-600">Planes a medida para lograr objetivos según evaluación.</p>
+        <div class="mt-3 flex items-center justify-between text-sm">
+          <span class="text-slate-500">45–60 min</span>
+          <span class="font-semibold">desde $55</span>
+        </div>
+        <div class="mt-4 flex gap-2">
+          <a target="_blank" href="https://wa.me/50764746168?text=Tratamiento%20reductor%20por%20zonas" class="btn btn-primary">Agendar</a>
+          <button class="btn btn-ghost btn-more" data-url="">Ver más</button>
+        </div>
+      </article>
 
     </div>
   </section>
