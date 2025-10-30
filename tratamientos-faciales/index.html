@@ -11,10 +11,10 @@
   <meta name="keywords" content="tratamientos faciales panamá, limpieza facial profunda, dermaplaning, peeling, rejuvenecimiento sin cirugía, fibroblast, despigmentación, acné" />
   <meta name="robots" content="index, follow" />
 
-  <!-- URL principal -->
+  <!-- Canonical -->
   <link rel="canonical" href="https://figurarostro.life/tratamientos-faciales/" />
 
-  <!-- Open Graph (Facebook / WhatsApp) -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Tratamientos Faciales · Figura Rostro KG" />
   <meta property="og:description" content="Limpieza profunda, dermaplaning, peeling y rejuvenecimiento sin cirugía. Piel más luminosa y uniforme en Royal Park, Panamá." />
@@ -27,39 +27,79 @@
   <meta name="twitter:description" content="Limpieza, peeling, dermaplaning y más. Resultados visibles desde la primera sesión." />
   <meta name="twitter:image" content="https://figura-rostro-site.vercel.app/assets/img/og-faciales.jpg" />
 
-  <!-- Tipografía (igual que el home) -->
+  <!-- Tipografía -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
 
-  <!-- Estilos rápidos (hereda look del home) -->
+  <!-- Estilos -->
   <style>
-    :root{--brand:#5b2580;--grad1:#3b1d52;--grad2:#1a0d24}
-    *{box-sizing:border-box} html{scroll-behavior:smooth}
-    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:#fff;color:#1b0f26}
+    :root{
+      --brand:#5b2580; --grad1:#3b1d52; --grad2:#1a0d24;
+      --ink:#1b0f26; --muted:#4a3e57; --card:#fff; --line:#efe6ff;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:#fff;color:var(--ink)}
+
     .container{max-width:1150px;margin:0 auto;padding:0 16px}
-    header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,#3b1d52 0%,#2a1438 50%,#1a0d24 100%);border-bottom:1px solid #e7dff1}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,#3b1d52 0%,#2a1438 60%,#1a0d24 100%);border-bottom:1px solid var(--line)}
     .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-    .brand img{height:28px;width:auto}
+    .brand img{height:30px;width:auto}
     nav{display:flex;gap:22px;align-items:center;justify-content:center}
     nav a{color:#dcd0ef;text-decoration:none;font-weight:600;opacity:.92}
     nav a:hover{opacity:1}
-    .btn-primary{background:var(--brand);color:#fff;border:0;border-radius:14px;padding:12px 18px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
-    .btn-ghost{border:1px solid #efe6ff;border-radius:14px;padding:12px 18px;text-decoration:none;color:#fff;opacity:.9}
-    .hero{position:relative;min-height:66vh;display:grid;align-items:center;isolation:isolate;background:linear-gradient(180deg,rgba(26,13,36,.65),rgba(26,13,36,.75)),url("../assets/img/faciales-hero.jpg") center/cover no-repeat}
+    .btn-ig{
+      background:linear-gradient(90deg,#fd3a55,#f77737,#833ab4,#5851db);
+      color:#fff;border:0;border-radius:14px;padding:10px 16px;font-weight:800;text-decoration:none
+    }
+    .btn-ghost{border:1px solid #efe6ff;border-radius:14px;padding:10px 16px;text-decoration:none;color:#fff;opacity:.95;background:rgba(255,255,255,.06)}
+    .small-label{color:#cab6e9;font-weight:600;margin-right:8px}
+
+    /* Hero */
+    .hero{position:relative;min-height:66vh;display:grid;align-items:center;isolation:isolate;
+          background:linear-gradient(180deg,rgba(26,13,36,.65),rgba(26,13,36,.75)),
+                     url("/assets/img/faciales-hero.jpg") center/cover no-repeat}
     .hero .content{color:#fff;max-width:800px;padding:42px 0}
     .badge{display:inline-block;background:#ffd84d;color:#1b0f26;border-radius:100px;padding:4px 12px;font-size:13px;font-weight:700}
     h1{font-size:clamp(36px,6vw,58px);line-height:1.04;margin:14px 0;font-weight:800}
     .grad{background:linear-gradient(90deg,#e9d4ff 0%,#a777ff 55%,#ffd84d 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-    .cta{display:flex;gap:12px;margin-top:16px}
+    .cta{display:flex;gap:12px;margin-top:14px}
+    .btn-primary{background:var(--brand);color:#fff;border:0;border-radius:14px;padding:12px 18px;font-weight:800;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+
+    /* Grids / cards */
     .grid{display:grid;gap:22px}
-    @media(min-width:960px){.grid-3{grid-template-columns:repeat(3,1fr)}}
-    .card{border:1px solid #efe6ff;border-radius:18px;padding:18px;background:#fff;box-shadow:0 10px 20px rgba(27,15,38,.05)}
-    .card h3{margin:8px 0 6px}
-    .card p{margin:0;color:#4a3e57}
-    footer{margin-top:48px;border-top:1px solid #efe6ff}
-    .foot{display:grid;gap:12px;padding:24px 0;color:#4a3e57}
-    .chips{display:flex;flex-wrap:wrap;gap:8px}
-    .chip{border:1px solid #e6dcff;color:#3b1d52;padding:5px 10px;border-radius:999px;font-size:13px}
+    @media(min-width:960px){.grid-3{grid-template-columns:repeat(3,1fr)} .grid-2{grid-template-columns:repeat(2,1fr)}}
+    .card{border:1px solid var(--line);border-radius:18px;background:var(--card);box-shadow:0 10px 20px rgba(27,15,38,.05);overflow:hidden}
+    .card img{display:block;width:100%;height:220px;object-fit:cover}
+    .card-body{padding:18px}
+    .card h3{margin:0 0 6px}
+    .card p{margin:0 0 14px;color:var(--muted)}
+    .card .btn-primary{padding:10px 14px}
+
+    /* Preguntas */
+    .faq{border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:10px 0}
+    .faq summary{cursor:pointer;font-weight:700}
+
+    /* Footer */
+    footer{margin-top:48px;background:linear-gradient(180deg,var(--grad1),var(--grad2));color:#e9e1f5}
+    .foot{display:grid;gap:24px;padding:28px 0}
+    @media(min-width:960px){.foot{grid-template-columns:1.1fr 1fr 1fr 1.2fr}}
+    .foot h4{margin:0 0 10px 0;color:#fff}
+    .foot a{color:#e9e1f5;text-decoration:none}
+    .foot a:hover{text-decoration:underline}
+    .socials{display:flex;gap:10px;margin-top:8px}
+    .copy{border-top:1px solid rgba(255,255,255,.12);padding:14px 0;text-align:center;color:#cfc3e6;font-size:14px}
+
+    /* Floating buttons */
+    .float-stack{position:fixed;right:18px;bottom:18px;display:flex;flex-direction:column;gap:14px;z-index:60}
+    .fab{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;color:#fff;text-decoration:none;box-shadow:0 8px 18px rgba(0,0,0,.2)}
+    .fab.whatsapp{background:#25d366}
+    .fab.chat{background:#1da1f2}
+    .fab.ig{background:#c13584}
+    .fab.call{background:#28a745}
+    .fab svg{width:26px;height:26px;fill:#fff}
   </style>
 </head>
 <body>
@@ -70,141 +110,236 @@
       <a class="brand" href="/"><img src="/logo-header-white.png" alt="Figura Rostro KG" /></a>
       <nav>
         <a href="/">Inicio</a>
-        <a href="/#sobre">Sobre nosotros</a>
         <a href="/#servicios">Servicios</a>
         <a href="/#promos">Promos</a>
         <a href="/galeria">Galería</a>
         <a href="/#contacto">Contacto</a>
+        <span class="small-label">Síguenos:</span>
+        <a class="btn-ig" href="https://instagram.com/figurarostro" target="_blank" rel="noopener">Instagram</a>
+        <a class="btn-ghost" href="/menu">Menú</a>
       </nav>
-      <a class="btn-ghost" href="https://wa.me/50764746168?text=Hola,%20quiero%20agendar%20una%20cita%20para%20tratamientos%20faciales" target="_blank" rel="noopener">Reservar</a>
     </div>
   </header>
 
   <!-- Hero -->
-<section class="hero">
-  <div class="container">
-    <div class="content">
-      <span class="badge">Royal Park · Panamá</span>
-      <h1>Tratamientos <span class="grad">faciales</span></h1>
-      <p style="max-width:680px;opacity:.94">
-        Limpieza profunda, dermaplaning, peeling y rejuvenecimiento facial sin cirugía.
-        Protocolos seguros con resultados visibles.
-      </p>
-      <div class="cta" style="margin-top:14px">
-        <a href="https://wa.me/50764746168?text=Hola%20quiero%20agendar%20un%20tratamiento%20facial" class="btn-primary">Agendar por WhatsApp</a>
-        <a href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T.%20Lefevre%20Panamá&navigate=yes" class="btn-ghost" target="_blank" rel="noopener">Cómo llegar</a>
+  <section class="hero">
+    <div class="container">
+      <div class="content">
+        <span class="badge">Royal Park · Panamá</span>
+        <h1>Tratamientos <span class="grad">faciales</span></h1>
+        <p style="max-width:680px;opacity:.94">
+          Limpieza profunda, dermaplaning, peeling y rejuvenecimiento facial sin cirugía.
+          Protocolos seguros con resultados visibles.
+        </p>
+        <div class="cta">
+          <a href="https://wa.me/50764746168?text=Hola%20quiero%20agendar%20un%20tratamiento%20facial" class="btn-primary">Agendar por WhatsApp</a>
+          <a href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T.%20Lefevre%20Panamá&navigate=yes" class="btn-ghost" target="_blank" rel="noopener">Cómo llegar</a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Servicios -->
-<section class="container" style="padding:38px 0 14px">
-  <div class="grid grid-3">
+  <!-- Servicios (tarjetas con Ver más) -->
+  <section class="container" style="padding:38px 0 14px">
+    <div class="grid grid-3">
 
-    <article class="card">
-      <img src="/assets/img/limpieza-facial.jpg" alt="Limpieza facial profunda en Royal Park Panamá" loading="lazy">
-      <h3>Limpieza facial profunda</h3>
-      <p>Extracción cuidada, mascarilla nutritiva y equilibrio de la piel. Tez más clara desde la primera sesión.</p>
-    </article>
+      <article class="card">
+        <img src="/assets/img/limpieza-facial.jpg" alt="Limpieza facial profunda en Royal Park Panamá" loading="lazy">
+        <div class="card-body">
+          <h3>Limpieza facial profunda</h3>
+          <p>Extracción cuidada, mascarilla nutritiva y equilibrio de la piel. Tez más clara desde la primera sesión.</p>
+          <a class="btn-primary" href="/tratamientos-faciales">Ver más</a>
+        </div>
+      </article>
 
-    <article class="card">
-      <img src="/assets/img/dermaplaning.jpg" alt="Dermaplaning en Royal Park Panamá" loading="lazy">
-      <h3>Dermaplaning</h3>
-      <p>Suaviza textura, mejora luminosidad y facilita la absorción de activos. Ideal antes de eventos.</p>
-    </article>
+      <article class="card">
+        <img src="/assets/img/dermaplaning.jpg" alt="Dermaplaning en Royal Park Panamá" loading="lazy">
+        <div class="card-body">
+          <h3>Dermaplaning</h3>
+          <p>Suaviza textura, mejora luminosidad y facilita la absorción de activos. Ideal antes de eventos.</p>
+          <a class="btn-primary" href="/dermaplaning">Ver más</a>
+        </div>
+      </article>
 
-    <article class="card">
-      <img src="/assets/img/peeling-facial.jpg" alt="Peeling facial en Royal Park Panamá" loading="lazy">
-      <h3>Peeling facial</h3>
-      <p>Renovación controlada que unifica el tono y mejora la apariencia de manchas y textura.</p>
-    </article>
+      <article class="card">
+        <img src="/assets/img/peeling-facial.jpg" alt="Peeling facial en Royal Park Panamá" loading="lazy">
+        <div class="card-body">
+          <h3>Peeling Facial</h3>
+          <p>Renovación controlada que unifica el tono y mejora la apariencia de manchas y textura.</p>
+          <a class="btn-primary" href="/peeling-facial">Ver más</a>
+        </div>
+      </article>
 
-  </div>
+    </div>
 
-  <div class="grid grid-2" style="margin-top:22px">
-    <article class="card">
-      <img src="/assets/img/rejuvenecimiento-facial.jpg" alt="Rejuvenecimiento facial sin cirugía en Royal Park Panamá" loading="lazy">
-      <h3>Rejuvenecimiento facial sin cirugía</h3>
-      <p>Protocolos combinados para reafirmar, suavizar líneas finas y devolver firmeza de forma no invasiva.</p>
-    </article>
+    <div class="grid grid-2" style="margin-top:22px">
 
-    <article class="card">
-      <div class="card-inner" style="padding:22px">
-        <h3>Diagnóstico de la piel</h3>
-        <p style="opacity:.9">Recomendamos el tratamiento adecuado según tu biotipo y objetivos.</p>
-        <a class="btn-primary" href="https://wa.me/50764746168?text=Hola%20quisiera%20un%20diagnóstico%20facial">Quiero diagnóstico</a>
+      <article class="card">
+        <img src="/assets/img/rejuvenecimiento-facial.jpg" alt="Rejuvenecimiento facial sin cirugía en Royal Park Panamá" loading="lazy">
+        <div class="card-body">
+          <h3>Rejuvenecimiento facial sin cirugía</h3>
+          <p>Protocolos combinados para reafirmar, suavizar líneas finas y devolver firmeza de forma no invasiva.</p>
+          <a class="btn-primary" href="/lifting-sin-cirugia">Ver más</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-body">
+          <h3>Plasma Fibroblast</h3>
+          <p style="opacity:.9">Técnica de retracción de la piel para tensar y mejorar párpados, código de barras y líneas finas.</p>
+          <a class="btn-primary" href="/plasma-fibroblast">Ver más</a>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="grid grid-2" style="margin-top:22px">
+      <article class="card">
+        <div class="card-body">
+          <h3>Radiofrecuencia Facial</h3>
+          <p style="opacity:.9">Calor controlado para estimular colágeno, mejorar firmeza y definir contornos.</p>
+          <a class="btn-primary" href="/radiofrecuencia-facial">Ver más</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-body">
+          <h3>Diagnóstico de la piel</h3>
+          <p style="opacity:.9">Recomendamos el tratamiento adecuado según tu biotipo y objetivos.</p>
+          <a class="btn-primary" href="https://wa.me/50764746168?text=Hola%20quisiera%20un%20diagn%C3%B3stico%20facial">Quiero diagnóstico</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Preguntas frecuentes -->
+  <section class="container" style="padding:16px 0 20px">
+    <h2 style="margin-bottom:8px">Preguntas frecuentes</h2>
+    <details class="faq">
+      <summary>¿Con qué frecuencia puedo hacerme limpiezas?</summary>
+      <p>Depende del tipo de piel. En general, cada 4–6 semanas es una buena referencia.</p>
+    </details>
+    <details class="faq">
+      <summary>¿El peeling necesita reposo?</summary>
+      <p>Puede haber leve descamación. Te daremos cuidados y fotoprotección adecuados.</p>
+    </details>
+    <details class="faq">
+      <summary>¿Puedo combinar dermaplaning y limpieza?</summary>
+      <p>Sí, es una combinación frecuente para potenciar luminosidad y suavidad.</p>
+    </details>
+  </section>
+
+  <!-- CTA final -->
+  <section class="container" style="padding:10px 0 54px;text-align:center">
+    <h2>Agenda tu tratamiento facial</h2>
+    <p style="max-width:680px;margin:8px auto;opacity:.9">
+      Escríbenos por WhatsApp para disponibilidad y asesoría personalizada.
+    </p>
+    <a class="btn-primary" href="https://wa.me/50764746168?text=Hola%20quiero%20agendar%20un%20tratamiento%20facial">Agendar ahora</a>
+  </section>
+
+  <!-- Footer general -->
+  <footer>
+    <div class="container foot">
+      <!-- Col 1: marca / info -->
+      <div>
+        <img src="/logo-header-white.png" alt="Figura Rostro KG" style="height:34px;margin-bottom:10px">
+        <h4>Figura Rostro KG</h4>
+        <p style="margin:6px 0 0">
+          Parque Lefevre · Royal Park,<br>Ciudad de Panamá.<br><br>
+          Atención: 8:00 a.m. – 8:00 p.m.
+        </p>
+        <div class="socials">
+          <a href="https://instagram.com/figurarostro" target="_blank" rel="noopener">Instagram</a>
+          <span>·</span>
+          <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
+          <span>·</span>
+          <a href="https://www.tiktok.com" target="_blank" rel="noopener">TikTok</a>
+        </div>
       </div>
-    </article>
-  </div>
-</section>
 
-<!-- Preguntas frecuentes -->
-<section class="container" style="padding:16px 0 20px">
-  <h2 style="margin-bottom:8px">Preguntas frecuentes</h2>
-  <details class="faq">
-    <summary>¿Con qué frecuencia puedo hacerme limpiezas?</summary>
-    <p>Depende del tipo de piel. En general, cada 4–6 semanas es una buena referencia.</p>
-  </details>
-  <details class="faq">
-    <summary>¿El peeling necesita reposo?</summary>
-    <p>Puede haber leve descamación. Te daremos cuidados y fotoprotección adecuados.</p>
-  </details>
-  <details class="faq">
-    <summary>¿Puedo combinar dermaplaning y limpieza?</summary>
-    <p>Sí, es una combinación frecuente para potenciar luminosidad y suavidad.</p>
-  </details>
-</section>
+      <!-- Col 2: Faciales -->
+      <div>
+        <h4>Faciales</h4>
+        <ul style="list-style:none;padding:0;margin:0;display:grid;gap:8px">
+          <li><a href="/tratamientos-faciales">Tratamientos faciales</a></li>
+          <li><a href="/peeling-facial">Peeling Facial</a></li>
+          <li><a href="/plasma-fibroblast">Plasma Fibroblast</a></li>
+          <li><a href="/radiofrecuencia-facial">Radiofrecuencia Facial</a></li>
+          <li><a href="/lifting-sin-cirugia">Lifting sin cirugía</a></li>
+        </ul>
+      </div>
 
-<!-- CTA final -->
-<section class="container" style="padding:10px 0 54px;text-align:center">
-  <h2>Agenda tu tratamiento facial</h2>
-  <p style="max-width:680px;margin:8px auto;opacity:.9">
-    Escríbenos por WhatsApp para disponibilidad y asesoría personalizada.
-  </p>
-  <a class="btn-primary" href="https://wa.me/50764746168?text=Hola%20quiero%20agendar%20un%20tratamiento%20facial">Agendar ahora</a>
-</section>
+      <!-- Col 3: Masajes & Salón -->
+      <div>
+        <h4>Masajes & Salón</h4>
+        <ul style="list-style:none;padding:0;margin:0;display:grid;gap:8px">
+          <li><a href="/masajes-terapeuticos">Masajes terapéuticos</a></li>
+          <li><a href="/masaje-relajante">Masaje Relajante</a></li>
+          <li><a href="/keratina-organica-biotanix">Keratina Orgánica Biotanix</a></li>
+          <li><a href="/adultos-mayores">Adultos Mayores</a></li>
+          <li><a href="/terapia-adaptada">Terapia adaptada</a></li>
+        </ul>
+      </div>
 
-<!-- JSON-LD: Breadcrumb + Service -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem","position": 1,"name": "Inicio","item": "https://figurarostro.life/"},
-        {"@type": "ListItem","position": 2,"name": "Tratamientos faciales","item": "https://figurarostro.life/tratamientos-faciales/"}
-      ]
-    },
-    {
-      "@type": "Service",
-      "name": "Tratamientos faciales",
-      "areaServed": "Ciudad de Panamá, Panamá",
-      "provider": {"@type": "LocalBusiness","name": "Figura Rostro KG"},
-      "url": "https://figurarostro.life/tratamientos-faciales/",
-      "image": "https://figura-rostro-site.vercel.app/assets/img/og-faciales.jpg",
-      "serviceType": "Limpieza facial, dermaplaning, peeling, rejuvenecimiento",
-      "availableChannel": {"@type": "ServiceChannel","serviceUrl":"https://wa.me/50764746168"}
-    }
-  ]
-}
-</script>
-
+      <!-- Col 4: Mapa -->
+      <div>
+        <h4>Cómo llegar</h4>
+        <div style="border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.2)">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d"
+            width="100%" height="180" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="Mapa Royal Park"></iframe>
+        </div>
+        <div style="margin-top:8px;display:flex;gap:10px;flex-wrap:wrap">
+          <a href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T.%20Lefevre%20Panamá&navigate=yes" target="_blank" rel="noopener">Abrir en Waze</a>
+          <span>·</span>
+          <a href="https://maps.google.com" target="_blank" rel="noopener">Google Maps</a>
+        </div>
+      </div>
+    </div>
+    <div class="copy">© 2025 Figura Rostro KG · Todos los derechos reservados</div>
   </footer>
 
-  <!-- JSON-LD (ayuda SEO) -->
+  <!-- Botones flotantes -->
+  <div class="float-stack" aria-label="Accesos rápidos">
+    <a class="fab whatsapp" href="https://wa.me/50764746168?text=Hola%20me%20interesa%20un%20tratamiento%20facial" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19.11 17.08c-.27-.14-1.58-.78-1.82-.87-.24-.09-.42-.14-.6.14-.18.27-.69.86-.84 1.03-.15.18-.31.2-.58.07-.27-.14-1.14-.42-2.18-1.34-.8-.71-1.35-1.59-1.51-1.86-.16-.27-.02-.42.12-.55.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.48-.06-.14-.6-1.44-.82-1.98-.22-.53-.44-.46-.6-.47l-.51-.01c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.28s.99 2.64 1.13 2.82c.14.18 1.94 2.96 4.7 4.15.66.29 1.17.46 1.57.59.66.21 1.25.18 1.72.11.52-.08 1.58-.64 1.8-1.25.22-.61.22-1.14.15-1.25-.06-.11-.24-.18-.51-.31zM16 3C9.38 3 4 8.38 4 15c0 2.64.87 5.08 2.35 7.06L5 29l7.12-1.32A11.93 11.93 0 0 0 16 27c6.62 0 12-5.38 12-12S22.62 3 16 3z"/></svg>
+    </a>
+    <a class="fab chat" href="/chat" aria-label="Chat del sitio">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/></svg>
+    </a>
+    <a class="fab ig" href="https://instagram.com/figurarostro" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5m10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3m-5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10m6-.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/></svg>
+    </a>
+    <a class="fab call" href="tel:+50764746168" aria-label="Llamar">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.11.37 2.3.57 3.58.57a1 1 0 0 1 1 1V21a1 1 0 0 1-1 1C10.07 22 2 13.93 2 3a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.28.2 2.47.57 3.58a1 1 0 0 1-.24 1.01l-2.2 2.2z"/></svg>
+    </a>
+  </div>
+
+  <!-- JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Tratamientos faciales",
-    "provider": { "@type": "LocalBusiness", "name": "Figura Rostro KG" },
-    "serviceType": "Facial treatment",
-    "areaServed": "Panamá",
-    "url": "https://figurarostro.life/tratamientos-faciales/",
-    "image": "https://figura-rostro-site.vercel.app/assets/img/og-faciales.jpg",
-    "description": "Limpieza facial profunda, dermaplaning, peeling, despigmentación, control de acné y rejuvenecimiento sin cirugía en Royal Park, Panamá."
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem","position": 1,"name": "Inicio","item": "https://figurarostro.life/"},
+          {"@type": "ListItem","position": 2,"name": "Tratamientos faciales","item": "https://figurarostro.life/tratamientos-faciales/"}
+        ]
+      },
+      {
+        "@type": "Service",
+        "name": "Tratamientos faciales",
+        "areaServed": "Ciudad de Panamá, Panamá",
+        "provider": {"@type": "LocalBusiness","name": "Figura Rostro KG"},
+        "url": "https://figurarostro.life/tratamientos-faciales/",
+        "image": "https://figura-rostro-site.vercel.app/assets/img/og-faciales.jpg",
+        "serviceType": "Limpieza facial, dermaplaning, peeling, rejuvenecimiento, radiofrecuencia, fibroblast",
+        "availableChannel": {"@type": "ServiceChannel","serviceUrl":"https://wa.me/50764746168"}
+      }
+    ]
   }
   </script>
 </body>
