@@ -3,153 +3,126 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Chat Citas · Figura Rostro KG</title>
+  <title>Agendar Citas · Figura Rostro KG</title>
+  <meta name="description" content="Agenda tu cita por WhatsApp con Figura Rostro KG en Royal Park, Parque Lefevre. Faciales, masajes y estética no invasiva." />
   <meta name="theme-color" content="#5b2580" />
+  <link rel="canonical" href="https://figurarostro.life/chat-citas.html" />
+
   <style>
-    :root {
-      --brand: #5b2580;
-      --brand2: #a66cd4;
-      --overlay: rgba(0,0,0,0.6);
-    }
-    * { box-sizing: border-box; }
-    html, body { height: 100%; margin: 0; font-family: "Poppins", sans-serif; }
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(var(--overlay), var(--overlay)), url('hero 3.jpg') center/cover no-repeat;
-      color: #fff;
-      text-align: center;
-      position: relative;
+    :root { --brand:#5b2580; --brand2:#a66cd4; --overlay: rgba(0,0,0,.6); }
+    *{ box-sizing:border-box }
+    html,body{ height:100%; margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,Arial; }
+
+    /* Fondo con imagen nueva */
+    body{
+      display:flex; align-items:center; justify-content:center;
+      background: linear-gradient(var(--overlay),var(--overlay)),
+                  url('/citas-hero.jpg') center/cover no-repeat;
+      color:#fff; text-align:center; position:relative;
     }
 
-    .chat-card {
-      background: rgba(255,255,255,0.1);
+    .chat-card{
+      background: rgba(255,255,255,.10);
       backdrop-filter: blur(10px);
       border-radius: 20px;
       padding: 40px 30px;
-      width: 90%;
-      max-width: 420px;
-      box-shadow: 0 0 25px rgba(0,0,0,0.4);
-      animation: fadeIn 0.8s ease;
+      width: 90%; max-width: 420px;
+      box-shadow: 0 0 25px rgba(0,0,0,.4);
+      animation: fadeIn .8s ease;
+    }
+    @keyframes fadeIn{ from{opacity:0;transform:translateY(15px)} to{opacity:1;transform:translateY(0)} }
+
+    .logo{ width:140px; margin-bottom:15px; filter: drop-shadow(0 3px 8px rgba(0,0,0,.4)); }
+
+    .assistant-img{
+      width:120px; height:120px; border-radius:50%; object-fit:cover;
+      border:3px solid var(--brand2); margin-bottom:15px;
+      box-shadow:0 4px 15px rgba(0,0,0,.3);
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(15px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    h2{ font-size:1.4rem; font-weight:700; margin:8px 0 4px }
+    p{ font-size:.95rem; color:#e7e3f1; margin:0 0 18px }
 
-    .logo {
-      width: 140px;
-      margin-bottom: 15px;
-      filter: drop-shadow(0 3px 8px rgba(0,0,0,0.4));
-    }
-
-    .assistant-img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--brand2);
-      margin-bottom: 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    }
-
-    h2 {
-      font-size: 1.4rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    p {
-      font-size: 0.95rem;
-      color: #e7e3f1;
-      margin-bottom: 20px;
-    }
-
-    .btn-option {
-      display: block;
-      width: 90%;
-      margin: 10px auto;
-      padding: 12px 18px;
-      border-radius: 25px;
-      border: none;
-      cursor: pointer;
-      font-weight: 600;
+    .btn-option{
+      display:block; width:90%; margin:10px auto; padding:12px 18px;
+      border-radius:25px; border:none; cursor:pointer; font-weight:700;
       background: linear-gradient(135deg, var(--brand), var(--brand2));
-      color: white;
-      transition: all 0.3s ease;
+      color:#fff; transition: transform .2s ease, opacity .2s ease;
     }
-    .btn-option:hover {
-      transform: translateY(-2px);
-      background: linear-gradient(135deg, var(--brand2), var(--brand));
-    }
+    .btn-option:hover{ transform: translateY(-2px); opacity:.95 }
 
-    .close-btn {
-      position: absolute;
-      top: 20px;
-      right: 25px;
-      background: rgba(255, 255, 255, 0.15);
-      border: none;
-      color: white;
-      font-size: 22px;
-      border-radius: 50%;
-      width: 38px;
-      height: 38px;
-      cursor: pointer;
-      transition: 0.3s;
+    .close-btn{
+      position: fixed; top: 16px; right: 20px;
+      background: rgba(255,255,255,.15); border: none; color: #fff;
+      font-size: 22px; border-radius: 50%; width: 38px; height: 38px;
+      cursor: pointer; transition: .3s;
     }
+    .close-btn:hover{ background: rgba(255,255,255,.30); }
 
-    .close-btn:hover {
-      background: rgba(255, 255, 255, 0.3);
+    /* Footer compacto con links del sitio */
+    footer.site-footer{
+      position:absolute; left:0; right:0; bottom:0;
+      background: linear-gradient(180deg, #160c1f 0%, #241235 100%);
+      color:#e9d9ff; border-top:1px solid rgba(255,255,255,.12);
+      font-size:.92rem;
     }
-
-    footer {
-      position: absolute;
-      bottom: 15px;
-      width: 100%;
-      text-align: center;
-      font-size: 0.8rem;
-      color: #ccc;
-    }
-    footer a { color: #c5a6e6; text-decoration: none; }
+    .foot-wrap{ max-width:1150px; margin:0 auto; padding:10px 14px; display:flex; gap:10px; flex-wrap:wrap; justify-content:center }
+    .foot-wrap a{ color:#e9d9ff; text-decoration:none }
+    .foot-wrap a:hover{ text-decoration:underline; text-underline-offset:3px }
+    .copy{ text-align:center; opacity:.9; padding:8px 0 10px; font-size:.85rem }
   </style>
 </head>
 <body>
 
-  <!-- Botón cerrar -->
+  <!-- Cerrar y volver al sitio -->
   <button class="close-btn" onclick="window.location.href='https://figurarostro.life'">×</button>
 
- <div class="chat-card">
-  <!-- Logo local (ruta corregida con %20 por espacios) -->
-  <img src="logo-header-white.png" alt="Figura Rostro KG" class="logo">
-  
-  <!-- Imagen de la asistente -->
- <img src="asistente-valentina.jpg" alt="Asistente Spa" class="assistant-img">
+  <div class="chat-card">
+    <img src="/logo-header-white.png" alt="Figura Rostro KG" class="logo">
 
-  <h2>Hola, soy Valentina 🌸</h2>
-  <p class="sub">Estoy para asistirte según la opción que elijas.<br>🌷 ¡Es un placer atenderte!</p>
+    <!-- Nueva foto de asistente -->
+    <img src="/asistente-lucia.jpg" alt="Asistente Lucia" class="assistant-img">
 
-  <p>Elige una opción y abriremos el chat de WhatsApp con tu mensaje listo:</p>
+    <!-- Nombre actualizado -->
+    <h2>Hola, soy Lucia 🌸</h2>
+    <p>Estoy para asistirte según la opción que elijas. ¡Es un placer atenderte!</p>
 
-  <button class="btn-option" onclick="abrirChat('masaje')">💆 Promo Masaje Relajante</button>
-  <button class="btn-option" onclick="abrirChat('facial')">💖 Tratamiento Facial</button>
-  <button class="btn-option" onclick="abrirChat('otras')">✨ Otras Promos</button>
-</div>
+    <p>Elige una opción y abriremos el WhatsApp con tu mensaje listo:</p>
 
+    <button class="btn-option" onclick="abrirChat('masaje')">💆 Promo Masaje Relajante</button>
+    <button class="btn-option" onclick="abrirChat('facial')">💖 Tratamiento Facial</button>
+    <button class="btn-option" onclick="abrirChat('otras')">✨ Otras Promos</button>
+  </div>
 
-  <footer>© Figura Rostro KG — <a href="https://figurarostro.life">Ver sitio completo</a></footer>
+  <!-- Footer con enlaces clave -->
+  <footer class="site-footer">
+    <nav class="foot-wrap" aria-label="Enlaces del sitio">
+      <a href="/">Inicio</a> ·
+      <a href="/tratamientos-faciales.html">Faciales</a> ·
+      <a href="/masajes-terapeuticos.html">Masajes</a> ·
+      <a href="/peeling-facial.html">Peeling Facial</a> ·
+      <a href="/fibroblast.html">Plasma Fibroblast</a> ·
+      <a href="/radiofrecuencia-facial.html">Radiofrecuencia Facial</a> ·
+      <a href="/lifting-sin-cirugia.html">Lifting sin cirugía</a> ·
+      <a href="/#contacto">Contacto</a> ·
+      <a href="https://wa.me/50764746168" target="_blank" rel="noopener">WhatsApp</a>
+    </nav>
+    <div class="copy">© <span id="year"></span> Figura Rostro KG · Royal Park, Panamá</div>
+  </footer>
 
   <script>
+    // WhatsApp
     const whatsappNumber = "50764746168";
-    function abrirChat(opcion) {
-      let mensaje = "";
-      if (opcion === "masaje") mensaje = "¡Hola! Me interesa la *Promo de Masaje Relajante*. ¿Podrías contarme más y ayudarme a agendar?";
-      else if (opcion === "facial") mensaje = "¡Hola! Me gustaría información sobre los *Tratamientos Faciales* disponibles en Figura Rostro KG.";
-      else mensaje = "¡Hola! Quisiera conocer las *otras promociones y paquetes* disponibles esta semana.";
-      const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(mensaje)}`;
-      window.open(url, "_blank");
+    function abrirChat(opcion){
+      let m = "";
+      if(opcion==="masaje") m = "¡Hola! Me interesa la *Promo de Masaje Relajante*. ¿Podrían ayudarme a agendar?";
+      else if(opcion==="facial") m = "¡Hola! Quisiera información sobre los *Tratamientos Faciales* disponibles.";
+      else m = "¡Hola! Quisiera conocer las *otras promociones y paquetes* de esta semana.";
+      window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(m)}`, "_blank");
     }
+
+    // Año en footer
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
