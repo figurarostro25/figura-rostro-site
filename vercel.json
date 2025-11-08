@@ -1,0 +1,26 @@
+{
+  "redirects": [
+    { "source": "/tratamientos-faciales", "destination": "/tratamientos-faciales-panama.html", "permanent": true },
+    { "source": "/tratamientos-faciales/", "destination": "/tratamientos-faciales-panama.html", "permanent": true },
+
+    { "source": "/masajes-terapeuticos", "destination": "/masajes-terapeuticos-panama.html", "permanent": true },
+    { "source": "/masajes-terapeuticos/", "destination": "/masajes-terapeuticos-panama.html", "permanent": true },
+
+    { "source": "/peeling-facial.html", "destination": "/peeling-facial-panama.html", "permanent": true },
+    { "source": "/fibroblast.html", "destination": "/plasma-fibroblast-panama.html", "permanent": true },
+    { "source": "/radiofrecuencia-facial.html", "destination": "/radiofrecuencia-facial-panama.html", "permanent": true },
+    { "source": "/lifting-sin-cirugia.html", "destination": "/lifting-facial-sin-cirugia-panama.html", "permanent": true },
+    { "source": "/limpieza-facial-profunda.html", "destination": "/limpieza-facial-profunda-panama.html", "permanent": true },
+
+    { "source": "/masaje-relajante.html", "destination": "/masaje-relajante-panama.html", "permanent": true },
+    { "source": "/masaje-terapeutico-adultos-mayores.html", "destination": "/masajes-adultos-mayores-panama.html", "permanent": true },
+    { "source": "/terapia-masaje-discapacidad.html", "destination": "/masajes-adaptados-discapacidad-panama.html", "permanent": true },
+    { "source": "/contorno-corporal.html", "destination": "/contorno-corporal-panama.html", "permanent": true },
+
+    { "source": "/menu.html", "destination": "/spa-menu-precios-panama.html", "permanent": true },
+
+    /* Para carpetas completas (si desaparecen luego) */
+    { "source": "/masajes-terapeuticos/:path*", "destination": "/masajes-terapeuticos-panama.html", "permanent": true },
+    { "source": "/tratamientos-faciales/:path*", "destination": "/tratamientos-faciales-panama.html", "permanent": true }
+  ]
+}
