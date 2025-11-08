@@ -58,9 +58,19 @@
     .small-label{color:#cab6e9;font-weight:600;margin-right:8px}
 
     /* Hero */
-    .hero{position:relative;min-height:66vh;display:grid;align-items:center;isolation:isolate;
-          background:linear-gradient(180deg,rgba(26,13,36,.65),rgba(26,13,36,.75)),
-           url("/faciales-hero.jpg") center/cover no-repeat;
+    .hero{
+  position:relative;
+  min-height:60vh;
+  display:grid;
+  align-items:center;
+  isolation:isolate;
+  background:
+    linear-gradient(180deg,rgba(26,13,36,.65),rgba(26,13,36,.75)),
+    url("/faciales-hero.jpg") center/cover no-repeat;
+  background-size:cover;
+  background-position:center;
+}
+
     .hero .content{color:#fff;max-width:800px;padding:42px 0}
     .badge{display:inline-block;background:#ffd84d;color:#1b0f26;border-radius:100px;padding:4px 12px;font-size:13px;font-weight:700}
     h1{font-size:clamp(36px,6vw,58px);line-height:1.04;margin:14px 0;font-weight:800}
