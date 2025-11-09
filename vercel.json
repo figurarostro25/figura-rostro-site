@@ -6,7 +6,7 @@
     { "source": "/masajes-terapeuticos", "destination": "/masajes-terapeuticos-panama.html", "permanent": true },
     { "source": "/masajes-terapeuticos/", "destination": "/masajes-terapeuticos-panama.html", "permanent": true },
 
-    { "source": "/peeling-facial.html", "destination": "/peeling-facial-panama.html", "permanent": true },
+    { "source": "/peeling-facial.html", "destination": "/peeling-facial-en-panama.html", "permanent": true },
     { "source": "/fibroblast.html", "destination": "/plasma-fibroblast-panama.html", "permanent": true },
     { "source": "/radiofrecuencia-facial.html", "destination": "/radiofrecuencia-facial-panama.html", "permanent": true },
     { "source": "/lifting-sin-cirugia.html", "destination": "/lifting-facial-sin-cirugia.html", "permanent": true },
