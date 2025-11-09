@@ -4,29 +4,43 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Limpieza Facial Profunda | Figura Rostro KG</title>
-  <meta name="description" content="Limpieza facial profunda profesional en Figura Rostro KG: higiene completa, extracción, hidratación y mascarilla para una piel más limpia, luminosa y suave.">
-  <link rel="canonical" href="https://figurarostro.life/limpieza-facial-profunda.html">
+  <title>Limpieza Facial Profunda en Panamá · Extracción, detox y piel más clara | Figura Rostro KG</title>
+  <meta name="description" content="Limpieza facial profunda profesional en Royal Park, Ciudad de Panamá. Extracción cuidadosa, detox, mascarilla y alta higiene para una piel más limpia y luminosa.">
+  <link rel="canonical" href="https://figurarostro.life/limpieza-facial-profunda-panama.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Limpieza Facial Profunda en Panamá · Figura Rostro KG">
+  <meta property="og:description" content="Extracción cuidadosa, detox y mascarilla profesional. Resultados visibles en Royal Park, Panamá.">
+  <meta property="og:url" content="https://figurarostro.life/limpieza-facial-profunda-panama.html">
+  <meta property="og:image" content="https://figurarostro.life/limpieza-facial.jpg">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Limpieza Facial Profunda en Panamá · Figura Rostro KG">
+  <meta name="twitter:description" content="Procedimiento profesional con extracción y protocolos de higiene.">
+  <meta name="twitter:image" content="https://figurarostro.life/limpieza-facial.jpg">
 
   <style>
     :root{--brand:#5b2580}
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:#fff;color:#1b0f26}
     a{text-decoration:none}
 
-    /* Header */
+    /* Header (unificado) */
     header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,#160c1f,#241235);border-bottom:1px solid rgba(255,255,255,.08)}
     .header-inner{max-width:1150px;margin:auto;padding:18px 16px;display:flex;align-items:center;justify-content:space-between}
     .brand img{height:52px;width:auto}
     nav{display:flex;gap:18px;align-items:center}
     nav a{color:#fff;font-weight:600;opacity:.95}
-    nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:3px}
+    nav a:hover{text-decoration:underline;text-underline-offset:3px;opacity:1}
     .btn-primary{background:#fff;color:var(--brand);border:0;padding:12px 20px;border-radius:14px;font-weight:700}
 
     /* Hero */
     .hero{
       position:relative;min-height:50vh;display:grid;place-items:center;text-align:center;color:#fff;
-      background:url('banner-limpieza.jpg') center/cover no-repeat;
+      background:url('limpieza-facial.jpg') center/cover no-repeat;
     }
     .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,10,35,.65),rgba(20,10,35,.45))}
     .hero .inner{position:relative;z-index:2;padding:56px 16px}
@@ -38,30 +52,29 @@
     h2{color:#5b2580;margin:26px 0 10px}
     p{line-height:1.7;opacity:.96}
     .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
-    .before-after{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    .before-after figure{margin:0;text-align:center}
-    .before-after img{width:100%;display:block;border-radius:14px}
-    .before-after figcaption{font-size:14px;color:#5b2580;font-weight:600;margin-top:6px}
 
-    /* Footer */
+    .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+    .step{border:1px solid #efe6ff;border-radius:14px;padding:14px 16px;background:#fff;box-shadow:0 8px 18px rgba(27,15,38,.05)}
+    .step h3{margin:0 0 6px;font-size:18px;color:#351848}
+
+    .tips{border:1px dashed #d7c6ef;border-radius:14px;padding:14px 16px;background:#faf7ff}
+
+    /* Footer (unificado) */
     footer{text-align:center;padding:25px 10px;font-size:15px;line-height:1.6;color:#222;opacity:.9}
     footer .links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:10px}
     footer .links a{color:#5b2580}
 
-    /* FAB (flotantes) */
+    /* FAB */
     .fr-fab{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:9999;display:flex;flex-direction:column;gap:14px;align-items:flex-end}
     .fr-ic{min-width:56px;height:56px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 10px 18px rgba(0,0,0,.18)}
     .fr-ic svg{fill:#fff;width:26px;height:26px}
-    .fr-wa{background:#25D366}
-    .fr-waze{background:#0099ff}
-    .fr-ig{background:linear-gradient(45deg,#F58529,#DD2A7B,#8134AF,#515BD4)}
-    .fr-call{background:#4CAF50}
+    .fr-wa{background:#25D366}.fr-waze{background:#0099ff}
+    .fr-ig{background:linear-gradient(45deg,#F58529,#DD2A7B,#8134AF,#515BD4)} .fr-call{background:#4CAF50}
     .fr-ic:hover{transform:scale(1.08);box-shadow:0 12px 22px rgba(0,0,0,.22)}
 
     /* Móvil */
     @media (max-width:768px){
       .header-inner{padding:16px;justify-content:center;gap:10px}
-      .before-after{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -73,134 +86,125 @@
       <a href="/" class="brand"><img src="logo-header-white.png" alt="Figura Rostro KG"></a>
       <nav>
         <a href="/#sobre">Nosotros</a>
-        <a href="/tratamientos-faciales/">Faciales</a>
-        <a href="/masajes-terapeuticos/">Masajes</a>
-        <a href="/#promos">Promociones</a>
+        <a href="/tratamientos-faciales-panama.html">Faciales</a>
+        <a href="/masajes-terapeuticos-panama.html">Masajes</a>
+        <a href="/promociones-estetica-panama.html">Promociones</a>
         <a href="/#contacto">Contacto</a>
       </nav>
-      <a class="btn-primary" href="/chat-citas.html" target="_blank" rel="noopener">Agendar</a>
+      <a class="btn-primary" href="/reservar-cita-figura-rostro.html">Agendar</a>
     </div>
   </header>
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" role="img" aria-label="Limpieza facial profunda en Royal Park, Panamá">
     <div class="inner">
-      <h1>Limpieza Facial Profunda</h1>
-      <p>Higiene completa, extracción e hidratación con mascarilla para una piel más limpia, luminosa y suave. Ideal para damas y caballeros.</p>
-      <a class="btn-primary" href="/chat-citas.html" target="_blank" rel="noopener">Reserva tu sesión</a>
+      <h1>Limpieza Facial Profunda en Panamá</h1>
+      <p>Extracción cuidadosa, detox y mascarilla profesional. Piel más clara, fresca y luminosa desde la primera sesión.</p>
+      <a class="btn-primary" href="https://wa.me/50764746168?text=Hola%20quiero%20una%20Limpieza%20Facial%20Profunda" target="_blank" rel="noopener">Reserva tu sesión</a>
     </div>
   </section>
 
   <!-- CONTENIDO -->
   <section>
     <div class="wrap">
-      <h2>¿Qué es?</h2>
+      <h2>¿En qué consiste?</h2>
       <p>
-        Es un protocolo profesional de higiene y renovación que incluye desmaquillado, vaporización (según caso),
-        extracción controlada de impurezas, equilibrio del pH, hidratación intensa y mascarilla específica para tu tipo de piel.
+        La limpieza facial profunda es un protocolo profesional de higiene y renovación suave que incluye desmaquillado,
+        exfoliación, extracción cuidadosa, alta higiene, mascarilla y sellado de hidratación para restaurar el equilibrio de la piel.
       </p>
 
       <h2>Beneficios</h2>
       <div class="cols">
         <ul>
-          <li>Piel visiblemente más limpia y fresca.</li>
-          <li>Mejora del aspecto de poros e impurezas.</li>
-          <li>Aporta luminosidad y suavidad al tacto.</li>
+          <li>Reduce puntos negros e impurezas.</li>
+          <li>Mejora textura y luminosidad.</li>
+          <li>Ayuda a equilibrar zonas grasas.</li>
         </ul>
         <ul>
-          <li>Ayuda a equilibrar el exceso de grasa.</li>
-          <li>Prepara la piel para otros tratamientos.</li>
-          <li>Protocolo unisex personalizado.</li>
+          <li>Disminuye apariencia de poros.</li>
+          <li>Favorece la absorción de activos.</li>
+          <li>Resultados visibles desde la primera sesión.</li>
         </ul>
       </div>
 
-      <h2>¿Para quién está indicado?</h2>
-      <p>
-        Recomendado para personas con piel opaca, poros visibles, puntos negros o piel que necesita
-        recuperar equilibrio e hidratación. La frecuencia se define según tu evaluación.
-      </p>
-
-      <h2>Antes y Después</h2>
-      <div class="before-after" style="margin-bottom:16px;">
-        <figure>
-          <img src="limpieza-antes1.jpg" alt="Antes Limpieza Facial Profunda">
-          <figcaption>Antes</figcaption>
-        </figure>
-        <figure>
-          <img src="limpieza-despues1.jpg" alt="Después Limpieza Facial Profunda">
-          <figcaption>Después</figcaption>
-        </figure>
+      <h2>Etapas del protocolo</h2>
+      <div class="steps">
+        <div class="step"><h3>1) Evaluación</h3><p>Diagnóstico rápido del biotipo y necesidades de tu piel.</p></div>
+        <div class="step"><h3>2) Higiene + Exfoliación</h3><p>Limpieza profunda y renovación superficial controlada.</p></div>
+        <div class="step"><h3>3) Extracción cuidadosa</h3><p>Técnica profesional con alta higiene y precisión.</p></div>
+        <div class="step"><h3>4) Mascarilla</h3><p>Activos calmantes, hidratantes o seborreguladores.</p></div>
+        <div class="step"><h3>5) Sellado</h3><p>Hidratación, fotoprotección y recomendaciones.</p></div>
       </div>
 
-      <div class="before-after">
-        <figure>
-          <img src="limpieza-antes2.jpg" alt="Antes Limpieza Facial Profunda">
-          <figcaption>Antes</figcaption>
-        </figure>
-        <figure>
-          <img src="limpieza-despues2.jpg" alt="Después Limpieza Facial Profunda">
-          <figcaption>Después</figcaption>
-        </figure>
+      <h2>Cuidados posteriores</h2>
+      <div class="tips">
+        Evita el sol directo 24–48 h, usa protector solar y no manipules la piel. Puedes retomar tu rutina normal al día siguiente.
       </div>
 
-      <h2 style="margin-top:26px;">Recomendaciones posteriores</h2>
-      <p>
-        Evita manipular la piel el mismo día, hidrata adecuadamente y usa protector solar diario.
-        Puede presentarse leve enrojecimiento temporal en zonas de extracción.
-      </p>
-
-      <div style="margin-top:18px;">
-        <a class="btn-primary" href="/chat-citas.html" target="_blank" rel="noopener">Agendar valoración</a>
+      <div style="margin-top:20px">
+        <a class="btn-primary" href="/reservar-cita-figura-rostro.html">Agendar valoración</a>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER con enlaces -->
+  <!-- FOOTER unificado -->
   <footer>
     <p>© <span id="year"></span> Figura Rostro KG · Todos los derechos reservados</p>
-    <p>Royal Park – <a href="https://maps.app.goo.gl/muFVBY4QFqEDNeQ38" target="_blank">Av. Ernesto T. Lefevre, Ciudad de Panamá</a></p>
+    <p>Royal Park – <a href="https://maps.app.goo.gl/muFVBY4QFqEDNeQ38" target="_blank" rel="noopener">Av. Ernesto T. Lefevre, Ciudad de Panamá</a></p>
 
     <div class="links">
-      <!-- principales -->
+      <!-- Páginas principales -->
       <a href="/#sobre">Nosotros</a>
-      <a href="/tratamientos-faciales/">Tratamientos faciales</a>
-      <a href="/masajes-terapeuticos/">Masajes terapéuticos</a>
-      <a href="/#promos">Promociones</a>
+      <a href="/tratamientos-faciales-panama.html">Tratamientos faciales</a>
+      <a href="/masajes-terapeuticos-panama.html">Masajes terapéuticos</a>
+      <a href="/promociones-estetica-panama.html">Promociones</a>
       <a href="/#contacto">Contacto</a>
-      <a href="/chat-citas.html">Agendar</a>
+      <a href="/reservar-cita-figura-rostro.html">Agendar</a>
 
-      <!-- detalle tratamientos -->
-      <a href="/limpieza-facial-profunda.html" style="font-weight:700;">Limpieza Facial Profunda</a>
-      <a href="/peeling-facial.html">Peeling Facial</a>
-      <a href="/fibroblast.html">Plasma Fibroblast</a>
-      <a href="/microneedling-rf.html">Microneedling + RF</a>
-      <a href="/contorno-corporal.html">Contorno Corporal</a>
-      <a href="/regeneracion-piel-cabello.html">Regeneración piel & cabello</a>
-      <a href="/lifting-sin-cirugia.html">Lifting sin cirugía</a>
+      <!-- Detalle de tratamientos -->
+      <a href="/peeling-facial-en-panama.html">Peeling Facial</a>
+      <a href="/plasma-fibroblast-panama.html">Plasma Fibroblast</a>
+      <a href="/radiofrecuencia-facial-panama.html">Radiofrecuencia Facial</a>
+      <a href="/lifting-facial-sin-cirugia.html">Lifting sin cirugía</a>
+      <a href="/masaje-relajante-panama.html">Masaje Relajante</a>
+      <a href="/masaje-adultos-mayores-panama.html">Adultos Mayores</a>
+      <a href="/masaje-adaptado-discapacitados.html">Terapia adaptada</a>
+      <a href="/contorno-corporal-panama.html">Contorno Corporal</a>
     </div>
   </footer>
 
   <!-- FAB flotantes -->
-  <div class="fr-fab">
-    <a class="fr-ic fr-wa" href="https://wa.me/50764746168" target="_blank" aria-label="WhatsApp" title="WhatsApp">
+  <div class="fr-fab" aria-label="Accesos rápidos">
+    <a class="fr-ic fr-wa" href="https://wa.me/50764746168" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
       <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.94 14.5L2 22l5.7-1.5A10 10 0 1 0 12 2zm5.5 14.1c-.24.68-1.4 1.3-1.96 1.34-.5.03-1.14.05-1.84-.12-.42-.1-.97-.31-1.67-.61-2.94-1.27-4.86-4.2-5.01-4.4-.15-.2-1.2-1.6-1.2-3.06 0-1.45.76-2.16 1.03-2.45.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.24.59.82 2.05.9 2.2.07.15.12.33.01.53-.1.2-.15.33-.3.51-.15.18-.31.4-.44.54-.15.15-.31.32-.13.62.18.3.8 1.3 1.71 2.1 1.18 1.05 2.17 1.37 2.47 1.52.3.15.48.13.66-.08.18-.2.76-.89.96-1.2.2-.3.41-.26.67-.15.26.1 1.64.77 1.92.91.29.15.48.22.55.34.07.12.07.7-.17 1.38z"/></svg>
     </a>
-
-    <a class="fr-ic fr-waze" href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" aria-label="Waze" title="Waze">
+    <a class="fr-ic fr-waze" href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noopener" aria-label="Waze" title="Waze">
       <svg viewBox="0 0 24 24"><path d="M12 2c5.5 0 10 3.9 10 8.7 0 3.9-3 7.2-7.2 8.2-.5.1-.7.4-.9.8-.5 1-1.4 2.1-2.9 2.1-1.6 0-2.4-1.1-2.9-2.1-.2-.4-.4-.7-.9-.8C5 17.9 2 14.6 2 10.7 2 5.9 6.5 2 12 2z"/></svg>
     </a>
-
-    <a class="fr-ic fr-ig" href="https://instagram.com/figurarostrokg" target="_blank" aria-label="Instagram" title="Instagram">
+    <a class="fr-ic fr-ig" href="https://instagram.com/figurarostrokg" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
       <svg viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm4.25 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10z"/></svg>
     </a>
-
     <a class="fr-ic fr-call" href="tel:+50764746168" aria-label="Llamar" title="Llamar">
       <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1v3.5c0 .55-.45 1-1 1A17.92 17.92 0 0 1 2 6c0-.55.45-1 1-1H6.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.12.35.03.75-.24 1.02l-2.2 2.2z"/></svg>
     </a>
   </div>
 
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Limpieza Facial Profunda",
+    "provider": { "@type": "LocalBusiness", "name": "Figura Rostro KG" },
+    "areaServed": "Ciudad de Panamá, Panamá",
+    "url": "https://figurarostro.life/limpieza-facial-profunda-panama.html",
+    "image": "https://figurarostro.life/limpieza-facial.jpg",
+    "availableChannel": { "@type": "ServiceChannel", "serviceUrl": "https://wa.me/50764746168" }
+  }
+  </script>
+
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
