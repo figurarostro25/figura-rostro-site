@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <base href="/" /> <!-- Asegura que todas las rutas sean absolutas desde la raíz -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Masaje Relajante | Figura Rostro KG</title>
+  <meta name="description" content="Masaje relajante para damas y caballeros: reduce estrés, libera tensión y mejora el descanso. Opciones individual, en pareja y variantes como chocolaterapia, aromaterapia y piedras calientes.">
+  <link rel="canonical" href="https://figurarostro.life/masaje-relajante.html">
+
+  <style>
+    :root{--brand:#5b2580}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:#fff;color:#1b0f26}
+    a{text-decoration:none}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,#160c1f,#241235);border-bottom:1px solid rgba(255,255,255,.08)}
+    .header-inner{max-width:1150px;margin:auto;padding:18px 16px;display:flex;align-items:center;justify-content:space-between}
+    .brand img{height:52px;width:auto}
+    nav{display:flex;gap:18px;align-items:center}
+    nav a{color:#fff;font-weight:600;opacity:.95}
+    nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:3px}
+    .btn-primary{background:#5b2580;color:#fff;border:0;padding:12px 20px;border-radius:14px;font-weight:700}
+    .btn-ghost{background:#fff;color:var(--brand);border:1px solid #e6d8f3;padding:12px 18px;border-radius:12px;font-weight:700}
+
+    /* HERO */
+    .hero{
+      position:relative;
+      min-height:70vh;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      color:#fff;
+      background:url('/banner-masaje-relajante.jpg') center/cover no-repeat;
+    }
+    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,10,35,.65),rgba(20,10,35,.45))}
+    .hero .inner{position:relative;z-index:2;padding:56px 16px}
+    .hero h1{font-size:clamp(28px,6vw,54px);margin:0 0 10px}
+    .hero p{max-width:820px;margin:0 auto 14px;opacity:.95}
+
+    /* Layout */
+    .wrap{max-width:1150px;margin:0 auto;padding:60px 16px}
+    h2{color:#5b2580;margin:26px 0 10px}
+    p{line-height:1.7;opacity:.96}
+    .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+    .card{border:1px solid #eee;border-radius:14px;padding:16px;box-shadow:0 8px 24px rgba(0,0,0,.05);background:#fff}
+    .card img{width:100%;height:200px;object-fit:cover;border-radius:10px;margin-bottom:10px}
+    .tag{display:inline-block;background:#faf7ff;border:1px solid #eee;color:#5b2580;padding:6px 10px;border-radius:999px;font-size:12px;margin-right:8px;margin-top:6px}
+
+    /* Promo */
+    .promo-box{background:#faf7ff;border:2px dashed var(--brand);padding:24px;text-align:center;border-radius:12px;margin:40px 0}
+    .promo-box h3{margin-top:0;color:var(--brand)}
+
+    /* FAQ */
+    details{border:1px solid #eee;border-radius:12px;padding:12px 14px;margin-bottom:10px}
+    summary{font-weight:700;cursor:pointer}
+
+    /* Footer */
+    footer{text-align:center;padding:25px 10px;font-size:15px;line-height:1.6;color:#222;opacity:.9}
+    footer .links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:10px}
+    footer .links a{color:#5b2580}
+
+    /* FAB */
+    .fr-fab{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:9999;display:flex;flex-direction:column;gap:14px;align-items:flex-end}
+    .fr-ic{min-width:56px;height:56px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 10px 18px rgba(0,0,0,.18)}
+    .fr-ic svg{fill:#fff;width:26px;height:26px}
+    .fr-wa{background:#25D366}
+    .fr-waze{background:#0099ff}
+    .fr-ig{background:linear-gradient(45deg,#F58529,#DD2A7B,#8134AF,#515BD4)}
+    .fr-call{background:#4CAF50}
+    .fr-ic:hover{transform:scale(1.08);box-shadow:0 12px 22px rgba(0,0,0,.22)}
+
+    /* Móvil */
+    @media (max-width:768px){
+      .header-inner{padding:16px;justify-content:center;gap:10px}
+    }
+ /* === NAV con submenús === */
+.navbar {display:flex; gap:22px; align-items:center}
+.navbar > li {position:relative; list-style:none}
+.navbar > li > a {color:#fff; font-weight:700; padding:10px 6px; display:inline-block}
+
+/* Submenús */
+.submenu {
+  position:absolute; top:100%; left:0; min-width:240px;
+  background:#1b0f26; border:1px solid rgba(255,255,255,.08);
+  border-radius:12px; padding:10px; display:none;
+  box-shadow:0 14px 32px rgba(0,0,0,.25); z-index:60;
+}
+.submenu a{
+  color:#fff; display:block; padding:10px 12px; border-radius:10px; font-weight:600;
+}
+.submenu a:hover{ background:rgba(255,255,255,.08) }
+
+/* Mostrar en hover (desktop) */
+.navbar > li:hover > .submenu {display:block}
+
+/* Botón hamburguesa móvil */
+.nav-toggle{display:none}
+@media (max-width: 980px){
+  .nav-toggle{display:inline-flex; align-items:center; gap:8px; color:#fff; font-weight:800; border:1px solid rgba(255,255,255,.2); border-radius:12px; padding:10px 12px}
+  .nav-wrap{display:none; width:100%}
+  .nav-wrap.open{display:block}
+  .navbar{flex-direction:column; align-items:stretch; gap:6px; margin-top:10px}
+  .navbar > li {width:100%}
+  .navbar > li > a{padding:12px}
+  .submenu{position:static; display:block; background:transparent; border:0; box-shadow:none; padding:0}
+  .submenu a{padding:10px 14px}
+}
+   
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+<header>
+  <div class="header-inner" style="gap:14px;">
+    <a href="/" class="brand">
+      <img src="/logo-header-white.png" alt="Figura Rostro KG">
+    </a>
+
+    <!-- Toggle móvil -->
+    <button id="btnNav" class="nav-toggle" aria-expanded="false" aria-controls="navWrap">
+      ☰ Menú
+    </button>
+
+    <!-- Navegación -->
+    <div id="navWrap" class="nav-wrap" aria-label="Principal">
+      <ul class="navbar">
+        <li><a href="/#sobre">Nosotros</a></li>
+
+        <li>
+          <a href="/tratamientos-faciales/">Faciales ▾</a>
+          <div class="submenu" role="menu">
+            <a href="/peeling-facial.html">Peeling Facial</a>
+            <a href="/limpieza-facial-profunda.html">Limpieza facial profunda</a>
+            <a href="/lifting-sin-cirugia.html">Lifting sin cirugía</a>
+            <!-- Puedes añadir más aquí -->
+          </div>
+        </li>
+
+        <li>
+          <a href="/masajes-terapeuticos/">Masajes ▾</a>
+          <div class="submenu" role="menu">
+            <a href="/masaje-relajante.html">Masaje Relajante</a>
+            <a href="/masaje-terapeutico-adultos-mayores.html">Adultos mayores</a>
+            <a href="/descontracturante.html">Descontracturante</a>
+            <a href="/drenaje-linfatico.html">Drenaje linfático</a>
+          </div>
+        </li>
+
+        <li>
+          <a href="/salon/">Salón ▾</a>
+          <div class="submenu" role="menu">
+            <a href="/keratina-biotanix.html">Keratina Biotanix</a>
+            <a href="/manicura.html">Manicura</a>
+            <a href="/pedicura.html">Pedicura</a>
+            <a href="/maquillaje.html">Maquillaje</a>
+          </div>
+        </li>
+
+        <li><a href="/#promos">Promociones</a></li>
+        <li><a href="/#contacto">Contacto</a></li>
+        <li><a href="/menu.html" class="btn-primary" style="background:#fff;color:#5b2580;border:1px solid #e6d8f3;">Menú de Servicios</a></li>
+        <li><a href="/chat-citas.html" class="btn-primary" target="_blank" rel="noopener">Agendar</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="inner">
+      <h1>Masaje Relajante</h1>
+      <p>Una pausa para el cuerpo y la mente. Técnicas suaves y precisas que liberan tensión, reducen el estrés y mejoran el descanso. Unisex, individual o en pareja.</p>
+      <a class="btn-primary" href="/chat-citas.html" target="_blank" rel="noopener">Reserva tu momento</a>
+    </div>
+  </section>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <section>
+    <div class="wrap">
+      <h2>Beneficios principales</h2>
+      <div class="cols">
+        <ul>
+          <li>Disminuye estrés, ansiedad y cansancio mental.</li>
+          <li>Libera contracturas leves y rigidez postural.</li>
+          <li>Mejora la circulación y sensación de ligereza.</li>
+        </ul>
+        <ul>
+          <li>Favorece el sueño profundo y reparador.</li>
+          <li>Eleva el estado de ánimo y bienestar general.</li>
+          <li>Ambiente cálido, música suave y aceites aromáticos.</li>
+        </ul>
+      </div>
+
+      <h2 style="margin-top:26px;">Elige tu experiencia</h2>
+      <div class="cards">
+        <article class="card">
+          <img src="/relajante-mujer.jpg" alt="Masaje relajante para mujer">
+          <h3>Mujer (individual)</h3>
+          <p>Sesión de 60 min para soltar tensión de cuello, espalda y piernas. Atención profesional y ambiente privado.</p>
+          <span class="tag">60 min</span>
+          <span class="tag">Opcional 90 min</span>
+        </article>
+
+        <article class="card">
+          <img src="/relajante-hombre.jpg" alt="Masaje relajante para hombre">
+          <h3>Hombre (individual)</h3>
+          <p>Trabajo específico en zonas de estrés (trapecios/espalda) con técnicas suaves para descanso profundo.</p>
+          <span class="tag">60 min</span>
+          <span class="tag">Opcional 90 min</span>
+        </article>
+
+        <article class="card">
+          <img src="/relajante-pareja.jpg" alt="Masaje relajante en pareja">
+          <h3>En pareja</h3>
+          <p>Vive una experiencia compartida. Dos camillas, sincronía de movimientos y detalle de cortesía.</p>
+          <span class="tag">60 min</span>
+          <span class="tag">Cortesía bebida</span>
+        </article>
+      </div>
+
+      <h2 style="margin-top:26px;">Variantes del masaje relajante</h2>
+      <div class="cards">
+        <article class="card">
+          <img src="/relajante-choco.jpg" alt="Chocolaterapia">
+          <h3>Chocolaterapia</h3>
+          <p>Aroma reconfortante y piel sedosa. Ideal para liberar estrés y nutrir.</p>
+        </article>
+        <article class="card">
+          <img src="/relajante-aroma.jpg" alt="Aromaterapia">
+          <h3>Aromaterapia</h3>
+          <p>Sinergias de aceites esenciales para calmar, enfocar o revitalizar.</p>
+        </article>
+        <article class="card">
+          <img src="/relajante-piedras.jpg" alt="Piedras calientes">
+          <h3>Piedras calientes</h3>
+          <p>Calor suave que relaja profundamente y mejora la circulación.</p>
+        </article>
+        <article class="card">
+          <img src="/relajante-velas.jpg" alt="Veloterapia">
+          <h3>Veloterapia</h3>
+          <p>Textura tibia y aromas delicados para una experiencia sensorial.</p>
+        </article>
+        <article class="card">
+          <img src="/relajante-bambu.jpg" alt="Bambuterapia suave">
+          <h3>Bambuterapia suave</h3>
+          <p>Rodillos de bambú con pases ligeros para piernas y espalda.</p>
+        </article>
+      </div>
+
+      <h2 style="margin-top:26px;">Ambiente & protocolo</h2>
+      <div class="cols">
+        <div>
+          <p>Cabina confortable, higiene rigurosa y terapeutas profesionales. Personalizamos presión y áreas según tu preferencia.</p>
+          <p>Recomendado: llegar 10 minutos antes, hidratarse y evitar comidas pesadas justo antes de la sesión.</p>
+        </div>
+        <div class="card">
+          <img src="/relajante-ambiente.jpg" alt="Cabina y ambientación de masaje relajante">
+        </div>
+      </div>
+
+      <div class="promo-box">
+        <h3>Promoción del mes</h3>
+        <p><strong>Masaje Relajante Premium 60 min</strong> en <strong>$69.00</strong> (valor $89). Código <strong>KG-31</strong> — aplica para damas y caballeros que muestren el código o captura.</p>
+        <p>Bebida de cortesía. Califica la atención y deja tus comentarios en la sección <em>Opiniones</em> de la web.</p>
+        <a class="btn-primary" href="/chat-citas.html" target="_blank" rel="noopener">Reservar con código KG-31</a>
+      </div>
+
+      <h2>Preguntas frecuentes</h2>
+      <details><summary>¿Qué aceite usan? ¿Puedo pedir sin aroma?</summary>
+        <p>Usamos aceites de calidad profesional. Si prefieres sin aroma o con una sinergia específica, lo adaptamos.</p>
+      </details>
+      <details><summary>¿Es apto para embarazadas?</summary>
+        <p>Ofrecemos masaje relajante adaptado a partir del segundo trimestre, siempre con autorización médica.</p>
+      </details>
+      <details><summary>¿Contraindicaciones?</summary>
+        <p>Fiebre, infecciones cutáneas, heridas abiertas o dolor agudo no explicado. Ante dudas, consulta antes de la sesión.</p>
+      </details>
+
+      <div style="margin-top:24px;text-align:center;">
+        <a class="btn-primary" href="/chat-citas.html" target="_blank" rel="noopener">Agenda tu sesión</a>
+        <a class="btn-ghost" href="/masajes-terapeuticos/">Ver todos los masajes</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+ <footer style="background:#0f0817; color:#cfc9d9;">
+  <div class="wrap" style="padding:48px 16px; max-width:1150px; margin:auto;">
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:26px;">
+      <div>
+        <img src="/logo-header-white.png" alt="Figura Rostro KG" style="height:46px; width:auto; margin-bottom:10px;">
+        <p style="opacity:.9">Estética integral en Royal Park, Parque Lefevre. Faciales, masajes y belleza integral con trato cálido y profesional.</p>
+      </div>
+
+      <div>
+        <h4 style="margin:0 0 10px; color:#fff;">Enlaces</h4>
+        <ul style="list-style:none; padding:0; margin:0;">
+          <li><a href="/menu.html" style="color:#cfc9d9">Menú de Servicios</a></li>
+          <li><a href="/tratamientos-faciales/" style="color:#cfc9d9">Faciales</a></li>
+          <li><a href="/masajes-terapeuticos/" style="color:#cfc9d9">Masajes</a></li>
+          <li><a href="/salon/" style="color:#cfc9d9">Salón</a></li>
+          <li><a href="/#promos" style="color:#cfc9d9">Promos</a></li>
+          <li><a href="/chat-citas.html" style="color:#cfc9d9">Agendar</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 style="margin:0 0 10px; color:#fff;">Contacto</h4>
+        <p style="margin:0 0 6px;">Royal Park – Parque Lefevre</p>
+        <p style="margin:0 0 10px;"><a href="tel:+50764746168" style="color:#cfc9d9">(+507) 647-46168</a></p>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <a class="btn-ghost" href="https://wa.me/50764746168" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn-ghost" href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noopener">Cómo llegar</a>
+          <a class="btn-primary" href="/chat-citas.html" target="_blank" rel="noopener">Reservar</a>
+        </div>
+      </div>
+
+      <div>
+        <h4 style="margin:0 0 10px; color:#fff;">Horario</h4>
+        <p style="margin:0">Lun–Sáb: 8:00 a.m. – 8:00 p.m.</p>
+        <p style="margin:4px 0 0">Domingo: con cita previa</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid rgba(255,255,255,.08); text-align:center; padding:16px;">
+    <small>© <span id="year"></span> Figura Rostro KG · Todos los derechos reservados</small>
+  </div>
+</footer>
+<!-- BOTONES FLOTANTES -->
+<div class="fr-fab">
+  <a class="fr-ic fr-wa" href="https://wa.me/50764746168" target="_blank" aria-label="WhatsApp" title="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.94 14.5L2 22l5.7-1.5A10 10 0 1 0 12 2zm5.5 14.1c-.24.68-1.4 1.3-1.96 1.34-.5.03-1.14.05-1.84-.12-.42-.1-.97-.31-1.67-.61-2.94-1.27-4.86-4.2-5.01-4.4-.15-.2-1.2-1.6-1.2-3.06 0-1.45.76-2.16 1.03-2.45.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.24.59.82 2.05.9 2.2.07.15.12.33.01.53-.1.2-.15.33-.3.51-.15.18-.31.4-.44.54-.15.15-.31.32-.13.62.18.3.8 1.3 1.71 2.1 1.18 1.05 2.17 1.37 2.47 1.52.3.15.48.13.66-.08.18-.2.76-.89.96-1.2.2-.3.41-.26.67-.15.26.1 1.64.77 1.92.91.29.15.48.22.55.34.07.12.07.7-.17 1.38z"/></svg>
+  </a>
+
+  <a class="fr-ic fr-waze" href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" aria-label="Waze" title="Cómo llegar">
+    <svg viewBox="0 0 24 24"><path d="M12 2c5.5 0 10 3.9 10 8.7 0 3.9-3 7.2-7.2 8.2-.5.1-.7.4-.9.8-.5 1-1.4 2.1-2.9 2.1-1.6 0-2.4-1.1-2.9-2.1-.2-.4-.4-.7-.9-.8C5 17.9 2 14.6 2 10.7 2 5.9 6.5 2 12 2z"/></svg>
+  </a>
+
+  <a class="fr-ic fr-ig" href="https://instagram.com/figurarostrokg" target="_blank" aria-label="Instagram" title="Instagram">
+    <svg viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm4.25 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10z"/></svg>
+  </a>
+
+  <a class="fr-ic fr-call" href="tel:+50764746168" aria-label="Llamar" title="Llamar">
+    <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1v3.5c0 .55-.45 1-1 1A17.92 17.92 0 0 1 2 6c0-.55.45-1 1-1H6.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.12.35.03.75-.24 1.02l-2.2 2.2z"/></svg>
+  </a>
+</div>
+
+<script>
+  // Año en footer
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Toggle móvil
+  const btn = document.getElementById('btnNav');
+  const wrap = document.getElementById('navWrap');
+  if (btn && wrap){
+    btn.addEventListener('click', () => {
+      const open = wrap.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+</script>
+</body>
+</html>
