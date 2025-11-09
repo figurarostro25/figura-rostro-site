@@ -3,96 +3,264 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Promociones de Estética y Masajes · Figura Rostro KG Panamá</title>
-  <meta name="description" content="Ofertas vigentes en tratamientos faciales, peeling, radiofrecuencia, masajes relajantes y descontracturantes en Parque Lefevre, Royal Park. Reserva por WhatsApp.">
+
+  <title>Promociones y Combos · Figura Rostro KG (Parque Lefevre, Panamá)</title>
+  <meta name="description" content="Promociones en masajes relajantes y terapéuticos, peeling facial, radiofrecuencia y más. Agenda por WhatsApp y aprovecha descuentos limitados en Figura Rostro KG." />
+  <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://figurarostro.life/promociones-estetica-panama.html" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Promociones y Combos · Figura Rostro KG" />
+  <meta property="og:description" content="Ofertas activas en faciales, masajes y rejuvenecimiento no invasivo. Cupos limitados." />
+  <meta property="og:url" content="https://figurarostro.life/promociones-estetica-panama.html" />
+  <meta property="og:image" content="https://figura-rostro-site.vercel.app/promo-relax.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Promociones y Combos · Figura Rostro KG" />
+  <meta name="twitter:description" content="Descuentos en tratamientos faciales y masajes. Agenda por WhatsApp." />
+  <meta name="twitter:image" content="https://figura-rostro-site.vercel.app/promo-relax.jpg" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
   <style>
-    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:#fff;color:#1b0f26}
+    :root{--brand:#5b2580;--ink:#1b0f26;--line:#efe6ff}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:#fff;color:var(--ink)}
     .container{max-width:1150px;margin:0 auto;padding:0 16px}
-    header, footer{padding:16px 0}
-    h1{font-size:clamp(28px,6vw,46px);margin:16px 0 8px}
-    .filters{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 22px}
-    .filters a{border:1px solid #e5e3ea;border-radius:999px;padding:8px 12px;background:#fff;text-decoration:none;color:#1b0f26;font-weight:700}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
-    .card{border:1px solid #eee;border-radius:14px;overflow:hidden;box-shadow:0 10px 24px rgba(0,0,0,.06);background:#fff;position:relative}
-    .card img{width:100%;height:200px;object-fit:cover;display:block}
-    .card h3{margin:10px 12px 6px}
-    .card p{margin:0 12px 10px;opacity:.9}
-    .badge{position:absolute;top:10px;right:10px;background:#111827;color:#fff;padding:6px 10px;border-radius:10px;font-weight:800}
-    .subbadge{position:absolute;top:46px;right:10px;background:#5b2580;color:#fff;padding:4px 10px;border-radius:10px;font-weight:700;font-size:.85rem}
-    .price-row{display:flex;gap:8px;align-items:baseline;margin:0 12px 10px}
-    .old{color:#6b7280;text-decoration:line-through}
-    .now{color:#059669;font-weight:800}
-    .promo-link{position:absolute;inset:0;display:block;text-indent:-9999px}
+
+    /* Header simple (mismo look oscuro) */
+    header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,#160c1f 0%,#241235 100%);border-bottom:1px solid rgba(255,255,255,.08)}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+    .brand img{height:46px;width:auto}
+    nav{display:flex;gap:20px;align-items:center}
+    nav a{color:#fff;text-decoration:none;font-weight:700;opacity:.95}
+    nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:3px}
+    .btn-ig{background:linear-gradient(45deg,#F58529,#DD2A7B,#8134AF,#515BD4);color:#fff;border-radius:14px;padding:10px 16px;text-decoration:none;font-weight:700}
+
+    /* Hero */
+    .hero{min-height:42vh;display:grid;place-items:center;text-align:center;color:#fff;
+      background:linear-gradient(180deg,rgba(22,12,31,.65),rgba(36,18,53,.65)),
+                 url('banner-masajes.jpg') center/cover no-repeat}
+    .hero h1{font-size:clamp(32px,5.5vw,54px);margin:10px 0;font-weight:800;
+      background:linear-gradient(90deg,#fff,#e5c2ff);-webkit-background-clip:text;color:transparent}
+    .hero p{opacity:.95;max-width:760px;margin:0 auto}
+
+    /* Filtros */
+    .filters{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:18px 0}
+    .chip{border:1px solid var(--line);padding:8px 12px;border-radius:999px;cursor:pointer;font-weight:700}
+    .chip.active{background:var(--brand);color:#fff;border-color:transparent}
+
+    /* Grid promos */
+    .grid{display:grid;gap:18px}
+    @media(min-width:960px){.grid{grid-template-columns:repeat(3,1fr)}}
+    .card{border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 10px 20px rgba(27,15,38,.06)}
+    .card img{width:100%;height:190px;object-fit:cover;display:block}
+    .card-body{padding:16px}
+    .badge{position:absolute;top:10px;right:10px;background:#1f2937;color:#fff;padding:6px 10px;border-radius:10px;font-weight:800}
+    .btn-primary{background:var(--brand);color:#fff;border:0;border-radius:14px;padding:10px 14px;font-weight:800;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+    .price-row{display:flex;gap:8px;align-items:baseline;margin:.35rem 0;font-weight:700}
+    .old{color:#6b7280;text-decoration:line-through;font-weight:600}
+    .now{color:#059669;font-size:1.25rem;font-weight:800}
+
+    /* Footer (oscuro, mismo estilo del home) */
+    .site-footer{margin-top:38px;background:linear-gradient(180deg,#160c1f,#241235);color:#fff;border-top:1px solid rgba(255,255,255,.12)}
+    .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.6fr;gap:28px;padding:32px 0 14px}
+    @media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr}.map-wrap{display:none}}
+    .site-footer a{color:#e9d9ff;text-decoration:none}
+    .site-footer a:hover{text-decoration:underline;text-underline-offset:3px}
+    .f-logo{height:40px;width:auto;display:block}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.12);text-align:center;padding:12px 0;opacity:.9}
   </style>
 </head>
 <body>
-  <header class="container">
-    <a href="/"><img src="logo-header-white.png" alt="Figura Rostro KG" style="height:42px"></a>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-inner">
+      <a class="brand" href="/"><img src="logo-header-white.png" alt="Figura Rostro KG" /></a>
+      <nav>
+        <a href="/">Inicio</a>
+        <a href="/tratamientos-faciales-panama.html">Faciales</a>
+        <a href="/masajes-terapeuticos-panama.html">Masajes</a>
+        <a href="#promos">Promos</a>
+        <a class="btn-ig" href="https://instagram.com/figurarostrokg" target="_blank" rel="noopener">Instagram</a>
+        <a href="/menu.html">Menú</a>
+      </nav>
+    </div>
   </header>
 
-  <main class="container" style="padding:10px 0 40px">
-    <h1>Promociones vigentes</h1>
-    <p style="opacity:.85;max-width:760px">Faciales, masajes y protocolos no invasivos. Reserva por WhatsApp.</p>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Promociones y Combos</h1>
+      <p>Aprovecha descuentos en tratamientos faciales y masajes terapéuticos. Cupos limitados — reserva por WhatsApp.</p>
+    </div>
+  </section>
 
-    <!-- Filtros simples (solo navegación por ahora) -->
-    <nav class="filters" aria-label="Filtros">
-      <a href="#todas">Todas</a>
-      <a href="#faciales">Faciales</a>
-      <a href="#masajes">Masajes</a>
-      <a href="#corporal">Corporal</a>
-    </nav>
+  <!-- Filtros (opcional simple) -->
+  <section class="container" id="promos" style="padding:26px 0 8px">
+    <div class="filters" aria-label="Filtros">
+      <button class="chip active" data-filter="all">Todas</button>
+      <button class="chip" data-filter="facial">Faciales</button>
+      <button class="chip" data-filter="masaje">Masajes</button>
+      <button class="chip" data-filter="rejuve">Rejuvenecimiento</button>
+    </div>
 
-    <!-- Cards (por ahora estático; luego lo conectamos a JSON) -->
-    <section id="todas" class="grid">
-      <!-- 1) Relajante -->
-      <article class="card">
-        <span class="badge">Oferta</span>
-        <span class="subbadge">Vigente</span>
-        <img src="promo-relax.jpg" alt="Masaje Relajante Premium">
-        <h3>Masaje Relajante Premium</h3>
-        <p>Relajación total con terapeutas profesionales.</p>
-        <div class="price-row">
-          <span class="old">$89.00</span>
-          <span class="now">$69.00</span>
+    <!-- Grid de promociones -->
+    <div class="grid" id="promoGrid">
+
+      <!-- Masaje Relajante -->
+      <article class="card" data-cat="masaje">
+        <div style="position:relative">
+          <img src="promo-relax.jpg" alt="Masaje Relajante en promoción">
+          <span class="badge">Oferta</span>
         </div>
-        <a class="promo-link" href="https://wa.me/50764746168?text=Hola%20me%20interesa%20la%20promo%20de%20Masaje%20Relajante%20Premium" target="_blank" rel="noopener">Reservar</a>
+        <div class="card-body">
+          <h3>Masaje Relajante Premium</h3>
+          <p>Una experiencia de relajación total con terapeutas profesionales.</p>
+          <div class="price-row"><span class="old">$89.00</span><span class="now">$69.00</span></div>
+          <a class="btn-primary" href="https://wa.me/50764746168?text=Hola%20quiero%20el%20Masaje%20Relajante%20Premium%20en%20promoci%C3%B3n" target="_blank" rel="noopener">Reservar por WhatsApp</a>
+        </div>
       </article>
 
-      <!-- 2) Peeling -->
-      <article class="card">
-        <span class="badge">−30%</span>
-        <span class="subbadge">Vigente</span>
-        <img src="promo-peeling.jpg" alt="Peeling Facial Unisex">
-        <h3>Peeling Facial Unisex</h3>
-        <p>Unifica tono, mejora manchas y líneas finas.</p>
-        <div class="price-row">
-          <span class="old">$85.00</span>
-          <span class="now">$65.00</span>
+      <!-- Peeling Facial -->
+      <article class="card" data-cat="facial">
+        <div style="position:relative">
+          <img src="promo-peeling.jpg" alt="Peeling Facial en promoción">
+          <span class="badge">−30%</span>
         </div>
-        <a class="promo-link" href="https://wa.me/50764746168?text=Hola%20me%20interesa%20la%20promo%20de%20Peeling%20Facial" target="_blank" rel="noopener">Reservar</a>
+        <div class="card-body">
+          <h3>Peeling Facial Unisex</h3>
+          <p>Disminuye manchas y acné, suaviza líneas finas y unifica el tono.</p>
+          <div class="price-row"><span class="old">$85.00</span><span class="now">$65.00</span></div>
+          <a class="btn-primary" href="https://wa.me/50764746168?text=Hola%20me%20interesa%20el%20Peeling%20Facial%20en%20promoci%C3%B3n" target="_blank" rel="noopener">Reservar por WhatsApp</a>
+        </div>
       </article>
 
-      <!-- 3) Descontracturante -->
-      <article class="card">
-        <span class="badge">Top</span>
-        <span class="subbadge">Vigente</span>
-        <img src="promo-descontracturante.jpg" alt="Masaje Descontracturante">
-        <h3>Masaje Descontracturante</h3>
-        <p>Libera contracturas en cuello y espalda.</p>
-        <div class="price-row">
-          <span class="old">$95.00</span>
-          <span class="now">$69.00</span>
+      <!-- VIP / Descontracturante (ejemplo) -->
+      <article class="card" data-cat="masaje">
+        <div style="position:relative">
+          <img src="promo-descontracturante.jpg" alt="Masaje descontracturante en promoción">
+          <span class="badge">Desde</span>
         </div>
-        <a class="promo-link" href="https://wa.me/50764746168?text=Hola%20me%20interesa%20la%20promo%20de%20Masaje%20Descontracturante" target="_blank" rel="noopener">Reservar</a>
+        <div class="card-body">
+          <h3>Masaje Descontracturante</h3>
+          <p>Libera contracturas y mejora movilidad. Ideal para cuello y espalda.</p>
+          <div class="price-row"><span class="now">Desde $45.00</span></div>
+          <a class="btn-primary" href="https://wa.me/50764746168?text=Hola%20quiero%20informaci%C3%B3n%20del%20Masaje%20Descontracturante%20en%20promoci%C3%B3n" target="_blank" rel="noopener">Reservar por WhatsApp</a>
+        </div>
       </article>
-    </section>
-  </main>
 
-  <footer class="container" style="border-top:1px solid #eee;opacity:.9">
-    © <span id="year"></span> Figura Rostro KG
+      <!-- Radiofrecuencia (rejuve) -->
+      <article class="card" data-cat="rejuve">
+        <div style="position:relative">
+          <img src="radiofrecuencia-facial.jpg" alt="Radiofrecuencia facial en promoción">
+          <span class="badge">Nuevo</span>
+        </div>
+        <div class="card-body">
+          <h3>Radiofrecuencia Facial</h3>
+          <p>Tensado cutáneo y mejor textura sin reposo.</p>
+          <div class="price-row"><span class="now">Consulta precio</span></div>
+          <a class="btn-primary" href="https://wa.me/50764746168?text=Hola%20me%20interesa%20Radiofrecuencia%20Facial" target="_blank" rel="noopener">Reservar por WhatsApp</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Footer (mismo del home, versión resumida) -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <img class="f-logo" src="logo-header-white.png" alt="Figura Rostro KG">
+        <h4 style="margin:10px 0 8px">Figura Rostro KG</h4>
+        <p style="opacity:.9;margin:0">Parque Lefevre · Royal Park, Ciudad de Panamá.</p>
+        <p style="opacity:.9;margin:6px 0 0">Atención: 8:00 a.m. – 8:00 p.m.</p>
+        <div style="margin-top:10px">
+          <a href="https://instagram.com/figurarostrokg" target="_blank" rel="noopener">Instagram</a>
+          <span style="opacity:.6;margin:0 6px">·</span>
+          <a href="https://facebook.com/figurarostrokg" target="_blank" rel="noopener">Facebook</a>
+          <span style="opacity:.6;margin:0 6px">·</span>
+          <a href="https://www.tiktok.com/@figurarostrokg" target="_blank" rel="noopener">TikTok</a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Faciales</h4>
+        <ul style="list-style:none;padding:0;margin:0;display:grid;gap:8px">
+          <li><a href="/tratamientos-faciales-panama.html">Tratamientos faciales</a></li>
+          <li><a href="/peeling-facial.html">Peeling Facial</a></li>
+          <li><a href="/fibroblast.html">Plasma Fibroblast</a></li>
+          <li><a href="/radiofrecuencia-facial.html">Radiofrecuencia Facial</a></li>
+          <li><a href="/lifting-sin-cirugia.html">Lifting sin cirugía</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Masajes</h4>
+        <ul style="list-style:none;padding:0;margin:0;display:grid;gap:8px">
+          <li><a href="/masajes-terapeuticos-panama.html">Masajes terapéuticos</a></li>
+          <li><a href="/masaje-relajante.html">Masaje Relajante</a></li>
+          <li><a href="/masaje-terapeutico-adultos-mayores.html">Adultos Mayores</a></li>
+          <li><a href="/terapia-masaje-discapacidad.html">Terapia adaptada</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Cómo llegar</h4>
+        <div class="map-wrap">
+          <iframe
+            src="https://maps.google.com/maps?q=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&t=&z=16&ie=UTF8&iwloc=&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            style="width:100%;height:200px;border:0;border-radius:12px"></iframe>
+        </div>
+        <div style="margin-top:8px">
+          <a href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noopener">Abrir en Waze</a>
+           ·
+          <a href="https://maps.google.com/?q=Royal+Park+Ernesto+T+Lefevre+Panama" target="_blank" rel="noopener">Google Maps</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span id="year"></span> Figura Rostro KG · Todos los derechos reservados</div>
   </footer>
-  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+
+  <script>
+    // Año dinámico
+    const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();
+
+    // Filtro simple
+    const chips=[...document.querySelectorAll('.chip')];
+    const cards=[...document.querySelectorAll('#promoGrid .card')];
+    chips.forEach(ch=>{
+      ch.addEventListener('click',()=>{
+        chips.forEach(c=>c.classList.remove('active'));
+        ch.classList.add('active');
+        const f=ch.dataset.filter;
+        cards.forEach(card=>{
+          card.style.display = (f==='all' || card.dataset.cat===f) ? '' : 'none';
+        });
+      })
+    });
+  </script>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"OfferCatalog",
+    "name":"Promociones y Combos - Figura Rostro KG",
+    "url":"https://figurarostro.life/promociones-estetica-panama.html",
+    "provider":{"@type":"LocalBusiness","name":"Figura Rostro KG"},
+    "itemListElement":[
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Masaje Relajante Premium"},"price":"69.00","priceCurrency":"USD"},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Peeling Facial"},"price":"65.00","priceCurrency":"USD"},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Masaje Descontracturante"},"price":"45.00","priceCurrency":"USD"}
+    ]
+  }
+  </script>
 </body>
 </html>
