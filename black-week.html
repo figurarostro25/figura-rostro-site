@@ -1,790 +1,167 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Black Week | Figura Rostro KG</title>
-  <meta name="description" content="Menú Black Week de Figura Rostro KG: el precio más bajo del año en masajes, faciales, reductores y rejuvenecimiento. Promos válidas hasta el 30 de noviembre.">
-  <link rel="canonical" href="https://figurarostro.life/black-week">
+
   <style>
-    :root {
-      --bg-dark: #050509;
-      --bg-card: #111018;
-      --accent: #f3c96a;
-      --accent-soft: #fce6a8;
-      --text-main: #f7f7fb;
-      --text-muted: #c0bfd4;
-      --danger: #ff6b6b;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #2b2140 0, #050509 50%, #02010a 100%);
-      color: var(--text-main);
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: #0a0a0d;
+      color: #f7f7f7;
     }
-
-    a { color: var(--accent-soft); text-decoration: none; }
-    a:hover { text-decoration: underline; }
 
     .page {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 1.25rem 1rem 4rem;
+      padding: 1rem;
     }
 
     header {
       text-align: center;
-      padding: 1rem 0 1.75rem;
+      padding: 1rem 0 2rem;
     }
 
     .logo {
-      height: 56px;
-      margin: 0 auto 0.75rem;
-      display: block;
-    }
-
-    .tag-black {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      padding: 0.3rem 0.7rem;
-      border-radius: 999px;
-      background: rgba(0,0,0,0.45);
-      border: 1px solid rgba(255,255,255,0.08);
-      margin-bottom: 0.6rem;
-    }
-
-    .tag-black span:last-child {
-      color: var(--accent-soft);
-      font-weight: 600;
+      width: 150px;
+      margin-bottom: 1rem;
     }
 
     h1 {
-      font-size: 1.9rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .subtitle {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin-bottom: 0.6rem;
+      font-size: 2rem;
+      margin: 0;
     }
 
     .slogan {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--accent-soft);
-      margin-bottom: 0.4rem;
+      color: #f3c96a;
+      font-size: 1.1rem;
+      margin-top: 0.3rem;
     }
 
     .dates {
       font-size: 0.9rem;
-      color: var(--text-muted);
+      color: #c5c5c5;
     }
 
-    .hero-cta {
-      margin-top: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .btn-main {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.45rem;
-      padding: 0.75rem 1.4rem;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--accent) 0, #ffdd8f 50%, #f1b54c 100%);
-      color: #2b1b00;
-      font-weight: 700;
-      font-size: 0.95rem;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.6);
-      transform: translateY(0);
-      transition: transform 0.16s ease, box-shadow 0.16s ease, filter 0.16s ease;
-    }
-
-    .btn-main:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.75);
-      filter: brightness(1.03);
-      text-decoration: none;
-    }
-
-    .btn-whatsapp {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    /* SECCIONES */
-
-    .section {
-      margin-top: 2rem;
-    }
-
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 0.75rem;
-      margin-bottom: 0.8rem;
-    }
-
-    .section-title {
-      font-size: 1.25rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .section-pill {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      color: var(--accent-soft);
-      border-radius: 999px;
-      padding: 0.2rem 0.7rem;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(8,8,12,0.7);
-    }
-
-    .section-description {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: 0.7rem;
-    }
-
-    .services-grid {
+    /* GRID */
+    .grid {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 0.9rem;
+      gap: 1.2rem;
     }
 
-    @media (min-width: 720px) {
-      .services-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    @media (min-width: 700px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
-    .service-card {
-      background: radial-gradient(circle at top left, rgba(255,255,255,0.08) 0, rgba(9,7,17,0.95) 40%, rgba(3,3,7,0.98) 100%);
-      border-radius: 1.1rem;
+    .card {
+      border-radius: 12px;
+      background: #14141a;
+      border: 1px solid #2c2c33;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.04);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.7);
-      display: flex;
-      flex-direction: column;
-      min-height: 100%;
     }
 
-    .service-media {
-      position: relative;
-      overflow: hidden;
-      max-height: 190px;
-    }
-
-    .service-media img {
+    .card img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
       display: block;
-      transform: scale(1.03);
-      transition: transform 0.28s ease;
+      height: 180px;
+      object-fit: cover;
     }
 
-    .service-tag {
-      position: absolute;
-      left: 0.7rem;
-      top: 0.7rem;
-      padding: 0.25rem 0.6rem;
-      border-radius: 999px;
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      background: rgba(0,0,0,0.55);
-      border: 1px solid rgba(255,255,255,0.32);
-      color: var(--accent-soft);
+    .card-body {
+      padding: 1rem;
     }
 
-    .service-body {
-      padding: 0.85rem 0.95rem 0.9rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-      flex: 1;
-    }
-
-    .service-title {
-      font-size: 1rem;
-      font-weight: 600;
-    }
-
-    .service-sub {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    .price-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 0.4rem;
-      margin-top: 0.25rem;
-    }
-
-    .old-price {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      text-decoration: line-through;
-    }
-
-    .new-price {
+    .card-title {
       font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--accent);
+      font-weight: bold;
+      margin: 0 0 0.4rem;
     }
 
-    .note {
-      font-size: 0.8rem;
-      color: var(--accent-soft);
+    .old {
+      text-decoration: line-through;
+      color: #aaaaaa;
+      margin-right: 0.5rem;
     }
 
-    .cta-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 0.55rem;
-      gap: 0.5rem;
-      flex-wrap: wrap;
+    .new {
+      color: #f3c96a;
+      font-weight: bold;
+      font-size: 1.2rem;
     }
 
-    .btn-ghost {
-      padding: 0.45rem 0.8rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.2);
-      background: rgba(255,255,255,0.04);
-      font-size: 0.8rem;
-      color: var(--text-main);
+    .btn {
+      display: inline-block;
+      margin-top: 0.8rem;
+      padding: 0.6rem 1rem;
+      background: #f3c96a;
+      color: #000;
+      border-radius: 8px;
+      font-weight: bold;
       text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
     }
 
-    .service-card:hover .service-media img {
-      transform: scale(1.07);
+    h2 {
+      margin-top: 2rem;
+      font-size: 1.4rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-left: 4px solid #f3c96a;
+      padding-left: 0.5rem;
     }
-
-    /* FOOTER NAV */
 
     footer {
-      border-top: 1px solid rgba(255,255,255,0.12);
-      margin-top: 2.5rem;
-      padding-top: 1.2rem;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-bottom: 0.8rem;
-    }
-
-    .footer-links a {
-      padding: 0.25rem 0.6rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.15);
-      background: rgba(5,5,10,0.85);
-      font-size: 0.8rem;
-    }
-
-    .footer-meta {
-      opacity: 0.85;
-    }
-
-    /* SMALL LABEL FOR QR */
-    .qr-hint {
+      margin-top: 3rem;
+      padding: 2rem 0;
       text-align: center;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-top: 0.7rem;
+      color: #bbb;
+      border-top: 1px solid #333;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #f3c96a;
+      text-decoration: none;
+      display: block;
+      margin: 0.4rem 0;
     }
   </style>
 </head>
+
 <body>
-  <main class="page">
-    <header>
-      <!-- Reemplaza src con la ruta de tu logo blanco -->
-      <img src="/img/logo-figura-rostro-white.png" alt="Figura Rostro KG" class="logo">
+<div class="page">
 
-      <div class="tag-black">
-        <span>Black Week</span>
-        <span>El precio más bajo del año</span>
-      </div>
+<header>
+  <img src="logo-figura-rostro-white.png" class="logo" alt="Figura Rostro KG">
+  <h1>BLACK WEEK</h1>
+  <div class="slogan">EL PRECIO MÁS BAJO DEL AÑO</div>
+  <div class="dates">Promos válidas hasta el 30 de noviembre</div>
+</header>
 
-      <h1>Menú Black Week</h1>
-      <p class="subtitle">Faciales, masajes, reductores y rejuvenecimiento con precios únicos por tiempo limitado.</p>
-      <p class="slogan">Promos especiales solo en Figura Rostro KG.</p>
-      <p class="dates">Válido hasta el <strong>30 de noviembre</strong> &middot; Cupos limitados.</p>
+<!-- ROSTRO -->
+<h2>Rostro</h2>
+<div class="grid">
 
-      <div class="hero-cta">
-        <a class="btn-main" href="https://wa.me/50764746168?text=Hola,%20quiero%20aprovechar%20las%20ofertas%20Black%20Week%20de%20Figura%20Rostro%20KG">
-          Reservar ahora por WhatsApp
-        </a>
-        <div class="btn-whatsapp">
-          También puedes buscarnos en Waze como <strong>Figura Rostro KG</strong>.
-        </div>
-      </div>
-    </header>
+  <div class="card">
+    <img src="rostro-limpieza-premium.jpg">
+    <div class="card-body">
+      <div class="card-title">Limpieza Facial Premium</div>
+      <span class="old">$29.50</span><span class="new">$19.95</span>
+      <a href="https://wa.me/50764746168?text=Quiero%20Limpieza%20Premium" class="btn">Reservar</a>
+    </div>
+  </div>
 
-    <!-- ROSTRO -->
-    <section id="rostro" class="section">
-      <div class="section-header">
-        <h2 class="section-title">Rostro</h2>
-        <div class="section-pill">Especial Black Week</div>
-      </div>
-      <p class="section-description">
-        Tratamientos faciales para limpiar, iluminar y rejuvenecer tu piel desde la primera sesión.
-      </p>
+  <div class="card">
+    <img src="rostro-limpieza-profunda.jpg">
+    <div class="card-body">
+      <div class="card-title">Limpieza Profunda + Hidratación</div>
+      <span class="old">$69</span><span class="new">$35</span>
+      <a href="https://wa.me/50764746168?text=Quiero%20Limpieza%20Profunda" class="btn">Reservar</a>
+    </div>
+  </div>
 
-      <div class="services-grid">
-        <!-- Limpieza Facial Premium -->
-        <article class="service-card">
-          <div class="service-media">
-            <span class="service-tag">Limpieza</span>
-            <img src="/img/blackweek/rostro-limpieza-premium.jpg" alt="Limpieza Facial Premium">
-          </div>
-          <div class="service-body">
-            <h3 class="service-title">Limpieza Facial Premium</h3>
-            <p class="service-sub">Ideal para renovar tu piel y dejarla suave, fresca y luminosa.</p>
-            <div class="price-row">
-              <span class="old-price">$29.50</span>
-              <span class="new-price">$19.95</span>
-            </div>
-            <div class="cta-row">
-              <a class="btn-ghost" href="https://wa.me/50764746168?text=Quiero%20reservar%20Limpieza%20Facial%20Premium%20Black%20Week">
-                Reservar Black Week
-              </a>
-              <span class="note">Solo por esta semana</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Limpieza Profunda + Hidratación -->
-        <article class="service-card">
-          <div class="service-media">
-            <span class="service-tag">Profunda</span>
-            <img src="/img/blackweek/rostro-limpieza-profunda.jpg" alt="Limpieza Facial Profunda con Hidratación">
-          </div>
-          <div class="service-body">
-            <h3 class="service-title">Limpieza Facial Profunda + Hidratación</h3>
-            <p class="service-sub">Para poros limpios, piel suave y una hidratación que se nota.</p>
-            <div class="price-row">
-              <span class="old-price">$69.00</span>
-              <span class="new-price">$35.00</span>
-            </div>
-            <div class="cta-row">
-              <a class="btn-ghost" href="https://wa.me/50764746168?text=Quiero%20Limpieza%20Profunda%20con%20Hidrataci%C3%B3n%20Black%20Week">
-                Reservar Black Week
-              </a>
-              <span class="note">Antes $69, hoy casi a mitad de precio</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Hidratación de Labios -->
-        <article class="service-card">
-          <div class="service-media">
-            <span class="service-tag">Labios</span>
-            <img src="/img/blackweek/rostro-hidratacion-labios.jpg" alt="Hidratación de labios con dermapen">
-          </div>
-          <div class="service-body">
-            <h3 class="service-title">Hidratación de Labios + Dermapen</h3>
-            <p class="service-sub">Labios más rosados, suaves y con mejor textura.</p>
-            <div class="price-row">
-              <span class="old-price">$89.00</span>
-              <span class="new-price">$29.95</span>
-            </div>
-            <div class="cta-row">
-              <a class="btn-ghost" href="https://wa.me/50764746168?text=Quiero%20Hidrataci%C3%B3n%20de%20Labios%20Black%20Week">
-                Reservar Black Week
-              </a>
-              <span class="note">El precio más bajo del año</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Peeling Facial -->
-        <article class="service-card">
-          <div class="service-media">
-            <span class="service-tag">Peeling</span>
-            <img src="/img/blackweek/rostro-peeling-facial.jpg" alt="Peeling facial piel nueva">
-          </div>
-          <div class="service-body">
-            <h3 class="service-title">Peeling Facial (Piel de Nueva)</h3>
-            <p class="service-sub">Aclara manchas, mejora textura y deja tu rostro más uniforme.</p>
-            <div class="price-row">
-              <span class="old-price">$120.00</span>
-              <span class="new-price">$55.00</span>
-            </div>
-            <div class="cta-row">
-              <a class="btn-ghost" href="https://wa.me/50764746168?text=Quiero%20Peeling%20Facial%20Black%20Week">
-                Reservar Black Week
-              </a>
-              <span class="note">Perfecto para renovar tu rostro</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Remoción Lunares / Verrugas -->
-        <article class="service-card">
-          <div class="service-media">
-            <span class="service-tag">Remoción</span>
-            <img src="/img/blackweek/rostro-remocion-lunares.jpg" alt="Remoción de lunares y verrugas">
-          </div>
-          <div class="service-body">
-            <h3 class="service-title">Remoción de Lunares y Verrugas Chicos</h3>
-            <p class="service-sub">Paquetes de 3 a 10 unidades con tecnología segura tipo fibroblast.</p>
-            <p class="note">Descuento especial Black Week en paquetes.</p>
-            <div class="cta-row">
-              <a class="btn-ghost" href="https://wa.me/50764746168?text=Quiero%20informaci%C3%B3n%20de%20remoci%C3%B3n%20de%20lunares%20Black%20Week">
-                Consultar precio Black Week
-              </a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- FIGURA -->
-    <section id="figura" class="section">
-      <div class="section-header">
-        <h2 class="section-title">Figura</h2>
-        <div class="section-pill">1 sesión</div>
-      </div>
-      <p class="section-description">
-        Moldea, drena y relaja tu cuerpo con sesiones efectivas y enfocadas en resultados.
-      </p>
-
-      <div class="services-grid">
-        <!-- Drenaje Moldeador + Reductor -->
-        <article class="service-card">
-          <div class="service-media">
-            <span class="service-tag">Reductor</span>
-            <img src="/img/blackweek/figura-drenaje-moldeador.jpg" alt="Drenaje Moldeador y Reductor">
-          </div>
-          <div class="service-body">
-            <h3 class="service-title">Drenaje Moldeador + Reductor + Té Premium</h3>
-            <p class="service-sub">Ayuda a reducir medidas, mejorar circulación y sentirte más ligera.</p>
-            <div class="price-row">
-              <span class="old-price">$69.00</span>
-              <span class="new-price">$29.95</span>
-            </div>
-            <div class="cta-row">
-              <a class="btn-ghost" href="https://wa.me/50764746168?text=Quiero%20Drenaje%20Moldeador%20Reductor%20Black%20Week">
-                Reservar Black Week
-              </a>
-              <span class="note">Incluye té detox premium</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Moldeado de Glúteos -->
-        <article class="service-card">
-          <div class="service-media">
-            <span class="service-tag">Glúteos</span>
-            <img src="/img/blackweek/figura-moldeado-gluteos.jpg" alt="Moldeado de glúteos y drenaje">
-          </div>
-          <div class="service-body">
-            <h3 class="service-title">Moldeado de Glúteos + Drenaje</h3>
-            <p class="service-sub">Realce y mejor forma mientras drenas líquidos retenidos.</p>
-            <div class="price-row">
-              <span class="old-price">$69.00</span>
-              <span class="new-price">$29.95</span>
-            </div>
-            <div class="cta-row">
-              <a class="btn-ghost" href="https://wa.me/50764746168?text=Quiero%20Moldeado%20de%20Gluteos%20Black%20Week">
-                Reservar Black Week
-              </a>
-              <span class="note">Precio especial solo Black Week</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Chocoterapia + Relajante -->
-        <article class="service-card">
-          <div class="service-media">
-            <span class="service-tag">Chocoterapia</span>
-            <img src="/img/blackweek/figura-chocoterapia.jpg" alt="Chocoterapia relajante">
-          </div>
-          <div class="service-body">
-            <h3 class="service-title">Chocoterapia + Masaje Relajante</h3>
-            <p class="service-sub">Ritual delicioso para relajar, hidratar y consentir tu cuerpo.</p>
-            <div class="price-row">
-              <span class="old-price">$89.00</span>
-              <span class="new-price">$39.95</span>
-            </div>
-            <div class="cta-row">
-              <a class="btn-ghost" href="https://wa.me/50764746168?text=Quiero%20Chocoterapia%20Black%20Week">
-                Reservar Black Week
-              </a>
-              <span class="note">Ideal como regalo</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Masaje Relajante -->
-        <article class="service-card">
-          <div class="service-media">
-            <span class="service-tag">Relajante</span>
-            <img src="/img/blackweek/figura-masaje-relajante.jpg" alt="Masaje relajante Figura Rostro KG">
-          </div>
-          <div class="service-body">
-            <h3 class="service-title">Masaje Relajante</h3>
-            <p class="service-sub">Para aliviar estrés, tensión muscular y recargar tu energía.</p>
-            <div class="price-row">
-              <span class="old-price">$49.00</span>
-              <span class="new-price">$29.95</span>
-            </div>
-            <div class="cta-row">
-              <a class="btn-ghost" href="https://wa.me/50764746168?text=Quiero%20Masaje%20Relajante%20Black%20Week">
-                Reservar Black Week
-              </a>
-              <span class="note">Damas y caballeros</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Depilación en Cera Especial -->
-        <article class="service-card">
-          <div class="service-media">
-            <span class="service-tag">Depilación</span>
-            <img src="/img/blackweek/figura-depilacion-cera.jpg" alt="Depilación con cera especial">
-          </div>
-          <div class="service-body">
-            <h3 class="service-title">Depilación con Cera Especial</h3>
-            <p class="service-sub">Bikini, axila y pierna con cera especial y técnica delicada.</p>
-            <div class="price-row">
-              <span class="old-price">$49.00</span>
-              <span class="new-price">$29.95</span>
-            </div>
-            <div class="cta-row">
-              <a class="btn-ghost" href="https://wa.me/50764746168?text=Quiero%20Depilaci%C3%B3n%20con%20Cera%20Especial%20Black%20Week">
-                Reservar Black Week
-              </a>
-              <span class="note">Agenda tu horario favorito</span>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- COMBOS -->
-    <section id="combos" class="section">
-      <div class="section-header">
-        <h2 class="section-title">Combos</h2>
-        <div class="section-pill">Black Week</div>
-      </div>
-      <p class="section-description">
-        Combina servicios favoritos en la misma cita y ahorra aún más.
-      </p>
-
-      <div class="services-grid">
-        <!-- Combo Limpieza + Moldeador -->
-        <article class="service-card">
-          <div class="service-media">
-            <span class="service-tag">Combo rostro + figura</span>
-            <img src="/img/blackweek/combo-limpieza-moldeador.jpg" alt="Limpieza facial y masaje moldeador">
-          </div>
-          <div class="service-body">
-            <h3 class="service-title">Limpieza Facial + Masaje Moldeador</h3>
-            <p class="service-sub">Cuida tu rostro y trabaja tu figura en la misma sesión.</p>
-            <div class="price-row">
-              <span class="old-price">$69.00</span>
-              <span class="new-price">$45.00</span>
-            </div>
-            <div class="cta-row">
-              <a class="btn-ghost" href="https://wa.me/50764746168?text=Quiero%20el%20Combo%20Limpieza%20%2B%20Moldeador%20Black%20Week">
-                Reservar combo
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Combo Chocoterapia + Limpieza -->
-        <article class="service-card">
-          <div class="service-media">
-            <span class="service-tag">Combo spa</span>
-            <img src="/img/blackweek/combo-chocoterapia-limpieza.jpg" alt="Chocoterapia y limpieza facial">
-          </div>
-          <div class="service-body">
-            <h3 class="service-title">Chocoterapia + Limpieza Facial</h3>
-            <p class="service-sub">Experiencia completa: relax, chocolate y rostro limpio.</p>
-            <div class="price-row">
-              <span class="old-price">$69.00</span>
-              <span class="new-price">$55.00</span>
-            </div>
-            <div class="cta-row">
-              <a class="btn-ghost" href="https://wa.me/50764746168?text=Quiero%20Combo%20Chocoterapia%20%2B%20Limpieza%20Black%20Week">
-                Reservar combo
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Combo Relajante + Facial -->
-        <article class="service-card">
-          <div class="service-media">
-            <span class="service-tag">Combo relax</span>
-            <img src="/img/blackweek/combo-relajante-facial.jpg" alt="Masaje relajante y facial">
-          </div>
-          <div class="service-body">
-            <h3 class="service-title">Masaje Relajante + Facial</h3>
-            <p class="service-sub">Sal con cuerpo y rostro renovados en una sola visita.</p>
-            <div class="price-row">
-              <span class="old-price">$69.00</span>
-              <span class="new-price">$49.00</span>
-            </div>
-            <div class="cta-row">
-              <a class="btn-ghost" href="https://wa.me/50764746168?text=Quiero%20Combo%20Relajante%20%2B%20Facial%20Black%20Week">
-                Reservar combo
-              </a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- REJUVENECIMIENTO -->
-    <section id="rejuvenecimiento" class="section">
-      <div class="section-header">
-        <h2 class="section-title">Rejuvenecimiento</h2>
-        <div class="section-pill">Resultados visibles</div>
-      </div>
-      <p class="section-description">
-        Tratamientos avanzados para renovar, tensar y mejorar el aspecto de tu piel.
-      </p>
-
-      <div class="services-grid">
-        <!-- Peeling Renueva tu Rostro -->
-        <article class="service-card">
-          <div class="service-media">
-            <span class="service-tag">Peeling</span>
-            <img src="/img/blackweek/rejuv-peeling-renueva.jpg" alt="Peeling renueva tu rostro">
-          </div>
-          <div class="service-body">
-            <h3 class="service-title">Peeling Facial “Renueva tu Rostro”</h3>
-            <p class="service-sub">Aclara manchas, mejora líneas finas y textura de la piel.</p>
-            <div class="price-row">
-              <span class="old-price">$120.00</span>
-              <span class="new-price">$59.95</span>
-            </div>
-            <div class="cta-row">
-              <a class="btn-ghost" href="https://wa.me/50764746168?text=Quiero%20Peeling%20Renueva%20tu%20Rostro%20Black%20Week">
-                Reservar Black Week
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Fibroblast -->
-        <article class="service-card">
-          <div class="service-media">
-            <span class="service-tag">Fibroblast</span>
-            <img src="/img/blackweek/rejuv-fibroblast-parpados.jpg" alt="Fibroblast en párpados caídos o flacidez">
-          </div>
-          <div class="service-body">
-            <h3 class="service-title">Fibroblast Párpados Caídos o Flacidez</h3>
-            <p class="service-sub">Ayuda a tensar y mejorar el contorno del párpado sin cirugía.</p>
-            <div class="price-row">
-              <span class="old-price">$150.00</span>
-              <span class="new-price">$75.00</span>
-            </div>
-            <div class="cta-row">
-              <a class="btn-ghost" href="https://wa.me/50764746168?text=Quiero%20Fibroblast%20en%20p%C3%A1rpados%20Black%20Week">
-                Reservar valoración
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Estrías Abdomen -->
-        <article class="service-card">
-          <div class="service-media">
-            <span class="service-tag">Estrías</span>
-            <img src="/img/blackweek/rejuv-estrias-abdomen.jpg" alt="Tratamiento estrías en abdomen">
-          </div>
-          <div class="service-body">
-            <h3 class="service-title">Estrías en Abdomen</h3>
-            <p class="service-sub">Plan de tratamiento para mejorar apariencia de estrías.</p>
-            <div class="price-row">
-              <span class="old-price">$420.00</span>
-              <span class="new-price">$199.00</span>
-            </div>
-            <div class="cta-row">
-              <a class="btn-ghost" href="https://wa.me/50764746168?text=Quiero%20Tratamiento%20para%20Estrias%20en%20Abdomen%20Black%20Week">
-                Reservar plan
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Cicatrices en Cuerpo -->
-        <article class="service-card">
-          <div class="service-media">
-            <span class="service-tag">Cicatrices</span>
-            <img src="/img/blackweek/rejuv-cicatrices-cuerpo.jpg" alt="Tratamiento cicatrices en cuerpo">
-          </div>
-          <div class="service-body">
-            <h3 class="service-title">Cicatrices en Cuerpo</h3>
-            <p class="service-sub">Sesiones para suavizar y mejorar cicatrices seleccionadas.</p>
-            <div class="price-row">
-              <span class="old-price">$120.00</span>
-              <span class="new-price">$60.00</span>
-            </div>
-            <div class="cta-row">
-              <a class="btn-ghost" href="https://wa.me/50764746168?text=Quiero%20Tratamiento%20para%20Cicatrices%20Black%20Week">
-                Reservar sesión
-              </a>
-              <span class="note">$60 x sesión</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Yoga Facial -->
-        <article class="service-card">
-          <div class="service-media">
-            <span class="service-tag">Natural</span>
-            <img src="/img/blackweek/rejuv-yoga-facial.jpg" alt="Yoga facial rejuvenecimiento natural">
-          </div>
-          <div class="service-body">
-            <h3 class="service-title">Yoga Facial / Rejuvenecimiento Natural</h3>
-            <p class="service-sub">Técnicas manuales para tonificar rostro y relajar tensiones.</p>
-            <p class="note">Precio Black Week especial, consulta tu plan ideal.</p>
-            <div class="cta-row">
-              <a class="btn-ghost" href="https://wa.me/50764746168?text=Quiero%20informaci%C3%B3n%20de%20Yoga%20Facial%20Black%20Week">
-                Consultar precio
-              </a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <footer>
-      <div class="footer-links">
-        <a href="https://figurarostro.life/">Home Figura Rostro KG</a>
-        <a href="https://figurarostro.life
+  <div class="card">
+    <img src="rostro-hidratacion-
