@@ -1,338 +1,596 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Black Week | Figura Rostro KG</title>
-  <meta name="description" content="Menú Black Week de Figura Rostro KG: el precio más bajo del año en masajes, faciales, reductores y rejuvenecimiento. Promos válidas hasta el 30 de noviembre.">
+  <title>Masaje Relajante en Panamá (Parque Lefevre) | Paquetes Reductores, Peeling y Plasma Fibroblast – Figura Rostro KG</title>
+  <meta name="description" content="Spa en Parque Lefevre: masaje relajante, descontracturante, masajes reductores, peeling facial, radiofrecuencia y plasma Fibroblast. Promos, paquetes y reservas por WhatsApp.">
+  <meta name="keywords" content="masaje relajante en panamá, masaje reductor panamá, paquete reductor, plasma fibroblast panamá, peeling facial panamá, spa parque lefevre, figura rostro kg">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://figurarostro.life/">
+
+  <!-- OG/Twitter -->
+  <meta property="og:title" content="Masaje Relajante en Panamá | Paquetes Reductores y Fibroblast – Figura Rostro KG">
+  <meta property="og:description" content="Faciales, masajes y tratamientos no invasivos con resultados visibles en Parque Lefevre, Ciudad de Panamá.">
+  <meta property="og:image" content="/og-cover-fr.jpg">
+  <meta property="og:url" content="https://figurarostro.life/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#5b2580">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --bg: #0a0a0d;
-      --card: #14141a;
-      --border: #2c2c33;
-      --accent: #f3c96a;
-      --text-main: #f7f7f7;
-      --text-muted: #c5c5c5;
+    :root{--brand:#5b2580;--brand2:#7b3aa6}
+    *{box-sizing:border-box;min-width:0}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:#fff;color:#1b0f26;overflow-x:hidden}
+    .container{max-width:1150px;margin:0 auto;padding:0 16px;width:100%}
+    @media (max-width:768px){.container{padding:0 12px}}
+
+    /* Imágenes/embeds seguras */
+    img{max-width:100%;height:auto;display:block}
+    .ratio-16x9{position:relative; width:100%; aspect-ratio:16/9}
+    .ratio-16x9 iframe{position:absolute; inset:0; width:100%; height:100%; border:0; border-radius:12px}
+
+    /* ===== HEADER ===== */
+    header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,#160c1f 0%,#241235 100%);border-bottom:1px solid rgba(255,255,255,.08)}
+    .header-inner{position:relative;display:flex;align-items:center;justify-content:center;padding:16px 0}
+    .brand img{height:58px}
+    @media (max-width:768px){.brand img{height:44px}}
+
+    /* Menú escritorio */
+    .site-nav{display:flex;align-items:center}
+    .site-nav .menu{display:flex;gap:24px;list-style:none;margin:0;padding:0}
+    .site-nav .menu>li{position:relative}
+    .site-nav a{color:#fff;font-weight:600;text-decoration:none;opacity:.95}
+    .site-nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:3px}
+    .submenu{position:absolute;top:100%;left:0;min-width:220px;background:#1e0f2b;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:8px;list-style:none;margin:8px 0 0;box-shadow:0 14px 34px rgba(0,0,0,.28);display:none;z-index:60}
+    .has-sub:hover>.submenu,.has-sub:focus-within>.submenu{display:block}
+    .submenu a{display:block;padding:10px 12px;border-radius:8px}
+
+    /* Botón primario / Menú */
+    .btn-primary{background:#fff;color:var(--brand);border:0;padding:12px 20px;border-radius:14px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+
+    /* Botón Menú fijo en móvil (no desplaza layout) */
+    #menuBtn{position:absolute;right:12px;top:50%;transform:translateY(-50%);z-index:60}
+    @media (min-width:769px){#menuBtn{position:static;transform:none;margin-left:auto}}
+    @media (max-width:768px){
+      nav.site-nav{display:none !important}
+      .btn-primary{padding:8px 12px;border-radius:10px;font-size:14px}
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    /* ===== HERO ===== */
+    .hero{position:relative;display:grid;place-items:center;text-align:center;min-height:74vh;color:#fff;background-size:cover;background-position:center;animation:changeHero 18s infinite ease-in-out}
+    @keyframes changeHero{
+      0%,33%{background-image:url('hero-1.jpg');background-position:center 35%}
+      34%,66%{background-image:url('hero-2.jpg');background-position:center 40%}
+      67%,100%{background-image:url('hero-3.jpg');background-position:center 30%}
+    }
+    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,10,35,.7),rgba(30,10,40,.55));z-index:1}
+    .hero .content{position:relative;z-index:2;max-width:760px;padding:30px 16px}
+    .hero h1{font-size:clamp(32px,6vw,56px);font-weight:800;line-height:1.15;margin:0 0 10px;background:linear-gradient(90deg,#fff,#e5c2ff);-webkit-background-clip:text;color:transparent;overflow-wrap:anywhere;max-width:92vw}
+    .hero p{font-size:1.05rem;color:rgba(255,255,255,.94)}
+    @media (max-width:768px){
+      .hero{min-height:46vh}
+      .hero .content{max-width:92%;padding:14px 8px}
+      .hero h1{font-size:clamp(22px,6.2vw,28px)}
+      .hero p{font-size:14px}
     }
 
-    html, body {
-      width: 100%;
-      height: 100%;
-    }
+    /* ===== Video ===== */
+    .video-hero{padding:32px 0}
+    .video-two-col{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:center}
+    .video-copy h3{margin:0 0 8px;font-size:1.4rem;color:#5b2580}
+    .video-copy p{margin:0 0 10px;opacity:.9}
+    @media (max-width:900px){.video-two-col{grid-template-columns:1fr}}
 
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #29213e 0, #050509 45%, #020109 100%);
-      color: var(--text-main);
-      line-height: 1.5;
-      overflow-y: auto;              /* <-- fuerza scroll */
-      -webkit-overflow-scrolling: touch; /* <-- scroll suave en iPhone */
-    }
+    /* ===== Secciones / Cards ===== */
+    section{padding:64px 0}
+    .muted{color:#5b2580}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+    .card{border-radius:18px;padding:18px;border:1px solid #eee;box-shadow:0 10px 30px rgba(30,10,60,.05);background:#fff}
+    .card img{border-radius:12px;aspect-ratio:16/10;object-fit:cover}
+    .promos{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+    .promo img{border-radius:12px;aspect-ratio:16/10;object-fit:cover}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+    .gallery img{border-radius:14px;aspect-ratio:1/1;object-fit:cover}
 
-    .page {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 1rem 1rem 3rem;
-    }
+    .contact{display:grid;grid-template-columns:1.1fr .9fr;gap:28px}
+    @media (max-width:900px){.contact{grid-template-columns:1fr}}
 
-    header {
-      text-align: center;
-      padding: 1rem 0 1.8rem;
-    }
+    /* ===== SECCIÓN OFERTAS BLACK WEEK ===== */
+    .ofertas-section{background:#160c1f;color:#fff;padding:56px 0}
+    .ofertas-grid{display:grid;grid-template-columns:1.2fr .9fr;gap:28px;align-items:flex-start}
+    @media (max-width:900px){.ofertas-grid{grid-template-columns:1fr}}
+    .oferta-card{background:rgba(255,255,255,.06);border-radius:18px;padding:18px;border:1px solid rgba(255,255,255,.16);box-shadow:0 16px 38px rgba(0,0,0,.4)}
+    .pill{display:inline-block;padding:4px 12px;border-radius:999px;font-size:.8rem;border:1px solid rgba(255,255,255,.5);margin-bottom:10px;letter-spacing:.04em;text-transform:uppercase}
+    .oferta-item{border-radius:14px;padding:14px 14px 12px;margin-bottom:10px;background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.14)}
+    .oferta-item h3{margin:0 0 4px;font-size:1rem}
+    .oferta-old{opacity:.6;text-decoration:line-through;margin-right:6px}
+    .oferta-price{font-size:1.3rem;font-weight:800;color:#ffd966}
+    .oferta-note{font-size:.85rem;opacity:.9;margin-top:4px}
 
-    .logo {
-      width: 150px;
-      margin-bottom: 1rem;
-    }
+    /* ===== FAB ===== */
+    .fr-fab{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:9999;display:flex;flex-direction:column;gap:14px;align-items:flex-end}
+    .fr-ic{width:56px;height:56px;display:flex;align-items:center;justify-content:center;border-radius:999px;text-decoration:none;box-shadow:0 10px 18px rgba(0,0,0,.18)}
+    .fr-ic svg{width:26px;height:26px;fill:#fff}
+    .fr-wa{background:#25D366}.fr-waze{background:#0099ff}.fr-ig{background:linear-gradient(45deg,#F58529,#DD2A7B,#8134AF,#515BD4)}.fr-call{background:#34c759}
 
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 0.2rem;
-    }
-
-    .slogan {
-      color: var(--accent);
-      font-size: 1.05rem;
-      font-weight: 600;
-      margin-bottom: 0.2rem;
-    }
-
-    .dates {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    h2 {
-      margin-top: 2rem;
-      font-size: 1.35rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      border-left: 4px solid var(--accent);
-      padding-left: 0.5rem;
-    }
-
-    .grid {
-      display: grid;
-      gap: 1.1rem;
-      margin-top: 0.9rem;
-    }
-
-    @media (min-width: 700px) {
-      .grid {
-        grid-template-columns: repeat(2, 1fr);
+    /* FAB en móvil como barra centrada SIN desbordar */
+    @media (max-width:768px){
+      body{padding-bottom:92px}
+      .fr-fab{
+        top:auto;bottom:12px;right:auto;left:50%;
+        transform:translateX(-50%);
+        flex-direction:row;justify-content:space-between;gap:10px;
+        width:min(520px, 100vw - 16px);
+        padding:6px 8px;
+        background:rgba(255,255,255,.0);
       }
+      .fr-ic{width:52px;height:52px}
+      .fr-ic svg{width:24px;height:24px}
     }
 
-    .card {
-      border-radius: 12px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    /* ===== Footer ===== */
+    .site-footer.dark{background:linear-gradient(180deg,#160c1f 0%,#241235 100%);color:#fff;border-top:1px solid rgba(255,255,255,.12)}
+    .site-footer a{color:#e9d9ff;text-decoration:none}
+    .site-footer a:hover{text-decoration:underline;text-underline-offset:3px}
+    .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.6fr;gap:28px;padding:36px 0 12px}
+    .brand-line{display:flex;gap:12px;align-items:flex-start}
+    .f-logo{height:40px}
+    .site-footer .f-col h4{font-size:1rem;margin:0 0 10px;color:#f5eaff}
+    .site-footer .f-col ul{list-style:none;padding:0;margin:0}
+    .site-footer .f-col li{margin:6px 0}
+    .f-social{margin-top:8px}
+    .map-links{margin-top:8px;font-size:.95rem}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.12);padding:14px 0;text-align:center;opacity:.9}
+
+    /* Footer 1 columna en móvil (limpio) */
+    @media (max-width:900px){
+      .footer-grid{grid-template-columns:1fr;gap:14px;padding:22px 0 8px}
     }
 
-    .card img {
-      width: 100%;
-      display: block;
-      height: 180px;
-      object-fit: cover;
-    }
-
-    .card-body {
-      padding: 0.9rem 1rem 1.1rem;
-    }
-
-    .card-title {
-      font-size: 1.05rem;
-      font-weight: 600;
-      margin-bottom: 0.35rem;
-    }
-
-    .old {
-      text-decoration: line-through;
-      color: #aaaaaa;
-      margin-right: 0.4rem;
-      font-size: 0.9rem;
-    }
-
-    .new {
-      color: var(--accent);
-      font-weight: 700;
-      font-size: 1.1rem;
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 0.7rem;
-      padding: 0.55rem 1.05rem;
-      background: var(--accent);
-      color: #000;
-      border-radius: 999px;
-      font-weight: 600;
-      text-decoration: none;
-      font-size: 0.9rem;
-    }
-
-    .btn:hover {
-      text-decoration: none;
-      filter: brightness(1.03);
-    }
-
-    footer {
-      margin-top: 2.8rem;
-      padding-top: 1.4rem;
-      border-top: 1px solid var(--border);
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    footer a {
-      color: var(--accent);
-      text-decoration: none;
-      display: block;
-      margin: 0.35rem 0;
-    }
+    /* Submenús safe hover */
+    nav ul li{position:relative}
+    nav ul li>ul{position:absolute;top:100%;left:0;background:#2a013d;border-radius:12px;padding:10px 0;min-width:240px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s,transform .22s,visibility .22s;transform:translateY(6px);z-index:60}
+    nav ul li:hover>ul,nav ul li:focus-within>ul{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
+    nav ul li:hover::after{content:"";position:absolute;top:100%;left:0;width:100%;height:14px}
   </style>
+
+  <!-- Schema (opcional abreviado) -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"DaySpa","name":"Figura Rostro KG","url":"https://figurarostro.life/","telephone":"+507 6474-6168","address":{"@type":"PostalAddress","streetAddress":"Royal Park – Av. Ernesto T. Lefevre","addressLocality":"Ciudad de Panamá","addressCountry":"PA"},"openingHours":"Mo-Su 08:00-20:00"}
+  </script>
 </head>
-
 <body>
-<div class="page">
 
+  <!-- Header -->
   <header>
-    <!-- Asegúrate de tener este archivo subido -->
-    <img src="logo-figura-rostro-white.png" class="logo" alt="Figura Rostro KG">
-    <h1>BLACK WEEK</h1>
-    <div class="slogan">EL PRECIO MÁS BAJO DEL AÑO</div>
-    <div class="dates">Promos válidas hasta el 30 de noviembre</div>
+    <div class="container header-inner">
+      <a href="/" class="brand" aria-label="Inicio Figura Rostro KG">
+        <img src="logo-header-white.png" alt="Figura Rostro KG — Estética en Panamá">
+      </a>
+
+      <nav class="site-nav" aria-label="Menú principal">
+        <ul class="menu">
+          <li><a href="#promos">Promociones</a></li>
+          <li class="has-sub">
+            <a href="/tratamientos-faciales/">Faciales</a>
+            <ul class="submenu">
+              <li><a href="/peeling-facial.html">Peeling Facial</a></li>
+              <li><a href="/fibroblast.html">Plasma Fibroblast</a></li>
+              <li><a href="/radiofrecuencia-facial.html">Radiofrecuencia Facial</a></li>
+              <li><a href="/lifting-sin-cirugia.html">Lifting sin cirugía</a></li>
+            </ul>
+          </li>
+          <li class="has-sub">
+            <a href="/masajes-terapeuticos/">Masajes</a>
+            <ul class="submenu">
+              <li><a href="/masaje-relajante.html">Masaje Relajante</a></li>
+              <li><a href="/masajes-terapeuticos/">Descontracturante</a></li>
+              <li><a href="/masajes-terapeuticos/">Drenaje linfático</a></li>
+              <li><a href="/masaje-terapeutico-adultos-mayores.html">Adultos Mayores</a></li>
+              <li><a href="/terapia-masaje-discapacidad.html">Terapia adaptada</a></li>
+            </ul>
+          </li>
+          <li><a href="#sobre">Nosotros</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <!-- Botón Menú fijo (no desplaza nada) -->
+      <a id="menuBtn" href="/menu.html" class="btn-primary" aria-label="Ver menú de servicios">Menú</a>
+    </div>
   </header>
 
-  <!-- ROSTRO -->
-  <h2>Rostro</h2>
-  <div class="grid">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="content">
+      <h1>Masaje Relajante en Panamá y Paquetes Reductores</h1>
+      <p>Estética facial y corporal con resultados reales: masaje relajante y descontracturante, masajes reductores, peeling facial, radiofrecuencia y plasma Fibroblast.</p>
+      <a href="#contacto" class="btn-primary" style="margin-top:10px">Reservar ahora</a>
+    </div>
+  </section>
 
-    <div class="card">
-      <img src="rostro-limpieza-premium.jpg" alt="Limpieza Facial Premium">
-      <div class="card-body">
-        <div class="card-title">Limpieza Facial Premium</div>
-        <span class="old">$29.50</span><span class="new">$19.95</span>
-        <a href="https://wa.me/50764746168?text=Quiero%20Limpieza%20Premium%20Black%20Week" class="btn">Reservar</a>
+  <!-- Video -->
+  <section id="video" class="video-hero">
+    <div class="container video-two-col" aria-label="Video de presentación">
+      <div class="ratio-16x9">
+        <iframe src="https://www.youtube.com/embed/mLwrr6g9OJo?rel=0&modestbranding=1" title="Figura Rostro KG — Presentación" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <div class="video-copy">
+        <h3>Plasma Fibroblast: lifting sin cirugía</h3>
+        <p>Suaviza arrugas y flacidez estimulando colágeno. Ideal para párpados, código de barras y líneas finas.</p>
+        <p><a class="btn-primary" href="https://figurarostro.life/chat-citas.html" target="_blank" rel="noopener">Reservar cita</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFERTAS BLACK WEEK -->
+  <section id="ofertas" class="ofertas-section">
+    <div class="container">
+      <span class="pill">Black Week · Cupos limitados</span>
+      <h2 style="font-size:32px;margin:0 0 8px">Ofertas Black Week Figura Rostro KG</h2>
+      <p style="max-width:780px;opacity:.9;margin:0 0 24px">
+        Aprovecha nuestras promociones especiales de <strong>paquete reductor</strong> y <strong>faciales</strong>. 
+        Llena el formulario y te confirmamos tu cita por WhatsApp o llamada.
+      </p>
+
+      <div class="ofertas-grid">
+        <!-- Columna izquierda: detalle de ofertas -->
+        <div>
+          <div class="oferta-item">
+            <h3>Paquete Reductor Black Week</h3>
+            <p style="margin:4px 0 6px">
+              Evaluación + <strong>1 sesión reductora</strong> para sentir el cambio desde la primera cita.
+            </p>
+            <p style="margin:0">
+              <span class="oferta-old">$39.95</span>
+              <span class="oferta-price">$29.95</span> la primera sesión
+            </p>
+            <p class="oferta-note">
+              El monto de $29.95 se reconoce como <strong>abono</strong> al paquete completo personalizado.
+            </p>
+            <p class="oferta-note">
+              Paquete reductor 10 sesiones desde <strong>$299</strong>.
+            </p>
+          </div>
+
+          <div class="oferta-item">
+            <h3>Limpieza Facial Premium Black Week</h3>
+            <p style="margin:4px 0 6px">
+              Limpieza profunda, extracción, hidratación y mascarilla para <strong>rostro renovado</strong>.
+            </p>
+            <p style="margin:0">
+              <span class="oferta-old">$35.00</span>
+              <span class="oferta-price">$19.95</span>
+            </p>
+            <p class="oferta-note">
+              Ideal para combinar con tu masaje o paquete reductor.
+            </p>
+          </div>
+
+          <p style="font-size:.9rem;opacity:.85;margin-top:10px">
+            ✅ Promos válidas por tiempo limitado • <strong>Parque Lefevre – Royal Park</strong> • 
+            Más beneficios al reservar por Directorio Yappi.
+          </p>
+        </div>
+
+        <!-- Columna derecha: formulario Black Week (ENVÍA A EMAIL) -->
+        <div class="oferta-card">
+          <h3 style="margin:0 0 6px;font-size:1.2rem">Formulario Black Week</h3>
+          <p style="margin:0 0 14px;opacity:.9">
+            Déjanos tus datos y recibirás confirmación por WhatsApp o correo.
+          </p>
+
+          <form action="https://formsubmit.co/figurarostrokg@gmail.com" method="POST" style="display:grid;gap:10px">
+
+            <!-- CONFIGURACIÓN INTERNA -->
+            <input type="hidden" name="_subject" value="Nueva solicitud Black Week - Figura Rostro KG">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://figurarostro.life/gracias-ofertas.html">
+
+            <!-- CAMPOS -->
+            <input name="nombre" type="text" placeholder="Nombre completo" required
+                   style="padding:11px;border-radius:12px;border:1px solid rgba(255,255,255,.4);background:rgba(0,0,0,.3);color:#fff">
+
+            <input name="whatsapp" type="tel" placeholder="WhatsApp" required
+                   style="padding:11px;border-radius:12px;border:1px solid rgba(255,255,255,.4);background:rgba(0,0,0,.3);color:#fff">
+
+            <select name="oferta"
+                    style="padding:11px;border-radius:12px;border:1px solid rgba(255,255,255,.4);background:rgba(0,0,0,.3);color:#fff">
+              <option value="Paquete reductor Black Week">Paquete reductor Black Week</option>
+              <option value="Primera sesión reductor $29.95">Primera sesión reductor $29.95</option>
+              <option value="Limpieza Facial Premium $19.95">Limpieza Facial Premium $19.95</option>
+              <option value="Otra oferta Black Week">Otra oferta Black Week</option>
+            </select>
+
+            <textarea name="mensaje" rows="4" placeholder="Día y horario que prefieres (opcional)"
+                      style="padding:11px;border-radius:12px;border:1px solid rgba(255,255,255,.4);background:rgba(0,0,0,.3);color:#fff"></textarea>
+
+            <button type="submit"
+              class="btn-primary"
+              style="width:100%;justify-content:center;margin-top:4px">
+              Enviar solicitud
+            </button>
+          </form>
+
+          <p style="margin:10px 0 0;font-size:.8rem;opacity:.8">
+            *Recibirás confirmación en breve. Gracias por confiar en Figura Rostro KG.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Promos -->
+  <section id="promos" style="background:#faf7ff">
+    <div class="container">
+      <h2 class="muted" style="font-size:34px;margin:0 0 10px">Promociones destacadas</h2>
+      <p style="opacity:.85;margin-bottom:16px">Masaje relajante, paquete reductor y faciales de alta gama.</p>
+
+      <div class="promos">
+        <article class="card promo">
+          <span class="badge">Oferta</span>
+          <span class="subbadge">Cupos limitados</span>
+          <img src="promo-relax.jpg" alt="Oferta de masaje relajante en Panamá">
+          <h3>Masaje Relajante Premium</h3>
+          <p>Relajación total con terapeutas profesionales.</p>
+          <div class="price-row"><span class="old">$89.00</span><span class="now">$69.00</span></div>
+          <p class="note">Aplica con código <strong>KG-31</strong>.</p>
+        </article>
+
+        <article class="card promo">
+          <span class="badge">Paquete</span>
+          <span class="subbadge">10 sesiones</span>
+          <img src="promo-descontracturante.jpg" alt="Paquete reductor en Panamá">
+          <h3>Paquete Reductor</h3>
+          <p>Sesiones reductivas + evaluación corporal. Resultados progresivos.</p>
+          <p style="font-weight:700;margin:.5rem 0">Desde <span>$299</span></p>
+        </article>
+
+        <article class="card promo">
+          <span class="badge">-30%</span>
+          <span class="subbadge">Temporada</span>
+          <img src="promo-peeling.jpg" alt="Peeling facial unisex en Panamá">
+          <h3>Peeling Facial Unisex</h3>
+          <p>Disminuye manchas y marcas, mejora textura e ilumina.</p>
+          <div class="price-row"><span class="old">$85.00</span><span class="now">$65.00</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre nosotros -->
+  <section id="sobre">
+    <div class="container">
+      <h2 class="muted" style="font-size:40px;margin:0 0 10px">Sobre nosotros</h2>
+      <p style="max-width:820px">
+        En <strong>Figura Rostro KG</strong> combinamos técnicas manuales, aparatología no invasiva y productos profesionales para
+        <em>masaje relajante, paquetes reductores, peeling facial, radiofrecuencia y plasma Fibroblast</em>. Estamos en <strong>Parque Lefevre (Royal Park)</strong>, con atención de <strong>8:00 a.m. a 8:00 p.m.</strong>
+      </p>
+      <ul style="margin:18px 0 28px;line-height:1.9">
+        <li>✔️ Valoración personalizada y seguimiento.</li>
+        <li>✔️ Protocolos para anti-edad, hiperpigmentación y acné.</li>
+        <li>✔️ Equipo amable y cabinas privadas.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Servicios -->
+  <section id="servicios">
+    <div class="container">
+      <h2 class="muted" style="font-size:34px;margin:0 0 10px">Servicios</h2>
+      <p style="opacity:.85;margin-bottom:16px">Faciales, masajes y rejuvenecimiento no invasivo.</p>
+
+      <h3 style="margin:18px 0 8px">Faciales</h3>
+      <div class="cards">
+        <article class="card">
+          <img src="facial-limpieza.jpg" alt="Limpieza facial premium en Panamá">
+          <h3>Limpieza Facial Premium</h3>
+          <p>Higiene profunda + mascarilla nutritiva.</p>
+        </article>
+
+        <article class="card">
+          <img src="peeling.jpg" alt="Peeling facial de alta gama en Panamá">
+          <h3>Peeling Facial de Alta Gama</h3>
+          <p>Tono uniforme y luminoso. Unisex.</p>
+        </article>
+
+        <article class="card">
+          <img src="dermaplaning.jpg" alt="Dermaplaning profesional">
+          <h3>Dermaplaning</h3>
+          <p>Elimina células muertas y vello fino.</p>
+        </article>
+      </div>
+
+      <h3 style="margin:28px 0 8px">Masajes y terapias</h3>
+      <div class="cards">
+        <article class="card">
+          <img src="masaje-relajante.jpg" alt="Masaje relajante en Parque Lefevre">
+          <h3>Masaje Relajante</h3>
+          <p>Alivia el estrés y mejora el descanso.</p>
+        </article>
+        <article class="card">
+          <img src="descontracturante.jpg" alt="Masaje descontracturante para cuello y espalda">
+          <h3>Descontracturante</h3>
+          <p>Ideal para tensión muscular.</p>
+        </article>
+        <article class="card">
+          <img src="drenaje-linfatico.jpg" alt="Drenaje linfático manual">
+          <h3>Drenaje Linfático</h3>
+          <p>Reduce inflamación y mejora circulación.</p>
+        </article>
+      </div>
+
+      <h3 style="margin:28px 0 8px">Rejuvenecimiento</h3>
+      <div class="cards">
+        <article class="card">
+          <img src="radiofrecuencia.jpg" alt="Radiofrecuencia facial en Panamá">
+          <h3>Radiofrecuencia</h3>
+          <p>Tensado cutáneo sin reposo.</p>
+        </article>
+        <article class="card">
+          <img src="microcorrientes.jpg" alt="Yoga facial y microcorrientes">
+          <h3>Yoga Facial / Microcorrientes</h3>
+          <p>Estimula músculos para un lifting natural.</p>
+        </article>
+        <article class="card">
+          <img src="fibroblast.jpg" alt="Plasma Fibroblast en Panamá">
+          <h3>Plasma / Fibroblast</h3>
+          <p>Micro puntos que contraen y estimulan colágeno.</p>
+        </article>
+
+        <div style="text-align:center;margin-top:22px;width:100%">
+          <a href="/promociones-estetica-panama.html" class="btn-primary" style="padding:12px 24px;font-size:17px;border-radius:14px;display:inline-block">
+            Ver todas las promociones
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog -->
+  <section id="blog" style="background:#fafafa">
+    <div class="container">
+      <h2 class="muted" style="font-size:34px;margin:0 0 10px">Del blog</h2>
+      <p style="opacity:.85;margin-bottom:16px">Guías rápidas para elegir tu tratamiento.</p>
+      <div class="cards">
+        <article class="card">
+          <h3><a href="/blog/masaje-relajante-panama.html" style="text-decoration:none;color:#1b0f26">Masaje relajante en Panamá: beneficios y cuándo elegirlo</a></h3>
+          <p style="margin:.5rem 0 0">Reduce estrés, mejora el sueño y libera tensión. Qué esperar y contraindicaciones.</p>
+        </article>
+        <article class="card">
+          <h3><a href="/blog/masajes-reductores-panama.html" style="text-decoration:none;color:#1b0f26">Paquete reductor: cómo potenciar resultados</a></h3>
+          <p style="margin:.5rem 0 0">Qué incluye, frecuencia ideal y consejos de hábitos.</p>
+        </article>
+        <article class="card">
+          <h3><a href="/blog/plasma-fibroblast-panama.html" style="text-decoration:none;color:#1b0f26">Plasma Fibroblast: preguntas frecuentes</a></h3>
+          <p style="margin:.5rem 0 0">Zonas recomendadas, cuidados y tiempos de recuperación.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" style="background:#fafafa">
+    <div class="container contact">
+      <div>
+        <h2 class="muted" style="font-size:34px;margin:0 0 10px">Contacto</h2>
+        <p style="opacity:.9">Royal Park – Av. Ernesto T. Lefevre, Ciudad de Panamá</p>
+        <ul style="list-style:none;padding:0;margin:16px 0;line-height:1.9">
+          <li><strong>WhatsApp:</strong> <a href="https://wa.me/50764746168" target="_blank" rel="noopener">+507 6474-6168</a></li>
+          <li><strong>Teléfono:</strong> +507 6474-6168</li>
+          <li><strong>Horario:</strong> Lunes a Domingo, 8:00 a.m. – 8:00 p.m.</li>
+          <li><strong>Cómo llegar:</strong>
+            <a href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noopener">Abrir en Waze</a> ·
+            <a href="https://maps.google.com/?q=Royal+Park+Ernesto+T+Lefevre+Panama" target="_blank" rel="noopener">Google Maps</a>
+          </li>
+        </ul>
+      </div>
+
+      <form class="card" onsubmit="return false;">
+        <h3 style="margin:0 0 8px">Escríbenos</h3>
+        <p style="margin:0 0 14px;opacity:.7">Te contactamos para confirmar tu cita.</p>
+        <div style="display:grid;gap:10px">
+          <input id="frm-nombre" type="text" placeholder="Nombre" required style="padding:12px;border-radius:12px;border:1px solid #e5e3ea">
+          <input id="frm-telefono" type="tel" placeholder="Teléfono" required style="padding:12px;border-radius:12px;border:1px solid #e5e3ea">
+          <select id="frm-servicio" style="padding:12px;border-radius:12px;border:1px solid #e5e3ea">
+            <option value="un masaje relajante">Masaje relajante</option>
+            <option value="un masaje descontracturante">Masaje descontracturante</option>
+            <option value="masajes reductores">Masajes reductores</option>
+            <option value="un peeling facial">Peeling facial</option>
+            <option value="radiofrecuencia facial">Radiofrecuencia facial</option>
+            <option value="plasma fibroblast">Plasma Fibroblast</option>
+            <option value="una limpieza facial profunda">Limpieza facial profunda</option>
+            <option value="una keratina orgánica">Keratina orgánica</option>
+            <option value="otros tratamientos">Otros tratamientos</option>
+          </select>
+
+          <textarea id="frm-mensaje" placeholder="Mensaje (opcional)" rows="4" style="padding:12px;border-radius:12px;border:1px solid #e5e3ea"></textarea>
+
+          <button type="button"
+            onclick="window.open('https://wa.me/50764746168?text=' + encodeURIComponent('Hola, quiero reservar ' + (document.getElementById('frm-servicio')?.value||'un servicio') + '. Mi nombre es ' + (document.getElementById('frm-nombre')?.value||'') + '. Tel: ' + (document.getElementById('frm-telefono')?.value||'') + '. Detalles: ' + (document.getElementById('frm-mensaje')?.value||'')) ,'_blank')"
+            class="btn-primary" style="width:100%;justify-content:center">
+            Enviar por WhatsApp
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer dark">
+    <div class="container footer-grid">
+      <div class="f-col">
+        <div class="brand-line">
+          <img class="f-logo" src="logo-header-white.png" alt="Figura Rostro KG logo">
+          <div>
+            <h4>Figura Rostro KG</h4>
+            <p style="margin:6px 0 0; opacity:.9;">Parque Lefevre · Royal Park, Ciudad de Panamá.</p>
+            <p style="margin:6px 0 0; opacity:.9;">Atención: 8:00 a.m. – 8:00 p.m.</p>
+            <div class="f-social" style="margin-top:8px">
+              <a href="https://instagram.com/figurarostrokg" target="_blank" rel="noopener">Instagram</a>
+              <span>·</span>
+              <a href="https://facebook.com/figurarostrokg" target="_blank" rel="noopener">Facebook</a>
+              <span>·</span>
+              <a href="https://www.tiktok.com/@figurarostrokg" target="_blank" rel="noopener">TikTok</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="f-col">
+        <h4>Faciales</h4>
+        <ul>
+          <li><a href="/tratamientos-faciales/">Tratamientos faciales</a></li>
+          <li><a href="/peeling-facial.html">Peeling Facial</a></li>
+          <li><a href="/fibroblast.html">Plasma Fibroblast</a></li>
+          <li><a href="/radiofrecuencia-facial.html">Radiofrecuencia Facial</a></li>
+          <li><a href="/lifting-sin-cirugia.html">Lifting sin cirugía</a></li>
+        </ul>
+      </div>
+
+      <div class="f-col">
+        <h4>Masajes & Salón</h4>
+        <ul>
+          <li><a href="/masajes-terapeuticos/">Masajes terapéuticos</a></li>
+          <li><a href="/masaje-relajante.html">Masaje Relajante</a></li>
+          <li><a href="/keratina-organica-biotanix.html">Keratina Orgánica Biotanix</a></li>
+          <li><a href="/masaje-terapeutico-adultos-mayores.html">Adultos Mayores</a></li>
+          <li><a href="/terapia-masaje-discapacidad.html">Terapia adaptada</a></li>
+        </ul>
+      </div>
+
+      <div class="f-col">
+        <h4>Cómo llegar</h4>
+        <div class="map-links">
+          <a href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noopener">Abrir en Waze</a> ·
+          <a href="https://maps.google.com/?q=Royal+Park+Ernesto+T+Lefevre+Panama" target="_blank" rel="noopener">Google Maps</a>
+        </div>
       </div>
     </div>
 
-    <div class="card">
-      <img src="rostro-limpieza-profunda.jpg" alt="Limpieza Profunda con Hidratación">
-      <div class="card-body">
-        <div class="card-title">Limpieza Profunda + Hidratación</div>
-        <span class="old">$69</span><span class="new">$35</span>
-        <a href="https://wa.me/50764746168?text=Quiero%20Limpieza%20Profunda%20Black%20Week" class="btn">Reservar</a>
+    <div class="footer-bottom">
+      <div class="container">
+        © <span id="year"></span> Figura Rostro KG · Todos los derechos reservados
       </div>
     </div>
-
-    <div class="card">
-      <img src="rostro-hidratacion-labios.jpg" alt="Hidratación de labios con dermapen">
-      <div class="card-body">
-        <div class="card-title">Hidratación de Labios + Dermapen</div>
-        <span class="old">$89</span><span class="new">$29.95</span>
-        <a href="https://wa.me/50764746168?text=Quiero%20Hidrataci%C3%B3n%20de%20Labios%20Black%20Week" class="btn">Reservar</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="rostro-peeling-facial.jpg" alt="Peeling Facial Piel Nueva">
-      <div class="card-body">
-        <div class="card-title">Peeling Facial (Piel Nueva)</div>
-        <span class="old">$120</span><span class="new">$55</span>
-        <a href="https://wa.me/50764746168?text=Quiero%20Peeling%20Facial%20Black%20Week" class="btn">Reservar</a>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- FIGURA -->
-  <h2>Figura</h2>
-  <div class="grid">
-
-    <div class="card">
-      <img src="figura-drenaje-moldeador.jpg" alt="Drenaje Moldeador y Reductor">
-      <div class="card-body">
-        <div class="card-title">Drenaje Moldeador + Reductor</div>
-        <span class="old">$69</span><span class="new">$29.95</span>
-        <a href="https://wa.me/50764746168?text=Quiero%20Drenaje%20Moldeador%20Black%20Week" class="btn">Reservar</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="figura-moldeado-gluteos.jpg" alt="Moldeado de glúteos">
-      <div class="card-body">
-        <div class="card-title">Moldeado de Glúteos</div>
-        <span class="old">$69</span><span class="new">$29.95</span>
-        <a href="https://wa.me/50764746168?text=Quiero%20Moldeado%20de%20Gluteos%20Black%20Week" class="btn">Reservar</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="figura-chocoterapia.jpg" alt="Chocoterapia relajante">
-      <div class="card-body">
-        <div class="card-title">Chocoterapia + Relajante</div>
-        <span class="old">$89</span><span class="new">$39.95</span>
-        <a href="https://wa.me/50764746168?text=Quiero%20Chocoterapia%20Black%20Week" class="btn">Reservar</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="figura-masaje-relajante.jpg" alt="Masaje relajante">
-      <div class="card-body">
-        <div class="card-title">Masaje Relajante</div>
-        <span class="old">$49</span><span class="new">$29.95</span>
-        <a href="https://wa.me/50764746168?text=Quiero%20Masaje%20Relajante%20Black%20Week" class="btn">Reservar</a>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- COMBOS -->
-  <h2>Combos</h2>
-  <div class="grid">
-
-    <div class="card">
-      <img src="combo-limpieza-moldeador.jpg" alt="Combo limpieza facial y moldeador">
-      <div class="card-body">
-        <div class="card-title">Limpieza Facial + Moldeador</div>
-        <span class="old">$69</span><span class="new">$45</span>
-        <a href="https://wa.me/50764746168?text=Quiero%20Combo%20Limpieza%20%2B%20Moldeador%20Black%20Week" class="btn">Reservar</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="combo-chocoterapia-limpieza.jpg" alt="Combo chocoterapia y facial">
-      <div class="card-body">
-        <div class="card-title">Chocoterapia + Facial</div>
-        <span class="old">$69</span><span class="new">$55</span>
-        <a href="https://wa.me/50764746168?text=Quiero%20Combo%20Chocoterapia%20Black%20Week" class="btn">Reservar</a>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- REJUVENECIMIENTO -->
-  <h2>Rejuvenecimiento</h2>
-  <div class="grid">
-
-    <div class="card">
-      <img src="rejuv-peeling-renueva.jpg" alt="Peeling Renueva tu Rostro">
-      <div class="card-body">
-        <div class="card-title">Peeling “Renueva tu Rostro”</div>
-        <span class="old">$120</span><span class="new">$59.95</span>
-        <a href="https://wa.me/50764746168?text=Quiero%20Peeling%20Renueva%20tu%20Rostro%20Black%20Week" class="btn">Reservar</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="rejuv-fibroblast-parpados.jpg" alt="Fibroblast en párpados">
-      <div class="card-body">
-        <div class="card-title">Fibroblast Párpados</div>
-        <span class="old">$150</span><span class="new">$75</span>
-        <a href="https://wa.me/50764746168?text=Quiero%20Fibroblast%20Parpados%20Black%20Week" class="btn">Reservar</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="rejuv-estrias-abdomen.jpg" alt="Tratamiento estrías en abdomen">
-      <div class="card-body">
-        <div class="card-title">Estrías en Abdomen</div>
-        <span class="old">$420</span><span class="new">$199</span>
-        <a href="https://wa.me/50764746168?text=Quiero%20Tratamiento%20Estrias%20Black%20Week" class="btn">Reservar</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="rejuv-cicatrices-cuerpo.jpg" alt="Tratamiento cicatrices en cuerpo">
-      <div class="card-body">
-        <div class="card-title">Cicatrices en Cuerpo</div>
-        <span class="old">$120</span><span class="new">$60</span>
-        <a href="https://wa.me/50764746168?text=Quiero%20Tratamiento%20Cicatrices%20Black%20Week" class="btn">Reservar</a>
-      </div>
-    </div>
-
-  </div>
-
-  <footer>
-    <a href="/">Volver al Home</a>
-    <a href="/masajes-terapeuticos.html">Masajes terapéuticos</a>
-    <a href="/tratamientos-faciales.html">Tratamientos faciales</a>
-    <a href="https://wa.me/50764746168">WhatsApp 6474-6168</a>
-    © Figura Rostro KG
   </footer>
 
-</div>
-</body>
-</html>
+  <!-- FAB -->
+  <div class="fr-fab" aria-label="Accesos rápidos">
+    <a class="fr-ic fr-wa" href="https://wa.me/50764746168" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.94 14.5L2 22l5.7-1.5A10 10 0 1 0 12 2zm5.5 14.1c-.24.68-1.4 1.3-1.96 1.34-.5.03-1.14.05-1.84-.12-.42-.1-.97-.31-1.67-.61-2.94-1.27-4.86-4.2-5.01-4.4-.15-.2-1.2-1.6-1.2-3.06 0-1.45.76-2.16 1.03-2.45.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.24.59.82 2.05.9 2.2.07.15.12.33.01.53-.1.2-.15.33-.3.51-.15.18-.31.4-.44.54-.15.15-.31.32-.13.62.18.3.8 1.3 1.71 2.1 1.18 1.05 2.17 1.37 2.47 1.52.3.15.48.13.66-.08.18-.2.76-.89.96-1.2.2-.3.41-.26.67-.15.26.1 1.64.77 1.92.91.29.15.48.22.55.34.07.12.07.7-.17 1.38z"/></svg>
+    </a>
+    <a class="fr-ic fr-waze" href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noopener" aria-label="Waze" title="Waze">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c5.5 0 10 3.9 10 8.7 0 3.9-3 7.2-7.2 8.2-.5.1-.7.4-.9.8-.5 1-1.4 2.1-2.9 2.1-1.6 0-2.4-1.1-2.9-2.1-.2-.4-.4-.7-.9-.8C5 17.9 2 14.6 2 10.7 2 5.9 6.5 2 12 2zm-6 9a1 1 0 110-2 1 1 0 010 2zm5 0a1 1 0 110
