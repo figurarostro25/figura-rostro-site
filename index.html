@@ -404,6 +404,125 @@
 </head>
 <body>
 
+  <!-- Estilos extra para gorro, blog ampliado y lluvia de pinos -->
+  <style>
+    /* Gorro navideño dibujado en CSS sobre el logo */
+    header .brand{
+      position:relative;
+      display:inline-block;
+    }
+    header .brand::after{
+      content:"";
+      position:absolute;
+      top:-6px;
+      right:6px;
+      width:26px;
+      height:18px;
+      border-left:14px solid transparent;
+      border-right:14px solid transparent;
+      border-bottom:18px solid #d62828;
+      border-radius:4px;
+      transform:rotate(18deg);
+    }
+    header .brand::before{
+      content:"";
+      position:absolute;
+      bottom:4px;
+      right:8px;
+      width:18px;
+      height:6px;
+      background:#fff;
+      border-radius:999px;
+      transform:rotate(18deg);
+    }
+    @media (max-width:768px){
+      header .brand::after{
+        top:-4px;right:4px;
+        width:20px;height:14px;
+        border-left-width:11px;
+        border-right-width:11px;
+        border-bottom-width:14px;
+      }
+      header .brand::before{
+        bottom:3px;right:6px;
+        width:14px;height:5px;
+      }
+    }
+
+    /* Blog ampliado: tarjetas más grandes con imagen + texto */
+    .cards-blog .card{
+      display:grid;
+      grid-template-columns:minmax(0,1.15fr) minmax(0,1.6fr);
+      gap:18px;
+      align-items:flex-start;
+    }
+    .cards-blog .blog-media img{
+      border-radius:14px;
+      width:100%;
+      height:100%;
+      max-height:220px;
+      object-fit:cover;
+    }
+    .cards-blog .blog-copy h3{
+      margin-top:0;
+      margin-bottom:8px;
+      font-size:1.1rem;
+    }
+    .cards-blog .blog-copy p{
+      margin:0 0 8px;
+      font-size:.92rem;
+      line-height:1.6;
+    }
+    @media (max-width:900px){
+      .cards-blog .card{
+        grid-template-columns:1fr;
+      }
+      .cards-blog .blog-media img{
+        max-height:none;
+      }
+    }
+
+    /* Lluvia de arbolitos de Navidad */
+    .xmas-tree{
+      position:fixed;
+      top:-40px;
+      width:18px;
+      height:28px;
+      z-index:5;
+      pointer-events:none;
+      opacity:0;
+      animation:xmasTreeFall linear infinite;
+    }
+    .xmas-tree::before{
+      content:"";
+      position:absolute;
+      bottom:0;
+      left:50%;
+      width:6px;
+      height:8px;
+      background:#8b5a2b;
+      transform:translateX(-50%);
+      border-radius:2px;
+    }
+    .xmas-tree::after{
+      content:"";
+      position:absolute;
+      bottom:8px;
+      left:50%;
+      width:0;
+      height:0;
+      border-left:9px solid transparent;
+      border-right:9px solid transparent;
+      border-bottom:20px solid #2ecc71;
+      transform:translateX(-50%);
+    }
+    @keyframes xmasTreeFall{
+      0%{transform:translateY(0) translateX(0) rotate(0deg); opacity:0;}
+      10%{opacity:.9;}
+      100%{transform:translateY(110vh) translateX(40px) rotate(20deg); opacity:0;}
+    }
+  </style>
+
   <!-- Header -->
   <header>
     <div class="container header-inner">
@@ -413,8 +532,7 @@
 
       <nav class="site-nav" aria-label="Menú principal">
         <ul class="menu">
-          <li><a href="#promos">Promociones</a></li>
-          <!-- Black Week ahora es Menú -->
+          <!-- Solo Menú, sin Promociones ni Blog -->
           <li><a href="/menu.html">Menú</a></li>
 
           <li class="has-sub">
@@ -437,12 +555,11 @@
             </ul>
           </li>
           <li><a href="#sobre">Nosotros</a></li>
-          <li><a href="#blog">Blog</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
       </nav>
 
-      <!-- Botón ahora es Agendar -->
+      <!-- Botón Agendar -->
       <a id="menuBtn"
          href="https://figurarostro.life/reservar-cita-figura-rostro.html"
          class="btn-primary"
@@ -455,8 +572,8 @@
   <!-- HERO -->
   <section class="hero">
     <div class="content">
-      <h1>Masajes, Faciales y Plasma Fibroblast en Parque Lefevre</h1>
-      <p>Estética facial y corporal con resultados reales: masaje relajante y descontracturante, masajes reductores, peeling facial, radiofrecuencia y plasma Fibroblast.</p>
+      <h1>Masajes, faciales y plasma Fibroblast en Parque Lefevre</h1>
+      <p>Estética facial y corporal con resultados reales: masaje relajante y descontracturante, masajes reductores, peeling facial, radiofrecuencia y plasma Fibroblast para rejuvenecer sin cirugía.</p>
       <a href="#contacto" class="btn-primary" style="margin-top:10px">Reservar ahora</a>
 
       <!-- BOTÓN TEMPORAL BLACK WEEK -->
@@ -476,13 +593,13 @@
       </div>
       <div class="video-copy">
         <h3>Plasma Fibroblast: lifting sin cirugía</h3>
-        <p>Suaviza arrugas y flacidez estimulando colágeno. Ideal para párpados, código de barras y líneas finas.</p>
+        <p>Suaviza arrugas y flacidez estimulando colágeno. Ideal para párpados, código de barras, líneas finas y zonas con flacidez leve.</p>
         <p><a class="btn-primary" href="https://figurarostro.life/chat-citas.html" target="_blank" rel="noopener">Reservar cita</a></p>
       </div>
     </div>
   </section>
 
-  <!-- Promos -->
+  <!-- Promos (no está en el menú, pero sí en el home) -->
   <section id="promos" style="background:#faf7ff">
     <div class="container">
       <h2 class="muted" style="font-size:34px;margin:0 0 10px">Promociones destacadas</h2>
@@ -494,7 +611,7 @@
           <span class="subbadge">Cupos limitados</span>
           <img src="promo-relax.jpg" alt="Oferta de masaje relajante en Panamá">
           <h3>Masaje Relajante Premium</h3>
-          <p>Relajación total con terapeutas profesionales.</p>
+          <p>Relajación total con terapeutas profesionales para soltar tensiones y dormir mejor.</p>
           <div class="price-row"><span class="old">$89.00</span><span class="now">$69.00</span></div>
           <p class="note">Aplica con código <strong>KG-31</strong>.</p>
         </article>
@@ -504,7 +621,7 @@
           <span class="subbadge">10 sesiones</span>
           <img src="promo-descontracturante.jpg" alt="Paquete reductor en Panamá">
           <h3>Paquete Reductor</h3>
-          <p>Sesiones reductivas + evaluación corporal. Resultados progresivos.</p>
+          <p>Sesiones reductoras, drenaje y evaluación corporal. Resultados progresivos para contorno y celulitis.</p>
           <p style="font-weight:700;margin:.5rem 0">Desde <span>$299</span></p>
         </article>
 
@@ -513,7 +630,7 @@
           <span class="subbadge">Temporada</span>
           <img src="promo-peeling.jpg" alt="Peeling facial unisex en Panamá">
           <h3>Peeling Facial Unisex</h3>
-          <p>Disminuye manchas y marcas, mejora textura e ilumina.</p>
+          <p>Disminuye manchas finas y marcas, mejora textura e ilumina el rostro.</p>
           <div class="price-row"><span class="old">$85.00</span><span class="now">$65.00</span></div>
         </article>
       </div>
@@ -529,9 +646,9 @@
         <em>masaje relajante, paquetes reductores, peeling facial, radiofrecuencia y plasma Fibroblast</em>. Estamos en <strong>Parque Lefevre (Royal Park)</strong>, con atención de <strong>8:00 a.m. a 8:00 p.m.</strong>
       </p>
       <ul style="margin:18px 0 28px;line-height:1.9">
-        <li>✔️ Valoración personalizada y seguimiento.</li>
-        <li>✔️ Protocolos para anti-edad, hiperpigmentación y acné.</li>
-        <li>✔️ Equipo amable y cabinas privadas.</li>
+        <li>✔️ Valoración personalizada y seguimiento por esteticista.</li>
+        <li>✔️ Protocolos para anti-edad, hiperpigmentación, acné y contorno corporal.</li>
+        <li>✔️ Cabinas privadas, trato humano y ambiente relajante.</li>
       </ul>
     </div>
   </section>
@@ -547,19 +664,19 @@
         <article class="card">
           <img src="facial-limpieza.jpg" alt="Limpieza facial premium en Panamá">
           <h3>Limpieza Facial Premium</h3>
-          <p>Higiene profunda + mascarilla nutritiva.</p>
+          <p>Higiene profunda, extracción controlada y mascarilla nutritiva para oxigenar la piel.</p>
         </article>
 
         <article class="card">
           <img src="peeling.jpg" alt="Peeling facial de alta gama en Panamá">
           <h3>Peeling Facial de Alta Gama</h3>
-          <p>Tono uniforme y luminoso. Unisex.</p>
+          <p>Tono más uniforme y luminoso con protocolos adaptados a tu tipo de piel.</p>
         </article>
 
         <article class="card">
           <img src="dermaplaning.jpg" alt="Dermaplaning profesional">
           <h3>Dermaplaning</h3>
-          <p>Elimina células muertas y vello fino.</p>
+          <p>Elimina células muertas y vello fino para dejar la piel más lisa y receptiva a activos.</p>
         </article>
       </div>
 
@@ -568,17 +685,17 @@
         <article class="card">
           <img src="masaje-relajante.jpg" alt="Masaje relajante en Parque Lefevre">
           <h3>Masaje Relajante</h3>
-          <p>Alivia el estrés y mejora el descanso.</p>
+          <p>Alivia el estrés, mejora el descanso y ayuda a desconectar de la rutina diaria.</p>
         </article>
         <article class="card">
           <img src="descontracturante.jpg" alt="Masaje descontracturante para cuello y espalda">
           <h3>Descontracturante</h3>
-          <p>Ideal para tensión muscular.</p>
+          <p>Ideal para tensión en cuello, espalda y hombros por malas posturas o carga física.</p>
         </article>
         <article class="card">
           <img src="drenaje-linfatico.jpg" alt="Drenaje linfático manual">
           <h3>Drenaje Linfático</h3>
-          <p>Reduce inflamación y mejora circulación.</p>
+          <p>Ayuda a reducir inflamación, retención de líquidos y a mejorar la sensación de pesadez.</p>
         </article>
       </div>
 
@@ -587,17 +704,17 @@
         <article class="card">
           <img src="radiofrecuencia.jpg" alt="Radiofrecuencia facial en Panamá">
           <h3>Radiofrecuencia</h3>
-          <p>Tensado cutáneo sin reposo.</p>
+          <p>Tensado cutáneo sin reposo, estimula colágeno en rostro y cuello.</p>
         </article>
         <article class="card">
           <img src="microcorrientes.jpg" alt="Yoga facial y microcorrientes">
           <h3>Yoga Facial / Microcorrientes</h3>
-          <p>Estimula músculos para un lifting natural.</p>
+          <p>Ejercita musculatura facial para un lifting suave y natural.</p>
         </article>
         <article class="card">
           <img src="fibroblast.jpg" alt="Plasma Fibroblast en Panamá">
           <h3>Plasma / Fibroblast</h3>
-          <p>Micro puntos que contraen y estimulan colágeno.</p>
+          <p>Micro puntos que contraen la piel y estimulan colágeno para rejuvenecer sin cirugía.</p>
         </article>
 
         <div style="text-align:center;margin-top:22px;width:100%">
@@ -609,29 +726,96 @@
     </div>
   </section>
 
-  <!-- Blog -->
+  <!-- Blog ampliado en 3 bloques -->
   <section id="blog" style="background:#fafafa">
     <div class="container">
-      <h2 class="muted" style="font-size:34px;margin:0 0 10px">Del blog</h2>
-      <p style="opacity:.85;margin-bottom:16px">Guías rápidas para elegir tu tratamiento.</p>
-      <div class="cards">
+      <h2 class="muted" style="font-size:34px;margin:0 0 10px">Tratamientos estrella para tu rostro y figura</h2>
+      <p style="opacity:.85;margin-bottom:22px;max-width:860px">
+        Te ayudamos a elegir entre faciales avanzados, plasma Fibroblast y paquetes reductores según tu objetivo: rejuvenecer, mejorar textura o moldear tu figura.
+      </p>
+
+      <div class="cards cards-blog">
+        <!-- Bloque 1: Hollywood + Peeling + Limpieza profunda -->
         <article class="card">
-          <h3><a href="/blog/masaje-relajante-panama.html" style="text-decoration:none;color:#1b0f26">Masaje relajante en Panamá: beneficios y cuándo elegirlo</a></h3>
-          <p style="margin:.5rem 0 0">Reduce estrés, mejora el sueño y libera tensión. Qué esperar y contraindicaciones.</p>
+          <div class="blog-media">
+            <img src="blog-hollywood-peeling.jpg" alt="Facial Hollywood y peeling facial en Panamá">
+          </div>
+          <div class="blog-copy">
+            <h3>Facial Hollywood + Peeling: piel más luminosa y uniforme</h3>
+            <p>
+              El <strong>facial Hollywood</strong> es un tratamiento pensado para dar brillo inmediato, afinar poros y mejorar la textura de la piel, ideal antes de eventos o sesiones de foto.
+              Se puede complementar con un <strong>peeling facial</strong> suave para trabajar manchas finas y piel apagada.
+            </p>
+            <p>
+              En Figura Rostro KG adaptamos la intensidad del peeling según tu tipo de piel, historial de sensibilidad y objetivos (luminosidad, manchas, marcas de acné).
+              Siempre incluye <strong>limpieza profunda</strong>, mascarilla y recomendaciones de cuidado en casa.
+            </p>
+            <p>
+              Es una excelente opción para quienes buscan un <strong>efecto “piel de vidrio”</strong> sin llegar a tratamientos agresivos ni periodos largos de reposo.
+            </p>
+            <a href="/peeling-facial.html" class="btn-primary" style="margin-top:6px;padding:10px 18px;font-size:.9rem;border-radius:12px;">
+              Ver detalles del facial
+            </a>
+          </div>
         </article>
+
+        <!-- Bloque 2: Plasma Fibroblast -->
         <article class="card">
-          <h3><a href="/blog/masajes-reductores-panama.html" style="text-decoration:none;color:#1b0f26">Paquete reductor: cómo potenciar resultados</a></h3>
-          <p style="margin:.5rem 0 0">Qué incluye, frecuencia ideal y consejos de hábitos.</p>
+          <div class="blog-media">
+            <img src="blog-fibroblast-parpados-abdomen.jpg" alt="Plasma Fibroblast en párpados y abdomen">
+          </div>
+          <div class="blog-copy">
+            <h3>Plasma Fibroblast: párpados y abdomen sin cirugía</h3>
+            <p>
+              El <strong>plasma Fibroblast</strong> trabaja con pequeños puntos de calor controlado sobre la superficie de la piel. Esto produce una ligera contracción
+              inmediata y, a la vez, estimula la producción de colágeno en las semanas siguientes.
+            </p>
+            <p>
+              Es muy solicitado para <strong>párpados caídos</strong> (superiores e inferiores), líneas de expresión alrededor de ojos y boca, así como
+              zonas con <strong>flacidez suave en abdomen</strong> después de cambios de peso o embarazos.
+            </p>
+            <p>
+              Se realiza tras una valoración previa, explicación de cuidados, fotos antes y después, y requiere respetar las indicaciones de protección solar y no manipular las
+              pequeñas costras que aparecen luego del procedimiento.
+            </p>
+            <p>
+              Está orientado a personas que buscan <strong>un efecto lifting sin pasar por quirófano</strong>, con resultados progresivos y naturales.
+            </p>
+            <a href="/fibroblast.html" class="btn-primary" style="margin-top:6px;padding:10px 18px;font-size:.9rem;border-radius:12px;">
+              Más información sobre Fibroblast
+            </a>
+          </div>
         </article>
+
+        <!-- Bloque 3: Paquete reductor + drenaje -->
         <article class="card">
-          <h3><a href="/blog/plasma-fibroblast-panama.html" style="text-decoration:none;color:#1b0f26">Plasma Fibroblast: preguntas frecuentes</a></h3>
-          <p style="margin:.5rem 0 0">Zonas recomendadas, cuidados y tiempos de recuperación.</p>
+          <div class="blog-media">
+            <img src="blog-reductores-drenaje.jpg" alt="Paquete reductor y drenaje linfático">
+          </div>
+          <div class="blog-copy">
+            <h3>Paquete reductor y drenaje linfático: figura más ligera y definida</h3>
+            <p>
+              Nuestros <strong>paquetes reductores</strong> combinan masaje reductor, técnicas de moldeamiento y, según el caso, drenaje linfático manual o con apoyo de aparatología.
+              Buscan mejorar contorno, apariencia de celulitis y sensación de pesadez.
+            </p>
+            <p>
+              El <strong>drenaje linfático</strong> ayuda a movilizar líquidos, desinflamar y apoyar procesos de recuperación después de ciertos tratamientos o cambios de estilo de vida.
+              Suele recomendarse en ciclos de varias sesiones para notar cambios progresivos.
+            </p>
+            <p>
+              Durante la valoración revisamos hábitos, zonas de mayor preocupación, posibles contraindicaciones y diseñamos un <strong>plan de sesiones</strong> acorde a tu objetivo
+              (definir cintura, mejorar piernas, disminuir volumen general, etc.).
+            </p>
+            <a href="/masajes-terapeuticos/" class="btn-primary" style="margin-top:6px;padding:10px 18px;font-size:.9rem;border-radius:12px;">
+              Ver paquetes reductores
+            </a>
+          </div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- Contacto -->
+  <!-- Contacto (sin formulario) -->
   <section id="contacto" style="background:#fafafa">
     <div class="container contact">
       <div>
@@ -639,42 +823,18 @@
         <p style="opacity:.9">Royal Park – Av. Ernesto T. Lefevre, Ciudad de Panamá</p>
         <ul style="list-style:none;padding:0;margin:16px 0;line-height:1.9">
           <li><strong>WhatsApp:</strong> <a href="https://wa.me/50764746168" target="_blank" rel="noopener">+507 6474-6168</a></li>
-          <li><strong>Teléfono:</strong> +507 6474-6168</li>
+          <li><strong>Teléfono:</strong> <a href="tel:+50764746168">+507 6474-6168</a></li>
           <li><strong>Horario:</strong> Lunes a Domingo, 8:00 a.m. – 8:00 p.m.</li>
           <li><strong>Cómo llegar:</strong>
             <a href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noopener">Abrir en Waze</a> ·
             <a href="https://maps.google.com/?q=Royal+Park+Ernesto+T+Lefevre+Panama" target="_blank" rel="noopener">Google Maps</a>
           </li>
         </ul>
+        <p style="margin:8px 0 0;opacity:.85;max-width:520px">
+          Para agendar tu cita puedes escribirnos directamente por <strong>WhatsApp</strong>, llamarnos por teléfono
+          o usar el <strong>chat en vivo (PureChat)</strong> que verás en la parte baja de la pantalla.
+        </p>
       </div>
-
-      <form class="card" onsubmit="return false;">
-        <h3 style="margin:0 0 8px">Escríbenos</h3>
-        <p style="margin:0 0 14px;opacity:.7">Te contactamos para confirmar tu cita.</p>
-        <div style="display:grid;gap:10px">
-          <input id="frm-nombre" type="text" placeholder="Nombre" required style="padding:12px;border-radius:12px;border:1px solid #e5e3ea">
-          <input id="frm-telefono" type="tel" placeholder="Teléfono" required style="padding:12px;border-radius:12px;border:1px solid #e5e3ea">
-          <select id="frm-servicio" style="padding:12px;border-radius:12px;border:1px solid #e5e3ea">
-            <option value="un masaje relajante">Masaje relajante</option>
-            <option value="un masaje descontracturante">Masaje descontracturante</option>
-            <option value="masajes reductores">Masajes reductores</option>
-            <option value="un peeling facial">Peeling facial</option>
-            <option value="radiofrecuencia facial">Radiofrecuencia facial</option>
-            <option value="plasma fibroblast">Plasma Fibroblast</option>
-            <option value="una limpieza facial profunda">Limpieza facial profunda</option>
-            <option value="una keratina orgánica">Keratina orgánica</option>
-            <option value="otros tratamientos">Otros tratamientos</option>
-          </select>
-
-          <textarea id="frm-mensaje" placeholder="Mensaje (opcional)" rows="4" style="padding:12px;border-radius:12px;border:1px solid #e5e3ea"></textarea>
-
-          <button type="button"
-            onclick="window.open('https://wa.me/50764746168?text=' + encodeURIComponent('Hola, quiero reservar ' + (document.getElementById('frm-servicio')?.value||'un servicio') + '. Mi nombre es ' + (document.getElementById('frm-nombre')?.value||'') + '. Tel: ' + (document.getElementById('frm-telefono')?.value||'') + '. Detalles: ' + (document.getElementById('frm-mensaje')?.value||'')) ,'_blank')"
-            class="btn-primary" style="width:100%;justify-content:center">
-            Enviar por WhatsApp
-          </button>
-        </div>
-      </form>
     </div>
   </section>
 
@@ -726,6 +886,9 @@
         <div class="map-links">
           <a href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noopener">Abrir en Waze</a> ·
           <a href="https://maps.google.com/?q=Royal+Park+Ernesto+T+Lefevre+Panama" target="_blank" rel="noopener">Google Maps</a>
+          <p style="margin:10px 0 0;font-size:.9rem;opacity:.9;">
+            También puedes chatear con nosotros por <strong>WhatsApp</strong> o usar el <strong>chat en vivo (PureChat)</strong> para resolver dudas y agendar tu cita.
+          </p>
         </div>
       </div>
     </div>
@@ -764,41 +927,43 @@
     </a>
   </div>
 
+  <!-- Scripts: año, popup Black Week y lluvia de pinos en diciembre -->
   <script>
-    function startXmasPetals(){
-      const MAX_PETALS = 40;
+    function startXmasTrees(){
+      const MAX_TREES = 36;
       let current = 0;
 
-      function addPetal(){
-        if (current >= MAX_PETALS) return;
-        const petal = document.createElement('span');
-        petal.className = 'xmas-petal';
-
-        const size = 10 + Math.random()*10;
-        petal.style.width = size + 'px';
-        petal.style.height = (size*1.4) + 'px';
-        petal.style.left = Math.random()*100 + 'vw';
-        petal.style.animationDuration = (10 + Math.random()*8) + 's';
-        petal.style.animationDelay = (Math.random()*5) + 's';
-
-        document.body.appendChild(petal);
+      function addTree(){
+        if (current >= MAX_TREES) return;
+        const t = document.createElement('span');
+        t.className = 'xmas-tree';
+        t.style.left = Math.random() * 100 + 'vw';
+        const dur = 10 + Math.random() * 8;
+        t.style.animationDuration = dur + 's';
+        t.style.animationDelay = (Math.random() * 5) + 's';
+        document.body.appendChild(t);
         current++;
-
-        const life = (18*1000)+5000;
-        setTimeout(()=>{ petal.remove(); current--; }, life);
+        const life = (dur + 5) * 1000;
+        setTimeout(function(){
+          if (t && t.parentNode) t.parentNode.removeChild(t);
+          current--;
+        }, life);
       }
 
-      for(let i=0;i<14;i++) addPetal();
-      setInterval(addPetal, 900);
+      for (let i = 0; i < 12; i++){ addTree(); }
+      setInterval(addTree, 1200);
     }
 
-    // Año en el footer + popup Black Week + navidad solo en diciembre
+    function closeBWModal(){
+      const modal = document.getElementById('bw-modal');
+      if (modal) modal.style.display = 'none';
+    }
+
     (function(){
       const now = new Date();
       const y = document.getElementById('year');
       if (y) y.textContent = now.getFullYear();
 
-      // Black Week popup (una vez por sesión)
       const MODAL_KEY = 'fr_bw_popup_2025_seen';
       const modal = document.getElementById('bw-modal');
       if (modal && !sessionStorage.getItem(MODAL_KEY)) {
@@ -806,17 +971,11 @@
         sessionStorage.setItem(MODAL_KEY, '1');
       }
 
-      // Navidad: solo diciembre (mes 11)
+      // Lluvia de pinos solo en diciembre (mes 11)
       if (now.getMonth() === 11) {
-        document.body.classList.add('xmas-on');
-        startXmasPetals();
+        startXmasTrees();
       }
     })();
-
-    function closeBWModal(){
-      const modal = document.getElementById('bw-modal');
-      if (modal) modal.style.display = 'none';
-    }
   </script>
 
   <!-- PURECHAT -->
@@ -838,4 +997,5 @@
     })();
   </script>
 </body>
+
 </html>
