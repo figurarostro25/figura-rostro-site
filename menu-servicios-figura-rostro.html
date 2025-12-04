@@ -13,20 +13,22 @@
   <style>
     :root{
       --brand:#5b2580;
-      --brand-soft:#7b3aa6;
-      --bg:#f7f3ff;
+      --brand-soft:#b896ff;
+      --bg:#160c1f;
       --card:#ffffff;
-      --text:#1a0f26;
+      --text-card:#1a0f26;
     }
 
     *{box-sizing:border-box;}
+    img{max-width:100%;display:block;}
+
     body{
       margin:0;
       font-family:Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:radial-gradient(circle at top,#f0e8ff 0,#f7f3ff 38%,#efe6ff 100%);
-      color:var(--text);
+      /* Fondo más oscuro para resaltar logo e imágenes */
+      background:radial-gradient(circle at top,#2c1450 0,#160c1f 45%,#0d0715 100%);
+      color:#f5eaff;
     }
-    img{max-width:100%;display:block;}
 
     .container{
       max-width:1120px;
@@ -46,12 +48,12 @@
       display:inline-block;
       padding:6px 16px;
       border-radius:999px;
-      border:1px solid rgba(91,37,128,.18);
+      border:1px solid rgba(255,255,255,.4);
       font-size:.8rem;
       text-transform:uppercase;
       letter-spacing:.12em;
-      color:var(--brand);
-      background:#fff;
+      color:#ffe9ff;
+      background:rgba(0,0,0,.15);
       margin-bottom:8px;
     }
     h1{
@@ -59,16 +61,17 @@
       font-size:clamp(32px,5.4vw,46px);
       font-weight:800;
       letter-spacing:.02em;
-      color:var(--brand);
+      color:#ffffff;
       margin:0 0 6px;
     }
     .sub{
       text-align:center;
-      opacity:.88;
+      opacity:.96;
       margin:0 auto 24px;
       max-width:720px;
       font-size:.95rem;
       line-height:1.6;
+      color:#f0e6ff;
     }
 
     /* SECCIONES */
@@ -85,7 +88,7 @@
     .section-title{
       font-size:1.3rem;
       font-weight:800;
-      color:var(--brand);
+      color:#f8f0ff;
     }
     .section-label{
       font-size:.8rem;
@@ -94,17 +97,19 @@
       color:var(--brand-soft);
     }
     .section-desc{
-      opacity:.85;
+      opacity:.9;
       font-size:.9rem;
       margin:0 0 14px;
+      color:#e6dafd;
     }
 
     .section-box{
       background:var(--card);
       border-radius:22px;
       padding:18px 20px 20px;
-      box-shadow:0 18px 40px rgba(40,0,80,.06);
-      border:1px solid rgba(91,37,128,.08);
+      box-shadow:0 18px 40px rgba(5,0,20,.45);
+      border:1px solid rgba(255,255,255,.08);
+      color:var(--text-card);
     }
 
     /* GRID DE TARJETAS GRANDES */
@@ -118,10 +123,11 @@
       border-radius:20px;
       overflow:hidden;
       border:1px solid rgba(0,0,0,.04);
-      box-shadow:0 8px 20px rgba(20,0,40,.05);
+      box-shadow:0 8px 20px rgba(20,0,40,.08);
       display:flex;
       flex-direction:column;
       height:100%;
+      color:var(--text-card);
     }
     .card-img-wrap{
       width:100%;
@@ -159,7 +165,7 @@
       font-weight:600;
     }
     .card-link a{
-      color:var(--brand-soft);
+      color:#7b3aa6;
       text-decoration:none;
     }
     .card-link a:hover{
@@ -189,12 +195,12 @@
       text-decoration:none;
       font-size:.92rem;
       font-weight:700;
-      box-shadow:0 12px 28px rgba(40,0,80,.35);
+      box-shadow:0 12px 28px rgba(0,0,0,.55);
     }
 
     /* FOOTER */
     footer{
-      background:#160c1f;
+      background:#12091d;
       color:#f5eaff;
       margin-top:10px;
     }
@@ -228,29 +234,50 @@
       text-underline-offset:3px;
     }
 
-    /* WhatsApp FAB */
-    .wa-fab{
+    /* BOTONES FLOTANTES WhatsApp + Waze */
+    .fab-wrap{
       position:fixed;
       right:18px;
       bottom:18px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      z-index:50;
+    }
+    .fab{
       width:58px;
       height:58px;
       border-radius:999px;
-      background:#25D366;
       display:flex;
       align-items:center;
       justify-content:center;
       text-decoration:none;
-      box-shadow:0 12px 26px rgba(0,0,0,.35);
-      z-index:50;
+      box-shadow:0 12px 26px rgba(0,0,0,.45);
     }
-    .wa-fab svg{width:30px;height:30px;fill:#fff;}
+    .fab svg{
+      width:30px;
+      height:30px;
+      fill:#fff;
+    }
+    .fab-wa{background:#25D366;}
+    .fab-waze{background:#0099ff;}
+
+    /* En móvil: solo WA y Waze pequeños, lado izquierdo al centro */
     @media (max-width:600px){
-      .wa-fab{
-        right:14px;
-        bottom:14px;
-        width:54px;
-        height:54px;
+      .fab-wrap{
+        right:auto;
+        bottom:50%;
+        left:10px;
+        transform:translateY(50%);
+      }
+      .fab{
+        width:46px;
+        height:46px;
+        box-shadow:0 8px 18px rgba(0,0,0,.4);
+      }
+      .fab svg{
+        width:24px;
+        height:24px;
       }
     }
   </style>
@@ -629,12 +656,19 @@
   </div>
 </footer>
 
-<!-- Botón flotante WhatsApp -->
-<a class="wa-fab" href="https://wa.me/50764746168" target="_blank" rel="noopener" aria-label="Chatear por WhatsApp">
-  <svg viewBox="0 0 24 24">
-    <path d="M12 2a10 10 0 0 0-8.94 14.5L2 22l5.7-1.5A10 10 0 1 0 12 2zm5.5 14.1c-.24.68-1.4 1.3-1.96 1.34-.5.03-1.14.05-1.84-.12-.42-.1-.97-.31-1.67-.61-2.94-1.27-4.86-4.2-5.01-4.4-.15-.2-1.2-1.6-1.2-3.06 0-1.45.76-2.16 1.03-2.45.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.24.59.82 2.05.9 2.2.07.15.12.33.01.53-.1.2-.15.33-.3.51-.15.18-.31.4-.44.54-.15.15-.31.32-.13.62.18.3.8 1.3 1.71 2.1 1.18 1.05 2.17 1.37 2.47 1.52.3.15.48.13.66-.08.18-.2.76-.89.96-1.2.2-.3.41-.26.67-.15.26.1 1.64.77 1.92.91.29.15.48.22.55.34.07.12.07.7-.17 1.38z"/>
-  </svg>
-</a>
+<!-- BOTONES FLOTANTES: WhatsApp + Waze -->
+<div class="fab-wrap" aria-label="Accesos rápidos">
+  <a class="fab fab-wa" href="https://wa.me/50764746168" target="_blank" rel="noopener" aria-label="Chatear por WhatsApp">
+    <svg viewBox="0 0 24 24">
+      <path d="M12 2a10 10 0 0 0-8.94 14.5L2 22l5.7-1.5A10 10 0 1 0 12 2zm5.5 14.1c-.24.68-1.4 1.3-1.96 1.34-.5.03-1.14.05-1.84-.12-.42-.1-.97-.31-1.67-.61-2.94-1.27-4.86-4.2-5.01-4.4-.15-.2-1.2-1.6-1.2-3.06 0-1.45.76-2.16 1.03-2.45.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.24.59.82 2.05.9 2.2.07.15.12.33.01.53-.1.2-.15.33-.3.51-.15.18-.31.4-.44.54-.15.15-.31.32-.13.62.18.3.8 1.3 1.71 2.1 1.18 1.05 2.17 1.37 2.47 1.52.3.15.48.13.66-.08.18-.2.76-.89.96-1.2.2-.3.41-.26.67-.15.26.1 1.64.77 1.92.91.29.15.48.22.55.34.07.12.07.7-.17 1.38z"/>
+    </svg>
+  </a>
+  <a class="fab fab-waze" href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noopener" aria-label="Abrir Waze">
+    <svg viewBox="0 0 24 24">
+      <path d="M12 2c5.5 0 10 3.9 10 8.7 0 3.9-3 7.2-7.2 8.2-.5.1-.7.4-.9.8-.5 1-1.4 2.1-2.9 2.1-1.6 0-2.4-1.1-2.9-2.1-.2-.4-.4-.7-.9-.8C5 17.9 2 14.6 2 10.7 2 5.9 6.5 2 12 2zm-6 9a1 1 0 110-2 1 1 0 010 2zm5 0a1 1 0 110-2 1 1 0 010 2zm5 0a1 1 0 110-2 1 1 0 010 2z"/>
+    </svg>
+  </a>
+</div>
 
 <!-- PURECHAT -->
 <script type='text/javascript' data-cfasync='false'>
