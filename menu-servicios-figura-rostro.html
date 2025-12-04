@@ -25,7 +25,6 @@
     body{
       margin:0;
       font-family:Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      /* Fondo más oscuro para resaltar logo e imágenes */
       background:radial-gradient(circle at top,#2c1450 0,#160c1f 45%,#0d0715 100%);
       color:#f5eaff;
     }
@@ -128,6 +127,7 @@
       flex-direction:column;
       height:100%;
       color:var(--text-card);
+      position:relative;
     }
     .card-img-wrap{
       width:100%;
@@ -140,7 +140,7 @@
       display:block;
     }
     .card-body{
-      padding:12px 14px 14px;
+      padding:12px 14px 18px;
       display:flex;
       flex-direction:column;
       gap:4px;
@@ -173,6 +173,16 @@
       text-underline-offset:3px;
     }
 
+    /* Precio en esquina */
+    .price-tag{
+      position:absolute;
+      right:12px;
+      bottom:10px;
+      font-weight:800;
+      font-size:.9rem;
+      color:#c0245d;
+    }
+
     @media (max-width:640px){
       .section-box{padding:14px 14px 16px;}
       .card-img{height:160px;}
@@ -196,6 +206,13 @@
       font-size:.92rem;
       font-weight:700;
       box-shadow:0 12px 28px rgba(0,0,0,.55);
+    }
+
+    .reju-note{
+      text-align:center;
+      color:#f0e6ff;
+      margin:6px 0 30px;
+      font-size:.94rem;
     }
 
     /* FOOTER */
@@ -325,11 +342,12 @@
                  target="_blank" rel="noopener">Consultar por WhatsApp →</a>
             </div>
           </div>
+          <div class="price-tag">B/. 65</div>
         </article>
 
         <article class="card">
           <div class="card-img-wrap">
-            <img class="card-img" src="bw-hidratacion-labios-ah.jpg" alt="Hidratación labios AH">
+            <img class="card-img" src="bw-hidratacion-labios-ah.jpg" alt="Hidratación labios Ácido Hialurónico">
           </div>
           <div class="card-body">
             <h3>Hidratación Labios Ácido Hialurónico</h3>
@@ -339,25 +357,27 @@
                  target="_blank" rel="noopener">Consultar por WhatsApp →</a>
             </div>
           </div>
+          <div class="price-tag">B/. 70</div>
         </article>
 
         <article class="card">
           <div class="card-img-wrap">
-            <img class="card-img" src="bw-pestanas-pelo-a-pelo.jpg" alt="Pestañas pelo a pelo">
+            <img class="card-img" src="bw-pestanas-pelo-a-pelo.jpg" alt="Pestañas Alta Gama">
           </div>
           <div class="card-body">
-            <h3>Pestañas Pelo a Pelo</h3>
-            <p>Extensiones una a una con acabado desde natural hasta más dramático según tu gusto.</p>
+            <h3>Pestañas Alta Gama</h3>
+            <p>Extensiones con acabado desde natural hasta más dramático según tu gusto.</p>
             <div class="card-link">
-              <a href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Pesta%C3%B1as%20Pelo%20a%20Pelo."
+              <a href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Pesta%C3%B1as%20Alta%20Gama."
                  target="_blank" rel="noopener">Consultar por WhatsApp →</a>
             </div>
           </div>
+          <div class="price-tag">B/. 29</div>
         </article>
 
         <article class="card">
           <div class="card-img-wrap">
-            <img class="card-img" src="bw-micro-cejas.jpg" alt="Micropigmentación cejas">
+            <img class="card-img" src="bw-micro-cejas.jpg" alt="Micropigmentación de cejas">
           </div>
           <div class="card-body">
             <h3>Micropigmentación de Cejas</h3>
@@ -367,11 +387,12 @@
                  target="_blank" rel="noopener">Consultar por WhatsApp →</a>
             </div>
           </div>
+          <div class="price-tag">B/. 69</div>
         </article>
 
         <article class="card">
           <div class="card-img-wrap">
-            <img class="card-img" src="bw-micro-labios.jpg" alt="Micropigmentación labios">
+            <img class="card-img" src="bw-micro-labios.jpg" alt="Micropigmentación de labios">
           </div>
           <div class="card-body">
             <h3>Micropigmentación de Labios</h3>
@@ -381,6 +402,7 @@
                  target="_blank" rel="noopener">Consultar por WhatsApp →</a>
             </div>
           </div>
+          <div class="price-tag">B/. 95</div>
         </article>
 
         <article class="card">
@@ -395,25 +417,27 @@
                  target="_blank" rel="noopener">Consultar por WhatsApp →</a>
             </div>
           </div>
+          <div class="price-tag">B/. 15</div>
         </article>
 
         <article class="card">
           <div class="card-img-wrap">
-            <img class="card-img" src="bw-depilacion-cera-5.jpg" alt="Depilación cera facial">
+            <img class="card-img" src="bw-depilacion-cera-5.jpg" alt="Depilación con Cera">
           </div>
           <div class="card-body">
-            <h3>Depilación con Cera Facial</h3>
+            <h3>Depilación con Cera</h3>
             <p>Cejas, bozo y zonas pequeñas del rostro con cera especial y técnica delicada.</p>
             <div class="card-link">
-              <a href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Depilaci%C3%B3n%20con%20Cera%20Facial."
+              <a href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Depilaci%C3%B3n%20con%20Cera."
                  target="_blank" rel="noopener">Consultar por WhatsApp →</a>
             </div>
           </div>
+          <div class="price-tag">B/. 15</div>
         </article>
 
         <article class="card">
           <div class="card-img-wrap">
-            <img class="card-img" src="bw-remocion-lunares.jpg" alt="Remoción lunares">
+            <img class="card-img" src="bw-remocion-lunares.jpg" alt="Remoción lunares y verrugas">
           </div>
           <div class="card-body">
             <h3>Remoción de Lunares y Verrugas</h3>
@@ -423,6 +447,7 @@
                  target="_blank" rel="noopener">Consultar por WhatsApp →</a>
             </div>
           </div>
+          <div class="price-tag">B/. 35</div>
         </article>
 
       </div>
@@ -456,6 +481,7 @@
                  target="_blank" rel="noopener">Reservar este masaje →</a>
             </div>
           </div>
+          <div class="price-tag">B/. 29</div>
         </article>
 
         <article class="card">
@@ -470,6 +496,7 @@
                  target="_blank" rel="noopener">Reservar / Consultar →</a>
             </div>
           </div>
+          <div class="price-tag">B/. 39</div>
         </article>
 
         <article class="card">
@@ -484,6 +511,7 @@
                  target="_blank" rel="noopener">Reservar / Consultar →</a>
             </div>
           </div>
+          <div class="price-tag">B/. 35</div>
         </article>
 
         <article class="card">
@@ -498,6 +526,7 @@
                  target="_blank" rel="noopener">Diseñar mi paquete →</a>
             </div>
           </div>
+          <div class="price-tag">B/. 299</div>
         </article>
 
         <article class="card">
@@ -512,11 +541,12 @@
                  target="_blank" rel="noopener">Reservar / Consultar →</a>
             </div>
           </div>
+          <div class="price-tag">B/. 25</div>
         </article>
 
         <article class="card">
           <div class="card-img-wrap">
-            <img class="card-img" src="bw-depilacion-cera-especial.jpg" alt="Depilación corporal cera">
+            <img class="card-img" src="bw-depilacion-cera-especial.jpg" alt="Depilación con cera corporal">
           </div>
           <div class="card-body">
             <h3>Depilación con Cera Corporal</h3>
@@ -526,6 +556,7 @@
                  target="_blank" rel="noopener">Consultar zonas y precios →</a>
             </div>
           </div>
+          <div class="price-tag">B/. 15</div>
         </article>
 
       </div>
@@ -559,6 +590,7 @@
                  target="_blank" rel="noopener">Reservar / Consultar →</a>
             </div>
           </div>
+          <div class="price-tag">B/. 22.50</div>
         </article>
 
         <article class="card">
@@ -573,6 +605,7 @@
                  target="_blank" rel="noopener">Reservar / Consultar →</a>
             </div>
           </div>
+          <div class="price-tag">B/. 45</div>
         </article>
 
         <article class="card">
@@ -587,20 +620,22 @@
                  target="_blank" rel="noopener">Reservar / Consultar →</a>
             </div>
           </div>
+          <div class="price-tag">B/. 65</div>
         </article>
 
         <article class="card">
           <div class="card-img-wrap">
-            <img class="card-img" src="bw-peeling-facial.jpg" alt="Peeling facial">
+            <img class="card-img" src="bw-peeling-facial.jpg" alt="Peeling facial alta gama">
           </div>
           <div class="card-body">
-            <h3>Peeling Facial</h3>
+            <h3>Peeling Facial Alta Gama</h3>
             <p>Renovación controlada de la piel para mejorar manchas finas, marcas y tono apagado.</p>
             <div class="card-link">
-              <a href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20el%20Peeling%20Facial."
+              <a href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20el%20Peeling%20Facial%20Alta%20Gama."
                  target="_blank" rel="noopener">Reservar / Consultar →</a>
             </div>
           </div>
+          <div class="price-tag">B/. 85</div>
         </article>
 
         <article class="card">
@@ -615,11 +650,34 @@
                  target="_blank" rel="noopener">Reservar / Consultar →</a>
             </div>
           </div>
+          <div class="price-tag">B/. 150</div>
+        </article>
+
+        <!-- Nuevo: Facial Hollywood -->
+        <article class="card">
+          <div class="card-img-wrap">
+            <!-- imagen temporal, luego puedes subir tu propia foto con el mismo nombre -->
+            <img class="card-img" src="bw-facial-hollywood.jpg" alt="Facial Hollywood">
+          </div>
+          <div class="card-body">
+            <h3>Facial Hollywood</h3>
+            <p>Tratamiento tipo “alfombra roja” con limpieza, mascarilla negra y aparatología para un glow inmediato.</p>
+            <div class="card-link">
+              <a href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20y%20reservar%20un%20Facial%20Hollywood."
+                 target="_blank" rel="noopener">Reservar / Consultar →</a>
+            </div>
+          </div>
+          <div class="price-tag">B/. 69</div>
         </article>
 
       </div>
     </div>
   </section>
+
+  <!-- Texto de rejuvenecimiento -->
+  <p class="reju-note">
+    Contamos con servicios avanzados de rejuvenecimiento facial y corporal. Consulta con tu esteticista en Figura Rostro KG.
+  </p>
 
   <!-- BOTÓN HOME -->
   <div class="home-cta">
