@@ -6,7 +6,7 @@
 
   <title>Menú de Servicios | Figura Rostro KG</title>
   <meta name="description"
-        content="Menú de tratamientos faciales, masajes, reductores, peeling, plasma fibroblast y belleza en Figura Rostro KG, Parque Lefevre.">
+        content="Menú de tratamientos de belleza, masajes, reductores, faciales, peeling y plasma fibroblast en Figura Rostro KG, Parque Lefevre.">
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
@@ -102,120 +102,94 @@
     .section-box{
       background:var(--card);
       border-radius:22px;
-      padding:18px 20px 10px;
+      padding:18px 20px 20px;
       box-shadow:0 18px 40px rgba(40,0,80,.06);
       border:1px solid rgba(91,37,128,.08);
     }
 
-    /* FILAS SERVICIOS */
-    .service-row{
-      display:flex;
+    /* GRID DE TARJETAS GRANDES */
+    .card-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
       gap:18px;
-      padding:14px 0;
-      border-bottom:1px solid rgba(0,0,0,.04);
     }
-    .service-row:last-child{
-      border-bottom:none;
+    .card{
+      background:#fff;
+      border-radius:20px;
+      overflow:hidden;
+      border:1px solid rgba(0,0,0,.04);
+      box-shadow:0 8px 20px rgba(20,0,40,.05);
+      display:flex;
+      flex-direction:column;
+      height:100%;
     }
-
-    .service-img-wrap{
-      flex:0 0 120px;
+    .card-img-wrap{
+      width:100%;
+      overflow:hidden;
     }
-    .service-img{
-      width:120px;
-      height:90px;
-      border-radius:18px;
+    .card-img{
+      width:100%;
+      height:180px;
       object-fit:cover;
+      display:block;
     }
-
-    .service-body{
+    .card-body{
+      padding:12px 14px 14px;
+      display:flex;
+      flex-direction:column;
+      gap:4px;
       flex:1;
-      min-width:0;
     }
-    .service-body h3{
-      margin:0 0 4px;
-      font-size:1.02rem;
+    .card-body h3{
+      margin:0;
+      font-size:1rem;
       color:var(--brand);
       font-weight:700;
     }
-    .service-body p{
+    .card-body p{
       margin:0;
-      font-size:.9rem;
+      font-size:.88rem;
       opacity:.86;
       line-height:1.5;
+      flex:1;
     }
-    .service-note{
-      margin-top:4px;
-      font-size:.8rem;
-      opacity:.7;
+    .card-link{
+      margin-top:6px;
+      font-size:.82rem;
+      font-weight:600;
     }
-
-    @media (max-width:720px){
-      .section-box{padding:14px 14px 8px;}
-      .service-row{
-        flex-direction:row;
-        align-items:flex-start;
-      }
-      .service-img-wrap{
-        flex:0 0 96px;
-      }
-      .service-img{
-        width:96px;
-        height:80px;
-        border-radius:14px;
-      }
-    }
-
-    /* CTA BANNER */
-    .cta-banner{
-      margin:10px 0 36px;
-    }
-    .cta-inner{
-      background:linear-gradient(135deg,#5b2580,#9b5ee0);
-      color:#fff;
-      border-radius:22px;
-      padding:18px 20px;
-      display:flex;
-      flex-wrap:wrap;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      box-shadow:0 16px 38px rgba(40,0,90,.4);
-    }
-    .cta-title{
-      font-size:1.05rem;
-      font-weight:700;
-      margin:0 0 4px;
-    }
-    .cta-text{
-      margin:0;
-      font-size:.9rem;
-      opacity:.95;
-    }
-    .btn-primary{
-      background:#fff;
-      color:var(--brand);
-      border:0;
-      padding:10px 18px;
-      border-radius:999px;
-      font-size:.9rem;
-      font-weight:700;
+    .card-link a{
+      color:var(--brand-soft);
       text-decoration:none;
+    }
+    .card-link a:hover{
+      text-decoration:underline;
+      text-underline-offset:3px;
+    }
+
+    @media (max-width:640px){
+      .section-box{padding:14px 14px 16px;}
+      .card-img{height:160px;}
+    }
+
+    /* CTA HOME */
+    .home-cta{
+      text-align:center;
+      margin:10px 0 40px;
+    }
+    .btn-home{
       display:inline-flex;
       align-items:center;
       justify-content:center;
       gap:6px;
-      white-space:nowrap;
-    }
-    .btn-primary span{
-      font-size:1rem;
-    }
-
-    @media (max-width:640px){
-      .cta-inner{
-        flex-direction:column;
-        align-items:flex-start;
-      }
+      padding:10px 20px;
+      border-radius:999px;
+      background:#5b2580;
+      color:#fff;
+      text-decoration:none;
+      font-size:.92rem;
+      font-weight:700;
+      box-shadow:0 12px 28px rgba(40,0,80,.35);
     }
 
     /* FOOTER */
@@ -293,167 +267,12 @@
   </div>
   <h1>Figura Rostro KG</h1>
   <p class="sub">
-    Tratamientos de <strong>masajes, faciales, rejuvenecimiento y belleza</strong> en Parque Lefevre (Royal Park).
-    Explora el menú por categoría y contáctanos para precios actualizados, paquetes y promociones vigentes.
+    Tratamientos de <strong>belleza, masajes y faciales</strong> en Parque Lefevre (Royal Park).
+    Elige la categoría y consúltanos por WhatsApp para precios actualizados y paquetes.
   </p>
 
   <!-- ======================== -->
-  <!--  SECCIÓN 1: MASAJES     -->
-  <!-- ======================== -->
-  <section class="section">
-    <div class="section-heading">
-      <div class="section-title">Masajes y tratamientos corporales</div>
-      <div class="section-label">Cuerpo</div>
-    </div>
-    <p class="section-desc">
-      Opciones para relajación, alivio de tensión muscular y reducción de medidas. Aptas para damas y caballeros.
-    </p>
-
-    <div class="section-box">
-
-      <div class="service-row">
-        <div class="service-img-wrap">
-          <img class="service-img" src="bw-masaje-relajante.jpg" alt="Masaje Relajante">
-        </div>
-        <div class="service-body">
-          <h3>Masaje Relajante</h3>
-          <p>Sesión de relajación general para bajar estrés y mejorar el descanso.</p>
-          <div class="service-note">Duración aproximada y zonas según valoración.</div>
-        </div>
-      </div>
-
-      <div class="service-row">
-        <div class="service-img-wrap">
-          <img class="service-img" src="bw-chocoterapia.jpg" alt="Relajante + Chocoterapia">
-        </div>
-        <div class="service-body">
-          <h3>Relajante + Chocoterapia</h3>
-          <p>Masaje con envoltura de chocolate para nutrición de la piel y sensación de bienestar.</p>
-          <div class="service-note">Ideal como regalo o auto-cuidado de temporada.</div>
-        </div>
-      </div>
-
-      <div class="service-row">
-        <div class="service-img-wrap">
-          <img class="service-img" src="bw-drenaje-moldeador.jpg" alt="Masajes Reductores">
-        </div>
-        <div class="service-body">
-          <h3>Masajes Reductores</h3>
-          <p>Trabajo localizado en cintura, abdomen, piernas u otras zonas para moldear la figura.</p>
-          <div class="service-note">Se recomienda en paquete de varias sesiones.</div>
-        </div>
-      </div>
-
-      <div class="service-row">
-        <div class="service-img-wrap">
-          <img class="service-img" src="bw-drenaje-moldeador.jpg" alt="Paquete Reductor">
-        </div>
-        <div class="service-body">
-          <h3>Paquete Reductor</h3>
-          <p>Plan de sesiones combinando masajes, drenaje y valoración corporal continua.</p>
-          <div class="service-note">Los planes se diseñan a la medida de cada objetivo.</div>
-        </div>
-      </div>
-
-      <div class="service-row">
-        <div class="service-img-wrap">
-          <img class="service-img" src="bw-reflexologia-podal.jpg" alt="Drenaje linfático / piernas cansadas">
-        </div>
-        <div class="service-body">
-          <h3>Drenaje Linfático / Piernas cansadas</h3>
-          <p>Ayuda a la retención de líquidos, inflamación ligera y sensación de pesadez.</p>
-          <div class="service-note">Protocolo indicado según historial y necesidades.</div>
-        </div>
-      </div>
-
-      <div class="service-row">
-        <div class="service-img-wrap">
-          <img class="service-img" src="bw-depilacion-cera-especial.jpg" alt="Depilación corporal cera">
-        </div>
-        <div class="service-body">
-          <h3>Depilación con Cera Corporal</h3>
-          <p>Depilación delicada en zonas como bikini, axila, pierna u otras áreas del cuerpo.</p>
-          <div class="service-note">Se puede combinar con masajes o faciales.</div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ======================== -->
-  <!--  SECCIÓN 2: FACIALES    -->
-  <!-- ======================== -->
-  <section class="section">
-    <div class="section-heading">
-      <div class="section-title">Faciales y rejuvenecimiento</div>
-      <div class="section-label">Rostro</div>
-    </div>
-    <p class="section-desc">
-      Limpiezas, peeling, hidratación profunda y plasma fibroblast para mantener tu piel luminosa y firme.
-    </p>
-
-    <div class="section-box">
-
-      <div class="service-row">
-        <div class="service-img-wrap">
-          <img class="service-img" src="bw-limpieza-facial-base.jpg" alt="Limpieza facial">
-        </div>
-        <div class="service-body">
-          <h3>Limpieza Facial</h3>
-          <p>Limpieza básica para retirar impurezas, sebo y residuos de maquillaje del día a día.</p>
-          <div class="service-note">Recomendada como mantenimiento regular.</div>
-        </div>
-      </div>
-
-      <div class="service-row">
-        <div class="service-img-wrap">
-          <img class="service-img" src="bw-limpieza-premium.jpg" alt="Limpieza facial premium">
-        </div>
-        <div class="service-body">
-          <h3>Limpieza Facial Premium</h3>
-          <p>Incluye extracción suave, mascarilla y productos específicos para tu tipo de piel.</p>
-          <div class="service-note">Ideal para quienes buscan un plus de hidratación.</div>
-        </div>
-      </div>
-
-      <div class="service-row">
-        <div class="service-img-wrap">
-          <img class="service-img" src="bw-limpieza-profunda.jpg" alt="Limpieza profunda">
-        </div>
-        <div class="service-body">
-          <h3>Limpieza Facial Profunda + Hidratación</h3>
-          <p>Protocolo intensivo para poros, textura irregular y piel deshidratada.</p>
-          <div class="service-note">Frecuencia sugerida según diagnóstico de la terapeuta.</div>
-        </div>
-      </div>
-
-      <div class="service-row">
-        <div class="service-img-wrap">
-          <img class="service-img" src="bw-peeling-facial.jpg" alt="Peeling Facial">
-        </div>
-        <div class="service-body">
-          <h3>Peeling Facial</h3>
-          <p>Renovación controlada de la piel para tratar manchas finas, marcas y tono apagado.</p>
-          <div class="service-note">Incluye indicaciones de cuidados posteriores.</div>
-        </div>
-      </div>
-
-      <div class="service-row">
-        <div class="service-img-wrap">
-          <img class="service-img" src="bw-plasma-fibroblast.jpg" alt="Plasma Fibroblast">
-        </div>
-        <div class="service-body">
-          <h3>Plasma Fibroblast Lifting</h3>
-          <p>Tratamiento no quirúrgico para flacidez fina en párpados, contorno de ojos y otras zonas.</p>
-          <div class="service-note">Sesión con evaluación previa y seguimiento.</div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ======================== -->
-  <!-- SECCIÓN 3: LABIOS / CEJAS / PESTAÑAS -->
+  <!--   1. BELLEZA (primero)   -->
   <!-- ======================== -->
   <section class="section">
     <div class="section-heading">
@@ -461,108 +280,325 @@
       <div class="section-label">Belleza</div>
     </div>
     <p class="section-desc">
-      Servicios para realzar tu mirada y contorno labial, con resultados de aspecto natural.
+      Servicios para realzar tu mirada y contorno labial con resultados naturales y armoniosos.
     </p>
 
     <div class="section-box">
+      <div class="card-grid">
 
-      <div class="service-row">
-        <div class="service-img-wrap">
-          <img class="service-img" src="bw-hidratacion-labios.jpg" alt="Hidratación de labios">
-        </div>
-        <div class="service-body">
-          <h3>Hidratación de Labios</h3>
-          <p>Tratamiento con sueros y técnica específica para labios suaves, hidratados y efecto rosadito.</p>
-        </div>
+        <article class="card">
+          <div class="card-img-wrap">
+            <img class="card-img" src="bw-hidratacion-labios.jpg" alt="Hidratación de labios">
+          </div>
+          <div class="card-body">
+            <h3>Hidratación de Labios</h3>
+            <p>Tratamiento con sueros y técnica específica para labios suaves, hidratados y efecto rosadito.</p>
+            <div class="card-link">
+              <a href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20la%20Hidrataci%C3%B3n%20de%20Labios."
+                 target="_blank" rel="noopener">Consultar por WhatsApp →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-img-wrap">
+            <img class="card-img" src="bw-hidratacion-labios-ah.jpg" alt="Hidratación labios AH">
+          </div>
+          <div class="card-body">
+            <h3>Hidratación Labios Ácido Hialurónico</h3>
+            <p>Mayor hidratación y volumen suave sin perder la forma natural de tus labios.</p>
+            <div class="card-link">
+              <a href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20la%20Hidrataci%C3%B3n%20de%20Labios%20con%20%C3%81cido%20Hialur%C3%B3nico."
+                 target="_blank" rel="noopener">Consultar por WhatsApp →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-img-wrap">
+            <img class="card-img" src="bw-pestanas-pelo-a-pelo.jpg" alt="Pestañas pelo a pelo">
+          </div>
+          <div class="card-body">
+            <h3>Pestañas Pelo a Pelo</h3>
+            <p>Extensiones una a una con acabado desde natural hasta más dramático según tu gusto.</p>
+            <div class="card-link">
+              <a href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Pesta%C3%B1as%20Pelo%20a%20Pelo."
+                 target="_blank" rel="noopener">Consultar por WhatsApp →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-img-wrap">
+            <img class="card-img" src="bw-micro-cejas.jpg" alt="Micropigmentación cejas">
+          </div>
+          <div class="card-body">
+            <h3>Micropigmentación de Cejas</h3>
+            <p>Diseño y definición de cejas con técnica y color adaptados a tu rostro y fototipo.</p>
+            <div class="card-link">
+              <a href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20la%20Micropigmentaci%C3%B3n%20de%20Cejas."
+                 target="_blank" rel="noopener">Consultar por WhatsApp →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-img-wrap">
+            <img class="card-img" src="bw-micro-labios.jpg" alt="Micropigmentación labios">
+          </div>
+          <div class="card-body">
+            <h3>Micropigmentación de Labios</h3>
+            <p>Contorno definido y tono uniforme tipo lipstick suave para un efecto siempre maquillado.</p>
+            <div class="card-link">
+              <a href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20la%20Micropigmentaci%C3%B3n%20de%20Labios."
+                 target="_blank" rel="noopener">Consultar por WhatsApp →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-img-wrap">
+            <img class="card-img" src="bw-maquillaje-profesional.jpg" alt="Maquillaje profesional">
+          </div>
+          <div class="card-body">
+            <h3>Maquillaje Profesional</h3>
+            <p>Maquillaje social, de fiesta o para eventos especiales, adaptado a tu estilo y ocasión.</p>
+            <div class="card-link">
+              <a href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Maquillaje%20Profesional."
+                 target="_blank" rel="noopener">Consultar por WhatsApp →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-img-wrap">
+            <img class="card-img" src="bw-depilacion-cera-5.jpg" alt="Depilación cera facial">
+          </div>
+          <div class="card-body">
+            <h3>Depilación con Cera Facial</h3>
+            <p>Cejas, bozo y zonas pequeñas del rostro con cera especial y técnica delicada.</p>
+            <div class="card-link">
+              <a href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Depilaci%C3%B3n%20con%20Cera%20Facial."
+                 target="_blank" rel="noopener">Consultar por WhatsApp →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-img-wrap">
+            <img class="card-img" src="bw-remocion-lunares.jpg" alt="Remoción lunares">
+          </div>
+          <div class="card-body">
+            <h3>Remoción de Lunares y Verrugas</h3>
+            <p>Procedimiento según evaluación previa y cantidad de lesiones a tratar.</p>
+            <div class="card-link">
+              <a href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Remoci%C3%B3n%20de%20Lunares%20y%20Verrugas."
+                 target="_blank" rel="noopener">Consultar por WhatsApp →</a>
+            </div>
+          </div>
+        </article>
+
       </div>
-
-      <div class="service-row">
-        <div class="service-img-wrap">
-          <img class="service-img" src="bw-hidratacion-labios-ah.jpg" alt="Hidratación AH">
-        </div>
-        <div class="service-body">
-          <h3>Hidratación Labios Ácido Hialurónico</h3>
-          <p>Mayor hidratación y volumen suave sin exagerar el contorno natural.</p>
-        </div>
-      </div>
-
-      <div class="service-row">
-        <div class="service-img-wrap">
-          <img class="service-img" src="bw-pestanas-pelo-a-pelo.jpg" alt="Pestañas pelo a pelo">
-        </div>
-        <div class="service-body">
-          <h3>Pestañas Pelo a Pelo</h3>
-          <p>Extensiones una a una para un efecto elegante, desde natural a más dramático.</p>
-        </div>
-      </div>
-
-      <div class="service-row">
-        <div class="service-img-wrap">
-          <img class="service-img" src="bw-micro-cejas.jpg" alt="Micropigmentación cejas">
-        </div>
-        <div class="service-body">
-          <h3>Micropigmentación de Cejas</h3>
-          <p>Diseño de cejas con técnica y color adaptados a tu rostro y fototipo.</p>
-        </div>
-      </div>
-
-      <div class="service-row">
-        <div class="service-img-wrap">
-          <img class="service-img" src="bw-micro-labios.jpg" alt="Micropigmentación labios">
-        </div>
-        <div class="service-body">
-          <h3>Micropigmentación de Labios</h3>
-          <p>Contorno definido y tono uniforme tipo lipstick suave.</p>
-        </div>
-      </div>
-
-      <div class="service-row">
-        <div class="service-img-wrap">
-          <img class="service-img" src="bw-maquillaje-profesional.jpg" alt="Maquillaje profesional">
-        </div>
-        <div class="service-body">
-          <h3>Maquillaje Profesional</h3>
-          <p>Social, de fiesta o para eventos especiales, adaptado a tu estilo.</p>
-        </div>
-      </div>
-
-      <div class="service-row">
-        <div class="service-img-wrap">
-          <img class="service-img" src="bw-depilacion-cera-5.jpg" alt="Depilación cera facial">
-        </div>
-        <div class="service-body">
-          <h3>Depilación con Cera Facial</h3>
-          <p>Cejas, bozo y otras zonas pequeñas del rostro con cera especial.</p>
-        </div>
-      </div>
-
-      <div class="service-row">
-        <div class="service-img-wrap">
-          <img class="service-img" src="bw-remocion-lunares.jpg" alt="Remoción lunares">
-        </div>
-        <div class="service-body">
-          <h3>Remoción de Lunares y Verrugas</h3>
-          <p>Se realiza según evaluación previa y número de lesiones a tratar.</p>
-        </div>
-      </div>
-
     </div>
   </section>
 
-  <!-- CTA BANNER -->
-  <div class="cta-banner">
-    <div class="cta-inner">
-      <div>
-        <p class="cta-title">¿Quieres un paquete a tu medida?</p>
-        <p class="cta-text">
-          Escríbenos por WhatsApp para combinar masajes, faciales y tratamientos de belleza
-          según tu objetivo y presupuesto.
-        </p>
-      </div>
-      <a class="btn-primary" href="https://wa.me/50764746168" target="_blank" rel="noopener">
-        <span>💬</span> Reservar por WhatsApp
-      </a>
+  <!-- ======================== -->
+  <!--   2. FIGURA (cuerpo)    -->
+  <!-- ======================== -->
+  <section class="section">
+    <div class="section-heading">
+      <div class="section-title">Masajes y tratamientos corporales</div>
+      <div class="section-label">Figura</div>
     </div>
+    <p class="section-desc">
+      Masajes, drenaje y planes reductores para moldear tu figura y aliviar tensión muscular.
+    </p>
+
+    <div class="section-box">
+      <div class="card-grid">
+
+        <article class="card">
+          <div class="card-img-wrap">
+            <img class="card-img" src="bw-masaje-relajante.jpg" alt="Masaje relajante">
+          </div>
+          <div class="card-body">
+            <h3>Masaje Relajante</h3>
+            <p>Sesión de relajación general para bajar estrés, mejorar descanso y soltar tensión muscular.</p>
+            <div class="card-link">
+              <a href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20agendar%20un%20Masaje%20Relajante."
+                 target="_blank" rel="noopener">Reservar este masaje →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-img-wrap">
+            <img class="card-img" src="bw-chocoterapia.jpg" alt="Relajante + chocoterapia">
+          </div>
+          <div class="card-body">
+            <h3>Relajante + Chocoterapia</h3>
+            <p>Ritual corporal con envoltura de chocolate y masaje suave para nutrición y bienestar.</p>
+            <div class="card-link">
+              <a href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Relajante%20%2B%20Chocoterapia."
+                 target="_blank" rel="noopener">Reservar / Consultar →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-img-wrap">
+            <img class="card-img" src="bw-drenaje-moldeador.jpg" alt="Masajes reductores">
+          </div>
+          <div class="card-body">
+            <h3>Masajes Reductores</h3>
+            <p>Trabajo localizado en abdomen, cintura, piernas u otras zonas para ayudar a reducir medidas.</p>
+            <div class="card-link">
+              <a href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Masajes%20Reductores."
+                 target="_blank" rel="noopener">Reservar / Consultar →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-img-wrap">
+            <img class="card-img" src="bw-drenaje-moldeador.jpg" alt="Paquete reductor">
+          </div>
+          <div class="card-body">
+            <h3>Paquete Reductor</h3>
+            <p>Plan de varias sesiones con seguimiento, ideal para objetivos específicos de moldeamiento.</p>
+            <div class="card-link">
+              <a href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20armar%20un%20Paquete%20Reductor%20a%20mi%20medida."
+                 target="_blank" rel="noopener">Diseñar mi paquete →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-img-wrap">
+            <img class="card-img" src="bw-reflexologia-podal.jpg" alt="Drenaje linfático / piernas cansadas">
+          </div>
+          <div class="card-body">
+            <h3>Drenaje Linfático / Piernas Cansadas</h3>
+            <p>Ayuda a reducir retención de líquidos, inflamación ligera y sensación de pesadez.</p>
+            <div class="card-link">
+              <a href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Drenaje%20Linf%C3%A1tico%20o%20Piernas%20Cansadas."
+                 target="_blank" rel="noopener">Reservar / Consultar →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-img-wrap">
+            <img class="card-img" src="bw-depilacion-cera-especial.jpg" alt="Depilación corporal cera">
+          </div>
+          <div class="card-body">
+            <h3>Depilación con Cera Corporal</h3>
+            <p>Depilación cuidadosa en axilas, bikini, piernas u otras zonas corporales.</p>
+            <div class="card-link">
+              <a href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Depilaci%C3%B3n%20con%20Cera%20Corporal."
+                 target="_blank" rel="noopener">Consultar zonas y precios →</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== -->
+  <!--   3. ROSTRO (faciales)  -->
+  <!-- ======================== -->
+  <section class="section">
+    <div class="section-heading">
+      <div class="section-title">Faciales y rejuvenecimiento</div>
+      <div class="section-label">Rostro</div>
+    </div>
+    <p class="section-desc">
+      Limpiezas, peeling, hidratación y plasma fibroblast para una piel más limpia, luminosa y firme.
+    </p>
+
+    <div class="section-box">
+      <div class="card-grid">
+
+        <article class="card">
+          <div class="card-img-wrap">
+            <img class="card-img" src="bw-limpieza-facial-base.jpg" alt="Limpieza facial">
+          </div>
+          <div class="card-body">
+            <h3>Limpieza Facial</h3>
+            <p>Limpieza básica para retirar impurezas, sebo y residuos de maquillaje del día a día.</p>
+            <div class="card-link">
+              <a href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20la%20Limpieza%20Facial%20b%C3%A1sica."
+                 target="_blank" rel="noopener">Reservar / Consultar →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-img-wrap">
+            <img class="card-img" src="bw-limpieza-premium.jpg" alt="Limpieza facial premium">
+          </div>
+          <div class="card-body">
+            <h3>Limpieza Facial Premium</h3>
+            <p>Incluye extracción suave, mascarilla y productos específicos para tu tipo de piel.</p>
+            <div class="card-link">
+              <a href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20la%20Limpieza%20Facial%20Premium."
+                 target="_blank" rel="noopener">Reservar / Consultar →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-img-wrap">
+            <img class="card-img" src="bw-limpieza-profunda.jpg" alt="Limpieza profunda">
+          </div>
+          <div class="card-body">
+            <h3>Limpieza Facial Profunda + Hidratación</h3>
+            <p>Protocolo intensivo para poros, textura irregular y piel deshidratada.</p>
+            <div class="card-link">
+              <a href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20la%20Limpieza%20Facial%20Profunda%20%2B%20Hidrataci%C3%B3n."
+                 target="_blank" rel="noopener">Reservar / Consultar →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-img-wrap">
+            <img class="card-img" src="bw-peeling-facial.jpg" alt="Peeling facial">
+          </div>
+          <div class="card-body">
+            <h3>Peeling Facial</h3>
+            <p>Renovación controlada de la piel para mejorar manchas finas, marcas y tono apagado.</p>
+            <div class="card-link">
+              <a href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20el%20Peeling%20Facial."
+                 target="_blank" rel="noopener">Reservar / Consultar →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-img-wrap">
+            <img class="card-img" src="bw-plasma-fibroblast.jpg" alt="Plasma Fibroblast">
+          </div>
+          <div class="card-body">
+            <h3>Plasma Fibroblast Lifting</h3>
+            <p>Tratamiento no quirúrgico para flacidez fina en párpados, contorno de ojos y otras zonas.</p>
+            <div class="card-link">
+              <a href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Plasma%20Fibroblast%20Lifting."
+                 target="_blank" rel="noopener">Reservar / Consultar →</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTÓN HOME -->
+  <div class="home-cta">
+    <a class="btn-home" href="/">
+      ⬅ Volver al Home de Figura Rostro KG
+    </a>
   </div>
 
 </div><!-- /container -->
