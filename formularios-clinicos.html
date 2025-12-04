@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Formularios Clínicos | Figura Rostro KG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    :root{
+      --bg:#f5f0ff;
+      --card:#ffffff;
+      --brand:#5b2580;
+      --brand-soft:#8a4cc4;
+      --text:#1f1230;
+      --border:#e0d2f5;
+    }
+
+    *{box-sizing:border-box;}
+
+    body{
+      margin:0;
+      font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+
+    .page{
+      max-width:1100px;
+      margin:0 auto;
+      padding:24px 16px 48px;
+    }
+
+    header{
+      text-align:center;
+      margin-bottom:24px;
+    }
+
+    header h1{
+      margin:8px 0 4px;
+      font-size:1.8rem;
+      color:var(--brand);
+    }
+
+    header p{
+      margin:0;
+      font-size:0.95rem;
+      color:#5b5470;
+    }
+
+    .tabs{
+      display:flex;
+      gap:8px;
+      margin:24px 0 16px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+
+    .tab-btn{
+      border:1px solid var(--brand-soft);
+      background:#fff;
+      color:var(--brand);
+      padding:8px 16px;
+      border-radius:999px;
+      font-size:0.9rem;
+      cursor:pointer;
+      transition:.2s;
+    }
+
+    .tab-btn.active{
+      background:var(--brand);
+      color:#fff;
+    }
+
+    .forms-wrapper{
+      background:var(--card);
+      border-radius:16px;
+      border:1px solid var(--border);
+      padding:20px;
+      box-shadow:0 10px 25px rgba(43,7,88,.07);
+    }
+
+    form{
+      display:none;
+    }
+
+    form.active{
+      display:block;
+    }
+
+    h2{
+      font-size:1.3rem;
+      margin:0 0 8px;
+      color:var(--brand);
+    }
+
+    h3{
+      font-size:1rem;
+      margin:18px 0 6px;
+      color:var(--brand-soft);
+    }
+
+    label{
+      font-size:0.9rem;
+      display:block;
+      margin-bottom:4px;
+      font-weight:500;
+    }
+
+    .field-row{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .field{
+      flex:1 1 180px;
+      margin-bottom:10px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    input[type="number"],
+    textarea{
+      width:100%;
+      padding:8px 10px;
+      border-radius:8px;
+      border:1px solid var(--border);
+      font-size:0.9rem;
+    }
+
+    textarea{
+      min-height:70px;
+      resize:vertical;
+    }
+
+    .check-group{
+      font-size:0.9rem;
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
+      gap:4px 12px;
+      margin-bottom:8px;
+    }
+
+    .check-item{
+      display:flex;
+      align-items:flex-start;
+      gap:6px;
+    }
+
+    .check-item input{
+      margin-top:3px;
+    }
+
+    .section-divider{
+      border-top:1px dashed var(--border);
+      margin:16px 0;
+    }
+
+    .consent-box{
+      margin-top:12px;
+      padding:12px;
+      border-radius:12px;
+      background:#faf5ff;
+      border:1px solid var(--border);
+      font-size:0.85rem;
+      line-height:1.4;
+    }
+
+    .consent-title{
+      font-weight:600;
+      margin-bottom:6px;
+      color:var(--brand);
+    }
+
+    .consent-list{
+      padding-left:18px;
+      margin:4px 0;
+    }
+
+    .consent-list li{
+      margin-bottom:2px;
+    }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:18px;
+    }
+
+    .btn{
+      border:none;
+      border-radius:999px;
+      padding:9px 18px;
+      font-size:0.9rem;
+      font-weight:500;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+    }
+
+    .btn-primary{
+      background:var(--brand);
+      color:#fff;
+    }
+
+    .btn-ghost{
+      background:#fff;
+      color:var(--brand);
+      border:1px solid var(--brand-soft);
+    }
+
+    small{
+      font-size:0.75rem;
+      color:#7b6d92;
+    }
+
+    @media (max-width:600px){
+      .forms-wrapper{
+        padding:14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <!-- Aquí arriba puedes poner el logo blanco de Figura Rostro KG -->
+      <h1>Formularios Clínicos – Figura Rostro KG</h1>
+      <p>Complete la ficha correspondiente. Al enviar se enviará a la estética y será redirigido al inicio.</p>
+    </header>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-target="facial-form">Ficha Facial</button>
+      <button class="tab-btn" data-target="corporal-form">Ficha Corporal</button>
+    </div>
+
+    <div class="forms-wrapper">
+      <!-- =============== FICHA FACIAL =============== -->
+      <form id="facial-form" class="active"
+            action="https://formsubmit.co/figurarostro25@gmail.com"
+            method="POST">
+        <!-- config formsubmit: redirigir al home y sin captcha -->
+        <input type="hidden" name="_next" value="https://figurarostro.life">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="Ficha FACIAL - Figura Rostro KG">
+
+        <h2>Ficha Técnica Facial – Figura Rostro KG</h2>
+
+        <h3>1. Datos del Cliente</h3>
+        <div class="field-row">
+          <div class="field">
+            <label>Nombre completo</label>
+            <input type="text" name="facial_nombre" required>
+          </div>
+          <div class="field">
+            <label>Edad</label>
+            <input type="number" name="facial_edad">
+          </div>
+          <div class="field">
+            <label>Sexo</label>
+            <input type="text" name="facial_sexo" placeholder="F / M">
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label>Teléfono</label>
+            <input type="tel" name="facial_telefono">
+          </div>
+          <div class="field">
+            <label>Correo electrónico</label>
+            <input type="email" name="facial_correo">
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label>Dirección</label>
+            <input type="text" name="facial_direccion">
+          </div>
+          <div class="field">
+            <label>Fecha</label>
+            <input type="date" name="facial_fecha">
+          </div>
+        </div>
+
+        <h3>2. Tratamiento o Servicio Solicitado (Faciales)</h3>
+
+        <label>Limpiezas faciales</label>
+        <div class="check-group">
+          <label class="check-item">
+            <input type="checkbox" name="facial_limpiezas[]" value="Limpieza Facial Profunda">
+            <span>Limpieza Facial Profunda</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="facial_limpiezas[]" value="Limpieza Premium">
+            <span>Limpieza Premium</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="facial_limpiezas[]" value="Limpieza con Dermaplaning">
+            <span>Limpieza con Dermaplaning</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="facial_limpiezas[]" value="Limpieza Hidratante">
+            <span>Limpieza Hidratante</span>
+          </label>
+        </div>
+
+        <label>Peelings</label>
+        <div class="check-group">
+          <label class="check-item"><input type="checkbox" name="facial_peelings[]" value="Peeling Químico"><span>Peeling Químico</span></label>
+          <label class="check-item"><input type="checkbox" name="facial_peelings[]" value="Peeling Hollywood"><span>Peeling Hollywood</span></label>
+          <label class="check-item"><input type="checkbox" name="facial_peelings[]" value="Exfoliación Avanzada"><span>Exfoliación Avanzada</span></label>
+        </div>
+
+        <label>Rejuvenecimiento / Anti-Edad</label>
+        <div class="check-group">
+          <label class="check-item"><input type="checkbox" name="facial_rejuv[]" value="Radiofrecuencia facial"><span>Radiofrecuencia facial</span></label>
+          <label class="check-item"><input type="checkbox" name="facial_rejuv[]" value="Alta frecuencia"><span>Alta frecuencia</span></label>
+          <label class="check-item"><input type="checkbox" name="facial_rejuv[]" value="Hidratación profunda"><span>Hidratación profunda</span></label>
+          <label class="check-item"><input type="checkbox" name="facial_rejuv[]" value="Lifting sin cirugía"><span>Lifting sin cirugía</span></label>
+        </div>
+
+        <label>Plasma Fibroblast (Fibro Lápiz / Plasma Pen)</label>
+        <div class="check-group">
+          <label class="check-item"><input type="checkbox" name="facial_plasma[]" value="Lifting de párpados"><span>Lifting de párpados</span></label>
+          <label class="check-item"><input type="checkbox" name="facial_plasma[]" value="Eliminación de manchas"><span>Eliminación de manchas</span></label>
+          <label class="check-item"><input type="checkbox" name="facial_plasma[]" value="Verrugas / acrocordones"><span>Verrugas / acrocordones</span></label>
+          <label class="check-item"><input type="checkbox" name="facial_plasma[]" value="Rejuvenecimiento puntual"><span>Rejuvenecimiento puntual</span></label>
+          <label class="check-item"><input type="checkbox" name="facial_plasma[]" value="Marcas de acné / cicatrices"><span>Marcas de acné / cicatrices</span></label>
+        </div>
+
+        <label>Cejas · Labios · Pestañas</label>
+        <div class="check-group">
+          <label class="check-item"><input type="checkbox" name="facial_extra[]" value="Diseño de cejas"><span>Diseño de cejas</span></label>
+          <label class="check-item"><input type="checkbox" name="facial_extra[]" value="Micropigmentación de cejas"><span>Micropigmentación de cejas</span></label>
+          <label class="check-item"><input type="checkbox" name="facial_extra[]" value="Extensiones de pestañas"><span>Extensiones de pestañas</span></label>
+          <label class="check-item"><input type="checkbox" name="facial_extra[]" value="Lifting de pestañas"><span>Lifting de pestañas</span></label>
+          <label class="check-item"><input type="checkbox" name="facial_extra[]" value="Micropigmentación de labios"><span>Micropigmentación de labios</span></label>
+          <label class="check-item"><input type="checkbox" name="facial_extra[]" value="Hidralix labios"><span>Hidralix (volumen de labios)</span></label>
+        </div>
+
+        <h3>3. Evaluación Facial</h3>
+        <div class="field-row">
+          <div class="field">
+            <label>Tipo de piel</label>
+            <input type="text" name="facial_tipo_piel" placeholder="Seca, mixta, grasa, sensible...">
+          </div>
+          <div class="field">
+            <label>Nivel de sensibilidad</label>
+            <input type="text" name="facial_sensibilidad" placeholder="Baja / Media / Alta">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Condiciones observadas</label>
+          <textarea name="facial_condiciones" placeholder="Manchas, acné, rosácea, poros, flacidez, líneas de expresión, cicatrices..."></textarea>
+        </div>
+
+        <h3>4. Historial Médico</h3>
+        <div class="field">
+          <label>Alergias</label>
+          <input type="text" name="facial_alergias">
+        </div>
+        <div class="field">
+          <label>Medicamentos</label>
+          <input type="text" name="facial_medicamentos">
+        </div>
+        <div class="field">
+          <label>Cirugías recientes</label>
+          <input type="text" name="facial_cirugias">
+        </div>
+        <div class="field">
+          <label>Tratamientos faciales previos</label>
+          <textarea name="facial_trat_previos"></textarea>
+        </div>
+
+        <h3>5. Tensión Arterial (si aplica)</h3>
+        <div class="field-row">
+          <div class="field">
+            <label>Tensión</label>
+            <input type="text" name="facial_tension" placeholder="Ej. 120/80">
+          </div>
+          <div class="field">
+            <label>Frecuencia cardíaca</label>
+            <input type="number" name="facial_fc" placeholder="bpm">
+          </div>
+        </div>
+
+        <h3>6. Recomendación Profesional</h3>
+        <div class="field">
+          <textarea name="facial_recomendacion"></textarea>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <div class="consent-box">
+          <div class="consent-title">Consentimiento Informado – Tratamientos Faciales</div>
+          <p>Yo, ________________________________, declaro que:</p>
+          <ul class="consent-list">
+            <li>He recibido información clara sobre el tratamiento facial solicitado.</li>
+            <li>Entiendo que los resultados pueden variar según mi piel, cuidados y hábitos.</li>
+            <li>Confirmo que la información médica proporcionada es verdadera.</li>
+            <li>Autorizo fotografías para antes y después:  Sí ☐   No ☐</li>
+            <li>Entiendo posibles efectos: enrojecimiento, inflamación, descamación, ardor leve, sensibilidad.</li>
+            <li>Acepto seguir los cuidados posteriores indicados por la especialista.</li>
+            <li>Declaro que: No estoy embarazada ☐   Sí estoy embarazada ☐</li>
+          </ul>
+          <p>Firma cliente: ____________________________   Fecha: ____/____/______<br>
+             Firma especialista: ________________________   Fecha: ____/____/______</p>
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="btn btn-primary">Enviar ficha facial</button>
+          <button type="button" class="btn btn-ghost" onclick="generarImprimible('facial')">Descargar / Imprimir para firma</button>
+        </div>
+        <small>Al enviar, la ficha se envía a Figura Rostro KG y luego será redirigido a figurarostro.life.</small>
+      </form>
+
+      <!-- =============== FICHA CORPORAL =============== -->
+      <form id="corporal-form"
+            action="https://formsubmit.co/figurarostro25@gmail.com"
+            method="POST">
+        <input type="hidden" name="_next" value="https://figurarostro.life">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="Ficha CORPORAL - Figura Rostro KG">
+
+        <h2>Ficha Técnica Corporal – Figura Rostro KG</h2>
+
+        <h3>1. Datos del Cliente</h3>
+        <div class="field-row">
+          <div class="field">
+            <label>Nombre completo</label>
+            <input type="text" name="corp_nombre" required>
+          </div>
+          <div class="field">
+            <label>Edad</label>
+            <input type="number" name="corp_edad">
+          </div>
+          <div class="field">
+            <label>Sexo</label>
+            <input type="text" name="corp_sexo" placeholder="F / M">
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label>Teléfono</label>
+            <input type="tel" name="corp_telefono">
+          </div>
+          <div class="field">
+            <label>Correo electrónico</label>
+            <input type="email" name="corp_correo">
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label>Dirección</label>
+            <input type="text" name="corp_direccion">
+          </div>
+          <div class="field">
+            <label>Fecha</label>
+            <input type="date" name="corp_fecha">
+          </div>
+        </div>
+
+        <h3>2. Tratamiento o Servicio Solicitado (Corporales)</h3>
+        <label>Moldeamiento / Reducción</label>
+        <div class="check-group">
+          <label class="check-item"><input type="checkbox" name="corp_moldeamiento[]" value="Masaje Reductor"><span>Masaje Reductor</span></label>
+          <label class="check-item"><input type="checkbox" name="corp_moldeamiento[]" value="Masaje Moldeador"><span>Masaje Moldeador</span></label>
+          <label class="check-item"><input type="checkbox" name="corp_moldeamiento[]" value="Anticelulitis"><span>Anticelulitis</span></label>
+          <label class="check-item"><input type="checkbox" name="corp_moldeamiento[]" value="Maderoterapia"><span>Maderoterapia</span></label>
+          <label class="check-item"><input type="checkbox" name="corp_moldeamiento[]" value="Aparatología"><span>Aparatología (ultracavitación, RF, etc.)</span></label>
+        </div>
+
+        <label>Drenaje</label>
+        <div class="check-group">
+          <label class="check-item"><input type="checkbox" name="corp_drenaje[]" value="Drenaje linfático"><span>Drenaje linfático</span></label>
+          <label class="check-item"><input type="checkbox" name="corp_drenaje[]" value="Postoperatorio"><span>Postoperatorio</span></label>
+          <label class="check-item"><input type="checkbox" name="corp_drenaje[]" value="Edemas"><span>Edemas</span></label>
+        </div>
+
+        <label>Masajes</label>
+        <div class="check-group">
+          <label class="check-item"><input type="checkbox" name="corp_masajes[]" value="Masaje relajante"><span>Masaje relajante</span></label>
+          <label class="check-item"><input type="checkbox" name="corp_masajes[]" value="Masaje descontracturante"><span>Masaje descontracturante</span></label>
+          <label class="check-item"><input type="checkbox" name="corp_masajes[]" value="Masaje de espalda"><span>Masaje de espalda</span></label>
+          <label class="check-item"><input type="checkbox" name="corp_masajes[]" value="Cervical"><span>Cervical</span></label>
+          <label class="check-item"><input type="checkbox" name="corp_masajes[]" value="Lumbar"><span>Lumbar</span></label>
+          <label class="check-item"><input type="checkbox" name="corp_masajes[]" value="Reflexología podal"><span>Reflexología podal</span></label>
+        </div>
+
+        <label>Depilación & Cera</label>
+        <div class="check-group">
+          <label class="check-item"><input type="checkbox" name="corp_depilacion[]" value="Cera"><span>Cera</span></label>
+          <label class="check-item"><input type="checkbox" name="corp_depilacion[]" value="Depilación zonas sensibles"><span>Depilación zonas sensibles</span></label>
+        </div>
+
+        <h3>3. Evaluación Corporal</h3>
+        <div class="field">
+          <label>Áreas a tratar</label>
+          <textarea name="corp_areas" placeholder="Abdomen, cintura, espalda, brazos, piernas, glúteos, etc."></textarea>
+        </div>
+
+        <div class="field">
+          <label>Condiciones corporales (retención de líquidos, celulitis, flacidez, fibrosis...)</label>
+          <textarea name="corp_condiciones"></textarea>
+        </div>
+
+        <h3>4. Tensión Muscular</h3>
+        <div class="field">
+          <label>Zonas afectadas y nivel de dolor (1–10)</label>
+          <textarea name="corp_tension" placeholder="Cervical, trapecios, dorsal, lumbar, ciática..."></textarea>
+        </div>
+
+        <h3>5. Historial Médico</h3>
+        <div class="field">
+          <label>Alergias</label>
+          <input type="text" name="corp_alergias">
+        </div>
+        <div class="field">
+          <label>Enfermedades</label>
+          <input type="text" name="corp_enfermedades">
+        </div>
+        <div class="field">
+          <label>Medicamentos</label>
+          <input type="text" name="corp_medicamentos">
+        </div>
+        <div class="field">
+          <label>Cirugías recientes</label>
+          <input type="text" name="corp_cirugias">
+        </div>
+
+        <h3>6. Tensión Arterial</h3>
+        <div class="field-row">
+          <div class="field">
+            <label>Tensión</label>
+            <input type="text" name="corp_tension_art" placeholder="Ej. 120/80">
+          </div>
+          <div class="field">
+            <label>Frecuencia cardíaca</label>
+            <input type="number" name="corp_fc" placeholder="bpm">
+          </div>
+        </div>
+
+        <h3>7. Recomendación Profesional</h3>
+        <div class="field">
+          <textarea name="corp_recomendacion"></textarea>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <div class="consent-box">
+          <div class="consent-title">Consentimiento Informado – Tratamientos Corporales</div>
+          <p>Yo, ________________________________, declaro que:</p>
+          <ul class="consent-list">
+            <li>He recibido información clara sobre el tratamiento corporal solicitado.</li>
+            <li>Entiendo que los resultados dependen de mis hábitos, condición física y cuidados posteriores.</li>
+            <li>Confirmo que la información médica proporcionada es verdadera.</li>
+            <li>Autorizo fotografías para antes y después:  Sí ☐   No ☐</li>
+            <li>Entiendo posibles efectos: dolor leve, inflamación, sensibilidad, enrojecimiento o moretones.</li>
+            <li>Acepto seguir los cuidados posteriores indicados por la especialista.</li>
+            <li>Declaro que: No estoy embarazada ☐   Sí estoy embarazada ☐</li>
+          </ul>
+          <p>Firma cliente: ____________________________   Fecha: ____/____/______<br>
+             Firma especialista: ________________________   Fecha: ____/____/______</p>
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="btn btn-primary">Enviar ficha corporal</button>
+          <button type="button" class="btn btn-ghost" onclick="generarImprimible('corporal')">Descargar / Imprimir para firma</button>
+        </div>
+        <small>Al enviar, la ficha se envía a Figura Rostro KG y luego será redirigido a figurarostro.life.</small>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Cambiar pestañas
+    document.querySelectorAll('.tab-btn').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const target = btn.dataset.target;
+        document.querySelectorAll('form').forEach(f=>f.classList.remove('active'));
+        document.getElementById(target).classList.add('active');
+      });
+    });
+
+    // Generar página imprimible / descargable
+    function generarImprimible(tipo){
+      const form = document.getElementById(tipo + '-form');
+      const data = new FormData(form);
+      let win = window.open('', '_blank');
+      let titulo = tipo === 'facial' ? 'Ficha Técnica Facial - Figura Rostro KG' : 'Ficha Técnica Corporal - Figura Rostro KG';
+
+      win.document.write('<html><head><title>'+titulo+'</title>');
+      win.document.write('<style>body{font-family:Segoe UI, sans-serif; padding:20px; font-size:12px;} h1{font-size:18px; margin-bottom:8px;} h2{font-size:14px; margin-top:14px;} p{margin:2px 0;} .section{margin-top:10px; border-top:1px solid #ddd; padding-top:6px;} </style>');
+      win.document.write('</head><body>');
+      win.document.write('<h1>'+titulo+'</h1>');
+
+      win.document.write('<div class="section"><h2>Datos del Cliente</h2>');
+      if(tipo==='facial'){
+        win.document.write('<p><b>Nombre:</b> '+(data.get('facial_nombre')||'')+'</p>');
+        win.document.write('<p><b>Edad:</b> '+(data.get('facial_edad')||'')+' &nbsp; <b>Sexo:</b> '+(data.get('facial_sexo')||'')+'</p>');
+        win.document.write('<p><b>Teléfono:</b> '+(data.get('facial_telefono')||'')+'</p>');
+        win.document.write('<p><b>Correo:</b> '+(data.get('facial_correo')||'')+'</p>');
+        win.document.write('<p><b>Dirección:</b> '+(data.get('facial_direccion')||'')+'</p>');
+        win.document.write('<p><b>Fecha:</b> '+(data.get('facial_fecha')||'')+'</p>');
+      }else{
+        win.document.write('<p><b>Nombre:</b> '+(data.get('corp_nombre')||'')+'</p>');
+        win.document.write('<p><b>Edad:</b> '+(data.get('corp_edad')||'')+' &nbsp; <b>Sexo:</b> '+(data.get('corp_sexo')||'')+'</p>');
+        win.document.write('<p><b>Teléfono:</b> '+(data.get('corp_telefono')||'')+'</p>');
+        win.document.write('<p><b>Correo:</b> '+(data.get('corp_correo')||'')+'</p>');
+        win.document.write('<p><b>Dirección:</b> '+(data.get('corp_direccion')||'')+'</p>');
+        win.document.write('<p><b>Fecha:</b> '+(data.get('corp_fecha')||'')+'</p>');
+      }
+      win.document.write('</div>');
+
+      win.document.write('<div class="section"><h2>Detalle del tratamiento y evaluación</h2>');
+      if(tipo==='facial'){
+        win.document.write('<p><b>Tipo de piel:</b> '+(data.get('facial_tipo_piel')||'')+'</p>');
+        win.document.write('<p><b>Sensibilidad:</b> '+(data.get('facial_sensibilidad')||'')+'</p>');
+        win.document.write('<p><b>Condiciones observadas:</b><br>'+(data.get('facial_condiciones')||'')+'</p>');
+        win.document.write('<p><b>Alergias:</b> '+(data.get('facial_alergias')||'')+'</p>');
+        win.document.write('<p><b>Medicamentos:</b> '+(data.get('facial_medicamentos')||'')+'</p>');
+        win.document.write('<p><b>Cirugías recientes:</b> '+(data.get('facial_cirugias')||'')+'</p>');
+        win.document.write('<p><b>Tratamientos previos:</b><br>'+(data.get('facial_trat_previos')||'')+'</p>');
+        win.document.write('<p><b>Tensión:</b> '+(data.get('facial_tension')||'')+' &nbsp; <b>FC:</b> '+(data.get('facial_fc')||'')+'</p>');
+        win.document.write('<p><b>Recomendación profesional:</b><br>'+(data.get('facial_recomendacion')||'')+'</p>');
+      }else{
+        win.document.write('<p><b>Áreas a tratar:</b><br>'+(data.get('corp_areas')||'')+'</p>');
+        win.document.write('<p><b>Condiciones corporales:</b><br>'+(data.get('corp_condiciones')||'')+'</p>');
+        win.document.write('<p><b>Tensión muscular:</b><br>'+(data.get('corp_tension')||'')+'</p>');
+        win.document.write('<p><b>Alergias:</b> '+(data.get('corp_alergias')||'')+'</p>');
+        win.document.write('<p><b>Enfermedades:</b> '+(data.get('corp_enfermedades')||'')+'</p>');
+        win.document.write('<p><b>Medicamentos:</b> '+(data.get('corp_medicamentos')||'')+'</p>');
+        win.document.write('<p><b>Cirugías recientes:</b> '+(data.get('corp_cirugias')||'')+'</p>');
+        win.document.write('<p><b>Tensión:</b> '+(data.get('corp_tension_art')||'')+' &nbsp; <b>FC:</b> '+(data.get('corp_fc')||'')+'</p>');
+        win.document.write('<p><b>Recomendación profesional:</b><br>'+(data.get('corp_recomendacion')||'')+'</p>');
+      }
+      win.document.write('</div>');
+
+      win.document.write('<div class="section"><h2>Consentimiento informado</h2>');
+      win.document.write('<p>Espacio para firma de cliente y especialista según el modelo de consentimiento de Figura Rostro KG.</p>');
+      win.document.write('<p>Firma cliente: ____________________________   Fecha: ____/____/______</p>');
+      win.document.write('<p>Firma especialista: ________________________   Fecha: ____/____/______</p>');
+
+      win.document.write('</body></html>');
+      win.document.close();
+      win.focus();
+      // Aquí el cliente puede imprimir o guardar como PDF.
+    }
+  </script>
+</body>
+</html>
