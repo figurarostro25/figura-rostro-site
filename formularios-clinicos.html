@@ -135,6 +135,10 @@
       resize:vertical;
     }
 
+    input[type="file"]{
+      font-size:0.85rem;
+    }
+
     .check-group{
       font-size:0.9rem;
       display:grid;
@@ -228,7 +232,6 @@
 <body>
   <div class="page">
     <header>
-      <!-- Aquí arriba puedes poner el logo blanco de Figura Rostro KG -->
       <h1>Formularios Clínicos – Figura Rostro KG</h1>
       <p>Complete la ficha correspondiente. Al enviar se enviará a la estética y será redirigido al inicio.</p>
     </header>
@@ -242,7 +245,8 @@
       <!-- =============== FICHA FACIAL =============== -->
       <form id="facial-form" class="active"
             action="https://formsubmit.co/figurarostro25@gmail.com"
-            method="POST">
+            method="POST"
+            enctype="multipart/form-data">
         <!-- config formsubmit: redirigir al home y sin captcha -->
         <input type="hidden" name="_next" value="https://figurarostro.life">
         <input type="hidden" name="_captcha" value="false">
@@ -288,7 +292,15 @@
           </div>
         </div>
 
-        <h3>2. Tratamiento o Servicio Solicitado (Faciales)</h3>
+        <h3>2. Foto de referencia (opcional)</h3>
+        <div class="field">
+          <label>Adjuntar foto del rostro / zona a tratar</label>
+          <!-- abre cámara en móvil o permite elegir de galería -->
+          <input type="file" name="attachment" accept="image/*" capture="environment">
+          <small>En celular, al tocar aquí se abrirá la cámara o la galería para tomar la foto.</small>
+        </div>
+
+        <h3>3. Tratamiento o Servicio Solicitado (Faciales)</h3>
 
         <label>Limpiezas faciales</label>
         <div class="check-group">
@@ -344,7 +356,7 @@
           <label class="check-item"><input type="checkbox" name="facial_extra[]" value="Hidralix labios"><span>Hidralix (volumen de labios)</span></label>
         </div>
 
-        <h3>3. Evaluación Facial</h3>
+        <h3>4. Evaluación Facial</h3>
         <div class="field-row">
           <div class="field">
             <label>Tipo de piel</label>
@@ -361,7 +373,7 @@
           <textarea name="facial_condiciones" placeholder="Manchas, acné, rosácea, poros, flacidez, líneas de expresión, cicatrices..."></textarea>
         </div>
 
-        <h3>4. Historial Médico</h3>
+        <h3>5. Historial Médico</h3>
         <div class="field">
           <label>Alergias</label>
           <input type="text" name="facial_alergias">
@@ -379,7 +391,7 @@
           <textarea name="facial_trat_previos"></textarea>
         </div>
 
-        <h3>5. Tensión Arterial (si aplica)</h3>
+        <h3>6. Tensión Arterial (si aplica)</h3>
         <div class="field-row">
           <div class="field">
             <label>Tensión</label>
@@ -391,7 +403,7 @@
           </div>
         </div>
 
-        <h3>6. Recomendación Profesional</h3>
+        <h3>7. Recomendación Profesional</h3>
         <div class="field">
           <textarea name="facial_recomendacion"></textarea>
         </div>
@@ -424,7 +436,8 @@
       <!-- =============== FICHA CORPORAL =============== -->
       <form id="corporal-form"
             action="https://formsubmit.co/figurarostro25@gmail.com"
-            method="POST">
+            method="POST"
+            enctype="multipart/form-data">
         <input type="hidden" name="_next" value="https://figurarostro.life">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_subject" value="Ficha CORPORAL - Figura Rostro KG">
@@ -469,7 +482,14 @@
           </div>
         </div>
 
-        <h3>2. Tratamiento o Servicio Solicitado (Corporales)</h3>
+        <h3>2. Foto de referencia (opcional)</h3>
+        <div class="field">
+          <label>Adjuntar foto del cuerpo / zona a tratar</label>
+          <input type="file" name="attachment" accept="image/*" capture="environment">
+          <small>En celular, al tocar aquí se abrirá la cámara o la galería para tomar la foto.</small>
+        </div>
+
+        <h3>3. Tratamiento o Servicio Solicitado (Corporales)</h3>
         <label>Moldeamiento / Reducción</label>
         <div class="check-group">
           <label class="check-item"><input type="checkbox" name="corp_moldeamiento[]" value="Masaje Reductor"><span>Masaje Reductor</span></label>
@@ -502,7 +522,7 @@
           <label class="check-item"><input type="checkbox" name="corp_depilacion[]" value="Depilación zonas sensibles"><span>Depilación zonas sensibles</span></label>
         </div>
 
-        <h3>3. Evaluación Corporal</h3>
+        <h3>4. Evaluación Corporal</h3>
         <div class="field">
           <label>Áreas a tratar</label>
           <textarea name="corp_areas" placeholder="Abdomen, cintura, espalda, brazos, piernas, glúteos, etc."></textarea>
@@ -513,13 +533,13 @@
           <textarea name="corp_condiciones"></textarea>
         </div>
 
-        <h3>4. Tensión Muscular</h3>
+        <h3>5. Tensión Muscular</h3>
         <div class="field">
           <label>Zonas afectadas y nivel de dolor (1–10)</label>
           <textarea name="corp_tension" placeholder="Cervical, trapecios, dorsal, lumbar, ciática..."></textarea>
         </div>
 
-        <h3>5. Historial Médico</h3>
+        <h3>6. Historial Médico</h3>
         <div class="field">
           <label>Alergias</label>
           <input type="text" name="corp_alergias">
@@ -537,7 +557,7 @@
           <input type="text" name="corp_cirugias">
         </div>
 
-        <h3>6. Tensión Arterial</h3>
+        <h3>7. Tensión Arterial</h3>
         <div class="field-row">
           <div class="field">
             <label>Tensión</label>
@@ -549,7 +569,7 @@
           </div>
         </div>
 
-        <h3>7. Recomendación Profesional</h3>
+        <h3>8. Recomendación Profesional</h3>
         <div class="field">
           <textarea name="corp_recomendacion"></textarea>
         </div>
@@ -655,8 +675,3 @@
       win.document.write('</body></html>');
       win.document.close();
       win.focus();
-      // Aquí el cliente puede imprimir o guardar como PDF.
-    }
-  </script>
-</body>
-</html>
