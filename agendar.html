@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Valoración - Figura Rostro KG</title>
+    <style>
+        :root {
+            --primary-color: #d4a373; /* Tono piel/estética */
+            --secondary-color: #333;
+            --bg-light: #f9f9f9;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+            background-color: var(--bg-light);
+        }
+
+        /* --- Layout: Izquierda (Imágenes) / Derecha (Formulario) --- */
+        .container {
+            display: flex;
+            width: 100%;
+        }
+
+        /* Sección Visual (Imágenes) */
+        .visual-side {
+            width: 30%;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            border-right: 1px solid #ddd;
+            position: relative;
+            background-image: url('https://via.placeholder.com/600x1200/f0f0f0/d4a373?text=Plasma+Fibroblast'); /* Placeholder */
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .visual-overlay {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .visual-img {
+            width: 100%;
+            max-width: 250px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* Sección Formulario */
+        .form-side {
+            width: 70%;
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        h1 { color: var(--secondary-color); font-size: 24px; margin-bottom: 10px; }
+        .subtitle { color: #666; font-size: 14px; margin-bottom: 20px; line-height: 1.5; }
+        .promo-box {
+            background-color: #e8f5e9;
+            border-left: 5px solid #4caf50;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 4px;
+        }
+        .price-highlight { font-weight: bold; color: #2e7d32; }
+
+        /* Estilos del Formulario */
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: 500; color: #444; }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box; /* Importante para padding */
+        }
+
+        .upload-box {
+            border: 2px dashed #d4a373;
+            padding: 20px;
+            text-align: center;
+            margin-top: 10px;
+            display: none; /* Oculto por defecto */
+            background: #fff;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        button:hover { background-color: #b08255; }
+
+        /* --- RESPONSIVE (Móvil) --- */
+        @media (max-width: 768px) {
+            .container { flex-direction: column; }
+            .visual-side { width: 100%; height: 200px; order: -1; } /* Imágenes arriba */
+            .form-side { width: 100%; padding: 20px; }
+        }
+
+        /* --- MODO IMPRESIÓN (Tu hoja bonita manual) --- */
+        @media print {
+            body { background: white; }
+            .visual-side { display: none; } /* Ocultamos imágenes laterales al imprimir */
+            .form-side { width: 100%; padding: 0; }
+            button { display: none; } /* Ocultar botón */
+            .upload-box { display: none; }
+            input, select, textarea { border: none; border-bottom: 1px solid #000; border-radius: 0; }
+            /* Agregamos un encabezado de logo solo para impresión */
+            .print-header { display: block !important; text-align: center; margin-bottom: 20px; }
+            h1 { font-size: 20pt; text-align: center; }
+        }
+        .print-header { display: none; } /* Oculto en pantalla */
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="visual-side">
+        <div class="visual-overlay">
+            <h3>Resultados Reales</h3>
+            <p>Plasma Fibroblast</p>
+            <img src="https://via.placeholder.com/250x150?text=Ejemplo+Parpados" alt="Párpados" class="visual-img">
+            <img src="https://via.placeholder.com/250x150?text=Ejemplo+Abdomen" alt="Abdomen" class="visual-img">
+        </div>
+    </div>
+
+    <div class="form-side">
+        <div class="print-header">
+            <h2>FIGURA ROSTRO KG - Ficha de Valoración</h2>
+        </div>
+
+        <h1>Agendar Valoración Estética: Plasma Fibroblast</h1>
+        <p class="subtitle">
+            Esta es una ventana para agendar su valoración profesional. 
+            Evaluaremos su piel para garantizar los mejores resultados.
+        </p>
+
+        <div class="promo-box">
+            <p><strong>💎 BONO DE RETORNO:</strong> Al asistir, recibes <strong>$10 de crédito</strong> aplicable a tu tratamiento.</p>
+            <p>Costo en Sitio: $9.95 | <span class="price-highlight">Reservando con Yappi: $5.95</span></p>
+        </div>
+
+        <form id="bookingForm" action="https://formsubmit.co/TU_CORREO_AQUI" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_subject" value="Nueva Cita Agendada - Figura Rostro KG">
+            <input type="hidden" name="_next" value="https://tupagina.com/gracias.html">
+
+            <h3>1. Datos Personales</h3>
+            <div style="display: flex; gap: 10px;">
+                <div class="form-group" style="flex: 1;">
+                    <label>Nombre Completo:</label>
+                    <input type="text" name="nombre" required placeholder="Tu nombre">
+                </div>
+                <div class="form-group" style="width: 100px;">
+                    <label>Edad:</label>
+                    <input type="number" name="edad" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Profesión / Ocupación:</label>
+                <input type="text" name="profesion" placeholder="Para conocer tu estilo de vida">
+            </div>
+
+            <div class="form-group">
+                <label>Correo Electrónico:</label>
+                <input type="email" name="email" required placeholder="ejemplo@correo.com">
+            </div>
+            
+            <div class="form-group">
+                <label>Teléfono / WhatsApp:</label>
+                <input type="tel" name="telefono" required placeholder="6000-0000">
+            </div>
+
+            <h3>2. Preguntas Médicas Previas (Triaje)</h3>
+            <p style="font-size: 12px; color: #666;">Para garantizar su seguridad en el procedimiento.</p>
+            
+            <div class="form-group">
+                <label>¿Sufre de queloides o mala cicatrización?</label>
+                <select name="cicatrizacion">
+                    <option value="no">No</option>
+                    <option value="si">Sí</option>
+                    <option value="nose">No estoy seguro/a</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>¿Está embarazada o en periodo de lactancia?</label>
+                <select name="embarazo">
+                    <option value="no">No</option>
+                    <option value="si">Sí</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>¿Tiene diabetes no controlada o problemas de coagulación?</label>
+                <select name="diabetes">
+                    <option value="no">No</option>
+                    <option value="si">Sí</option>
+                </select>
+            </div>
+
+            <h3>3. Fecha y Pago</h3>
+            <div class="form-group">
+                <label>Fecha y Hora Deseada:</label>
+                <input type="datetime-local" name="fecha_cita" required>
+            </div>
+
+            <div class="form-group">
+                <label>Método de Pago:</label>
+                <select id="metodoPago" name="metodo_pago" onchange="toggleYappi()">
+                    <option value="sitio">Pagar en Sitio ($9.95)</option>
+                    <option value="yappi">Yappi - Anticipado ($5.95)</option>
+                </select>
+            </div>
+
+            <div id="yappiInfo" class="upload-box">
+                <p style="color: #d4a373; font-weight: bold;">¡Excelente elección! Ahorras $4.00</p>
+                <p>Realiza el Yappi al número: <strong>6XXX-XXXX</strong> (Directorio Yappi)</p>
+                <label>Sube la captura de pantalla aquí:</label>
+                <input type="file" name="comprobante_yappi" accept="image/*">
+            </div>
+
+            <br>
+            <button type="submit">Confirmar Cita</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function toggleYappi() {
+        var select = document.getElementById("metodoPago");
+        var yappiBox = document.getElementById("yappiInfo");
+        
+        if (select.value === "yappi") {
+            yappiBox.style.display = "block";
+        } else {
+            yappiBox.style.display = "none";
+        }
+    }
+</script>
+
+</body>
+</html>
