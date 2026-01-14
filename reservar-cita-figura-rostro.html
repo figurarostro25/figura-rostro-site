@@ -1,168 +1,261 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Reservar Cita · Figura Rostro KG (Royal Park, Panamá)</title>
-  <meta name="description" content="Reserva tu cita por WhatsApp con Figura Rostro KG. Faciales, masajes terapéuticos y estética no invasiva en Royal Park, Parque Lefevre, Ciudad de Panamá.">
-  <link rel="canonical" href="https://figurarostro.life/reservar-cita-figura-rostro.html"/>
-  <meta name="theme-color" content="#5b2580"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Valoración - Figura Rostro KG</title>
+    <style>
+        :root {
+            --primary-color: #d4a373; /* Tono piel/estética */
+            --secondary-color: #333;
+            --bg-light: #f9f9f9;
+        }
 
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+            background-color: var(--bg-light);
+        }
 
-  <style>
-    :root{--brand:#5b2580;--brand2:#a66cd4;--overlay:rgba(0,0,0,.55)}
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:#0f0a16;color:#fff}
+        /* --- Layout: Izquierda (Imágenes) / Derecha (Formulario) --- */
+        .container {
+            display: flex;
+            width: 100%;
+        }
 
-    /* Header compacto (igual estilo) */
-    header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,#160c1f,#241235);border-bottom:1px solid rgba(255,255,255,.08)}
-    .container{max-width:1150px;margin:0 auto;padding:0 16px}
-    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
-    .brand img{height:52px}
-    .site-nav .menu{display:flex;gap:22px;list-style:none;margin:0;padding:0}
-    .site-nav a{color:#fff;text-decoration:none;font-weight:600;opacity:.95}
-    .site-nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:3px}
-    .btn-primary{background:#fff;color:var(--brand);border:0;padding:10px 16px;border-radius:14px;font-weight:800;text-decoration:none}
+        /* Sección Visual (Imágenes) */
+        .visual-side {
+            width: 30%;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            border-right: 1px solid #ddd;
+            position: relative;
+            background-image: url('https://via.placeholder.com/600x1200/f0f0f0/d4a373?text=Plasma+Fibroblast'); /* Placeholder */
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .visual-overlay {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
 
-    /* Hero (fondo) */
-    .hero{
-      min-height:64vh;display:grid;place-items:center;text-align:center;position:relative;
-      background:linear-gradient(var(--overlay),var(--overlay)), url('citas-hero.jpg') center/cover no-repeat;
-    }
-    .chat-card{
-      background:rgba(255,255,255,.1);backdrop-filter:blur(10px);
-      border-radius:20px;padding:32px 24px;width:min(92%,440px);
-      box-shadow:0 0 25px rgba(0,0,0,.4);margin:auto
-    }
-    .logo{width:140px;margin-bottom:14px;filter:drop-shadow(0 3px 8px rgba(0,0,0,.4))}
-    .assistant-img{width:120px;height:120px;border-radius:50%;object-fit:cover;border:3px solid var(--brand2);margin-bottom:10px;box-shadow:0 4px 15px rgba(0,0,0,.3)}
-    h1{font-size:clamp(22px,4.5vw,28px);margin:.25rem 0 .5rem}
-    p{opacity:.92;margin:.25rem 0 .85rem}
-    .btn-option{display:block;width:92%;margin:10px auto;padding:12px 18px;border-radius:25px;border:none;cursor:pointer;font-weight:700;
-                background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff}
-    .btn-option:hover{transform:translateY(-2px)}
-    .close-btn{position:absolute;top:16px;right:18px;background:rgba(255,255,255,.15);border:none;color:#fff;font-size:22px;border-radius:50%;width:38px;height:38px;cursor:pointer}
+        .visual-img {
+            width: 100%;
+            max-width: 250px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
 
-    /* Footer oscuro unificado */
-    .site-footer.dark{background:linear-gradient(180deg,#160c1f,#241235);color:#fff;border-top:1px solid rgba(255,255,255,.12)}
-    .site-footer a{color:#e9d9ff;text-decoration:none}
-    .site-footer a:hover{text-decoration:underline;text-underline-offset:3px}
-    .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.6fr;gap:28px;padding:40px 0 18px}
-    @media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr}.site-footer .map-wrap{display:none}}
-    .f-col h4{margin:0 0 10px}
-    .f-col ul{list-style:none;margin:0;padding:0}
-    .f-col li{margin:6px 0}
-    .brand-line{display:flex;gap:12px;align-items:flex-start}
-    .f-logo{height:40px}
-    .f-social{margin-top:10px;opacity:.9}
-    .f-social span{margin:0 6px;opacity:.6}
-    .map-wrap iframe{width:100%;height:200px;border:0;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
-    .footer-bottom{border-top:1px solid rgba(255,255,255,.12);padding:14px 0;text-align:center;opacity:.9}
-  </style>
+        /* Sección Formulario */
+        .form-side {
+            width: 70%;
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        h1 { color: var(--secondary-color); font-size: 24px; margin-bottom: 10px; }
+        .subtitle { color: #666; font-size: 14px; margin-bottom: 20px; line-height: 1.5; }
+        .promo-box {
+            background-color: #e8f5e9;
+            border-left: 5px solid #4caf50;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 4px;
+        }
+        .price-highlight { font-weight: bold; color: #2e7d32; }
+
+        /* Estilos del Formulario */
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: 500; color: #444; }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box; /* Importante para padding */
+        }
+
+        .upload-box {
+            border: 2px dashed #d4a373;
+            padding: 20px;
+            text-align: center;
+            margin-top: 10px;
+            display: none; /* Oculto por defecto */
+            background: #fff;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        button:hover { background-color: #b08255; }
+
+        /* --- RESPONSIVE (Móvil) --- */
+        @media (max-width: 768px) {
+            .container { flex-direction: column; }
+            .visual-side { width: 100%; height: 200px; order: -1; } /* Imágenes arriba */
+            .form-side { width: 100%; padding: 20px; }
+        }
+
+        /* --- MODO IMPRESIÓN (Tu hoja bonita manual) --- */
+        @media print {
+            body { background: white; }
+            .visual-side { display: none; } /* Ocultamos imágenes laterales al imprimir */
+            .form-side { width: 100%; padding: 0; }
+            button { display: none; } /* Ocultar botón */
+            .upload-box { display: none; }
+            input, select, textarea { border: none; border-bottom: 1px solid #000; border-radius: 0; }
+            /* Agregamos un encabezado de logo solo para impresión */
+            .print-header { display: block !important; text-align: center; margin-bottom: 20px; }
+            h1 { font-size: 20pt; text-align: center; }
+        }
+        .print-header { display: none; } /* Oculto en pantalla */
+    </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <div class="container header-inner">
-      <a href="/" class="brand"><img src="logo-header-white.png" alt="Figura Rostro KG"></a>
-      <nav class="site-nav">
-        <ul class="menu">
-          <li><a href="/promociones-estetica-panama.html">Promociones</a></li>
-          <li><a href="/tratamientos-faciales-panama.html">Faciales</a></li>
-          <li><a href="/masajes-terapeuticos-panama.html">Masajes</a></li>
-          <li><a href="#contacto-footer">Contacto</a></li>
-        </ul>
-      </nav>
-      <a class="btn-primary" href="/reservar-cita-figura-rostro.html">Agendar</a>
+<div class="container">
+    <div class="visual-side">
+        <div class="visual-overlay">
+            <h3>Resultados Reales</h3>
+            <p>Plasma Fibroblast</p>
+            <img src="https://via.placeholder.com/250x150?text=Ejemplo+Parpados" alt="Párpados" class="visual-img">
+            <img src="https://via.placeholder.com/250x150?text=Ejemplo+Abdomen" alt="Abdomen" class="visual-img">
+        </div>
     </div>
-  </header>
 
-  <!-- Hero / Card -->
-  <section class="hero">
-    <button class="close-btn" onclick="location.href='/'" aria-label="Volver al inicio">×</button>
-    <div class="chat-card" role="region" aria-label="Opciones de reserva por WhatsApp">
-      <img src="logo-header-white.png" alt="Figura Rostro KG" class="logo">
-      <img src="asistente-lucia.jpg" alt="Asistente Lucia" class="assistant-img">
-      <h1>Hola, soy Lucía 🌸</h1>
-      <p>Estoy para ayudarte a reservar tu cita. Elige una opción y abriremos WhatsApp con tu mensaje listo.</p>
-      <button class="btn-option" onclick="abrirChat('relajante')">💆 Promo Masaje Relajante</button>
-      <button class="btn-option" onclick="abrirChat('facial')">💖 Tratamiento Facial</button>
-      <button class="btn-option" onclick="abrirChat('otras')">✨ Otras Promos</button>
+    <div class="form-side">
+        <div class="print-header">
+            <h2>FIGURA ROSTRO KG - Ficha de Valoración</h2>
+        </div>
+
+        <h1>Agendar Valoración Estética: Plasma Fibroblast</h1>
+        <p class="subtitle">
+            Esta es una ventana para agendar su valoración profesional. 
+            Evaluaremos su piel para garantizar los mejores resultados.
+        </p>
+
+        <div class="promo-box">
+            <p><strong>💎 BONO DE RETORNO:</strong> Al asistir, recibes <strong>$10 de crédito</strong> aplicable a tu tratamiento.</p>
+            <p>Costo en Sitio: $9.95 | <span class="price-highlight">Reservando con Yappi: $5.95</span></p>
+        </div>
+
+        <form id="bookingForm" action="https://formsubmit.co/TU_CORREO_AQUI" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_subject" value="Nueva Cita Agendada - Figura Rostro KG">
+            <input type="hidden" name="_next" value="https://tupagina.com/gracias.html">
+
+            <h3>1. Datos Personales</h3>
+            <div style="display: flex; gap: 10px;">
+                <div class="form-group" style="flex: 1;">
+                    <label>Nombre Completo:</label>
+                    <input type="text" name="nombre" required placeholder="Tu nombre">
+                </div>
+                <div class="form-group" style="width: 100px;">
+                    <label>Edad:</label>
+                    <input type="number" name="edad" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Profesión / Ocupación:</label>
+                <input type="text" name="profesion" placeholder="Para conocer tu estilo de vida">
+            </div>
+
+            <div class="form-group">
+                <label>Correo Electrónico:</label>
+                <input type="email" name="email" required placeholder="ejemplo@correo.com">
+            </div>
+            
+            <div class="form-group">
+                <label>Teléfono / WhatsApp:</label>
+                <input type="tel" name="telefono" required placeholder="6000-0000">
+            </div>
+
+            <h3>2. Preguntas Médicas Previas (Triaje)</h3>
+            <p style="font-size: 12px; color: #666;">Para garantizar su seguridad en el procedimiento.</p>
+            
+            <div class="form-group">
+                <label>¿Sufre de queloides o mala cicatrización?</label>
+                <select name="cicatrizacion">
+                    <option value="no">No</option>
+                    <option value="si">Sí</option>
+                    <option value="nose">No estoy seguro/a</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>¿Está embarazada o en periodo de lactancia?</label>
+                <select name="embarazo">
+                    <option value="no">No</option>
+                    <option value="si">Sí</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>¿Tiene diabetes no controlada o problemas de coagulación?</label>
+                <select name="diabetes">
+                    <option value="no">No</option>
+                    <option value="si">Sí</option>
+                </select>
+            </div>
+
+            <h3>3. Fecha y Pago</h3>
+            <div class="form-group">
+                <label>Fecha y Hora Deseada:</label>
+                <input type="datetime-local" name="fecha_cita" required>
+            </div>
+
+            <div class="form-group">
+                <label>Método de Pago:</label>
+                <select id="metodoPago" name="metodo_pago" onchange="toggleYappi()">
+                    <option value="sitio">Pagar en Sitio ($9.95)</option>
+                    <option value="yappi">Yappi - Anticipado ($5.95)</option>
+                </select>
+            </div>
+
+            <div id="yappiInfo" class="upload-box">
+                <p style="color: #d4a373; font-weight: bold;">¡Excelente elección! Ahorras $4.00</p>
+                <p>Realiza el Yappi al número: <strong>6XXX-XXXX</strong> (Directorio Yappi)</p>
+                <label>Sube la captura de pantalla aquí:</label>
+                <input type="file" name="comprobante_yappi" accept="image/*">
+            </div>
+
+            <br>
+            <button type="submit">Confirmar Cita</button>
+        </form>
     </div>
-  </section>
+</div>
 
-  <!-- Footer -->
-  <footer class="site-footer dark" id="contacto-footer">
-    <div class="container footer-grid">
-      <div class="f-col">
-        <div class="brand-line">
-          <img class="f-logo" src="logo-header-white.png" alt="Figura Rostro KG">
-          <div>
-            <h4>Figura Rostro KG</h4>
-            <p style="margin:6px 0 0;opacity:.9;">Parque Lefevre · Royal Park, Ciudad de Panamá.</p>
-            <p style="margin:6px 0 0;opacity:.9;">Atención: 8:00 a.m. – 8:00 p.m.</p>
-          </div>
-        </div>
-        <div class="f-social">
-          <a href="https://instagram.com/figurarostrokg" target="_blank" rel="noopener">Instagram</a>
-          <span>·</span>
-          <a href="https://facebook.com/figurarostrokg" target="_blank" rel="noopener">Facebook</a>
-          <span>·</span>
-          <a href="https://www.tiktok.com/@figurarostrokg" target="_blank" rel="noopener">TikTok</a>
-        </div>
-      </div>
-
-      <div class="f-col">
-        <h4>Faciales</h4>
-        <ul>
-          <li><a href="/tratamientos-faciales-panama.html">Tratamientos faciales</a></li>
-          <li><a href="/peeling-facial-panama.html">Peeling Facial</a></li>
-          <li><a href="/plasma-fibroblast-panama.html">Plasma Fibroblast</a></li>
-          <li><a href="/radiofrecuencia-facial-panama.html">Radiofrecuencia Facial</a></li>
-          <li><a href="/lifting-facial-sin-cirugia.html">Lifting sin cirugía</a></li>
-        </ul>
-      </div>
-
-      <div class="f-col">
-        <h4>Masajes</h4>
-        <ul>
-          <li><a href="/masajes-terapeuticos-panama.html">Masajes terapéuticos</a></li>
-          <li><a href="/masaje-relajante-panama.html">Masaje Relajante</a></li>
-          <li><a href="/masaje-adultos-mayores-panama.html">Adultos Mayores</a></li>
-          <li><a href="/masaje-adaptado-discapacitados.html">Terapia adaptada</a></li>
-          <li><a href="/contorno-corporal-panama.html">Contorno corporal</a></li>
-        </ul>
-      </div>
-
-      <div class="f-col">
-        <h4>Cómo llegar</h4>
-        <div class="map-wrap">
-          <iframe src="https://maps.google.com/maps?q=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&t=&z=16&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-        <div class="map-links" style="margin-top:8px">
-          <a href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noopener">Abrir en Waze</a>
-          ·
-          <a href="https://maps.google.com/?q=Royal+Park+Ernesto+T+Lefevre+Panama" target="_blank" rel="noopener">Google Maps</a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">© <span id="year"></span> Figura Rostro KG · Todos los derechos reservados</div>
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent=new Date().getFullYear();
-    const whatsappNumber="50764746168";
-    function abrirChat(tipo){
-      let msg="";
-      if(tipo==='relajante') msg="¡Hola! Me interesa la *Promo de Masaje Relajante*. ¿Podrías contarme más y ayudarme a agendar?";
-      else if(tipo==='facial') msg="¡Hola! Me gustaría información sobre los *Tratamientos Faciales* disponibles en Figura Rostro KG.";
-      else msg="¡Hola! Quisiera conocer las *otras promociones y paquetes* disponibles esta semana.";
-      const url=`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`;
-      window.open(url,"_blank");
+<script>
+    function toggleYappi() {
+        var select = document.getElementById("metodoPago");
+        var yappiBox = document.getElementById("yappiInfo");
+        
+        if (select.value === "yappi") {
+            yappiBox.style.display = "block";
+        } else {
+            yappiBox.style.display = "none";
+        }
     }
-  </script>
+</script>
+
 </body>
 </html>
