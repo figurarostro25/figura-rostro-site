@@ -26,21 +26,40 @@
       background: #0f0518;
     }
 
-    /* 1. ESTILOS DE LA FRANJA DE GIRA (NUEVO) */
+    /* 1. FRANJA SUPERIOR (TOP BAR) - Más alta y visible */
     .top-announcement {
       background: var(--chiriqui-green);
       color: #fff;
       text-align: center;
-      padding: 12px 20px;
-      font-weight: 600;
-      font-size: 14px;
-      letter-spacing: 0.5px;
+      padding: 15px 20px; /* Más alta */
+      font-weight: 500;
+      font-size: 15px;
+      letter-spacing: 0.3px;
       position: relative;
       z-index: 100;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
     }
+    .ig-link {
+      background: #fff;
+      color: var(--chiriqui-green);
+      text-decoration: none;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-weight: 800;
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: transform 0.2s;
+    }
+    .ig-link:hover { transform: scale(1.05); }
 
-    /* --- FONDO DE PÁGINA (DISEÑO CLÍNICA DARK) --- */
+    /* --- FONDO DE PÁGINA --- */
     .booking-section {
       min-height: 100vh;
       display: flex;
@@ -68,6 +87,16 @@
       box-shadow: 0 25px 60px rgba(0,0,0,0.6);
       border: 1px solid rgba(255, 255, 255, 0.5);
       text-align: center; 
+      position: relative;
+    }
+
+    /* LOGO EN EL FORMULARIO */
+    .form-logo {
+      max-width: 180px;
+      height: auto;
+      margin-bottom: 20px;
+      /* Este filtro convierte una imagen blanca/negra al color morado de la marca aprox */
+      filter: brightness(0) saturate(100%) invert(16%) sepia(61%) saturate(3474%) hue-rotate(266deg) brightness(91%) contrast(96%);
     }
 
     /* ETIQUETA DORADA */
@@ -177,49 +206,49 @@
       box-shadow: none;
     }
 
-    /* CHECK SEGURIDAD */
-    .security-check {
-      margin-top: 25px;
-      padding-top: 20px;
-      border-top: 1px solid #eee;
-      font-size: 13px;
-      color: #555;
-      display: flex;
-      align-items: center; 
-      gap: 12px;
-    }
-    .security-check input {
-      width: 20px; height: 20px; margin: 0; flex-shrink: 0; accent-color: var(--gold); cursor: pointer;
-    }
-    .security-check span { line-height: 1.4; }
-
     /* PRECIO Y AVISOS */
     .price-highlight {
-      background: #fffbf0; border: 1px solid #f0e6c5; color: #7a6a30;
-      padding: 15px; border-radius: 10px; margin-top: 8px; font-size: 13px;
+      background: #fffbf0;
+      border: 1px solid #f0e6c5;
+      color: #7a6a30;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 8px;
+      font-size: 13px;
     }
-    .price-highlight strong { color: #d4af37; }
 
     /* BOTÓN DE ENVÍO */
     .btn-submit {
-      width: 100%; padding: 20px; background: var(--brand); color: #fff;
-      border: none; border-radius: 50px; font-size: 18px; font-weight: 700;
-      cursor: pointer; text-transform: uppercase; letter-spacing: 1px;
-      margin-top: 20px; box-shadow: 0 10px 25px rgba(91, 37, 128, 0.25);
+      width: 100%;
+      padding: 20px;
+      background: var(--brand);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 20px;
+      box-shadow: 0 10px 25px rgba(91, 37, 128, 0.25);
       transition: transform 0.2s;
     }
     .btn-submit:hover {
-      background: var(--brand-dark); transform: translateY(-3px); box-shadow: 0 15px 35px rgba(91, 37, 128, 0.4);
+      background: var(--brand-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(91, 37, 128, 0.4);
     }
 
-    /* 2. BOTÓN DE AYUDA (NUEVO) */
-    .help-chat-link {
+    /* BOTON AYUDA FLOTANTE DENTRO DE CARD */
+    .btn-help-wa {
       display: flex; align-items: center; justify-content: center; gap: 8px;
       margin-top: 20px; color: #666; font-size: 14px; font-weight: 600;
-      text-decoration: none; padding: 10px; border-radius: 8px; transition: 0.3s;
+      text-decoration: none; padding: 12px; border-radius: 8px;
+      border: 1px solid transparent; transition: 0.3s;
     }
-    .help-chat-link:hover { color: var(--brand); background: #fdfbfd; }
-    .help-chat-link svg { width: 18px; height: 18px; fill: #25D366; }
+    .btn-help-wa:hover { color: var(--brand); border-color: #eee; background: #fff; }
+    .btn-help-wa svg { fill: #25D366; width: 20px; height: 20px; }
 
     /* MENSAJES DE ESTADO */
     #status-msg {
@@ -232,7 +261,7 @@
       .checkbox-group { grid-template-columns: 1fr; }
       .booking-card { padding: 25px; margin: 10px; }
       h2 { font-size: 28px; }
-      .security-check { align-items: flex-start; } 
+      .top-announcement { font-size: 13px; padding: 10px; }
     }
   </style>
 </head>
@@ -240,10 +269,16 @@
 
   <div class="top-announcement">
     ⛰️ Pronta gira por David Chiriquí y Tierras Altas para el tratamiento de plasma fibroblast
+    <a href="https://instagram.com/figurarostrokg" target="_blank" class="ig-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      Síguenos y gana bono de $10
+    </a>
   </div>
 
   <section class="booking-section">
     <div class="booking-card">
+      
+      <img src="logo-header-white.png" alt="Figura Rostro KG" class="form-logo">
       
       <div class="treatment-badge">Tratamiento Plasma Fibroblast</div>
       
@@ -256,12 +291,10 @@
           <label>Nombre Completo</label>
           <input type="text" name="user_name" placeholder="Nombre y Apellido" required>
         </div>
-        
         <div class="form-group">
           <label>WhatsApp de Contacto</label>
           <input type="tel" name="user_phone" placeholder="Ej: 6474-6168" required>
         </div>
-        
         <div class="form-group">
           <label>Correo Electrónico</label>
           <input type="email" name="user_email" placeholder="Para enviarte la confirmación" required>
@@ -269,14 +302,28 @@
 
         <div class="form-group">
           <label>Provincia de Residencia</label>
-          <select name="user_province" id="province-select" required>
-            <option value="" disabled selected>-- Selecciona tu ubicación --</option>
-            <option value="Panama">Ciudad de Panamá</option>
-            <option value="PanamaOeste">Panamá Oeste</option>
-            <option value="Colon">Colón</option>
-            <option value="Chiriqui">Chiriquí (David / Tierras Altas)</option>
-            <option value="ProvinciasCentrales">Provincias Centrales</option>
+          <select name="user_province" required>
+            <option value="" disabled selected>-- Elige una opción --</option>
+            <option value="Panamá">Ciudad de Panamá</option>
+            <option value="Panamá Oeste">Panamá Oeste</option>
+            <option value="Colón">Colón</option>
+            <option value="Chiriquí">Chiriquí (David / Tierras Altas)</option>
+            <option value="Provincias Centrales">Provincias Centrales</option>
           </select>
+        </div>
+
+        <div class="form-group">
+          <label>Selecciona tu Servicio</label>
+          <select name="service_type" id="service-select" required>
+            <option value="" disabled selected>-- Elige una opción --</option>
+            <option value="Tratamiento-Fibroblast-Ya-Valorado">Quiero Realizarme el Procedimiento de Plasma Fibroblast (ya hice la valoracion)</option>
+            <option value="Valoracion-Transferencia">Valoración Estética - $9.95 (Pago Directo)</option>
+            <option value="Valoracion-Yappy">Valoración Estética - $5.95 (Directorio Yappy)</option>
+            <option value="Otro">Otro servicio del menú</option>
+          </select>
+          <div class="price-highlight">
+            ℹ️ Las valoraciones pagadas incluyen un <strong>Bono de Regalo de $10</strong> aplicable a tu tratamiento final.
+          </div>
         </div>
 
         <div class="medical-section">
@@ -290,20 +337,6 @@
             <label class="checkbox-item"><input type="checkbox" name="med_marcapasos" value="Si"> Marcapasos / Cardiopatía</label>
             <label class="checkbox-item"><input type="checkbox" name="med_infeccion" value="Si"> Infección activa en piel</label>
             <label class="checkbox-item"><input type="checkbox" name="med_bronceado" value="Si"> Bronceado reciente</label>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>Selecciona tu Servicio</label>
-          <select name="service_type" id="service-select" required>
-            <option value="" disabled selected>-- Elige una opción --</option>
-            <option value="Valoracion-Transferencia">Valoración Estética - $9.95 (Pago Directo)</option>
-            <option value="Valoracion-Yappy">Valoración Estética - $5.95 (Directorio Yappy)</option>
-            <option value="Tratamiento-Fibroblast">Procedimiento Plasma Fibroblast</option>
-            <option value="Otro">Otro servicio del menú</option>
-          </select>
-          <div class="price-highlight">
-            ℹ️ Las valoraciones pagadas incluyen un <strong>Bono de Regalo de $10</strong> aplicable a tu tratamiento final.
           </div>
         </div>
 
@@ -323,14 +356,9 @@
           </div>
         </div>
 
-        <div class="security-check">
-          <input type="checkbox" id="terms" required>
-          <label for="terms">Declaro que la información médica suministrada es real y acepto ser contactada para confirmar mi cita.</label>
-        </div>
-
         <button type="submit" class="btn-submit">Enviar Solicitud Segura</button>
 
-        <a href="https://wa.me/50764746168?text=Hola,%20necesito%20ayuda%20para%20llenar%20la%20encuesta%20de%20cita." target="_blank" class="help-chat-link">
+        <a href="https://wa.me/50764746168?text=Hola,%20tengo%20dudas%20con%20el%20formulario." target="_blank" class="btn-help-wa">
           <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.94 14.5L2 22l5.7-1.5A10 10 0 1 0 12 2zm5.5 14.1c-.24.68-1.4 1.3-1.96 1.34-.5.03-1.14.05-1.84-.12-.42-.1-.97-.31-1.67-.61-2.94-1.27-4.86-4.2-5.01-4.4-.15-.2-1.2-1.6-1.2-3.06 0-1.45.76-2.16 1.03-2.45.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.24.59.82 2.05.9 2.2.07.15.12.33.01.53-.1.2-.15.33-.3.51-.15.18-.31.4-.44.54-.15.15-.31.32-.13.62.18.3.8 1.3 1.71 2.1 1.18 1.05 2.17 1.37 2.47 1.52.3.15.48.13.66-.08.18-.2.76-.89.96-1.2.2-.3.41-.26.67-.15.26.1 1.64.77 1.92.91.29.15.48.22.55.34.07.12.07.7-.17 1.38z"/></svg>
           ¿Necesitas ayuda para llenar esto?
         </a>
