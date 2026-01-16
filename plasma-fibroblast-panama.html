@@ -15,13 +15,13 @@
 
   <style>
     :root{
-      --brand: #5b2580;
-      --brand-dark: #3a1555;
+      --brand: #5b2580;       /* Morado Principal (Botones, texto destacado) */
+      --brand-dark: #1F0A2E;  /* Morado Muy Oscuro (Fondo Header) */
       --gold: #d4af37;
       --bg-light: #fdfbfd;
       --text-main: #2d2d2d;
-      --chiriqui-green: #007a33; /* Verde Chiriquí */
-      --chiriqui-red: #d31d1d;   /* Rojo Chiriquí */
+      --chiriqui-green: #007a33;
+      --chiriqui-red: #d31d1d;
       --ig-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
       --shadow: 0 10px 40px rgba(91, 37, 128, 0.08);
     }
@@ -59,12 +59,12 @@
       gap: 10px;
     }
     .btn-primary:hover{
-      background: var(--brand-dark);
+      background: var(--gold); /* Hover dorado */
+      color: #000;
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(91, 37, 128, 0.4);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
     }
     
-    /* Botón Instagram Especial */
     .btn-ig {
       background: var(--ig-gradient); 
       color: white;
@@ -82,25 +82,14 @@
       box-shadow: 0 6px 20px rgba(220, 39, 67, 0.5);
     }
 
-    .btn-outline{
-      border: 2px solid #fff;
-      background: transparent;
-      color: #fff;
-      padding: 14px 30px;
-      border-radius: 50px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-    .btn-outline:hover{ background: #fff; color: var(--brand); }
-
-    /* BARRA CHIRIQUÍ */
+    /* BARRA CHIRIQUÍ (Integrada en oscuro) */
     .chiriqui-bar {
-      background: var(--chiriqui-green);
+      background: #0f0518; /* Casi negro, combina con el header */
       color: #fff;
       text-align: center;
       padding: 12px 20px;
       font-weight: 500;
-      font-size: 15px;
+      font-size: 14px;
       position: relative;
       z-index: 101;
       display: flex;
@@ -108,6 +97,7 @@
       align-items: center;
       gap: 15px;
       flex-wrap: wrap;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
     .chiriqui-badge {
       background: var(--chiriqui-red);
@@ -115,42 +105,54 @@
       padding: 4px 10px;
       border-radius: 4px;
       font-weight: 700;
-      font-size: 12px;
+      font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 1px;
     }
     .chiriqui-link {
-      color: #fff;
+      color: var(--gold);
       text-decoration: underline;
       font-weight: 700;
       display: inline-flex;
       align-items: center;
       gap: 5px;
     }
-    .chiriqui-link:hover { color: #ffeeba; }
 
-    /* HEADER */
+    /* HEADER OSCURO */
     header{
       position:sticky;
       top:0;
       z-index:100;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(12px); 
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(0,0,0,0.05); 
-      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      background: var(--brand-dark); /* FONDO OSCURO */
+      border-bottom: 1px solid rgba(255,255,255,0.1); 
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
     .header-inner{max-width:1200px;margin:auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
-    .brand img{height:55px;width:auto; transition: transform 0.3s;}
+    
+    .brand img {
+      height: 55px; 
+      width: auto; 
+      /* Si tu logo original es negro, este filtro lo vuelve blanco. 
+         Si ya es blanco, puedes quitar el filtro style="" */
+      filter: brightness(0) invert(1); 
+      transition: transform 0.3s;
+    }
     .brand:hover img { transform: scale(1.05); }
+
+    /* NAVEGACIÓN EN HEADER OSCURO */
     nav{display:flex;gap:30px;align-items:center}
-    nav a{color: var(--text-main); font-weight:500; font-size: 15px; position: relative;}
-    nav a:hover{color: var(--brand);}
+    nav a{
+      color: rgba(255,255,255,0.9); /* Texto blanco */
+      font-weight:500; 
+      font-size: 15px; 
+      position: relative;
+    }
+    nav a:hover{ color: var(--gold); } /* Hover dorado */
     
     /* HERO SECTION */
     .hero{
       position:relative;
-      height: 85vh; /* Un poco más alto para lucir */
+      height: 85vh;
       min-height: 550px;
       display:flex;
       align-items:center;
@@ -162,13 +164,14 @@
     }
     .hero::before{
       content:"";position:absolute;inset:0;
-      background: linear-gradient(135deg, rgba(30,10,50,0.85) 0%, rgba(91,37,128,0.5) 100%);
+      /* Gradiente oscuro para que el texto se lea bien */
+      background: linear-gradient(135deg, rgba(15,5,24,0.85) 0%, rgba(91,37,128,0.4) 100%);
     }
     .hero .inner{position:relative;z-index:2;padding:20px; max-width: 800px;}
     .hero h1{
       font-size:clamp(40px,7vw,65px);
       margin:0 0 20px;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
     }
     .hero p{
       color: rgba(255,255,255,0.95);
@@ -242,7 +245,7 @@
     .zone-content h3 { color: var(--brand); margin-top: 0; font-size: 20px; margin-bottom: 8px;}
     .zone-content p { font-size: 14px; margin: 0; color: #666; }
 
-    /* SEO: SECCION PREGUNTAS FRECUENTES */
+    /* PREGUNTAS FRECUENTES */
     .faq-section { background: #fdfbfd; margin-top: 40px; }
     .faq-item {
       background: #fff;
@@ -304,7 +307,6 @@
       .final-cta { margin: 0; border-radius: 0; }
       h1 { font-size: 36px; }
       h2 { font-size: 28px; }
-      /* En móvil ponemos los botones del hero uno debajo del otro */
       .hero-btns { flex-direction: column; width: 100%; max-width: 300px; margin: auto; }
       .btn-primary, .btn-ig { width: 100%; }
     }
@@ -323,7 +325,9 @@
 
   <header>
     <div class="header-inner">
-      <a href="/" class="brand"><img src="logo-header-white.png" alt="Figura Rostro KG" style="filter: brightness(0.2) invert(0.2) sepia(1) hue-rotate(240deg) saturate(3);"></a> 
+      <a href="/" class="brand">
+          <img src="logo-header-white.png" alt="Figura Rostro KG">
+      </a> 
       <nav>
         <a href="/">Inicio</a>
         <a href="/tratamientos/">Tratamientos</a>
@@ -468,7 +472,7 @@
         </div>
         <div class="faq-section">
             <details class="faq-item">
-                <summary>¿El Plasma Fibroblast duele?</summary>
+                <summary>¿Qué tan confortable es el procedimiento?</summary>
                 <p>En Figura Rostro KG, tu comodidad es nuestra prioridad absoluta. Aplicamos un protocolo de preparación tópica de alto confort antes de iniciar, garantizando que tu experiencia sea totalmente relajada, tranquila y segura mientras renovamos tu piel.</p>
             </details>
             <details class="faq-item">
