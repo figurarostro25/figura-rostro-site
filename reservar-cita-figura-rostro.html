@@ -25,34 +25,39 @@
       background: #0f0518;
     }
 
-    /* FONDO DE PÁGINA */
+    /* --- FONDO DE PÁGINA (DISEÑO CLÍNICA DARK) --- */
     .booking-section {
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 40px 20px;
-      /* Degradado profundo y elegante */
-      background: radial-gradient(circle at center, #4a1f6b 0%, #0f0518 80%);
+      
+      /* Capa 1: Filtro Morado Oscuro para legibilidad */
+      /* Capa 2: Foto de Clínica Minimalista */
+      background-image: linear-gradient(rgba(42, 14, 61, 0.85), rgba(15, 5, 24, 0.95)),
+                        url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=2068&auto=format&fit=crop');
+      
       background-size: cover;
-      background-attachment: fixed;
+      background-position: center;
+      background-attachment: fixed; /* Efecto elegante al hacer scroll */
     }
 
     /* TARJETA DEL FORMULARIO */
     .booking-card {
       background: rgba(255, 255, 255, 0.96); 
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);         /* Efecto cristal */
+      -webkit-backdrop-filter: blur(20px); /* Para Safari */
       width: 100%;
       max-width: 700px;
       border-radius: 24px;
       padding: 45px;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.6);
       border: 1px solid rgba(255, 255, 255, 0.5);
-      text-align: center; /* Centramos header */
+      text-align: center; 
     }
 
-    /* NUEVO: ETIQUETA DORADA DE TRATAMIENTO */
+    /* ETIQUETA DORADA */
     .treatment-badge {
       display: inline-block;
       background: linear-gradient(90deg, #d4af37, #f2d06b);
@@ -85,7 +90,7 @@
       margin-right: auto;
     }
 
-    /* ALINEACIÓN DEL FORMULARIO (Volvemos a texto a la izquierda para inputs) */
+    /* FORMULARIO */
     form { text-align: left; }
 
     .form-group { margin-bottom: 22px; }
@@ -159,7 +164,7 @@
       box-shadow: none;
     }
 
-    /* NUEVO: CHECK DE SEGURIDAD / TÉRMINOS */
+    /* CHECK SEGURIDAD */
     .security-check {
       margin-top: 25px;
       padding-top: 20px;
@@ -167,21 +172,22 @@
       font-size: 13px;
       color: #555;
       display: flex;
-      align-items: center; /* Alineación vertical */
+      align-items: center; 
       gap: 12px;
     }
     .security-check input {
       width: 20px; 
       height: 20px;
-      margin: 0; /* Quitamos margin default */
-      flex-shrink: 0; /* Evita que el checkbox se aplaste */
-      accent-color: var(--gold); /* Check dorado */
+      margin: 0; 
+      flex-shrink: 0; 
+      accent-color: var(--gold); 
       cursor: pointer;
     }
     .security-check span {
       line-height: 1.4;
     }
 
+    /* PRECIO Y AVISOS */
     .price-highlight {
       background: #fffbf0;
       border: 1px solid #f0e6c5;
@@ -193,6 +199,7 @@
     }
     .price-highlight strong { color: #d4af37; }
 
+    /* BOTÓN DE ENVÍO */
     .btn-submit {
       width: 100%;
       padding: 20px;
@@ -215,6 +222,7 @@
       box-shadow: 0 15px 35px rgba(91, 37, 128, 0.4);
     }
 
+    /* MENSAJES DE ESTADO */
     #status-msg {
       display: none;
       text-align: center;
@@ -226,11 +234,12 @@
     .success { background: #e6fffa; color: #047857; border: 1px solid #10b981; }
     .error { background: #fef2f2; color: #b91c1c; border: 1px solid #ef4444; }
 
+    /* RESPONSIVE MÓVIL */
     @media(max-width: 600px) {
       .checkbox-group { grid-template-columns: 1fr; }
       .booking-card { padding: 25px; margin: 10px; }
       h2 { font-size: 28px; }
-      .security-check { align-items: flex-start; } /* Mejor lectura en móvil */
+      .security-check { align-items: flex-start; } 
     }
   </style>
 </head>
@@ -320,33 +329,36 @@
   <script src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script>
 
   <script>
-    // 1. EMAILJS INIT
-    // ¡RECUERDA PONER TUS CLAVES!
+    // 1. INICIALIZAR EMAILJS (PUBLIC KEY NUEVA)
     emailjs.init("GgzlB-NI1cTRd2L7I"); 
 
+    // 2. TUS IDs DE SERVICIO Y PLANTILLA
     const SERVICE_ID = "service_t7i0u8y"; 
-    const TEMPLATE_ID = "template_b6ecwlc";
+    const TEMPLATE_ID = "template_b6ecwlc"; // ¡Tu ID confirmado!
 
-    // 2. CALENDARIO
+    // 3. CONFIGURACIÓN DEL CALENDARIO
     flatpickr("#date-picker", {
       locale: "es",
       minDate: "today",
       dateFormat: "d-m-Y",
-      disable: [ function(date) { return (date.getDay() === 0); } ]
+      disable: [ function(date) { return (date.getDay() === 0); } ] // Domingos desactivados
     });
 
-    // 3. ENVÍO
+    // 4. LÓGICA DE ENVÍO DEL FORMULARIO
     document.getElementById('contact-form').addEventListener('submit', function(event) {
-      event.preventDefault();
+      event.preventDefault(); // Evita recarga de página
       
       const btn = document.querySelector('.btn-submit');
       const msg = document.getElementById('status-msg');
       
+      // Estado de carga
       btn.textContent = 'Verificando y Enviando...';
       btn.disabled = true;
 
+      // Enviar datos a EmailJS
       emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, this)
         .then(() => {
+          // ÉXITO
           btn.textContent = '¡Enviado Correctamente!';
           btn.style.background = '#10b981';
           msg.className = 'success';
@@ -354,10 +366,12 @@
           msg.style.display = 'block';
           document.getElementById('contact-form').reset();
         }, (err) => {
+          // ERROR
+          console.error('Error detallado:', err);
           btn.textContent = 'Error al enviar';
           btn.disabled = false;
           msg.className = 'error';
-          msg.innerHTML = '❌ Error de conexión. Por favor intenta más tarde.';
+          msg.innerHTML = '❌ Error de conexión. Verifica tu internet o intenta más tarde.';
           msg.style.display = 'block';
         });
     });
