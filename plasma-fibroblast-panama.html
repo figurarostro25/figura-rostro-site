@@ -4,8 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Plasma Fibroblast | Figura Rostro KG</title>
-  <meta name="description" content="Plasma Fibroblast en Figura Rostro KG: regeneración natural y permanente de la piel. Lifting sin cirugía.">
+  <title>Plasma Fibroblast Panamá | Lifting Sin Cirugía | Figura Rostro KG</title>
+  <meta name="description" content="Tratamiento de Plasma Fibroblast en Panamá. Blefaroplastia sin cirugía, eliminación de arrugas y lifting de cuello. Resultados permanentes. Gira Chiriquí pronto.">
+  <meta name="keywords" content="plasma fibroblast panama, blefaroplastia sin cirugia, lifting de cuello, eliminar verrugas panama, rejuvenecimiento facial chiriqui, figura rostro kg">
   <link rel="canonical" href="https://figurarostro.life/fibroblast.html">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,6 +20,9 @@
       --gold: #d4af37;
       --bg-light: #fdfbfd;
       --text-main: #2d2d2d;
+      --chiriqui-green: #007a33; /* Verde Chiriquí */
+      --chiriqui-red: #d31d1d;   /* Rojo Chiriquí */
+      --ig-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
       --shadow: 0 10px 40px rgba(91, 37, 128, 0.08);
     }
     *{box-sizing:border-box}
@@ -31,14 +35,16 @@
       overflow-x: hidden;
     }
     
-    h1, h2, h3 { font-family: 'Playfair Display', serif; line-height: 1.2; }
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
     a{text-decoration:none; transition: 0.3s ease;}
     p{line-height: 1.6; color: #555; font-size: 1rem;}
     img { max-width: 100%; display: block; }
 
     /* BOTONES */
     .btn-primary{
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       background: var(--brand);
       color: #fff;
       border: 0;
@@ -50,12 +56,32 @@
       font-size: 14px;
       box-shadow: 0 4px 15px rgba(91, 37, 128, 0.3);
       cursor: pointer;
+      gap: 10px;
     }
     .btn-primary:hover{
       background: var(--brand-dark);
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(91, 37, 128, 0.4);
     }
+    
+    /* Botón Instagram Especial */
+    .btn-ig {
+      background: var(--ig-gradient); 
+      color: white;
+      border: 0;
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 15px rgba(220, 39, 67, 0.3);
+    }
+    .btn-ig:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(220, 39, 67, 0.5);
+    }
+
     .btn-outline{
       border: 2px solid #fff;
       background: transparent;
@@ -67,18 +93,41 @@
     }
     .btn-outline:hover{ background: #fff; color: var(--brand); }
 
-    /* BARRA DE ANUNCIO (GIRA CHIRIQUI) */
-    .announcement-bar {
-      background: linear-gradient(90deg, #d4af37, #f1c40f);
-      color: #333;
+    /* BARRA CHIRIQUÍ */
+    .chiriqui-bar {
+      background: var(--chiriqui-green);
+      color: #fff;
       text-align: center;
-      padding: 10px 20px;
-      font-weight: 600;
-      font-size: 14px;
+      padding: 12px 20px;
+      font-weight: 500;
+      font-size: 15px;
       position: relative;
       z-index: 101;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
     }
-    .announcement-bar a { text-decoration: underline; color: #000; font-weight: 700; margin-left: 5px;}
+    .chiriqui-badge {
+      background: var(--chiriqui-red);
+      color: white;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .chiriqui-link {
+      color: #fff;
+      text-decoration: underline;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .chiriqui-link:hover { color: #ffeeba; }
 
     /* HEADER */
     header{
@@ -96,24 +145,20 @@
     .brand:hover img { transform: scale(1.05); }
     nav{display:flex;gap:30px;align-items:center}
     nav a{color: var(--text-main); font-weight:500; font-size: 15px; position: relative;}
-    nav a::after {
-      content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background: var(--brand); transition: width 0.3s;
-    }
     nav a:hover{color: var(--brand);}
-    nav a:hover::after { width: 100%; }
     
     /* HERO SECTION */
     .hero{
       position:relative;
-      height: 80vh;
-      min-height: 500px;
+      height: 85vh; /* Un poco más alto para lucir */
+      min-height: 550px;
       display:flex;
       align-items:center;
       justify-content: center;
       text-align:center;
       color:#fff;
-      background:url('banner-fibroblast.jpg') center/cover no-repeat; /* Asegúrate de subir este también */
-      background-color: #222; /* Fallback color */
+      background:url('banner-fibroblast.jpg') center/cover no-repeat;
+      background-color: #222;
     }
     .hero::before{
       content:"";position:absolute;inset:0;
@@ -133,7 +178,7 @@
       font-weight: 300;
     }
 
-    /* BARRA DE RESULTADOS */
+    /* BARRA DE DATOS CLAVE */
     .results-bar {
       background: #fff;
       padding: 50px 20px;
@@ -162,24 +207,7 @@
     .section-title h2 { font-size: 42px; margin-bottom: 15px; color: var(--brand-dark); }
     .section-title p { max-width: 700px; margin: auto; color: #666; }
 
-    /* IMPORTANCIA DE VALORACION */
-    .alert-box {
-      background: #fffcf0; /* Tono crema suave */
-      border-left: 5px solid #d4af37;
-      padding: 30px;
-      border-radius: 10px;
-      margin: 40px auto;
-      max-width: 900px;
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-      box-shadow: var(--shadow);
-    }
-    .alert-icon { font-size: 40px; }
-    .alert-content h4 { margin: 0 0 10px; color: #b8860b; font-size: 20px; }
-    .alert-content p { margin: 0; font-size: 15px; color: #555; }
-
-    /* ZONAS DETALLADAS (TARJETAS) */
+    /* ZONAS DETALLADAS */
     .zones-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -199,7 +227,7 @@
     .zone-img-wrap {
       height: 220px;
       overflow: hidden;
-      background: #f4f0f6; /* Color de fondo mientras carga imagen */
+      background: #f4f0f6;
       position: relative;
     }
     .zone-img-wrap img {
@@ -213,6 +241,31 @@
     .zone-content { padding: 25px; text-align: left; }
     .zone-content h3 { color: var(--brand); margin-top: 0; font-size: 20px; margin-bottom: 8px;}
     .zone-content p { font-size: 14px; margin: 0; color: #666; }
+
+    /* SEO: SECCION PREGUNTAS FRECUENTES */
+    .faq-section { background: #fdfbfd; margin-top: 40px; }
+    .faq-item {
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+      overflow: hidden;
+    }
+    .faq-item summary {
+      padding: 20px;
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--brand-dark);
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; font-size: 20px; color: var(--gold); }
+    .faq-item[open] summary::after { content: '-'; }
+    .faq-item p { padding: 0 20px 20px; margin: 0; font-size: 15px; color: #666; }
 
     /* CTA FINAL */
     .final-cta {
@@ -245,21 +298,27 @@
     @media (max-width:768px){
       .header-inner { justify-content: center; }
       .header-inner nav, .header-inner .btn-primary.header-btn { display: none; }
-      .hero { height: 70vh; }
+      .hero { height: 75vh; }
       .results-bar { margin-top: 0; border-radius: 0; }
       .zones-grid { grid-template-columns: 1fr; }
       .final-cta { margin: 0; border-radius: 0; }
       h1 { font-size: 36px; }
       h2 { font-size: 28px; }
-      .alert-box { flex-direction: column; text-align: center; align-items: center; }
+      /* En móvil ponemos los botones del hero uno debajo del otro */
+      .hero-btns { flex-direction: column; width: 100%; max-width: 300px; margin: auto; }
+      .btn-primary, .btn-ig { width: 100%; }
     }
   </style>
 </head>
 <body>
 
-  <div class="announcement-bar">
-    🚨 ¡ATENCIÓN CHIRIQUÍ! Pronto gira por David y Tierras Altas. 
-    <a href="https://instagram.com/figurarostrokg" target="_blank">Síguenos para la fecha exacta <span style="vertical-align:middle; display:inline-block;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></span></a>
+  <div class="chiriqui-bar">
+    <span class="chiriqui-badge">METO! GIRA CHIRIQUÍ</span>
+    <span>Pronto en David y Tierras Altas.</span>
+    <a href="https://instagram.com/figurarostrokg" target="_blank" class="chiriqui-link">
+      ¡Síguenos y gana $10 en tu cita! 
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+    </a>
   </div>
 
   <header>
@@ -268,20 +327,27 @@
       <nav>
         <a href="/">Inicio</a>
         <a href="/tratamientos/">Tratamientos</a>
-        <a href="#zonas">Zonas</a>
+        <a href="#preguntas">Preguntas</a>
       </nav>
-      <a class="btn-primary header-btn" href="/chat-citas.html">Agendar Valoración</a>
+      <a class="btn-primary header-btn" href="/chat-citas.html">Agendar Cita</a>
     </div>
   </header>
 
   <section class="hero">
     <div class="inner">
       <h1>Rejuvenece tu piel sin cirugía</h1>
-      <p>Plasma Fibroblast: Regeneración dérmica real para tensar, alisar y renovar tu rostro. Resultados naturales y permanentes.</p>
-      <div style="display:flex; gap:15px; justify-content:center; flex-wrap:wrap;">
-        <a class="btn-primary" href="/chat-citas.html">Solicitar Valoración</a>
-        <a class="btn-outline" href="#zonas">Ver Zonas a Tratar</a>
+      <p>Plasma Fibroblast: Regeneración dérmica real para tensar, alisar y renovar tu rostro. Resultados naturales y permanentes en Panamá.</p>
+      
+      <div class="hero-btns" style="display:flex; gap:15px; justify-content:center; flex-wrap:wrap;">
+        <a class="btn-primary" href="/chat-citas.html">
+          📅 Solicitar Valoración
+        </a>
+        <a class="btn-ig" href="https://instagram.com/figurarostrokg" target="_blank">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          Síguenos
+        </a>
       </div>
+
     </div>
   </section>
 
@@ -309,92 +375,117 @@
   <section>
     <div class="wrap">
       
-      <div class="alert-box">
-        <div class="alert-icon">👩‍⚕️</div>
-        <div class="alert-content">
-          <h4>Valoración Previa Obligatoria</h4>
-          <p>Para garantizar tu seguridad y el éxito del tratamiento, analizamos tu <strong>fototipo de piel</strong> y capacidad de cicatrización antes de cualquier procedimiento. Solo trabajamos en pieles aptas para asegurar resultados impecables.</p>
+      <div style="background: #fffcf0; border-left: 5px solid #d4af37; padding: 30px; border-radius: 10px; margin: 0 auto 50px; max-width: 900px; display: flex; gap: 20px; align-items: flex-start; box-shadow: var(--shadow);">
+        <div style="font-size: 40px;">👩‍⚕️</div>
+        <div>
+          <h4 style="margin: 0 0 10px; color: #b8860b; font-size: 20px;">Valoración Previa Obligatoria</h4>
+          <p style="margin: 0; font-size: 15px; color: #555;">Para garantizar tu seguridad y el éxito del tratamiento, analizamos tu <strong>fototipo de piel</strong> y capacidad de cicatrización antes de cualquier procedimiento. Solo trabajamos en pieles aptas para asegurar resultados impecables.</p>
         </div>
       </div>
 
       <div class="section-title">
         <h2>Identifica tu Zona Ideal</h2>
-        <p>El Plasma Fibroblast es versátil. Busca la zona que te preocupa y descubre cómo podemos mejorarla con resultados reales.</p>
+        <p>El Plasma Fibroblast es versátil. Desde blefaroplastia sin cortes hasta eliminación de arrugas profundas.</p>
       </div>
 
       <div class="zones-grid" id="zonas">
         
         <div class="zone-card">
           <div class="zone-img-wrap">
-            <img src="zona-parpados.jpg" alt="Blefaroplastia sin cirugía" loading="lazy">
+            <img src="zona-parpados.jpg" alt="Blefaroplastia sin cirugía panamá" loading="lazy">
           </div>
           <div class="zone-content">
             <h3>Párpados (Blefaroplastia)</h3>
-            <p>Retrae la piel sobrante del párpado superior o inferior. Ideal para mirada cansada o encapotada.</p>
+            <p>Retrae la piel sobrante del párpado superior o inferior. Ideal para mirada cansada o encapotada, sin necesidad de bisturí.</p>
           </div>
         </div>
 
         <div class="zone-card">
           <div class="zone-img-wrap">
-            <img src="zona-patasgallo.jpg" alt="Patas de gallo" loading="lazy">
+            <img src="zona-patasgallo.jpg" alt="Eliminar patas de gallo panamá" loading="lazy">
           </div>
           <div class="zone-content">
             <h3>Patas de Gallo</h3>
-            <p>Suaviza las arrugas perioculares profundas que se marcan al sonreír, rejuveneciendo la mirada.</p>
+            <p>Suaviza las arrugas perioculares profundas que se marcan al sonreír, rejuveneciendo la expresión de tus ojos.</p>
           </div>
         </div>
 
         <div class="zone-card">
           <div class="zone-img-wrap">
-            <img src="zona-labios.jpg" alt="Código de barras labios" loading="lazy">
+            <img src="zona-labios.jpg" alt="Código de barras labios tratamiento" loading="lazy">
           </div>
           <div class="zone-content">
             <h3>Código de Barras</h3>
-            <p>Elimina las líneas verticales sobre el labio superior y tensa la zona del arco de cupido.</p>
+            <p>Elimina las líneas verticales sobre el labio superior y tensa la zona del arco de cupido para una boca más joven.</p>
           </div>
         </div>
 
         <div class="zone-card">
           <div class="zone-img-wrap">
-            <img src="zona-cuello.jpg" alt="Lifting de cuello" loading="lazy">
+            <img src="zona-cuello.jpg" alt="Lifting de cuello sin cirugia" loading="lazy">
           </div>
           <div class="zone-content">
             <h3>Cuello y Papada</h3>
-            <p>Combate la flacidez (cuello de pavo) y el descolgamiento, logrando un perfil más definido.</p>
+            <p>Combate la flacidez (cuello de pavo) y el descolgamiento, logrando un perfil más definido y elegante.</p>
           </div>
         </div>
 
         <div class="zone-card">
           <div class="zone-img-wrap">
-            <img src="zona-frente.jpg" alt="Arrugas en frente" loading="lazy">
+            <img src="zona-frente.jpg" alt="Arrugas en frente tratamiento" loading="lazy">
           </div>
           <div class="zone-content">
             <h3>Líneas de Frente</h3>
-            <p>Atenúa las líneas horizontales y del entrecejo sin paralizar tus gestos naturales.</p>
+            <p>Atenúa las líneas horizontales y del entrecejo sin paralizar tus gestos naturales, a diferencia del botox.</p>
           </div>
         </div>
         
         <div class="zone-card">
           <div class="zone-img-wrap">
-            <img src="zona-abdomen.jpg" alt="Abdomen y estrías" loading="lazy">
+            <img src="zona-abdomen.jpg" alt="Eliminar estrias y flacidez abdomen" loading="lazy">
           </div>
           <div class="zone-content">
             <h3>Abdomen y Estrías</h3>
-            <p>Excelente para ombligo "triste" post-parto y para reducir el ancho y profundidad de estrías.</p>
+            <p>Excelente para ombligo "triste" post-parto y para reducir el ancho y profundidad de estrías blancas.</p>
           </div>
         </div>
 
         <div class="zone-card">
           <div class="zone-img-wrap">
-            <img src="zona-cicatrices.jpg" alt="Cicatrices de acné" loading="lazy">
+            <img src="zona-cicatrices.jpg" alt="Tratamiento cicatrices acne panama" loading="lazy">
           </div>
           <div class="zone-content">
             <h3>Cicatrices de Acné</h3>
-            <p>Alisa los bordes de cicatrices atróficas o marcas antiguas, unificando la textura de la piel.</p>
+            <p>Alisa los bordes de cicatrices atróficas o marcas antiguas, unificando la textura de la piel significativamente.</p>
           </div>
         </div>
-
       </div>
+
+      <div id="preguntas" style="max-width: 800px; margin: 80px auto 0;">
+        <div class="section-title">
+          <h2>Preguntas Frecuentes y Mitos</h2>
+          <p>Información clave para entender tu tratamiento de rejuvenecimiento.</p>
+        </div>
+        <div class="faq-section">
+            <details class="faq-item">
+                <summary>¿El Plasma Fibroblast duele?</summary>
+                <p>Es un procedimiento poco molesto. Utilizamos anestesia tópica de alta potencia (crema) antes del tratamiento para minimizar cualquier sensación. La mayoría de los pacientes reportan solo una ligera sensación de calor.</p>
+            </details>
+            <details class="faq-item">
+                <summary>¿Cuánto dura la recuperación?</summary>
+                <p>Los "puntitos" (costras de carbono) duran entre 5 y 7 días. Después caen solos, dejando una piel rosada nueva. La inflamación suele durar los primeros 3 días. Puedes volver a tus actividades normales casi de inmediato, protegiéndote del sol.</p>
+            </details>
+            <details class="faq-item">
+                <summary>¿Cuántas sesiones necesito?</summary>
+                <p>Muchos pacientes ven resultados espectaculares con una sola sesión. Sin embargo, dependiendo de la flacidez de la piel y la edad, podrían requerirse de 1 a 3 sesiones espaciadas cada 3 meses para un resultado óptimo.</p>
+            </details>
+            <details class="faq-item">
+                <summary>¿Diferencia entre Fibroblast y Láser CO2?</summary>
+                <p>El Fibroblast es más preciso para zonas delicadas como párpados (donde el láser es riesgoso) y tiene un tiempo de recuperación generalmente más amable. Además, estimula el colágeno de forma muy focalizada.</p>
+            </details>
+        </div>
+      </div>
+
     </div>
   </section>
 
