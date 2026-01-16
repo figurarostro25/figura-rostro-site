@@ -1,305 +1,398 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Agendar Valoración | Figura Rostro KG</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reserva Plasma Fibroblast | Figura Rostro KG</title>
   
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
   <style>
-    :root{
-      --brand: #5b2580;
-      --brand-dark: #3a1555;
-      --gold: #d4af37;
-      --chiriqui-green: #007a33; /* Verde Chiriquí */
-      --chiriqui-red: #d31d1d;   /* Rojo Chiriquí */
-      --bg-light: #fdfbfd;
-      --text-main: #2d2d2d;
-      --shadow: 0 10px 40px rgba(0,0,0,0.15);
-    }
-    *{box-sizing:border-box}
-    
-    body{
-      margin:0; font-family: 'Inter', sans-serif; color: var(--text-main);
-      display: flex; flex-direction: column; min-height: 100vh;
-      /* FONDO PREMIUM */
-      background: linear-gradient(135deg, rgba(58, 21, 85, 0.9) 0%, rgba(20, 5, 30, 0.92) 100%), url('banner-fibroblast.jpg') center/cover no-repeat fixed;
+    /* VARIABLES DE DISEÑO */
+    :root {
+      --brand: #5b2580;       /* Morado Principal */
+      --brand-dark: #2a0e3d;  
+      --gold: #d4af37;        /* Dorado de Lujo */
+      --chiriqui-green: #007a33; /* Verde Gira */
+      --text-main: #333333;   
     }
     
-    h1, h2, h3 { font-family: 'Playfair Display', serif; line-height: 1.2; }
-    a{text-decoration:none; transition: 0.3s ease;}
+    body { 
+      margin: 0; 
+      font-family: 'Inter', sans-serif; 
+      background: #0f0518;
+    }
 
-    /* BARRA SUPERIOR GIRA */
-    .chiriqui-bar {
+    /* 1. ESTILOS DE LA FRANJA DE GIRA (NUEVO) */
+    .top-announcement {
       background: var(--chiriqui-green);
       color: #fff;
       text-align: center;
-      padding: 10px 20px;
-      font-weight: 500;
+      padding: 12px 20px;
+      font-weight: 600;
       font-size: 14px;
+      letter-spacing: 0.5px;
       position: relative;
-      z-index: 101;
+      z-index: 100;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    /* --- FONDO DE PÁGINA (DISEÑO CLÍNICA DARK) --- */
+    .booking-section {
+      min-height: 100vh;
       display: flex;
-      justify-content: center;
       align-items: center;
-      gap: 15px;
-      flex-wrap: wrap;
+      justify-content: center;
+      padding: 40px 20px;
+      
+      background-image: linear-gradient(rgba(42, 14, 61, 0.85), rgba(15, 5, 24, 0.95)),
+                        url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=2068&auto=format&fit=crop');
+      
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
     }
-    .chiriqui-badge {
-      background: var(--chiriqui-red);
-      color: white; padding: 3px 8px; border-radius: 4px;
-      font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
-    }
-    .chiriqui-link {
-      color: #fff; text-decoration: underline; font-weight: 700;
-      display: inline-flex; align-items: center; gap: 5px;
-    }
-    .chiriqui-link:hover { color: #ffeeba; }
 
-    /* HEADER */
-    header{
-      position:sticky; top:0; z-index:100; background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05);
+    /* TARJETA DEL FORMULARIO */
+    .booking-card {
+      background: rgba(255, 255, 255, 0.96); 
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      width: 100%;
+      max-width: 700px;
+      border-radius: 24px;
+      padding: 45px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      text-align: center; 
     }
-    .header-inner{max-width:1200px;margin:auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
-    .brand img{height:55px;width:auto;}
-    nav{display:flex;gap:30px;align-items:center}
-    nav a{color: var(--text-main); font-weight:500; font-size: 15px;}
-    nav a:hover{color: var(--brand);}
+
+    /* ETIQUETA DORADA */
+    .treatment-badge {
+      display: inline-block;
+      background: linear-gradient(90deg, #d4af37, #f2d06b);
+      color: #3d2e05;
+      padding: 6px 18px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px;
+      color: var(--brand); 
+      margin-top: 0;
+      margin-bottom: 10px;
+      line-height: 1.1;
+    }
+    .subtitle {
+      color: #666;
+      margin-bottom: 35px;
+      font-size: 15px;
+      line-height: 1.5;
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* FORMULARIO */
+    form { text-align: left; }
+
+    .form-group { margin-bottom: 22px; }
     
-    .btn-header {
-      background: var(--brand); color: #fff; padding: 10px 20px; border-radius: 50px; font-weight: 600; font-size: 13px;
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--brand-dark);
+      letter-spacing: 0.5px;
     }
 
-    /* CONTENEDOR FORMULARIO */
-    .form-wrapper { flex: 1; padding: 40px 20px; display: flex; align-items: center; justify-content: center; }
+    input, select, textarea {
+      width: 100%;
+      padding: 16px;
+      background: #fdfdfd;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      color: #333;
+      font-family: inherit;
+      font-size: 15px;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
     
-    .form-container {
-      max-width: 550px; width: 100%;
-      background: #fff; padding: 40px; border-radius: 20px;
-      box-shadow: var(--shadow); border-top: 5px solid var(--gold);
-    }
-    
-    .form-container h1 { color: var(--brand); text-align: center; margin-top: 0; margin-bottom: 10px; font-size: 32px; }
-    .form-container p.subtitle { text-align: center; color: #666; font-size: 15px; margin-bottom: 30px; }
-
-    /* INPUTS */
-    label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px; color: var(--brand-dark); }
-    input[type="text"], input[type="tel"], select {
-      width: 100%; padding: 14px; margin-bottom: 20px;
-      border: 1px solid #ddd; border-radius: 10px; font-size: 16px; font-family: 'Inter', sans-serif;
-      box-sizing: border-box; transition: 0.3s; background: #fdfbfd;
-    }
-    input:focus, select:focus { border-color: var(--brand); outline: none; background: #fff; }
-
-    /* AVISOS DINAMICOS */
-    #chiriqui-promo {
-      display: none; background: #f0fff4; border: 2px solid var(--chiriqui-green);
-      padding: 20px; border-radius: 15px; margin-bottom: 25px; text-align: center;
-      animation: slideDown 0.4s ease;
-    }
-    #yappy-check-section {
-      display: none; background: #fdf2fa; padding: 20px; border-radius: 10px;
-      border: 1px dashed var(--brand); margin-bottom: 20px; animation: fadeIn 0.4s ease;
-    }
-    .checkbox-container { display: flex; align-items: center; gap: 10px; margin-bottom: 5px; cursor: pointer; }
-    .checkbox-container input { width: 20px; height: 20px; margin: 0; cursor: pointer; accent-color: var(--brand); }
-    
-    .btn-ig-mini {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: linear-gradient(45deg, #f09433, #bc1888); color: white;
-      padding: 10px 20px; border-radius: 30px; text-decoration: none; font-size: 13px; font-weight: 700;
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--brand);
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(91, 37, 128, 0.1);
     }
 
-    /* BOTONES ACCION */
+    /* SECCIÓN MÉDICA */
+    .medical-section {
+      background: #fbf7fd;
+      padding: 25px;
+      border-radius: 16px;
+      margin-bottom: 25px;
+      border: 1px solid #eaddf5;
+      border-left: 5px solid var(--brand);
+    }
+    .medical-title {
+      font-weight: 800;
+      color: var(--brand);
+      margin-bottom: 5px;
+      display: block;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+    }
+    .checkbox-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 15px;
+    }
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      color: #555;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .checkbox-item input {
+      width: 18px;
+      height: 18px;
+      margin-right: 10px;
+      accent-color: var(--brand);
+      box-shadow: none;
+    }
+
+    /* CHECK SEGURIDAD */
+    .security-check {
+      margin-top: 25px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+      font-size: 13px;
+      color: #555;
+      display: flex;
+      align-items: center; 
+      gap: 12px;
+    }
+    .security-check input {
+      width: 20px; height: 20px; margin: 0; flex-shrink: 0; accent-color: var(--gold); cursor: pointer;
+    }
+    .security-check span { line-height: 1.4; }
+
+    /* PRECIO Y AVISOS */
+    .price-highlight {
+      background: #fffbf0; border: 1px solid #f0e6c5; color: #7a6a30;
+      padding: 15px; border-radius: 10px; margin-top: 8px; font-size: 13px;
+    }
+    .price-highlight strong { color: #d4af37; }
+
+    /* BOTÓN DE ENVÍO */
     .btn-submit {
-      width: 100%; padding: 18px; background: var(--brand); color: white;
-      border: none; border-radius: 50px; font-size: 16px; font-weight: 600; cursor: pointer;
-      transition: 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px;
-      box-shadow: 0 4px 15px rgba(91, 37, 128, 0.3); margin-top: 10px;
+      width: 100%; padding: 20px; background: var(--brand); color: #fff;
+      border: none; border-radius: 50px; font-size: 18px; font-weight: 700;
+      cursor: pointer; text-transform: uppercase; letter-spacing: 1px;
+      margin-top: 20px; box-shadow: 0 10px 25px rgba(91, 37, 128, 0.25);
+      transition: transform 0.2s;
     }
-    .btn-submit:hover { background: var(--brand-dark); transform: translateY(-2px); }
+    .btn-submit:hover {
+      background: var(--brand-dark); transform: translateY(-3px); box-shadow: 0 15px 35px rgba(91, 37, 128, 0.4);
+    }
 
-    /* BOTON AYUDA ENCUESTA (NUEVO) */
-    .btn-help-survey {
+    /* 2. BOTÓN DE AYUDA (NUEVO) */
+    .help-chat-link {
       display: flex; align-items: center; justify-content: center; gap: 8px;
-      background: transparent; color: #666; border: 1px solid #ddd;
-      padding: 12px; border-radius: 50px; margin-top: 15px; width: 100%;
-      text-decoration: none; font-size: 13px; font-weight: 600; transition: 0.3s;
+      margin-top: 20px; color: #666; font-size: 14px; font-weight: 600;
+      text-decoration: none; padding: 10px; border-radius: 8px; transition: 0.3s;
     }
-    .btn-help-survey:hover { background: #f5f5f5; color: var(--brand); border-color: var(--brand); }
-    .btn-help-survey svg { width: 18px; height: 18px; fill: #25D366; }
+    .help-chat-link:hover { color: var(--brand); background: #fdfbfd; }
+    .help-chat-link svg { width: 18px; height: 18px; fill: #25D366; }
 
-    /* FOOTER */
-    footer{background: #fff; padding: 60px 20px; text-align:center; font-size:14px; color:#666; margin-top: auto;}
-    footer .links{display:flex;flex-wrap:wrap;gap:15px;justify-content:center;margin-top:20px}
-    footer a{color: var(--brand);}
-    
-    /* FLOTANTES */
-    .fr-fab{position:fixed;right:20px;bottom:30px;z-index:9999;display:flex;flex-direction:column-reverse;gap:15px;}
-    .fr-ic{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,0.2); transition: transform 0.2s;}
-    .fr-ic svg{fill:#fff;width:24px;height:24px}
-    .fr-wa{background:#25D366}
-    .fr-ig{background:linear-gradient(45deg,#F58529,#DD2A7B,#8134AF,#515BD4)}
-    .fr-call{background:#4CAF50}
-    .fr-ic:hover{transform:scale(1.1);}
-
-    @media (max-width:768px){
-      .header-inner nav { display: none; }
-      .header-inner { justify-content: center; }
-      .form-container { padding: 30px 20px; }
+    /* MENSAJES DE ESTADO */
+    #status-msg {
+      display: none; text-align: center; padding: 15px; margin-top: 20px; border-radius: 12px; font-weight: 600;
     }
-    
-    @keyframes slideDown { from { opacity:0; transform:translateY(-10px); } to { opacity:1; transform:translateY(0); } }
-    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+    .success { background: #e6fffa; color: #047857; border: 1px solid #10b981; }
+    .error { background: #fef2f2; color: #b91c1c; border: 1px solid #ef4444; }
+
+    @media(max-width: 600px) {
+      .checkbox-group { grid-template-columns: 1fr; }
+      .booking-card { padding: 25px; margin: 10px; }
+      h2 { font-size: 28px; }
+      .security-check { align-items: flex-start; } 
+    }
   </style>
 </head>
 <body>
 
-  <div class="chiriqui-bar">
-    <span class="chiriqui-badge">METO! GIRA CHIRIQUÍ</span>
-    <span>Pronto en David y Tierras Altas.</span>
-    <a href="https://instagram.com/figurarostrokg" target="_blank" class="chiriqui-link">
-      Síguenos para reclamar tu bono
-    </a>
+  <div class="top-announcement">
+    ⛰️ Pronta gira por David Chiriquí y Tierras Altas para el tratamiento de plasma fibroblast
   </div>
 
-  <header>
-    <div class="header-inner">
-      <a href="/" class="brand"><img src="logo-header-white.png" alt="Figura Rostro KG" style="filter: brightness(0.2) invert(0.2) sepia(1) hue-rotate(240deg) saturate(3);"></a> 
-      <nav>
-        <a href="/">Inicio</a>
-        <a href="/tratamientos/">Tratamientos</a>
-        <a href="/fibroblast.html">Fibroblast</a>
-      </nav>
-      <a class="btn-header" href="/chat-citas.html">Agendar Cita</a>
-    </div>
-  </header>
-
-  <div class="form-wrapper">
-    <div class="form-container">
-      <h1>Solicitud de Cita</h1>
-      <p class="subtitle">Completa tus datos para agendar tu valoración.</p>
-
-      <form action="https://formsubmit.co/TU_CORREO_AQUI" method="POST">
+  <section class="booking-section">
+    <div class="booking-card">
+      
+      <div class="treatment-badge">Tratamiento Plasma Fibroblast</div>
+      
+      <h2>Agenda tu Cita</h2>
+      <p class="subtitle">Completa el formulario de pre-evaluación para confirmar si eres candidata ideal para el procedimiento.</p>
+      
+      <form id="contact-form">
         
-        <input type="hidden" name="_subject" value="Nueva Cita Agendada (Desde Web)">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://figurarostro.life/"> 
-
-        <label for="nombre">Nombre Completo</label>
-        <input type="text" name="Nombre" id="nombre" placeholder="Tu nombre" required>
-
-        <label for="telefono">Teléfono / WhatsApp</label>
-        <input type="tel" name="Telefono" placeholder="6000-0000" required>
-
-        <label for="provincia">Provincia de Residencia *</label>
-        <select name="Provincia" id="provincia" required onchange="verificarFormulario()">
-          <option value="" disabled selected>Selecciona tu ubicación</option>
-          <option value="Panamá">Ciudad de Panamá</option>
-          <option value="Panamá Oeste">Panamá Oeste</option>
-          <option value="Colón">Colón</option>
-          <option value="Provincias Centrales">Provincias Centrales</option>
-          <option value="Chiriquí">Chiriquí (David / Tierras Altas)</option>
-        </select>
-
-        <div id="chiriqui-promo">
-          <h3>⛰️ ¡Atención Chiriquí!</h3>
-          <p style="margin-bottom:10px; font-size:14px; color:#333;">Próxima gira: <strong>Enero/Febrero</strong>.</p>
-          <p style="font-size:13px; margin-bottom:15px; color:#444;">Quedarás registrada como <strong>CLIENTE FUNDADORA</strong>.</p>
-          <a href="https://instagram.com/figurarostrokg" target="_blank" class="btn-ig-mini">
-            Síguenos en Instagram
-          </a>
+        <div class="form-group">
+          <label>Nombre Completo</label>
+          <input type="text" name="user_name" placeholder="Nombre y Apellido" required>
+        </div>
+        
+        <div class="form-group">
+          <label>WhatsApp de Contacto</label>
+          <input type="tel" name="user_phone" placeholder="Ej: 6474-6168" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Correo Electrónico</label>
+          <input type="email" name="user_email" placeholder="Para enviarte la confirmación" required>
         </div>
 
-        <label for="tratamiento">Tratamiento de interés</label>
-        <input type="text" name="Tratamiento" id="tratamiento" placeholder="Ej: Párpados, abdomen, limpieza..." required>
-
-        <label for="metodoPago">Método de Pago / Reserva</label>
-        <select name="Metodo_Pago" id="metodoPago" required onchange="verificarFormulario()">
-          <option value="" disabled selected>Selecciona una opción</option>
-          <option value="Directo">Pagaré en la Cita / Consultar</option>
-          <option value="Yappy">Pago por Yappy (Tengo Comprobante)</option>
-        </select>
-
-        <div id="yappy-check-section">
-          <label class="checkbox-container">
-            <input type="checkbox" name="Yappy_Confirmado" id="checkYappy" value="Si">
-            <span class="checkbox-text">✅ He realizado el Yappy</span>
-          </label>
-          <p style="font-size:12px; color:#666; margin:0;">(Recuerda guardar tu comprobante)</p>
+        <div class="form-group">
+          <label>Provincia de Residencia</label>
+          <select name="user_province" id="province-select" required>
+            <option value="" disabled selected>-- Selecciona tu ubicación --</option>
+            <option value="Panama">Ciudad de Panamá</option>
+            <option value="PanamaOeste">Panamá Oeste</option>
+            <option value="Colon">Colón</option>
+            <option value="Chiriqui">Chiriquí (David / Tierras Altas)</option>
+            <option value="ProvinciasCentrales">Provincias Centrales</option>
+          </select>
         </div>
 
-        <button type="submit" class="btn-submit">
-          Enviar Solicitud
-          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
-        </button>
+        <div class="medical-section">
+          <span class="medical-title">Pre-Evaluación Médica (Seguridad)</span>
+          <p style="font-size:13px; margin:0; color:#666;">Marca SOLO si presentas alguna de estas condiciones:</p>
+          
+          <div class="checkbox-group">
+            <label class="checkbox-item"><input type="checkbox" name="med_diabetes" value="Si"> Diabetes Descontrolada</label>
+            <label class="checkbox-item"><input type="checkbox" name="med_keloide" value="Si"> Cicatrización Queloide</label>
+            <label class="checkbox-item"><input type="checkbox" name="med_embarazo" value="Si"> Embarazo / Lactancia</label>
+            <label class="checkbox-item"><input type="checkbox" name="med_marcapasos" value="Si"> Marcapasos / Cardiopatía</label>
+            <label class="checkbox-item"><input type="checkbox" name="med_infeccion" value="Si"> Infección activa en piel</label>
+            <label class="checkbox-item"><input type="checkbox" name="med_bronceado" value="Si"> Bronceado reciente</label>
+          </div>
+        </div>
 
-        <a href="https://wa.me/50764746168?text=Hola,%20tengo%20dudas%20para%20llenar%20el%20formulario%20de%20cita." target="_blank" class="btn-help-survey">
+        <div class="form-group">
+          <label>Selecciona tu Servicio</label>
+          <select name="service_type" id="service-select" required>
+            <option value="" disabled selected>-- Elige una opción --</option>
+            <option value="Valoracion-Transferencia">Valoración Estética - $9.95 (Pago Directo)</option>
+            <option value="Valoracion-Yappy">Valoración Estética - $5.95 (Directorio Yappy)</option>
+            <option value="Tratamiento-Fibroblast">Procedimiento Plasma Fibroblast</option>
+            <option value="Otro">Otro servicio del menú</option>
+          </select>
+          <div class="price-highlight">
+            ℹ️ Las valoraciones pagadas incluyen un <strong>Bono de Regalo de $10</strong> aplicable a tu tratamiento final.
+          </div>
+        </div>
+
+        <div class="form-group" style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+          <div>
+            <label>Fecha Deseada</label>
+            <input type="text" id="date-picker" name="date_pref" placeholder="Seleccionar fecha" required>
+          </div>
+          <div>
+            <label>Hora Preferida</label>
+            <select name="time_pref" required>
+              <option value="" disabled selected>Hora...</option>
+              <option value="Mañana (9am - 12pm)">Mañana (9am - 12pm)</option>
+              <option value="Tarde (1pm - 5pm)">Tarde (1pm - 5pm)</option>
+              <option value="Noche (5pm - 8pm)">Noche (5pm - 8pm)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="security-check">
+          <input type="checkbox" id="terms" required>
+          <label for="terms">Declaro que la información médica suministrada es real y acepto ser contactada para confirmar mi cita.</label>
+        </div>
+
+        <button type="submit" class="btn-submit">Enviar Solicitud Segura</button>
+
+        <a href="https://wa.me/50764746168?text=Hola,%20necesito%20ayuda%20para%20llenar%20la%20encuesta%20de%20cita." target="_blank" class="help-chat-link">
           <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.94 14.5L2 22l5.7-1.5A10 10 0 1 0 12 2zm5.5 14.1c-.24.68-1.4 1.3-1.96 1.34-.5.03-1.14.05-1.84-.12-.42-.1-.97-.31-1.67-.61-2.94-1.27-4.86-4.2-5.01-4.4-.15-.2-1.2-1.6-1.2-3.06 0-1.45.76-2.16 1.03-2.45.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.24.59.82 2.05.9 2.2.07.15.12.33.01.53-.1.2-.15.33-.3.51-.15.18-.31.4-.44.54-.15.15-.31.32-.13.62.18.3.8 1.3 1.71 2.1 1.18 1.05 2.17 1.37 2.47 1.52.3.15.48.13.66-.08.18-.2.76-.89.96-1.2.2-.3.41-.26.67-.15.26.1 1.64.77 1.92.91.29.15.48.22.55.34.07.12.07.7-.17 1.38z"/></svg>
           ¿Necesitas ayuda para llenar esto?
         </a>
-        
+
       </form>
-    </div>
-  </div>
 
-  <footer>
-    <p style="font-family:'Playfair Display', serif; font-size: 20px; font-weight:700; color:var(--brand); margin-bottom:10px;">Figura Rostro KG</p>
-    <p>Royal Park – Av. Ernesto T. Lefevre, Ciudad de Panamá</p>
-    <p>© <span id="year"></span> Figura Rostro KG. Todos los derechos reservados.</p>
-    <div class="links">
-      <a href="/fibroblast.html">Fibroblast</a> ·
-      <a href="/tratamientos.html">Tratamientos</a> ·
-      <a href="https://instagram.com/figurarostrokg" target="_blank">Instagram</a>
-    </div>
-  </footer>
+      <div id="status-msg"></div>
 
-  <div class="fr-fab">
-    <a class="fr-ic fr-wa" href="https://wa.me/50764746168" target="_blank" aria-label="WhatsApp">
-      <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.94 14.5L2 22l5.7-1.5A10 10 0 1 0 12 2zm5.5 14.1c-.24.68-1.4 1.3-1.96 1.34-.5.03-1.14.05-1.84-.12-.42-.1-.97-.31-1.67-.61-2.94-1.27-4.86-4.2-5.01-4.4-.15-.2-1.2-1.6-1.2-3.06 0-1.45.76-2.16 1.03-2.45.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.24.59.82 2.05.9 2.2.07.15.12.33.01.53-.1.2-.15.33-.3.51-.15.18-.31.4-.44.54-.15.15-.31.32-.13.62.18.3.8 1.3 1.71 2.1 1.18 1.05 2.17 1.37 2.47 1.52.3.15.48.13.66-.08.18-.2.76-.89.96-1.2.2-.3.41-.26.67-.15.26.1 1.64.77 1.92.91.29.15.48.22.55.34.07.12.07.7-.17 1.38z"/></svg>
-    </a>
-    <a class="fr-ic fr-ig" href="https://instagram.com/figurarostrokg" target="_blank" aria-label="Instagram">
-      <svg viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm4.25 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10z"/></svg>
-    </a>
-    <a class="fr-ic fr-call" href="tel:+50764746168" aria-label="Llamar">
-      <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1v3.5c0 .55-.45 1-1 1A17.92 17.92 0 0 1 2 6c0-.55.45-1 1-1H6.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.12.35.03.75-.24 1.02l-2.2 2.2z"/></svg>
-    </a>
-  </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // 1. INICIALIZAR EMAILJS (PUBLIC KEY NUEVA)
+    emailjs.init("GgzlB-NI1cTRd2L7I"); 
 
-    function verificarFormulario() {
-      const provincia = document.getElementById('provincia').value;
-      const metodo = document.getElementById('metodoPago').value;
-      const promoChiriqui = document.getElementById('chiriqui-promo');
-      const checkSection = document.getElementById('yappy-check-section');
-      const checkbox = document.getElementById('checkYappy');
+    // 2. TUS IDs DE SERVICIO Y PLANTILLA
+    const SERVICE_ID = "service_t7i0u8y"; 
+    const TEMPLATE_ID = "template_b6ecwlc"; 
+
+    // 3. CONFIGURACIÓN DEL CALENDARIO
+    flatpickr("#date-picker", {
+      locale: "es",
+      minDate: "today",
+      dateFormat: "d-m-Y",
+      disable: [ function(date) { return (date.getDay() === 0); } ] // Domingos desactivados
+    });
+
+    // 4. LÓGICA DE ENVÍO DEL FORMULARIO
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Evita recarga de página
       
-      // 1. Lógica Chiriquí
-      if (provincia === 'Chiriquí') {
-        promoChiriqui.style.display = 'block';
-      } else {
-        promoChiriqui.style.display = 'none';
-      }
+      const btn = document.querySelector('.btn-submit');
+      const msg = document.getElementById('status-msg');
+      
+      // Estado de carga
+      btn.textContent = 'Verificando y Enviando...';
+      btn.disabled = true;
 
-      // 2. Lógica Yappy
-      if (metodo === 'Yappy') {
-        checkSection.style.display = 'block';
-        checkbox.required = true;
-      } else {
-        checkSection.style.display = 'none';
-        checkbox.required = false;
-        checkbox.checked = false;
-      }
-    }
+      // Enviar datos a EmailJS
+      emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, this)
+        .then(() => {
+          // ÉXITO
+          btn.textContent = '¡Enviado Correctamente!';
+          btn.style.background = '#10b981';
+          msg.className = 'success';
+          msg.innerHTML = '✅ <strong>Solicitud Confirmada</strong><br>Tus datos han sido recibidos de forma segura.';
+          msg.style.display = 'block';
+          document.getElementById('contact-form').reset();
+        }, (err) => {
+          // ERROR
+          console.error('Error detallado:', err);
+          btn.textContent = 'Error al enviar';
+          btn.disabled = false;
+          msg.className = 'error';
+          msg.innerHTML = '❌ Error de conexión. Verifica tu internet o intenta más tarde.';
+          msg.style.display = 'block';
+        });
+    });
   </script>
-  
-  <script type='text/javascript' data-cfasync='false'>window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: '39cf325c-2286-4b58-b2af-9c647e257085', f: true }); done = true; } }; })();</script> 
 
 </body>
 </html>
