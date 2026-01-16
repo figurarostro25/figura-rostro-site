@@ -5,176 +5,196 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reserva y Evaluación | Figura Rostro KG</title>
   
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css">
+  
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
   <style>
+    /* VARIABLES DE MARCA */
     :root {
-      --brand: #5b2580; /* Morado marca */
-      --brand-dark: #2a0e3d;
-      --gold: #d4af37;
-      --error: #ff4d4d;
+      --brand: #5b2580;       /* Morado Principal */
+      --brand-dark: #2a0e3d;  /* Morado Oscuro */
+      --gold: #d4af37;        /* Dorado */
+      --text-main: #333333;   /* Texto gris oscuro para leer bien */
     }
-    body { margin: 0; font-family: 'Inter', sans-serif; background: #111; color: #fff; }
+    
+    body { 
+      margin: 0; 
+      font-family: 'Inter', sans-serif; 
+      background: #0f0518;
+    }
 
-    /* FONDO CON IMAGEN */
+    /* 1. FONDO DE PÁGINA (LUJOSO Y OSCURO) */
     .booking-section {
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 40px 20px;
-      position: relative;
-      /* Reemplaza 'fondo-fibroblast.jpg' con tu imagen real (ej: abdomen o parpado artistico) */
-      background: linear-gradient(rgba(20, 10, 35, 0.85), rgba(20, 10, 35, 0.9)), url('fondo-fibroblast.jpg');
+      /* Degradado radial para dar luz al centro */
+      background: radial-gradient(circle at center, #4a1f6b 0%, #0f0518 80%);
       background-size: cover;
-      background-position: center;
       background-attachment: fixed;
     }
 
-    /* CONTENEDOR TIPO CRISTAL (Glassmorphism) */
+    /* 2. LA TARJETA (BLANCA / EFECTO PORCELANA) */
     .booking-card {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.96); 
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       width: 100%;
       max-width: 700px;
-      border-radius: 20px;
-      padding: 40px;
-      box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+      border-radius: 24px;
+      padding: 45px;
+      /* Sombra fuerte para resaltar sobre el fondo oscuro */
+      box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255, 255, 255, 0.5);
     }
 
+    /* TÍTULOS */
     h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 32px;
-      color: #fff;
+      font-size: 36px;
+      color: var(--brand); 
       text-align: center;
       margin-top: 0;
+      margin-bottom: 10px;
     }
     .subtitle {
       text-align: center;
-      color: #ccc;
-      margin-bottom: 30px;
+      color: #666;
+      margin-bottom: 35px;
       font-size: 15px;
+      line-height: 1.5;
     }
 
     /* FORMULARIO */
-    .form-group { margin-bottom: 20px; }
+    .form-group { margin-bottom: 22px; }
     
     label {
       display: block;
       margin-bottom: 8px;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 14px;
-      color: #e0e0e0;
+      color: var(--brand-dark);
+      letter-spacing: 0.5px;
     }
 
+    /* INPUTS (CLAROS) */
     input, select, textarea {
       width: 100%;
-      padding: 14px;
-      background: rgba(0, 0, 0, 0.3);
-      border: 1px solid #444;
-      border-radius: 8px;
-      color: #fff;
+      padding: 16px;
+      background: #fdfdfd;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      color: #333;
       font-family: inherit;
       font-size: 15px;
-      box-sizing: border-box; /* Importante para que no se salga */
+      box-sizing: border-box;
+      transition: all 0.3s ease;
     }
     
     input:focus, select:focus, textarea:focus {
       outline: none;
       border-color: var(--brand);
-      background: rgba(0, 0, 0, 0.5);
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(91, 37, 128, 0.1);
     }
 
-    /* SECCIÓN MÉDICA (Checkboxes) */
+    /* SECCIÓN MÉDICA (LILA CLARO) */
     .medical-section {
-      background: rgba(91, 37, 128, 0.15);
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 25px;
-      border-left: 4px solid var(--gold);
+      background: #fbf7fd; /* Fondo muy suave */
+      padding: 25px;
+      border-radius: 16px;
+      margin-bottom: 30px;
+      border: 1px solid #eaddf5;
+      border-left: 5px solid var(--brand);
     }
     .medical-title {
-      font-weight: 700;
-      color: var(--gold);
-      margin-bottom: 15px;
+      font-weight: 800;
+      color: var(--brand);
+      margin-bottom: 5px;
       display: block;
       text-transform: uppercase;
       font-size: 12px;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
     }
     .checkbox-group {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      gap: 12px;
+      margin-top: 15px;
     }
     .checkbox-item {
       display: flex;
       align-items: center;
       font-size: 14px;
-      color: #ddd;
+      color: #555;
+      font-weight: 500;
+      cursor: pointer;
     }
     .checkbox-item input {
-      width: auto;
+      width: 18px;
+      height: 18px;
       margin-right: 10px;
       accent-color: var(--brand);
+      box-shadow: none;
     }
 
     /* PRECIOS Y BONOS */
     .price-highlight {
-      background: rgba(255, 255, 255, 0.1);
+      background: #fffbf0; /* Crema suave */
+      border: 1px solid #f0e6c5;
+      color: #7a6a30;
       padding: 15px;
-      border-radius: 8px;
-      margin-top: 5px;
+      border-radius: 10px;
+      margin-top: 8px;
       font-size: 13px;
       line-height: 1.5;
     }
-    .bonus-tag {
-      color: #4cd137;
-      font-weight: bold;
-      display: block;
-      margin-top: 5px;
-    }
+    .price-highlight strong { color: #d4af37; }
 
     /* BOTÓN */
     .btn-submit {
       width: 100%;
-      padding: 18px;
-      background: linear-gradient(45deg, var(--brand), #7a3e9e);
+      padding: 20px;
+      background: var(--brand);
       color: #fff;
       border: none;
       border-radius: 50px;
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 700;
       cursor: pointer;
       text-transform: uppercase;
       letter-spacing: 1px;
-      margin-top: 10px;
-      transition: transform 0.2s, box-shadow 0.2s;
+      margin-top: 15px;
+      box-shadow: 0 10px 25px rgba(91, 37, 128, 0.25);
+      transition: transform 0.2s;
     }
     .btn-submit:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(91, 37, 128, 0.4);
+      background: var(--brand-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(91, 37, 128, 0.4);
     }
 
-    /* MENSAJES */
+    /* MENSAJES DE ESTADO */
     #status-msg {
       display: none;
       text-align: center;
       padding: 15px;
       margin-top: 20px;
-      border-radius: 8px;
+      border-radius: 12px;
+      font-weight: 600;
     }
-    .success { background: rgba(37, 211, 102, 0.2); color: #25d366; border: 1px solid #25d366; }
-    .error { background: rgba(255, 77, 77, 0.2); color: #ff4d4d; border: 1px solid #ff4d4d; }
+    .success { background: #e6fffa; color: #047857; border: 1px solid #10b981; }
+    .error { background: #fef2f2; color: #b91c1c; border: 1px solid #ef4444; }
 
+    /* RESPONSIVE */
     @media(max-width: 600px) {
       .checkbox-group { grid-template-columns: 1fr; }
-      .booking-card { padding: 25px; }
+      .booking-card { padding: 25px; margin: 10px; }
+      h2 { font-size: 28px; }
     }
   </style>
 </head>
@@ -189,10 +209,10 @@
         
         <div class="form-group">
           <label>Nombre Completo</label>
-          <input type="text" name="user_name" placeholder="Tu nombre" required>
+          <input type="text" name="user_name" placeholder="Escribe tu nombre aquí" required>
         </div>
         <div class="form-group">
-          <label>WhatsApp</label>
+          <label>WhatsApp de Contacto</label>
           <input type="tel" name="user_phone" placeholder="Ej: 6474-6168" required>
         </div>
         <div class="form-group">
@@ -202,7 +222,7 @@
 
         <div class="medical-section">
           <span class="medical-title">Pre-Evaluación Médica (Seguridad)</span>
-          <p style="font-size:13px; margin-top:0; color:#ccc;">Marca si presentas alguna de las siguientes condiciones:</p>
+          <p style="font-size:13px; margin:0; color:#666;">Marca SOLO si presentas alguna de estas condiciones:</p>
           
           <div class="checkbox-group">
             <label class="checkbox-item"><input type="checkbox" name="med_diabetes" value="Si"> Diabetes Descontrolada</label>
@@ -210,7 +230,7 @@
             <label class="checkbox-item"><input type="checkbox" name="med_embarazo" value="Si"> Embarazo / Lactancia</label>
             <label class="checkbox-item"><input type="checkbox" name="med_marcapasos" value="Si"> Marcapasos / Cardiopatía</label>
             <label class="checkbox-item"><input type="checkbox" name="med_infeccion" value="Si"> Infección activa en piel</label>
-            <label class="checkbox-item"><input type="checkbox" name="med_bronceado" value="Si"> Bronceado reciente (Sol/Cama)</label>
+            <label class="checkbox-item"><input type="checkbox" name="med_bronceado" value="Si"> Bronceado reciente</label>
           </div>
         </div>
 
@@ -218,28 +238,29 @@
           <label>Selecciona tu Servicio</label>
           <select name="service_type" id="service-select" required>
             <option value="" disabled selected>-- Elige una opción --</option>
-            <option value="Valoracion-Transferencia">Valoración Estética - $9.95 (Transferencia/Yappy Directo)</option>
-            <option value="Valoracion-DirectorioYappy">Valoración Estética - $5.95 (Desde Directorio Yappy)</option>
+            <option value="Valoracion-Transferencia">Valoración Estética - $9.95 (Pago Directo)</option>
+            <option value="Valoracion-Yappy">Valoración Estética - $5.95 (Directorio Yappy)</option>
             <option value="Tratamiento-Fibroblast">Procedimiento Plasma Fibroblast</option>
             <option value="Otro">Otro servicio del menú</option>
           </select>
           
           <div class="price-highlight">
-            <span id="price-text">ℹ️ Las valoraciones pagas incluyen un <strong>Bono de Regalo de $10</strong> aplicable a tu tratamiento final.</span>
+            ℹ️ Las valoraciones pagadas incluyen un <strong>Bono de Regalo de $10</strong> aplicable a tu tratamiento final.
           </div>
         </div>
 
         <div class="form-group" style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
           <div>
             <label>Fecha Deseada</label>
-            <input type="text" id="date-picker" name="date_pref" placeholder="Seleccionar..." required>
+            <input type="text" id="date-picker" name="date_pref" placeholder="Seleccionar fecha" required>
           </div>
           <div>
             <label>Hora Preferida</label>
-            <select name="time_pref">
-              <option value="Mañana">Mañana (9am - 12pm)</option>
-              <option value="Tarde">Tarde (1pm - 5pm)</option>
-              <option value="Noche">Noche (5pm - 8pm)</option>
+            <select name="time_pref" required>
+              <option value="" disabled selected>Hora...</option>
+              <option value="Mañana (9am - 12pm)">Mañana (9am - 12pm)</option>
+              <option value="Tarde (1pm - 5pm)">Tarde (1pm - 5pm)</option>
+              <option value="Noche (5pm - 8pm)">Noche (5pm - 8pm)</option>
             </select>
           </div>
         </div>
@@ -252,53 +273,74 @@
     </div>
   </section>
 
-  <script>
-    // 1. INICIALIZAR EMAILJS
-    // Tienes que poner TU "PUBLIC KEY" aquí abajo.
-    (function() {
-      emailjs.init("TU_PUBLIC_KEY_AQUI"); 
-    })();
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script>
 
+  <script>
+    // ==========================================
+    // 1. CONFIGURACIÓN DE EMAILJS (¡EDITA ESTO!)
+    // ==========================================
+    
+    // Pon tu "Public Key" aquí (La encuentras en Account -> API Keys)
+    emailjs.init("TU_PUBLIC_KEY_AQUI"); 
+
+    const SERVICE_ID = "TU_SERVICE_ID";   // Ejemplo: "service_x8s9d"
+    const TEMPLATE_ID = "TU_TEMPLATE_ID"; // Ejemplo: "template_9d8s7"
+
+    // ==========================================
     // 2. CONFIGURACIÓN DEL CALENDARIO
+    // ==========================================
     flatpickr("#date-picker", {
-      locale: "es",
-      minDate: "today",
+      locale: "es",      // Español
+      minDate: "today",  // No permitir fechas pasadas
       dateFormat: "d-m-Y",
       disable: [
-        function(date) { return (date.getDay() === 0); } // Desactiva domingos (opcional)
+        function(date) {
+            // Devuelve true para deshabilitar Domingos (0)
+            return (date.getDay() === 0);
+        }
       ]
     });
 
-    // 3. LÓGICA DE ENVÍO
+    // ==========================================
+    // 3. ENVÍO DEL FORMULARIO
+    // ==========================================
     document.getElementById('contact-form').addEventListener('submit', function(event) {
       event.preventDefault();
       
       const btn = document.querySelector('.btn-submit');
       const msg = document.getElementById('status-msg');
       
+      // Estado de carga
       btn.textContent = 'Enviando...';
+      btn.style.opacity = '0.7';
       btn.disabled = true;
 
-      // Generar ID de servicio y Template en EmailJS
-      const serviceID = 'TU_SERVICE_ID';
-      const templateID = 'TU_TEMPLATE_ID';
-
-      emailjs.sendForm(serviceID, templateID, this)
+      // Enviar a EmailJS
+      emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, this)
         .then(() => {
+          // ÉXITO
           btn.textContent = '¡Enviado!';
+          btn.style.background = '#10b981'; // Verde
+          
           msg.className = 'success';
-          msg.innerHTML = '✅ <strong>Solicitud recibida.</strong><br>Revisa tu correo, te hemos enviado la confirmación.';
+          msg.innerHTML = '✅ <strong>¡Solicitud Recibida!</strong><br>Te hemos enviado un correo de confirmación. Te escribiremos pronto al WhatsApp.';
           msg.style.display = 'block';
-          this.reset();
+          
+          document.getElementById('contact-form').reset();
         }, (err) => {
+          // ERROR
           btn.textContent = 'Intentar de nuevo';
+          btn.style.opacity = '1';
           btn.disabled = false;
+          
           msg.className = 'error';
-          msg.innerHTML = '❌ Hubo un error. Por favor escríbenos directo al WhatsApp.';
+          msg.innerHTML = '❌ Hubo un error al enviar. Por favor escríbenos directamente al WhatsApp.';
           msg.style.display = 'block';
-          console.log(JSON.stringify(err));
+          console.error('Error:', err);
         });
     });
   </script>
+
 </body>
 </html>
