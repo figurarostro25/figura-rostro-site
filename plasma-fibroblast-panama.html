@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Plasma Fibroblast Panamá | Lifting Sin Cirugía | Figura Rostro KG</title>
-  <meta name="description" content="Tratamiento de Plasma Fibroblast en Panamá. Blefaroplastia sin cirugía, eliminación de arrugas y lifting de cuello. Resultados permanentes. Gira Chiriquí pronto.">
-  <meta name="keywords" content="plasma fibroblast panama, blefaroplastia sin cirugia, lifting de cuello, eliminar verrugas panama, rejuvenecimiento facial chiriqui, figura rostro kg">
+  <meta name="description" content="Tratamiento de Plasma Fibroblast en Panamá. La técnica europea avanzada para blefaroplastia sin cirugía, lifting de cuello y rejuvenecimiento natural. Resultados permanentes.">
+  <meta name="keywords" content="plasma fibroblast panama, blefaroplastia sin cirugia, lifting de cuello, colageno natural, rejuvenecimiento facial chiriqui, figura rostro kg, fibroblast brazos, fibroblast manos">
   <link rel="canonical" href="https://figurarostro.life/fibroblast.html">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -131,8 +131,7 @@
     .brand img {
       height: 55px; 
       width: auto; 
-      /* Filtro para volver blanco el logo si es negro. Quítalo si ya es blanco. */
-      filter: brightness(0) invert(1); 
+      filter: brightness(0) invert(1);
       transition: transform 0.3s;
     }
     .brand:hover img { transform: scale(1.05); }
@@ -206,7 +205,7 @@
     .section-title h2 { font-size: 42px; margin-bottom: 15px; color: var(--brand-dark); }
     .section-title p { max-width: 700px; margin: auto; color: #666; }
 
-    /* --- ZONAS DETALLADAS CON NUEVO DEGRADADO --- */
+    /* ZONAS DETALLADAS CON DEGRADADO */
     .zones-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -228,19 +227,19 @@
       height: 220px;
       overflow: hidden;
       background: #f4f0f6;
-      position: relative; /* Necesario para el overlay */
+      position: relative; 
     }
-
-    /* NUEVO: Overlay Degradado */
+    /* EL VELO DEGRADADO */
     .zone-img-wrap::after {
         content: '';
         position: absolute;
         top: 0; left: 0; width: 100%; height: 100%;
-        /* Degradado morado de izquierda (sutil) a transparente (derecha) */
-        background: linear-gradient(90deg, rgba(91, 37, 128, 0.35) 0%, rgba(91, 37, 128, 0) 70%);
+        background: linear-gradient(90deg, rgba(91, 37, 128, 0.4) 0%, rgba(91, 37, 128, 0) 70%);
         z-index: 2;
-        pointer-events: none; /* Permite clics a través */
+        pointer-events: none;
+        transition: opacity 0.3s;
     }
+    .zone-card:hover .zone-img-wrap::after { opacity: 0.2; }
 
     .zone-img-wrap img {
       width: 100%;
@@ -256,25 +255,49 @@
     .zone-content h3 { color: var(--brand); margin-top: 0; font-size: 20px; margin-bottom: 8px;}
     .zone-content p { font-size: 14px; margin: 0; color: #666; }
 
+    /* ESTILO BLOG SEO DESPLEGABLE */
+    .seo-blog-section {
+        max-width: 900px; margin: 60px auto; padding: 0 20px;
+    }
+    .seo-blog-section details {
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        border: 1px solid #efe5f5;
+    }
+    .seo-blog-section summary {
+        background: linear-gradient(to right, #fdfbfd, #f4f0f6);
+        color: var(--brand);
+        padding: 25px;
+        font-weight: 700;
+        cursor: pointer;
+        list-style: none;
+        font-size: 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: 'Playfair Display', serif;
+    }
+    .seo-blog-section summary::-webkit-details-marker { display: none; }
+    .seo-blog-section summary::after { content: '📖 Leer Más'; font-size: 14px; background: var(--gold); color:#fff; padding: 5px 15px; border-radius: 20px; font-family: 'Inter', sans-serif;}
+    .seo-blog-section details[open] summary::after { content: 'Cerrar'; background: #ccc; }
+    
+    .blog-content { padding: 40px; color: #444; text-align: justify; line-height: 1.8; }
+    .blog-content h3 { color: var(--brand); font-size: 22px; margin-top: 30px; border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 5px; }
+    .blog-content h3:first-child { margin-top: 0; }
+    .blog-content ul { padding-left: 20px; margin-bottom: 20px; }
+    .blog-content li { margin-bottom: 10px; }
+
     /* PREGUNTAS FRECUENTES */
     .faq-section { background: #fdfbfd; margin-top: 40px; }
     .faq-item {
-      background: #fff;
-      border: 1px solid #eee;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
-      overflow: hidden;
+      background: #fff; border: 1px solid #eee; border-radius: 10px;
+      margin-bottom: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.02); overflow: hidden;
     }
     .faq-item summary {
-      padding: 20px;
-      cursor: pointer;
-      font-weight: 600;
-      color: var(--brand-dark);
-      list-style: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      padding: 20px; cursor: pointer; font-weight: 600; color: var(--brand-dark);
+      list-style: none; display: flex; justify-content: space-between; align-items: center;
     }
     .faq-item summary::-webkit-details-marker { display: none; }
     .faq-item summary::after { content: '+'; font-size: 20px; color: var(--gold); }
@@ -320,6 +343,7 @@
       h2 { font-size: 28px; }
       .hero-btns { flex-direction: column; width: 100%; max-width: 300px; margin: auto; }
       .btn-primary, .btn-ig { width: 100%; }
+      .blog-content { padding: 20px; }
     }
   </style>
 </head>
@@ -445,7 +469,8 @@
           </div>
         </div>
         
-        <div class="zone-card" style="border: 2px solid var(--gold);"> <div class="zone-img-wrap">
+        <div class="zone-card" style="border: 2px solid var(--gold);">
+          <div class="zone-img-wrap">
             <img src="zona-abdomen.jpg" alt="Eliminar estrias y flacidez abdomen" loading="lazy">
           </div>
           <div class="zone-content">
@@ -466,17 +491,17 @@
 
         <div class="zone-card">
           <div class="zone-img-wrap">
-            <img src="zona-cicatrices.jpg" alt="Tratamiento cicatrices acne panama" loading="lazy">
+            <img src="zona-orejas.jpg" alt="Rejuvenecimiento de orejas" loading="lazy">
           </div>
           <div class="zone-content">
-            <h3>Cicatrices de Acné</h3>
-            <p>Alisa los bordes de cicatrices atróficas o marcas antiguas, unificando la textura de la piel.</p>
+            <h3>Rejuvenecimiento Orejas</h3>
+            <p>Elimina arrugas pre-auriculares y tensa la zona del lóbulo para un aspecto más joven.</p>
           </div>
         </div>
 
         <div class="zone-card">
           <div class="zone-img-wrap">
-            <img src="zona-brazos.jpg" alt="Flacidez en brazos tratamiento" loading="lazy" style="background:#ddd;">
+            <img src="zona-brazos.jpg" alt="Flacidez en brazos tratamiento" loading="lazy">
           </div>
           <div class="zone-content">
             <h3>Brazos Flácidos</h3>
@@ -486,7 +511,7 @@
 
         <div class="zone-card">
           <div class="zone-img-wrap">
-            <img src="zona-manos.jpg" alt="Rejuvenecimiento de manos" loading="lazy" style="background:#ddd;">
+            <img src="zona-manos.jpg" alt="Rejuvenecimiento de manos" loading="lazy">
           </div>
           <div class="zone-content">
             <h3>Rejuvenecimiento de Manos</h3>
@@ -496,10 +521,34 @@
 
       </div>
 
-      <div id="preguntas" style="max-width: 800px; margin: 80px auto 0;">
+      <section class="seo-blog-section">
+        <details>
+            <summary>📖 La Ciencia detrás del Rejuvenecimiento: Todo sobre el Plasma Fibroblast en Figura Rostro KG</summary>
+            <div class="blog-content">
+                <h3>Tecnología Europea de Vanguardia en Panamá</h3>
+                <p>El Plasma Fibroblast no es una moda pasajera; es una <strong>evolución científica</strong> en la medicina estética que ha dominado el mercado europeo y coreano (países líderes en cuidado de la piel) durante la última década. En <strong>Figura Rostro KG</strong>, hemos importado y perfeccionado esta técnica para ofrecerte resultados de primer mundo sin salir de Panamá.</p>
+
+                <h3>¿Cómo funciona la "Magia" Biológica?</h3>
+                <p>A diferencia del láser que quema o del bisturí que corta, el Plasma Fibroblast utiliza el cuarto estado de la materia: el plasma. El dispositivo ioniza el aire entre la punta y tu piel, creando un pequeño arco eléctrico controlado (sublimación). Este proceso envía una señal inmediata a las capas profundas de tu dermis, despertando a los <strong>fibroblastos</strong>, las células encargadas de producir colágeno.</p>
+
+                <h3>Estimulación de Colágeno Tipo III y I</h3>
+                <p>El tratamiento induce una regeneración masiva de colágeno tipo III (el colágeno "joven" que tenemos en la infancia) que luego se madura a colágeno tipo I. Esto resulta en una piel no solo más tensa, sino estructuralmente más joven, densa y resistente. Es un proceso <strong>100% natural</strong> porque es tu propio cuerpo el que realiza la reparación; nosotros solo damos el estímulo preciso.</p>
+
+                <h3>Un Procedimiento de Alto Confort</h3>
+                <p>Olvídate de los mitos sobre el dolor. En Figura Rostro KG, utilizamos protocolos avanzados de preparación tópica que garantizan una experiencia confortable. Nuestros pacientes suelen describir la sensación como totalmente manejable, relajada y libre de estrés. Nos esmeramos en que tu visita sea un momento de cuidado personal, no de sufrimiento.</p>
+
+                <h3>Resultados Permanentes vs. Temporales</h3>
+                <p>A diferencia del Botox o los rellenos (ácido hialurónico) que se reabsorben en meses, el Plasma Fibroblast ofrece resultados <strong>permanentes</strong>. La piel que se tensa, se queda tensa. Por supuesto, el proceso de envejecimiento natural continúa con los años, pero el retroceso que logramos en el tiempo es definitivo. Es una inversión única para un beneficio duradero.</p>
+
+                <h3>El Respaldo de Figura Rostro KG</h3>
+                <p>No somos un salón convencional; somos especialistas en ingeniería de la piel. Cada procedimiento está respaldado por un análisis riguroso, higiene hospitalaria y una técnica depurada que minimiza el tiempo de recuperación y maximiza los resultados estéticos. Hacemos las cosas bien porque tu rostro es nuestra carta de presentación.</p>
+            </div>
+        </details>
+      </section>
+
+      <div id="preguntas" style="max-width: 800px; margin: 40px auto 0;">
         <div class="section-title">
           <h2>Preguntas Frecuentes y Mitos</h2>
-          <p>Información clave para entender tu tratamiento de rejuvenecimiento.</p>
         </div>
         <div class="faq-section">
             <details class="faq-item">
