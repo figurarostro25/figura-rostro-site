@@ -15,12 +15,11 @@
 
   <style>
     :root{
-      --brand: #5b2580;       /* Morado Principal (Botones, texto destacado) */
-      --brand-dark: #1F0A2E;  /* Morado Muy Oscuro (Fondo Header) */
+      --brand: #5b2580;       /* Morado Principal */
+      --brand-dark: #1F0A2E;  /* Morado Muy Oscuro (Header) */
       --gold: #d4af37;
       --bg-light: #fdfbfd;
       --text-main: #2d2d2d;
-      --chiriqui-green: #007a33;
       --chiriqui-red: #d31d1d;
       --ig-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
       --shadow: 0 10px 40px rgba(91, 37, 128, 0.08);
@@ -59,7 +58,7 @@
       gap: 10px;
     }
     .btn-primary:hover{
-      background: var(--gold); /* Hover dorado */
+      background: var(--gold);
       color: #000;
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
@@ -82,9 +81,9 @@
       box-shadow: 0 6px 20px rgba(220, 39, 67, 0.5);
     }
 
-    /* BARRA CHIRIQUÍ (Integrada en oscuro) */
+    /* BARRA CHIRIQUÍ */
     .chiriqui-bar {
-      background: #0f0518; /* Casi negro, combina con el header */
+      background: #0f0518;
       color: #fff;
       text-align: center;
       padding: 12px 20px;
@@ -123,7 +122,7 @@
       position:sticky;
       top:0;
       z-index:100;
-      background: var(--brand-dark); /* FONDO OSCURO */
+      background: var(--brand-dark);
       border-bottom: 1px solid rgba(255,255,255,0.1); 
       box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
@@ -132,22 +131,20 @@
     .brand img {
       height: 55px; 
       width: auto; 
-      /* Si tu logo original es negro, este filtro lo vuelve blanco. 
-         Si ya es blanco, puedes quitar el filtro style="" */
+      /* Filtro para volver blanco el logo si es negro. Quítalo si ya es blanco. */
       filter: brightness(0) invert(1); 
       transition: transform 0.3s;
     }
     .brand:hover img { transform: scale(1.05); }
 
-    /* NAVEGACIÓN EN HEADER OSCURO */
     nav{display:flex;gap:30px;align-items:center}
     nav a{
-      color: rgba(255,255,255,0.9); /* Texto blanco */
+      color: rgba(255,255,255,0.9);
       font-weight:500; 
       font-size: 15px; 
       position: relative;
     }
-    nav a:hover{ color: var(--gold); } /* Hover dorado */
+    nav a:hover{ color: var(--gold); }
     
     /* HERO SECTION */
     .hero{
@@ -164,7 +161,6 @@
     }
     .hero::before{
       content:"";position:absolute;inset:0;
-      /* Gradiente oscuro para que el texto se lea bien */
       background: linear-gradient(135deg, rgba(15,5,24,0.85) 0%, rgba(91,37,128,0.4) 100%);
     }
     .hero .inner{position:relative;z-index:2;padding:20px; max-width: 800px;}
@@ -210,7 +206,7 @@
     .section-title h2 { font-size: 42px; margin-bottom: 15px; color: var(--brand-dark); }
     .section-title p { max-width: 700px; margin: auto; color: #666; }
 
-    /* ZONAS DETALLADAS */
+    /* --- ZONAS DETALLADAS CON NUEVO DEGRADADO --- */
     .zones-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -224,6 +220,7 @@
       box-shadow: var(--shadow);
       border: 1px solid #eee;
       transition: transform 0.3s;
+      position: relative;
     }
     .zone-card:hover { transform: translateY(-5px); }
     
@@ -231,13 +228,27 @@
       height: 220px;
       overflow: hidden;
       background: #f4f0f6;
-      position: relative;
+      position: relative; /* Necesario para el overlay */
     }
+
+    /* NUEVO: Overlay Degradado */
+    .zone-img-wrap::after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        /* Degradado morado de izquierda (sutil) a transparente (derecha) */
+        background: linear-gradient(90deg, rgba(91, 37, 128, 0.35) 0%, rgba(91, 37, 128, 0) 70%);
+        z-index: 2;
+        pointer-events: none; /* Permite clics a través */
+    }
+
     .zone-img-wrap img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.5s ease;
+      position: relative;
+      z-index: 1;
     }
     .zone-card:hover .zone-img-wrap img { transform: scale(1.05); }
     
@@ -389,7 +400,7 @@
 
       <div class="section-title">
         <h2>Identifica tu Zona Ideal</h2>
-        <p>El Plasma Fibroblast es versátil. Desde blefaroplastia sin cortes hasta eliminación de arrugas profundas.</p>
+        <p>El Plasma Fibroblast es versátil. Desde blefaroplastia sin cortes hasta eliminación de arrugas profundas y tensado corporal.</p>
       </div>
 
       <div class="zones-grid" id="zonas">
@@ -400,7 +411,7 @@
           </div>
           <div class="zone-content">
             <h3>Párpados (Blefaroplastia)</h3>
-            <p>Retrae la piel sobrante del párpado superior o inferior. Ideal para mirada cansada o encapotada, sin necesidad de bisturí.</p>
+            <p>Retrae la piel sobrante del párpado superior o inferior. Ideal para mirada cansada o encapotada.</p>
           </div>
         </div>
 
@@ -410,7 +421,7 @@
           </div>
           <div class="zone-content">
             <h3>Patas de Gallo</h3>
-            <p>Suaviza las arrugas perioculares profundas que se marcan al sonreír, rejuveneciendo la expresión de tus ojos.</p>
+            <p>Suaviza las arrugas perioculares profundas que se marcan al sonreír, rejuveneciendo la mirada.</p>
           </div>
         </div>
 
@@ -420,17 +431,7 @@
           </div>
           <div class="zone-content">
             <h3>Código de Barras</h3>
-            <p>Elimina las líneas verticales sobre el labio superior y tensa la zona del arco de cupido para una boca más joven.</p>
-          </div>
-        </div>
-
-        <div class="zone-card">
-          <div class="zone-img-wrap">
-            <img src="zona-cuello.jpg" alt="Lifting de cuello sin cirugia" loading="lazy">
-          </div>
-          <div class="zone-content">
-            <h3>Cuello y Papada</h3>
-            <p>Combate la flacidez (cuello de pavo) y el descolgamiento, logrando un perfil más definido y elegante.</p>
+            <p>Elimina las líneas verticales sobre el labio superior y tensa la zona del arco de cupido.</p>
           </div>
         </div>
 
@@ -440,17 +441,26 @@
           </div>
           <div class="zone-content">
             <h3>Líneas de Frente</h3>
-            <p>Atenúa las líneas horizontales y del entrecejo sin paralizar tus gestos naturales, a diferencia del botox.</p>
+            <p>Atenúa las líneas horizontales y del entrecejo sin paralizar tus gestos naturales.</p>
           </div>
         </div>
         
-        <div class="zone-card">
-          <div class="zone-img-wrap">
+        <div class="zone-card" style="border: 2px solid var(--gold);"> <div class="zone-img-wrap">
             <img src="zona-abdomen.jpg" alt="Eliminar estrias y flacidez abdomen" loading="lazy">
           </div>
           <div class="zone-content">
             <h3>Abdomen y Estrías</h3>
-            <p>Excelente para ombligo "triste" post-parto y para reducir el ancho y profundidad de estrías blancas.</p>
+            <p>Excelente para flacidez post-parto y para reducir el ancho y profundidad de estrías blancas.</p>
+          </div>
+        </div>
+
+        <div class="zone-card">
+          <div class="zone-img-wrap">
+            <img src="zona-cuello.jpg" alt="Lifting de cuello sin cirugia" loading="lazy">
+          </div>
+          <div class="zone-content">
+            <h3>Cuello y Papada</h3>
+            <p>Combate la flacidez (cuello de pavo) y logrando un perfil más definido y elegante.</p>
           </div>
         </div>
 
@@ -460,9 +470,30 @@
           </div>
           <div class="zone-content">
             <h3>Cicatrices de Acné</h3>
-            <p>Alisa los bordes de cicatrices atróficas o marcas antiguas, unificando la textura de la piel significativamente.</p>
+            <p>Alisa los bordes de cicatrices atróficas o marcas antiguas, unificando la textura de la piel.</p>
           </div>
         </div>
+
+        <div class="zone-card">
+          <div class="zone-img-wrap">
+            <img src="zona-brazos.jpg" alt="Flacidez en brazos tratamiento" loading="lazy" style="background:#ddd;">
+          </div>
+          <div class="zone-content">
+            <h3>Brazos Flácidos</h3>
+            <p>Tensa la piel de la cara interna de los brazos ("alas de murciélago") para mayor firmeza.</p>
+          </div>
+        </div>
+
+        <div class="zone-card">
+          <div class="zone-img-wrap">
+            <img src="zona-manos.jpg" alt="Rejuvenecimiento de manos" loading="lazy" style="background:#ddd;">
+          </div>
+          <div class="zone-content">
+            <h3>Rejuvenecimiento de Manos</h3>
+            <p>Elimina manchas de edad y tensa la piel fina del dorso de las manos para un aspecto joven.</p>
+          </div>
+        </div>
+
       </div>
 
       <div id="preguntas" style="max-width: 800px; margin: 80px auto 0;">
