@@ -8,201 +8,333 @@
   <meta name="description" content="Plasma Fibroblast en Figura Rostro KG: reafirma, tensa y rejuvenece la piel sin cirugía. Resultados visibles con técnica no invasiva.">
   <link rel="canonical" href="https://figurarostro.life/fibroblast.html">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
   <style>
-    :root{--brand:#5b2580}
+    :root{
+      --brand: #5b2580;
+      --brand-dark: #3a1555;
+      --gold: #d4af37; /* Toque dorado para lujo */
+      --bg-light: #fdfbfd;
+      --text-main: #2d2d2d;
+      --shadow: 0 10px 30px rgba(91, 37, 128, 0.08);
+    }
     *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:#fff;color:#1b0f26}
-    a{text-decoration:none}
+    
+    body{
+      margin:0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-light);
+      color: var(--text-main);
+      overflow-x: hidden;
+    }
+    
+    h1, h2, h3 { font-family: 'Playfair Display', serif; line-height: 1.2; }
+    a{text-decoration:none; transition: 0.3s ease;}
+    p{line-height: 1.8; color: #555; font-size: 1.05rem;}
 
-    /* Header */
-    header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,#160c1f,#241235);border-bottom:1px solid rgba(255,255,255,.08)}
-    .header-inner{max-width:1150px;margin:auto;padding:18px 16px;display:flex;align-items:center;justify-content:space-between}
-    .brand img{height:52px;width:auto}
-    nav{display:flex;gap:18px;align-items:center}
-    nav a{color:#fff;font-weight:600;opacity:.95}
-    nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:3px}
-    .btn-primary{background:#fff;color:var(--brand);border:0;padding:12px 20px;border-radius:14px;font-weight:700}
+    /* BOTONES MEJORADOS */
+    .btn-primary{
+      display: inline-block;
+      background: var(--brand);
+      color: #fff;
+      border: 0;
+      padding: 16px 32px;
+      border-radius: 50px; /* Más redondo = más amigable */
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 14px;
+      box-shadow: 0 4px 15px rgba(91, 37, 128, 0.3);
+    }
+    .btn-primary:hover{
+      background: var(--brand-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(91, 37, 128, 0.4);
+    }
+    .btn-outline{
+      border: 2px solid #fff;
+      background: transparent;
+      color: #fff;
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+    }
+    .btn-outline:hover{ background: #fff; color: var(--brand); }
 
-    /* Hero */
+    /* HEADER */
+    header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter: blur(10px); border-bottom:1px solid rgba(0,0,0,0.05); transition: 0.3s;}
+    .header-inner{max-width:1200px;margin:auto;padding:15px 20px;display:flex;align-items:center;justify-content:space-between}
+    .brand img{height:50px;width:auto}
+    nav{display:flex;gap:24px;align-items:center}
+    nav a{color: var(--text-main); font-weight:500; font-size: 15px;}
+    nav a:hover{color: var(--brand);}
+    
+    /* HERO SECTION - REIMAGINADO */
     .hero{
-      position:relative;min-height:50vh;display:grid;place-items:center;text-align:center;color:#fff;
+      position:relative;
+      height: 85vh; /* Ocupa casi toda la pantalla */
+      min-height: 600px;
+      display:flex;
+      align-items:center;
+      justify-content: center;
+      text-align:center;
+      color:#fff;
+      /* Asegúrate de que la imagen sea de alta calidad */
       background:url('banner-fibroblast.jpg') center/cover no-repeat;
     }
-    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,10,35,.65),rgba(20,10,35,.45))}
-    .hero .inner{position:relative;z-index:2;padding:56px 16px}
-    .hero h1{font-size:clamp(28px,6vw,54px);margin:0 0 10px}
-    .hero p{max-width:760px;margin:0 auto 14px;opacity:.95}
+    .hero::before{
+      content:"";position:absolute;inset:0;
+      background: linear-gradient(135deg, rgba(30,10,50,0.85) 0%, rgba(91,37,128,0.4) 100%);
+    }
+    .hero .inner{position:relative;z-index:2;padding:20px; max-width: 800px;}
+    .hero h1{
+      font-size:clamp(40px,7vw,70px);
+      margin:0 0 20px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    .hero p{
+      color: rgba(255,255,255,0.9);
+      font-size: 1.2rem;
+      margin: 0 auto 35px;
+      max-width: 600px;
+    }
 
-    /* Contenido */
-    .wrap{max-width:1150px;margin:0 auto;padding:60px 16px}
-    h2{color:#5b2580;margin:26px 0 10px}
-    p{line-height:1.7;opacity:.96}
-    .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
-    .before-after{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    .before-after figure{margin:0;text-align:center}
-    .before-after img{width:100%;display:block;border-radius:14px}
-    .before-after figcaption{font-size:14px;color:#5b2580;font-weight:600;margin-top:6px}
+    /* BARRA DE CONFIANZA / RESULTADOS */
+    .results-bar {
+      background: #fff;
+      padding: 50px 20px;
+      margin-top: -60px; /* Efecto flotante sobre el banner */
+      position: relative;
+      z-index: 10;
+      border-radius: 20px 20px 0 0;
+      border-bottom: 1px solid #eee;
+    }
+    .results-grid {
+      max-width: 1100px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      text-align: center;
+    }
+    .result-item h3 { font-size: 32px; color: var(--brand); margin: 0; }
+    .result-item span { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #888; font-weight: 600; }
+    .result-icon { font-size: 30px; margin-bottom: 10px; display: block; }
 
-    /* Footer */
-    footer{text-align:center;padding:25px 10px;font-size:15px;line-height:1.6;color:#222;opacity:.9}
-    footer .links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:10px}
-    footer .links a{color:#5b2580}
+    /* CONTENIDO GENERAL */
+    .wrap{max-width:1100px;margin:0 auto;padding:80px 20px;}
+    .section-title { text-align: center; margin-bottom: 50px; }
+    .section-title h2 { font-size: 42px; margin-bottom: 15px; color: var(--brand-dark); }
+    .section-title p { max-width: 600px; margin: auto; }
 
-    /* FAB (flotantes) */
-    .fr-fab{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:9999;display:flex;flex-direction:column;gap:14px;align-items:flex-end}
-    .fr-ic{min-width:56px;height:56px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 10px 18px rgba(0,0,0,.18)}
-    .fr-ic svg{fill:#fff;width:26px;height:26px}
+    /* ANTES Y DESPUES - MEJORADO */
+    .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+    .ba-card {
+      background: #fff;
+      padding: 15px;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+    .ba-card img { width: 100%; border-radius: 15px; display: block; }
+    .ba-label {
+      margin-top: 15px;
+      display: inline-block;
+      background: #f4f0f6;
+      color: var(--brand);
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    /* TARJETAS DE BENEFICIOS */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
+    .info-card {
+      background: #fff;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      border-left: 5px solid var(--brand);
+    }
+    .info-card h3 { margin-top: 0; color: var(--brand); font-size: 24px;}
+    .info-card ul { padding-left: 20px; margin: 0; }
+    .info-card li { margin-bottom: 12px; color: #555; }
+
+    /* CTA FINAL IMPACTANTE */
+    .final-cta {
+      background: linear-gradient(135deg, #160c1f 0%, #3a1555 100%);
+      color: #fff;
+      text-align: center;
+      padding: 80px 20px;
+      border-radius: 30px;
+      margin: 20px; /* Margen para que parezca tarjeta flotante */
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+    .final-cta h2 { color: #fff; font-size: 38px; margin-bottom: 20px; }
+    .final-cta p { color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 40px; }
+
+    /* FOOTER */
+    footer{background: #fff; padding: 60px 20px; text-align:center; font-size:14px; color:#666; border-top: 1px solid #eee;}
+    footer .links{display:flex;flex-wrap:wrap;gap:15px;justify-content:center;margin-top:20px}
+    footer a{color: var(--brand);}
+    
+    /* MÓVIL Y FLOTANTES */
+    .fr-fab{position:fixed;right:20px;bottom:30px;z-index:9999;display:flex;flex-direction:column-reverse;gap:15px;}
+    .fr-ic{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,0.2); transition: transform 0.2s;}
+    .fr-ic svg{fill:#fff;width:24px;height:24px}
+    
     .fr-wa{background:#25D366}
     .fr-waze{background:#0099ff}
     .fr-ig{background:linear-gradient(45deg,#F58529,#DD2A7B,#8134AF,#515BD4)}
     .fr-call{background:#4CAF50}
-    .fr-ic:hover{transform:scale(1.08);box-shadow:0 12px 22px rgba(0,0,0,.22)}
+    .fr-ic:hover{transform:scale(1.1);}
 
-    /* Móvil */
     @media (max-width:768px){
-      .header-inner{padding:16px;justify-content:center;gap:10px}
-      .before-after{grid-template-columns:1fr}
+      .header-inner { justify-content: center; }
+      .header-inner nav, .header-inner .btn-primary.header-btn { display: none; } /* Menú simplificado en móvil */
+      .hero { height: 70vh; }
+      .results-bar { margin-top: 0; border-radius: 0; }
+      .ba-grid { grid-template-columns: 1fr; }
+      .final-cta { margin: 0; border-radius: 0; }
+      h1 { font-size: 36px; }
+      h2 { font-size: 28px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
   <header>
     <div class="header-inner">
-      <a href="/" class="brand"><img src="logo-header-white.png" alt="Figura Rostro KG"></a>
+      <a href="/" class="brand"><img src="logo-header-white.png" alt="Figura Rostro KG" style="filter: brightness(0.2) invert(0.2) sepia(1) hue-rotate(240deg) saturate(3);"></a> 
       <nav>
         <a href="/#sobre">Nosotros</a>
         <a href="/tratamientos-faciales/">Faciales</a>
-        <a href="/masajes-terapeuticos/">Masajes</a>
         <a href="/#promos">Promociones</a>
-        <a href="/#contacto">Contacto</a>
       </nav>
-      <a class="btn-primary" href="/chat-citas.html" target="_blank" rel="noopener">Agendar</a>
+      <a class="btn-primary header-btn" href="/chat-citas.html" target="_blank" rel="noopener">Agendar Cita</a>
     </div>
   </header>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="inner">
-      <h1>Plasma Fibroblast</h1>
-      <p>Rejuvenecimiento natural sin cirugía: microdescargas controladas que estimulan colágeno y elastina para una piel más firme y tensa.</p>
-      <a class="btn-primary" href="/chat-citas.html" target="_blank" rel="noopener">Agenda tu valoración</a>
+      <h1>Rejuvenece tu piel sin cirugía</h1>
+      <p>Descubre el poder del Plasma Fibroblast: la técnica revolucionaria para tensar párpados, eliminar arrugas y reafirmar tu rostro de forma natural.</p>
+      <div style="display:flex; gap:15px; justify-content:center; flex-wrap:wrap;">
+        <a class="btn-primary" href="/chat-citas.html">Quiero una valoración</a>
+        <a class="btn-outline" href="#resultados">Ver resultados</a>
+      </div>
     </div>
   </section>
 
-  <!-- CONTENIDO -->
+  <div class="results-bar" id="resultados">
+    <div class="results-grid">
+      <div class="result-item">
+        <span class="result-icon">✨</span>
+        <h3>7-10</h3>
+        <span>Días de recuperación</span>
+      </div>
+      <div class="result-item">
+        <span class="result-icon">🛡️</span>
+        <h3>100%</h3>
+        <span>Sin cirugía invasiva</span>
+      </div>
+      <div class="result-item">
+        <span class="result-icon">⏳</span>
+        <h3>3 años</h3>
+        <span>Duración aproximada</span>
+      </div>
+    </div>
+  </div>
+
   <section>
     <div class="wrap">
-      <h2>¿Qué es el tratamiento de Plasma Fibroblast?</h2>
-      <p>
-        Es una técnica estética no invasiva que aplica microdescargas con un dispositivo de plasma sobre la superficie de la piel.
-        Esta energía térmica precisa activa la producción de colágeno y elastina, logrando un efecto tensor y de reafirmación sin bisturí.
-      </p>
-
-      <h2>Beneficios</h2>
-      <div class="cols">
-        <ul>
-          <li>Efecto lifting en párpados y contorno de ojos.</li>
-          <li>Disminuye arrugas finas y flacidez.</li>
-          <li>Mejora textura y firmeza en rostro y cuello.</li>
-        </ul>
-        <ul>
-          <li>Resultados visibles y progresivos.</li>
-          <li>Procedimiento ambulatorio y no invasivo.</li>
-          <li>Recuperación rápida con cuidados simples.</li>
-        </ul>
+      <div class="section-title">
+        <h2>¿Qué es el Plasma Fibroblast?</h2>
+        <p>Olvídate del bisturí. Utilizamos microdescargas de plasma controladas para estimular la producción natural de colágeno y elastina, creando un efecto tensor inmediato.</p>
       </div>
 
-      <h2>Zonas tratables</h2>
-      <div class="cols">
-        <ul>
-          <li>Párpados superiores e inferiores</li>
-          <li>Líneas del labio superior</li>
-          <li>Contorno de ojos</li>
-        </ul>
-        <ul>
-          <li>Frente y patas de gallo</li>
-          <li>Cuello y papada</li>
-          <li>Zona del escote</li>
-        </ul>
-      </div>
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>Beneficios Clave</h3>
+          <ul>
+            <li>✨ <strong>Efecto Lifting:</strong> Levanta párpados caídos y define el contorno.</li>
+            <li>🌿 <strong>Natural:</strong> Sin cortes ni suturas, tu piel se regenera sola.</li>
+            <li>⚡ <strong>Rápido:</strong> Procedimiento ambulatorio de 1 a 2 horas.</li>
+            <li>💎 <strong>Resultados:</strong> Mejora visible en textura y firmeza.</li>
+          </ul>
+        </div>
 
-      <h2>Antes y Después</h2>
-      <div class="before-after" style="margin-bottom:16px;">
-        <figure>
-          <img src="fibro-antes1.jpg" alt="Antes Plasma Fibroblast">
-          <figcaption>Antes</figcaption>
-        </figure>
-        <figure>
-          <img src="fibro-despues1.jpg" alt="Después Plasma Fibroblast">
-          <figcaption>Después</figcaption>
-        </figure>
-      </div>
-
-      <div class="before-after">
-        <figure>
-          <img src="fibro-antes2.jpg" alt="Antes Plasma Fibroblast">
-          <figcaption>Antes</figcaption>
-        </figure>
-        <figure>
-          <img src="fibro-despues2.jpg" alt="Después Plasma Fibroblast">
-          <figcaption>Después</figcaption>
-        </figure>
-      </div>
-
-      <h2 style="margin-top:26px;">Recomendaciones posteriores</h2>
-      <p>
-        Evita el sol directo los primeros días, usa protector solar y mantén la zona hidratada.
-        Los pequeños puntitos de plasma se desprenden de forma natural, revelando una piel más firme.
-      </p>
-
-      <div style="margin-top:18px;">
-        <a class="btn-primary" href="/chat-citas.html" target="_blank" rel="noopener">Reservar mi cita</a>
+        <div class="info-card">
+          <h3>Zonas Tratables</h3>
+          <ul>
+            <li>👁️ Párpados (Blefaroplastia sin cirugía)</li>
+            <li>👄 Código de barras (Labio superior)</li>
+            <li>👵 Patas de gallo y líneas de frente</li>
+            <li>🦒 Cuello y papada</li>
+            <li>👙 Estrías y cicatrices localizadas</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER con enlaces -->
+  <section style="background: #fdfbfd; padding-bottom: 80px;">
+    <div class="wrap">
+      <div class="section-title">
+        <h2>Resultados Reales</h2>
+        <p>Pacientes reales de Figura Rostro KG. Sin filtros, solo piel renovada.</p>
+      </div>
+
+      <div class="ba-grid">
+        <div class="ba-card">
+          <img src="fibro-antes1.jpg" alt="Caso 1 Fibroblast" loading="lazy">
+          <div class="ba-label">Cambio Radical</div>
+        </div>
+        <div class="ba-card">
+          <img src="fibro-despues1.jpg" alt="Caso 2 Fibroblast" loading="lazy">
+          <div class="ba-label">Rejuvenecimiento</div>
+        </div>
+      </div>
+      </div>
+  </section>
+
+  <section class="final-cta">
+    <h2>¿Lista para tu transformación?</h2>
+    <p>Agenda tu valoración hoy mismo y aprovecha nuestras promociones exclusivas del mes. Tu nueva piel te está esperando.</p>
+    <a class="btn-primary" style="background:#fff; color:var(--brand); font-size:18px; padding: 18px 40px;" href="/chat-citas.html">
+      📅 Agendar mi Cita Ahora
+    </a>
+  </section>
+
   <footer>
-    <p>© <span id="year"></span> Figura Rostro KG · Todos los derechos reservados</p>
-    <p>Royal Park – <a href="https://maps.app.goo.gl/muFVBY4QFqEDNeQ38" target="_blank">Av. Ernesto T. Lefevre, Ciudad de Panamá</a></p>
+    <p style="font-family:'Playfair Display', serif; font-size: 20px; font-weight:700; color:var(--brand); margin-bottom:10px;">Figura Rostro KG</p>
+    <p>Royal Park – Av. Ernesto T. Lefevre, Ciudad de Panamá</p>
+    <p>© <span id="year"></span> Todos los derechos reservados.</p>
 
     <div class="links">
-      <!-- principales -->
-      <a href="/#sobre">Nosotros</a>
-      <a href="/tratamientos-faciales/">Tratamientos faciales</a>
-      <a href="/masajes-terapeuticos/">Masajes terapéuticos</a>
-      <a href="/#promos">Promociones</a>
-      <a href="/#contacto">Contacto</a>
-      <a href="/chat-citas.html">Agendar</a>
-
-      <!-- detalle tratamientos -->
-      <a href="/limpieza-facial-profunda.html">Limpieza Facial Profunda</a>
-      <a href="/peeling-facial.html">Peeling Facial</a>
-      <a href="/fibroblast.html" style="font-weight:700;">Plasma Fibroblast</a>
-      <a href="/microneedling-rf.html">Microneedling + RF</a>
-      <a href="/contorno-corporal.html">Contorno Corporal</a>
-      <a href="/regeneracion-piel-cabello.html">Regeneración piel & cabello</a>
-      <a href="/lifting-sin-cirugia.html">Lifting sin cirugía</a>
+      <a href="/limpieza-facial-profunda.html">Limpieza Facial</a> ·
+      <a href="/fibroblast.html">Plasma Fibroblast</a> ·
+      <a href="/microneedling-rf.html">Microneedling</a> ·
+      <a href="/contorno-corporal.html">Corporales</a>
     </div>
   </footer>
 
-  <!-- FAB flotantes -->
   <div class="fr-fab">
-    <a class="fr-ic fr-wa" href="https://wa.me/50764746168" target="_blank" aria-label="WhatsApp" title="WhatsApp">
+    <a class="fr-ic fr-wa" href="https://wa.me/50764746168" target="_blank" aria-label="WhatsApp">
       <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.94 14.5L2 22l5.7-1.5A10 10 0 1 0 12 2zm5.5 14.1c-.24.68-1.4 1.3-1.96 1.34-.5.03-1.14.05-1.84-.12-.42-.1-.97-.31-1.67-.61-2.94-1.27-4.86-4.2-5.01-4.4-.15-.2-1.2-1.6-1.2-3.06 0-1.45.76-2.16 1.03-2.45.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.24.59.82 2.05.9 2.2.07.15.12.33.01.53-.1.2-.15.33-.3.51-.15.18-.31.4-.44.54-.15.15-.31.32-.13.62.18.3.8 1.3 1.71 2.1 1.18 1.05 2.17 1.37 2.47 1.52.3.15.48.13.66-.08.18-.2.76-.89.96-1.2.2-.3.41-.26.67-.15.26.1 1.64.77 1.92.91.29.15.48.22.55.34.07.12.07.7-.17 1.38z"/></svg>
     </a>
-
-    <a class="fr-ic fr-waze" href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" aria-label="Waze" title="Waze">
-      <svg viewBox="0 0 24 24"><path d="M12 2c5.5 0 10 3.9 10 8.7 0 3.9-3 7.2-7.2 8.2-.5.1-.7.4-.9.8-.5 1-1.4 2.1-2.9 2.1-1.6 0-2.4-1.1-2.9-2.1-.2-.4-.4-.7-.9-.8C5 17.9 2 14.6 2 10.7 2 5.9 6.5 2 12 2z"/></svg>
-    </a>
-
-    <a class="fr-ic fr-ig" href="https://instagram.com/figurarostrokg" target="_blank" aria-label="Instagram" title="Instagram">
+    <a class="fr-ic fr-ig" href="https://instagram.com/figurarostrokg" target="_blank" aria-label="Instagram">
       <svg viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm4.25 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10z"/></svg>
     </a>
-
-    <a class="fr-ic fr-call" href="tel:+50764746168" aria-label="Llamar" title="Llamar">
+    <a class="fr-ic fr-call" href="tel:+50764746168" aria-label="Llamar">
       <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1v3.5c0 .55-.45 1-1 1A17.92 17.92 0 0 1 2 6c0-.55.45-1 1-1H6.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.12.35.03.75-.24 1.02l-2.2 2.2z"/></svg>
     </a>
   </div>
@@ -210,6 +342,6 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
- <script type='text/javascript' data-cfasync='false'>window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: '39cf325c-2286-4b58-b2af-9c647e257085', f: true }); done = true; } }; })();</script> 
+  <script type='text/javascript' data-cfasync='false'>window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: '39cf325c-2286-4b58-b2af-9c647e257085', f: true }); done = true; } }; })();</script> 
 </body>
 </html>
