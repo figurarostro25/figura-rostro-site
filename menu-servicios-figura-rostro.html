@@ -28,57 +28,91 @@
       background-color: var(--bg-dark);
       background-image: radial-gradient(circle at 50% 0%, #2c1450 0%, #0f0818 60%);
       color: var(--text-main);
-      padding-bottom: 40px;
     }
 
     img{ display:block; max-width:100%; }
     a{ text-decoration:none; color:inherit; transition:0.3s; }
 
     .container{
-      max-width: 1000px; /* Ancho controlado para que se vea elegante */
+      max-width: 1100px;
       margin: 0 auto;
       padding: 0 20px;
     }
 
-    /* HEADER UNIFICADO */
-    header{
-      padding: 20px 0;
-      text-align: center;
-      background: rgba(15, 8, 24, 0.8);
+    /* =========================================
+       HEADER / BARRA DE MENÚ
+       ========================================= */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: rgba(15, 8, 24, 0.95); /* Fondo oscuro casi sólido */
       backdrop-filter: blur(10px);
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
       border-bottom: 1px solid rgba(255,255,255,0.1);
     }
-    header img{ height: 50px; margin: 0 auto; }
 
-    /* TITULOS */
+    header img {
+      height: 45px; /* Tamaño del logo */
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.8;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+      color: var(--brand-light);
+    }
+
+    /* Menú móvil */
+    @media (max-width: 768px) {
+      header { padding: 15px 20px; }
+      .nav-links { display: none; } /* Ocultar links en móvil simple, o dejar solo logo */
+    }
+
+    /* =========================================
+       CONTENIDO PRINCIPAL
+       ========================================= */
     .page-intro{
       text-align: center;
-      padding: 40px 0 30px;
+      padding: 60px 0 40px;
     }
     h1{
       font-size: clamp(2rem, 5vw, 3rem);
-      margin: 0 0 10px;
+      margin: 0 0 15px;
       background: linear-gradient(90deg, #fff, #b896ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
     .sub{
       color: var(--text-muted);
-      max-width: 600px;
+      max-width: 700px;
       margin: 0 auto;
-      font-size: 1rem;
+      font-size: 1.1rem;
       line-height: 1.6;
     }
 
-    /* LAYOUT MODERNO (ZIG-ZAG) */
+    /* LAYOUT ZIG-ZAG */
     .services-stack {
       display: flex;
       flex-direction: column;
-      gap: 60px; /* Espacio entre tarjetas */
-      margin-top: 40px;
+      gap: 80px;
+      margin-top: 50px;
+      margin-bottom: 80px;
     }
 
     .svc-card {
@@ -90,38 +124,40 @@
       overflow: hidden;
       box-shadow: 0 20px 40px rgba(0,0,0,0.4);
       transition: transform 0.3s ease;
+      min-height: 400px;
     }
 
     .svc-card:hover {
       transform: translateY(-5px);
-      border-color: var(--brand-light);
+      border-color: rgba(157, 94, 196, 0.4);
     }
 
-    /* Alternar orden: Imagen derecha, Texto izquierda vs Invertido */
+    /* Alternar orden */
     .svc-card:nth-child(even) {
       flex-direction: row-reverse;
     }
 
     .svc-img-col {
       flex: 1;
-      height: 350px; /* Altura fija para uniformidad */
+      height: 400px;
       overflow: hidden;
+      position: relative;
     }
     
     .svc-img-col img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s ease;
+      transition: transform 0.6s ease;
     }
 
     .svc-card:hover .svc-img-col img {
-      transform: scale(1.05);
+      transform: scale(1.08);
     }
 
     .svc-info-col {
       flex: 1;
-      padding: 40px;
+      padding: 50px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -129,88 +165,80 @@
 
     .svc-cat {
       text-transform: uppercase;
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       letter-spacing: 2px;
       color: var(--brand-light);
-      margin-bottom: 8px;
-      font-weight: 700;
+      margin-bottom: 12px;
+      font-weight: 800;
     }
 
     .svc-title {
-      font-size: 1.8rem;
-      margin: 0 0 16px;
-      font-weight: 700;
+      font-size: 2rem;
+      margin: 0 0 20px;
+      font-weight: 800;
       color: #fff;
+      line-height: 1.1;
     }
 
     .svc-desc {
       color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 24px;
-      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 30px;
+      font-size: 1rem;
     }
 
     /* BOTONES */
-    .btn-group {
-      display: flex;
-      gap: 12px;
-    }
     .btn {
-      padding: 12px 24px;
+      padding: 14px 28px;
       border-radius: 50px;
-      font-weight: 600;
-      font-size: 0.9rem;
+      font-weight: 700;
+      font-size: 0.95rem;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      transition: all 0.2s;
+      width: fit-content;
     }
     .btn-primary {
       background: var(--brand);
       color: #fff;
       box-shadow: 0 4px 15px rgba(91, 37, 128, 0.4);
     }
-    .btn-primary:hover { background: var(--brand-light); }
-    
-    .btn-outline {
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.3);
-      color: #fff;
-    }
-    .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.05); }
+    .btn-primary:hover { background: var(--brand-light); transform: translateY(-2px); }
 
-    /* FORMULARIO MEJORADO (MÁS LEGIBLE) */
+    /* FORMULARIO */
     .contact-section {
-      margin-top: 80px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      margin-top: 60px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
       border-radius: 30px;
-      padding: 40px;
+      padding: 50px;
       border: 1px solid rgba(255,255,255,0.1);
     }
-    .contact-head { text-align: center; margin-bottom: 30px; }
-    .contact-head h2 { font-size: 2rem; margin-bottom: 10px; color: #fff; }
+    .contact-head { text-align: center; margin-bottom: 40px; }
+    .contact-head h2 { font-size: 2.2rem; margin-bottom: 10px; color: #fff; }
     
     .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      gap: 25px;
     }
     .full-width { grid-column: span 2; }
 
     .form-group label {
       display: block;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       font-size: 0.9rem;
-      color: #e0e0e0; /* Texto más claro */
-      font-weight: 600;
+      color: #f0f0f0;
+      font-weight: 700;
     }
     
     .form-input, .form-select, .form-textarea {
       width: 100%;
-      padding: 14px;
-      border-radius: 12px;
+      padding: 16px;
+      border-radius: 14px;
       border: 1px solid rgba(255,255,255,0.2);
-      background: rgba(255,255,255,0.08); /* Fondo más claro que antes */
+      background: rgba(0,0,0,0.3); /* Fondo oscuro pero legible */
       color: #fff;
       font-size: 1rem;
       font-family: inherit;
@@ -219,69 +247,109 @@
     
     .form-input:focus, .form-select:focus, .form-textarea:focus {
       border-color: var(--brand-light);
-      background: rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.5);
     }
 
-    .form-textarea { resize: vertical; min-height: 120px; }
+    .form-textarea { resize: vertical; min-height: 140px; }
 
     .btn-whatsapp {
-      background: var(--green);
-      color: #000;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: #fff;
       width: 100%;
       font-weight: 800;
-      font-size: 1rem;
+      font-size: 1.1rem;
       text-transform: uppercase;
       letter-spacing: 1px;
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+      border: none;
     }
-    .btn-whatsapp:hover { filter: brightness(1.1); }
+    .btn-whatsapp:hover { filter: brightness(1.1); transform: translateY(-2px); }
+
+    /* =========================================
+       FOOTER (RECUPERADO)
+       ========================================= */
+    footer{
+      background:#12091d;
+      color:#f5eaff;
+      margin-top: 80px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .footer-inner{
+      max-width:1120px;
+      margin:0 auto;
+      padding:0 20px 40px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:40px;
+      justify-content:space-between;
+      font-size:.95rem;
+    }
+    .footer-block strong{
+      display:block;
+      margin-bottom:12px;
+      color: #fff;
+      font-size: 1.1rem;
+    }
+    .footer-block a {
+      display: block;
+      margin-bottom: 8px;
+      opacity: 0.8;
+    }
+    .footer-block a:hover{
+      text-decoration:underline;
+      opacity: 1;
+      color: var(--brand-soft);
+    }
+    .footer-bottom{
+      text-align:center;
+      padding:20px;
+      font-size:.85rem;
+      opacity:.7;
+      border-top:1px solid rgba(255,255,255,.08);
+      background: #0b0612;
+    }
 
     /* RESPONSIVE */
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
       .svc-card, .svc-card:nth-child(even) {
-        flex-direction: column; /* En celular, imagen arriba texto abajo siempre */
-        text-align: left;
+        flex-direction: column;
+        min-height: auto;
       }
-      .svc-img-col { height: 250px; width: 100%; }
-      .svc-info-col { padding: 24px; }
-      .svc-title { font-size: 1.5rem; }
+      .svc-img-col { height: 280px; width: 100%; }
+      .svc-info-col { padding: 30px 20px; }
+      .svc-title { font-size: 1.6rem; }
       .form-grid { grid-template-columns: 1fr; }
       .full-width { grid-column: span 1; }
-    }
-
-    /* FOOTER */
-    footer {
-      margin-top: 60px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      padding-top: 30px;
-      text-align: center;
-      font-size: 0.9rem;
-      opacity: 0.7;
+      
+      header { justify-content: center; }
+      .nav-links { display: none; } /* En móvil se suele usar hamburguesa, por ahora simplificado a logo */
     }
 
     /* FLOTANTES */
-    .fab-container {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      z-index: 999;
+    .fab-wrap{
+      position:fixed;
+      right:20px;
+      bottom:20px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      z-index:999;
     }
-    .fab {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    .fab{
+      width:56px;
+      height:56px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 10px 25px rgba(0,0,0,.5);
       transition: transform 0.2s;
     }
     .fab:hover { transform: scale(1.1); }
-    .fab svg { width: 32px; height: 32px; fill: #fff; }
-    .fab-wa { background: #25D366; }
-    .fab-waze { background: #33ccff; }
+    .fab svg{ width:28px; height:28px; fill:#fff; }
+    .fab-wa{background:#25D366;}
+    .fab-waze{background:#33ccff;}
 
   </style>
 </head>
@@ -289,18 +357,23 @@
 
 <header>
   <a href="/">
-    <img src="logo-header-white.png" alt="Figura Rostro KG" style="height: 40px;">
+    <img src="logo-header-white.png" alt="Figura Rostro KG">
   </a>
+  <nav class="nav-links">
+    <a href="/">Inicio</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#contacto">Contacto</a>
+    </nav>
 </header>
 
 <div class="container">
 
   <div class="page-intro">
     <h1>Estética Médica Avanzada</h1>
-    <p class="sub">Protocolos clínicos y tecnología de punta para resultados reales. Plasma Fibroblast, Armonización y Tratamientos Corporales específicos.</p>
+    <p class="sub">Protocolos clínicos y tecnología de punta. Plasma Fibroblast, Armonización Facial y Tratamientos Corporales especializados.</p>
   </div>
 
-  <div class="services-stack">
+  <div class="services-stack" id="servicios">
 
     <article class="svc-card">
       <div class="svc-img-col">
@@ -310,11 +383,9 @@
         <span class="svc-cat">Estética Avanzada</span>
         <h3 class="svc-title">Plasma Fibroblast</h3>
         <p class="svc-desc">
-          Lifting sin cirugía. Retracción de piel para párpados caídos, líneas de expresión, acrocordones y verrugas. Tecnología de arco eléctrico para regeneración profunda.
+          Lifting sin cirugía mediante sublimación dérmica. Ideal para párpados caídos, líneas de expresión profundas, acrocordones y verrugas. Tecnología de arco eléctrico para regeneración real.
         </p>
-        <div class="btn-group">
-          <a href="#contacto" class="btn btn-primary" onclick="preselect('Plasma Fibroblast')">Agendar</a>
-        </div>
+        <a href="#contacto" class="btn btn-primary" onclick="preselect('Plasma Fibroblast')">Agendar Cita</a>
       </div>
     </article>
 
@@ -326,11 +397,9 @@
         <span class="svc-cat">Medicina Estética</span>
         <h3 class="svc-title">Toxina Botulínica</h3>
         <p class="svc-desc">
-          Suaviza líneas de expresión en frente, entrecejo y patas de gallo. Resultados naturales que refrescan la mirada sin perder expresividad.
+          Tratamiento preventivo y correctivo para suavizar líneas en frente, entrecejo y patas de gallo. Resultados naturales que refrescan la mirada sin "congelar" la expresión.
         </p>
-        <div class="btn-group">
-          <a href="#contacto" class="btn btn-primary" onclick="preselect('Toxina Botulínica')">Agendar</a>
-        </div>
+        <a href="#contacto" class="btn btn-primary" onclick="preselect('Toxina Botulínica')">Agendar Cita</a>
       </div>
     </article>
 
@@ -342,11 +411,9 @@
         <span class="svc-cat">Armonización Facial</span>
         <h3 class="svc-title">Ácido Hialurónico</h3>
         <p class="svc-desc">
-          Relleno y perfilado de labios, pómulos, mentón o mandíbula. Recupera volumen perdido e hidrata profundamente la piel desde el interior.
+          Reposición de volumen y perfilado. Labios rusos, proyección de mentón, pómulos o rinomodelación. Hidratación profunda y soporte estructural.
         </p>
-        <div class="btn-group">
-          <a href="#contacto" class="btn btn-primary" onclick="preselect('Ácido Hialurónico')">Agendar</a>
-        </div>
+        <a href="#contacto" class="btn btn-primary" onclick="preselect('Ácido Hialurónico')">Agendar Cita</a>
       </div>
     </article>
 
@@ -358,11 +425,9 @@
         <span class="svc-cat">Rejuvenecimiento</span>
         <h3 class="svc-title">Bioestimuladores de Colágeno</h3>
         <p class="svc-desc">
-          Combate la flacidez estimulando tu propia producción de colágeno. Mejora la calidad y tensión de la piel a largo plazo. (Radiesse, Ellansé, Sculptra).
+          Activa tu propia producción de colágeno para combatir la flacidez a largo plazo. Mejora la densidad y calidad de la piel (Radiesse, Ellansé, Sculptra).
         </p>
-        <div class="btn-group">
-          <a href="#contacto" class="btn btn-primary" onclick="preselect('Bioestimuladores')">Agendar</a>
-        </div>
+        <a href="#contacto" class="btn btn-primary" onclick="preselect('Bioestimuladores')">Agendar Cita</a>
       </div>
     </article>
 
@@ -371,14 +436,12 @@
         <img src="https://placehold.co/800x600/5b2580/FFF?text=Faciales+Avanzados" alt="Limpieza Profunda">
       </div>
       <div class="svc-info-col">
-        <span class="svc-cat">Cuidado de la Piel</span>
+        <span class="svc-cat">Salud de la Piel</span>
         <h3 class="svc-title">Faciales Clínicos</h3>
         <p class="svc-desc">
-          Desde Hidrafacial hasta limpiezas profundas con punta de diamante. Protocolos personalizados para acné, manchas o simplemente para un "Glow" instantáneo.
+          Protocolos médicos para acné, manchas y mantenimiento. Incluye Hidrafacial, punta de diamante y peelings químicos controlados para un "Glow" saludable.
         </p>
-        <div class="btn-group">
-          <a href="#contacto" class="btn btn-primary" onclick="preselect('Facial Clínico')">Agendar</a>
-        </div>
+        <a href="#contacto" class="btn btn-primary" onclick="preselect('Facial Clínico')">Agendar Cita</a>
       </div>
     </article>
 
@@ -387,14 +450,12 @@
         <img src="https://placehold.co/800x600/5b2580/FFF?text=Dermapen+%2B+Exosomas" alt="Dermapen">
       </div>
       <div class="svc-info-col">
-        <span class="svc-cat">Regeneración</span>
+        <span class="svc-cat">Regeneración Celular</span>
         <h3 class="svc-title">Dermapen + Exosomas</h3>
         <p class="svc-desc">
-          Microneedling para mejorar cicatrices de acné, poros dilatados y textura. Potenciado con Exosomas para una regeneración celular máxima.
+          Microneedling potenciado con Exosomas (células madre) para máxima regeneración. Reduce cicatrices de acné, cierra poros y unifica la textura de la piel.
         </p>
-        <div class="btn-group">
-          <a href="#contacto" class="btn btn-primary" onclick="preselect('Dermapen + Exosomas')">Agendar</a>
-        </div>
+        <a href="#contacto" class="btn btn-primary" onclick="preselect('Dermapen + Exosomas')">Agendar Cita</a>
       </div>
     </article>
 
@@ -406,11 +467,9 @@
         <span class="svc-cat">Lifting Facial</span>
         <h3 class="svc-title">Hilos Tensores & Foxy Eyes</h3>
         <p class="svc-desc">
-          Reposicionamiento de tejidos para efecto lifting inmediato. Levanta cejas (Foxy Eyes) o define el óvalo facial sin cirugía.
+          Soporte mecánico para reposicionar tejidos caídos. Efecto lifting inmediato para cejas (Foxy Eyes) o definición del óvalo facial.
         </p>
-        <div class="btn-group">
-          <a href="#contacto" class="btn btn-primary" onclick="preselect('Hilos Tensores')">Agendar</a>
-        </div>
+        <a href="#contacto" class="btn btn-primary" onclick="preselect('Hilos Tensores')">Agendar Cita</a>
       </div>
     </article>
 
@@ -422,11 +481,9 @@
         <span class="svc-cat">Corporal Específico</span>
         <h3 class="svc-title">Masaje Reductor</h3>
         <p class="svc-desc">
-          Técnica manual intensa combinada con maderoterapia y aparatología para romper adiposidad localizada y moldear la cintura.
+          Protocolo intenso para romper adiposidad localizada. Combina técnicas manuales, maderoterapia y aparatología para moldear cintura y abdomen.
         </p>
-        <div class="btn-group">
-          <a href="#contacto" class="btn btn-primary" onclick="preselect('Masaje Reductor')">Agendar</a>
-        </div>
+        <a href="#contacto" class="btn btn-primary" onclick="preselect('Masaje Reductor')">Agendar Cita</a>
       </div>
     </article>
 
@@ -435,14 +492,12 @@
         <img src="https://placehold.co/800x600/5b2580/FFF?text=Drenaje+Linfatico" alt="Drenaje Linfático">
       </div>
       <div class="svc-info-col">
-        <span class="svc-cat">Corporal / Post-Op</span>
+        <span class="svc-cat">Recuperación / Post-Op</span>
         <h3 class="svc-title">Drenaje Linfático</h3>
         <p class="svc-desc">
-          Esencial para post-operatorios o retención de líquidos. Técnica suave que estimula el sistema linfático para eliminar toxinas y desinflamar.
+          Terapia manual suave esencial para post-operatorios y retención de líquidos. Estimula el sistema linfático para desinflamar y eliminar toxinas.
         </p>
-        <div class="btn-group">
-          <a href="#contacto" class="btn btn-primary" onclick="preselect('Drenaje Linfático')">Agendar</a>
-        </div>
+        <a href="#contacto" class="btn btn-primary" onclick="preselect('Drenaje Linfático')">Agendar Cita</a>
       </div>
     </article>
 
@@ -451,46 +506,44 @@
         <img src="https://placehold.co/800x600/5b2580/FFF?text=Masaje+Terapeutico" alt="Masaje Terapéutico">
       </div>
       <div class="svc-info-col">
-        <span class="svc-cat">Alivio Muscular</span>
-        <h3 class="svc-title">Masaje Terapéutico (Descontracturante)</h3>
+        <span class="svc-cat">Alivio del Dolor</span>
+        <h3 class="svc-title">Masaje Terapéutico</h3>
         <p class="svc-desc">
-          Enfocado puramente en aliviar dolor, contracturas y tensión muscular severa. No es relajación, es terapia física para tu espalda y cuello.
+          Enfoque clínico para tratar contracturas severas, dolor de espalda y tensión muscular. No es relajación, es recuperación física.
         </p>
-        <div class="btn-group">
-          <a href="#contacto" class="btn btn-primary" onclick="preselect('Masaje Terapéutico')">Agendar</a>
-        </div>
+        <a href="#contacto" class="btn btn-primary" onclick="preselect('Masaje Terapéutico')">Agendar Cita</a>
       </div>
     </article>
 
   </div><section id="contacto" class="contact-section">
     <div class="contact-head">
       <h2>Agenda tu Cita</h2>
-      <p>Déjanos tus datos y te contactaremos por WhatsApp para coordinar.</p>
+      <p>Selecciona tu servicio y coordinamos disponibilidad directamente por WhatsApp.</p>
     </div>
 
     <form onsubmit="sendToWhatsApp(event)">
       <div class="form-grid">
         <div class="form-group">
-          <label>Nombre</label>
-          <input type="text" id="nombre" class="form-input" placeholder="Tu nombre" required>
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" class="form-input" placeholder="Tu nombre completo" required>
         </div>
         <div class="form-group">
-          <label>Teléfono</label>
+          <label for="telefono">Teléfono</label>
           <input type="tel" id="telefono" class="form-input" placeholder="Ej: 6000-0000" required>
         </div>
         
         <div class="form-group full-width">
-          <label>Servicio de Interés</label>
-          <select id="servicio" class="form-select">
-            <option value="">Seleccionar...</option>
-            <optgroup label="Facial y Médico">
+          <label for="servicio">Servicio de Interés</label>
+          <select id="servicio" class="form-select" required>
+            <option value="" disabled selected>Selecciona un servicio...</option>
+            <optgroup label="Estética Avanzada">
               <option>Plasma Fibroblast</option>
               <option>Toxina Botulínica (Botox)</option>
               <option>Ácido Hialurónico</option>
               <option>Bioestimuladores</option>
               <option>Hilos Tensores</option>
               <option>Facial Clínico</option>
-              <option>Dermapen / Exosomas</option>
+              <option>Dermapen + Exosomas</option>
             </optgroup>
             <optgroup label="Corporal Específico">
               <option>Masaje Reductor</option>
@@ -501,26 +554,56 @@
         </div>
 
         <div class="form-group full-width">
-          <label>Mensaje (Opcional)</label>
-          <textarea id="mensaje" class="form-textarea" placeholder="¿Tienes alguna duda específica o preferencia de horario?"></textarea>
+          <label for="mensaje">Mensaje (Opcional)</label>
+          <textarea id="mensaje" class="form-textarea" placeholder="¿Tienes alguna duda específica, preferencia de horario o zona a tratar?"></textarea>
         </div>
 
         <div class="full-width">
-          <button type="submit" class="btn btn-whatsapp">Enviar WhatsApp</button>
+          <button type="submit" class="btn btn-whatsapp">Enviar Mensaje a WhatsApp</button>
         </div>
       </div>
     </form>
   </section>
 
 </div><footer>
-  <p>© 2026 Figura Rostro KG - Estética Médica Avanzada</p>
+  <div class="footer-inner">
+    <div class="footer-block">
+      <strong>Figura Rostro KG</strong>
+      <span style="opacity:0.8; display:block; line-height:1.6;">
+        Especialistas en estética médica avanzada.<br>
+        Parque Lefevre, Plaza Royal Park.
+      </span>
+    </div>
+
+    <div class="footer-block">
+      <strong>Menú</strong>
+      <a href="#servicios">Estética Avanzada</a>
+      <a href="#contacto">Agendar Cita</a>
+      <a href="/">Volver al Inicio</a>
+    </div>
+
+    <div class="footer-block">
+      <strong>Contacto</strong>
+      <a href="https://wa.me/50764746168" target="_blank" rel="noopener">WhatsApp: +507 6474-6168</a>
+    </div>
+
+    <div class="footer-block">
+      <strong>Ubicación</strong>
+      <a href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noopener">Ir con Waze</a>
+      <a href="https://maps.google.com" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © <script>document.write(new Date().getFullYear())</script> Figura Rostro KG · Todos los derechos reservados
+  </div>
 </footer>
 
-<div class="fab-container">
-  <a href="https://wa.me/50764746168" target="_blank" class="fab fab-wa">
+<div class="fab-wrap">
+  <a class="fab fab-wa" href="https://wa.me/50764746168" target="_blank" rel="noopener" aria-label="Chatear por WhatsApp">
     <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.94 14.5L2 22l5.7-1.5A10 10 0 1 0 12 2zm5.5 14.1c-.24.68-1.4 1.3-1.96 1.34-.5.03-1.14.05-1.84-.12-.42-.1-.97-.31-1.67-.61-2.94-1.27-4.86-4.2-5.01-4.4-.15-.2-1.2-1.6-1.2-3.06 0-1.45.76-2.16 1.03-2.45.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.24.59.82 2.05.9 2.2.07.15.12.33.01.53-.1.2-.15.33-.3.51-.15.18-.31.4-.44.54-.15.15-.31.32-.13.62.18.3.8 1.3 1.71 2.1 1.18 1.05 2.17 1.37 2.47 1.52.3.15.48.13.66-.08.18-.2.76-.89.96-1.2.2-.3.41-.26.67-.15.26.1 1.64.77 1.92.91.29.15.48.22.55.34.07.12.07.7-.17 1.38z"/></svg>
   </a>
-  <a href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" class="fab fab-waze">
+  <a class="fab fab-waze" href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noopener" aria-label="Abrir Waze">
     <svg viewBox="0 0 24 24"><path d="M12 2c5.5 0 10 3.9 10 8.7 0 3.9-3 7.2-7.2 8.2-.5.1-.7.4-.9.8-.5 1-1.4 2.1-2.9 2.1-1.6 0-2.4-1.1-2.9-2.1-.2-.4-.4-.7-.9-.8C5 17.9 2 14.6 2 10.7 2 5.9 6.5 2 12 2zm-6 9a1 1 0 110-2 1 1 0 010 2zm5 0a1 1 0 110-2 1 1 0 010 2zm5 0a1 1 0 110-2 1 1 0 010 2z"/></svg>
   </a>
 </div>
@@ -528,7 +611,6 @@
 <script>
   function preselect(serviceName) {
     const select = document.getElementById('servicio');
-    // Intentar encontrar la opción y seleccionarla
     for (let i = 0; i < select.options.length; i++) {
       if (select.options[i].text.includes(serviceName)) {
         select.selectedIndex = i;
@@ -543,10 +625,16 @@
     const tel = document.getElementById('telefono').value;
     const servicio = document.getElementById('servicio').value;
     const mensaje = document.getElementById('mensaje').value;
+    const number = "50764746168";
 
-    const texto = `Hola, soy ${nombre}. Me interesa el servicio de: ${servicio}. Tel: ${tel}. ${mensaje}`;
-    const url = `https://wa.me/50764746168?text=${encodeURIComponent(texto)}`;
-    
+    const texto = `Hola, soy ${nombre}.
+Teléfono: ${tel}
+Servicio de interés: ${servicio}
+${mensaje ? "Mensaje: " + mensaje : ""}
+
+¿Podrían indicarme disponibilidad y precios?`;
+
+    const url = `https://wa.me/${number}?text=${encodeURIComponent(texto)}`;
     window.open(url, '_blank');
   }
 </script>
