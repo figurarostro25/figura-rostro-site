@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Menú de Servicios | Figura Rostro KG</title>
-  <meta name="description" content="Servicios de estética médica avanzada y corporales específicos en Figura Rostro KG.">
+  <title>Servicios de Rejuvenecimiento | Figura Rostro KG</title>
+  <meta name="description" content="Servicios de estética médica avanzada y corporales enfocados en el rejuvenecimiento en Figura Rostro KG.">
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
@@ -14,10 +14,8 @@
       --brand: #5b2580;
       --brand-light: #9d5ec4;
       --bg-dark: #0f0818;
-      --card-bg: #160c1f;
       --text-main: #f5eaff;
       --text-muted: #dcd0e8;
-      --green: #25D366;
     }
 
     *{box-sizing:border-box;}
@@ -26,7 +24,8 @@
       margin:0;
       font-family:'Inter', sans-serif;
       background-color: var(--bg-dark);
-      background-image: radial-gradient(circle at 50% 0%, #2c1450 0%, #0f0818 60%);
+      /* Fondo general más sutil para que resalten las imágenes */
+      background-image: radial-gradient(circle at 50% 0%, #220e3a 0%, #0f0818 80%);
       color: var(--text-main);
     }
 
@@ -39,120 +38,143 @@
       padding: 0 20px;
     }
 
-    /* =========================================
-       HEADER / BARRA DE MENÚ
-       ========================================= */
+    /* HEADER */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 15px 30px;
-      background: rgba(15, 8, 24, 0.95); /* Fondo oscuro casi sólido */
+      background: rgba(15, 8, 24, 0.9);
       backdrop-filter: blur(10px);
       position: sticky;
       top: 0;
       z-index: 1000;
       border-bottom: 1px solid rgba(255,255,255,0.1);
     }
-
-    header img {
-      height: 45px; /* Tamaño del logo */
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 25px;
-    }
-
+    header img { height: 45px; }
+    .nav-links { display: flex; gap: 25px; }
     .nav-links a {
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: #fff;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      opacity: 0.8;
+      font-weight: 600; font-size: 0.95rem; color: #fff;
+      text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;
     }
-
-    .nav-links a:hover {
-      opacity: 1;
-      color: var(--brand-light);
-    }
-
-    /* Menú móvil */
-    @media (max-width: 768px) {
-      header { padding: 15px 20px; }
-      .nav-links { display: none; } /* Ocultar links en móvil simple, o dejar solo logo */
-    }
+    .nav-links a:hover { opacity: 1; color: var(--brand-light); }
 
     /* =========================================
-       CONTENIDO PRINCIPAL
+       NUEVO BANNER PRINCIPAL (HERO)
        ========================================= */
-    .page-intro{
+    .hero-banner {
+      position: relative;
+      /* Altura del banner: 60% del alto de la pantalla, mínimo 450px */
+      height: 60vh; 
+      min-height: 450px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 60px 0 40px;
-    }
-    h1{
-      font-size: clamp(2rem, 5vw, 3rem);
-      margin: 0 0 15px;
-      background: linear-gradient(90deg, #fff, #b896ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .sub{
-      color: var(--text-muted);
-      max-width: 700px;
-      margin: 0 auto;
-      font-size: 1.1rem;
-      line-height: 1.6;
+      color: #fff;
+      overflow: hidden;
+      margin-bottom: 60px;
     }
 
-    /* LAYOUT ZIG-ZAG */
+    /* Imagen de fondo del banner (REEMPLAZAR CON UNA TUYA DE ALTA CALIDAD) */
+    .hero-bg-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* Placeholder de una chica en spa */
+      background-image: url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+      background-size: cover;
+      background-position: center;
+      z-index: 1;
+    }
+
+    /* Filtro morado sobre el banner */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(91, 37, 128, 0.7), rgba(15, 8, 24, 0.9));
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      padding: 20px;
+      max-width: 900px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      margin-bottom: 20px;
+      line-height: 1.1;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+      line-height: 1.6;
+      opacity: 0.95;
+      font-weight: 300;
+    }
+
+
+    /* =========================================
+       TARJETAS DE SERVICIO (Estilo Fresco)
+       ========================================= */
     .services-stack {
       display: flex;
       flex-direction: column;
       gap: 80px;
-      margin-top: 50px;
       margin-bottom: 80px;
     }
 
     .svc-card {
       display: flex;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.03);
+      /* Fondo del lado del texto un poco más transparente para frescura */
+      background: rgba(255, 255, 255, 0.02);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 24px;
       overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-      transition: transform 0.3s ease;
-      min-height: 400px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      min-height: 450px; /* Un poco más altas para lucir las fotos */
     }
 
     .svc-card:hover {
       transform: translateY(-5px);
-      border-color: rgba(157, 94, 196, 0.4);
+      box-shadow: 0 30px 60px rgba(91, 37, 128, 0.3);
+      border-color: rgba(157, 94, 196, 0.5);
     }
 
-    /* Alternar orden */
-    .svc-card:nth-child(even) {
-      flex-direction: row-reverse;
-    }
+    .svc-card:nth-child(even) { flex-direction: row-reverse; }
 
     .svc-img-col {
-      flex: 1;
-      height: 400px;
-      overflow: hidden;
+      flex: 1.2; /* Imagen un poco más ancha que el texto */
       position: relative;
+      overflow: hidden;
     }
     
     .svc-img-col img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.6s ease;
+      transition: transform 0.7s ease;
     }
+    
+    /* Efecto Zoom al pasar el mouse */
+    .svc-card:hover .svc-img-col img { transform: scale(1.1); }
 
-    .svc-card:hover .svc-img-col img {
-      transform: scale(1.08);
+    /* NUEVO: Filtro morado sobre las imágenes de los servicios */
+    .svc-img-overlay {
+      position: absolute;
+      inset: 0;
+      /* Degradado morado semitransparente para dar frescura y uniformidad */
+      background: linear-gradient(to bottom, rgba(91, 37, 128, 0.4), rgba(23, 12, 36, 0.8));
+      z-index: 2;
+      pointer-events: none; /* Permite hacer click a través si fuera necesario */
     }
 
     .svc-info-col {
@@ -161,229 +183,127 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      /* Fondo sutil para el texto */
+      background: linear-gradient(180deg, rgba(30, 15, 45, 0.6), rgba(15, 8, 24, 0.8));
     }
 
     .svc-cat {
-      text-transform: uppercase;
-      font-size: 0.8rem;
-      letter-spacing: 2px;
-      color: var(--brand-light);
-      margin-bottom: 12px;
-      font-weight: 800;
+      text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;
+      color: var(--brand-light); margin-bottom: 15px; font-weight: 800;
     }
-
     .svc-title {
-      font-size: 2rem;
-      margin: 0 0 20px;
-      font-weight: 800;
-      color: #fff;
+      font-size: 2.2rem; margin: 0 0 25px; font-weight: 800;
+      color: #fff; /* Título blanco puro */
       line-height: 1.1;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
     }
-
     .svc-desc {
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: 30px;
-      font-size: 1rem;
+      color: var(--text-muted); line-height: 1.7; margin-bottom: 35px; font-size: 1.05rem;
     }
 
     /* BOTONES */
     .btn {
-      padding: 14px 28px;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s;
-      width: fit-content;
+      padding: 14px 32px; border-radius: 50px; font-weight: 700; font-size: 1rem;
+      cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
+      transition: all 0.3s; width: fit-content; text-transform: uppercase; letter-spacing: 0.5px;
     }
     .btn-primary {
-      background: var(--brand);
-      color: #fff;
-      box-shadow: 0 4px 15px rgba(91, 37, 128, 0.4);
+      background: linear-gradient(90deg, var(--brand), var(--brand-light));
+      color: #fff; box-shadow: 0 8px 20px rgba(91, 37, 128, 0.4); border: none;
     }
-    .btn-primary:hover { background: var(--brand-light); transform: translateY(-2px); }
+    .btn-primary:hover { box-shadow: 0 12px 25px rgba(157, 94, 196, 0.6); transform: translateY(-3px); }
 
     /* FORMULARIO */
     .contact-section {
       margin-top: 60px;
       background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-      border-radius: 30px;
-      padding: 50px;
-      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 30px; padding: 50px; border: 1px solid rgba(255,255,255,0.1);
     }
     .contact-head { text-align: center; margin-bottom: 40px; }
     .contact-head h2 { font-size: 2.2rem; margin-bottom: 10px; color: #fff; }
     
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 25px;
-    }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
     .full-width { grid-column: span 2; }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 10px;
-      font-size: 0.9rem;
-      color: #f0f0f0;
-      font-weight: 700;
-    }
-    
+    .form-group label { display: block; margin-bottom: 10px; font-size: 0.9rem; color: #f0f0f0; font-weight: 700; }
     .form-input, .form-select, .form-textarea {
-      width: 100%;
-      padding: 16px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.2);
-      background: rgba(0,0,0,0.3); /* Fondo oscuro pero legible */
-      color: #fff;
-      font-size: 1rem;
-      font-family: inherit;
-      outline: none;
+      width: 100%; padding: 16px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(0,0,0,0.3); color: #fff; font-size: 1rem; outline: none;
     }
-    
     .form-input:focus, .form-select:focus, .form-textarea:focus {
-      border-color: var(--brand-light);
-      background: rgba(0,0,0,0.5);
+      border-color: var(--brand-light); background: rgba(0,0,0,0.5);
     }
-
     .form-textarea { resize: vertical; min-height: 140px; }
-
     .btn-whatsapp {
-      background: linear-gradient(135deg, #25D366, #128C7E);
-      color: #fff;
-      width: 100%;
-      font-weight: 800;
-      font-size: 1.1rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
-      border: none;
+      background: linear-gradient(135deg, #25D366, #128C7E); color: #fff; width: 100%;
+      font-weight: 800; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3); border: none;
     }
     .btn-whatsapp:hover { filter: brightness(1.1); transform: translateY(-2px); }
 
-    /* =========================================
-       FOOTER (RECUPERADO)
-       ========================================= */
+    /* FOOTER */
     footer{
-      background:#12091d;
-      color:#f5eaff;
-      margin-top: 80px;
-      padding-top: 40px;
+      background:#12091d; color:#f5eaff; margin-top: 80px; padding-top: 50px;
       border-top: 1px solid rgba(255,255,255,0.1);
     }
     .footer-inner{
-      max-width:1120px;
-      margin:0 auto;
-      padding:0 20px 40px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:40px;
-      justify-content:space-between;
-      font-size:.95rem;
+      max-width:1100px; margin:0 auto; padding:0 20px 40px;
+      display:flex; flex-wrap:wrap; gap:40px; justify-content:space-between;
     }
-    .footer-block strong{
-      display:block;
-      margin-bottom:12px;
-      color: #fff;
-      font-size: 1.1rem;
-    }
-    .footer-block a {
-      display: block;
-      margin-bottom: 8px;
-      opacity: 0.8;
-    }
-    .footer-block a:hover{
-      text-decoration:underline;
-      opacity: 1;
-      color: var(--brand-soft);
-    }
+    .footer-block strong{ display:block; margin-bottom:15px; color: #fff; font-size: 1.1rem; }
+    .footer-block a { display: block; margin-bottom: 10px; opacity: 0.8; }
+    .footer-block a:hover{ text-decoration:underline; opacity: 1; color: var(--brand-light); }
     .footer-bottom{
-      text-align:center;
-      padding:20px;
-      font-size:.85rem;
-      opacity:.7;
-      border-top:1px solid rgba(255,255,255,.08);
+      text-align:center; padding:25px; font-size:.9rem; opacity:.7;
       background: #0b0612;
     }
 
     /* RESPONSIVE */
     @media (max-width: 900px) {
-      .svc-card, .svc-card:nth-child(even) {
-        flex-direction: column;
-        min-height: auto;
-      }
-      .svc-img-col { height: 280px; width: 100%; }
-      .svc-info-col { padding: 30px 20px; }
-      .svc-title { font-size: 1.6rem; }
+      .hero-title { font-size: 2.8rem; }
+      .svc-card, .svc-card:nth-child(even) { flex-direction: column; min-height: auto; }
+      .svc-img-col { height: 300px; flex: auto; }
+      .svc-info-col { padding: 35px 25px; }
+      .svc-title { font-size: 1.8rem; }
       .form-grid { grid-template-columns: 1fr; }
       .full-width { grid-column: span 1; }
-      
+      .nav-links { display: none; }
       header { justify-content: center; }
-      .nav-links { display: none; } /* En móvil se suele usar hamburguesa, por ahora simplificado a logo */
     }
-
-    /* FLOTANTES */
-    .fab-wrap{
-      position:fixed;
-      right:20px;
-      bottom:20px;
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-      z-index:999;
-    }
-    .fab{
-      width:56px;
-      height:56px;
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      box-shadow:0 10px 25px rgba(0,0,0,.5);
-      transition: transform 0.2s;
-    }
-    .fab:hover { transform: scale(1.1); }
-    .fab svg{ width:28px; height:28px; fill:#fff; }
-    .fab-wa{background:#25D366;}
-    .fab-waze{background:#33ccff;}
-
   </style>
 </head>
 <body>
 
 <header>
-  <a href="/">
-    <img src="logo-header-white.png" alt="Figura Rostro KG">
-  </a>
+  <a href="/"><img src="logo-header-white.png" alt="Figura Rostro KG"></a>
   <nav class="nav-links">
     <a href="/">Inicio</a>
     <a href="#servicios">Servicios</a>
     <a href="#contacto">Contacto</a>
-    </nav>
+  </nav>
 </header>
 
-<div class="container">
-
-  <div class="page-intro">
-    <h1>Estética Médica Avanzada</h1>
-    <p class="sub">Protocolos clínicos y tecnología de punta. Plasma Fibroblast, Armonización Facial y Tratamientos Corporales especializados.</p>
+<section class="hero-banner">
+  <div class="hero-bg-img"></div> <div class="hero-overlay"></div> <div class="hero-content">
+    <h1 class="hero-title">Rejuvenecimiento Integral,<br>Facial y Corporal.</h1>
+    <p class="hero-subtitle">
+      Todos nuestros servicios están enfocados en realzar tu belleza natural con la más avanzada tecnología y protocolos médicos. Descubre tu mejor versión.
+    </p>
   </div>
+</section>
+
+<div class="container">
 
   <div class="services-stack" id="servicios">
 
     <article class="svc-card">
       <div class="svc-img-col">
-        <img src="https://placehold.co/800x600/5b2580/FFF?text=Plasma+Fibroblast" alt="Plasma Fibroblast">
-      </div>
+        <img src="https://images.unsplash.com/photo-1588514144850-d27296c6d051?q=80&w=2070&auto=format&fit=crop" alt="Tratamiento de ojos Fibroblast">
+        <div class="svc-img-overlay"></div> </div>
       <div class="svc-info-col">
         <span class="svc-cat">Estética Avanzada</span>
         <h3 class="svc-title">Plasma Fibroblast</h3>
         <p class="svc-desc">
-          Lifting sin cirugía mediante sublimación dérmica. Ideal para párpados caídos, líneas de expresión profundas, acrocordones y verrugas. Tecnología de arco eléctrico para regeneración real.
+          Lifting sin cirugía. Retracción de piel para párpados caídos, líneas de expresión profundas, acrocordones y verrugas mediante arco eléctrico.
         </p>
         <a href="#contacto" class="btn btn-primary" onclick="preselect('Plasma Fibroblast')">Agendar Cita</a>
       </div>
@@ -391,13 +311,14 @@
 
     <article class="svc-card">
       <div class="svc-img-col">
-        <img src="https://placehold.co/800x600/5b2580/FFF?text=Botox" alt="Toxina Botulínica">
+        <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=2070&auto=format&fit=crop" alt="Tratamiento facial Botox">
+        <div class="svc-img-overlay"></div>
       </div>
       <div class="svc-info-col">
         <span class="svc-cat">Medicina Estética</span>
         <h3 class="svc-title">Toxina Botulínica</h3>
         <p class="svc-desc">
-          Tratamiento preventivo y correctivo para suavizar líneas en frente, entrecejo y patas de gallo. Resultados naturales que refrescan la mirada sin "congelar" la expresión.
+          Suaviza líneas de expresión en frente, entrecejo y patas de gallo. Resultados naturales que refrescan la mirada sin perder expresividad.
         </p>
         <a href="#contacto" class="btn btn-primary" onclick="preselect('Toxina Botulínica')">Agendar Cita</a>
       </div>
@@ -405,13 +326,14 @@
 
     <article class="svc-card">
       <div class="svc-img-col">
-        <img src="https://placehold.co/800x600/5b2580/FFF?text=Acido+Hialuronico" alt="Ácido Hialurónico">
+        <img src="https://images.unsplash.com/photo-1620802107985-7819a0528387?q=80&w=1974&auto=format&fit=crop" alt="Labios y perfilado">
+        <div class="svc-img-overlay"></div>
       </div>
       <div class="svc-info-col">
         <span class="svc-cat">Armonización Facial</span>
         <h3 class="svc-title">Ácido Hialurónico</h3>
         <p class="svc-desc">
-          Reposición de volumen y perfilado. Labios rusos, proyección de mentón, pómulos o rinomodelación. Hidratación profunda y soporte estructural.
+          Relleno y perfilado de labios, pómulos, mentón o mandíbula. Recupera volumen perdido e hidrata profundamente desde el interior.
         </p>
         <a href="#contacto" class="btn btn-primary" onclick="preselect('Ácido Hialurónico')">Agendar Cita</a>
       </div>
@@ -419,13 +341,14 @@
 
     <article class="svc-card">
       <div class="svc-img-col">
-        <img src="https://placehold.co/800x600/5b2580/FFF?text=Bioestimuladores" alt="Bioestimuladores">
+        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2080&auto=format&fit=crop" alt="Piel firme bioestimulación">
+        <div class="svc-img-overlay"></div>
       </div>
       <div class="svc-info-col">
         <span class="svc-cat">Rejuvenecimiento</span>
-        <h3 class="svc-title">Bioestimuladores de Colágeno</h3>
+        <h3 class="svc-title">Bioestimuladores</h3>
         <p class="svc-desc">
-          Activa tu propia producción de colágeno para combatir la flacidez a largo plazo. Mejora la densidad y calidad de la piel (Radiesse, Ellansé, Sculptra).
+          Estimula tu propia producción de colágeno para combatir la flacidez y mejorar la calidad de la piel a largo plazo (Radiesse, Ellansé, Sculptra).
         </p>
         <a href="#contacto" class="btn btn-primary" onclick="preselect('Bioestimuladores')">Agendar Cita</a>
       </div>
@@ -433,13 +356,14 @@
 
     <article class="svc-card">
       <div class="svc-img-col">
-        <img src="https://placehold.co/800x600/5b2580/FFF?text=Faciales+Avanzados" alt="Limpieza Profunda">
+        <img src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?q=80&w=2070&auto=format&fit=crop" alt="Limpieza facial profunda">
+        <div class="svc-img-overlay"></div>
       </div>
       <div class="svc-info-col">
         <span class="svc-cat">Salud de la Piel</span>
         <h3 class="svc-title">Faciales Clínicos</h3>
         <p class="svc-desc">
-          Protocolos médicos para acné, manchas y mantenimiento. Incluye Hidrafacial, punta de diamante y peelings químicos controlados para un "Glow" saludable.
+          Protocolos médicos para acné, manchas o "Glow" instantáneo. Incluye Hidrafacial, punta de diamante y peelings químicos controlados.
         </p>
         <a href="#contacto" class="btn btn-primary" onclick="preselect('Facial Clínico')">Agendar Cita</a>
       </div>
@@ -447,13 +371,14 @@
 
     <article class="svc-card">
       <div class="svc-img-col">
-        <img src="https://placehold.co/800x600/5b2580/FFF?text=Dermapen+%2B+Exosomas" alt="Dermapen">
+        <img src="https://images.unsplash.com/photo-1612848319352-59936d073099?q=80&w=1974&auto=format&fit=crop" alt="Tratamiento de textura de piel">
+        <div class="svc-img-overlay"></div>
       </div>
       <div class="svc-info-col">
-        <span class="svc-cat">Regeneración Celular</span>
+        <span class="svc-cat">Regeneración Máxima</span>
         <h3 class="svc-title">Dermapen + Exosomas</h3>
         <p class="svc-desc">
-          Microneedling potenciado con Exosomas (células madre) para máxima regeneración. Reduce cicatrices de acné, cierra poros y unifica la textura de la piel.
+          Microneedling potenciado con células madre (Exosomas) para regeneración profunda. Mejora cicatrices, poros dilatados y textura.
         </p>
         <a href="#contacto" class="btn btn-primary" onclick="preselect('Dermapen + Exosomas')">Agendar Cita</a>
       </div>
@@ -461,13 +386,14 @@
 
     <article class="svc-card">
       <div class="svc-img-col">
-        <img src="https://placehold.co/800x600/5b2580/FFF?text=Hilos+Tensores" alt="Hilos Tensores">
+        <img src="https://images.unsplash.com/photo-1600336153113-d67d708278d0?q=80&w=1974&auto=format&fit=crop" alt="Definición facial hilos">
+        <div class="svc-img-overlay"></div>
       </div>
       <div class="svc-info-col">
         <span class="svc-cat">Lifting Facial</span>
         <h3 class="svc-title">Hilos Tensores & Foxy Eyes</h3>
         <p class="svc-desc">
-          Soporte mecánico para reposicionar tejidos caídos. Efecto lifting inmediato para cejas (Foxy Eyes) o definición del óvalo facial.
+          Reposicionamiento de tejidos para efecto lifting inmediato. Levanta cejas (Foxy Eyes) o define el óvalo facial sin cirugía.
         </p>
         <a href="#contacto" class="btn btn-primary" onclick="preselect('Hilos Tensores')">Agendar Cita</a>
       </div>
@@ -475,13 +401,14 @@
 
     <article class="svc-card">
       <div class="svc-img-col">
-        <img src="https://placehold.co/800x600/5b2580/FFF?text=Masaje+Reductor" alt="Masaje Reductor">
+        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2070&auto=format&fit=crop" alt="Tratamiento corporal reductor">
+        <div class="svc-img-overlay"></div>
       </div>
       <div class="svc-info-col">
         <span class="svc-cat">Corporal Específico</span>
         <h3 class="svc-title">Masaje Reductor</h3>
         <p class="svc-desc">
-          Protocolo intenso para romper adiposidad localizada. Combina técnicas manuales, maderoterapia y aparatología para moldear cintura y abdomen.
+          Técnica intensa manual combinada con maderoterapia y aparatología para romper adiposidad localizada y moldear la figura.
         </p>
         <a href="#contacto" class="btn btn-primary" onclick="preselect('Masaje Reductor')">Agendar Cita</a>
       </div>
@@ -489,13 +416,14 @@
 
     <article class="svc-card">
       <div class="svc-img-col">
-        <img src="https://placehold.co/800x600/5b2580/FFF?text=Drenaje+Linfatico" alt="Drenaje Linfático">
+        <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?q=80&w=2070&auto=format&fit=crop" alt="Drenaje linfático suave">
+        <div class="svc-img-overlay"></div>
       </div>
       <div class="svc-info-col">
         <span class="svc-cat">Recuperación / Post-Op</span>
         <h3 class="svc-title">Drenaje Linfático</h3>
         <p class="svc-desc">
-          Terapia manual suave esencial para post-operatorios y retención de líquidos. Estimula el sistema linfático para desinflamar y eliminar toxinas.
+          Esencial para post-operatorios o retención de líquidos. Técnica suave que estimula el sistema linfático para desinflamar y eliminar toxinas.
         </p>
         <a href="#contacto" class="btn btn-primary" onclick="preselect('Drenaje Linfático')">Agendar Cita</a>
       </div>
@@ -503,13 +431,14 @@
 
     <article class="svc-card">
       <div class="svc-img-col">
-        <img src="https://placehold.co/800x600/5b2580/FFF?text=Masaje+Terapeutico" alt="Masaje Terapéutico">
+        <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?q=80&w=2070&auto=format&fit=crop" alt="Masaje terapéutico espalda">
+        <div class="svc-img-overlay"></div>
       </div>
       <div class="svc-info-col">
-        <span class="svc-cat">Alivio del Dolor</span>
+        <span class="svc-cat">Alivio Muscular</span>
         <h3 class="svc-title">Masaje Terapéutico</h3>
         <p class="svc-desc">
-          Enfoque clínico para tratar contracturas severas, dolor de espalda y tensión muscular. No es relajación, es recuperación física.
+          Enfocado puramente en aliviar dolor, contracturas y tensión muscular severa. Recuperación física para tu espalda y cuello.
         </p>
         <a href="#contacto" class="btn btn-primary" onclick="preselect('Masaje Terapéutico')">Agendar Cita</a>
       </div>
@@ -518,7 +447,7 @@
   </div><section id="contacto" class="contact-section">
     <div class="contact-head">
       <h2>Agenda tu Cita</h2>
-      <p>Selecciona tu servicio y coordinamos disponibilidad directamente por WhatsApp.</p>
+      <p>Selecciona el servicio que deseas y coordinamos disponibilidad vía WhatsApp.</p>
     </div>
 
     <form onsubmit="sendToWhatsApp(event)">
@@ -555,11 +484,11 @@
 
         <div class="form-group full-width">
           <label for="mensaje">Mensaje (Opcional)</label>
-          <textarea id="mensaje" class="form-textarea" placeholder="¿Tienes alguna duda específica, preferencia de horario o zona a tratar?"></textarea>
+          <textarea id="mensaje" class="form-textarea" placeholder="¿Alguna duda específica, preferencia de horario o zona a tratar?"></textarea>
         </div>
 
         <div class="full-width">
-          <button type="submit" class="btn btn-whatsapp">Enviar Mensaje a WhatsApp</button>
+          <button type="submit" class="btn btn-whatsapp">Enviar a WhatsApp</button>
         </div>
       </div>
     </form>
@@ -569,73 +498,44 @@
   <div class="footer-inner">
     <div class="footer-block">
       <strong>Figura Rostro KG</strong>
-      <span style="opacity:0.8; display:block; line-height:1.6;">
-        Especialistas en estética médica avanzada.<br>
-        Parque Lefevre, Plaza Royal Park.
-      </span>
+      <span style="opacity:0.8; display:block; line-height:1.6;">Especialistas en rejuvenecimiento.<br>Parque Lefevre, Plaza Royal Park.</span>
     </div>
-
     <div class="footer-block">
-      <strong>Menú</strong>
-      <a href="#servicios">Estética Avanzada</a>
-      <a href="#contacto">Agendar Cita</a>
-      <a href="/">Volver al Inicio</a>
+      <strong>Enlaces</strong>
+      <a href="#servicios">Servicios</a>
+      <a href="#contacto">Agendar</a>
     </div>
-
     <div class="footer-block">
       <strong>Contacto</strong>
-      <a href="https://wa.me/50764746168" target="_blank" rel="noopener">WhatsApp: +507 6474-6168</a>
+      <a href="https://wa.me/50764746168" target="_blank">WhatsApp: 6474-6168</a>
     </div>
-
     <div class="footer-block">
       <strong>Ubicación</strong>
-      <a href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noopener">Ir con Waze</a>
-      <a href="https://maps.google.com" target="_blank" rel="noopener">Google Maps</a>
+      <a href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank">Waze</a>
     </div>
   </div>
-
   <div class="footer-bottom">
     © <script>document.write(new Date().getFullYear())</script> Figura Rostro KG · Todos los derechos reservados
   </div>
 </footer>
-
-<div class="fab-wrap">
-  <a class="fab fab-wa" href="https://wa.me/50764746168" target="_blank" rel="noopener" aria-label="Chatear por WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.94 14.5L2 22l5.7-1.5A10 10 0 1 0 12 2zm5.5 14.1c-.24.68-1.4 1.3-1.96 1.34-.5.03-1.14.05-1.84-.12-.42-.1-.97-.31-1.67-.61-2.94-1.27-4.86-4.2-5.01-4.4-.15-.2-1.2-1.6-1.2-3.06 0-1.45.76-2.16 1.03-2.45.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.24.59.82 2.05.9 2.2.07.15.12.33.01.53-.1.2-.15.33-.3.51-.15.18-.31.4-.44.54-.15.15-.31.32-.13.62.18.3.8 1.3 1.71 2.1 1.18 1.05 2.17 1.37 2.47 1.52.3.15.48.13.66-.08.18-.2.76-.89.96-1.2.2-.3.41-.26.67-.15.26.1 1.64.77 1.92.91.29.15.48.22.55.34.07.12.07.7-.17 1.38z"/></svg>
-  </a>
-  <a class="fab fab-waze" href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noopener" aria-label="Abrir Waze">
-    <svg viewBox="0 0 24 24"><path d="M12 2c5.5 0 10 3.9 10 8.7 0 3.9-3 7.2-7.2 8.2-.5.1-.7.4-.9.8-.5 1-1.4 2.1-2.9 2.1-1.6 0-2.4-1.1-2.9-2.1-.2-.4-.4-.7-.9-.8C5 17.9 2 14.6 2 10.7 2 5.9 6.5 2 12 2zm-6 9a1 1 0 110-2 1 1 0 010 2zm5 0a1 1 0 110-2 1 1 0 010 2zm5 0a1 1 0 110-2 1 1 0 010 2z"/></svg>
-  </a>
-</div>
 
 <script>
   function preselect(serviceName) {
     const select = document.getElementById('servicio');
     for (let i = 0; i < select.options.length; i++) {
       if (select.options[i].text.includes(serviceName)) {
-        select.selectedIndex = i;
-        break;
+        select.selectedIndex = i; break;
       }
     }
   }
-
   function sendToWhatsApp(e) {
     e.preventDefault();
     const nombre = document.getElementById('nombre').value;
     const tel = document.getElementById('telefono').value;
     const servicio = document.getElementById('servicio').value;
     const mensaje = document.getElementById('mensaje').value;
-    const number = "50764746168";
-
-    const texto = `Hola, soy ${nombre}.
-Teléfono: ${tel}
-Servicio de interés: ${servicio}
-${mensaje ? "Mensaje: " + mensaje : ""}
-
-¿Podrían indicarme disponibilidad y precios?`;
-
-    const url = `https://wa.me/${number}?text=${encodeURIComponent(texto)}`;
-    window.open(url, '_blank');
+    const texto = `Hola, soy ${nombre}. Tel: ${tel}. Me interesa: ${servicio}. ${mensaje ? "Nota: " + mensaje : ""}. ¿Disponibilidad?`;
+    window.open(`https://wa.me/50764746168?text=${encodeURIComponent(texto)}`, '_blank');
   }
 </script>
 
