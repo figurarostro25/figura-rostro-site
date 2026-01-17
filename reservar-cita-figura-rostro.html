@@ -1,361 +1,458 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Figura Rostro KG - Reserva de Citas</title>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function() {
-            // Inicializamos EmailJS con tu Public Key
-            emailjs.init("GgzlB-NI1cTRd2L7I");
-        })();
-    </script>
-    <style>
-        :root {
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --text-color: #e0e0e0;
-            --accent-color: #d4af37; /* Dorado elegante */
-            --input-bg: #2c2c2c;
-            --success-color: #4caf50;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reserva Plasma Fibroblast | Figura Rostro KG</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
-        body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
+  <style>
+    /* VARIABLES DE DISEÑO */
+    :root {
+      --brand: #5b2580;       /* Morado Principal */
+      --brand-dark: #2a0e3d;  
+      --gold: #d4af37;        /* Dorado de Lujo */
+      --chiriqui-green: #007a33; /* Verde Gira */
+      --text-main: #333333;   
+    }
+    
+    body { 
+      margin: 0; 
+      font-family: 'Inter', sans-serif; 
+      background: #0f0518;
+    }
 
-        /* Franja superior aviso */
-        .top-bar {
-            background-color: var(--accent-color);
-            color: #000;
-            text-align: center;
-            padding: 5px 10px;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
+    /* 1. FRANJA SUPERIOR (TOP BAR) */
+    .top-announcement {
+      background: var(--chiriqui-green);
+      color: #fff;
+      text-align: center;
+      padding: 15px 20px;
+      font-weight: 500;
+      font-size: 15px;
+      letter-spacing: 0.3px;
+      position: relative;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .ig-link {
+      background: #fff;
+      color: var(--chiriqui-green);
+      text-decoration: none;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-weight: 800;
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: transform 0.2s;
+    }
+    .ig-link:hover { transform: scale(1.05); }
 
-        /* Header & Menú */
-        header {
-            background-color: #000;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #333;
-        }
+    /* --- FONDO DE PÁGINA --- */
+    .booking-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      
+      background-image: linear-gradient(rgba(42, 14, 61, 0.85), rgba(15, 5, 24, 0.95)),
+                        url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=2068&auto=format&fit=crop');
+      
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--accent-color);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+    /* TARJETA DEL FORMULARIO */
+    .booking-card {
+      background: rgba(255, 255, 255, 0.96); 
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      width: 100%;
+      max-width: 700px;
+      border-radius: 24px;
+      padding: 45px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      text-align: center; 
+      position: relative;
+    }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-            margin: 0;
-            padding: 0;
-        }
+    /* LOGO EN EL FORMULARIO */
+    .form-logo {
+      max-width: 180px;
+      height: auto;
+      margin-bottom: 20px;
+      filter: brightness(0) saturate(100%) invert(16%) sepia(61%) saturate(3474%) hue-rotate(266deg) brightness(91%) contrast(96%);
+    }
 
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
+    /* ETIQUETA DORADA */
+    .treatment-badge {
+      display: inline-block;
+      background: linear-gradient(90deg, #d4af37, #f2d06b);
+      color: #3d2e05;
+      padding: 6px 18px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    }
 
-        nav a:hover {
-            color: var(--accent-color);
-        }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px;
+      color: var(--brand); 
+      margin-top: 0;
+      margin-bottom: 10px;
+      line-height: 1.1;
+    }
+    .subtitle {
+      color: #666;
+      margin-bottom: 35px;
+      font-size: 15px;
+      line-height: 1.5;
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
-        /* Contenedor Principal */
-        .container {
-            max-width: 700px;
-            margin: 40px auto;
-            background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
+    /* FORMULARIO */
+    form { text-align: left; }
 
-        h2 {
-            text-align: center;
-            color: var(--accent-color);
-            margin-bottom: 20px;
-        }
+    .form-group { margin-bottom: 22px; }
+    
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--brand-dark);
+      letter-spacing: 0.5px;
+    }
 
-        .intro-text {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 0.95rem;
-            color: #ccc;
-        }
+    input, select, textarea {
+      width: 100%;
+      padding: 16px;
+      background: #fdfdfd;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      color: #333;
+      font-family: inherit;
+      font-size: 15px;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+    
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--brand);
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(91, 37, 128, 0.1);
+    }
 
-        /* Estilos del Formulario */
-        .form-group {
-            margin-bottom: 20px;
-        }
+    /* SECCIÓN MÉDICA */
+    .medical-section {
+      background: #fbf7fd;
+      padding: 25px;
+      border-radius: 16px;
+      margin-bottom: 25px;
+      border: 1px solid #eaddf5;
+      border-left: 5px solid var(--brand);
+    }
+    .medical-title {
+      font-weight: 800;
+      color: var(--brand);
+      margin-bottom: 5px;
+      display: block;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+    }
+    .checkbox-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 15px;
+    }
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      color: #555;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .checkbox-item input {
+      width: 18px;
+      height: 18px;
+      margin-right: 10px;
+      accent-color: var(--brand);
+      box-shadow: none;
+    }
 
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--accent-color);
-        }
+    /* PRECIO Y AVISOS */
+    .price-highlight {
+      background: #fffbf0;
+      border: 1px solid #f0e6c5;
+      color: #7a6a30;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 8px;
+      font-size: 13px;
+    }
+    
+    /* MENSAJE YAPPY (NUEVO ESTILO) */
+    .yappy-alert {
+      display: none; /* Oculto por defecto */
+      background: #f0fdf4; /* Verde muy suave para indicar pago seguro */
+      border: 1px solid #bbf7d0;
+      color: #15803d;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 10px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
 
-        input, select, textarea {
-            width: 100%;
-            padding: 12px;
-            background-color: var(--input-bg);
-            border: 1px solid #444;
-            border-radius: 5px;
-            color: #fff;
-            font-size: 1rem;
-            box-sizing: border-box;
-        }
+    /* BOTÓN DE ENVÍO */
+    .btn-submit {
+      width: 100%;
+      padding: 20px;
+      background: var(--brand);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 20px;
+      box-shadow: 0 10px 25px rgba(91, 37, 128, 0.25);
+      transition: transform 0.2s;
+    }
+    .btn-submit:hover {
+      background: var(--brand-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(91, 37, 128, 0.4);
+    }
 
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: var(--accent-color);
-        }
+    /* BOTON AYUDA FLOTANTE */
+    .btn-help-wa {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      margin-top: 20px; color: #666; font-size: 14px; font-weight: 600;
+      text-decoration: none; padding: 12px; border-radius: 8px;
+      border: 1px solid transparent; transition: 0.3s;
+    }
+    .btn-help-wa:hover { color: var(--brand); border-color: #eee; background: #fff; }
+    .btn-help-wa svg { fill: #25D366; width: 20px; height: 20px; }
 
-        /* Radio Buttons personalizados */
-        .radio-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            background: var(--input-bg);
-            padding: 15px;
-            border-radius: 5px;
-        }
+    /* MENSAJES DE ESTADO */
+    #status-msg {
+      display: none; text-align: center; padding: 15px; margin-top: 20px; border-radius: 12px; font-weight: 600;
+    }
+    .success { background: #e6fffa; color: #047857; border: 1px solid #10b981; }
+    .error { background: #fef2f2; color: #b91c1c; border: 1px solid #ef4444; }
 
-        .radio-option {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-        }
-
-        .radio-option input[type="radio"] {
-            width: auto;
-            margin: 0;
-        }
-
-        /* Caja de Instrucciones Yappy (Oculta por defecto) */
-        #yappy-instructions {
-            display: none; /* Se activa con JS */
-            margin-top: 15px;
-            background-color: rgba(212, 175, 55, 0.1); /* Fondo sutil dorado */
-            border: 1px solid var(--accent-color);
-            padding: 15px;
-            border-radius: 5px;
-            font-size: 0.95rem;
-            color: #fff;
-        }
-
-        /* Botón Enviar */
-        button.btn-submit {
-            width: 100%;
-            padding: 15px;
-            background-color: var(--accent-color);
-            color: #000;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.2s, background-color 0.3s;
-            margin-top: 20px;
-        }
-
-        button.btn-submit:hover {
-            background-color: #c19b2e;
-            transform: translateY(-2px);
-        }
-
-        /* WhatsApp Flotante */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25d366;
-            color: #fff;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            text-decoration: none;
-            z-index: 100;
-            transition: transform 0.3s;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-        }
-
-        /* Responsive */
-        @media (max-width: 600px) {
-            .container {
-                margin: 20px;
-                padding: 20px;
-            }
-            .logo {
-                font-size: 1.2rem;
-            }
-        }
-    </style>
+    @media(max-width: 600px) {
+      .checkbox-group { grid-template-columns: 1fr; }
+      .booking-card { padding: 25px; margin: 10px; }
+      h2 { font-size: 28px; }
+      .top-announcement { font-size: 13px; padding: 10px; }
+    }
+  </style>
 </head>
 <body>
 
-    <div class="top-bar">
-        🚀 Próxima Gira: Chiriquí - ¡Agenda Abierta!
-    </div>
-
-    <header>
-        <div class="logo">FIGURA ROSTRO KG</div>
-        <nav>
-            <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Nosotros</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <div class="container" id="contacto">
-        <h2>Reserva tu Valoración</h2>
-        <p class="intro-text">Completa el formulario para iniciar tu transformación con Plasma Fibroblast.</p>
-        
-        <form id="contact-form">
-            <div class="form-group">
-                <label for="nombre">Nombre Completo</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
-            </div>
-
-            <div class="form-group">
-                <label for="email">Correo Electrónico</label>
-                <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
-            </div>
-
-            <div class="form-group">
-                <label for="telefono">Teléfono / WhatsApp</label>
-                <input type="tel" id="telefono" name="telefono" placeholder="Ej: 6123-4567" required>
-            </div>
-
-            <div class="form-group">
-                <label for="provincia">Provincia / Ubicación</label>
-                <select id="provincia" name="provincia" required>
-                    <option value="" disabled selected>Selecciona una opción</option>
-                    <option value="Panama">Ciudad de Panamá</option>
-                    <option value="PanamaOeste">Panamá Oeste</option>
-                    <option value="Chiriqui">Chiriquí (Gira)</option>
-                    <option value="Colon">Colón</option>
-                    <option value="Cocle">Coclé</option>
-                    <option value="Otro">Otra provincia</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>Servicio de Interés</label>
-                <div class="radio-group">
-                    <label class="radio-option">
-                        <input type="radio" name="servicio" value="valoracion" checked>
-                        Valoración Inicial (Evaluación de piel)
-                    </label>
-                    <label class="radio-option">
-                        <input type="radio" name="servicio" value="procedimiento">
-                        Quiero Realizarme el Procedimiento (Ya valorado)
-                    </label>
-                    <label class="radio-option">
-                        <input type="radio" name="servicio" value="consulta">
-                        Consulta General / Dudas
-                    </label>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label>Método de Pago para Reserva</label>
-                <div class="radio-group">
-                    <label class="radio-option">
-                        <input type="radio" name="pago" value="yappy" onchange="toggleYappy(true)">
-                        Yappy (Directorio)
-                    </label>
-                    <label class="radio-option">
-                        <input type="radio" name="pago" value="transferencia" onchange="toggleYappy(false)">
-                        Transferencia Bancaria
-                    </label>
-                </div>
-
-                <div id="yappy-instructions">
-                    <p style="margin: 0;">
-                        Búscanos en el directorio como <strong>Figura Rostro KG</strong> y reserva con <strong>$5.95</strong> enviando el pago por esta vía. 
-                        <br><br>
-                        Una vez realizado el pago estaremos contactándote para confirmar o ajustar tu cita de valoración.
-                    </p>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="fecha">Fecha Preferida</label>
-                <input type="date" id="fecha" name="fecha">
-            </div>
-
-            <button type="submit" class="btn-submit" id="btn-submit">CONFIRMAR SOLICITUD</button>
-        </form>
-    </div>
-
-    <a href="https://wa.me/50764746168" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
+  <div class="top-announcement">
+    ⛰️ Pronta gira por David Chiriquí y Tierras Altas para el tratamiento de plasma fibroblast
+    <a href="https://instagram.com/figurarostrokg" target="_blank" class="ig-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      Síguenos y gana bono de $10
     </a>
+  </div>
 
-    <script>
-        // Función para mostrar/ocultar instrucciones de Yappy
-        function toggleYappy(show) {
-            const box = document.getElementById('yappy-instructions');
-            if (show) {
-                box.style.display = 'block';
-            } else {
-                box.style.display = 'none';
-            }
-        }
+  <section class="booking-section">
+    <div class="booking-card">
+      
+      <img src="logo-header-white.png" alt="Figura Rostro KG" class="form-logo">
+      
+      <div class="treatment-badge">Tratamiento Plasma Fibroblast</div>
+      
+      <h2>Agenda tu Cita</h2>
+      <p class="subtitle">Completa el formulario de pre-evaluación para confirmar si eres candidata ideal para el procedimiento.</p>
+      
+      <form id="contact-form">
+        
+        <div class="form-group">
+          <label>Nombre Completo</label>
+          <input type="text" name="user_name" placeholder="Nombre y Apellido" required>
+        </div>
+        <div class="form-group">
+          <label>WhatsApp de Contacto</label>
+          <input type="tel" name="user_phone" placeholder="Ej: 6474-6168" required>
+        </div>
+        <div class="form-group">
+          <label>Correo Electrónico</label>
+          <input type="email" name="user_email" placeholder="Para enviarte la confirmación" required>
+        </div>
 
-        // Manejo del envío del formulario con EmailJS
-        const btn = document.getElementById('btn-submit');
+        <div class="form-group">
+          <label>Provincia de Residencia</label>
+          <select name="user_province" required>
+            <option value="" disabled selected>-- Elige una opción --</option>
+            <option value="Panama">Ciudad de Panamá</option>
+            <option value="Panamá Oeste">Panamá Oeste</option>
+            <option value="Colón">Colón</option>
+            <option value="Chiriquí">Chiriquí (David / Tierras Altas)</option>
+            <option value="Provincias Centrales">Provincias Centrales</option>
+          </select>
+        </div>
 
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault();
+        <div class="form-group">
+          <label>Selecciona tu Servicio</label>
+          <select name="service_type" id="service-select" required>
+            <option value="" disabled selected>-- Elige una opción --</option>
+            <option value="Tratamiento-Fibroblast-Ya-Valorado">Quiero Realizarme el Procedimiento de Plasma Fibroblast (ya hice la valoracion)</option>
+            <option value="Valoracion-Transferencia">Valoración Estética - $9.95 (Pago Directo)</option>
+            <option value="Valoracion-Yappy">Valoración Estética - $5.95 (Directorio Yappy)</option>
+            <option value="Otro">Otro servicio del menú</option>
+          </select>
+          
+          <div class="price-highlight">
+            ℹ️ Las valoraciones pagadas incluyen un <strong>Bono de Regalo de $10</strong> aplicable a tu tratamiento final.
+          </div>
 
-            btn.textContent = 'Enviando...';
-            btn.disabled = true;
+          <div id="yappy-msg" class="yappy-alert">
+            Búscanos en el directorio como <strong>Figura Rostro KG</strong> y reserva con <strong>$5.95</strong> enviando el pago por esta vía.<br><br> 
+            Una vez realizado el pago estaremos contactándote para confirmar o ajustar tu cita de valoración.
+          </div>
+        </div>
 
-            const serviceID = 'service_t7i0u8y';
-            const templateID = 'template_b6ecwlc';
+        <div class="medical-section">
+          <span class="medical-title">Pre-Evaluación Médica (Seguridad)</span>
+          <p style="font-size:13px; margin:0; color:#666;">Marca SOLO si presentas alguna de estas condiciones:</p>
+          
+          <div class="checkbox-group">
+            <label class="checkbox-item"><input type="checkbox" name="med_diabetes" value="Si"> Diabetes Descontrolada</label>
+            <label class="checkbox-item"><input type="checkbox" name="med_keloide" value="Si"> Cicatrización Queloide</label>
+            <label class="checkbox-item"><input type="checkbox" name="med_embarazo" value="Si"> Embarazo / Lactancia</label>
+            <label class="checkbox-item"><input type="checkbox" name="med_marcapasos" value="Si"> Marcapasos / Cardiopatía</label>
+            <label class="checkbox-item"><input type="checkbox" name="med_infeccion" value="Si"> Infección activa en piel</label>
+            <label class="checkbox-item"><input type="checkbox" name="med_bronceado" value="Si"> Bronceado reciente</label>
+          </div>
+        </div>
 
-            emailjs.sendForm(serviceID, templateID, this)
-                .then(() => {
-                    btn.textContent = '¡Enviado!';
-                    alert('¡Solicitud enviada con éxito! Nos pondremos en contacto contigo pronto.');
-                }, (err) => {
-                    btn.textContent = 'Confirmar Solicitud';
-                    btn.disabled = false;
-                    alert(JSON.stringify(err));
-                    console.error('Error al enviar:', err);
-                });
+        <div class="form-group" style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+          <div>
+            <label>Fecha Deseada</label>
+            <input type="text" id="date-picker" name="date_pref" placeholder="Seleccionar fecha" required>
+          </div>
+          <div>
+            <label>Hora Preferida</label>
+            <select name="time_pref" required>
+              <option value="" disabled selected>Hora...</option>
+              <option value="Mañana (9am - 12pm)">Mañana (9am - 12pm)</option>
+              <option value="Tarde (1pm - 5pm)">Tarde (1pm - 5pm)</option>
+              <option value="Noche (5pm - 8pm)">Noche (5pm - 8pm)</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit">Enviar Solicitud Segura</button>
+
+        <a href="https://wa.me/50764746168?text=Hola,%20tengo%20dudas%20con%20el%20formulario." target="_blank" class="btn-help-wa">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.94 14.5L2 22l5.7-1.5A10 10 0 1 0 12 2zm5.5 14.1c-.24.68-1.4 1.3-1.96 1.34-.5.03-1.14.05-1.84-.12-.42-.1-.97-.31-1.67-.61-2.94-1.27-4.86-4.2-5.01-4.4-.15-.2-1.2-1.6-1.2-3.06 0-1.45.76-2.16 1.03-2.45.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.24.59.82 2.05.9 2.2.07.15.12.33.01.53-.1.2-.15.33-.3.51-.15.18-.31.4-.44.54-.15.15-.31.32-.13.62.18.3.8 1.3 1.71 2.1 1.18 1.05 2.17 1.37 2.47 1.52.3.15.48.13.66-.08.18-.2.76-.89.96-1.2.2-.3.41-.26.67-.15.26.1 1.64.77 1.92.91.29.15.48.22.55.34.07.12.07.7-.17 1.38z"/></svg>
+          ¿Necesitas ayuda para llenar esto?
+        </a>
+
+      </form>
+
+      <div id="status-msg"></div>
+
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script>
+
+  <script>
+    // 1. INICIALIZAR EMAILJS
+    emailjs.init("GgzlB-NI1cTRd2L7I"); 
+
+    // 2. TUS IDs DE SERVICIO Y PLANTILLA
+    const SERVICE_ID = "service_t7i0u8y"; 
+    const TEMPLATE_ID = "template_b6ecwlc"; 
+
+    // 3. CONFIGURACIÓN DEL CALENDARIO
+    flatpickr("#date-picker", {
+      locale: "es",
+      minDate: "today",
+      dateFormat: "d-m-Y",
+      disable: [ function(date) { return (date.getDay() === 0); } ] // Domingos desactivados
+    });
+
+    // 4. LÓGICA PARA MOSTRAR AVISO YAPPY (NUEVO)
+    const serviceSelect = document.getElementById('service-select');
+    const yappyMsg = document.getElementById('yappy-msg');
+
+    serviceSelect.addEventListener('change', function() {
+      // Si el valor seleccionado es el de Yappy, mostramos el mensaje
+      if (this.value === 'Valoracion-Yappy') {
+        yappyMsg.style.display = 'block';
+      } else {
+        yappyMsg.style.display = 'none';
+      }
+    });
+
+    // 5. LÓGICA DE ENVÍO DEL FORMULARIO
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Evita recarga de página
+      
+      const btn = document.querySelector('.btn-submit');
+      const msg = document.getElementById('status-msg');
+      
+      // Estado de carga
+      btn.textContent = 'Verificando y Enviando...';
+      btn.disabled = true;
+
+      // Enviar datos a EmailJS
+      emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, this)
+        .then(() => {
+          // ÉXITO
+          btn.textContent = '¡Enviado Correctamente!';
+          btn.style.background = '#10b981';
+          msg.className = 'success';
+          msg.innerHTML = '✅ <strong>Solicitud Confirmada</strong><br>Tus datos han sido recibidos de forma segura.';
+          msg.style.display = 'block';
+          document.getElementById('contact-form').reset();
+          yappyMsg.style.display = 'none'; // Ocultar mensaje yappy al resetear
+        }, (err) => {
+          // ERROR
+          console.error('Error detallado:', err);
+          btn.textContent = 'Error al enviar';
+          btn.disabled = false;
+          msg.className = 'error';
+          msg.innerHTML = '❌ Error de conexión. Verifica tu internet o intenta más tarde.';
+          msg.style.display = 'block';
         });
-    </script>
+    });
+  </script>
+
 </body>
 </html>
