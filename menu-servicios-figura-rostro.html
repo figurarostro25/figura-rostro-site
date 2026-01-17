@@ -5,536 +5,1305 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Menú de Servicios | Figura Rostro KG</title>
-  <meta name="description" content="Estética médica avanzada, aparatología láser y tratamientos corporales en Figura Rostro KG.">
+  <meta name="description"
+        content="Menú de servicios: estética avanzada y masajes terapéuticos en Figura Rostro KG, Parque Lefevre. Consulta y reserva por WhatsApp.">
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --brand: #5b2580;
-      --brand-light: #9d5ec4;
-      --bg-dark: #0f0818;
-      --text-main: #f5eaff;
-      --text-muted: #dcd0e8;
+      --brand:#5b2580;
+      --brand-soft:#b896ff;
+      --bg:#160c1f;
+      --card:#ffffff;
+      --text-card:#1a0f26;
+
+      --dark:#0f0818;
+      --dark2:#140b20;
+      --line: rgba(255,255,255,.12);
+      --muted: rgba(245,234,255,.82);
+
+      --green:#25D366;
+      --green2:#19b55a;
+      --btn:#0b0f1a;
     }
 
     *{box-sizing:border-box;}
-    
+    img{max-width:100%;display:block;}
+
     body{
       margin:0;
-      font-family:'Inter', sans-serif;
-      background-color: var(--bg-dark);
-      background-image: radial-gradient(circle at 50% 0%, #220e3a 0%, #0f0818 80%);
-      color: var(--text-main);
+      font-family:Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:radial-gradient(circle at top,#2c1450 0,#160c1f 45%,#0d0715 100%);
+      color:#f5eaff;
     }
 
-    img{ display:block; max-width:100%; }
-    a{ text-decoration:none; color:inherit; transition:0.3s; }
-
     .container{
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 20px;
+      max-width:1180px;
+      margin:0 auto;
+      padding:0 16px;
     }
 
     /* HEADER */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 20px;
-      background: rgba(15, 8, 24, 0.95);
-      backdrop-filter: blur(10px);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+    header{
+      text-align:center;
+      padding:24px 0 10px;
     }
-    header img { height: 40px; }
-    .nav-links { display: flex; gap: 20px; }
-    .nav-links a {
-      font-weight: 600; font-size: 0.9rem; color: #fff;
-      text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;
-    }
-    .nav-links a:hover { opacity: 1; color: var(--brand-light); }
+    header img{height:66px;}
 
-    /* HERO BANNER */
-    .hero-banner {
-      position: relative;
-      height: 50vh; 
-      min-height: 350px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: #fff;
-      overflow: hidden;
-      margin-bottom: 40px;
+    .pill{
+      display:inline-block;
+      padding:6px 16px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.35);
+      font-size:.8rem;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      color:#ffe9ff;
+      background:rgba(0,0,0,.12);
+      margin-bottom:10px;
     }
-    .hero-bg-img {
-      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-      /* Imagen de fondo genérica elegante */
-      background-image: url('https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=2070&auto=format&fit=crop');
-      background-size: cover; background-position: center; z-index: 1;
+    h1{
+      text-align:center;
+      font-size:clamp(32px,5.4vw,46px);
+      font-weight:800;
+      letter-spacing:.02em;
+      color:#ffffff;
+      margin:0 0 6px;
     }
-    .hero-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(91, 37, 128, 0.75), rgba(15, 8, 24, 0.95));
-      z-index: 2;
-    }
-    .hero-content { position: relative; z-index: 3; padding: 20px; max-width: 800px; }
-    .hero-title {
-      font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 15px;
-      line-height: 1.1; text-shadow: 0 4px 20px rgba(0,0,0,0.5);
-    }
-    .hero-subtitle { font-size: clamp(1rem, 2.5vw, 1.2rem); opacity: 0.95; font-weight: 300; }
-
-    /* CATEGORY TITLE */
-    .cat-header {
-      text-align: center; margin: 60px 0 30px; position: relative;
-    }
-    .cat-header h2 {
-      font-size: 2rem; color: #fff; display: inline-block;
-      border-bottom: 2px solid var(--brand-light); padding-bottom: 5px;
+    .sub{
+      text-align:center;
+      opacity:.96;
+      margin:0 auto 26px;
+      max-width:780px;
+      font-size:.95rem;
+      line-height:1.65;
+      color:#f0e6ff;
     }
 
-    /* SERVICES STACK (COMPACTO) */
-    .services-stack {
-      display: flex; flex-direction: column; gap: 30px; margin-bottom: 60px;
+    /* SECCIONES */
+    .section{ margin:30px 0 34px; }
+
+    .section-box{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius:22px;
+      padding:18px 18px 18px;
+      box-shadow:0 18px 45px rgba(5,0,20,.45);
+      border:1px solid rgba(255,255,255,.10);
+      color:#fff;
+      backdrop-filter: blur(6px);
     }
 
-    .svc-card {
-      display: flex;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 16px;
-      overflow: hidden;
-      /* Altura reducida para que quepan más */
-      min-height: 280px; 
-      transition: transform 0.3s ease;
+    .section-top{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+      padding:4px 6px 12px;
     }
-    
-    .svc-card:nth-child(even) { flex-direction: row-reverse; }
-
-    .svc-img-col {
-      flex: 0.8; /* Imagen un poco más angosta */
-      position: relative; overflow: hidden; min-width: 250px;
+    .section-title{
+      font-size:1.25rem;
+      font-weight:800;
+      color:#f8f0ff;
+      margin:0;
     }
-    .svc-img-col img {
-      width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;
+    .section-label{
+      font-size:.78rem;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:var(--brand-soft);
+      opacity:.95;
+      white-space:nowrap;
     }
-    .svc-card:hover .svc-img-col img { transform: scale(1.05); }
-    .svc-img-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to bottom, rgba(91, 37, 128, 0.3), rgba(15, 8, 24, 0.6));
-      pointer-events: none;
-    }
-
-    .svc-info-col {
-      flex: 1.2; padding: 25px;
-      display: flex; flex-direction: column; justify-content: center;
+    .section-desc{
+      margin:0 6px 14px;
+      color:rgba(240,230,255,.92);
+      font-size:.92rem;
+      line-height:1.55;
     }
 
-    .svc-title {
-      font-size: 1.4rem; margin: 0 0 10px; font-weight: 800; color: #fff;
+    /* GRID */
+    .card-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(255px, 1fr));
+      gap:16px;
     }
-    .svc-desc {
-      color: var(--text-muted); line-height: 1.5; margin-bottom: 20px; font-size: 0.9rem;
-    }
-    
-    .btn {
-      padding: 8px 20px; border-radius: 50px; font-weight: 700; font-size: 0.85rem;
-      cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
-      width: fit-content; text-transform: uppercase; letter-spacing: 0.5px;
-      background: var(--brand); color: #fff; border: 1px solid rgba(255,255,255,0.1);
-    }
-    .btn:hover { background: var(--brand-light); }
 
-    /* FORMULARIO */
-    .contact-section {
-      margin-top: 60px; background: rgba(255,255,255,0.03);
-      border-radius: 20px; padding: 40px; border: 1px solid rgba(255,255,255,0.1);
+    /* TARJETA estilo “tu captura” con botones */
+    .svc-card{
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.08);
+      background:linear-gradient(180deg, rgba(12,12,20,.78), rgba(8,8,14,.88));
+      box-shadow:0 10px 28px rgba(0,0,0,.45);
+      display:flex;
+      flex-direction:column;
+      min-height:335px;
     }
-    .contact-head { text-align: center; margin-bottom: 30px; }
-    .contact-head h2 { font-size: 1.8rem; margin-bottom: 5px; color: #fff; }
-    
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-    .full-width { grid-column: span 2; }
-    .form-group label { display: block; margin-bottom: 5px; font-size: 0.85rem; color: #ccc; }
-    .form-input, .form-select, .form-textarea {
-      width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2);
-      background: rgba(0,0,0,0.4); color: #fff; font-size: 0.95rem; outline: none;
+    .svc-img{
+      width:100%;
+      height:165px;
+      object-fit:cover;
+      background:#1b1026;
     }
-    .form-textarea { resize: vertical; min-height: 100px; }
-    .btn-whatsapp {
-      background: #25D366; color: #fff; width: 100%; font-weight: 800; padding: 15px;
-      text-transform: uppercase; border: none; border-radius: 10px; margin-top: 10px;
+    .svc-body{
+      padding:12px 12px 14px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      flex:1;
+    }
+    .svc-title{
+      margin:0;
+      font-size:1rem;
+      font-weight:800;
+      letter-spacing:.01em;
+      color:#ffffff;
+    }
+    .svc-text{
+      margin:0;
+      font-size:.87rem;
+      line-height:1.5;
+      color:rgba(245,234,255,.86);
+      flex:1;
+    }
+    .svc-actions{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+      margin-top:6px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:9px 14px;
+      border-radius:12px;
+      font-weight:800;
+      font-size:.84rem;
+      text-decoration:none;
+      border:1px solid rgba(255,255,255,.10);
+      cursor:pointer;
+      transition: transform .08s ease, filter .12s ease;
+      user-select:none;
+    }
+    .btn:active{ transform: translateY(1px); }
+
+    .btn-wa{
+      background:linear-gradient(180deg, var(--green), var(--green2));
+      color:#04130b;
+      border:none;
+      box-shadow:0 10px 20px rgba(37,211,102,.20);
+    }
+    .btn-dark{
+      background:rgba(10,14,22,.62);
+      color:#ffffff;
+      border:1px solid rgba(255,255,255,.14);
+    }
+    .btn-dark:hover{ filter:brightness(1.06); }
+    .btn-wa:hover{ filter:brightness(1.02); }
+
+    /* MODAL */
+    .modal{
+      position:fixed;
+      inset:0;
+      display:none;
+      place-items:center;
+      background:rgba(0,0,0,.55);
+      z-index:80;
+      padding:18px;
+    }
+    .modal.open{ display:grid; }
+    .modal-card{
+      width:min(760px, 100%);
+      background:linear-gradient(180deg, rgba(22,12,31,.98), rgba(13,7,21,.98));
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:18px;
+      box-shadow:0 20px 60px rgba(0,0,0,.6);
+      overflow:hidden;
+      color:#fff;
+    }
+    .modal-head{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      padding:14px 16px 10px;
+      border-bottom:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.10);
+    }
+    .modal-title{
+      margin:0;
+      font-size:1.05rem;
+      font-weight:900;
+      letter-spacing:.01em;
+    }
+    .modal-close{
+      background:transparent;
+      border:1px solid rgba(255,255,255,.20);
+      color:#fff;
+      border-radius:12px;
+      padding:8px 10px;
+      cursor:pointer;
+      font-weight:800;
+    }
+    .modal-body{
+      padding:14px 16px 16px;
+      color:rgba(245,234,255,.90);
+      font-size:.94rem;
+      line-height:1.65;
+    }
+    .modal-foot{
+      padding:12px 16px 16px;
+      border-top:1px solid rgba(255,255,255,.12);
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      background:rgba(0,0,0,.10);
+    }
+
+    /* FORM CONTACTO WHATSAPP */
+    .contact-wrap{
+      margin:30px 0 8px;
+    }
+    .contact-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:22px;
+      box-shadow:0 18px 45px rgba(5,0,20,.45);
+      padding:18px;
+    }
+    .contact-grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:16px;
+      align-items:start;
+    }
+    .contact-title{
+      margin:0 0 6px;
+      font-size:1.15rem;
+      font-weight:900;
+      color:#fff;
+    }
+    .contact-text{
+      margin:0;
+      color:rgba(240,230,255,.92);
+      font-size:.92rem;
+      line-height:1.6;
+    }
+    .form{
+      display:grid;
+      gap:10px;
+    }
+    .field{
+      display:grid;
+      gap:6px;
+    }
+    .label{
+      font-size:.82rem;
+      color:rgba(245,234,255,.85);
+      font-weight:700;
+    }
+    .input, .select, .textarea{
+      width:100%;
+      padding:11px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(10,14,22,.55);
+      color:#fff;
+      outline:none;
+      font-family:inherit;
+      font-size:.92rem;
+    }
+    .textarea{ min-height:92px; resize:vertical; }
+    .help{
+      font-size:.78rem;
+      color:rgba(245,234,255,.72);
+      line-height:1.4;
+      margin-top:4px;
+    }
+    .form-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      margin-top:2px;
+    }
+
+    @media (max-width:880px){
+      .contact-grid{ grid-template-columns: 1fr; }
+    }
+
+    @media (max-width:640px){
+      .section-box{padding:14px;}
+      .svc-img{height:155px;}
+      .svc-card{min-height:325px;}
+    }
+
+    /* CTA HOME */
+    .home-cta{
+      text-align:center;
+      margin:18px 0 32px;
+    }
+    .btn-home{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:6px;
+      padding:10px 20px;
+      border-radius:999px;
+      background:#5b2580;
+      color:#fff;
+      text-decoration:none;
+      font-size:.92rem;
+      font-weight:800;
+      box-shadow:0 12px 28px rgba(0,0,0,.55);
     }
 
     /* FOOTER */
     footer{
-      background:#0b0612; margin-top: 60px; padding: 40px 0 20px; border-top: 1px solid rgba(255,255,255,0.1);
+      background:#12091d;
+      color:#f5eaff;
+      margin-top:14px;
     }
     .footer-inner{
-      max-width:1100px; margin:0 auto; padding:0 20px;
-      display:flex; flex-wrap:wrap; gap:30px; justify-content:space-between; font-size: 0.9rem;
+      max-width:1120px;
+      margin:0 auto;
+      padding:20px 16px 12px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
+      justify-content:space-between;
+      font-size:.9rem;
     }
-    .footer-block strong{ display:block; margin-bottom:10px; color: #fff; }
-    .footer-block a { display: block; margin-bottom: 6px; opacity: 0.7; }
-    .footer-bottom{ text-align:center; padding-top:20px; margin-top:30px; border-top:1px solid rgba(255,255,255,0.05); opacity: 0.5; font-size: 0.8rem;}
+    .footer-block strong{
+      display:block;
+      margin-bottom:4px;
+    }
+    .footer-bottom{
+      text-align:center;
+      padding:10px 16px 18px;
+      font-size:.8rem;
+      opacity:.8;
+      border-top:1px solid rgba(255,255,255,.15);
+    }
+    footer a{
+      color:#f5eaff;
+      text-decoration:none;
+    }
+    footer a:hover{
+      text-decoration:underline;
+      text-underline-offset:3px;
+    }
 
-    @media (max-width: 768px) {
-      .hero-title { font-size: 2rem; }
-      .svc-card, .svc-card:nth-child(even) { flex-direction: column; min-height: auto; }
-      .svc-img-col { height: 200px; width: 100%; flex: none; }
-      .svc-info-col { padding: 20px; }
-      .nav-links { display: none; }
-      .form-grid { grid-template-columns: 1fr; }
-      .full-width { grid-column: span 1; }
+    /* BOTONES FLOTANTES WhatsApp + Waze */
+    .fab-wrap{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      z-index:50;
+    }
+    .fab{
+      width:58px;
+      height:58px;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      box-shadow:0 12px 26px rgba(0,0,0,.45);
+    }
+    .fab svg{
+      width:30px;
+      height:30px;
+      fill:#fff;
+    }
+    .fab-wa{background:#25D366;}
+    .fab-waze{background:#0099ff;}
+
+    @media (max-width:600px){
+      .fab-wrap{
+        right:auto;
+        bottom:50%;
+        left:10px;
+        transform:translateY(50%);
+      }
+      .fab{
+        width:46px;
+        height:46px;
+        box-shadow:0 8px 18px rgba(0,0,0,.4);
+      }
+      .fab svg{
+        width:24px;
+        height:24px;
+      }
     }
   </style>
 </head>
+
 <body>
 
 <header>
   <a href="/"><img src="logo-header-white.png" alt="Figura Rostro KG"></a>
-  <nav class="nav-links">
-    <a href="#faciales">Faciales</a>
-    <a href="#medicina">Medicina</a>
-    <a href="#aparatologia">Aparatología</a>
-    <a href="#corporal">Corporal</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
 </header>
 
-<section class="hero-banner">
-  <div class="hero-bg-img"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <h1 class="hero-title">Estética Médica Avanzada</h1>
-    <p class="hero-subtitle">Rejuvenecimiento facial y corporal con la mejor tecnología.</p>
-  </div>
-</section>
-
 <div class="container">
-
-  <div class="cat-header" id="fibroblast"><h2>Tratamiento Estrella</h2></div>
-  <div class="services-stack">
-    <article class="svc-card" style="border-color: var(--brand-light);">
-      <div class="svc-img-col">
-        <img src="https://images.unsplash.com/photo-1512413914633-b5043f4041ea?q=80&w=2000&auto=format&fit=crop" alt="Plasma Fibroblast">
-        <div class="svc-img-overlay"></div>
-      </div>
-      <div class="svc-info-col">
-        <h3 class="svc-title">Plasma Fibroblast</h3>
-        <p class="svc-desc">
-          Nuestro tratamiento insignia. Lifting sin cirugía mediante arco eléctrico (sublimación) para eliminar párpados caídos, líneas profundas, acrocordones y verrugas. Regeneración real de la piel.
-        </p>
-        <a href="#contacto" class="btn" onclick="preselect('Plasma Fibroblast')">Agendar</a>
-      </div>
-    </article>
+  <div style="text-align:center;">
+    <span class="pill">Menú de Servicios</span>
   </div>
+  <h1>Figura Rostro KG</h1>
+  <p class="sub">
+    Selecciona el servicio que te interesa y <strong>solicita información por WhatsApp</strong>.
+    Precios, zonas y protocolos se confirman según valoración y objetivos.
+  </p>
 
-  <div class="cat-header" id="medicina"><h2>Medicina Estética</h2></div>
-  <div class="services-stack">
-    
-    <article class="svc-card">
-      <div class="svc-img-col">
-        <img src="https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?q=80&w=2000&auto=format&fit=crop" alt="Botox">
-        <div class="svc-img-overlay"></div>
+  <!-- ===================================== -->
+  <!--  1) ESTÉTICA AVANZADA (TODO LO “PRO”)  -->
+  <!-- ===================================== -->
+  <section class="section" id="estetica-avanzada">
+    <div class="section-box">
+      <div class="section-top">
+        <h2 class="section-title">Estética Avanzada</h2>
+        <div class="section-label">Faciales · Aparatología · Medicina Estética</div>
       </div>
-      <div class="svc-info-col">
-        <h3 class="svc-title">Toxina Botulínica (Botox)</h3>
-        <p class="svc-desc">Suaviza arrugas en frente, entrecejo y patas de gallo. Mirada fresca y relajada.</p>
-        <a href="#contacto" class="btn" onclick="preselect('Toxina Botulínica')">Agendar</a>
-      </div>
-    </article>
+      <p class="section-desc">
+        Protocolos avanzados para limpieza profunda, hidratación, regeneración, tratamiento de manchas/acné y opciones
+        de medicina estética. Recomendación personalizada según tu piel y objetivos.
+      </p>
 
-    <article class="svc-card">
-      <div class="svc-img-col">
-        <img src="https://images.unsplash.com/photo-1612848319352-59936d073099?q=80&w=2000&auto=format&fit=crop" alt="Acido Hialuronico">
-        <div class="svc-img-overlay"></div>
-      </div>
-      <div class="svc-info-col">
-        <h3 class="svc-title">Ácido Hialurónico</h3>
-        <p class="svc-desc">Relleno de labios, pómulos, mentón o rinomodelación. Hidratación y volumen.</p>
-        <a href="#contacto" class="btn" onclick="preselect('Ácido Hialurónico')">Agendar</a>
-      </div>
-    </article>
+      <div class="card-grid">
 
-    <article class="svc-card">
-      <div class="svc-img-col">
-        <img src="https://images.unsplash.com/photo-1600336153113-d67d708278d0?q=80&w=2000&auto=format&fit=crop" alt="Bioestimuladores">
-        <div class="svc-img-overlay"></div>
-      </div>
-      <div class="svc-info-col">
-        <h3 class="svc-title">Bioestimuladores / Skinbooster</h3>
-        <p class="svc-desc">Radiesse, Ellansé o Sculptra para producir colágeno y combatir flacidez. Skinbooster para hidratación profunda.</p>
-        <a href="#contacto" class="btn" onclick="preselect('Bioestimuladores')">Agendar</a>
-      </div>
-    </article>
+        <!-- FACIALES BASE / LIMPIEZAS -->
+        <article class="svc-card"
+                 data-title="Limpieza Facial Esencial"
+                 data-desc="Tratamiento de higiene y mantenimiento para pieles que buscan frescura y equilibrio. Incluye preparación, limpieza profunda y cuidado final adaptado a tu tipo de piel.">
+          <!-- ✅ Usa tu imagen actual si ya existe; si no, deja este nombre y súbela luego -->
+          <img class="svc-img" src="facial-sencillo.jpg" alt="Limpieza Facial Esencial">
+          <div class="svc-body">
+            <h3 class="svc-title">Limpieza Facial Esencial</h3>
+            <p class="svc-text">Higiene y mantenimiento para una piel fresca, equilibrada y luminosa.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Limpieza%20Facial%20Esencial%20(Est%C3%A9tica%20Avanzada)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
 
-    <article class="svc-card">
-      <div class="svc-img-col">
-        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2000&auto=format&fit=crop" alt="Hilos Tensores">
-        <div class="svc-img-overlay"></div>
-      </div>
-      <div class="svc-info-col">
-        <h3 class="svc-title">Hilos Tensores & Foxy Eyes</h3>
-        <p class="svc-desc">Soporte mecánico para levantar tejidos (Lifting) y elevar la mirada.</p>
-        <a href="#contacto" class="btn" onclick="preselect('Hilos Tensores')">Agendar</a>
-      </div>
-    </article>
+        <article class="svc-card"
+                 data-title="Limpieza Facial Profunda"
+                 data-desc="Protocolo avanzado para poros congestionados e impurezas. Incluye limpieza profunda, extracción controlada (si aplica), mascarilla y finalización con productos específicos. Puede complementarse con aparatología según valoración.">
+          <img class="svc-img" src="facial-profundo.jpg" alt="Limpieza Facial Profunda">
+          <div class="svc-body">
+            <h3 class="svc-title">Limpieza Facial Profunda</h3>
+            <p class="svc-text">Enfocada en poros, textura e impurezas. Ideal para reiniciar la piel.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Limpieza%20Facial%20Profunda%20(Est%C3%A9tica%20Avanzada)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
 
-    <article class="svc-card">
-      <div class="svc-img-col">
-        <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9af908?q=80&w=2000&auto=format&fit=crop" alt="Armonizacion">
-        <div class="svc-img-overlay"></div>
-      </div>
-      <div class="svc-info-col">
-        <h3 class="svc-title">Armonización Facial</h3>
-        <p class="svc-desc">Plan integral para equilibrar tus rasgos y mejorar el perfil de forma natural.</p>
-        <a href="#contacto" class="btn" onclick="preselect('Armonización Facial')">Agendar</a>
-      </div>
-    </article>
+        <article class="svc-card"
+                 data-title="Hidrafacial"
+                 data-desc="Limpieza profunda con enfoque en hidratación y mejora de textura. Combina protocolos de limpieza y sueros según necesidad, con apoyo de aparatología disponible. Recomendado para piel opaca, deshidratada o con poros visibles.">
+          <img class="svc-img" src="hidrafacial.jpg" alt="Hidrafacial">
+          <div class="svc-body">
+            <h3 class="svc-title">Hidrafacial</h3>
+            <p class="svc-text">Limpieza + hidratación intensiva para un glow inmediato y uniforme.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Hidrafacial%20(Est%C3%A9tica%20Avanzada)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
 
-    <article class="svc-card">
-      <div class="svc-img-col">
-        <img src="https://images.unsplash.com/photo-1620802107985-7819a0528387?q=80&w=2000&auto=format&fit=crop" alt="Sueroterapia">
-        <div class="svc-img-overlay"></div>
-      </div>
-      <div class="svc-info-col">
-        <h3 class="svc-title">Sueroterapia Ortomolecular</h3>
-        <p class="svc-desc">Cócteles vitamínicos intravenosos para revitalización desde el interior.</p>
-        <a href="#contacto" class="btn" onclick="preselect('Sueroterapia')">Agendar</a>
-      </div>
-    </article>
+        <!-- ACNÉ / MANCHAS -->
+        <article class="svc-card"
+                 data-title="Protocolo Antiacné"
+                 data-desc="Tratamiento orientado a piel con brotes, comedones o inflamación. Se define por tipo de acné y sensibilidad. Incluye limpieza profunda, control de sebo, activos específicos y recomendaciones de cuidado en casa.">
+          <img class="svc-img" src="tratamiento-acne.jpg" alt="Protocolo Antiacné">
+          <div class="svc-body">
+            <h3 class="svc-title">Protocolo Antiacné</h3>
+            <p class="svc-text">Control de brotes, poros y sebo con protocolo ajustado a tu piel.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Protocolo%20Antiacn%C3%A9%20(Est%C3%A9tica%20Avanzada)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
 
-  </div>
+        <article class="svc-card"
+                 data-title="Tratamientos Despigmentantes"
+                 data-desc="Protocolos para manchas y tono irregular (incluye melasma según evaluación). Se definen por tipo de mancha y tolerancia de piel. Puede incluir combinación de activos, peeling y soporte con aparatología.">
+          <img class="svc-img" src="tratamiento-manchas.jpg" alt="Tratamientos Despigmentantes">
+          <div class="svc-body">
+            <h3 class="svc-title">Tratamientos Despigmentantes</h3>
+            <p class="svc-text">Mejora de manchas y tono irregular con protocolo progresivo y seguro.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Tratamientos%20Despigmentantes%20(Est%C3%A9tica%20Avanzada)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
 
-  <div class="cat-header" id="aparatologia"><h2>Aparatología & Láser</h2></div>
-  <div class="services-stack">
-    
-    <article class="svc-card">
-      <div class="svc-img-col">
-        <img src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?q=80&w=2000&auto=format&fit=crop" alt="HIFU">
-        <div class="svc-img-overlay"></div>
-      </div>
-      <div class="svc-info-col">
-        <h3 class="svc-title">HIFU 7D / 4D</h3>
-        <p class="svc-desc">Ultrasonido focalizado para tensado profundo de la piel (Lifting sin cortes).</p>
-        <a href="#contacto" class="btn" onclick="preselect('HIFU')">Agendar</a>
-      </div>
-    </article>
+        <!-- PEELINGS / MESOTERAPIA / EXOSOMAS / PRP -->
+        <article class="svc-card"
+                 data-title="Peeling Profesional"
+                 data-desc="Renovación controlada para mejorar textura, poros, manchas superficiales y apariencia general. Se selecciona el tipo de peeling según tu piel. Puede combinarse con aparatología para potenciar resultados.">
+          <img class="svc-img" src="peeling.jpg" alt="Peeling Profesional">
+          <div class="svc-body">
+            <h3 class="svc-title">Peeling Profesional</h3>
+            <p class="svc-text">Renovación de la piel para un tono más uniforme y textura más fina.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Peeling%20Profesional%20(Est%C3%A9tica%20Avanzada)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
 
-    <article class="svc-card">
-      <div class="svc-img-col">
-        <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=2000&auto=format&fit=crop" alt="Morpheus RF">
-        <div class="svc-img-overlay"></div>
-      </div>
-      <div class="svc-info-col">
-        <h3 class="svc-title">Morpheus / RF Fraccionada</h3>
-        <p class="svc-desc">Radiofrecuencia con microagujas para remodelar el tejido y mejorar textura.</p>
-        <a href="#contacto" class="btn" onclick="preselect('Morpheus')">Agendar</a>
-      </div>
-    </article>
+        <article class="svc-card"
+                 data-title="Mesoterapia Inducida"
+                 data-desc="Aplicación de activos cosméticos mediante técnica asistida para mejorar hidratación, luminosidad y calidad de piel. Se adapta a necesidad: glow, poros, textura o soporte regenerativo.">
+          <img class="svc-img" src="mesoterapia-inducida.jpg" alt="Mesoterapia Inducida">
+          <div class="svc-body">
+            <h3 class="svc-title">Mesoterapia Inducida</h3>
+            <p class="svc-text">Activos seleccionados para mejorar la calidad de piel y apariencia.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Mesoterapia%20Inducida%20(Est%C3%A9tica%20Avanzada)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
 
-    <article class="svc-card">
-      <div class="svc-img-col">
-        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=2000&auto=format&fit=crop" alt="Laser">
-        <div class="svc-img-overlay"></div>
-      </div>
-      <div class="svc-info-col">
-        <h3 class="svc-title">Láser (Diodo, Nd:YAG, Fraccionado)</h3>
-        <p class="svc-desc">Plataforma láser completa: Depilación definitiva, rejuvenecimiento y manchas.</p>
-        <a href="#contacto" class="btn" onclick="preselect('Láser')">Agendar</a>
-      </div>
-    </article>
+        <article class="svc-card"
+                 data-title="Exosomas"
+                 data-desc="Tecnología enfocada en soporte de reparación y apariencia rejuvenecida de la piel. Se recomienda según valoración, objetivos y compatibilidad del protocolo.">
+          <img class="svc-img" src="exosomas.jpg" alt="Exosomas">
+          <div class="svc-body">
+            <h3 class="svc-title">Exosomas</h3>
+            <p class="svc-text">Soporte regenerativo para una piel más uniforme, luminosa y revitalizada.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Exosomas%20(Est%C3%A9tica%20Avanzada)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
 
-    <article class="svc-card">
-      <div class="svc-img-col">
-        <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=2000&auto=format&fit=crop" alt="Tecarterapia">
-        <div class="svc-img-overlay"></div>
-      </div>
-      <div class="svc-info-col">
-        <h3 class="svc-title">Tecarterapia</h3>
-        <p class="svc-desc">Radiofrecuencia para regeneración celular, post-operatorios y reafirmación.</p>
-        <a href="#contacto" class="btn" onclick="preselect('Tecarterapia')">Agendar</a>
-      </div>
-    </article>
+        <article class="svc-card"
+                 data-title="PRP (Plasma Rico en Plaquetas)"
+                 data-desc="Procedimiento orientado a regeneración y calidad de piel según protocolo y valoración. La indicación, número de sesiones y zonas se determinan en consulta.">
+          <img class="svc-img" src="prp.jpg" alt="PRP">
+          <div class="svc-body">
+            <h3 class="svc-title">PRP</h3>
+            <p class="svc-text">Soporte de regeneración celular para mejorar calidad y aspecto de la piel.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20PRP%20(Est%C3%A9tica%20Avanzada)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
 
-  </div>
+        <!-- HOLLYWOOD / FIBROBLAST / ARAÑITAS / SUEROTERAPIA -->
+        <article class="svc-card"
+                 data-title="Hollywood Peeling"
+                 data-desc="Protocolo para mejorar manchas superficiales, textura y luminosidad. Ideal para piel opaca o con tono irregular. Se ajusta a sensibilidad de piel y objetivos.">
+          <img class="svc-img" src="hollywood-peeling.jpg" alt="Hollywood Peeling">
+          <div class="svc-body">
+            <h3 class="svc-title">Hollywood Peeling</h3>
+            <p class="svc-text">Tono más uniforme y piel más luminosa con protocolo de renovación.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Hollywood%20Peeling%20(Est%C3%A9tica%20Avanzada)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
 
-  <div class="cat-header" id="faciales"><h2>Cuidado de la Piel</h2></div>
-  <div class="services-stack">
-    
-    <article class="svc-card">
-      <div class="svc-img-col">
-        <img src="https://images.unsplash.com/photo-1556760544-74068565f05c?q=80&w=2000&auto=format&fit=crop" alt="Limpieza Facial">
-        <div class="svc-img-overlay"></div>
-      </div>
-      <div class="svc-info-col">
-        <h3 class="svc-title">Limpiezas & Hidrafacial</h3>
-        <p class="svc-desc">Limpieza profunda, Esencial o Hidrafacial. Elimina impurezas y renueva el brillo.</p>
-        <a href="#contacto" class="btn" onclick="preselect('Limpieza Facial')">Agendar</a>
-      </div>
-    </article>
+        <article class="svc-card"
+                 data-title="Fibroblast (Acrocordones y Verrugas)"
+                 data-desc="Procedimiento para eliminar imperfecciones superficiales como acrocordones y verrugas (según evaluación). Se determina cantidad, zonas y cuidados posteriores antes de realizar.">
+          <img class="svc-img" src="fibroblast-verrugas.jpg" alt="Fibroblast acrocordones y verrugas">
+          <div class="svc-body">
+            <h3 class="svc-title">Fibroblast (Acrocordones y Verrugas)</h3>
+            <p class="svc-text">Eliminación puntual según evaluación y protocolo de cuidado posterior.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Fibroblast%20(acrocordones%20y%20verrugas)%20(Est%C3%A9tica%20Avanzada)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
 
-    <article class="svc-card">
-      <div class="svc-img-col">
-        <img src="https://images.unsplash.com/photo-1596704017235-d9141b96c703?q=80&w=2000&auto=format&fit=crop" alt="Peelings">
-        <div class="svc-img-overlay"></div>
-      </div>
-      <div class="svc-info-col">
-        <h3 class="svc-title">Peelings & Hollywood Peel</h3>
-        <p class="svc-desc">Renovación de capas de piel para manchas, acné activo y textura (Carbón láser).</p>
-        <a href="#contacto" class="btn" onclick="preselect('Peeling')">Agendar</a>
-      </div>
-    </article>
+        <article class="svc-card"
+                 data-title="Eliminación de Arañitas"
+                 data-desc="Protocolos para mejorar apariencia de arañitas (según zona y valoración). Puede requerir varias sesiones. Se explica alcance y expectativas en consulta.">
+          <img class="svc-img" src="aranitas.jpg" alt="Eliminación de arañitas">
+          <div class="svc-body">
+            <h3 class="svc-title">Eliminación de Arañitas</h3>
+            <p class="svc-text">Mejora progresiva con protocolo indicado según la zona y condición.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Eliminaci%C3%B3n%20de%20Ara%C3%B1itas%20(Est%C3%A9tica%20Avanzada)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
 
-    <article class="svc-card">
-      <div class="svc-img-col">
-        <img src="https://images.unsplash.com/photo-1614859324967-bdf54e0c6096?q=80&w=2000&auto=format&fit=crop" alt="Dermapen">
-        <div class="svc-img-overlay"></div>
-      </div>
-      <div class="svc-info-col">
-        <h3 class="svc-title">Dermapen + Exosomas / PRP</h3>
-        <p class="svc-desc">Microneedling con Plasma Rico en Plaquetas o Exosomas para regeneración máxima.</p>
-        <a href="#contacto" class="btn" onclick="preselect('Dermapen')">Agendar</a>
-      </div>
-    </article>
+        <article class="svc-card"
+                 data-title="Sueroterapia Ortomolecular"
+                 data-desc="Terapia intravenosa con enfoque ortomolecular (según valoración). Se define objetivo, composición y protocolo de seguridad antes de aplicar. Ideal para soporte general, energía y recuperación según indicación.">
+          <img class="svc-img" src="sueroterapia-ortomolecular.jpg" alt="Sueroterapia ortomolecular">
+          <div class="svc-body">
+            <h3 class="svc-title">Sueroterapia Ortomolecular</h3>
+            <p class="svc-text">Soporte integral según objetivos y valoración profesional.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Sueroterapia%20Ortomolecular%20(Est%C3%A9tica%20Avanzada)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
 
-    <article class="svc-card">
-      <div class="svc-img-col">
-        <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=2000&auto=format&fit=crop" alt="Mesoterapia">
-        <div class="svc-img-overlay"></div>
-      </div>
-      <div class="svc-info-col">
-        <h3 class="svc-title">Mesoterapia (Manual o Pistola)</h3>
-        <p class="svc-desc">Microinyecciones de vitaminas y activos directos en la piel.</p>
-        <a href="#contacto" class="btn" onclick="preselect('Mesoterapia')">Agendar</a>
-      </div>
-    </article>
-  </div>
+        <!-- MEDICINA ESTÉTICA -->
+        <article class="svc-card"
+                 data-title="Toxina Botulínica (Botox)"
+                 data-desc="Tratamiento para suavizar líneas de expresión y mejorar apariencia de arrugas dinámicas. Zonas, unidades y plan se definen en consulta.">
+          <!-- Si no tienes imagen exacta, deja este nombre y súbela luego -->
+          <img class="svc-img" src="med-botox.jpg" alt="Toxina botulínica">
+          <div class="svc-body">
+            <h3 class="svc-title">Toxina Botulínica</h3>
+            <p class="svc-text">Suaviza líneas de expresión con plan por zonas según evaluación.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Toxina%20Botul%C3%ADnica%20(Est%C3%A9tica%20Avanzada)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
 
-  <div class="cat-header" id="corporal"><h2>Corporal Específico</h2></div>
-  <div class="services-stack">
-    
-    <article class="svc-card">
-      <div class="svc-img-col">
-        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2000&auto=format&fit=crop" alt="Reductor">
-        <div class="svc-img-overlay"></div>
-      </div>
-      <div class="svc-info-col">
-        <h3 class="svc-title">Masaje Reductor / Moldeo</h3>
-        <p class="svc-desc">Técnicas manuales y maderoterapia para reducir medidas y definir cintura.</p>
-        <a href="#contacto" class="btn" onclick="preselect('Masaje Reductor')">Agendar</a>
-      </div>
-    </article>
+        <article class="svc-card"
+                 data-title="Ácido Hialurónico"
+                 data-desc="Procedimiento para hidratación profunda, soporte de volumen o armonización según objetivo. Se define por zonas y técnica luego de una valoración.">
+          <img class="svc-img" src="med-acido-hialuronico.jpg" alt="Ácido hialurónico">
+          <div class="svc-body">
+            <h3 class="svc-title">Ácido Hialurónico</h3>
+            <p class="svc-text">Hidratación y soporte por zonas para resultados armónicos y elegantes.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20%C3%81cido%20Hialur%C3%B3nico%20(Est%C3%A9tica%20Avanzada)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
 
-    <article class="svc-card">
-      <div class="svc-img-col">
-        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=2000&auto=format&fit=crop" alt="Hidrolipoclasia">
-        <div class="svc-img-overlay"></div>
-      </div>
-      <div class="svc-info-col">
-        <h3 class="svc-title">Hidrolipoclasia</h3>
-        <p class="svc-desc">Tratamiento de choque para eliminar grasa localizada difícil.</p>
-        <a href="#contacto" class="btn" onclick="preselect('Hidrolipoclasia')">Agendar</a>
-      </div>
-    </article>
+        <article class="svc-card"
+                 data-title="Bioestimuladores"
+                 data-desc="Inducción de colágeno orientada a mejorar firmeza y calidad de piel. Producto, zonas y plan se determinan en consulta.">
+          <img class="svc-img" src="med-bioestimuladores.jpg" alt="Bioestimuladores">
+          <div class="svc-body">
+            <h3 class="svc-title">Bioestimuladores</h3>
+            <p class="svc-text">Mejora de firmeza y calidad de piel con plan progresivo.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Bioestimuladores%20(Est%C3%A9tica%20Avanzada)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
 
-    <article class="svc-card">
-      <div class="svc-img-col">
-        <img src="https://images.unsplash.com/photo-1574672280602-95cb48d67272?q=80&w=2000&auto=format&fit=crop" alt="Drenaje">
-        <div class="svc-img-overlay"></div>
-      </div>
-      <div class="svc-info-col">
-        <h3 class="svc-title">Drenaje Linfático</h3>
-        <p class="svc-desc">Post-operatorios y retención de líquidos. Desinflama y elimina toxinas.</p>
-        <a href="#contacto" class="btn" onclick="preselect('Drenaje Linfático')">Agendar</a>
-      </div>
-    </article>
+        <article class="svc-card"
+                 data-title="Skinbooster"
+                 data-desc="Protocolo orientado a hidratación profunda y mejora de textura/elasticidad. Se indica según condición de piel y objetivos.">
+          <img class="svc-img" src="med-skinbooster.jpg" alt="Skinbooster">
+          <div class="svc-body">
+            <h3 class="svc-title">Skinbooster</h3>
+            <p class="svc-text">Hidratación profunda para una piel más tersa, fresca y luminosa.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Skinbooster%20(Est%C3%A9tica%20Avanzada)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
 
-    <article class="svc-card">
-      <div class="svc-img-col">
-        <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?q=80&w=2000&auto=format&fit=crop" alt="Terapeutico">
-        <div class="svc-img-overlay"></div>
-      </div>
-      <div class="svc-info-col">
-        <h3 class="svc-title">Masaje Terapéutico</h3>
-        <p class="svc-desc">Alivio de dolor de espalda y contracturas musculares severas.</p>
-        <a href="#contacto" class="btn" onclick="preselect('Masaje Terapéutico')">Agendar</a>
-      </div>
-    </article>
-    
-    <article class="svc-card">
-      <div class="svc-img-col">
-        <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=2000&auto=format&fit=crop" alt="Gluteos">
-        <div class="svc-img-overlay"></div>
-      </div>
-      <div class="svc-info-col">
-        <h3 class="svc-title">Levantamiento de Glúteos</h3>
-        <p class="svc-desc">Protocolo de maderoterapia y aparatología para realzar la zona glútea.</p>
-        <a href="#contacto" class="btn" onclick="preselect('Glúteos')">Agendar</a>
-      </div>
-    </article>
+        <article class="svc-card"
+                 data-title="Endolifting"
+                 data-desc="Procedimiento de tensado/soporte avanzado (según valoración). Se define indicación, zonas y plan en consulta.">
+          <img class="svc-img" src="med-endolifting.jpg" alt="Endolifting">
+          <div class="svc-body">
+            <h3 class="svc-title">Endolifting</h3>
+            <p class="svc-text">Soporte avanzado para firmeza según indicación y valoración.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Endolifting%20(Est%C3%A9tica%20Avanzada)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
 
-  </div>
+        <article class="svc-card"
+                 data-title="Armonización Facial"
+                 data-desc="Plan de armonización basado en proporciones, rasgos y objetivo estético. Se define tratamiento, zonas y tiempos según evaluación.">
+          <img class="svc-img" src="med-armonizacion.jpg" alt="Armonización facial">
+          <div class="svc-body">
+            <h3 class="svc-title">Armonización Facial</h3>
+            <p class="svc-text">Plan personalizado para realzar rasgos con equilibrio y naturalidad.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Armonizaci%C3%B3n%20Facial%20(Est%C3%A9tica%20Avanzada)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
 
+        <article class="svc-card"
+                 data-title="Hilos Tensores"
+                 data-desc="Procedimiento de soporte y reposicionamiento del tejido (según valoración). Zonas e indicación se confirman en consulta.">
+          <img class="svc-img" src="med-hilos-tensores.jpg" alt="Hilos tensores">
+          <div class="svc-body">
+            <h3 class="svc-title">Hilos Tensores</h3>
+            <p class="svc-text">Soporte y efecto tensor según indicación, zonas y evaluación.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Hilos%20Tensores%20(Est%C3%A9tica%20Avanzada)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
 
-  <section id="contacto" class="contact-section">
-    <div class="contact-head">
-      <h2>Agendar Cita</h2>
-      <p>Selecciona tu servicio y escríbenos por WhatsApp.</p>
-    </div>
-    <form onsubmit="sendToWhatsApp(event)">
-      <div class="form-grid">
-        <div class="full-width"><input type="text" id="nombre" class="form-input" placeholder="Nombre completo" required></div>
-        <div class="full-width"><input type="tel" id="telefono" class="form-input" placeholder="Teléfono" required></div>
-        <div class="full-width">
-          <select id="servicio" class="form-select" required>
-            <option value="" disabled selected>Servicio...</option>
-            <option>Plasma Fibroblast</option>
-            <option>Botox / Hialurónico</option>
-            <option>Hilos Tensores</option>
-            <option>HIFU / Aparatología</option>
-            <option>Faciales / Acné</option>
-            <option>Dermapen / Exosomas</option>
-            <option>Masaje Reductor / Moldeo</option>
-            <option>Drenaje Linfático</option>
-            <option>Masaje Terapéutico</option>
-          </select>
-        </div>
-        <div class="full-width"><textarea id="mensaje" class="form-textarea" placeholder="¿Dudas o fecha preferida?"></textarea></div>
-        <div class="full-width"><button type="submit" class="btn-whatsapp">Enviar WhatsApp</button></div>
-      </div>
-    </form>
+        <article class="svc-card"
+                 data-title="Hilos Foxy Eyes"
+                 data-desc="Procedimiento para soporte y elevación del párpado/cola de ceja (según valoración). Zonas, técnica e indicación se confirman en consulta.">
+          <img class="svc-img" src="med-hilos-foxy.jpg" alt="Hilos foxy eyes">
+          <div class="svc-body">
+            <h3 class="svc-title">Hilos Foxy Eyes</h3>
+            <p class="svc-text">Soporte y efecto de elevación de la mirada según indicación.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Hilos%20Foxy%20Eyes%20(Est%C3%A9tica%20Avanzada)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- APARATOLOGÍA -->
+        <article class="svc-card"
+                 data-title="HIFU"
+                 data-desc="Tecnología de soporte para tensado y mejora de firmeza (según valoración). Indicación y zonas se definen en consulta.">
+          <img class="svc-img" src="ap-hifu.jpg" alt="HIFU">
+          <div class="svc-body">
+            <h3 class="svc-title">HIFU</h3>
+            <p class="svc-text">Soporte de firmeza y contorno con tecnología indicada por zonas.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20HIFU%20(Est%C3%A9tica%20Avanzada)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="svc-card"
+                 data-title="Tecarterapia"
+                 data-desc="Aparatología de soporte para firmeza, drenaje, recuperación y tratamientos reductivos (según protocolo). Se indica por zona y objetivo.">
+          <img class="svc-img" src="ap-tecarterapia.jpg" alt="Tecarterapia">
+          <div class="svc-body">
+            <h3 class="svc-title">Tecarterapia</h3>
+            <p class="svc-text">Soporte de recuperación, drenaje y trabajo reductivo según objetivo.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Tecarterapia%20(Est%C3%A9tica%20Avanzada)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="svc-card"
+                 data-title="Radiofrecuencia Fraccionada"
+                 data-desc="Tecnología para mejorar apariencia de textura y calidad de piel, estimulando colágeno (según valoración). Se define plan por zonas.">
+          <img class="svc-img" src="ap-rf-fraccionada.jpg" alt="Radiofrecuencia fraccionada">
+          <div class="svc-body">
+            <h3 class="svc-title">Radiofrecuencia Fraccionada</h3>
+            <p class="svc-text">Mejora textura y firmeza con soporte de colágeno.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Radiofrecuencia%20Fraccionada%20(Est%C3%A9tica%20Avanzada)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="svc-card"
+                 data-title="Morpheus"
+                 data-desc="Soporte avanzado para textura y firmeza (según valoración). Indicación, número de sesiones y zonas se confirman en consulta.">
+          <img class="svc-img" src="ap-morpheus.jpg" alt="Morpheus">
+          <div class="svc-body">
+            <h3 class="svc-title">Morpheus</h3>
+            <p class="svc-text">Tratamiento avanzado para textura y firmeza, según valoración.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Morpheus%20(Est%C3%A9tica%20Avanzada)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="svc-card"
+                 data-title="Láser Diodo"
+                 data-desc="Depilación láser para reducción progresiva del vello no deseado. Se define por zonas, fototipo y plan de sesiones en valoración.">
+          <img class="svc-img" src="ap-laser-diodo.jpg" alt="Láser diodo">
+          <div class="svc-body">
+            <h3 class="svc-title">Láser Diodo</h3>
+            <p class="svc-text">Reducción progresiva del vello con plan por zonas.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20L%C3%A1ser%20Diodo%20(Est%C3%A9tica%20Avanzada)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="svc-card"
+                 data-title="Láser Fraccionado"
+                 data-desc="Tecnología para rejuvenecimiento y mejora de textura (según valoración). Se define protocolo, tiempos y número de sesiones por objetivo.">
+          <img class="svc-img" src="ap-laser-fraccionado.jpg" alt="Láser fraccionado">
+          <div class="svc-body">
+            <h3 class="svc-title">Láser Fraccionado</h3>
+            <p class="svc-text">Rejuvenecimiento y mejora de textura con protocolo por objetivo.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20L%C3%A1ser%20Fraccionado%20(Est%C3%A9tica%20Avanzada)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="svc-card"
+                 data-title="Láser Nd:YAG"
+                 data-desc="Procedimiento láser (según valoración) para indicaciones específicas. Se confirma aptitud, zonas y plan en consulta.">
+          <img class="svc-img" src="ap-laser-ndyag.jpg" alt="Láser Nd:YAG">
+          <div class="svc-body">
+            <h3 class="svc-title">Láser Nd:YAG</h3>
+            <p class="svc-text">Tecnología láser indicada por zonas y objetivos (según valoración).</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20L%C3%A1ser%20Nd%3AYAG%20(Est%C3%A9tica%20Avanzada)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="svc-card"
+                 data-title="Mesoterapia con Pistola"
+                 data-desc="Aplicación asistida para objetivos estéticos específicos (según valoración). También puede utilizarse como soporte en protocolos capilares, de acuerdo a indicación.">
+          <img class="svc-img" src="ap-mesoterapia-pistola.jpg" alt="Mesoterapia con pistola">
+          <div class="svc-body">
+            <h3 class="svc-title">Mesoterapia con Pistola</h3>
+            <p class="svc-text">Aplicación asistida de activos según objetivo y valoración.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Mesoterapia%20con%20Pistola%20(Est%C3%A9tica%20Avanzada)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
+
+      </div><!-- grid -->
+    </div><!-- box -->
   </section>
 
+  <!-- ===================================== -->
+  <!--  2) MASAJES TERAPÉUTICOS (TODO CUERPO) -->
+  <!-- ===================================== -->
+  <section class="section" id="masajes-terapeuticos">
+    <div class="section-box">
+      <div class="section-top">
+        <h2 class="section-title">Masajes Terapéuticos</h2>
+        <div class="section-label">Reducción · Moldeo · Drenaje · Bienestar</div>
+      </div>
+      <p class="section-desc">
+        Masajes para alivio muscular, drenaje y moldeamiento corporal. Seleccionamos el enfoque según tu necesidad:
+        relajación, descarga, postoperatorio, retención de líquidos o objetivos de reducción.
+      </p>
+
+      <div class="card-grid">
+
+        <article class="svc-card"
+                 data-title="Hidrolipoclásia"
+                 data-desc="Tratamiento corporal orientado a reducción de medidas (según evaluación). Se define por zonas, plan y sesiones recomendadas.">
+          <img class="svc-img" src="hidrolipoclacia.jpg" alt="Hidrolipoclásia">
+          <div class="svc-body">
+            <h3 class="svc-title">Hidrolipoclásia</h3>
+            <p class="svc-text">Enfoque corporal para reducción de medidas según valoración y plan.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Hidrolipocl%C3%A1sia%20(Masajes%20Terap%C3%A9uticos)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="svc-card"
+                 data-title="Reducción de Talla (con Aparatología)"
+                 data-desc="Plan corporal para reducción de talla con apoyo de aparatología y protocolos manuales. Se define por zonas y objetivos.">
+          <img class="svc-img" src="reduccion-talla.jpg" alt="Reducción de talla">
+          <div class="svc-body">
+            <h3 class="svc-title">Reducción de Talla</h3>
+            <p class="svc-text">Reducción y contorno con protocolo integral y apoyo tecnológico.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Reducci%C3%B3n%20de%20Talla%20(Masajes%20Terap%C3%A9uticos)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="svc-card"
+                 data-title="Moldeamiento Corporal"
+                 data-desc="Protocolo de moldeo y definición para mejorar contorno corporal. Se trabaja según objetivo y zonas.">
+          <img class="svc-img" src="moldeamiento-corporal.jpg" alt="Moldeamiento corporal">
+          <div class="svc-body">
+            <h3 class="svc-title">Moldeamiento Corporal</h3>
+            <p class="svc-text">Enfocado en contorno, definición y aspecto más firme de la figura.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Moldeamiento%20Corporal%20(Masajes%20Terap%C3%A9uticos)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="svc-card"
+                 data-title="Levantamiento de Glúteos (Moldeo)"
+                 data-desc="Protocolo de moldeo enfocado en glúteos con apoyo manual y, si aplica, aparatología/bioestimuladores según valoración.">
+          <img class="svc-img" src="levantamiento-gluteos.jpg" alt="Levantamiento de glúteos">
+          <div class="svc-body">
+            <h3 class="svc-title">Levantamiento de Glúteos</h3>
+            <p class="svc-text">Moldeamiento enfocado en glúteos para mejorar forma y contorno.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Levantamiento%20de%20Gl%C3%BAteos%20(Masajes%20Terap%C3%A9uticos)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="svc-card"
+                 data-title="Drenaje Linfático"
+                 data-desc="Terapia manual para apoyar la circulación linfática y ayudar con retención de líquidos. Recomendado en postoperatorio (según indicación) o cuando hay sensación de pesadez e inflamación.">
+          <img class="svc-img" src="drenaje-linfatico.jpg" alt="Drenaje linfático">
+          <div class="svc-body">
+            <h3 class="svc-title">Drenaje Linfático</h3>
+            <p class="svc-text">Ideal para retención de líquidos, edema y recuperación (según indicación).</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Drenaje%20Linf%C3%A1tico%20(Masajes%20Terap%C3%A9uticos)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="svc-card"
+                 data-title="Tecarterapia (Capacitiva y Reductiva)"
+                 data-desc="Soporte con aparatología para drenaje, recuperación muscular y protocolos reductivos. Indicación por zonas y objetivos, según valoración.">
+          <img class="svc-img" src="tecarterapia-reductiva.jpg" alt="Tecarterapia capacitiva y reductiva">
+          <div class="svc-body">
+            <h3 class="svc-title">Tecarterapia (Capacitiva y Reductiva)</h3>
+            <p class="svc-text">Soporte de drenaje y reducción con enfoque por zonas y objetivos.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Tecarterapia%20Capacitiva%20y%20Reductiva%20(Masajes%20Terap%C3%A9uticos)."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="svc-card"
+                 data-title="Masaje Corporal Terapéutico"
+                 data-desc="Masaje con enfoque en alivio de tensión muscular, contracturas y descanso. Se ajusta la presión según necesidad y tolerancia.">
+          <img class="svc-img" src="masaje-corporal.jpg" alt="Masaje corporal terapéutico">
+          <div class="svc-body">
+            <h3 class="svc-title">Masaje Corporal Terapéutico</h3>
+            <p class="svc-text">Alivio de tensión y contracturas con enfoque terapéutico.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20agendar%20un%20Masaje%20Corporal%20Terap%C3%A9utico."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="svc-card"
+                 data-title="Masaje Relajante"
+                 data-desc="Masaje de relajación general para reducir estrés, mejorar descanso y sensación de bienestar.">
+          <img class="svc-img" src="masaje-relajante.jpg" alt="Masaje relajante">
+          <div class="svc-body">
+            <h3 class="svc-title">Masaje Relajante</h3>
+            <p class="svc-text">Relajación profunda para soltar tensión y mejorar el descanso.</p>
+            <div class="svc-actions">
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20agendar%20un%20Masaje%20Relajante."
+                 target="_blank" rel="noopener">Contactar</a>
+              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+            </div>
+          </div>
+        </article>
+
+      </div><!-- grid -->
+    </div><!-- box -->
+  </section>
+
+  <!-- =============================== -->
+  <!-- FORMULARIO SIMPLE -> WHATSAPP   -->
+  <!-- =============================== -->
+  <section class="contact-wrap" id="contacto">
+    <div class="contact-card">
+      <div class="contact-grid">
+        <div>
+          <h3 class="contact-title">Solicitar información por WhatsApp</h3>
+          <p class="contact-text">
+            Completa este formulario y te enviará un mensaje listo a nuestro WhatsApp.
+            Te responderemos con disponibilidad, indicaciones y recomendaciones según tu caso.
+          </p>
+          <p class="help" style="margin-top:10px;">
+            📍 Parque Lefevre · Plaza Royal Park &nbsp;·&nbsp; 📲 WhatsApp: <strong>6474-6168</strong>
+          </p>
+        </div>
+
+        <form class="form" onsubmit="return sendToWhatsApp(event)">
+          <div class="field">
+            <label class="label" for="c-nombre">Nombre</label>
+            <input class="input" id="c-nombre" name="nombre" type="text" placeholder="Tu nombre" required>
+          </div>
+
+          <div class="field">
+            <label class="label" for="c-tel">Teléfono</label>
+            <input class="input" id="c-tel" name="tel" type="tel" placeholder="Ej: 6xxx-xxxx" required>
+          </div>
+
+          <div class="field">
+            <label class="label" for="c-servicio">Servicio de interés</label>
+            <select class="select" id="c-servicio" name="servicio" required>
+              <option value="" selected disabled>Selecciona un servicio…</option>
+
+              <optgroup label="Estética Avanzada">
+                <option>Limpieza Facial Esencial</option>
+                <option>Limpieza Facial Profunda</option>
+                <option>Hidrafacial</option>
+                <option>Protocolo Antiacné</option>
+                <option>Tratamientos Despigmentantes</option>
+                <option>Peeling Profesional</option>
+                <option>Mesoterapia Inducida</option>
+                <option>Exosomas</option>
+                <option>PRP</option>
+                <option>Hollywood Peeling</option>
+                <option>Fibroblast (Acrocordones y Verrugas)</option>
+                <option>Eliminación de Arañitas</option>
+                <option>Sueroterapia Ortomolecular</option>
+                <option>Toxina Botulínica</option>
+                <option>Ácido Hialurónico</option>
+                <option>Bioestimuladores</option>
+                <option>Skinbooster</option>
+                <option>Endolifting</option>
+                <option>Armonización Facial</option>
+                <option>Hilos Tensores</option>
+                <option>Hilos Foxy Eyes</option>
+                <option>HIFU</option>
+                <option>Tecarterapia</option>
+                <option>Radiofrecuencia Fraccionada</option>
+                <option>Morpheus</option>
+                <option>Láser Diodo</option>
+                <option>Láser Fraccionado</option>
+                <option>Láser Nd:YAG</option>
+                <option>Mesoterapia con Pistola</option>
+              </optgroup>
+
+              <optgroup label="Masajes Terapéuticos">
+                <option>Hidrolipoclásia</option>
+                <option>Reducción de Talla</option>
+                <option>Moldeamiento Corporal</option>
+                <option>Levantamiento de Glúteos</option>
+                <option>Drenaje Linfático</option>
+                <option>Tecarterapia (Capacitiva y Reductiva)</option>
+                <option>Masaje Corporal Terapéutico</option>
+                <option>Masaje Relajante</option>
+              </optgroup>
+
+              <option>Otro (Especificar en mensaje)</option>
+            </select>
+            <div class="help">Si no ves el servicio exacto, elige “Otro” y escríbelo abajo.</div>
+          </div>
+
+          <div class="field">
+            <label class="label" for="c-msg">Mensaje (opcional)</label>
+            <textarea class="textarea" id="c-msg" name="msg" placeholder="Ej: Quiero valoración, zona a tratar, fecha tentativa…"></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn btn-dark" type="reset">Limpiar</button>
+            <button class="btn btn-wa" type="submit">Enviar por WhatsApp</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTÓN HOME -->
+  <div class="home-cta">
+    <a class="btn-home" href="/">
+      ⬅ Volver al Home de Figura Rostro KG
+    </a>
+  </div>
+
+</div><!-- /container -->
+
+<!-- MODAL (único) -->
+<div class="modal" id="svcModal" aria-hidden="true" role="dialog" aria-label="Detalle del servicio">
+  <div class="modal-card">
+    <div class="modal-head">
+      <h3 class="modal-title" id="mTitle">Detalle</h3>
+      <button class="modal-close" type="button" onclick="closeModal()">Cerrar ✕</button>
+    </div>
+    <div class="modal-body" id="mBody"></div>
+    <div class="modal-foot">
+      <a class="btn btn-wa" id="mWa" href="#" target="_blank" rel="noopener">Contactar por WhatsApp</a>
+      <button class="btn btn-dark" type="button" onclick="closeModal()">Listo</button>
+    </div>
+  </div>
 </div>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-block"><strong>Figura Rostro KG</strong><a href="#">Inicio</a></div>
-    <div class="footer-block"><strong>Contacto</strong><a href="https://wa.me/50764746168">WhatsApp: 6474-6168</a></div>
-    <div class="footer-block"><strong>Ubicación</strong><a href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes">Royal Park, P. Lefevre</a></div>
+    <div class="footer-block">
+      <strong>Figura Rostro KG</strong>
+      Estética integral en Parque Lefevre, Plaza Royal Park.
+    </div>
+
+    <div class="footer-block">
+      <strong>Menú</strong>
+      <a href="#estetica-avanzada">Estética Avanzada</a> ·
+      <a href="#masajes-terapeuticos">Masajes Terapéuticos</a> ·
+      <a href="#contacto">Contacto</a>
+    </div>
+
+    <div class="footer-block">
+      <strong>WhatsApp</strong>
+      <a href="https://wa.me/50764746168" target="_blank" rel="noopener">+507 6474-6168</a>
+    </div>
+
+    <div class="footer-block">
+      <strong>Cómo llegar</strong>
+      <a href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noopener">Waze</a> ·
+      <a href="https://maps.google.com/?q=Royal+Park+Ernesto+T+Lefevre+Panama" target="_blank" rel="noopener">Google Maps</a>
+    </div>
   </div>
-  <div class="footer-bottom">© 2026 Figura Rostro KG</div>
+
+  <div class="footer-bottom">
+    © <script>document.write(new Date().getFullYear())</script> Figura Rostro KG · Todos los derechos reservados
+  </div>
 </footer>
 
+<!-- BOTONES FLOTANTES: WhatsApp + Waze -->
+<div class="fab-wrap" aria-label="Accesos rápidos">
+  <a class="fab fab-wa" href="https://wa.me/50764746168" target="_blank" rel="noopener" aria-label="Chatear por WhatsApp">
+    <svg viewBox="0 0 24 24">
+      <path d="M12 2a10 10 0 0 0-8.94 14.5L2 22l5.7-1.5A10 10 0 1 0 12 2zm5.5 14.1c-.24.68-1.4 1.3-1.96 1.34-.5.03-1.14.05-1.84-.12-.42-.1-.97-.31-1.67-.61-2.94-1.27-4.86-4.2-5.01-4.4-.15-.2-1.2-1.6-1.2-3.06 0-1.45.76-2.16 1.03-2.45.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.24.59.82 2.05.9 2.2.07.15.12.33.01.53-.1.2-.15.33-.3.51-.15.18-.31.4-.44.54-.15.15-.31.32-.13.62.18.3.8 1.3 1.71 2.1 1.18 1.05 2.17 1.37 2.47 1.52.3.15.48.13.66-.08.18-.2.76-.89.96-1.2.2-.3.41-.26.67-.15.26.1 1.64.77 1.92.91.29.15.48.22.55.34.07.12.07.7-.17 1.38z"/>
+    </svg>
+  </a>
+
+  <a class="fab fab-waze" href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noopener" aria-label="Abrir Waze">
+    <svg viewBox="0 0 24 24">
+      <path d="M12 2c5.5 0 10 3.9 10 8.7 0 3.9-3 7.2-7.2 8.2-.5.1-.7.4-.9.8-.5 1-1.4 2.1-2.9 2.1-1.6 0-2.4-1.1-2.9-2.1-.2-.4-.4-.7-.9-.8C5 17.9 2 14.6 2 10.7 2 5.9 6.5 2 12 2zm-6 9a1 1 0 110-2 1 1 0 010 2zm5 0a1 1 0 110-2 1 1 0 010 2zm5 0a1 1 0 110-2 1 1 0 010 2z"/>
+    </svg>
+  </a>
+</div>
+
+<!-- PURECHAT (se mantiene igual) -->
+<script type='text/javascript' data-cfasync='false'>
+window.purechatApi={l:[],t:[],on:function(){this.l.push(arguments);}};
+(function(){
+  var done=false;
+  var script=document.createElement('script');
+  script.async=true;
+  script.type='text/javascript';
+  script.src='https://app.purechat.com/VisitorWidget/WidgetScript';
+  document.getElementsByTagName('HEAD').item(0).appendChild(script);
+  script.onreadystatechange=script.onload=function(e){
+    if(!done && (!this.readyState||this.readyState=='loaded'||this.readyState=='complete')){
+      new PCWidget({c:'39cf325c-2286-4b58-b2af-9c647e257085',f:true});
+      done=true;
+    }
+  };
+})();
+</script>
+
 <script>
-  function preselect(val){
-    const s = document.getElementById('servicio');
-    for(let i=0;i<s.options.length;i++){ if(s.options[i].text.includes(val)){ s.selectedIndex = i; break; } }
+  const WA_NUMBER = "50764746168";
+
+  function openModal(btn){
+    const card = btn.closest(".svc-card");
+    const title = card.getAttribute("data-title") || "Detalle del servicio";
+    const desc = card.getAttribute("data-desc") || "";
+    const modal = document.getElementById("svcModal");
+    const mTitle = document.getElementById("mTitle");
+    const mBody = document.getElementById("mBody");
+    const mWa = document.getElementById("mWa");
+
+    mTitle.textContent = title;
+    mBody.textContent = desc;
+
+    const msg = `Hola, quisiera información sobre ${title}.`;
+    mWa.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden","false");
   }
+
+  function closeModal(){
+    const modal = document.getElementById("svcModal");
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden","true");
+  }
+
+  // Cierra modal al clicar fuera
+  document.addEventListener("click", (e)=>{
+    const modal = document.getElementById("svcModal");
+    if(!modal.classList.contains("open")) return;
+    if(e.target === modal) closeModal();
+  });
+
+  // Formulario -> WhatsApp
   function sendToWhatsApp(e){
     e.preventDefault();
-    const n = document.getElementById('nombre').value;
-    const t = document.getElementById('telefono').value;
-    const s = document.getElementById('servicio').value;
-    const m = document.getElementById('mensaje').value;
-    window.open(`https://wa.me/50764746168?text=Hola,%20soy%20${n}.%20Tel:%20${t}.%20Interés:%20${s}.%20${m}`, '_blank');
+    const nombre = document.getElementById("c-nombre").value.trim();
+    const tel = document.getElementById("c-tel").value.trim();
+    const servicio = document.getElementById("c-servicio").value.trim();
+    const msg = document.getElementById("c-msg").value.trim();
+
+    const texto =
+`Hola, soy ${nombre}.
+Teléfono: ${tel}
+Servicio de interés: ${servicio}
+${msg ? "Mensaje: " + msg : ""}
+
+¿Me brindan disponibilidad y recomendaciones, por favor?`;
+
+    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(texto)}`, "_blank");
+    return false;
   }
 </script>
 
