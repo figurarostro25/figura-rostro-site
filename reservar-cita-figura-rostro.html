@@ -121,7 +121,7 @@
             border-radius: 5px;
             color: #fff;
             font-size: 1rem;
-            box-sizing: border-box; /* Importante para padding */
+            box-sizing: border-box;
         }
 
         input:focus, select:focus, textarea:focus {
@@ -155,24 +155,12 @@
         #yappy-instructions {
             display: none; /* Se activa con JS */
             margin-top: 15px;
-            background-color: rgba(212, 175, 55, 0.1); /* Dorado transparente */
+            background-color: rgba(212, 175, 55, 0.1); /* Fondo sutil dorado */
             border: 1px solid var(--accent-color);
             padding: 15px;
             border-radius: 5px;
-            font-size: 0.9rem;
-        }
-        
-        #yappy-instructions strong {
-            color: var(--accent-color);
-        }
-
-        #yappy-instructions ol {
-            margin: 10px 0 10px 20px;
-            padding: 0;
-        }
-        
-        #yappy-instructions li {
-            margin-bottom: 5px;
+            font-size: 0.95rem;
+            color: #fff;
         }
 
         /* Botón Enviar */
@@ -191,7 +179,6 @@
         }
 
         button.btn-submit:hover {
-            background-color: #b39ddb; /* Un tono diferente al hover */
             background-color: #c19b2e;
             transform: translateY(-2px);
         }
@@ -314,14 +301,10 @@
                 </div>
 
                 <div id="yappy-instructions">
-                    <p style="margin-top:0;"><strong>Instrucciones para reservar:</strong></p>
-                    <ol>
-                        <li>Entra a Yappy y ve a la sección <strong>Directorio</strong>.</li>
-                        <li>Busca: <strong>Figura Rostro KG</strong>.</li>
-                        <li>Realiza el abono de <strong>$5.95</strong> enviando el pago por esa vía.</li>
-                    </ol>
-                    <p style="margin-bottom:0; font-size:0.85rem; font-style:italic;">
-                        ⚠️ Una vez recibido el pago, te contactaremos al WhatsApp para confirmar o ajustar la hora de tu cita.
+                    <p style="margin: 0;">
+                        Búscanos en el directorio como <strong>Figura Rostro KG</strong> y reserva con <strong>$5.95</strong> enviando el pago por esta vía. 
+                        <br><br>
+                        Una vez realizado el pago estaremos contactándote para confirmar o ajustar tu cita de valoración.
                     </p>
                 </div>
             </div>
@@ -366,9 +349,6 @@
                 .then(() => {
                     btn.textContent = '¡Enviado!';
                     alert('¡Solicitud enviada con éxito! Nos pondremos en contacto contigo pronto.');
-                    // Opcional: Resetear formulario
-                    // document.getElementById('contact-form').reset();
-                    // toggleYappy(false); 
                 }, (err) => {
                     btn.textContent = 'Confirmar Solicitud';
                     btn.disabled = false;
