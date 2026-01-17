@@ -11,7 +11,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -39,85 +39,7 @@
     p{line-height: 1.6; color: #555; font-size: 1rem;}
     img { max-width: 100%; display: block; }
 
-    /* BOTONES */
-    .btn-primary{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--brand);
-      color: #fff;
-      border: 0;
-      padding: 16px 32px;
-      border-radius: 50px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-size: 14px;
-      box-shadow: 0 4px 15px rgba(91, 37, 128, 0.3);
-      cursor: pointer;
-      gap: 10px;
-    }
-    .btn-primary:hover{
-      background: var(--gold);
-      color: #000;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
-    }
-    
-    .btn-ig {
-      background: var(--ig-gradient); 
-      color: white;
-      border: 0;
-      padding: 16px 32px;
-      border-radius: 50px;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 4px 15px rgba(220, 39, 67, 0.3);
-    }
-    .btn-ig:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(220, 39, 67, 0.5);
-    }
-
-    /* BARRA CHIRIQUÍ */
-    .chiriqui-bar {
-      background: #0f0518;
-      color: #fff;
-      text-align: center;
-      padding: 12px 20px;
-      font-weight: 500;
-      font-size: 14px;
-      position: relative;
-      z-index: 101;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 15px;
-      flex-wrap: wrap;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-    .chiriqui-badge {
-      background: var(--chiriqui-red);
-      color: white;
-      padding: 4px 10px;
-      border-radius: 4px;
-      font-weight: 700;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .chiriqui-link {
-      color: var(--gold);
-      text-decoration: underline;
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    /* HEADER OSCURO */
+    /* --- ESTILOS DEL MENÚ (Copiados y adaptados de tu Home) --- */
     header{
       position:sticky;
       top:0;
@@ -126,8 +48,15 @@
       border-bottom: 1px solid rgba(255,255,255,0.1); 
       box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
-    .header-inner{max-width:1200px;margin:auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
-    
+    .header-inner{
+      max-width:1200px;
+      margin:auto;
+      padding:12px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      position: relative;
+    }
     .brand img {
       height: 55px; 
       width: auto; 
@@ -136,26 +65,96 @@
     }
     .brand:hover img { transform: scale(1.05); }
 
-    nav{display:flex;gap:30px;align-items:center}
-    nav a{
-      color: rgba(255,255,255,0.9);
-      font-weight:500; 
-      font-size: 15px; 
-      position: relative;
+    /* Navegación y Submenús */
+    .site-nav { display: flex; align-items: center; }
+    .site-nav .menu { display: flex; gap: 24px; list-style: none; margin: 0; padding: 0; }
+    .site-nav .menu > li { position: relative; }
+    .site-nav a { 
+        color: rgba(255,255,255,0.9); 
+        font-weight: 500; 
+        font-size: 15px; 
+        text-decoration: none;
     }
-    nav a:hover{ color: var(--gold); }
+    .site-nav a:hover { color: var(--gold); }
+
+    .submenu {
+      position: absolute;
+      top: 100%; left: 0;
+      min-width: 220px;
+      background: #1a0925; /* Fondo oscuro sólido para el submenú */
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      padding: 8px;
+      list-style: none;
+      margin: 10px 0 0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      display: none; /* Oculto por defecto */
+      z-index: 60;
+    }
+    /* Mostrar submenú al pasar el mouse (hover) */
+    .has-sub:hover > .submenu, .has-sub:focus-within > .submenu { display: block; }
     
+    .submenu li { display: block; width: 100%; }
+    .submenu a { 
+        display: block; 
+        padding: 10px 12px; 
+        border-radius: 10px; 
+        color: rgba(255,255,255,0.85);
+        font-size: 14px;
+    }
+    .submenu a:hover { 
+        background: rgba(255,255,255,0.1); 
+        color: var(--gold); 
+    }
+
+    /* Botón del Header */
+    .btn-primary.header-btn {
+        margin-left: 20px;
+    }
+
+    /* --- ESTILOS GENERALES (Resto de la página) --- */
+    .btn-primary{
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--brand); color: #fff; border: 0;
+      padding: 16px 32px; border-radius: 50px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1px; font-size: 14px;
+      box-shadow: 0 4px 15px rgba(91, 37, 128, 0.3); cursor: pointer; gap: 10px;
+    }
+    .btn-primary:hover{
+      background: var(--gold); color: #000;
+      transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    }
+    
+    .btn-ig {
+      background: var(--ig-gradient); color: white; border: 0;
+      padding: 16px 32px; border-radius: 50px; font-weight: 600;
+      display: inline-flex; align-items: center; gap: 8px;
+      box-shadow: 0 4px 15px rgba(220, 39, 67, 0.3);
+    }
+    .btn-ig:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(220, 39, 67, 0.5); }
+
+    /* BARRA CHIRIQUÍ */
+    .chiriqui-bar {
+      background: #0f0518; color: #fff; text-align: center; padding: 12px 20px;
+      font-weight: 500; font-size: 14px; position: relative; z-index: 101;
+      display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .chiriqui-badge {
+      background: var(--chiriqui-red); color: white; padding: 4px 10px;
+      border-radius: 4px; font-weight: 700; font-size: 11px;
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+    .chiriqui-link {
+      color: var(--gold); text-decoration: underline; font-weight: 700;
+      display: inline-flex; align-items: center; gap: 5px;
+    }
+
     /* HERO SECTION */
     .hero{
-      position:relative;
-      height: 85vh;
-      min-height: 550px;
-      display:flex;
-      align-items:center;
-      justify-content: center;
-      text-align:center;
-      color:#fff;
-      background:url('banner-fibroblast.jpg') center/cover no-repeat;
+      position:relative; height: 85vh; min-height: 550px;
+      display:flex; align-items:center; justify-content: center; text-align:center;
+      color:#fff; background:url('banner-fibroblast.jpg') center/cover no-repeat;
       background-color: #222;
     }
     .hero::before{
@@ -164,90 +163,60 @@
     }
     .hero .inner{position:relative;z-index:2;padding:20px; max-width: 800px;}
     .hero h1{
-      font-size:clamp(40px,7vw,65px);
-      margin:0 0 20px;
+      font-size:clamp(40px,7vw,65px); margin:0 0 20px;
       text-shadow: 0 2px 10px rgba(0,0,0,0.5);
     }
     .hero p{
-      color: rgba(255,255,255,0.95);
-      font-size: 1.25rem;
-      margin: 0 auto 35px;
-      max-width: 650px;
-      font-weight: 300;
+      color: rgba(255,255,255,0.95); font-size: 1.25rem;
+      margin: 0 auto 35px; max-width: 650px; font-weight: 300;
     }
 
-    /* BARRA DE DATOS CLAVE */
+    /* BARRA RESULTADOS */
     .results-bar {
-      background: #fff;
-      padding: 50px 20px;
-      margin-top: -60px;
-      position: relative;
-      z-index: 10;
-      border-radius: 20px 20px 0 0;
-      border-bottom: 1px solid #eee;
-      box-shadow: 0 -10px 30px rgba(0,0,0,0.05);
+      background: #fff; padding: 50px 20px; margin-top: -60px;
+      position: relative; z-index: 10; border-radius: 20px 20px 0 0;
+      border-bottom: 1px solid #eee; box-shadow: 0 -10px 30px rgba(0,0,0,0.05);
     }
     .results-grid {
-      max-width: 1100px;
-      margin: auto;
-      display: grid;
+      max-width: 1100px; margin: auto; display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      text-align: center;
+      gap: 30px; text-align: center;
     }
     .result-item h3 { font-size: 26px; color: var(--brand); margin: 0 0 5px; }
     .result-item span { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: #888; font-weight: 600; }
     .result-icon { font-size: 30px; margin-bottom: 10px; display: block; }
 
-    /* CONTENIDO GENERAL */
+    /* CONTENIDO */
     .wrap{max-width:1100px;margin:0 auto;padding:80px 20px;}
     .section-title { text-align: center; margin-bottom: 50px; }
     .section-title h2 { font-size: 42px; margin-bottom: 15px; color: var(--brand-dark); }
     .section-title p { max-width: 700px; margin: auto; color: #666; }
 
-    /* ZONAS DETALLADAS CON DEGRADADO */
+    /* ZONAS GRID CON DEGRADADO */
     .zones-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px; margin-top: 40px;
     }
     .zone-card {
-      background: #fff;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      border: 1px solid #eee;
-      transition: transform 0.3s;
-      position: relative;
+      background: #fff; border-radius: 20px; overflow: hidden;
+      box-shadow: var(--shadow); border: 1px solid #eee;
+      transition: transform 0.3s; position: relative;
     }
     .zone-card:hover { transform: translateY(-5px); }
     
     .zone-img-wrap {
-      height: 220px;
-      overflow: hidden;
-      background: #f4f0f6;
-      position: relative; 
+      height: 220px; overflow: hidden; background: #f4f0f6; position: relative; 
     }
-    /* EL VELO DEGRADADO */
     .zone-img-wrap::after {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
+        content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
         background: linear-gradient(90deg, rgba(91, 37, 128, 0.4) 0%, rgba(91, 37, 128, 0) 70%);
-        z-index: 2;
-        pointer-events: none;
-        transition: opacity 0.3s;
+        z-index: 2; pointer-events: none; transition: opacity 0.3s;
     }
     .zone-card:hover .zone-img-wrap::after { opacity: 0.2; }
 
     .zone-img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-      position: relative;
-      z-index: 1;
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.5s ease; position: relative; z-index: 1;
     }
     .zone-card:hover .zone-img-wrap img { transform: scale(1.05); }
     
@@ -255,39 +224,25 @@
     .zone-content h3 { color: var(--brand); margin-top: 0; font-size: 20px; margin-bottom: 8px;}
     .zone-content p { font-size: 14px; margin: 0; color: #666; }
 
-    /* ESTILO BLOG SEO DESPLEGABLE */
-    .seo-blog-section {
-        max-width: 900px; margin: 60px auto; padding: 0 20px;
-    }
+    /* BLOG SEO DESPLEGABLE */
+    .seo-blog-section { max-width: 900px; margin: 60px auto; padding: 0 20px; }
     .seo-blog-section details {
-        background: #fff;
-        border-radius: 15px;
-        box-shadow: var(--shadow);
-        overflow: hidden;
-        border: 1px solid #efe5f5;
+        background: #fff; border-radius: 15px; box-shadow: var(--shadow);
+        overflow: hidden; border: 1px solid #efe5f5;
     }
     .seo-blog-section summary {
         background: linear-gradient(to right, #fdfbfd, #f4f0f6);
-        color: var(--brand);
-        padding: 25px;
-        font-weight: 700;
-        cursor: pointer;
-        list-style: none;
-        font-size: 18px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        color: var(--brand); padding: 25px; font-weight: 700; cursor: pointer;
+        list-style: none; font-size: 18px; display: flex;
+        justify-content: space-between; align-items: center;
         font-family: 'Playfair Display', serif;
     }
     .seo-blog-section summary::-webkit-details-marker { display: none; }
     .seo-blog-section summary::after { content: '📖 Leer Más'; font-size: 14px; background: var(--gold); color:#fff; padding: 5px 15px; border-radius: 20px; font-family: 'Inter', sans-serif;}
     .seo-blog-section details[open] summary::after { content: 'Cerrar'; background: #ccc; }
-    
     .blog-content { padding: 40px; color: #444; text-align: justify; line-height: 1.8; }
     .blog-content h3 { color: var(--brand); font-size: 22px; margin-top: 30px; border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 5px; }
     .blog-content h3:first-child { margin-top: 0; }
-    .blog-content ul { padding-left: 20px; margin-bottom: 20px; }
-    .blog-content li { margin-bottom: 10px; }
 
     /* PREGUNTAS FRECUENTES */
     .faq-section { background: #fdfbfd; margin-top: 40px; }
@@ -307,12 +262,8 @@
     /* CTA FINAL */
     .final-cta {
       background: linear-gradient(135deg, #160c1f 0%, #3a1555 100%);
-      color: #fff;
-      text-align: center;
-      padding: 80px 20px;
-      border-radius: 30px;
-      margin: 20px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      color: #fff; text-align: center; padding: 80px 20px;
+      border-radius: 30px; margin: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.2);
     }
     .final-cta h2 { color: #fff; font-size: 38px; margin-bottom: 20px; }
     .final-cta p { color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 40px; }
@@ -333,8 +284,8 @@
     .fr-ic:hover{transform:scale(1.1);}
 
     @media (max-width:768px){
-      .header-inner { justify-content: center; }
-      .header-inner nav, .header-inner .btn-primary.header-btn { display: none; }
+      .header-inner { justify-content: space-between; }
+      .site-nav, .btn-primary.header-btn { display: none; } /* Ocultar menú en móvil para no romper diseño */
       .hero { height: 75vh; }
       .results-bar { margin-top: 0; border-radius: 0; }
       .zones-grid { grid-template-columns: 1fr; }
@@ -363,11 +314,41 @@
       <a href="/" class="brand">
           <img src="logo-header-white.png" alt="Figura Rostro KG">
       </a> 
-      <nav>
-        <a href="/">Inicio</a>
-        <a href="/tratamientos/">Tratamientos</a>
-        <a href="#preguntas">Preguntas</a>
+      
+      <nav class="site-nav" aria-label="Menú principal">
+        <ul class="menu">
+          <li class="has-sub">
+            <a href="/fibroblast.html">Plasma Fibroblast</a>
+            <ul class="submenu">
+              <li><a href="/fibroblast.html">¿Qué es Plasma Fibroblast?</a></li>
+              <li><a href="#zonas">Zonas más solicitadas</a></li>
+              <li><a href="/chat-citas.html">Agendar valoración</a></li>
+            </ul>
+          </li>
+          <li class="has-sub">
+            <a href="/tratamientos-faciales/">Faciales</a>
+            <ul class="submenu">
+              <li><a href="/peeling-facial.html">Peeling Facial</a></li>
+              <li><a href="/radiofrecuencia-facial.html">Radiofrecuencia Facial</a></li>
+              <li><a href="/lifting-sin-cirugia.html">Lifting sin cirugía</a></li>
+            </ul>
+          </li>
+          <li class="has-sub">
+            <a href="/masajes-terapeuticos/">Terapias</a>
+            <ul class="submenu">
+              <li><a href="/masaje-relajante.html">Terapia relajante</a></li>
+              <li><a href="/masajes-terapeuticos/">Descontracturante</a></li>
+              <li><a href="/masajes-terapeuticos/">Drenaje linfático</a></li>
+              <li><a href="/masaje-terapeutico-adultos-mayores.html">Adultos Mayores</a></li>
+              <li><a href="/terapia-masaje-discapacidad.html">Terapia adaptada</a></li>
+            </ul>
+          </li>
+          <li><a href="#sobre">Nosotros</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="/menu.html">Servicios</a></li>
+        </ul>
       </nav>
+
       <a class="btn-primary header-btn" href="/chat-citas.html">Agendar Cita</a>
     </div>
   </header>
