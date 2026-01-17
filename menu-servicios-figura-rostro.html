@@ -5,30 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Menú de Servicios | Figura Rostro KG</title>
-  <meta name="description"
-        content="Menú de servicios: estética avanzada en Figura Rostro KG. Consulta y reserva por WhatsApp.">
+  <meta name="description" content="Menú de servicios de estética avanzada en Figura Rostro KG. Consulta y reserva por WhatsApp.">
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
   <style>
+    /* ESQUEMA DE COLORES CLARO */
     :root{
-      --brand:#5b2580;
-      --brand-soft:#b896ff;
-      --bg:#160c1f;
-      --card:#ffffff;
-      --text-card:#1a0f26;
-
-      --dark:#0f0818;
-      --dark2:#140b20;
-      --line: rgba(255,255,255,.12);
-      --muted: rgba(245,234,255,.82);
-
-      --green:#25D366;
-      --green2:#19b55a;
-      --btn:#0b0f1a;
+      --brand: #5b2580; /* Morado principal */
+      --brand-soft: #9d72c3; /* Lila más suave para acentos */
+      --bg-body: #f8f9fa; /* Fondo general claro */
+      --text-main: #333333; /* Texto principal oscuro */
+      --text-muted: #666666; /* Texto secundario */
       
-      --promo-bg: linear-gradient(135deg, #ff9a44 0%, #fc6076 100%);
-      --promo-text: #3e0e00;
+      --card-bg: #ffffff; /* Fondo de tarjetas blanco */
+      --card-border: #e9ecef; /* Borde sutil */
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.12);
+
+      --green: #25D366;
+      --green2: #19b55a;
+      --btn-dark-bg: #343a40;
+      --btn-dark-text: #ffffff;
+
+      /* Nuevo degradado para la promo (más suave y elegante) */
+      --promo-bg: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+      --promo-text: #5e3a00;
     }
 
     *{box-sizing:border-box;}
@@ -37,8 +39,9 @@
     body{
       margin:0;
       font-family:Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:radial-gradient(circle at top,#2c1450 0,#160c1f 45%,#0d0715 100%);
-      color:#f5eaff;
+      background: var(--bg-body);
+      color: var(--text-main);
+      line-height: 1.5;
     }
 
     .container{
@@ -52,94 +55,98 @@
       text-align:center;
       padding:24px 0 10px;
     }
-    header img{height:66px;}
+    /* Asegúrate de tener un logo oscuro para fondo claro, o usa texto */
+    header img{height:66px; margin: 0 auto;} 
+    /* Si no tienes logo, puedes usar esto temporalmente:
+    header h1 { color: var(--brand); margin: 0; } */
 
     .pill{
       display:inline-block;
       padding:6px 16px;
       border-radius:999px;
-      border:1px solid rgba(255,255,255,.35);
+      border:1px solid var(--brand-soft);
       font-size:.8rem;
       text-transform:uppercase;
       letter-spacing:.12em;
-      color:#ffe9ff;
-      background:rgba(0,0,0,.12);
+      color: var(--brand);
+      background: rgba(91, 37, 128, 0.08);
       margin-bottom:10px;
+      font-weight: 600;
     }
     h1{
       text-align:center;
       font-size:clamp(32px,5.4vw,46px);
       font-weight:800;
       letter-spacing:.02em;
-      color:#ffffff;
+      color: var(--brand);
       margin:0 0 6px;
     }
     .sub{
       text-align:center;
-      opacity:.96;
       margin:0 auto 26px;
       max-width:780px;
       font-size:.95rem;
-      line-height:1.65;
-      color:#f0e6ff;
+      color: var(--text-muted);
     }
+    .sub strong { color: var(--brand); }
 
-    /* BANNER PROMO */
-    .promo-banner {
+    /* BANNER PROMO (Se ocultará el 19 de Enero) */
+    #promo-banner {
       background: var(--promo-bg);
       color: var(--promo-text);
       border-radius: 16px;
-      padding: 20px;
+      padding: 24px;
       margin: 0 auto 35px;
       max-width: 900px;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(255, 100, 50, 0.25);
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.3);
+      box-shadow: var(--shadow-md);
+      border: none;
     }
-    .promo-banner h2 {
-      margin: 0 0 8px;
-      font-size: 1.6rem;
+    #promo-banner h2 {
+      margin: 0 0 10px;
+      font-size: 1.8rem;
       font-weight: 900;
       text-transform: uppercase;
+      letter-spacing: -0.02em;
     }
     .promo-highlight {
-      background: rgba(255,255,255,0.25);
-      padding: 4px 10px;
+      background: rgba(255,255,255,0.4);
+      padding: 4px 12px;
       border-radius: 6px;
       font-weight: 800;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
     .promo-text {
-      font-size: 1rem;
-      line-height: 1.5;
-      margin-bottom: 16px;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
       font-weight: 600;
     }
     .btn-promo {
-      background: #3e0e00;
+      background: #5e3a00;
       color: #fff;
-      padding: 10px 22px;
+      padding: 12px 28px;
       border-radius: 99px;
       text-decoration: none;
       font-weight: 700;
       display: inline-block;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      transition: transform 0.2s;
+      box-shadow: 0 6px 16px rgba(94, 58, 0, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-    .btn-promo:hover { transform: scale(1.03); }
+    .btn-promo:hover { 
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(94, 58, 0, 0.4);
+    }
 
     /* SECCIONES */
-    .section{ margin:30px 0 34px; }
+    .section{ margin:40px 0 45px; }
 
     .section-box{
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      background: var(--card-bg);
       border-radius:22px;
-      padding:18px 18px 18px;
-      box-shadow:0 18px 45px rgba(5,0,20,.45);
-      border:1px solid rgba(255,255,255,.10);
-      color:#fff;
-      backdrop-filter: blur(6px);
+      padding:24px;
+      box-shadow: var(--shadow-md);
+      border:1px solid var(--card-border);
     }
 
     .section-top{
@@ -147,72 +154,75 @@
       align-items:flex-end;
       justify-content:space-between;
       gap:12px;
-      padding:4px 6px 12px;
+      padding:0 0 16px;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 16px;
     }
     .section-title{
-      font-size:1.25rem;
+      font-size:1.5rem;
       font-weight:800;
-      color:#f8f0ff;
+      color: var(--brand);
       margin:0;
     }
     .section-label{
-      font-size:.78rem;
+      font-size:.8rem;
       text-transform:uppercase;
-      letter-spacing:.18em;
-      color:var(--brand-soft);
-      opacity:.95;
-      white-space:nowrap;
+      letter-spacing:.12em;
+      color: var(--brand-soft);
+      font-weight: 700;
     }
     .section-desc{
-      margin:0 6px 14px;
-      color:rgba(240,230,255,.92);
-      font-size:.92rem;
-      line-height:1.55;
+      margin:0 0 24px;
+      color: var(--text-muted);
+      font-size:.95rem;
     }
 
     /* GRID */
     .card-grid{
       display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(255px, 1fr));
-      gap:16px;
+      grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+      gap:20px;
     }
 
-    /* TARJETA */
+    /* TARJETA (Fondo claro) */
     .svc-card{
       border-radius:18px;
       overflow:hidden;
-      border:1px solid rgba(255,255,255,.08);
-      background:linear-gradient(180deg, rgba(12,12,20,.78), rgba(8,8,14,.88));
-      box-shadow:0 10px 28px rgba(0,0,0,.45);
+      border:1px solid var(--card-border);
+      background: var(--card-bg);
+      box-shadow: var(--shadow-sm);
       display:flex;
       flex-direction:column;
-      min-height:335px;
+      min-height:350px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .svc-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
     }
     .svc-img{
       width:100%;
-      height:165px;
+      height:180px;
       object-fit:cover;
-      background:#1b1026;
+      background: #ececec;
     }
     .svc-body{
-      padding:12px 12px 14px;
+      padding:16px;
       display:flex;
       flex-direction:column;
-      gap:8px;
+      gap:10px;
       flex:1;
     }
     .svc-title{
       margin:0;
-      font-size:1rem;
+      font-size:1.1rem;
       font-weight:800;
-      letter-spacing:.01em;
-      color:#ffffff;
+      color: var(--text-main);
     }
     .svc-text{
       margin:0;
-      font-size:.87rem;
-      line-height:1.5;
-      color:rgba(245,234,255,.86);
+      font-size:.9rem;
+      color: var(--text-muted);
       flex:1;
     }
     .svc-actions{
@@ -220,287 +230,186 @@
       gap:10px;
       align-items:center;
       flex-wrap:wrap;
-      margin-top:6px;
+      margin-top:auto;
+      padding-top: 12px;
     }
 
     .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:9px 14px;
+      padding:10px 16px;
       border-radius:12px;
-      font-weight:800;
-      font-size:.84rem;
+      font-weight:700;
+      font-size:.85rem;
       text-decoration:none;
-      border:1px solid rgba(255,255,255,.10);
       cursor:pointer;
-      transition: transform .08s ease, filter .12s ease;
+      transition: all 0.2s ease;
       user-select:none;
+      border: none;
     }
     .btn:active{ transform: translateY(1px); }
 
     .btn-wa{
-      background:linear-gradient(180deg, var(--green), var(--green2));
-      color:#04130b;
-      border:none;
-      box-shadow:0 10px 20px rgba(37,211,102,.20);
+      background:linear-gradient(135deg, var(--green), var(--green2));
+      color: #fff;
+      box-shadow:0 4px 12px rgba(37,211,102,.3);
     }
+    .btn-wa:hover{ box-shadow:0 6px 16px rgba(37,211,102,.4); }
+    
     .btn-dark{
-      background:rgba(10,14,22,.62);
-      color:#ffffff;
-      border:1px solid rgba(255,255,255,.14);
+      background: var(--btn-dark-bg);
+      color: var(--btn-dark-text);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-    .btn-dark:hover{ filter:brightness(1.06); }
-    .btn-wa:hover{ filter:brightness(1.02); }
+    .btn-dark:hover{ background: #23272b; box-shadow: 0 6px 16px rgba(0,0,0,0.15); }
 
-    /* MODAL */
+    /* MODAL (Fondo claro) */
     .modal{
       position:fixed;
       inset:0;
       display:none;
       place-items:center;
-      background:rgba(0,0,0,.55);
+      background:rgba(0,0,0,.65);
       z-index:80;
       padding:18px;
+      backdrop-filter: blur(4px);
     }
     .modal.open{ display:grid; }
     .modal-card{
-      width:min(760px, 100%);
-      background:linear-gradient(180deg, rgba(22,12,31,.98), rgba(13,7,21,.98));
-      border:1px solid rgba(255,255,255,.14);
-      border-radius:18px;
-      box-shadow:0 20px 60px rgba(0,0,0,.6);
+      width:min(700px, 100%);
+      background: var(--card-bg);
+      border-radius:20px;
+      box-shadow: var(--shadow-md);
       overflow:hidden;
-      color:#fff;
+      color: var(--text-main);
     }
     .modal-head{
       display:flex;
-      align-items:flex-start;
+      align-items:center;
       justify-content:space-between;
       gap:12px;
-      padding:14px 16px 10px;
-      border-bottom:1px solid rgba(255,255,255,.12);
-      background:rgba(0,0,0,.10);
+      padding:16px 20px;
+      border-bottom:1px solid var(--card-border);
+      background: #f8f9fa;
     }
     .modal-title{
       margin:0;
-      font-size:1.05rem;
-      font-weight:900;
-      letter-spacing:.01em;
+      font-size:1.2rem;
+      font-weight:800;
+      color: var(--brand);
     }
     .modal-close{
-      background:transparent;
-      border:1px solid rgba(255,255,255,.20);
-      color:#fff;
+      background: #e9ecef;
+      border:none;
+      color: var(--text-muted);
       border-radius:12px;
-      padding:8px 10px;
+      padding:8px 12px;
       cursor:pointer;
-      font-weight:800;
+      font-weight:700;
+      transition: background 0.2s;
     }
+    .modal-close:hover{ background: #dde2e6; color: var(--text-main); }
     .modal-body{
-      padding:14px 16px 16px;
-      color:rgba(245,234,255,.90);
-      font-size:.94rem;
-      line-height:1.65;
+      padding:24px;
+      color: var(--text-main);
+      font-size:1rem;
     }
     .modal-foot{
-      padding:12px 16px 16px;
-      border-top:1px solid rgba(255,255,255,.12);
+      padding:16px 20px;
+      border-top:1px solid var(--card-border);
       display:flex;
-      gap:10px;
-      flex-wrap:wrap;
+      gap:12px;
       justify-content:flex-end;
-      background:rgba(0,0,0,.10);
+      background: #f8f9fa;
     }
 
-    /* FORM CONTACTO */
-    .contact-wrap{
-      margin:30px 0 8px;
-    }
+    /* FORM CONTACTO (Fondo claro) */
+    .contact-wrap{ margin:50px 0; }
     .contact-card{
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border:1px solid rgba(255,255,255,.12);
+      background: var(--card-bg);
       border-radius:22px;
-      box-shadow:0 18px 45px rgba(5,0,20,.45);
-      padding:18px;
-    }
-    .contact-grid{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:16px;
-      align-items:start;
+      box-shadow: var(--shadow-md);
+      padding:30px;
+      border: 1px solid var(--card-border);
     }
     .contact-title{
-      margin:0 0 6px;
-      font-size:1.15rem;
+      margin:0 0 10px;
+      font-size:1.4rem;
       font-weight:900;
-      color:#fff;
+      color: var(--brand);
     }
     .contact-text{
-      margin:0;
-      color:rgba(240,230,255,.92);
-      font-size:.92rem;
-      line-height:1.6;
-    }
-    .form{
-      display:grid;
-      gap:10px;
-    }
-    .field{
-      display:grid;
-      gap:6px;
+      margin:0 0 20px;
+      color: var(--text-muted);
     }
     .label{
-      font-size:.82rem;
-      color:rgba(245,234,255,.85);
+      font-size:.85rem;
+      color: var(--text-main);
       font-weight:700;
+      margin-bottom: 4px;
+      display: block;
     }
     .input, .select, .textarea{
       width:100%;
-      padding:11px 12px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(10,14,22,.55);
-      color:#fff;
+      padding:12px 14px;
+      border-radius:12px;
+      border: 2px solid #e9ecef;
+      background: #f8f9fa;
+      color: var(--text-main);
       outline:none;
       font-family:inherit;
-      font-size:.92rem;
+      font-size:.95rem;
+      transition: border-color 0.2s, background 0.2s;
     }
-    .textarea{ min-height:92px; resize:vertical; }
-    .help{
-      font-size:.78rem;
-      color:rgba(245,234,255,.72);
-      line-height:1.4;
-      margin-top:4px;
+    .input:focus, .select:focus, .textarea:focus {
+        border-color: var(--brand-soft);
+        background: #fff;
     }
-    .form-actions{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-      margin-top:2px;
-    }
-
+    .help{ color: var(--text-muted); }
+    
     @media (max-width:880px){
-      .contact-grid{ grid-template-columns: 1fr; }
-    }
-
-    @media (max-width:640px){
-      .section-box{padding:14px;}
-      .svc-img{height:155px;}
-      .svc-card{min-height:325px;}
-      h1{font-size: 28px;}
+      .contact-grid{ grid-template-columns: 1fr; gap: 30px; }
     }
 
     /* CTA HOME */
-    .home-cta{
-      text-align:center;
-      margin:18px 0 32px;
-    }
     .btn-home{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:6px;
-      padding:10px 20px;
-      border-radius:999px;
-      background:#5b2580;
+      background: var(--brand);
       color:#fff;
+      padding:12px 24px;
+      border-radius:99px;
       text-decoration:none;
-      font-size:.92rem;
-      font-weight:800;
-      box-shadow:0 12px 28px rgba(0,0,0,.55);
+      font-weight:700;
+      box-shadow: 0 4px 12px rgba(91, 37, 128, 0.3);
     }
+    .btn-home:hover { background: #4a1e69; box-shadow: 0 6px 16px rgba(91, 37, 128, 0.4); }
 
-    /* FOOTER */
+    /* FOOTER (Fondo claro) */
     footer{
-      background:#12091d;
-      color:#f5eaff;
-      margin-top:14px;
+      background: #ffffff;
+      color: var(--text-muted);
+      margin-top: 40px;
+      border-top: 1px solid var(--card-border);
+      padding-top: 20px;
     }
-    .footer-inner{
-      max-width:1120px;
-      margin:0 auto;
-      padding:20px 16px 12px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:18px;
-      justify-content:space-between;
-      font-size:.9rem;
-    }
-    .footer-block strong{
-      display:block;
-      margin-bottom:4px;
-    }
+    .footer-block strong{ color: var(--brand); }
     .footer-bottom{
-      text-align:center;
-      padding:10px 16px 18px;
-      font-size:.8rem;
-      opacity:.8;
-      border-top:1px solid rgba(255,255,255,.15);
+      border-top: 1px solid var(--card-border);
+      background: #f8f9fa;
     }
-    footer a{
-      color:#f5eaff;
-      text-decoration:none;
-    }
-    footer a:hover{
-      text-decoration:underline;
-      text-underline-offset:3px;
-    }
+    footer a{ color: var(--brand); }
+    footer a:hover{ color: var(--brand-soft); }
 
-    /* BOTONES FLOTANTES WhatsApp + Waze */
-    .fab-wrap{
-      position:fixed;
-      right:18px;
-      bottom:18px;
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      z-index:50;
-    }
-    .fab{
-      width:58px;
-      height:58px;
-      border-radius:999px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-decoration:none;
-      box-shadow:0 12px 26px rgba(0,0,0,.45);
-    }
-    .fab svg{
-      width:30px;
-      height:30px;
-      fill:#fff;
-    }
-    .fab-wa{background:#25D366;}
-    .fab-waze{background:#0099ff;}
-
-    @media (max-width:600px){
-      .fab-wrap{
-        right:auto;
-        bottom:50%;
-        left:10px;
-        transform:translateY(50%);
-      }
-      .fab{
-        width:46px;
-        height:46px;
-        box-shadow:0 8px 18px rgba(0,0,0,.4);
-      }
-      .fab svg{
-        width:24px;
-        height:24px;
-      }
-    }
+    /* FABs */
+    .fab{ box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
   </style>
 </head>
 
 <body>
 
 <header>
-  <a href="/"><img src="logo-header-white.png" alt="Figura Rostro KG"></a>
-</header>
+  <a href="/"><img src="logo-header-dark.png" alt="Figura Rostro KG"></a>
+  </header>
 
 <div class="container">
   <div style="text-align:center;">
@@ -508,442 +417,339 @@
   </div>
   <h1>Figura Rostro KG</h1>
   <p class="sub">
-    Selecciona el servicio que te interesa y <strong>solicita información por WhatsApp</strong>.
-    Precios y protocolos se confirman según valoración.
+    Selecciona tu tratamiento y <strong>solicita información por WhatsApp</strong>.
+    Precios y protocolos personalizados.
   </p>
 
-  <div class="promo-banner">
-    <h2>✨ OFERTA DE ENERO ✨</h2>
+  <div id="promo-banner" class="promo-banner">
+    <h2>✨ Oferta Especial de Enero ✨</h2>
     <p class="promo-text">
-      ¡Luce tu mejor versión! Aprovecha un <span class="promo-highlight">30% DE DESCUENTO</span> en tratamientos de Plasma Fibroblast todo el mes.<br><br>
-      🔥 <strong>MEGA PROMO (Hasta el 18 de Enero):</strong><br>
-      Accede a descuentos adicionales y mayor flexibilidad en tu plan.
+      ¡Empieza el año radiante! Disfruta de un <span class="promo-highlight">30% DE DESCUENTO</span> exclusivo en tratamientos de <strong>Plasma Fibroblast</strong> durante todo el mes.<br><br>
+      🔥 <strong>MEGA PROMO (Válida hasta el 18 de Enero):</strong><br>
+      Reserva antes de esta fecha para asegurar tu descuento y obtener beneficios adicionales.
     </p>
-    <a class="btn-promo" href="https://plasmafibroblastpanama.com" target="_blank">Ver Info en Plasma Fibroblast Panamá</a>
+    <a class="btn-promo" href="https://plasmafibroblastpanama.com" target="_blank">Ver Info y Reservar en Plasma Fibroblast Panamá</a>
   </div>
 
   <section class="section" id="estetica-avanzada">
     <div class="section-box">
       <div class="section-top">
         <h2 class="section-title">Estética Avanzada</h2>
-        <div class="section-label">Faciales · Aparatología · Medicina Estética</div>
+        <div class="section-label">Faciales · Láser · Inyectables</div>
       </div>
       <p class="section-desc">
-        Protocolos avanzados para limpieza profunda, hidratación, regeneración y rejuvenecimiento.
+        Tecnología de vanguardia y protocolos médicos para el cuidado y rejuvenecimiento de tu piel.
       </p>
 
       <div class="card-grid">
 
-        <article class="svc-card"
-                 data-title="Limpieza Facial Esencial"
-                 data-desc="Tratamiento de higiene y mantenimiento para pieles que buscan frescura y equilibrio.">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=80" alt="Limpieza Facial Esencial">
+        <article class="svc-card" data-title="Limpieza Facial Esencial" data-desc="Higiene profunda para eliminar impurezas y devolver la luminosidad a tu piel.">
+          <img class="svc-img" src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=80" alt="Limpieza Facial">
           <div class="svc-body">
             <h3 class="svc-title">Limpieza Facial Esencial</h3>
-            <p class="svc-text">Higiene y mantenimiento para una piel fresca y equilibrada.</p>
+            <p class="svc-text">Piel limpia, fresca y equilibrada.</p>
             <div class="svc-actions">
-              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Limpieza%20Facial%20Esencial." target="_blank">Contactar</a>
-              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20info%20sobre%20Limpieza%20Facial%20Esencial." target="_blank">Contactar</a>
+              <button class="btn btn-dark" onclick="openModal(this)">Detalles</button>
             </div>
           </div>
         </article>
 
-        <article class="svc-card"
-                 data-title="Limpieza Facial Profunda"
-                 data-desc="Protocolo avanzado para poros congestionados. Incluye limpieza profunda y extracción.">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=600&q=80" alt="Limpieza Facial Profunda">
-          <div class="svc-body">
-            <h3 class="svc-title">Limpieza Facial Profunda</h3>
-            <p class="svc-text">Enfocada en poros e impurezas. Ideal para reiniciar la piel.</p>
-            <div class="svc-actions">
-              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Limpieza%20Facial%20Profunda." target="_blank">Contactar</a>
-              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
-            </div>
-          </div>
-        </article>
-
-        <article class="svc-card"
-                 data-title="Hidrafacial"
-                 data-desc="Limpieza profunda con enfoque en hidratación y mejora de textura con aparatología.">
+        <article class="svc-card" data-title="Hidrafacial" data-desc="Hidrodermoabrasión que limpia, exfolia e hidrata profundamente con sueros específicos.">
           <img class="svc-img" src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=600&q=80" alt="Hidrafacial">
           <div class="svc-body">
             <h3 class="svc-title">Hidrafacial</h3>
-            <p class="svc-text">Limpieza + hidratación intensiva para un glow inmediato.</p>
+            <p class="svc-text">Limpieza profunda y glow inmediato.</p>
             <div class="svc-actions">
-              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Hidrafacial." target="_blank">Contactar</a>
-              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20info%20sobre%20Hidrafacial." target="_blank">Contactar</a>
+              <button class="btn btn-dark" onclick="openModal(this)">Detalles</button>
             </div>
           </div>
         </article>
 
-        <article class="svc-card"
-                 data-title="Protocolo Antiacné"
-                 data-desc="Tratamiento orientado a piel con brotes e inflamación.">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=600&q=80" alt="Antiacné">
-          <div class="svc-body">
-            <h3 class="svc-title">Protocolo Antiacné</h3>
-            <p class="svc-text">Control de brotes y sebo con protocolo ajustado.</p>
-            <div class="svc-actions">
-              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Protocolo%20Antiacn%C3%A9." target="_blank">Contactar</a>
-              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
-            </div>
-          </div>
-        </article>
-
-        <article class="svc-card"
-                 data-title="Tratamientos Despigmentantes"
-                 data-desc="Protocolos para manchas y tono irregular.">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&w=600&q=80" alt="Despigmentantes">
-          <div class="svc-body">
-            <h3 class="svc-title">Tratamientos Despigmentantes</h3>
-            <p class="svc-text">Mejora de manchas y tono con protocolo progresivo.</p>
-            <div class="svc-actions">
-              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Tratamientos%20Despigmentantes." target="_blank">Contactar</a>
-              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
-            </div>
-          </div>
-        </article>
-
-        <article class="svc-card"
-                 data-title="Peeling Profesional"
-                 data-desc="Renovación controlada para mejorar textura y apariencia general.">
+        <article class="svc-card" data-title="Peeling Químico" data-desc="Renovación celular controlada para tratar manchas, acné y textura irregular.">
           <img class="svc-img" src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=600&q=80" alt="Peeling">
           <div class="svc-body">
-            <h3 class="svc-title">Peeling Profesional</h3>
-            <p class="svc-text">Renovación de la piel para un tono más uniforme.</p>
+            <h3 class="svc-title">Peeling Químico</h3>
+            <p class="svc-text">Renueva tu piel y unifica el tono.</p>
             <div class="svc-actions">
-              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Peeling%20Profesional." target="_blank">Contactar</a>
-              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20info%20sobre%20Peeling%20Qu%C3%ADmico." target="_blank">Contactar</a>
+              <button class="btn btn-dark" onclick="openModal(this)">Detalles</button>
             </div>
           </div>
         </article>
 
-        <article class="svc-card"
-                 data-title="Exosomas y PRP"
-                 data-desc="Tecnología enfocada en regeneración celular y reparación profunda.">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1624638760976-5087d19736e6?auto=format&fit=crop&w=600&q=80" alt="Exosomas PRP">
+        <article class="svc-card" data-title="Exosomas y PRP" data-desc="Terapia regenerativa avanzada para rejuvenecimiento y reparación tisular profunda.">
+          <img class="svc-img" src="https://images.unsplash.com/photo-1612538949668-a08a4263103c?auto=format&fit=crop&w=600&q=80" alt="Exosomas PRP">
           <div class="svc-body">
-            <h3 class="svc-title">Exosomas / PRP</h3>
-            <p class="svc-text">Soporte regenerativo para una piel revitalizada.</p>
+            <h3 class="svc-title">Exosomas y PRP</h3>
+            <p class="svc-text">Regeneración celular avanzada.</p>
             <div class="svc-actions">
-              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Exosomas%20y%20PRP." target="_blank">Contactar</a>
-              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20info%20sobre%20Exosomas%20y%20PRP." target="_blank">Contactar</a>
+              <button class="btn btn-dark" onclick="openModal(this)">Detalles</button>
             </div>
           </div>
         </article>
 
-        <article class="svc-card"
-                 data-title="Hollywood Peeling"
-                 data-desc="Protocolo láser para luminosidad inmediata (Efecto alfombra roja).">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?auto=format&fit=crop&w=600&q=80" alt="Hollywood Peeling">
+        <article class="svc-card" data-title="Hollywood Peeling (Carbón)" data-desc="Tratamiento láser no invasivo para luminosidad instantánea, poros y textura.">
+          <img class="svc-img" src="https://plus.unsplash.com/premium_photo-1664298177755-318058e10792?auto=format&fit=crop&w=600&q=80" alt="Hollywood Peeling">
           <div class="svc-body">
             <h3 class="svc-title">Hollywood Peeling</h3>
-            <p class="svc-text">Tono uniforme y luminosidad al instante.</p>
+            <p class="svc-text">Piel de alfombra roja al instante.</p>
             <div class="svc-actions">
-              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Hollywood%20Peeling." target="_blank">Contactar</a>
-              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20info%20sobre%20Hollywood%20Peeling." target="_blank">Contactar</a>
+              <button class="btn btn-dark" onclick="openModal(this)">Detalles</button>
             </div>
           </div>
         </article>
 
-        <article class="svc-card"
-                 data-title="Fibroblast (Verrugas y Acrocordones)"
-                 data-desc="Eliminación de imperfecciones superficiales con plasma pen.">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1619451334792-150fd785ee74?auto=format&fit=crop&w=600&q=80" alt="Fibroblast">
+        <article class="svc-card" data-title="Fibroblast (Verrugas/Acrocordones)" data-desc="Eliminación precisa de imperfecciones benignas de la piel con plasma pen.">
+          <img class="svc-img" src="https://images.unsplash.com/photo-1629142278138-09e41569c569?auto=format&fit=crop&w=600&q=80" alt="Fibroblast">
           <div class="svc-body">
-            <h3 class="svc-title">Fibroblast (Verrugas)</h3>
-            <p class="svc-text">Eliminación puntual de imperfecciones.</p>
+            <h3 class="svc-title">Fibroblast (Imperfecciones)</h3>
+            <p class="svc-text">Eliminación puntual y segura.</p>
             <div class="svc-actions">
-              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Fibroblast." target="_blank">Contactar</a>
-              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20info%20sobre%20Fibroblast%20para%20imperfecciones." target="_blank">Contactar</a>
+              <button class="btn btn-dark" onclick="openModal(this)">Detalles</button>
             </div>
           </div>
         </article>
 
-        <article class="svc-card"
-                 data-title="Toxina Botulínica (Botox)"
-                 data-desc="Tratamiento para suavizar líneas de expresión.">
+        <article class="svc-card" data-title="Toxina Botulínica (Botox)" data-desc="Suaviza arrugas de expresión en frente, entrecejo y patas de gallo. Resultados naturales.">
           <img class="svc-img" src="https://images.unsplash.com/photo-1519415510236-718bdfcd4788?auto=format&fit=crop&w=600&q=80" alt="Botox">
           <div class="svc-body">
             <h3 class="svc-title">Toxina Botulínica</h3>
-            <p class="svc-text">Suaviza líneas de expresión con resultados naturales.</p>
+            <p class="svc-text">Adiós arrugas de expresión.</p>
             <div class="svc-actions">
-              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Toxina%20Botul%C3%ADnica." target="_blank">Contactar</a>
-              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20info%20sobre%20Toxina%20Botul%C3%ADnica." target="_blank">Contactar</a>
+              <button class="btn btn-dark" onclick="openModal(this)">Detalles</button>
             </div>
           </div>
         </article>
 
-        <article class="svc-card"
-                 data-title="Ácido Hialurónico"
-                 data-desc="Relleno y armonización facial para labios, mentón o pómulos.">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1608248597279-f99d160bfbc8?auto=format&fit=crop&w=600&q=80" alt="Ácido Hialurónico">
+        <article class="svc-card" data-title="Ácido Hialurónico (Rellenos)" data-desc="Reposición de volumen, hidratación y armonización facial (labios, ojeras, pómulos, mentón).">
+          <img class="svc-img" src="https://images.unsplash.com/photo-1612833606937-5f8b7418733c?auto=format&fit=crop&w=600&q=80" alt="Ácido Hialurónico">
           <div class="svc-body">
             <h3 class="svc-title">Ácido Hialurónico</h3>
-            <p class="svc-text">Hidratación y volumen armónico en zonas estratégicas.</p>
+            <p class="svc-text">Volumen y armonización facial.</p>
             <div class="svc-actions">
-              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20%C3%81cido%20Hialur%C3%B3nico." target="_blank">Contactar</a>
-              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20info%20sobre%20%C3%81cido%20Hialur%C3%B3nico." target="_blank">Contactar</a>
+              <button class="btn btn-dark" onclick="openModal(this)">Detalles</button>
             </div>
           </div>
         </article>
 
-        <article class="svc-card"
-                 data-title="Bioestimuladores"
-                 data-desc="Inducción de colágeno (Radiesse, Sculptra, etc) para firmeza.">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=600&q=80" alt="Bioestimuladores">
+        <article class="svc-card" data-title="Bioestimuladores de Colágeno" data-desc="Tratamiento inyectable (Radiesse, Sculptra) que estimula tu propia producción de colágeno para combatir la flacidez.">
+          <img class="svc-img" src="https://images.unsplash.com/photo-1606202227593-c64b2a011773?auto=format&fit=crop&w=600&q=80" alt="Bioestimuladores">
           <div class="svc-body">
             <h3 class="svc-title">Bioestimuladores</h3>
-            <p class="svc-text">Mejora de firmeza y calidad de piel a largo plazo.</p>
+            <p class="svc-text">Firmeza duradera desde el interior.</p>
             <div class="svc-actions">
-              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Bioestimuladores." target="_blank">Contactar</a>
-              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20info%20sobre%20Bioestimuladores." target="_blank">Contactar</a>
+              <button class="btn btn-dark" onclick="openModal(this)">Detalles</button>
             </div>
           </div>
         </article>
 
-        <article class="svc-card"
-                 data-title="Hilos Tensores / Foxy Eyes"
-                 data-desc="Soporte y efecto lifting sin cirugía.">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1609156645362-73a71b40974b?auto=format&fit=crop&w=600&q=80" alt="Hilos Tensores">
+        <article class="svc-card" data-title="Hilos Tensores Especulados" data-desc="Efecto lifting inmediato y estimulación de colágeno para definir el contorno facial o lograr 'Foxy Eyes'.">
+          <img class="svc-img" src="https://images.unsplash.com/photo-1597060465530-349c25437721?auto=format&fit=crop&w=600&q=80" alt="Hilos Tensores">
           <div class="svc-body">
             <h3 class="svc-title">Hilos Tensores</h3>
-            <p class="svc-text">Efecto lifting y foxy eyes mediante hilos PDO.</p>
+            <p class="svc-text">Lifting sin cirugía y Foxy Eyes.</p>
             <div class="svc-actions">
-              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Hilos%20Tensores." target="_blank">Contactar</a>
-              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20info%20sobre%20Hilos%20Tensores." target="_blank">Contactar</a>
+              <button class="btn btn-dark" onclick="openModal(this)">Detalles</button>
             </div>
           </div>
         </article>
 
-        <article class="svc-card"
-                 data-title="HIFU / Morpheus"
-                 data-desc="Tecnologías de tensado profundo y rejuvenecimiento.">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1628146747942-70b1cb355039?auto=format&fit=crop&w=600&q=80" alt="HIFU">
+        <article class="svc-card" data-title="HIFU / Morpheus8 (Tensado)" data-desc="Tecnologías avanzadas (Ultrasonido o Radiofrecuencia fraccionada) para tensado de piel y remodelación grasa.">
+          <img class="svc-img" src="https://images.unsplash.com/photo-1628146747942-70b1cb355039?auto=format&fit=crop&w=600&q=80" alt="HIFU Morpheus">
           <div class="svc-body">
-            <h3 class="svc-title">HIFU / Morpheus</h3>
-            <p class="svc-text">Tensado profundo y rejuvenecimiento tecnológico.</p>
+            <h3 class="svc-title">HIFU / Morpheus8</h3>
+            <p class="svc-text">Tensado de piel potente y no invasivo.</p>
             <div class="svc-actions">
-              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20HIFU%20o%20Morpheus." target="_blank">Contactar</a>
-              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20info%20sobre%20HIFU%20o%20Morpheus." target="_blank">Contactar</a>
+              <button class="btn btn-dark" onclick="openModal(this)">Detalles</button>
             </div>
           </div>
         </article>
 
-        <article class="svc-card"
-                 data-title="Láser Diodo (Depilación)"
-                 data-desc="Reducción progresiva del vello no deseado.">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1563860641-799a7737c356?auto=format&fit=crop&w=600&q=80" alt="Depilación Láser">
+        <article class="svc-card" data-title="Depilación Láser Diodo" data-desc="Eliminación progresiva y permanente del vello no deseado de forma rápida y segura.">
+          <img class="svc-img" src="https://images.unsplash.com/photo-1553548695-8f501009245b?auto=format&fit=crop&w=600&q=80" alt="Láser Diodo">
           <div class="svc-body">
             <h3 class="svc-title">Láser Diodo</h3>
-            <p class="svc-text">Piel suave y libre de vello con sesiones progresivas.</p>
+            <p class="svc-text">Piel suave y sin vello permanentemente.</p>
             <div class="svc-actions">
-              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Depilaci%C3%B3n%20L%C3%A1ser." target="_blank">Contactar</a>
-              <button class="btn btn-dark" type="button" onclick="openModal(this)">Detalles</button>
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20info%20sobre%20Depilaci%C3%B3n%20L%C3%A1ser." target="_blank">Contactar</a>
+              <button class="btn btn-dark" onclick="openModal(this)">Detalles</button>
             </div>
           </div>
         </article>
 
-      </div></div></section>
+      </div>
+    </div>
+  </section>
 
   <section class="contact-wrap" id="contacto">
     <div class="contact-card">
       <div class="contact-grid">
         <div>
-          <h3 class="contact-title">Solicitar información por WhatsApp</h3>
+          <h3 class="contact-title">¿Dudas? Escríbenos</h3>
           <p class="contact-text">
-            Completa este formulario y te enviará un mensaje listo a nuestro WhatsApp.
-            Te responderemos con disponibilidad y recomendaciones.
+            Completa el formulario y te responderemos por WhatsApp con disponibilidad y valoración preliminar.
           </p>
-          <p class="help" style="margin-top:10px;">
-            📍 Parque Lefevre · Plaza Royal Park  ·  📲 WhatsApp: <strong>6474-6168</strong>
+          <p class="help">
+            📍 Parque Lefevre, Plaza Royal Park<br>
+            📲 WhatsApp Directo: <strong>6474-6168</strong>
           </p>
         </div>
 
         <form class="form" onsubmit="return sendToWhatsApp(event)">
           <div class="field">
-            <label class="label" for="c-nombre">Nombre</label>
-            <input class="input" id="c-nombre" name="nombre" type="text" placeholder="Tu nombre" required>
+            <label class="label" for="c-nombre">Tu Nombre</label>
+            <input class="input" id="c-nombre" type="text" placeholder="Ej: Ana López" required>
           </div>
-
           <div class="field">
-            <label class="label" for="c-tel">Teléfono</label>
-            <input class="input" id="c-tel" name="tel" type="tel" placeholder="Ej: 6xxx-xxxx" required>
-          </div>
-
-          <div class="field">
-            <label class="label" for="c-servicio">Servicio de interés</label>
-            <select class="select" id="c-servicio" name="servicio" required>
-              <option value="" selected disabled>Selecciona un servicio…</option>
-
-              <optgroup label="Estética Avanzada">
-                <option>Limpieza Facial</option>
-                <option>Hidrafacial</option>
-                <option>Antiacné</option>
-                <option>Manchas / Despigmentante</option>
-                <option>Peeling</option>
-                <option>Exosomas / PRP</option>
-                <option>Hollywood Peeling</option>
-                <option>Fibroblast / Verrugas</option>
-                <option>Botox / Hialurónico</option>
-                <option>Bioestimuladores / Hilos</option>
-                <option>Aparatología (HIFU/Morpheus)</option>
-                <option>Depilación Láser</option>
-              </optgroup>
-
-              <option>Otro (Especificar en mensaje)</option>
+            <label class="label" for="c-servicio">Servicio de Interés</label>
+            <select class="select" id="c-servicio" required>
+              <option value="" disabled selected>Selecciona...</option>
+              <option>Limpieza Facial / Hidrafacial</option>
+              <option>Peelings / Despigmentante</option>
+              <option>Plasma Fibroblast (Promo)</option>
+              <option>Botox / Ácido Hialurónico</option>
+              <option>Bioestimuladores / Hilos</option>
+              <option>Aparatología (HIFU/Morpheus)</option>
+              <option>Depilación Láser</option>
+              <option>Otro (Detallar en mensaje)</option>
             </select>
-            <div class="help">Si no ves el servicio exacto, elige “Otro” y escríbelo abajo.</div>
           </div>
-
           <div class="field">
-            <label class="label" for="c-msg">Mensaje (opcional)</label>
-            <textarea class="textarea" id="c-msg" name="msg" placeholder="Ej: Quiero valoración, zona a tratar, fecha tentativa…"></textarea>
+            <label class="label" for="c-msg">Mensaje Adicional</label>
+            <textarea class="textarea" id="c-msg" placeholder="Ej: Quisiera cita para evaluación la próxima semana..."></textarea>
           </div>
-
           <div class="form-actions">
-            <button class="btn btn-dark" type="reset">Limpiar</button>
-            <button class="btn btn-wa" type="submit">Enviar por WhatsApp</button>
+            <button class="btn btn-wa" type="submit" style="width:100%; font-size:1rem; padding:12px;">Enviar Mensaje de WhatsApp</button>
           </div>
         </form>
       </div>
     </div>
   </section>
 
-  <div class="home-cta">
-    <a class="btn-home" href="/">
-      ⬅ Volver al Home de Figura Rostro KG
-    </a>
+  <div class="home-cta" style="text-align:center; margin-bottom:40px;">
+    <a class="btn-home" href="/">⬅ Volver al Inicio</a>
   </div>
 
-</div><div class="modal" id="svcModal" aria-hidden="true" role="dialog" aria-label="Detalle del servicio">
+</div>
+
+<div class="modal" id="svcModal" aria-hidden="true">
   <div class="modal-card">
     <div class="modal-head">
-      <h3 class="modal-title" id="mTitle">Detalle</h3>
-      <button class="modal-close" type="button" onclick="closeModal()">Cerrar ✕</button>
+      <h3 class="modal-title" id="mTitle"></h3>
+      <button class="modal-close" onclick="closeModal()">✕</button>
     </div>
     <div class="modal-body" id="mBody"></div>
     <div class="modal-foot">
-      <a class="btn btn-wa" id="mWa" href="#" target="_blank" rel="noopener">Contactar por WhatsApp</a>
-      <button class="btn btn-dark" type="button" onclick="closeModal()">Listo</button>
+      <button class="btn btn-dark" onclick="closeModal()">Cerrar</button>
+      <a class="btn btn-wa" id="mWa" href="#" target="_blank">Agendar por WhatsApp</a>
     </div>
   </div>
 </div>
 
 <footer>
-  <div class="footer-inner">
+  <div class="container footer-inner">
     <div class="footer-block">
-      <strong>Figura Rostro KG</strong>
-      Estética integral en Parque Lefevre, Plaza Royal Park.
+      <strong>Figura Rostro KG</strong><br>
+      Estética Avanzada en Panamá.
     </div>
-
     <div class="footer-block">
-      <strong>Menú</strong>
-      <a href="#estetica-avanzada">Estética Avanzada</a> ·
-      <a href="#contacto">Contacto</a>
+      <strong>Ubicación</strong><br>
+      <a href="https://waze.com/ul/hd1r000000" target="_blank">Plaza Royal Park, Parque Lefevre</a>
     </div>
-
     <div class="footer-block">
-      <strong>WhatsApp</strong>
-      <a href="https://wa.me/50764746168" target="_blank" rel="noopener">+507 6474-6168</a>
-    </div>
-
-    <div class="footer-block">
-      <strong>Cómo llegar</strong>
-      <a href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noopener">Waze</a> ·
-      <a href="https://maps.google.com/?q=Royal+Park+Ernesto+T+Lefevre+Panama" target="_blank" rel="noopener">Google Maps</a>
+      <strong>Contacto</strong><br>
+      WhatsApp: <a href="https://wa.me/50764746168" target="_blank">6474-6168</a>
     </div>
   </div>
-
   <div class="footer-bottom">
-    © <script>document.write(new Date().getFullYear())</script> Figura Rostro KG · Todos los derechos reservados
+    <div class="container" style="padding:15px 0;">
+      © <script>document.write(new Date().getFullYear())</script> Figura Rostro KG. Todos los derechos reservados.
+    </div>
   </div>
 </footer>
 
-<div class="fab-wrap" aria-label="Accesos rápidos">
-  <a class="fab fab-wa" href="https://wa.me/50764746168" target="_blank" rel="noopener" aria-label="Chatear por WhatsApp">
-    <svg viewBox="0 0 24 24">
-      <path d="M12 2a10 10 0 0 0-8.94 14.5L2 22l5.7-1.5A10 10 0 1 0 12 2zm5.5 14.1c-.24.68-1.4 1.3-1.96 1.34-.5.03-1.14.05-1.84-.12-.42-.1-.97-.31-1.67-.61-2.94-1.27-4.86-4.2-5.01-4.4-.15-.2-1.2-1.6-1.2-3.06 0-1.45.76-2.16 1.03-2.45.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.24.59.82 2.05.9 2.2.07.15.12.33.01.53-.1.2-.15.33-.3.51-.15.18-.31.4-.44.54-.15.15-.31.32-.13.62.18.3.8 1.3 1.71 2.1 1.18 1.05 2.17 1.37 2.47 1.52.3.15.48.13.66-.08.18-.2.76-.89.96-1.2.2-.3.41-.26.67-.15.26.1 1.64.77 1.92.91.29.15.48.22.55.34.07.12.07.7-.17 1.38z"/>
-    </svg>
-  </a>
-
-  <a class="fab fab-waze" href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noopener" aria-label="Abrir Waze">
-    <svg viewBox="0 0 24 24">
-      <path d="M12 2c5.5 0 10 3.9 10 8.7 0 3.9-3 7.2-7.2 8.2-.5.1-.7.4-.9.8-.5 1-1.4 2.1-2.9 2.1-1.6 0-2.4-1.1-2.9-2.1-.2-.4-.4-.7-.9-.8C5 17.9 2 14.6 2 10.7 2 5.9 6.5 2 12 2zm-6 9a1 1 0 110-2 1 1 0 010 2zm5 0a1 1 0 110-2 1 1 0 010 2zm5 0a1 1 0 110-2 1 1 0 010 2z"/>
-    </svg>
+<div class="fab-wrap">
+  <a class="fab fab-wa" href="https://wa.me/50764746168" target="_blank" aria-label="WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
   </a>
 </div>
 
-<script type='text/javascript' data-cfasync='false'>
-window.purechatApi={l:[],t:[],on:function(){this.l.push(arguments);}};
-(function(){
-  var done=false;
-  var script=document.createElement('script');
-  script.async=true;
-  script.type='text/javascript';
-  script.src='https://app.purechat.com/VisitorWidget/WidgetScript';
-  document.getElementsByTagName('HEAD').item(0).appendChild(script);
-  script.onreadystatechange=script.onload=function(e){
-    if(!done && (!this.readyState||this.readyState=='loaded'||this.readyState=='complete')){
-      new PCWidget({c:'39cf325c-2286-4b58-b2af-9c647e257085',f:true});
-      done=true;
-    }
-  };
-})();
-</script>
-
 <script>
-  const WA_NUMBER = "50764746168";
+  const WA_NUM = "50764746168";
+  const modal = document.getElementById("svcModal");
+  const mTitle = document.getElementById("mTitle");
+  const mBody = document.getElementById("mBody");
+  const mWa = document.getElementById("mWa");
+
+  // --- LÓGICA PARA OCULTAR EL BANNER EL DÍA 19 ---
+  (function checkPromoDate() {
+      const today = new Date();
+      // Meses en JS van de 0 a 11. Enero es 0.
+      // Fecha límite: 19 de Enero de 2026 (Año, Mes, Día)
+      const deadline = new Date(2026, 0, 19); 
+      
+      if (today >= deadline) {
+          const banner = document.getElementById('promo-banner');
+          if (banner) {
+              banner.style.display = 'none';
+          }
+      }
+  })();
+  // --------------------------------------------------
 
   function openModal(btn){
     const card = btn.closest(".svc-card");
-    const title = card.getAttribute("data-title") || "Detalle del servicio";
-    const desc = card.getAttribute("data-desc") || "";
-    const modal = document.getElementById("svcModal");
-    const mTitle = document.getElementById("mTitle");
-    const mBody = document.getElementById("mBody");
-    const mWa = document.getElementById("mWa");
-
+    const title = card.getAttribute("data-title");
+    const desc = card.getAttribute("data-desc");
+    
     mTitle.textContent = title;
     mBody.textContent = desc;
-
-    const msg = `Hola, quisiera información sobre ${title}.`;
-    mWa.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
-
+    mWa.href = `https://wa.me/${WA_NUM}?text=${encodeURIComponent("Hola, deseo información y detalles sobre: " + title)}`;
+    
     modal.classList.add("open");
     modal.setAttribute("aria-hidden","false");
+    document.body.style.overflow = "hidden"; // Evita scroll
   }
 
   function closeModal(){
-    const modal = document.getElementById("svcModal");
     modal.classList.remove("open");
     modal.setAttribute("aria-hidden","true");
+    document.body.style.overflow = "";
   }
 
-  document.addEventListener("click", (e)=>{
-    const modal = document.getElementById("svcModal");
-    if(!modal.classList.contains("open")) return;
-    if(e.target === modal) closeModal();
-  });
+  window.onclick = function(event) {
+    if (event.target == modal) closeModal();
+  }
 
   function sendToWhatsApp(e){
     e.preventDefault();
-    const nombre = document.getElementById("c-nombre").value.trim();
-    const tel = document.getElementById("c-tel").value.trim();
-    const servicio = document.getElementById("c-servicio").value.trim();
-    const msg = document.getElementById("c-msg").value.trim();
+    const nombre = document.getElementById("c-nombre").value;
+    const servicio = document.getElementById("c-servicio").value;
+    const msg = document.getElementById("c-msg").value;
 
-    const texto =
-`Hola, soy ${nombre}.
-Teléfono: ${tel}
-Servicio de interés: ${servicio}
-${msg ? "Mensaje: " + msg : ""}
-
-¿Me brindan disponibilidad y recomendaciones, por favor?`;
-
-    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(texto)}`, "_blank");
-    return false;
+    const text = `Hola, mi nombre es ${nombre}.\nEstoy interesado/a en: ${servicio}.\n${msg ? 'Mensaje adicional: ' + msg : ''}\n\nQuedo atento/a a su respuesta.`;
+    
+    window.open(`https://wa.me/${WA_NUM}?text=${encodeURIComponent(text)}`, "_blank");
   }
+</script>
+
+<script type='text/javascript' data-cfasync='false'>
+window.purechatApi={l:[],t:[],on:function(){this.l.push(arguments);}};
+(function(){ var done=false;var script=document.createElement('script');script.async=true;script.type='text/javascript';
+script.src='https://app.purechat.com/VisitorWidget/WidgetScript';
+document.getElementsByTagName('HEAD').item(0).appendChild(script);
+script.onreadystatechange=script.onload=function(e){if(!done&&(!this.readyState||this.readyState=='loaded'||this.readyState=='complete')){
+new PCWidget({c:'39cf325c-2286-4b58-b2af-9c647e257085',f:true});done=true;}};})();
 </script>
 
 </body>
