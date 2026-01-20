@@ -96,7 +96,7 @@
       <h2>Agenda tu Cita</h2>
       <p class="subtitle">Completa el formulario de pre-evaluación para confirmar disponibilidad.</p>
       
-      <form id="contact-form">
+      <form id="contact-form" action="https://formsubmit.co/d4a8b7644359e79d8aca6f5e7f53689b" method="POST">
         
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_subject" value="Nueva Solicitud de Cita - Plasma Fibroblast">
@@ -228,7 +228,7 @@
 
       const formData = new FormData(form);
 
-      fetch("https://formsubmit.co/figurarostrokg+citas@gmail.com", {
+      fetch("https://formsubmit.co/figurarostrokg@gmail.com", {
         method: "POST",
         body: formData
       })
