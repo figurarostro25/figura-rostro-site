@@ -176,10 +176,9 @@
           <div>
             <label>Hora</label>
             <select name="Hora_Deseada" required>
-              <option value="" disabled selected>Elegir...</option>
-              <option value="Mañana">Mañana (9-12)</option>
-              <option value="Tarde">Tarde (1-5)</option>
-              <option value="Noche">Noche (5-8)</option>
+              <option value="" disabled selected>Elegir Turno...</option>
+              <option value="Turno-Diurno-8am-5pm">Turno Diurno (8:00 AM - 5:00 PM)</option>
+              <option value="Turno-Nocturno-6pm-10pm">Turno Nocturno (6:00 PM - 10:00 PM)</option>
             </select>
           </div>
         </div>
@@ -207,7 +206,7 @@
       locale: "es",
       minDate: "today",
       dateFormat: "d-m-Y",
-      disable: [ function(date) { return (date.getDay() === 0); } ] // Domingos desactivados
+      // disable: [] // Domingos AHORA HABILITADOS (se eliminó la restricción)
     });
 
     // 2. LÓGICA YAPPY
