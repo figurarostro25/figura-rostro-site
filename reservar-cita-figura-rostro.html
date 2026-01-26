@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">F
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   
   <style>
-    /* --- TUS ESTILOS ORIGINALES (MANTENIDOS) --- */
+    /* --- ESTILOS ORIGINALES --- */
     :root {
       --brand: #5b2580; --brand-dark: #2a0e3d; --gold: #d4af37; --chiriqui-green: #007a33; --text-main: #333333;
     }
@@ -46,6 +46,9 @@
       width: 100%; padding: 16px; background: #fdfdfd; border: 1px solid #ccc; border-radius: 12px; color: #333; font-family: inherit; font-size: 15px; box-sizing: border-box; transition: all 0.3s ease;
     }
     input:focus, select:focus { outline: none; border-color: var(--brand); background: #fff; box-shadow: 0 0 0 4px rgba(91, 37, 128, 0.1); }
+    
+    /* Estilo especial para grupos de opciones (Turnos) */
+    optgroup { font-weight: 700; color: var(--brand); font-style: normal; }
 
     .medical-section { background: #fbf7fd; padding: 25px; border-radius: 16px; margin-bottom: 25px; border: 1px solid #eaddf5; border-left: 5px solid var(--brand); }
     .medical-title { font-weight: 800; color: var(--brand); margin-bottom: 5px; display: block; text-transform: uppercase; font-size: 12px; letter-spacing: 1.5px; }
@@ -108,9 +111,15 @@
           <input type="text" name="Nombre" placeholder="Nombre y Apellido" required>
         </div>
 
-        <div class="form-group">
-          <label>Edad</label>
-          <input type="number" name="Edad" placeholder="Ej: 30" required>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+           <div class="form-group">
+             <label>Edad</label>
+             <input type="number" name="Edad" placeholder="Ej: 30" required>
+           </div>
+           <div class="form-group">
+             <label>Ocupación</label>
+             <input type="text" name="Ocupacion" placeholder="Ej: Abogada, Estudiante..." required>
+           </div>
         </div>
 
         <div class="form-group">
@@ -135,18 +144,51 @@
         </div>
 
         <div class="form-group">
-          <label>Servicio</label>
+          <label>¿Qué le inspira a tomar el tratamiento?</label>
+          <select name="Motivacion" required>
+             <option value="" disabled selected>-- Seleccione su motivo principal --</option>
+             <option value="Sentirme bien conmigo misma">Sentirme bien conmigo misma</option>
+             <option value="Me motiva verme mejor">Me motiva verme mejor / Amor propio</option>
+             <option value="Corregir algo específico">Corregir una imperfección específica</option>
+             <option value="Ocasión especial">Prepararme para una ocasión especial</option>
+             <option value="Salud y Bienestar">Salud y bienestar de mi piel</option>
+             <option value="Otro">Otro motivo</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Si pudiera permitírselo, ¿tomaría la promo?</label>
+          <select name="Interes_Promo" required>
+            <option value="" disabled selected>-- Seleccione una opción --</option>
+            <option value="Si_Definitivamente">Sí, definitivamente</option>
+            <option value="Quizas_Mas_Adelante">Quizás más adelante</option>
+            <option value="No_Por_Ahora">No por ahora</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+            <label>¿Con cuál medio de pago le gustaría recibir oferta?</label>
+            <select name="Medio_Pago_Preferido" required>
+              <option value="" disabled selected>-- Preferencia de Pago --</option>
+              <option value="Transferencia_Bancaria">Transferencia Bancaria / Yappy</option>
+              <option value="Tarjeta_Credito">Tarjeta de Crédito</option>
+              <option value="Efectivo">Efectivo</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+          <label>Servicio de Interés</label>
           <select name="Servicio" id="service-select" required>
             <option value="" disabled selected>-- Elige una opción --</option>
-            <option value="Promo-Seguidores-Martes-Jueves">Promo de Seguidores Martes a Jueves (Solo 5,95$ y recibes bono de $12 al llegar a tiempo)</option>
-            <option value="Procedimiento-Completo">Quiero Realizarme el Procedimiento (Ya hice valoración)</option>
-            <option value="Valoracion-Transferencia">Valoración Estética - $12.95 (Pago Directo y recibes bono de $12 al llegar a tiempo)</option>
-            <option value="Valoracion-Yappy">Valoración Estética - $5.95 (Yappy para cualquier día)</option>
+            <option value="Promo-Seguidores-Viernes-Domingo">Promo de Seguidores Viernes a Domingo (cortesía)</option>
+            <option value="Procedimiento-Completo">Quiero Realizarme el Procedimiento (Ya valorado)</option>
+            <option value="Valoracion-Transferencia">Valoración Estética - $9.95 (Pago Directo)</option>
+            <option value="Valoracion-Yappy">Valoración Estética - $5.95 (Yappy)</option>
             <option value="Otro">Otro servicio</option>
           </select>
           
           <div class="price-highlight">
-            ℹ️ Las valoraciones reservadas y pagas Por Directorio Yappi incluyen un <strong>Bono de Regalo de $12</strong> aplicable a cualquier otro servicio de la estética o a tu tratamiento. (buscanos en Directorio Yappi como Figura Rostro KG)
+            ℹ️ Las valoraciones pagadas incluyen un <strong>Bono de Regalo de $10</strong> aplicable a tu tratamiento final.
           </div>
 
           <div id="yappy-msg" class="yappy-alert">
@@ -155,16 +197,26 @@
           </div>
         </div>
 
+        <div class="form-group">
+           <label>Intención de la Visita</label>
+           <select name="Intencion_Cita" required>
+             <option value="" disabled selected>-- ¿Qué desea realizar? --</option>
+             <option value="Solo_Valoracion">Solo Valoración (Diagnóstico)</option>
+             <option value="Valoracion_Mas_Procedimiento">Valoración y Tiempo para Procedimiento (Mismo día)</option>
+           </select>
+           <p style="font-size:12px; color:#666; margin-top:5px;">Esto nos ayuda a reservar el tiempo adecuado en cabina para ti.</p>
+        </div>
+
         <div class="medical-section">
-          <span class="medical-title">Pre-evaluacion</span>
+          <span class="medical-title">Seguridad Médica</span>
           <p style="font-size:13px; margin:0; color:#666;">Marca SOLO si presentas:</p>
           
           <div class="checkbox-group">
-            <label class="checkbox-item"><input type="checkbox" name="Condicion[]" value="Accutane"> Tratamiento con Accutane/Roacutan (último año)</label>
-            <label class="checkbox-item"><input type="checkbox" name="Condicion[]" value="Bronceado"> Bronceado reciente (sol o cámara)</label>
-            <label class="checkbox-item"><input type="checkbox" name="Condicion[]" value="Herpes"> Historial de Herpes Facial</label>
-            <label class="checkbox-item"><input type="checkbox" name="Condicion[]" value="Alergia"> Historial Clínico de Alergia</label>
-            <label class="checkbox-item"><input type="checkbox" name="Condicion[]" value="Aspirina"> Anticoagulantes / Aspirina</label>
+            <label class="checkbox-item"><input type="checkbox" name="Condicion[]" value="Diabetes"> Diabetes Descontrolada</label>
+            <label class="checkbox-item"><input type="checkbox" name="Condicion[]" value="Queloide"> Cicatrización Queloide</label>
+            <label class="checkbox-item"><input type="checkbox" name="Condicion[]" value="Embarazo"> Embarazo / Lactancia</label>
+            <label class="checkbox-item"><input type="checkbox" name="Condicion[]" value="Marcapasos"> Marcapasos</label>
+            <label class="checkbox-item"><input type="checkbox" name="Condicion[]" value="Infeccion"> Infección activa</label>
           </div>
         </div>
 
@@ -176,9 +228,20 @@
           <div>
             <label>Hora</label>
             <select name="Hora_Deseada" required>
-              <option value="" disabled selected>Elegir Turno...</option>
-              <option value="Turno-Diurno-8am-5pm">Turno Diurno (8:00 AM - 5:00 PM)</option>
-              <option value="Turno-Nocturno-6pm-10pm">Turno Nocturno (6:00 PM - 10:00 PM)</option>
+              <option value="" disabled selected>Ver Horarios...</option>
+              
+              <optgroup label="☀️ Turno 1 (8:00 AM - 4:00 PM)">
+                <option value="08:00 AM">08:00 AM</option>
+                <option value="10:00 AM">10:00 AM</option>
+                <option value="12:00 PM">12:00 PM</option>
+                <option value="02:30 PM">02:30 PM</option>
+                <option value="04:00 PM">04:00 PM</option>
+              </optgroup>
+
+              <optgroup label="🌙 Turno 2 (6:00 PM - 10:00 PM)">
+                <option value="07:00 PM">07:00 PM</option>
+                <option value="09:00 PM">09:00 PM</option>
+              </optgroup>
             </select>
           </div>
         </div>
@@ -206,7 +269,7 @@
       locale: "es",
       minDate: "today",
       dateFormat: "d-m-Y",
-      // disable: [] // Domingos AHORA HABILITADOS (se eliminó la restricción)
+      // Todos los días habilitados (no hay 'disable')
     });
 
     // 2. LÓGICA YAPPY
@@ -241,7 +304,7 @@
       .then(response => {
         if(response.ok) {
            // ÉXITO
-           btn.style.display = 'none'; // Ocultamos el botón para que no envíen doble
+           btn.style.display = 'none';
            msg.className = 'success';
            msg.innerHTML = `
              <h3>✅ ¡Solicitud Recibida!</h3>
