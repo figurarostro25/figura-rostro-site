@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   
   <style>
-    /* --- ESTILOS ORIGINALES --- */
+    /* --- ESTILOS --- */
     :root {
       --brand: #5b2580; --brand-dark: #2a0e3d; --gold: #d4af37; --chiriqui-green: #007a33; --text-main: #333333;
     }
@@ -45,9 +45,8 @@
     input, select, textarea {
       width: 100%; padding: 16px; background: #fdfdfd; border: 1px solid #ccc; border-radius: 12px; color: #333; font-family: inherit; font-size: 15px; box-sizing: border-box; transition: all 0.3s ease;
     }
-    input:focus, select:focus { outline: none; border-color: var(--brand); background: #fff; box-shadow: 0 0 0 4px rgba(91, 37, 128, 0.1); }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--brand); background: #fff; box-shadow: 0 0 0 4px rgba(91, 37, 128, 0.1); }
     
-    /* Estilo especial para grupos de opciones (Turnos) */
     optgroup { font-weight: 700; color: var(--brand); font-style: normal; }
 
     .medical-section { background: #fbf7fd; padding: 25px; border-radius: 16px; margin-bottom: 25px; border: 1px solid #eaddf5; border-left: 5px solid var(--brand); }
@@ -66,7 +65,7 @@
     .btn-help-wa:hover { color: var(--brand); border-color: #eee; background: #fff; }
     .btn-help-wa svg { fill: #25D366; width: 20px; height: 20px; }
 
-    /* ESTILO PARA MENSAJES */
+    /* MENSAJES */
     #status-msg { display: none; text-align: center; padding: 15px; margin-top: 20px; border-radius: 12px; font-weight: 600; }
     .success { background: #e6fffa; color: #047857; border: 1px solid #10b981; }
     .error { background: #fef2f2; color: #b91c1c; border: 1px solid #ef4444; }
@@ -154,6 +153,24 @@
              <option value="Salud y Bienestar">Salud y bienestar de mi piel</option>
              <option value="Otro">Otro motivo</option>
           </select>
+        </div>
+
+        <div class="form-group">
+            <label>Zona Principal a Tratar</label>
+            <select name="Zona_Tratamiento" required>
+              <option value="" disabled selected>-- Seleccione la zona --</option>
+              <option value="Abdomen">Abdomen (Estrías/Flacidez)</option>
+              <option value="Parpados">Párpados (Blefaroplastia sin cirugía)</option>
+              <option value="Patas_Gallo">Patas de Gallo</option>
+              <option value="Entrecejo">Entrecejo</option>
+              <option value="Nasogenianos">Líneas Nasogenianas</option>
+              <option value="Codigo_Barras">Código de Barras (Labios)</option>
+              <option value="Cuello">Cuello / Papada</option>
+              <option value="Frente">Frente</option>
+              <option value="Cicatrices">Cicatrices / Manchas</option>
+              <option value="Verrugas">Verrugas / Lunares</option>
+              <option value="Otras">Otras zonas</option>
+            </select>
         </div>
 
         <div class="form-group">
@@ -246,6 +263,11 @@
           </div>
         </div>
 
+        <div class="form-group">
+           <label>Observaciones (Opcional)</label>
+           <textarea name="Observaciones" rows="3" placeholder="¿Algún detalle adicional sobre su cita o zona a tratar?"></textarea>
+        </div>
+
         <button type="submit" class="btn-submit">Enviar Solicitud Segura</button>
 
         <a href="https://wa.me/50764746168?text=Hola,%20tengo%20dudas%20con%20el%20formulario." target="_blank" class="btn-help-wa">
@@ -269,7 +291,7 @@
       locale: "es",
       minDate: "today",
       dateFormat: "d-m-Y",
-      // Todos los días habilitados (no hay 'disable')
+      // Todos los días habilitados
     });
 
     // 2. LÓGICA YAPPY
