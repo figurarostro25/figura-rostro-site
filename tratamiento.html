@@ -80,29 +80,19 @@
             canvas { border: 1px solid #ccc !important; }
         }
 
-        /* Estilo Botón Activo del Menú */
-        .nav-btn-active {
-            background-color: #9333ea; /* brand-main */
-            color: white;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-        .nav-btn-inactive {
-            background-color: transparent;
-            color: #6b7280; /* gray-500 */
-        }
-        .dark .nav-btn-inactive {
-            color: #94a3b8; /* slate-400 */
-        }
+        /* Botones Menú */
+        .nav-btn-active { background-color: #9333ea; color: white; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        .nav-btn-inactive { background-color: transparent; color: #6b7280; }
+        .dark .nav-btn-inactive { color: #94a3b8; }
     </style>
 </head>
-<body class="p-4 pt-20"> <nav class="fixed top-0 inset-x-0 bg-white/95 dark:bg-night-card/95 backdrop-blur shadow-md p-2 z-50 border-b border-gray-200 dark:border-slate-700 no-print">
-        <div class="max-w-5xl mx-auto flex justify-between items-center">
-            
-            <button onclick="toggleDarkMode()" class="w-10 h-10 rounded-full flex items-center justify-center bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-yellow-400 border border-gray-200 dark:border-slate-600 transition hover:scale-110">
-                <i class="fas fa-moon dark:hidden"></i>
-                <i class="fas fa-sun hidden dark:inline"></i>
-            </button>
+<body class="p-4 pt-20">
 
+    <nav class="fixed top-0 inset-x-0 bg-white/95 dark:bg-night-card/95 backdrop-blur shadow-md p-2 z-50 border-b border-gray-200 dark:border-slate-700 no-print">
+        <div class="max-w-5xl mx-auto flex justify-between items-center">
+            <button onclick="toggleDarkMode()" class="w-10 h-10 rounded-full flex items-center justify-center bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-yellow-400 border border-gray-200 dark:border-slate-600 transition hover:scale-110">
+                <i class="fas fa-moon dark:hidden"></i><i class="fas fa-sun hidden dark:inline"></i>
+            </button>
             <div class="flex bg-gray-100 dark:bg-slate-800 p-1 rounded-full border border-gray-200 dark:border-slate-600">
                 <button onclick="toggleView('form')" id="navForm" class="nav-btn-active px-6 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-2">
                     <i class="fas fa-file-signature"></i> <span class="hidden sm:inline">Formulario</span>
@@ -111,7 +101,6 @@
                     <i class="fas fa-database"></i> <span class="hidden sm:inline">Base de Datos</span>
                 </button>
             </div>
-
             <button onclick="limpiarFormulario()" class="bg-rose-50 hover:bg-rose-100 text-rose-600 dark:bg-slate-800 dark:text-rose-400 px-4 py-2 rounded-full text-xs font-bold border border-rose-200 dark:border-slate-600 transition flex items-center gap-2">
                 <i class="fas fa-plus-circle"></i> Nueva Ficha
             </button>
@@ -141,10 +130,7 @@
                     <form id="formPart1">
                         <div class="section-header mt-0"><i class="fas fa-user-circle text-lg"></i> Datos del Paciente</div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                            <div>
-                                <label class="label-pro">Nombre Completo</label>
-                                <input type="text" id="nombre" class="input-pro border-l-4 border-l-brand-main" placeholder="Ej. Ana Pérez" required>
-                            </div>
+                            <div><label class="label-pro">Nombre Completo</label><input type="text" id="nombre" class="input-pro border-l-4 border-l-brand-main" placeholder="Ej. Ana Pérez" required></div>
                             <div class="grid grid-cols-2 gap-4">
                                 <div><label class="label-pro">Cédula</label><input type="text" id="cedula" class="input-pro"></div>
                                 <div><label class="label-pro">Teléfono</label><input type="tel" id="telefono" class="input-pro"></div>
@@ -307,7 +293,6 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getFirestore, collection, addDoc, getDocs, orderBy, query, Timestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-        // CONFIG FIREBASE
         const firebaseConfig = {
             apiKey: "AIzaSyBAuTfBKGuG33c9NXc1s0lkQv-7GwA47l0",
             authDomain: "figurarostro-system.firebaseapp.com",
@@ -323,7 +308,6 @@
 
         window.dbCache = [];
 
-        // --- NAVEGACIÓN Y VISTAS ---
         window.toggleDarkMode = () => { document.documentElement.classList.toggle('dark'); }
 
         window.toggleView = (view) => {
@@ -331,21 +315,17 @@
             const navList = document.getElementById('navList');
             
             if(view === 'list') {
-                // MODO BASE DE DATOS
                 document.getElementById('seccionFormulario').classList.add('hidden');
                 document.getElementById('seccionBaseDatos').classList.remove('hidden');
                 
-                // Actualizar estilo botones
                 navForm.className = "nav-btn-inactive px-6 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-2 hover:bg-gray-200 dark:hover:bg-slate-700";
                 navList.className = "nav-btn-active px-6 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-2";
                 
                 loadData();
             } else {
-                // MODO FORMULARIO (Sin borrar datos)
                 document.getElementById('seccionFormulario').classList.remove('hidden');
                 document.getElementById('seccionBaseDatos').classList.add('hidden');
                 
-                // Actualizar estilo botones
                 navForm.className = "nav-btn-active px-6 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-2";
                 navList.className = "nav-btn-inactive px-6 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-2 hover:bg-gray-200 dark:hover:bg-slate-700";
             }
@@ -367,7 +347,6 @@
             document.querySelectorAll('.fecha-display').forEach(el => el.innerText = d);
         }
 
-        // --- CANVAS FIRMA ---
         let canvas, ctx, isDrawing = false;
         function initSignaturePad() {
             canvas = document.getElementById('signaturePad');
@@ -404,7 +383,6 @@
 
         window.addEventListener('load', () => { agregarServicio(); generarFolio(); setFecha(); initSignaturePad(); });
 
-        // --- LÓGICA DE SERVICIOS ---
         window.agregarServicio = function() {
             const container = document.getElementById('listaServicios');
             const id = Date.now() + Math.random();
@@ -475,7 +453,7 @@
             }
         }
 
-        // --- GUARDAR DATOS (FIREBASE) ---
+        // --- GUARDAR (Ahora sí guardamos descuentos y bonos) ---
         document.getElementById('btnSave').addEventListener('click', async () => {
             const btn = document.getElementById('btnSave');
             const nombre = document.getElementById('nombre').value;
@@ -510,7 +488,10 @@
                         subtotal: document.getElementById('subtotal').value, 
                         total: document.getElementById('lblTotal').innerText, 
                         abono: document.getElementById('abono').value, 
-                        pendiente: document.getElementById('lblPendiente').innerText 
+                        pendiente: document.getElementById('lblPendiente').innerText,
+                        // ¡IMPORTANTE! Guardamos variables de cálculo
+                        descuentoPct: document.getElementById('promo_pct').value,
+                        bono: document.getElementById('bono_extra').value
                     },
                     medico: { especialista: document.getElementById('specialistName').value },
                     fecha: Timestamp.now()
@@ -520,7 +501,7 @@
             } catch (e) { alert(e.message); btn.innerHTML = txt; btn.disabled = false; }
         });
 
-        // --- CARGAR BASE DE DATOS (LECTURA) ---
+        // --- CARGAR DATOS ---
         window.loadData = async () => {
             const tb = document.getElementById('tableBody'); 
             tb.innerHTML=''; 
@@ -566,7 +547,7 @@
             document.getElementById('loader').classList.add('hidden');
         }
 
-        // --- RELLENAR FORMULARIO CON DATOS ---
+        // --- RESTAURAR FICHA (Ahora restaura descuentos) ---
         window.verFicha = (folioBuscado) => {
             try {
                 const registro = window.dbCache.find(r => r.folio === folioBuscado);
@@ -617,6 +598,10 @@
                 const f = registro.finanzas || {};
                 document.getElementById('abono').value = f.abono || 0;
                 
+                // --- RESTAURAR DESCUENTOS Y BONOS ---
+                document.getElementById('promo_pct').value = f.descuentoPct || 0;
+                document.getElementById('bono_extra').value = f.bono || 0;
+
                 const m = registro.medico || {};
                 document.getElementById('specialistName').value = m.especialista || '';
 
@@ -629,7 +614,6 @@
             }
         }
 
-        // --- GENERAR PDF ---
         document.getElementById('btnPdf').addEventListener('click', () => {
             const el = document.getElementById('printContainer');
             const controls = document.querySelectorAll('.no-print, .btn-remove');
