@@ -3,285 +3,299 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema Clínico Multi-Servicio | Figura Rostro KG</title>
+    <title>Ficha Clínica Pro | Figura Rostro KG</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        darkbg: '#0f172a', // Fondo principal
-                        panel: '#1e293b', // Fondo paneles
-                        accent: '#e11d48', // Color acento (Rojo/Rosa)
-                        input: '#334155', // Fondo inputs
-                    }
-                }
-            }
-        }
-    </script>
-
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background-color: #0f172a; color: #e2e8f0; }
+        /* ESTILO GENERAL: Limpio y Ahorrador de Tinta */
+        body { font-family: 'Arial', sans-serif; background-color: #f3f4f6; color: #1f2937; }
         
-        /* Estilos Inputs */
-        .input-dark {
-            background-color: #1e293b;
-            border: 1px solid #334155;
-            color: white;
-            border-radius: 0.5rem;
-            padding: 0.6rem;
+        /* Inputs estilo "Ficha Médica" */
+        .input-pro {
+            background-color: #ffffff;
+            border: 1px solid #d1d5db;
+            color: #000;
+            border-radius: 4px;
+            padding: 5px 8px;
             width: 100%;
-            font-size: 0.9rem;
+            font-size: 11px;
+            font-weight: 600;
             transition: all 0.2s;
         }
-        .input-dark:focus { outline: none; border-color: #e11d48; }
+        .input-pro:focus { outline: none; border-color: #be123c; background-color: #fff1f2; }
+        .input-pro::placeholder { color: #9ca3af; font-weight: normal; }
 
-        /* Filas de la tabla de servicios */
+        /* Etiquetas */
+        .label-pro {
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #4b5563;
+            margin-bottom: 2px;
+            display: block;
+        }
+
+        /* Fila de Servicios */
         .service-row {
-            background-color: #1a2436;
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px solid #334155;
-            margin-bottom: 10px;
+            background-color: #f9fafb;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 6px;
+            margin-bottom: 4px;
             display: grid;
-            grid-template-columns: 2fr 2fr 1fr 40px;
-            gap: 10px;
+            grid-template-columns: 2fr 2fr 1fr 30px;
+            gap: 8px;
             align-items: center;
         }
 
-        /* Checkbox personalizado */
-        .custom-check { accent-color: #e11d48; width: 1.1rem; height: 1.1rem; cursor: pointer; }
+        /* Títulos */
+        .section-header {
+            font-size: 11px;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #be123c; /* Rojo oscuro elegante */
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 4px;
+            margin-top: 16px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
 
-        /* Animación de carga */
-        .loader { border: 3px solid #334155; border-top: 3px solid #e11d48; border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; }
+        /* Checkbox */
+        .custom-check { accent-color: #be123c; transform: scale(1.1); cursor: pointer; }
+
+        /* Loader */
+        .loader { border: 3px solid #e5e7eb; border-top: 3px solid #be123c; border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        /* Ajustes para impresión (PDF) */
+        /* IMPRESIÓN PDF */
         @media print {
-            body { background-color: white !important; color: black !important; }
+            body { background-color: white !important; margin: 0; }
             .no-print { display: none !important; }
+            .shadow-xl { box-shadow: none !important; }
+            .bg-gray-50 { background-color: white !important; }
+            /* Forzar impresión de colores de fondo solo en el header */
+            .header-dark { -webkit-print-color-adjust: exact; print-color-adjust: exact; background-color: #0f172a !important; color: white !important; }
         }
     </style>
 </head>
-<body class="p-2 md:p-6 min-h-screen">
+<body class="p-4 flex justify-center min-h-screen">
 
-    <nav class="flex justify-between items-center mb-6 max-w-5xl mx-auto no-print">
-        <div class="flex items-center gap-3">
-            <a href="/" class="text-gray-400 hover:text-white transition"><i class="fas fa-chevron-left"></i> Volver</a>
-            <span class="font-bold text-rose-500">SISTEMA PRO v3.2</span>
+    <nav class="fixed top-0 inset-x-0 bg-white shadow-md p-3 z-50 flex justify-between items-center max-w-5xl mx-auto border-b border-gray-200 no-print">
+        <div class="flex items-center gap-2">
+            <a href="/" class="text-gray-500 hover:text-black font-bold text-xs flex items-center gap-1">
+                <i class="fas fa-arrow-left"></i> Volver
+            </a>
         </div>
         <div class="flex gap-2">
-            <button onclick="limpiarFormulario()" class="bg-rose-600 hover:bg-rose-700 text-white px-4 py-2 rounded text-sm font-bold shadow-lg transition">
-                <i class="fas fa-file-medical mr-1"></i> Nueva Ficha
+            <button onclick="limpiarFormulario()" class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1.5 rounded text-xs font-bold border border-gray-300 transition">
+                <i class="fas fa-eraser mr-1"></i> Nueva Ficha
             </button>
-            <button onclick="toggleView('list')" class="bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded text-sm font-bold transition">
+            <button onclick="toggleView('list')" class="bg-slate-800 hover:bg-slate-700 text-white px-3 py-1.5 rounded text-xs font-bold transition">
                 <i class="fas fa-database mr-1"></i> Consultar BD
             </button>
         </div>
     </nav>
-
-    <div id="viewForm" class="max-w-5xl mx-auto bg-slate-900 rounded-xl shadow-2xl border border-slate-800 p-6 md:p-8 relative">
+    <div class="h-12 no-print"></div> <div id="viewForm" class="w-full max-w-4xl bg-white shadow-xl border border-gray-300 relative">
         
-        <div class="flex justify-between items-end border-b border-slate-700 pb-4 mb-6">
+        <div class="header-dark bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 p-6 flex justify-between items-end">
             <div>
                 <h1 class="text-2xl font-extrabold text-white uppercase tracking-wider">Figura Rostro KG</h1>
-                <p class="text-rose-500 text-xs font-bold tracking-widest">ESTÉTICA INTEGRAL AVANZADA</p>
+                <p class="text-rose-400 text-[10px] font-bold tracking-[0.2em] uppercase mt-1">Estética Integral & Spa Avanzado</p>
             </div>
-            <div class="text-right">
-                <p class="text-xs text-gray-400">FECHA DE REGISTRO</p>
-                <p id="fechaHoy" class="text-lg font-bold text-white"></p>
+            <div class="text-right text-white">
+                <p class="text-[9px] uppercase opacity-70 mb-1">Fecha de Registro</p>
+                <div class="bg-white/10 px-3 py-1 rounded text-sm font-bold font-mono" id="fechaHoy"></div>
             </div>
         </div>
 
-        <form id="clinicalForm">
-            
-            <h3 class="text-gray-400 text-xs font-bold uppercase mb-4 border-b border-slate-800 pb-2"><i class="fas fa-user mr-2"></i>Datos Personales</h3>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <div>
-                    <label class="text-[10px] text-gray-500 font-bold uppercase ml-1">Nombre Completo</label>
-                    <input type="text" id="nombre" class="input-dark focus:ring-1 ring-rose-500" placeholder="Ej. María Pérez" required>
-                </div>
-                <div class="grid grid-cols-2 gap-4">
+        <div class="p-8">
+            <form id="clinicalForm">
+                
+                <div class="section-header mt-0"><i class="fas fa-id-card"></i> Información del Paciente</div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
                     <div>
-                        <label class="text-[10px] text-gray-500 font-bold uppercase ml-1">Cédula</label>
-                        <input type="text" id="cedula" class="input-dark" placeholder="V-...">
+                        <label class="label-pro">Nombre Completo</label>
+                        <input type="text" id="nombre" class="input-pro border-l-4 border-l-rose-500" placeholder="Nombre y Apellido" required>
                     </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="label-pro">Cédula / ID</label>
+                            <input type="text" id="cedula" class="input-pro">
+                        </div>
+                        <div>
+                            <label class="label-pro">Teléfono</label>
+                            <input type="tel" id="telefono" class="input-pro">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
                     <div>
-                        <label class="text-[10px] text-gray-500 font-bold uppercase ml-1">Teléfono</label>
-                        <input type="tel" id="telefono" class="input-dark">
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <div>
-                    <label class="text-[10px] text-gray-500 font-bold uppercase ml-1">Fecha de Nacimiento</label>
-                    <div class="flex gap-2">
-                        <select id="dia_nac" class="input-dark w-20" onchange="calcularEdad()">
-                            <option value="">Día</option>
-                            <script>for(let i=1;i<=31;i++) document.write(`<option value="${i}">${i}</option>`);</script>
-                        </select>
-                        <select id="mes_nac" class="input-dark flex-1" onchange="calcularEdad()">
-                            <option value="">Mes</option>
-                            <option value="1">Enero</option> <option value="2">Febrero</option>
-                            <option value="3">Marzo</option> <option value="4">Abril</option>
-                            <option value="5">Mayo</option> <option value="6">Junio</option>
-                            <option value="7">Julio</option> <option value="8">Agosto</option>
-                            <option value="9">Septiembre</option> <option value="10">Octubre</option>
-                            <option value="11">Noviembre</option> <option value="12">Diciembre</option>
-                        </select>
-                        <input type="number" id="anio_nac" class="input-dark w-24" placeholder="Año" onchange="calcularEdad()">
-                    </div>
-                </div>
-                <div class="flex gap-4">
-                    <div class="w-1/3">
-                        <label class="text-[10px] text-gray-500 font-bold uppercase ml-1">Edad</label>
-                        <input type="text" id="edad" class="input-dark bg-slate-800 text-center font-bold text-rose-400" readonly placeholder="--">
-                    </div>
-                    <div class="w-2/3">
-                        <label class="text-[10px] text-gray-500 font-bold uppercase ml-1">Ocupación</label>
-                        <input type="text" id="ocupacion" class="input-dark">
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mb-6">
-                <label class="text-[10px] text-gray-500 font-bold uppercase ml-1">Dirección</label>
-                <input type="text" id="direccion" class="input-dark">
-            </div>
-
-            <div class="flex justify-between items-end mb-2 border-b border-slate-800 pb-2">
-                <h3 class="text-gray-400 text-xs font-bold uppercase"><i class="fas fa-list mr-2"></i>Tratamientos Realizados</h3>
-                <button type="button" onclick="agregarServicio()" class="text-xs bg-slate-700 hover:bg-slate-600 text-green-400 px-3 py-1 rounded transition no-print">
-                    <i class="fas fa-plus-circle"></i> Agregar Otro Servicio
-                </button>
-            </div>
-
-            <div id="listaServicios" class="mb-6"></div>
-
-            <div class="bg-slate-800 p-5 rounded-lg border border-slate-700 mb-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    
-                    <div class="space-y-4">
-                        <div>
-                            <label class="text-[10px] text-gray-400 font-bold uppercase">1. Subtotal Servicios</label>
-                            <input type="text" id="subtotal" class="input-dark font-mono text-right" readonly value="$0.00">
+                        <label class="label-pro">Fecha Nacimiento</label>
+                        <div class="flex gap-2">
+                            <select id="dia_nac" class="input-pro w-16" onchange="calcularEdad()">
+                                <option value="">Día</option>
+                                <script>for(let i=1;i<=31;i++) document.write(`<option value="${i}">${i}</option>`);</script>
+                            </select>
+                            <select id="mes_nac" class="input-pro flex-1" onchange="calcularEdad()">
+                                <option value="">Mes</option>
+                                <option value="1">Enero</option> <option value="2">Febrero</option>
+                                <option value="3">Marzo</option> <option value="4">Abril</option>
+                                <option value="5">Mayo</option> <option value="6">Junio</option>
+                                <option value="7">Julio</option> <option value="8">Agosto</option>
+                                <option value="9">Septiembre</option> <option value="10">Octubre</option>
+                                <option value="11">Noviembre</option> <option value="12">Diciembre</option>
+                            </select>
+                            <input type="number" id="anio_nac" class="input-pro w-20" placeholder="Año" onchange="calcularEdad()">
                         </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="w-24">
+                            <label class="label-pro">Edad</label>
+                            <input type="text" id="edad" class="input-pro bg-gray-100 text-center font-bold text-slate-700" readonly>
+                        </div>
+                        <div class="flex-1">
+                            <label class="label-pro">Ocupación</label>
+                            <input type="text" id="ocupacion" class="input-pro">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="label-pro">Dirección de Habitación</label>
+                    <input type="text" id="direccion" class="input-pro">
+                </div>
 
-                        <div>
-                            <label class="text-[10px] text-gray-400 font-bold uppercase flex justify-between">
-                                <span>2. Descuento Promocional (%)</span>
-                                <span class="text-rose-400 text-[10px] cursor-pointer" onclick="resetDesc()">[BORRAR]</span>
-                            </label>
-                            <div class="flex gap-1 mb-1">
-                                <button type="button" onclick="setPromo(0.10)" class="flex-1 bg-slate-700 text-[10px] py-2 rounded hover:bg-slate-600 text-gray-300">10%</button>
-                                <button type="button" onclick="setPromo(0.20)" class="flex-1 bg-slate-700 text-[10px] py-2 rounded hover:bg-slate-600 text-gray-300">20%</button>
-                                <button type="button" onclick="setPromo(0.30)" class="flex-1 bg-slate-700 text-[10px] py-2 rounded hover:bg-slate-600 text-rose-300 font-bold">30%</button>
+                <div class="flex justify-between items-end border-b-2 border-gray-100 pb-1 mt-8 mb-3">
+                    <div class="section-header border-0 m-0"><i class="fas fa-stethoscope"></i> Tratamientos</div>
+                    <button type="button" onclick="agregarServicio()" class="text-[10px] bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 px-3 py-1.5 rounded transition no-print font-bold flex items-center gap-1">
+                        <i class="fas fa-plus-circle text-green-600"></i> AGREGAR SERVICIO
+                    </button>
+                </div>
+
+                <div id="listaServicios" class="mb-6 min-h-[60px]">
+                    </div>
+
+                <div class="bg-gray-50 p-5 rounded-lg border border-gray-200 mb-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <label class="label-pro">Subtotal</label>
+                                <input type="text" id="subtotal" class="input-pro w-32 text-right font-mono bg-transparent border-0 font-bold text-gray-500" readonly value="$0.00">
                             </div>
-                            <input type="hidden" id="promo_pct" value="0"> 
-                            <input type="text" id="descuento_valor" class="input-dark font-mono text-right text-yellow-500" readonly value="- $0.00">
-                        </div>
+                            
+                            <hr class="border-gray-200">
 
-                        <div>
-                            <label class="text-[10px] text-gray-400 font-bold uppercase">3. Bono Gift Card / Extra ($)</label>
-                            <div class="relative">
-                                <span class="absolute left-3 top-2.5 text-yellow-500 text-xs">- $</span>
-                                <input type="number" id="bono_extra" class="input-dark pl-8 font-mono text-right text-yellow-400" placeholder="0" oninput="calcularTotal()">
+                            <div class="flex justify-between items-center">
+                                <label class="label-pro text-rose-700">Descuento (%)</label>
+                                <div class="flex gap-1">
+                                    <button type="button" onclick="setPromo(0.10)" class="w-8 py-1 text-[10px] bg-white border border-gray-300 rounded hover:bg-rose-50 hover:border-rose-300">10</button>
+                                    <button type="button" onclick="setPromo(0.20)" class="w-8 py-1 text-[10px] bg-white border border-gray-300 rounded hover:bg-rose-50 hover:border-rose-300">20</button>
+                                    <button type="button" onclick="setPromo(0.30)" class="w-8 py-1 text-[10px] bg-white border border-gray-300 rounded hover:bg-rose-50 hover:border-rose-300 font-bold">30</button>
+                                    <button type="button" onclick="resetDesc()" class="text-[10px] text-red-400 ml-1 px-1 hover:text-red-600 font-bold" title="Borrar descuento">X</button>
+                                </div>
                             </div>
-                            <p class="text-[10px] text-gray-500 mt-1">* Se suma al descuento porcentual</p>
-                        </div>
-                    </div>
+                            <input type="hidden" id="promo_pct" value="0">
+                            <div class="text-right text-[11px] text-rose-600 font-mono font-bold" id="descuento_txt"></div>
 
-                    <div class="bg-slate-900 p-4 rounded border border-slate-800 flex flex-col justify-between">
-                        <div>
-                            <label class="text-[10px] text-gray-400 font-bold uppercase block text-right">TOTAL A PAGAR</label>
-                            <div id="lblTotal" class="text-3xl font-bold text-white text-right mb-4">$0.00</div>
-                        </div>
-
-                        <div>
-                            <label class="text-[10px] text-gray-400 font-bold uppercase block text-right">Abono Realizado Hoy</label>
-                            <div class="relative">
-                                <span class="absolute left-3 top-2.5 text-green-500 text-xs">$</span>
-                                <input type="number" id="abono" class="input-dark pl-6 font-bold text-green-400 text-right text-lg" placeholder="0" oninput="calcularTotal()">
+                            <div class="flex justify-between items-center mt-2">
+                                <label class="label-pro text-rose-700">Bono Extra ($)</label>
+                                <input type="number" id="bono_extra" class="input-pro w-32 text-right border-rose-200 focus:border-rose-500" placeholder="0.00" oninput="calcularTotal()">
                             </div>
                         </div>
 
-                        <div class="mt-4 pt-4 border-t border-slate-700 text-right">
-                            <span class="text-xs text-gray-500 uppercase font-bold">Saldo Pendiente</span>
-                            <div id="lblPendiente" class="text-2xl font-bold text-rose-500">$0.00</div>
+                        <div class="bg-white p-4 border border-gray-300 rounded shadow-sm flex flex-col justify-center">
+                            <div class="flex justify-between items-end mb-3">
+                                <span class="text-[11px] font-bold text-gray-500 uppercase">Total a Pagar</span>
+                                <span id="lblTotal" class="text-2xl font-extrabold text-slate-800 font-mono">$0.00</span>
+                            </div>
+                            
+                            <div class="flex justify-between items-center mb-3 bg-green-50 p-2 rounded border border-green-100">
+                                <span class="text-[10px] font-bold text-green-800 uppercase">Abono Hoy ($)</span>
+                                <input type="number" id="abono" class="w-24 bg-transparent text-right font-bold text-lg text-green-700 outline-none" placeholder="0" oninput="calcularTotal()">
+                            </div>
+
+                            <div class="border-t-2 border-gray-100 pt-2 flex justify-between items-end">
+                                <span class="text-[11px] font-bold text-gray-400 uppercase">Saldo Pendiente</span>
+                                <span id="lblPendiente" class="text-xl font-bold text-rose-600 font-mono">$0.00</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="mb-4">
-                <div class="flex flex-wrap gap-4 text-xs text-gray-300 uppercase font-bold">
-                    <label class="flex items-center"><input type="checkbox" id="m_diabetes" class="custom-check mr-2"> Diabetes</label>
-                    <label class="flex items-center"><input type="checkbox" id="m_hipertension" class="custom-check mr-2"> Hipertensión</label>
-                    <label class="flex items-center"><input type="checkbox" id="m_alergias" class="custom-check mr-2"> Alergias</label>
-                    <label class="flex items-center"><input type="checkbox" id="m_embarazo" class="custom-check mr-2"> Embarazo</label>
-                    <label class="flex items-center"><input type="checkbox" id="m_keloides" class="custom-check mr-2"> Cicatriz. Keloide</label>
+                <div class="section-header"><i class="fas fa-file-medical-alt"></i> Historial y Consentimiento</div>
+                
+                <div class="mb-4 bg-white p-3 border border-gray-200 rounded">
+                    <div class="flex flex-wrap gap-5 text-[10px] text-gray-700 font-bold uppercase">
+                        <label class="flex items-center cursor-pointer hover:text-rose-600"><input type="checkbox" id="m_diabetes" class="custom-check mr-2"> Diabetes</label>
+                        <label class="flex items-center cursor-pointer hover:text-rose-600"><input type="checkbox" id="m_hipertension" class="custom-check mr-2"> Hipertensión</label>
+                        <label class="flex items-center cursor-pointer hover:text-rose-600"><input type="checkbox" id="m_alergias" class="custom-check mr-2"> Alergias</label>
+                        <label class="flex items-center cursor-pointer hover:text-rose-600"><input type="checkbox" id="m_embarazo" class="custom-check mr-2"> Embarazo</label>
+                        <label class="flex items-center cursor-pointer hover:text-rose-600"><input type="checkbox" id="m_keloides" class="custom-check mr-2"> Cicatriz Keloide</label>
+                    </div>
                 </div>
-            </div>
 
-            <div class="bg-slate-800 p-3 rounded mb-6">
-                <div class="text-[10px] text-gray-500 text-justify pr-2 leading-relaxed">
-                    <p><strong>CONSENTIMIENTO INFORMADO:</strong> Certifico que la información suministrada es verídica. Entiendo los riesgos del tratamiento y autorizo a Figura Rostro KG a realizarlo. Comprendo que los resultados varían según el paciente. Autorizo el registro fotográfico para expediente clínico privado. Eximo de responsabilidad al local por cuidados post-tratamiento inadecuados.</p>
-                </div>
-                <div class="mt-2">
-                    <label class="flex items-center text-xs cursor-pointer hover:text-white">
-                        <input type="checkbox" id="check_legal" class="custom-check mr-2"> Acepto los términos y condiciones.
+                <div class="border-l-4 border-gray-300 pl-4 py-2 bg-gray-50 pr-2">
+                    <p class="text-[9px] text-gray-600 text-justify leading-relaxed mb-3">
+                        <strong>TÉRMINOS Y CONDICIONES:</strong> El paciente certifica que la información médica es verídica. Autoriza a <strong>Figura Rostro KG</strong> a realizar el procedimiento estético y tomar fotografías para el expediente clínico. Entiende que los resultados pueden variar y exime al local de responsabilidad por cuidados post-tratamiento inadecuados.
+                    </p>
+                    <label class="flex items-center gap-2 cursor-pointer group">
+                        <input type="checkbox" id="check_legal" class="custom-check group-hover:scale-110 transition"> 
+                        <span class="text-[10px] font-bold text-gray-900 group-hover:text-rose-600">HE LEÍDO Y ACEPTO LOS TÉRMINOS Y CONDICIONES.</span>
                     </label>
                 </div>
-            </div>
 
-            <div class="flex gap-3 no-print">
-                <button type="button" id="btnSave" class="flex-1 bg-gradient-to-r from-rose-700 to-rose-600 text-white py-3 rounded hover:shadow-lg hover:shadow-rose-900/50 transition font-bold text-lg">
-                    <i class="fas fa-save mr-2"></i> GUARDAR FICHA
-                </button>
-                <button type="button" id="btnPdf" class="w-1/3 border border-slate-600 bg-slate-800 text-gray-300 py-3 rounded hover:bg-slate-700 transition font-bold">
-                    <i class="fas fa-print mr-2"></i> PDF
-                </button>
-            </div>
+                <div class="flex gap-4 no-print mt-8 border-t border-gray-200 pt-6">
+                    <button type="button" id="btnSave" class="flex-1 bg-slate-900 text-white py-4 rounded-lg hover:bg-black transition font-bold shadow-lg text-sm flex justify-center items-center gap-2">
+                        <i class="fas fa-cloud-upload-alt"></i> GUARDAR FICHA
+                    </button>
+                    <button type="button" id="btnPdf" class="w-1/3 bg-white text-slate-800 border-2 border-slate-200 py-4 rounded-lg hover:bg-slate-50 hover:border-slate-400 transition font-bold text-sm flex justify-center items-center gap-2">
+                        <i class="fas fa-print"></i> IMPRIMIR PDF
+                    </button>
+                </div>
 
-        </form>
+            </form>
+        </div>
     </div>
 
-    <div id="viewList" class="hidden max-w-6xl mx-auto">
-        <div class="bg-slate-900 rounded-xl shadow-lg border border-slate-800 p-6">
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-white font-bold text-lg">Historial de Pacientes</h2>
-                <button onclick="loadData()" class="text-xs text-blue-400 hover:text-blue-300"><i class="fas fa-sync mr-1"></i> Actualizar</button>
+    <div id="viewList" class="hidden w-full max-w-5xl bg-white shadow-xl p-8 mt-16 rounded-lg border border-gray-200">
+        <div class="flex justify-between mb-6 border-b pb-4">
+            <div>
+                <h2 class="font-bold text-xl text-slate-800">Base de Datos de Pacientes</h2>
+                <p class="text-xs text-gray-500">Registros almacenados en Firebase</p>
             </div>
-            <div class="overflow-x-auto">
-                <table class="w-full text-sm text-left text-gray-400">
-                    <thead class="text-xs text-gray-500 uppercase bg-slate-800">
-                        <tr>
-                            <th class="px-4 py-3">Fecha</th>
-                            <th class="px-4 py-3">Paciente</th>
-                            <th class="px-4 py-3">Servicios</th>
-                            <th class="px-4 py-3 text-right">Total</th>
-                            <th class="px-4 py-3 text-center">Estado</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tableBody"></tbody>
-                </table>
-            </div>
-            <div id="loader" class="hidden text-center py-8"><div class="loader mx-auto"></div></div>
+            <button onclick="loadData()" class="text-xs bg-slate-100 px-4 py-2 rounded hover:bg-slate-200 text-slate-700 font-bold border border-slate-200">
+                <i class="fas fa-sync mr-1"></i> Actualizar Lista
+            </button>
         </div>
+        <div class="overflow-x-auto">
+            <table class="w-full text-xs text-left text-gray-600">
+                <thead class="bg-gray-100 text-gray-800 uppercase font-bold tracking-wider">
+                    <tr>
+                        <th class="p-4 rounded-l">Fecha</th>
+                        <th class="p-4">Paciente</th>
+                        <th class="p-4">Tratamientos</th>
+                        <th class="p-4 text-right">Total</th>
+                        <th class="p-4 text-center rounded-r">Estado</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody" class="divide-y divide-gray-100"></tbody>
+            </table>
+        </div>
+        <div id="loader" class="hidden text-center py-10"><div class="loader mx-auto"></div></div>
     </div>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getFirestore, collection, addDoc, getDocs, orderBy, query, Timestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-        // ==========================================
-        // TUS LLAVES DE FIREBASE (YA INSERTADAS)
-        // ==========================================
+        // CONFIGURACIÓN DE TUS LLAVES
         const firebaseConfig = {
             apiKey: "AIzaSyBAuTfBKGuG33c9NXc1s0lkQv-7GwA47l0",
             authDomain: "figurarostro-system.firebaseapp.com",
@@ -295,38 +309,27 @@
         const db = getFirestore(app);
         const colName = "fichas_v3_multi";
 
-        // Inicialización
+        // INICIALIZAR
         document.getElementById('fechaHoy').innerText = new Date().toLocaleDateString();
-        
-        // Agregar primer servicio al cargar
         window.addEventListener('load', () => { agregarServicio(); });
 
-        // Botón para limpiar manualmente (Nueva Ficha)
-        window.limpiarFormulario = function() {
-            if(confirm("¿Estás segura de querer limpiar el formulario para una nueva ficha?")) {
-                location.reload();
-            }
-        }
-
-        // Navegación entre vistas
+        // NAVEGACIÓN
+        window.limpiarFormulario = function() { if(confirm("¿Estás segura de querer iniciar una nueva ficha vacía?")) location.reload(); }
         window.toggleView = (view) => {
             document.getElementById('viewForm').classList.toggle('hidden', view !== 'form');
             document.getElementById('viewList').classList.toggle('hidden', view !== 'list');
             if(view === 'list') loadData();
         };
 
-        // ----------------------------------------------------
-        // LÓGICA DE SERVICIOS (AGREGAR / ELIMINAR FILAS)
-        // ----------------------------------------------------
+        // LÓGICA DE SERVICIOS
         window.agregarServicio = function() {
             const container = document.getElementById('listaServicios');
-            const id = Date.now(); // ID único basado en el tiempo
-            
+            const id = Date.now();
             const html = `
                 <div class="service-row" id="row-${id}">
                     <div>
-                        <label class="text-[10px] text-gray-500 font-bold uppercase block mb-1">Tratamiento</label>
-                        <select class="input-dark bg-slate-800 s-type" onchange="checkZone(this)">
+                        <label class="label-pro">Tratamiento</label>
+                        <select class="input-pro bg-gray-50 cursor-pointer s-type" onchange="checkZone(this)">
                             <option value="Plasma Fibroblast">Plasma Fibroblast</option>
                             <option value="Limpieza Facial">Limpieza Facial</option>
                             <option value="Dermapen">Dermapen</option>
@@ -335,143 +338,91 @@
                         </select>
                     </div>
                     <div>
-                        <label class="text-[10px] text-gray-500 font-bold uppercase block mb-1">Zona (Opcional)</label>
-                        <input type="text" class="input-dark s-zone" placeholder="Ej. Párpados">
+                        <label class="label-pro">Zona (Opcional)</label>
+                        <input type="text" class="input-pro s-zone" placeholder="Ej. Párpados">
                     </div>
                     <div>
-                        <label class="text-[10px] text-gray-500 font-bold uppercase block mb-1">Precio ($)</label>
-                        <input type="number" class="input-dark text-right font-bold s-price" placeholder="0" oninput="calcularTotal()">
+                        <label class="label-pro">Precio ($)</label>
+                        <input type="number" class="input-pro text-right font-bold s-price" placeholder="0.00" oninput="calcularTotal()">
                     </div>
-                    <div class="text-center pt-4">
-                        <button type="button" onclick="eliminarServicio('${id}')" class="text-rose-500 hover:text-rose-400 btn-remove" title="Eliminar fila">
-                            <i class="fas fa-trash"></i>
-                        </button>
+                    <div class="text-center pt-3">
+                        <button type="button" onclick="eliminarServicio('${id}')" class="text-gray-400 hover:text-red-500 transition" title="Quitar fila"><i class="fas fa-trash-alt"></i></button>
                     </div>
-                </div>
-            `;
+                </div>`;
             container.insertAdjacentHTML('beforeend', html);
         }
 
         window.eliminarServicio = function(id) {
-            const rows = document.querySelectorAll('.service-row');
-            if(rows.length > 1) {
-                document.getElementById(`row-${id}`).remove();
-                calcularTotal();
-            } else {
-                alert("Debe haber al menos un servicio registrado.");
-            }
+            if(document.querySelectorAll('.service-row').length > 1) { document.getElementById(`row-${id}`).remove(); calcularTotal(); }
+            else { alert("Mínimo un servicio requerido"); }
         }
 
         window.checkZone = function(select) {
-            const row = select.closest('.service-row');
-            const zoneInput = row.querySelector('.s-zone');
-            if(!select.value.includes('Fibroblast') && !select.value.includes('Otro')) {
-                zoneInput.value = ''; 
-                zoneInput.placeholder = 'N/A';
-            } else {
-                zoneInput.placeholder = 'Ej. Párpados';
-            }
+            const input = select.closest('.service-row').querySelector('.s-zone');
+            if(!select.value.includes('Fibroblast') && !select.value.includes('Otro')) { input.value = ''; input.placeholder = '-'; input.disabled = true; input.style.backgroundColor = '#f3f4f6'; }
+            else { input.placeholder = 'Especifique zona'; input.disabled = false; input.style.backgroundColor = '#fff'; }
         }
 
-        // ----------------------------------------------------
-        // LÓGICA MATEMÁTICA (TOTALES)
-        // ----------------------------------------------------
-        window.setPromo = function(pct) {
-            document.getElementById('promo_pct').value = pct;
-            calcularTotal();
-        }
-        window.resetDesc = function() {
-            document.getElementById('promo_pct').value = 0;
-            calcularTotal();
-        }
+        // CÁLCULOS MATEMÁTICOS
+        window.setPromo = (pct) => { document.getElementById('promo_pct').value = pct; calcularTotal(); }
+        window.resetDesc = () => { document.getElementById('promo_pct').value = 0; calcularTotal(); }
 
         window.calcularTotal = function() {
-            // 1. Sumar Precios Individuales de todas las filas
-            let subtotal = 0;
-            document.querySelectorAll('.s-price').forEach(input => {
-                subtotal += parseFloat(input.value) || 0;
-            });
-
-            // 2. Calcular Descuento %
-            const pct = parseFloat(document.getElementById('promo_pct').value) || 0;
-            const descuentoValor = subtotal * pct;
-
-            // 3. Obtener Bono Gift Card
-            const bonoExtra = parseFloat(document.getElementById('bono_extra').value) || 0;
-
-            // 4. Total Final = Subtotal - Descuento% - BonoExtra
-            const total = subtotal - descuentoValor - bonoExtra;
-
-            // 5. Saldo Pendiente
-            const abono = parseFloat(document.getElementById('abono').value) || 0;
-            const pendiente = total - abono;
-
-            // Mostrar valores en pantalla
-            document.getElementById('subtotal').value = "$" + subtotal.toFixed(2);
-            document.getElementById('descuento_valor').value = `- $${descuentoValor.toFixed(2)} (${pct*100}%)`;
+            let sub = 0;
+            document.querySelectorAll('.s-price').forEach(i => sub += parseFloat(i.value) || 0);
             
+            const pct = parseFloat(document.getElementById('promo_pct').value) || 0;
+            const desc = sub * pct;
+            const bono = parseFloat(document.getElementById('bono_extra').value) || 0;
+            
+            const total = sub - desc - bono;
+            const abono = parseFloat(document.getElementById('abono').value) || 0;
+            const pend = total - abono;
+
+            document.getElementById('subtotal').value = "$" + sub.toFixed(2);
+            document.getElementById('descuento_txt').innerText = desc > 0 ? `- $${desc.toFixed(2)} (${pct*100}%)` : "";
             document.getElementById('lblTotal').innerText = "$" + total.toFixed(2);
             
             const elPend = document.getElementById('lblPendiente');
-            elPend.innerText = "$" + pendiente.toFixed(2);
+            elPend.innerText = "$" + pend.toFixed(2);
             
-            // Cambio de color si está pagado
-            if(pendiente <= 0.01 && total > 0) {
-                elPend.className = "text-2xl font-bold text-green-400";
+            if(pend <= 0.1 && total > 0) {
                 elPend.innerText = "PAGADO";
+                elPend.className = "text-xl font-extrabold text-green-600 font-mono";
             } else {
-                elPend.className = "text-2xl font-bold text-rose-500";
+                elPend.className = "text-xl font-extrabold text-rose-600 font-mono";
             }
         }
 
-        // ----------------------------------------------------
-        // CÁLCULO DE EDAD (3 PASOS)
-        // ----------------------------------------------------
+        // CÁLCULO EDAD
         window.calcularEdad = function() {
-            const d = document.getElementById('dia_nac').value;
-            const m = document.getElementById('mes_nac').value;
-            const y = document.getElementById('anio_nac').value;
-
-            if(d && m && y && y.length === 4) {
-                const hoy = new Date();
-                const cumple = new Date(y, m-1, d);
-                let edad = hoy.getFullYear() - cumple.getFullYear();
-                const mDiff = hoy.getMonth() - cumple.getMonth();
-                if (mDiff < 0 || (mDiff === 0 && hoy.getDate() < cumple.getDate())) {
-                    edad--;
-                }
+            const d = document.getElementById('dia_nac').value, m = document.getElementById('mes_nac').value, y = document.getElementById('anio_nac').value;
+            if(d&&m&&y&&y.length===4) {
+                const hoy=new Date(), cumple=new Date(y, m-1, d);
+                let edad=hoy.getFullYear()-cumple.getFullYear();
+                if(hoy < new Date(hoy.getFullYear(), m-1, d)) edad--;
                 document.getElementById('edad').value = edad + " años";
             }
         }
 
-        // ----------------------------------------------------
-        // GUARDAR EN FIREBASE (SIN RECARGAR PÁGINA)
-        // ----------------------------------------------------
+        // GUARDAR (FIREBASE)
         document.getElementById('btnSave').addEventListener('click', async () => {
             const btn = document.getElementById('btnSave');
             const nombre = document.getElementById('nombre').value;
             const legal = document.getElementById('check_legal').checked;
 
-            if(!nombre) return alert("⚠️ Falta Nombre del Paciente");
-            if(!legal) return alert("⚠️ Debes aceptar los términos legales");
+            if(!nombre) return alert("⚠️ Faltan datos: Nombre del Paciente");
+            if(!legal) return alert("⚠️ Faltan datos: Aceptar Términos y Condiciones");
 
-            // Recopilar lista de servicios
-            let listaServicios = [];
-            document.querySelectorAll('.service-row').forEach(row => {
-                listaServicios.push({
-                    tipo: row.querySelector('.s-type').value,
-                    zona: row.querySelector('.s-zone').value,
-                    precio: row.querySelector('.s-price').value
-                });
+            let lista = [];
+            document.querySelectorAll('.service-row').forEach(r => {
+                lista.push({ tipo: r.querySelector('.s-type').value, zona: r.querySelector('.s-zone').value, precio: r.querySelector('.s-price').value });
             });
 
-            // Estado de carga visual
-            const textoOriginal = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Guardando...';
-            btn.disabled = true;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> GUARDANDO...'; btn.disabled = true;
 
             try {
-                // Enviar a la nube
                 await addDoc(collection(db, colName), {
                     paciente: {
                         nombre: nombre,
@@ -482,11 +433,11 @@
                         ocupacion: document.getElementById('ocupacion').value,
                         direccion: document.getElementById('direccion').value
                     },
-                    servicios: listaServicios, // Array de tratamientos
+                    servicios: lista,
                     finanzas: {
                         subtotal: document.getElementById('subtotal').value,
-                        descuento_pct: document.getElementById('promo_pct').value,
-                        bono_extra: document.getElementById('bono_extra').value,
+                        descuento: document.getElementById('descuento_txt').innerText,
+                        bono: document.getElementById('bono_extra').value,
                         total: document.getElementById('lblTotal').innerText,
                         abono: document.getElementById('abono').value,
                         pendiente: document.getElementById('lblPendiente').innerText
@@ -501,127 +452,48 @@
                     fecha: Timestamp.now()
                 });
                 
-                alert("✅ GUARDADO CORRECTAMENTE");
-                
-                // IMPORTANTE: NO RECARGAMOS LA PÁGINA AUTOMÁTICAMENTE
-                // Para que los datos sigan ahí y puedas generar el PDF
+                alert("✅ GUARDADO EXITOSAMENTE");
                 btn.innerHTML = '<i class="fas fa-check-circle"></i> GUARDADO (Listo para PDF)';
-                btn.classList.remove('from-rose-700', 'to-rose-600');
-                btn.classList.add('bg-green-600');
+                btn.classList.remove('bg-slate-900'); btn.classList.add('bg-green-700');
                 
             } catch (e) {
-                console.error(e);
-                alert("Error: " + e.message);
-                btn.innerHTML = textoOriginal;
-                btn.disabled = false;
+                console.error(e); alert("Error: " + e.message);
+                btn.innerHTML = originalText; btn.disabled = false;
             }
         });
 
-        // ----------------------------------------------------
-        // LEER DATOS (BD)
-        // ----------------------------------------------------
+        // CARGAR DATOS (BD)
         window.loadData = async () => {
-            const tbody = document.getElementById('tableBody');
+            const tb = document.getElementById('tableBody'); 
             const loader = document.getElementById('loader');
-            tbody.innerHTML = '';
-            loader.classList.remove('hidden');
-
-            const q = query(collection(db, colName), orderBy("fecha", "desc"));
-            const snap = await getDocs(q);
+            tb.innerHTML=''; loader.classList.remove('hidden');
+            
+            const snap = await getDocs(query(collection(db, colName), orderBy("fecha", "desc")));
             loader.classList.add('hidden');
-
+            
             snap.forEach(doc => {
                 const d = doc.data();
-                
-                // Formatear servicios en HTML pequeño para la tabla
-                let serviciosHTML = d.servicios.map(s => 
-                    `<div class='text-xs'>• ${s.tipo} ${s.zona ? `(${s.zona})` : ''}</div>`
-                ).join('');
-
-                const row = `
-                    <tr class="border-b border-slate-800 hover:bg-slate-800 transition">
-                        <td class="px-4 py-3 text-white">${d.fecha.toDate().toLocaleDateString()}</td>
-                        <td class="px-4 py-3 font-bold text-white">${d.paciente.nombre}</td>
-                        <td class="px-4 py-3 text-gray-400">${serviciosHTML}</td>
-                        <td class="px-4 py-3 text-right text-white font-mono">${d.finanzas.total}</td>
-                        <td class="px-4 py-3 text-center">
-                            ${d.finanzas.pendiente.includes('PAGADO') 
-                                ? '<span class="bg-green-900 text-green-300 text-[10px] px-2 py-1 rounded">OK</span>' 
-                                : '<span class="text-rose-400 font-bold text-[10px]">DEBE</span>'}
-                        </td>
-                    </tr>
-                `;
-                tbody.innerHTML += row;
+                let servs = d.servicios.map(s => `${s.tipo}`).join(', ');
+                tb.innerHTML += `<tr class="hover:bg-gray-50 border-b"><td class="p-4 text-gray-500">${d.fecha.toDate().toLocaleDateString()}</td><td class="p-4 font-bold text-gray-800">${d.paciente.nombre}</td><td class="p-4 text-xs text-gray-500">${servs}</td><td class="p-4 text-right font-mono font-bold">${d.finanzas.total}</td><td class="p-4 text-center">${d.finanzas.pendiente.includes('PAGADO') ? '<span class="bg-green-100 text-green-700 px-2 py-1 rounded text-[10px] font-bold">PAGADO</span>' : '<span class="bg-rose-100 text-rose-700 px-2 py-1 rounded text-[10px] font-bold">PENDIENTE</span>'}</td></tr>`;
             });
-        }
+        };
 
-        // ----------------------------------------------------
-        // GENERAR PDF (VERSIÓN CORREGIDA Y LIMPIA)
-        // ----------------------------------------------------
+        // PDF SIMPLE (Sin trucos de color, diseño nativo)
         document.getElementById('btnPdf').addEventListener('click', () => {
-            const element = document.getElementById('viewForm');
-            
-            // 1. Guardar estado original (colores oscuros)
-            const originalClasses = element.className;
-            const inputs = element.querySelectorAll('input, select, textarea');
-            const texts = element.querySelectorAll('.text-white, .text-gray-300, .text-gray-400, .text-gray-500, .text-rose-500, .text-rose-400, .text-green-400, .text-yellow-400, .text-yellow-500');
-
-            // 2. Transformar a MODO IMPRESIÓN (Fondo blanco, texto negro)
-            element.classList.remove('bg-slate-900', 'text-white', 'shadow-2xl', 'border');
-            element.classList.add('bg-white', 'text-black', 'p-4'); // padding reducido
-
-            // Inputs a blanco
-            inputs.forEach(input => {
-                input.dataset.originalBg = input.style.backgroundColor;
-                input.dataset.originalColor = input.style.color;
-                input.dataset.originalBorder = input.style.border;
-                
-                input.style.backgroundColor = '#ffffff';
-                input.style.color = '#000000';
-                input.style.border = '1px solid #ccc';
-            });
-
-            // Textos a negro
-            texts.forEach(t => {
-                t.dataset.originalClass = t.className;
-                // Reemplaza cualquier clase de color de texto por texto negro
-                t.className = t.className.replace(/text-\w+-\d+/g, 'text-black');
-                t.classList.add('text-black');
-            });
-
-            // Ocultar botones
+            const el = document.getElementById('viewForm');
             const controls = document.querySelectorAll('.no-print, .btn-remove');
-            controls.forEach(c => c.style.display = 'none');
+            // Ocultar botones temporalmente
+            controls.forEach(e => e.style.display = 'none');
 
-            // 3. Generar PDF
-            const opt = {
-                margin: [0.2, 0.2, 0.2, 0.2], // Márgenes estrechos
+            html2pdf().set({
+                margin: 0, 
                 filename: `Ficha_${document.getElementById('nombre').value || 'Paciente'}.pdf`,
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { 
-                    scale: 2, 
-                    backgroundColor: "#ffffff", // Asegurar fondo blanco
-                    useCORS: true, 
-                    scrollY: 0 // <--- ESTO SOLUCIONA EL ESPACIO EN BLANCO ARRIBA
-                },
+                image: { type: 'jpeg', quality: 1 },
+                html2canvas: { scale: 2, useCORS: true, scrollY: 0 },
                 jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-            };
-
-            html2pdf().set(opt).from(element).save().then(() => {
-                // 4. Restaurar a MODO OSCURO
-                element.className = originalClasses;
-
-                inputs.forEach(input => {
-                    input.style.backgroundColor = input.dataset.originalBg || '';
-                    input.style.color = input.dataset.originalColor || '';
-                    input.style.border = input.dataset.originalBorder || '';
-                });
-
-                texts.forEach(t => {
-                    t.className = t.dataset.originalClass;
-                });
-
-                controls.forEach(c => c.style.display = '');
+            }).from(el).save().then(() => {
+                // Restaurar botones
+                controls.forEach(e => e.style.display = '');
             });
         });
 
