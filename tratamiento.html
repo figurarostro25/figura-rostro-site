@@ -36,155 +36,58 @@
     </script>
 
     <style>
-        /* Transiciones suaves */
-        body, div, input, select, button { 
-            transition: background-color 0.3s, border-color 0.3s, color 0.3s; 
-        }
+        /* Estilos Base */
+        body, div, input, select, button { transition: background-color 0.3s, border-color 0.3s, color 0.3s; }
+        body { background-color: #fdf4ff; color: #374151; touch-action: pan-y; }
+        .dark body { background-color: #0f172a; color: #e2e8f0; }
         
-        /* Fondo General */
-        body { 
-            background-color: #fdf4ff; /* Día */
-            color: #374151; 
-            touch-action: pan-y; 
-        }
-        .dark body {
-            background-color: #0f172a; /* Noche */
-            color: #e2e8f0;
-        }
-        
-        /* Hojas de Papel (Para previsualizar las páginas) */
+        /* Hojas de Papel */
         .paper-sheet {
-            width: 100%;
-            max-width: 56rem; /* max-w-4xl */
-            background-color: white;
+            width: 100%; max-width: 56rem; background-color: white;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            margin-left: auto;
-            margin-right: auto;
-            position: relative;
-            overflow: hidden;
-            min-height: 1000px; /* Altura aproximada de carta */
+            margin: 0 auto; position: relative; overflow: hidden; min-height: 1000px;
         }
-        .dark .paper-sheet {
-            background-color: #1e293b;
-        }
+        .dark .paper-sheet { background-color: #1e293b; }
 
-        /* Inputs (Cuadros de texto) */
+        /* Inputs */
         .input-pro {
-            width: 100%;
-            border-radius: 0.5rem;
-            padding: 0.5rem 0.75rem;
-            font-size: 0.75rem;
-            font-weight: 700;
-            outline: none;
-            border-width: 1px;
-            background-color: white;
-            border-color: #6b7280;
-            color: #111827;
+            width: 100%; border-radius: 0.5rem; padding: 0.5rem 0.75rem;
+            font-size: 0.75rem; font-weight: 700; outline: none; border-width: 1px;
+            background-color: white; border-color: #6b7280; color: #111827;
         }
-        .dark .input-pro {
-            background-color: #334155;
-            border-color: #475569;
-            color: white;
-        }
-        .input-pro:focus {
-            border-color: #d946ef;
-            box-shadow: 0 0 0 2px rgba(232, 121, 249, 0.3);
-        }
+        .dark .input-pro { background-color: #334155; border-color: #475569; color: white; }
+        .input-pro:focus { border-color: #d946ef; box-shadow: 0 0 0 2px rgba(232, 121, 249, 0.3); }
 
-        /* Etiquetas */
-        .label-pro {
-            display: block;
-            font-size: 0.65rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            margin-bottom: 0.25rem;
-            letter-spacing: 0.025em;
-            color: #4a044e;
-        }
-        .dark .label-pro {
-            color: #e879f9;
-        }
-
-        /* Filas de la tabla */
-        .service-row {
-            display: grid;
-            gap: 0.5rem;
-            padding: 0.5rem;
-            border-radius: 0.5rem;
-            border-width: 1px;
-            margin-bottom: 0.5rem;
-            align-items: center;
-            background-color: white;
-            border-color: #e5e7eb;
-            grid-template-columns: 2fr 2fr 1fr 40px;
-        }
-        .dark .service-row {
-            background-color: #1e293b;
-            border-color: #475569;
-        }
-
-        /* Títulos de Sección */
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.75rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
-            padding-bottom: 0.25rem;
-            border-bottom-width: 2px;
-            color: #9333ea;
-            border-color: #f0abfc;
-        }
-        .dark .section-header {
-            color: #e879f9;
-            border-color: #475569;
-        }
-
-        /* Checkbox */
-        .custom-check {
-            accent-color: #d946ef;
-            width: 1rem;
-            height: 1rem;
-            cursor: pointer;
-        }
+        /* Labels & Rows */
+        .label-pro { display: block; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; margin-bottom: 0.25rem; letter-spacing: 0.025em; color: #4a044e; }
+        .dark .label-pro { color: #e879f9; }
         
-        /* Salto de página forzado para PDF */
-        .page-break {
-            page-break-after: always;
-            margin-bottom: 2rem;
+        .service-row {
+            display: grid; gap: 0.5rem; padding: 0.5rem; border-radius: 0.5rem; border-width: 1px;
+            margin-bottom: 0.5rem; align-items: center; background-color: white;
+            border-color: #e5e7eb; grid-template-columns: 2fr 2fr 1fr 40px;
         }
+        .dark .service-row { background-color: #1e293b; border-color: #475569; }
 
-        /* --- MODO IMPRESIÓN (PDF) --- */
+        .section-header {
+            display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; font-weight: 900;
+            text-transform: uppercase; margin-top: 1.5rem; margin-bottom: 0.75rem; padding-bottom: 0.25rem;
+            border-bottom-width: 2px; color: #9333ea; border-color: #f0abfc;
+        }
+        .dark .section-header { color: #e879f9; border-color: #475569; }
+
+        .custom-check { accent-color: #d946ef; width: 1rem; height: 1rem; cursor: pointer; }
+        .page-break { page-break-after: always; margin-bottom: 2rem; }
+
+        /* MODO IMPRESIÓN */
         @media print {
             body { background-color: white !important; }
             .dark { color-scheme: light; }
             .no-print { display: none !important; }
-            
-            .paper-sheet { 
-                box-shadow: none !important; 
-                margin: 0 !important; 
-                border: none !important;
-                min-height: 0 !important; /* Altura automática en papel */
-            }
-            
-            .header-gradient { 
-                -webkit-print-color-adjust: exact; 
-                print-color-adjust: exact; 
-                color: white !important; 
-            }
-            
-            .input-pro { 
-                border: 1px solid #ccc !important; 
-                background-color: white !important; 
-                color: black !important; 
-            }
-            
-            canvas { 
-                border: 1px solid #ccc !important; 
-            }
+            .paper-sheet { box-shadow: none !important; margin: 0 !important; border: none !important; min-height: 0 !important; }
+            .header-gradient { -webkit-print-color-adjust: exact; print-color-adjust: exact; color: white !important; }
+            .input-pro { border: 1px solid #ccc !important; background-color: white !important; color: black !important; }
+            canvas { border: 1px solid #ccc !important; }
         }
     </style>
 </head>
@@ -192,17 +95,12 @@
 
     <nav class="fixed top-0 inset-x-0 bg-white/95 dark:bg-night-card/95 backdrop-blur shadow-md p-3 z-50 border-b border-gray-200 dark:border-slate-700 no-print">
         <div class="max-w-5xl mx-auto flex justify-between items-center">
-            
             <div class="flex items-center gap-3">
-                <a href="/" class="text-gray-500 dark:text-gray-300 font-bold text-xs">
-                    <i class="fas fa-arrow-left"></i> Volver
-                </a>
+                <a href="/" class="text-gray-500 dark:text-gray-300 font-bold text-xs"><i class="fas fa-arrow-left"></i> Volver</a>
                 <button onclick="toggleDarkMode()" class="bg-gray-100 dark:bg-slate-700 px-3 py-1 rounded-full text-xs font-bold border border-gray-200 dark:border-slate-600 dark:text-yellow-400">
-                    <i class="fas fa-moon dark:hidden"></i>
-                    <i class="fas fa-sun hidden dark:inline"></i>
+                    <i class="fas fa-moon dark:hidden"></i><i class="fas fa-sun hidden dark:inline"></i>
                 </button>
             </div>
-
             <div class="flex gap-2">
                 <button onclick="limpiarFormulario()" class="bg-fuchsia-50 hover:bg-fuchsia-100 text-fuchsia-900 dark:bg-slate-800 dark:text-fuchsia-300 px-4 py-2 rounded-full text-xs font-bold border border-fuchsia-200 dark:border-slate-600 transition">
                     <i class="fas fa-eraser mr-1"></i> Nueva
@@ -213,13 +111,10 @@
             </div>
         </div>
     </nav>
-    
     <div class="h-16 no-print"></div>
 
     <div id="printContainer">
-
         <div id="page1" class="paper-sheet rounded-t-2xl page-break border border-gray-200 dark:border-slate-700">
-            
             <div class="header-gradient bg-gradient-to-r from-brand-dark via-brand-main to-brand-dark p-6 flex justify-between items-start text-white">
                 <div class="relative z-10">
                     <img src="logo-blanco.png" alt="Figura Rostro KG" class="h-16 w-auto object-contain mb-3">
@@ -238,26 +133,17 @@
 
             <div class="p-8">
                 <form id="formPart1">
-                    
                     <div class="section-header mt-0"><i class="fas fa-user-circle text-lg"></i> Datos del Paciente</div>
-                    
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
                             <label class="label-pro">Nombre Completo</label>
                             <input type="text" id="nombre" class="input-pro border-l-4 border-l-brand-main" placeholder="Ej. Ana Pérez" required>
                         </div>
                         <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <label class="label-pro">Cédula</label>
-                                <input type="text" id="cedula" class="input-pro">
-                            </div>
-                            <div>
-                                <label class="label-pro">Teléfono</label>
-                                <input type="tel" id="telefono" class="input-pro">
-                            </div>
+                            <div><label class="label-pro">Cédula</label><input type="text" id="cedula" class="input-pro"></div>
+                            <div><label class="label-pro">Teléfono</label><input type="tel" id="telefono" class="input-pro"></div>
                         </div>
                     </div>
-
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
                             <label class="label-pro">Fecha Nacimiento</label>
@@ -268,20 +154,11 @@
                             </div>
                         </div>
                         <div class="flex gap-4">
-                            <div class="w-24">
-                                <label class="label-pro">Edad</label>
-                                <input type="text" id="edad" class="input-pro bg-fuchsia-50 dark:bg-slate-800 text-center font-bold text-brand-main" readonly>
-                            </div>
-                            <div class="flex-1">
-                                <label class="label-pro">Ocupación</label>
-                                <input type="text" id="ocupacion" class="input-pro">
-                            </div>
+                            <div class="w-24"><label class="label-pro">Edad</label><input type="text" id="edad" class="input-pro bg-fuchsia-50 dark:bg-slate-800 text-center font-bold text-brand-main" readonly></div>
+                            <div class="flex-1"><label class="label-pro">Ocupación</label><input type="text" id="ocupacion" class="input-pro"></div>
                         </div>
                     </div>
-                    <div class="mb-6">
-                        <label class="label-pro">Dirección</label>
-                        <input type="text" id="direccion" class="input-pro">
-                    </div>
+                    <div class="mb-6"><label class="label-pro">Dirección</label><input type="text" id="direccion" class="input-pro"></div>
 
                     <div class="flex justify-between items-end border-b-2 border-fuchsia-100 dark:border-slate-700 pb-2 mt-6 mb-3">
                         <div class="section-header border-0 m-0 w-full"><i class="fas fa-spa text-lg"></i> Tratamientos</div>
@@ -290,17 +167,12 @@
                         </button>
                     </div>
                     
-                    <div id="listaServicios" class="mb-6 min-h-[50px]">
-                        </div>
+                    <div id="listaServicios" class="mb-6 min-h-[50px]"></div>
 
                     <div class="bg-gray-50 dark:bg-slate-800/50 p-5 rounded-xl border border-gray-200 dark:border-slate-600 mb-4">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            
                             <div class="space-y-3">
-                                <div class="flex justify-between items-center">
-                                    <label class="label-pro text-gray-500 dark:text-gray-400">Subtotal</label>
-                                    <input type="text" id="subtotal" class="input-pro w-28 text-right bg-transparent border-none font-bold text-gray-500 dark:text-gray-300" readonly value="$0.00">
-                                </div>
+                                <div class="flex justify-between items-center"><label class="label-pro text-gray-500 dark:text-gray-400">Subtotal</label><input type="text" id="subtotal" class="input-pro w-28 text-right bg-transparent border-none font-bold text-gray-500 dark:text-gray-300" readonly value="$0.00"></div>
                                 <hr class="border-gray-200 dark:border-slate-600">
                                 <div class="flex justify-between items-center">
                                     <label class="label-pro text-brand-main dark:text-fuchsia-400">Descuento (%)</label>
@@ -313,36 +185,21 @@
                                 </div>
                                 <input type="hidden" id="promo_pct" value="0">
                                 <div class="text-right text-[10px] text-brand-light font-mono font-bold" id="descuento_txt"></div>
-                                <div class="flex justify-between items-center pt-1">
-                                    <label class="label-pro text-brand-main dark:text-fuchsia-400">Bono Extra ($)</label>
-                                    <input type="number" id="bono_extra" class="input-pro w-28 text-right border-fuchsia-200 dark:border-slate-500 text-brand-main dark:text-fuchsia-300 font-bold" placeholder="0.00" oninput="calcularTotal()">
-                                </div>
+                                <div class="flex justify-between items-center pt-1"><label class="label-pro text-brand-main dark:text-fuchsia-400">Bono Extra ($)</label><input type="number" id="bono_extra" class="input-pro w-28 text-right border-fuchsia-200 dark:border-slate-500 text-brand-main dark:text-fuchsia-300 font-bold" placeholder="0.00" oninput="calcularTotal()"></div>
                             </div>
-
                             <div class="bg-white dark:bg-slate-900 p-4 border-2 border-fuchsia-50 dark:border-slate-600 rounded-xl shadow-sm flex flex-col justify-between relative">
-                                <div class="flex justify-between items-end mb-3 relative z-10">
-                                    <span class="text-xs font-bold text-gray-400 uppercase">Total</span>
-                                    <span id="lblTotal" class="text-2xl font-black text-gray-800 dark:text-white font-mono">$0.00</span>
-                                </div>
-                                <div class="flex justify-between items-center mb-3 bg-green-50 dark:bg-slate-800 p-2 rounded border border-green-100 dark:border-slate-600 relative z-10">
-                                    <span class="text-[9px] font-bold text-green-700 uppercase">Abono Hoy</span>
-                                    <input type="number" id="abono" class="w-24 bg-transparent text-right font-black text-xl text-green-600 outline-none" placeholder="0" oninput="calcularTotal()">
-                                </div>
-                                <div class="border-t border-dashed border-gray-200 dark:border-slate-600 pt-2 flex justify-between items-end relative z-10">
-                                    <span class="text-[10px] font-bold text-gray-400 uppercase">Pendiente</span>
-                                    <span id="lblPendiente" class="text-xl font-bold text-rose-500 font-mono">$0.00</span>
-                                </div>
+                                <div class="flex justify-between items-end mb-3 relative z-10"><span class="text-xs font-bold text-gray-400 uppercase">Total</span><span id="lblTotal" class="text-2xl font-black text-gray-800 dark:text-white font-mono">$0.00</span></div>
+                                <div class="flex justify-between items-center mb-3 bg-green-50 dark:bg-slate-800 p-2 rounded border border-green-100 dark:border-slate-600 relative z-10"><span class="text-[9px] font-bold text-green-700 uppercase">Abono Hoy</span><input type="number" id="abono" class="w-24 bg-transparent text-right font-black text-xl text-green-600 outline-none" placeholder="0" oninput="calcularTotal()"></div>
+                                <div class="border-t border-dashed border-gray-200 dark:border-slate-600 pt-2 flex justify-between items-end relative z-10"><span class="text-[10px] font-bold text-gray-400 uppercase">Pendiente</span><span id="lblPendiente" class="text-xl font-bold text-rose-500 font-mono">$0.00</span></div>
                             </div>
                         </div>
                     </div>
                 </form>
             </div>
-            
             <div class="absolute bottom-4 right-8 text-[9px] text-gray-400">Página 1 de 2</div>
         </div>
 
         <div id="page2" class="paper-sheet rounded-b-2xl border border-gray-200 dark:border-slate-700">
-            
             <div class="header-gradient bg-gradient-to-r from-brand-dark via-brand-main to-brand-dark p-6 flex justify-between items-start text-white">
                 <div class="relative z-10">
                     <h1 class="text-xl font-black uppercase tracking-wider opacity-80">Figura Rostro KG</h1>
@@ -358,7 +215,6 @@
 
             <div class="p-8">
                 <div class="section-header mt-0"><i class="fas fa-file-contract"></i> Consentimiento Informado</div>
-                
                 <div class="mb-5 bg-gray-50 dark:bg-slate-800/50 p-4 border border-gray-200 dark:border-slate-600 rounded-xl">
                     <p class="label-pro mb-3 text-gray-400">Declaración de Antecedentes (Marque si aplica):</p>
                     <div class="flex flex-wrap gap-3 text-[9px] text-gray-600 dark:text-gray-300 font-bold uppercase">
@@ -373,51 +229,40 @@
 
                 <div class="border-l-4 border-brand-main pl-5 py-2 text-justify mb-6">
                     <div class="text-[9px] text-gray-600 dark:text-gray-400 leading-relaxed space-y-2 h-64 overflow-y-auto pr-2 font-medium">
-                        <p><strong>1. DECLARACIÓN DE VERACIDAD:</strong> Yo, el paciente identificado en la hoja 1, declaro que toda la información médica y personal proporcionada es verdadera y completa. Entiendo que ocultar antecedentes médicos (alergias, enfermedades, medicamentos) puede poner en riesgo mi salud y exime de responsabilidad al especialista.</p>
-                        
-                        <p><strong>2. NATURALEZA DEL PROCEDIMIENTO:</strong> Autorizo a <strong>Figura Rostro KG</strong> a realizar los procedimientos estéticos de rejuvenecimiento no invasivo descritos. Comprendo que, aunque son seguros, pueden existir reacciones temporales como inflamación, enrojecimiento, hematomas leves o sensibilidad en la zona tratada, las cuales son parte del proceso normal de recuperación.</p>
-                        
-                        <p><strong>3. RESULTADOS Y GARANTÍAS:</strong> Entiendo que la medicina estética no es una ciencia exacta. Los resultados varían según la edad, tipo de piel, hábitos y biología de cada paciente. <strong>No se ofrecen garantías explícitas de un resultado idéntico al de otras personas</strong> ni devoluciones de dinero por insatisfacción estética subjetiva una vez realizado el servicio profesional.</p>
-                        
-                        <p><strong>4. CUIDADOS POSTERIORES (OBLIGATORIO):</strong> Me comprometo a seguir estrictamente las indicaciones post-tratamiento (evitar sol, usar protección solar, higiene, no maquillar zona, etc.). Eximo a <strong>Figura Rostro KG</strong> de toda responsabilidad por infecciones, manchas o complicaciones derivadas de mi negligencia, falta de higiene o exposición solar prematura.</p>
-                        
-                        <p><strong>5. USO DE IMAGEN:</strong> Autorizo la toma de fotografías "Antes y Después" para mi expediente clínico privado. (Estas imágenes podrán ser usadas con fines académicos o publicitarios protegiendo mi identidad salvo que yo exprese lo contrario por escrito).</p>
+                        <p><strong>1. DECLARACIÓN DE VERACIDAD:</strong> Yo, el paciente identificado en la hoja 1, declaro que toda la información médica y personal proporcionada es verdadera y completa.</p>
+                        <p><strong>2. NATURALEZA DEL PROCEDIMIENTO:</strong> Autorizo a <strong>Figura Rostro KG</strong> a realizar los procedimientos estéticos de rejuvenecimiento no invasivo descritos.</p>
+                        <p><strong>3. RESULTADOS Y GARANTÍAS:</strong> Entiendo que la medicina estética no es una ciencia exacta. <strong>No se ofrecen garantías explícitas</strong>.</p>
+                        <p><strong>4. CUIDADOS POSTERIORES (OBLIGATORIO):</strong> Me comprometo a seguir estrictamente las indicaciones post-tratamiento.</p>
+                        <p><strong>5. USO DE IMAGEN:</strong> Autorizo la toma de fotografías "Antes y Después" para mi expediente clínico privado.</p>
                     </div>
-                    
                     <div class="mt-4 pt-4 border-t border-gray-200 dark:border-slate-600">
                         <label class="flex items-center gap-3 cursor-pointer group w-fit">
                             <input type="checkbox" id="check_legal" class="accent-fuchsia-600 w-4 h-4">
-                            <span class="text-[10px] font-extrabold text-gray-800 dark:text-white group-hover:text-brand-main uppercase tracking-wide">
-                                He leído, comprendo y acepto todos los términos y condiciones.
-                            </span>
+                            <span class="text-[10px] font-extrabold text-gray-800 dark:text-white group-hover:text-brand-main uppercase tracking-wide">He leído, comprendo y acepto todos los términos y condiciones.</span>
                         </label>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-                    
                     <div class="border-2 border-dashed border-gray-300 dark:border-slate-600 rounded-xl p-4 flex flex-col items-center bg-gray-50 dark:bg-slate-800/30">
                         <p class="label-pro mb-2 text-center w-full">Firma del Paciente</p>
                         <canvas id="signaturePad" class="w-full h-32 bg-white border-b-2 border-gray-400 cursor-crosshair touch-none rounded-t-lg shadow-inner mb-2" style="max-width: 100%;"></canvas>
                         <div class="w-full flex justify-between items-center px-1">
-                            <p class="text-[9px] text-gray-400 italic">Firmar (Dedo) o dejar blanco (Papel)</p>
+                            <p class="text-[9px] text-gray-400 italic">Firmar (Dedo) o dejar blanco</p>
                             <button type="button" onclick="clearSignature()" class="text-[9px] text-rose-500 font-bold no-print border border-rose-200 rounded px-2 py-1 bg-white hover:bg-rose-50"><i class="fas fa-eraser"></i> Borrar</button>
                         </div>
                     </div>
-
                     <div class="border border-gray-200 dark:border-slate-600 rounded-xl p-4 flex flex-col justify-end bg-white dark:bg-slate-800">
-                        <div class="mb-1 text-center">
-                            <input type="text" id="specialistName" class="w-full text-center bg-transparent border-b-2 border-gray-400 dark:border-gray-500 text-gray-800 dark:text-white font-bold pb-2 outline-none focus:border-brand-main text-sm" placeholder="Nombre Especialista / Sello">
-                        </div>
+                        <div class="mb-1 text-center"><input type="text" id="specialistName" class="w-full text-center bg-transparent border-b-2 border-gray-400 dark:border-gray-500 text-gray-800 dark:text-white font-bold pb-2 outline-none focus:border-brand-main text-sm" placeholder="Nombre Especialista / Sello"></div>
                         <p class="text-[9px] text-center font-bold text-brand-dark dark:text-fuchsia-300 uppercase mt-2">Aprobado por Figura Rostro KG</p>
                     </div>
                 </div>
             </div>
-
             <div class="absolute bottom-4 right-8 text-[9px] text-gray-400">Página 2 de 2</div>
         </div>
+    </div>
 
-    </div> <div class="max-w-4xl mx-auto flex flex-col md:flex-row gap-5 no-print mb-20 px-4 md:px-0">
+    <div class="max-w-4xl mx-auto flex flex-col md:flex-row gap-5 no-print mb-20 px-4 md:px-0">
         <button type="button" id="btnSave" class="flex-1 bg-gradient-to-r from-brand-dark to-brand-main text-white py-4 rounded-xl hover:bg-brand-dark transition-all font-bold shadow-lg shadow-fuchsia-900/20 text-sm flex justify-center items-center gap-3 transform hover:-translate-y-1">
             <i class="fas fa-save text-lg"></i> GUARDAR FICHA
         </button>
@@ -440,25 +285,20 @@
                         <th class="p-4">Folio</th>
                         <th class="p-4">Fecha</th>
                         <th class="p-4">Paciente</th>
-                        <th class="p-4">Tratamientos</th>
-                        <th class="p-4 text-right">Total</th>
+                        <th class="p-4">Total</th>
                         <th class="p-4 text-center">Estado</th>
-                    </tr>
+                        <th class="p-4 text-center">Acciones</th> </tr>
                 </thead>
-                <tbody id="tableBody" class="divide-y divide-gray-100 dark:divide-slate-700 bg-white dark:bg-slate-800">
-                    </tbody>
+                <tbody id="tableBody" class="divide-y divide-gray-100 dark:divide-slate-700 bg-white dark:bg-slate-800"></tbody>
             </table>
         </div>
-        <div id="loader" class="hidden text-center py-10">
-            <div class="loader mx-auto"></div>
-        </div>
+        <div id="loader" class="hidden text-center py-10"><div class="loader mx-auto"></div></div>
     </div>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getFirestore, collection, addDoc, getDocs, orderBy, query, Timestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-        // --- TUS CREDENCIALES DE FIREBASE ---
         const firebaseConfig = {
             apiKey: "AIzaSyBAuTfBKGuG33c9NXc1s0lkQv-7GwA47l0",
             authDomain: "figurarostro-system.firebaseapp.com",
@@ -472,10 +312,9 @@
         const db = getFirestore(app);
         const colName = "fichas_v3_multi";
 
-        // --- VARIABLES Y UTILIDADES ---
-        window.toggleDarkMode = () => { 
-            document.documentElement.classList.toggle('dark'); 
-        }
+        window.dbCache = []; // AQUÍ SE GUARDAN LOS DATOS PARA RE-USAR
+
+        window.toggleDarkMode = () => { document.documentElement.classList.toggle('dark'); }
 
         const generarFolio = () => { 
             const f = `REQ-${Date.now().toString().slice(-6)}`;
@@ -487,13 +326,11 @@
             document.querySelectorAll('.fecha-display').forEach(el => el.innerText = d);
         }
 
-        // --- LÓGICA DEL CANVAS DE FIRMA ---
+        // CANVAS FIRMA
         let canvas, ctx, isDrawing = false;
-        
         function initSignaturePad() {
             canvas = document.getElementById('signaturePad');
             ctx = canvas.getContext('2d');
-            
             function resizeCanvas() {
                 const ratio = Math.max(window.devicePixelRatio || 1, 1);
                 canvas.width = canvas.offsetWidth * ratio;
@@ -502,55 +339,31 @@
             }
             window.addEventListener('resize', resizeCanvas);
             setTimeout(resizeCanvas, 500);
-
-            // Mouse
             canvas.addEventListener('mousedown', startDrawing);
             canvas.addEventListener('mousemove', draw);
             canvas.addEventListener('mouseup', stopDrawing);
             canvas.addEventListener('mouseout', stopDrawing);
-            
-            // Touch
             canvas.addEventListener('touchstart', (e) => { e.preventDefault(); startDrawing(e.touches[0]); });
             canvas.addEventListener('touchmove', (e) => { e.preventDefault(); draw(e.touches[0]); });
             canvas.addEventListener('touchend', stopDrawing);
         }
-
         function startDrawing(e) {
-            isDrawing = true;
-            ctx.beginPath();
+            isDrawing = true; ctx.beginPath();
             const rect = canvas.getBoundingClientRect();
             ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
         }
-
         function draw(e) {
             if (!isDrawing) return;
             const rect = canvas.getBoundingClientRect();
-            ctx.lineWidth = 2;
-            ctx.lineCap = 'round';
-            ctx.strokeStyle = '#000000';
-            ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
-            ctx.stroke();
+            ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.strokeStyle = '#000000';
+            ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top); ctx.stroke();
         }
-
         function stopDrawing() { isDrawing = false; }
-        
-        window.clearSignature = () => { 
-            ctx.clearRect(0, 0, canvas.width, canvas.height); 
-            ctx.beginPath(); 
-        }
+        window.clearSignature = () => { ctx.clearRect(0, 0, canvas.width, canvas.height); ctx.beginPath(); }
 
-        // --- EVENTO DE CARGA INICIAL ---
-        window.addEventListener('load', () => { 
-            agregarServicio(); 
-            generarFolio(); 
-            setFecha(); 
-            initSignaturePad(); 
-        });
+        window.addEventListener('load', () => { agregarServicio(); generarFolio(); setFecha(); initSignaturePad(); });
 
-        // --- NAVEGACIÓN ---
-        window.limpiarFormulario = function() { 
-            if(confirm("¿Nueva ficha vacía?")) location.reload(); 
-        }
+        window.limpiarFormulario = function() { if(confirm("¿Nueva ficha vacía?")) location.reload(); }
 
         window.toggleView = (view) => {
             if(view === 'list') {
@@ -563,10 +376,10 @@
             }
         };
 
-        // --- LÓGICA DE SERVICIOS ---
+        // LÓGICA DE SERVICIOS
         window.agregarServicio = function() {
             const container = document.getElementById('listaServicios');
-            const id = Date.now();
+            const id = Date.now() + Math.random();
             const html = `
                 <div class="service-row" id="row-${id}">
                     <div>
@@ -578,25 +391,16 @@
                             <option value="Otro">Otro</option>
                         </select>
                     </div>
-                    <div>
-                        <input type="text" class="input-pro s-zone" placeholder="Ej. Párpados">
-                    </div>
-                    <div>
-                        <input type="number" class="input-pro text-right font-bold s-price" placeholder="0.00" oninput="calcularTotal()">
-                    </div>
-                    <div class="text-center pt-1">
-                        <button type="button" onclick="eliminarServicio('${id}')" class="text-gray-400 hover:text-red-500 transition">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
-                    </div>
+                    <div><input type="text" class="input-pro s-zone" placeholder="Ej. Párpados"></div>
+                    <div><input type="number" class="input-pro text-right font-bold s-price" placeholder="0.00" oninput="calcularTotal()"></div>
+                    <div class="text-center pt-1"><button type="button" onclick="eliminarServicio('${id}')" class="text-gray-400 hover:text-red-500 transition"><i class="fas fa-trash-alt"></i></button></div>
                 </div>`;
             container.insertAdjacentHTML('beforeend', html);
         }
 
         window.eliminarServicio = (id) => { 
             if(document.querySelectorAll('.service-row').length > 1) { 
-                document.getElementById(`row-${id}`).remove(); 
-                calcularTotal(); 
+                document.getElementById(`row-${id}`).remove(); calcularTotal(); 
             } 
         }
 
@@ -604,12 +408,9 @@
             const input = select.closest('.service-row').querySelector('.s-zone');
             if(!select.value.includes('Fibroblast') && !select.value.includes('Otro')) { 
                 input.value = ''; input.disabled = true; input.style.opacity = '0.5'; 
-            } else { 
-                input.disabled = false; input.style.opacity = '1'; 
-            }
+            } else { input.disabled = false; input.style.opacity = '1'; }
         }
 
-        // --- CÁLCULOS MATEMÁTICOS ---
         window.setPromo = (pct) => { document.getElementById('promo_pct').value = pct; calcularTotal(); }
         window.resetDesc = () => { document.getElementById('promo_pct').value = 0; calcularTotal(); }
 
@@ -632,11 +433,8 @@
             elPend.innerText = "$" + pend.toFixed(2);
             
             if(pend <= 0.1 && total > 0) {
-                elPend.innerText = "PAGADO";
-                elPend.className = "text-2xl font-black text-green-500 font-mono";
-            } else {
-                elPend.className = "text-2xl font-black text-rose-500 font-mono";
-            }
+                elPend.innerText = "PAGADO"; elPend.className = "text-2xl font-black text-green-500 font-mono";
+            } else { elPend.className = "text-2xl font-black text-rose-500 font-mono"; }
         }
 
         window.calcularEdad = () => {
@@ -649,11 +447,10 @@
             }
         }
 
-        // --- GUARDAR EN FIREBASE ---
+        // GUARDAR
         document.getElementById('btnSave').addEventListener('click', async () => {
             const btn = document.getElementById('btnSave');
             const nombre = document.getElementById('nombre').value;
-            
             if(!nombre) return alert("⚠️ Falta Nombre");
             if(!document.getElementById('check_legal').checked) return alert("⚠️ Acepta Términos");
 
@@ -666,14 +463,10 @@
                 });
             });
 
-            const txt = btn.innerHTML; 
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> GUARDANDO...'; 
-            btn.disabled = true;
+            const txt = btn.innerHTML; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> GUARDANDO...'; btn.disabled = true;
 
             try {
-                // Usamos el folio que está en el DOM
                 const folioActual = document.querySelector('.folio-display').innerText;
-
                 await addDoc(collection(db, colName), {
                     folio: folioActual,
                     paciente: { 
@@ -691,34 +484,28 @@
                         abono: document.getElementById('abono').value, 
                         pendiente: document.getElementById('lblPendiente').innerText 
                     },
-                    medico: { 
-                        especialista: document.getElementById('specialistName').value 
-                    },
+                    medico: { especialista: document.getElementById('specialistName').value },
                     fecha: Timestamp.now()
                 });
-                
                 alert("✅ Guardado Exitosamente"); 
-                btn.innerHTML = '<i class="fas fa-check"></i> LISTO'; 
-                btn.classList.add('bg-green-600');
-                
-            } catch (e) { 
-                alert(e.message); 
-                btn.innerHTML = txt; 
-                btn.disabled = false; 
-            }
+                btn.innerHTML = '<i class="fas fa-check"></i> LISTO'; btn.classList.add('bg-green-600');
+            } catch (e) { alert(e.message); btn.innerHTML = txt; btn.disabled = false; }
         });
 
-        // --- CARGAR HISTORIAL ---
+        // CARGAR BASE DE DATOS
         window.loadData = async () => {
             const tb = document.getElementById('tableBody'); 
             tb.innerHTML=''; 
             document.getElementById('loader').classList.remove('hidden');
+            window.dbCache = [];
             
             const snap = await getDocs(query(collection(db, colName), orderBy("fecha", "desc")));
             document.getElementById('loader').classList.add('hidden');
             
             snap.forEach(doc => { 
-                const d=doc.data(); 
+                const d=doc.data();
+                window.dbCache.push(d); // Guardamos en memoria para luego usarlo
+
                 tb.innerHTML += `
                 <tr class="border-b dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-700">
                     <td class="p-3 text-brand-main font-bold font-mono">${d.folio||'--'}</td>
@@ -730,23 +517,85 @@
                         '<span class="text-green-500 font-bold">OK</span>' : 
                         '<span class="text-rose-500 font-bold">DEBE</span>'}
                     </td>
+                    <td class="p-3 text-center">
+                        <button onclick="verFicha('${d.folio}')" class="bg-blue-500 text-white px-3 py-1 rounded text-xs font-bold hover:bg-blue-600 transition">
+                            <i class="fas fa-eye mr-1"></i> Ver / PDF
+                        </button>
+                    </td>
                 </tr>`; 
             });
         }
 
-        // --- GENERAR PDF (MULTIPÁGINA) ---
+        // --- FUNCIÓN NUEVA: RELLENAR FORMULARIO CON DATOS GUARDADOS ---
+        window.verFicha = (folioBuscado) => {
+            const registro = window.dbCache.find(r => r.folio === folioBuscado);
+            if(!registro) return alert("Error al cargar datos");
+
+            // 1. Rellenar Folio y Fechas
+            document.querySelectorAll('.folio-display').forEach(el => el.innerText = registro.folio);
+            // Nota: La fecha se dejará la de hoy o la del registro si prefieres, 
+            // pero para re-imprimir tal cual, idealmente no tocar la fecha de hoy.
+
+            // 2. Rellenar Paciente
+            document.getElementById('nombre').value = registro.paciente.nombre || '';
+            document.getElementById('cedula').value = registro.paciente.cedula || '';
+            document.getElementById('telefono').value = registro.paciente.telefono || '';
+            document.getElementById('edad').value = registro.paciente.edad || '';
+            document.getElementById('ocupacion').value = registro.paciente.ocupacion || '';
+            document.getElementById('direccion').value = registro.paciente.direccion || '';
+            
+            // 3. Rellenar Servicios (Reconstruir HTML)
+            const sContainer = document.getElementById('listaServicios');
+            sContainer.innerHTML = ''; // Limpiar actuales
+            
+            if(registro.servicios && registro.servicios.length > 0) {
+                registro.servicios.forEach(s => {
+                    const id = Date.now() + Math.random();
+                    const html = `
+                    <div class="service-row" id="row-${id}">
+                        <div>
+                            <select class="input-pro cursor-pointer s-type font-bold" onchange="checkZone(this)">
+                                <option value="Plasma Fibroblast" ${s.tipo==='Plasma Fibroblast'?'selected':''}>Plasma Fibroblast</option>
+                                <option value="Limpieza Facial" ${s.tipo==='Limpieza Facial'?'selected':''}>Limpieza Facial</option>
+                                <option value="Dermapen" ${s.tipo==='Dermapen'?'selected':''}>Dermapen</option>
+                                <option value="Hidratación" ${s.tipo==='Hidratación'?'selected':''}>Hidratación</option>
+                                <option value="Otro" ${s.tipo==='Otro'?'selected':''}>Otro</option>
+                            </select>
+                        </div>
+                        <div><input type="text" class="input-pro s-zone" value="${s.zona}" ${!s.tipo.includes('Fibroblast')&&!s.tipo.includes('Otro')?'disabled style="opacity:0.5"':''}></div>
+                        <div><input type="number" class="input-pro text-right font-bold s-price" value="${s.precio}" oninput="calcularTotal()"></div>
+                        <div class="text-center pt-1"><button type="button" onclick="eliminarServicio('${id}')" class="text-gray-400 hover:text-red-500 transition"><i class="fas fa-trash-alt"></i></button></div>
+                    </div>`;
+                    sContainer.insertAdjacentHTML('beforeend', html);
+                });
+            } else {
+                agregarServicio();
+            }
+
+            // 4. Rellenar Finanzas
+            document.getElementById('abono').value = registro.finanzas.abono || 0;
+            // El especialista
+            document.getElementById('specialistName').value = registro.medico.especialista || '';
+
+            // 5. Recalcular todo visualmente
+            calcularTotal();
+
+            // 6. Volver a la vista del formulario
+            toggleView('form');
+            alert("Datos cargados. Puedes imprimir el PDF ahora.");
+        }
+
+        // GENERAR PDF
         document.getElementById('btnPdf').addEventListener('click', () => {
             const el = document.getElementById('printContainer');
             const controls = document.querySelectorAll('.no-print, .btn-remove');
             const wasDark = document.documentElement.classList.contains('dark');
             
-            // 1. Forzar modo claro para impresión limpia
             if(wasDark) document.documentElement.classList.remove('dark');
             controls.forEach(e => e.style.display = 'none');
 
-            // 2. Configuración PDF (Respeta saltos de página CSS)
             const opt = {
-                margin: [0.2, 0, 0.2, 0], // Márgenes mínimos
+                margin: [0.2, 0, 0.2, 0], 
                 filename: `Ficha_${document.querySelector('.folio-display').innerText}.pdf`,
                 image: { type: 'jpeg', quality: 1 },
                 html2canvas: { scale: 2, useCORS: true, scrollY: 0 },
@@ -755,7 +604,6 @@
             };
 
             html2pdf().set(opt).from(el).save().then(() => {
-                // 3. Restaurar estado
                 controls.forEach(e => e.style.display = '');
                 if(wasDark) document.documentElement.classList.add('dark');
             });
