@@ -79,31 +79,46 @@
             .input-pro { border: 1px solid #ccc !important; background-color: white !important; color: black !important; }
             canvas { border: 1px solid #ccc !important; }
         }
+
+        /* Estilo Botón Activo del Menú */
+        .nav-btn-active {
+            background-color: #9333ea; /* brand-main */
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .nav-btn-inactive {
+            background-color: transparent;
+            color: #6b7280; /* gray-500 */
+        }
+        .dark .nav-btn-inactive {
+            color: #94a3b8; /* slate-400 */
+        }
     </style>
 </head>
-<body class="p-4">
-
-    <nav class="fixed top-0 inset-x-0 bg-white/95 dark:bg-night-card/95 backdrop-blur shadow-md p-3 z-50 border-b border-gray-200 dark:border-slate-700 no-print">
+<body class="p-4 pt-20"> <nav class="fixed top-0 inset-x-0 bg-white/95 dark:bg-night-card/95 backdrop-blur shadow-md p-2 z-50 border-b border-gray-200 dark:border-slate-700 no-print">
         <div class="max-w-5xl mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <a href="/" class="text-gray-500 dark:text-gray-300 font-bold text-xs"><i class="fas fa-arrow-left"></i> Volver</a>
-                <button onclick="toggleDarkMode()" class="bg-gray-100 dark:bg-slate-700 px-3 py-1 rounded-full text-xs font-bold border border-gray-200 dark:border-slate-600 dark:text-yellow-400">
-                    <i class="fas fa-moon dark:hidden"></i><i class="fas fa-sun hidden dark:inline"></i>
+            
+            <button onclick="toggleDarkMode()" class="w-10 h-10 rounded-full flex items-center justify-center bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-yellow-400 border border-gray-200 dark:border-slate-600 transition hover:scale-110">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:inline"></i>
+            </button>
+
+            <div class="flex bg-gray-100 dark:bg-slate-800 p-1 rounded-full border border-gray-200 dark:border-slate-600">
+                <button onclick="toggleView('form')" id="navForm" class="nav-btn-active px-6 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-2">
+                    <i class="fas fa-file-signature"></i> <span class="hidden sm:inline">Formulario</span>
+                </button>
+                <button onclick="toggleView('list')" id="navList" class="nav-btn-inactive px-6 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-2 hover:bg-gray-200 dark:hover:bg-slate-700">
+                    <i class="fas fa-database"></i> <span class="hidden sm:inline">Base de Datos</span>
                 </button>
             </div>
-            <div class="flex gap-2">
-                <button onclick="limpiarFormulario()" class="bg-fuchsia-50 hover:bg-fuchsia-100 text-fuchsia-900 dark:bg-slate-800 dark:text-fuchsia-300 px-4 py-2 rounded-full text-xs font-bold border border-fuchsia-200 dark:border-slate-600 transition">
-                    <i class="fas fa-eraser mr-1"></i> Nueva
-                </button>
-                <button onclick="toggleView('list')" class="bg-brand-main hover:bg-brand-dark text-white px-4 py-2 rounded-full text-xs font-bold shadow-md transition">
-                    <i class="fas fa-database mr-1"></i> Base de Datos
-                </button>
-            </div>
+
+            <button onclick="limpiarFormulario()" class="bg-rose-50 hover:bg-rose-100 text-rose-600 dark:bg-slate-800 dark:text-rose-400 px-4 py-2 rounded-full text-xs font-bold border border-rose-200 dark:border-slate-600 transition flex items-center gap-2">
+                <i class="fas fa-plus-circle"></i> Nueva Ficha
+            </button>
         </div>
     </nav>
-    <div class="h-16 no-print"></div>
 
-    <div id="seccionFormulario">
+    <div id="seccionFormulario" class="transition-opacity duration-300">
         <div id="printContainer">
             <div id="page1" class="paper-sheet rounded-t-2xl page-break border border-gray-200 dark:border-slate-700">
                 <div class="header-gradient bg-gradient-to-r from-brand-dark via-brand-main to-brand-dark p-6 flex justify-between items-start text-white">
@@ -263,7 +278,7 @@
         </div>
     </div>
 
-    <div id="seccionBaseDatos" class="hidden w-full max-w-5xl bg-white dark:bg-night-card shadow-2xl p-8 mt-10 rounded-2xl border border-gray-200 dark:border-slate-700 relative mb-20 mx-auto">
+    <div id="seccionBaseDatos" class="hidden w-full max-w-5xl bg-white dark:bg-night-card shadow-2xl p-8 mt-10 rounded-2xl border border-gray-200 dark:border-slate-700 relative mb-20 mx-auto transition-opacity duration-300">
         <div class="flex justify-between mb-6 border-b border-gray-200 dark:border-slate-600 pb-4">
             <h2 class="font-bold text-xl text-gray-800 dark:text-white">Base de Datos</h2>
             <button onclick="loadData()" class="text-xs bg-gray-100 dark:bg-slate-700 px-4 py-2 rounded-full font-bold dark:text-white border dark:border-slate-600 hover:bg-gray-200 transition">
@@ -292,7 +307,7 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getFirestore, collection, addDoc, getDocs, orderBy, query, Timestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-        // CONFIG FIREBASE (TU CONFIGURACIÓN)
+        // CONFIG FIREBASE
         const firebaseConfig = {
             apiKey: "AIzaSyBAuTfBKGuG33c9NXc1s0lkQv-7GwA47l0",
             authDomain: "figurarostro-system.firebaseapp.com",
@@ -306,25 +321,41 @@
         const db = getFirestore(app);
         const colName = "fichas_v3_multi";
 
-        window.dbCache = []; // AQUÍ SE GUARDAN LOS DATOS TEMPORALMENTE
+        window.dbCache = [];
 
         // --- NAVEGACIÓN Y VISTAS ---
         window.toggleDarkMode = () => { document.documentElement.classList.toggle('dark'); }
 
         window.toggleView = (view) => {
+            const navForm = document.getElementById('navForm');
+            const navList = document.getElementById('navList');
+            
             if(view === 'list') {
                 // MODO BASE DE DATOS
                 document.getElementById('seccionFormulario').classList.add('hidden');
                 document.getElementById('seccionBaseDatos').classList.remove('hidden');
+                
+                // Actualizar estilo botones
+                navForm.className = "nav-btn-inactive px-6 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-2 hover:bg-gray-200 dark:hover:bg-slate-700";
+                navList.className = "nav-btn-active px-6 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-2";
+                
                 loadData();
             } else {
-                // MODO FORMULARIO
+                // MODO FORMULARIO (Sin borrar datos)
                 document.getElementById('seccionFormulario').classList.remove('hidden');
                 document.getElementById('seccionBaseDatos').classList.add('hidden');
+                
+                // Actualizar estilo botones
+                navForm.className = "nav-btn-active px-6 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-2";
+                navList.className = "nav-btn-inactive px-6 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-2 hover:bg-gray-200 dark:hover:bg-slate-700";
             }
         };
 
-        window.limpiarFormulario = function() { if(confirm("¿Nueva ficha vacía?")) location.reload(); }
+        window.limpiarFormulario = function() { 
+            if(confirm("¿Estás seguro de limpiar la ficha actual y empezar una nueva?")) {
+                location.reload(); 
+            }
+        }
 
         const generarFolio = () => { 
             const f = `REQ-${Date.now().toString().slice(-6)}`;
@@ -494,96 +525,108 @@
             const tb = document.getElementById('tableBody'); 
             tb.innerHTML=''; 
             document.getElementById('loader').classList.remove('hidden');
-            window.dbCache = []; // Limpiamos la memoria
+            window.dbCache = []; 
             
-            const snap = await getDocs(query(collection(db, colName), orderBy("fecha", "desc")));
-            document.getElementById('loader').classList.add('hidden');
-            
-            snap.forEach(doc => { 
-                const d=doc.data();
-                const folioSafe = d.folio || "SIN-FOLIO"; // Protección por si no tiene folio
-                d.folio = folioSafe; // Aseguramos que el objeto tenga folio
+            try {
+                const snap = await getDocs(query(collection(db, colName), orderBy("fecha", "desc")));
                 
-                window.dbCache.push(d); // Guardamos en memoria para usar al dar clic
+                snap.forEach(doc => { 
+                    let d = doc.data();
+                    d.folio = d.folio || "SIN-FOLIO";
+                    d.paciente = d.paciente || { nombre: "Sin Nombre" };
+                    d.finanzas = d.finanzas || { total: "$0.00", pendiente: "DEBE" };
+                    d.servicios = d.servicios || [];
+                    d.medico = d.medico || {};
+                    
+                    window.dbCache.push(d);
 
-                tb.innerHTML += `
-                <tr class="border-b dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-700">
-                    <td class="p-3 text-brand-main font-bold font-mono">${folioSafe}</td>
-                    <td class="p-3 dark:text-gray-300">${d.fecha.toDate().toLocaleDateString()}</td>
-                    <td class="p-3 font-bold dark:text-white">${d.paciente.nombre}</td>
-                    <td class="p-3 text-right font-mono font-bold dark:text-gray-300">${d.finanzas.total}</td>
-                    <td class="p-3 text-center">
-                        ${d.finanzas.pendiente.includes('PAGADO') ? 
-                        '<span class="text-green-500 font-bold">OK</span>' : 
-                        '<span class="text-rose-500 font-bold">DEBE</span>'}
-                    </td>
-                    <td class="p-3 text-center">
-                        <button onclick="verFicha('${folioSafe}')" class="bg-blue-500 text-white px-3 py-1 rounded text-xs font-bold hover:bg-blue-600 transition shadow-sm">
-                            <i class="fas fa-eye mr-1"></i> Ver / PDF
-                        </button>
-                    </td>
-                </tr>`; 
-            });
+                    tb.innerHTML += `
+                    <tr class="border-b dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-700">
+                        <td class="p-3 text-brand-main font-bold font-mono">${d.folio}</td>
+                        <td class="p-3 dark:text-gray-300">${d.fecha ? d.fecha.toDate().toLocaleDateString() : '--'}</td>
+                        <td class="p-3 font-bold dark:text-white">${d.paciente.nombre}</td>
+                        <td class="p-3 text-right font-mono font-bold dark:text-gray-300">${d.finanzas.total}</td>
+                        <td class="p-3 text-center">
+                            ${(d.finanzas.pendiente && d.finanzas.pendiente.includes('PAGADO')) ? 
+                            '<span class="text-green-500 font-bold">OK</span>' : 
+                            '<span class="text-rose-500 font-bold">DEBE</span>'}
+                        </td>
+                        <td class="p-3 text-center">
+                            <button onclick="verFicha('${d.folio}')" class="bg-blue-500 text-white px-3 py-1 rounded text-xs font-bold hover:bg-blue-600 transition shadow-sm">
+                                <i class="fas fa-eye mr-1"></i> Ver / PDF
+                            </button>
+                        </td>
+                    </tr>`; 
+                });
+            } catch (error) {
+                console.error("Error al cargar datos:", error);
+                tb.innerHTML = `<tr><td colspan="6" class="text-center p-4 text-red-400">Error al cargar datos. Revisa la consola.</td></tr>`;
+            }
+            
+            document.getElementById('loader').classList.add('hidden');
         }
 
-        // --- FUNCIÓN CLAVE: RELLENAR FORMULARIO CON DATOS ---
+        // --- RELLENAR FORMULARIO CON DATOS ---
         window.verFicha = (folioBuscado) => {
-            // Buscamos en la memoria local
-            const registro = window.dbCache.find(r => r.folio === folioBuscado);
-            
-            if(!registro) {
-                alert("Error: No se encontraron los datos de este folio. Intenta actualizar la tabla.");
-                return;
+            try {
+                const registro = window.dbCache.find(r => r.folio === folioBuscado);
+                
+                if(!registro) {
+                    alert("No se encontró el registro en memoria. Intenta dar clic en 'Actualizar'.");
+                    return;
+                }
+
+                document.querySelectorAll('.folio-display').forEach(el => el.innerText = registro.folio || '---');
+                
+                const p = registro.paciente || {};
+                document.getElementById('nombre').value = p.nombre || '';
+                document.getElementById('cedula').value = p.cedula || '';
+                document.getElementById('telefono').value = p.telefono || '';
+                document.getElementById('edad').value = p.edad || '';
+                document.getElementById('ocupacion').value = p.ocupacion || '';
+                document.getElementById('direccion').value = p.direccion || '';
+                
+                const sContainer = document.getElementById('listaServicios');
+                sContainer.innerHTML = ''; 
+                
+                const servicios = registro.servicios || [];
+                if(servicios.length > 0) {
+                    servicios.forEach(s => {
+                        const id = Date.now() + Math.random();
+                        const html = `
+                        <div class="service-row" id="row-${id}">
+                            <div>
+                                <select class="input-pro cursor-pointer s-type font-bold" onchange="checkZone(this)">
+                                    <option value="Plasma Fibroblast" ${s.tipo==='Plasma Fibroblast'?'selected':''}>Plasma Fibroblast</option>
+                                    <option value="Limpieza Facial" ${s.tipo==='Limpieza Facial'?'selected':''}>Limpieza Facial</option>
+                                    <option value="Dermapen" ${s.tipo==='Dermapen'?'selected':''}>Dermapen</option>
+                                    <option value="Hidratación" ${s.tipo==='Hidratación'?'selected':''}>Hidratación</option>
+                                    <option value="Otro" ${s.tipo==='Otro'?'selected':''}>Otro</option>
+                                </select>
+                            </div>
+                            <div><input type="text" class="input-pro s-zone" value="${s.zona || ''}" ${!s.tipo.includes('Fibroblast')&&!s.tipo.includes('Otro')?'disabled style="opacity:0.5"':''}></div>
+                            <div><input type="number" class="input-pro text-right font-bold s-price" value="${s.precio || 0}" oninput="calcularTotal()"></div>
+                            <div class="text-center pt-1"><button type="button" onclick="eliminarServicio('${id}')" class="text-gray-400 hover:text-red-500 transition"><i class="fas fa-trash-alt"></i></button></div>
+                        </div>`;
+                        sContainer.insertAdjacentHTML('beforeend', html);
+                    });
+                } else {
+                    agregarServicio();
+                }
+
+                const f = registro.finanzas || {};
+                document.getElementById('abono').value = f.abono || 0;
+                
+                const m = registro.medico || {};
+                document.getElementById('specialistName').value = m.especialista || '';
+
+                calcularTotal();
+                toggleView('form'); 
+                
+            } catch (error) {
+                console.error(error);
+                alert("Ocurrió un error al abrir este archivo: " + error.message);
             }
-
-            // 1. Rellenar Datos del Paciente
-            document.querySelectorAll('.folio-display').forEach(el => el.innerText = registro.folio);
-            document.getElementById('nombre').value = registro.paciente.nombre || '';
-            document.getElementById('cedula').value = registro.paciente.cedula || '';
-            document.getElementById('telefono').value = registro.paciente.telefono || '';
-            document.getElementById('edad').value = registro.paciente.edad || '';
-            document.getElementById('ocupacion').value = registro.paciente.ocupacion || '';
-            document.getElementById('direccion').value = registro.paciente.direccion || '';
-            
-            // 2. Rellenar Servicios (Reconstruimos el HTML)
-            const sContainer = document.getElementById('listaServicios');
-            sContainer.innerHTML = ''; // Borramos lo que haya
-            
-            if(registro.servicios && registro.servicios.length > 0) {
-                registro.servicios.forEach(s => {
-                    const id = Date.now() + Math.random();
-                    const html = `
-                    <div class="service-row" id="row-${id}">
-                        <div>
-                            <select class="input-pro cursor-pointer s-type font-bold" onchange="checkZone(this)">
-                                <option value="Plasma Fibroblast" ${s.tipo==='Plasma Fibroblast'?'selected':''}>Plasma Fibroblast</option>
-                                <option value="Limpieza Facial" ${s.tipo==='Limpieza Facial'?'selected':''}>Limpieza Facial</option>
-                                <option value="Dermapen" ${s.tipo==='Dermapen'?'selected':''}>Dermapen</option>
-                                <option value="Hidratación" ${s.tipo==='Hidratación'?'selected':''}>Hidratación</option>
-                                <option value="Otro" ${s.tipo==='Otro'?'selected':''}>Otro</option>
-                            </select>
-                        </div>
-                        <div><input type="text" class="input-pro s-zone" value="${s.zona}" ${!s.tipo.includes('Fibroblast')&&!s.tipo.includes('Otro')?'disabled style="opacity:0.5"':''}></div>
-                        <div><input type="number" class="input-pro text-right font-bold s-price" value="${s.precio}" oninput="calcularTotal()"></div>
-                        <div class="text-center pt-1"><button type="button" onclick="eliminarServicio('${id}')" class="text-gray-400 hover:text-red-500 transition"><i class="fas fa-trash-alt"></i></button></div>
-                    </div>`;
-                    sContainer.insertAdjacentHTML('beforeend', html);
-                });
-            } else {
-                agregarServicio();
-            }
-
-            // 3. Rellenar Finanzas
-            document.getElementById('abono').value = registro.finanzas.abono || 0;
-            document.getElementById('specialistName').value = registro.medico.especialista || '';
-
-            // 4. Recalcular y Cambiar Vista
-            calcularTotal();
-            toggleView('form'); // VOLVEMOS AL FORMULARIO
-            
-            // 5. Mensaje sutil
-            // No usamos alert para que sea fluido, o puedes poner uno si prefieres:
-            // alert("Datos cargados. Listo para imprimir.");
         }
 
         // --- GENERAR PDF ---
