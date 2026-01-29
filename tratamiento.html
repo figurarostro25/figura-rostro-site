@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="es" class="dark"> <head>
+<html lang="es" class="dark">
+<head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>Sistema Clínico | Figura Rostro KG</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -11,22 +12,22 @@
 
     <script>
         tailwind.config = {
-            darkMode: 'class', // Permite activar el modo oscuro manualmente con un botón
+            darkMode: 'class', // Activación manual del modo oscuro
             theme: {
                 extend: {
                     colors: {
                         // Paleta de Marca (Morados y Fucsias)
                         brand: {
-                            dark: '#4a044e',    /* Morado muy oscuro */
+                            dark: '#4a044e',    /* Morado profundo */
                             main: '#9333ea',    /* Morado vibrante */
                             light: '#e879f9',   /* Fucsia claro */
                             accent: '#d946ef',  /* Fucsia neón */
                         },
-                        // Paleta Modo Oscuro (Dark Mode)
+                        // Paleta Modo Noche (Slate/Dark Blue)
                         night: {
-                            bg: '#0f172a',      /* Fondo principal Slate-900 */
-                            card: '#1e293b',    /* Fondo tarjetas Slate-800 */
-                            input: '#334155',   /* Fondo inputs Slate-700 */
+                            bg: '#0f172a',      /* Fondo Slate-900 */
+                            card: '#1e293b',    /* Tarjetas Slate-800 */
+                            input: '#334155',   /* Inputs Slate-700 */
                             border: '#475569',  /* Bordes Slate-600 */
                         }
                     },
@@ -39,21 +40,25 @@
     </script>
 
     <style>
-        /* Transiciones suaves al cambiar de modo día/noche */
-        body, div, nav, input, select, button, span, p, h1, h2 {
+        /* Transiciones suaves para todo */
+        body, div, nav, input, select, button, span, p, h1, h2, i {
             transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
         }
 
-        /* FONDO GENERAL */
+        /* Bloquear comportamiento de arrastre en toda la app (para iPad) */
         body {
-            @apply bg-fuchsia-50 text-gray-700; /* Modo Día */
+            touch-action: pan-y; /* Solo permite scroll vertical */
+            background-color: #fdf4ff; /* Fondo claro (Día) */
+            color: #374151;
         }
+
+        /* Fondo en Modo Oscuro */
         .dark body {
-            background-color: #0f172a; /* Modo Noche */
+            background-color: #0f172a;
             color: #e2e8f0;
         }
-        
-        /* ESTILO DE LOS INPUTS (Cuadros de texto) */
+
+        /* --- ESTILO DE INPUTS (Cuadros de Texto) --- */
         .input-pro {
             width: 100%;
             border-radius: 8px;
@@ -63,25 +68,25 @@
             outline: none;
             /* Estilo Día */
             background-color: #ffffff;
-            border: 1px solid #cbd5e1;
-            color: #1e293b;
+            border: 1px solid #6b7280; /* Gris definido */
+            color: #111827;
             box-shadow: 0 1px 2px rgba(0,0,0,0.05);
         }
-        
-        /* Estilo Noche (Inputs) */
+
+        /* Input en Modo Oscuro */
         .dark .input-pro {
             background-color: #334155;
-            border: 1px solid #475569;
+            border: 1px solid #64748b;
             color: #ffffff;
         }
-        
-        /* Foco (Click) */
+
+        /* Foco del Input */
         .input-pro:focus {
             border-color: #d946ef;
-            box-shadow: 0 0 0 3px rgba(217, 70, 239, 0.2);
+            box-shadow: 0 0 0 3px rgba(217, 70, 239, 0.25);
         }
 
-        /* ETIQUETAS (Labels) */
+        /* --- ETIQUETAS (Labels) --- */
         .label-pro {
             display: block;
             font-size: 10px;
@@ -89,14 +94,13 @@
             text-transform: uppercase;
             margin-bottom: 4px;
             letter-spacing: 0.05em;
-            /* Color Día/Noche */
-            color: #4a044e; 
+            color: #4a044e; /* Morado oscuro */
         }
         .dark .label-pro {
-            color: #e879f9; /* Fucsia claro en modo oscuro */
+            color: #e879f9; /* Fucsia claro en modo noche */
         }
 
-        /* FILAS DE LA TABLA DE SERVICIOS */
+        /* --- FILAS DE SERVICIOS --- */
         .service-row {
             display: grid;
             grid-template-columns: 2fr 2fr 1fr 40px;
@@ -107,7 +111,8 @@
             margin-bottom: 8px;
             /* Día */
             background-color: #ffffff;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 1px 1px rgba(0,0,0,0.05);
         }
         .dark .service-row {
             /* Noche */
@@ -115,7 +120,7 @@
             border: 1px solid #475569;
         }
 
-        /* TÍTULOS DE SECCIÓN */
+        /* --- TÍTULOS DE SECCIÓN --- */
         .section-header {
             font-size: 12px;
             font-weight: 900;
@@ -127,17 +132,22 @@
             align-items: center;
             gap: 8px;
             border-bottom-width: 2px;
-            /* Día */
+            /* Colores */
             color: #9333ea;
             border-color: #f0abfc;
         }
         .dark .section-header {
-            /* Noche */
             color: #d946ef;
             border-color: #475569;
         }
 
-        /* CHECKBOX */
+        /* --- CANVAS DE FIRMA DIGITAL --- */
+        canvas#signaturePad {
+            touch-action: none; /* Bloquea gestos del navegador dentro del canvas para poder dibujar */
+            cursor: crosshair;
+        }
+
+        /* --- CHECKBOX --- */
         .custom-check {
             accent-color: #d946ef;
             width: 16px;
@@ -145,25 +155,32 @@
             cursor: pointer;
         }
 
-        /* LOADER (Animación de carga) */
+        /* --- LOADER --- */
         .loader {
             border: 3px solid #e2e8f0;
             border-top: 3px solid #d946ef;
             border-radius: 50%;
-            width: 30px;
-            height: 30px;
+            width: 32px;
+            height: 32px;
             animation: spin 1s linear infinite;
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        /* --- REGLAS CRÍTICAS PARA IMPRESIÓN (PDF) --- */
-        /* Esto asegura que el PDF salga BLANCO aunque uses Modo Oscuro */
+        /* ========================================== */
+        /* 4. REGLAS PARA IMPRESIÓN (PDF) */
+        /* ========================================== */
         @media print {
-            body { background-color: white !important; color: black !important; }
-            .dark { color-scheme: light; } /* Fuerza modo claro */
-            .no-print { display: none !important; } /* Oculta botones */
+            body { 
+                background-color: white !important; 
+                color: black !important; 
+            }
+            /* Forzar modo claro en impresión */
+            .dark { color-scheme: light; } 
             
-            /* Resetea colores de inputs para impresión */
+            /* Ocultar elementos de navegación */
+            .no-print { display: none !important; }
+            
+            /* Inputs blancos en papel */
             .input-pro { 
                 background-color: white !important; 
                 border: 1px solid #ccc !important; 
@@ -171,24 +188,30 @@
             }
             .dark .input-pro {
                 background-color: white !important;
+                border: 1px solid #ccc !important;
                 color: black !important;
             }
-            
-            /* Elimina sombras */
-            .shadow-2xl, .shadow-lg, .shadow-md { box-shadow: none !important; }
-            
-            /* Mantiene el header morado bonito */
+
+            /* Asegurar que el Header Morado salga a color */
             .header-gradient { 
                 -webkit-print-color-adjust: exact; 
                 print-color-adjust: exact; 
                 color: white !important;
             }
+
+            /* Asegurar que la firma se vea */
+            canvas {
+                border: 1px solid #ccc !important;
+            }
+            
+            /* Quitar sombras */
+            .shadow-2xl, .shadow-lg, .shadow-md { box-shadow: none !important; }
         }
     </style>
 </head>
 <body class="p-4 flex justify-center min-h-screen">
 
-    <nav class="fixed top-0 inset-x-0 bg-white/90 dark:bg-night-card/90 backdrop-blur shadow-md p-3 z-50 border-b border-gray-200 dark:border-slate-700 no-print">
+    <nav class="fixed top-0 inset-x-0 bg-white/95 dark:bg-night-card/95 backdrop-blur shadow-md p-3 z-50 border-b border-gray-200 dark:border-slate-700 no-print">
         <div class="max-w-5xl mx-auto flex justify-between items-center">
             
             <div class="flex items-center gap-4">
@@ -197,7 +220,9 @@
                 </a>
                 
                 <button onclick="toggleDarkMode()" class="flex items-center gap-2 bg-gray-100 dark:bg-slate-700 px-3 py-1.5 rounded-full text-xs font-bold text-gray-600 dark:text-yellow-400 hover:scale-105 transition border border-gray-200 dark:border-slate-600">
-                    <i class="fas fa-sun dark:hidden"></i> <i class="fas fa-moon hidden dark:inline"></i> <span class="dark:hidden">Modo Día</span>
+                    <i class="fas fa-sun dark:hidden"></i>
+                    <i class="fas fa-moon hidden dark:inline"></i>
+                    <span class="dark:hidden">Modo Día</span>
                     <span class="hidden dark:inline">Modo Noche</span>
                 </button>
             </div>
@@ -222,14 +247,14 @@
             <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
             
             <div class="relative z-10">
-                
                 <div class="mb-4">
                     <div class="h-14 w-44 border-2 border-dashed border-white/20 rounded-lg flex items-center justify-center bg-white/5 backdrop-blur-sm">
                         <span class="text-[9px] text-white/60 font-bold tracking-widest text-center">
-                            [ LOGO BLANCO ]
+                            [ LOGO BLANCO ]<br>(Reemplazar IMG)
                         </span>
                     </div>
                 </div>
+
                 <h1 class="text-3xl font-black uppercase tracking-wider drop-shadow-lg">Figura Rostro KG</h1>
                 <p class="text-fuchsia-200 text-[10px] font-bold tracking-[0.2em] uppercase mt-2 border-t border-white/10 pt-2 inline-block">
                     Especialistas en Rejuvenecimiento No Invasivo
@@ -250,19 +275,18 @@
         </div>
 
         <div class="p-8 md:p-10 relative">
-            
             <form id="clinicalForm">
                 
                 <div class="section-header mt-0">
                     <i class="fas fa-user-circle text-lg"></i> Información del Paciente
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
                         <label class="label-pro">Nombre Completo</label>
                         <input type="text" id="nombre" class="input-pro border-l-4 border-l-brand-main" placeholder="Ej. Ana María Pérez" required>
                     </div>
-                    <div class="grid grid-cols-2 gap-5">
+                    <div class="grid grid-cols-2 gap-6">
                         <div>
                             <label class="label-pro">Cédula / ID</label>
                             <input type="text" id="cedula" class="input-pro">
@@ -274,9 +298,9 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
-                        <label class="label-pro">Fecha Nacimiento</label>
+                        <label class="label-pro">Fecha de Nacimiento</label>
                         <div class="flex gap-3">
                             <select id="dia_nac" class="input-pro w-20 cursor-pointer" onchange="calcularEdad()">
                                 <option value="">Día</option>
@@ -292,7 +316,7 @@
                             <input type="number" id="anio_nac" class="input-pro w-24" placeholder="Año" onchange="calcularEdad()">
                         </div>
                     </div>
-                    <div class="flex gap-5">
+                    <div class="flex gap-6">
                         <div class="w-24">
                             <label class="label-pro">Edad</label>
                             <input type="text" id="edad" class="input-pro bg-fuchsia-50 dark:bg-slate-800 text-center font-bold text-brand-main" readonly>
@@ -306,7 +330,7 @@
                 
                 <div class="mb-8">
                     <label class="label-pro">Dirección</label>
-                    <input type="text" id="direccion" class="input-pro" placeholder="Dirección de habitación...">
+                    <input type="text" id="direccion" class="input-pro" placeholder="Dirección completa...">
                 </div>
 
                 <div class="flex justify-between items-end border-b-2 border-fuchsia-100 dark:border-slate-700 pb-2 mt-8 mb-4">
@@ -318,8 +342,7 @@
                     </button>
                 </div>
 
-                <div id="listaServicios" class="mb-10 min-h-[50px]">
-                    </div>
+                <div id="listaServicios" class="mb-10 min-h-[50px]"></div>
 
                 <div class="bg-gray-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-gray-200 dark:border-slate-600 mb-8 shadow-inner">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -338,7 +361,7 @@
                                     <button type="button" onclick="setPromo(0.10)" class="w-9 py-1 text-[10px] bg-white dark:bg-slate-700 border border-gray-200 dark:border-slate-600 rounded font-bold hover:bg-fuchsia-100 transition dark:text-white">10%</button>
                                     <button type="button" onclick="setPromo(0.20)" class="w-9 py-1 text-[10px] bg-white dark:bg-slate-700 border border-gray-200 dark:border-slate-600 rounded font-bold hover:bg-fuchsia-100 transition dark:text-white">20%</button>
                                     <button type="button" onclick="setPromo(0.30)" class="w-9 py-1 text-[10px] bg-white dark:bg-slate-700 border border-gray-200 dark:border-slate-600 rounded font-bold hover:bg-fuchsia-100 transition dark:text-white">30%</button>
-                                    <button type="button" onclick="resetDesc()" class="text-red-400 px-2 font-bold hover:text-red-600" title="Borrar Descuento"><i class="fas fa-times"></i></button>
+                                    <button type="button" onclick="resetDesc()" class="text-red-400 px-2 font-bold hover:text-red-600" title="Borrar"><i class="fas fa-times"></i></button>
                                 </div>
                             </div>
                             <input type="hidden" id="promo_pct" value="0">
@@ -350,7 +373,7 @@
                             </div>
                         </div>
 
-                        <div class="bg-white dark:bg-slate-900 p-5 border-2 border-fuchsia-50 dark:border-slate-600 rounded-xl shadow-lg flex flex-col justify-between relative overflow-hidden">
+                        <div class="bg-white dark:bg-slate-900 p-5 border-2 border-fuchsia-50 dark:border-slate-600 rounded-xl shadow-lg flex flex-col justify-between relative">
                             
                             <div class="flex justify-between items-end mb-4 relative z-10">
                                 <span class="text-xs font-bold text-gray-400 uppercase">Total a Pagar</span>
@@ -370,16 +393,28 @@
                     </div>
                 </div>
 
-                <div class="section-header"><i class="fas fa-file-contract"></i> Consentimiento</div>
+                <div class="section-header">
+                    <i class="fas fa-file-contract"></i> Consentimiento Informado
+                </div>
                 
                 <div class="mb-6 bg-gray-50 dark:bg-slate-800/50 p-4 border border-gray-200 dark:border-slate-600 rounded-xl">
-                    <p class="label-pro mb-3 text-gray-400">Marque antecedentes relevantes:</p>
+                    <p class="label-pro mb-3 text-gray-400">Antecedentes Médicos:</p>
                     <div class="flex flex-wrap gap-4 text-[10px] text-gray-600 dark:text-gray-300 font-bold uppercase">
-                        <label class="flex items-center gap-2 cursor-pointer bg-white dark:bg-slate-700 px-2 py-1 rounded border border-gray-100 dark:border-slate-600"><input type="checkbox" id="m_diabetes" class="accent-fuchsia-600 cursor-pointer"> Diabetes</label>
-                        <label class="flex items-center gap-2 cursor-pointer bg-white dark:bg-slate-700 px-2 py-1 rounded border border-gray-100 dark:border-slate-600"><input type="checkbox" id="m_hipertension" class="accent-fuchsia-600 cursor-pointer"> Hipertensión</label>
-                        <label class="flex items-center gap-2 cursor-pointer bg-white dark:bg-slate-700 px-2 py-1 rounded border border-gray-100 dark:border-slate-600"><input type="checkbox" id="m_alergias" class="accent-fuchsia-600 cursor-pointer"> Alergias</label>
-                        <label class="flex items-center gap-2 cursor-pointer bg-white dark:bg-slate-700 px-2 py-1 rounded border border-gray-100 dark:border-slate-600"><input type="checkbox" id="m_embarazo" class="accent-fuchsia-600 cursor-pointer"> Embarazo</label>
-                        <label class="flex items-center gap-2 cursor-pointer bg-white dark:bg-slate-700 px-2 py-1 rounded border border-gray-100 dark:border-slate-600"><input type="checkbox" id="m_keloides" class="accent-fuchsia-600 cursor-pointer"> Keloide</label>
+                        <label class="flex items-center gap-2 cursor-pointer bg-white dark:bg-slate-700 px-2 py-1 rounded border border-gray-100 dark:border-slate-600">
+                            <input type="checkbox" id="m_diabetes" class="accent-fuchsia-600 cursor-pointer"> Diabetes
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer bg-white dark:bg-slate-700 px-2 py-1 rounded border border-gray-100 dark:border-slate-600">
+                            <input type="checkbox" id="m_hipertension" class="accent-fuchsia-600 cursor-pointer"> Hipertensión
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer bg-white dark:bg-slate-700 px-2 py-1 rounded border border-gray-100 dark:border-slate-600">
+                            <input type="checkbox" id="m_alergias" class="accent-fuchsia-600 cursor-pointer"> Alergias
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer bg-white dark:bg-slate-700 px-2 py-1 rounded border border-gray-100 dark:border-slate-600">
+                            <input type="checkbox" id="m_embarazo" class="accent-fuchsia-600 cursor-pointer"> Embarazo
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer bg-white dark:bg-slate-700 px-2 py-1 rounded border border-gray-100 dark:border-slate-600">
+                            <input type="checkbox" id="m_keloides" class="accent-fuchsia-600 cursor-pointer"> Keloide
+                        </label>
                     </div>
                 </div>
 
@@ -393,7 +428,32 @@
                     </label>
                 </div>
 
-                <div class="flex flex-col md:flex-row gap-5 no-print mt-12 border-t border-gray-200 dark:border-slate-700 pt-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10 break-inside-avoid">
+                    
+                    <div class="border-2 border-dashed border-gray-300 dark:border-slate-600 rounded-xl p-4 flex flex-col items-center bg-gray-50 dark:bg-slate-800/30">
+                        <p class="label-pro mb-2 w-full text-center">Firma del Paciente</p>
+                        
+                        <canvas id="signaturePad" class="w-full h-32 bg-white border-b-2 border-gray-400 cursor-crosshair touch-none rounded-t-lg shadow-inner mb-2" style="max-width: 100%;"></canvas>
+                        
+                        <div class="w-full flex justify-between items-center px-1">
+                            <p class="text-[9px] text-gray-400 italic">Firmar aquí (Dedo o Mouse)</p>
+                            <button type="button" onclick="clearSignature()" class="text-[10px] text-rose-500 hover:text-rose-700 font-bold no-print border border-rose-200 rounded px-2 py-1 bg-white">
+                                <i class="fas fa-eraser mr-1"></i> Borrar Firma
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="border border-gray-200 dark:border-slate-600 rounded-xl p-4 flex flex-col justify-end bg-white dark:bg-slate-800">
+                        <div class="mb-1 text-center">
+                            <input type="text" id="specialistName" class="w-full text-center bg-transparent border-b-2 border-gray-400 dark:border-gray-500 text-gray-800 dark:text-white font-bold pb-2 outline-none focus:border-brand-main text-sm" placeholder="Nombre Especialista / Sello">
+                        </div>
+                        <p class="text-[10px] text-center font-bold text-brand-dark dark:text-fuchsia-300 uppercase mt-2">
+                            Aprobado por Figura Rostro KG
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-5 no-print mt-4 border-t border-gray-200 dark:border-slate-700 pt-8">
                     <button type="button" id="btnSave" class="flex-1 bg-gradient-to-r from-brand-dark to-brand-main text-white py-4 rounded-xl hover:bg-brand-dark transition-all font-bold shadow-lg shadow-fuchsia-900/20 text-sm flex justify-center items-center gap-3 transform hover:-translate-y-1">
                         <i class="fas fa-save text-lg"></i> GUARDAR FICHA
                     </button>
@@ -407,6 +467,7 @@
     </div>
 
     <div id="viewList" class="hidden w-full max-w-5xl bg-white dark:bg-night-card shadow-2xl p-8 mt-16 rounded-2xl border border-gray-200 dark:border-slate-700 relative mb-20">
+        
         <div class="flex justify-between mb-6 border-b border-gray-200 dark:border-slate-600 pb-4">
             <h2 class="font-bold text-xl text-gray-800 dark:text-white">Base de Datos</h2>
             <button onclick="loadData()" class="text-xs bg-gray-100 dark:bg-slate-700 px-4 py-2 rounded-full font-bold dark:text-white border dark:border-slate-600 hover:bg-gray-200 transition">
@@ -431,18 +492,17 @@
             </table>
         </div>
         
-        <div id="loader" class="hidden text-center py-12">
+        <div id="loader" class="hidden text-center py-10">
             <div class="loader mx-auto shadow-lg shadow-purple-200"></div>
             <p class="text-xs text-gray-400 mt-3 font-bold animate-pulse">Cargando...</p>
         </div>
     </div>
 
     <script type="module">
-        // Importamos las funciones de Firebase
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getFirestore, collection, addDoc, getDocs, orderBy, query, Timestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-        // CONFIGURACIÓN DE TUS LLAVES (NO TOCAR)
+        // --- LLAVES DE FIREBASE ---
         const firebaseConfig = {
             apiKey: "AIzaSyBAuTfBKGuG33c9NXc1s0lkQv-7GwA47l0",
             authDomain: "figurarostro-system.firebaseapp.com",
@@ -451,56 +511,94 @@
             messagingSenderId: "803848354693",
             appId: "1:803848354693:web:7144490abb18b0319822ec"
         };
-
-        // Inicializamos la App
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
         const colName = "fichas_v3_multi";
 
-        // --- FUNCIÓN: MODO OSCURO (TOGGLE) ---
-        window.toggleDarkMode = () => {
-            // Agrega o quita la clase "dark" del HTML
-            document.documentElement.classList.toggle('dark');
+        // --- VARIABLES GLOBALES ---
+        window.toggleDarkMode = () => { document.documentElement.classList.toggle('dark'); }
+        const generarFolio = () => { document.getElementById('folioDisplay').innerText = `REQ-${Date.now().toString().slice(-6)}`; };
+        document.getElementById('fechaHoy').innerText = new Date().toLocaleDateString();
+
+        // --- LÓGICA DE FIRMA DIGITAL (CANVAS) ---
+        let canvas, ctx, isDrawing = false;
+        
+        function initSignaturePad() {
+            canvas = document.getElementById('signaturePad');
+            ctx = canvas.getContext('2d');
+            
+            // Función para ajustar resolución (Evita pixelado en retina displays)
+            function resizeCanvas() {
+                const ratio = Math.max(window.devicePixelRatio || 1, 1);
+                // Guarda el contenido actual antes de redimensionar (opcional, aquí limpiamos)
+                canvas.width = canvas.offsetWidth * ratio;
+                canvas.height = canvas.offsetHeight * ratio;
+                ctx.scale(ratio, ratio);
+            }
+            window.addEventListener('resize', resizeCanvas);
+            setTimeout(resizeCanvas, 500); // Esperar renderizado
+
+            // Eventos Raton
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mouseout', stopDrawing);
+            
+            // Eventos Táctiles (iPad/Celular)
+            canvas.addEventListener('touchstart', (e) => { 
+                e.preventDefault(); // Previene scroll de la pagina
+                startDrawing(e.touches[0]); 
+            });
+            canvas.addEventListener('touchmove', (e) => { 
+                e.preventDefault(); 
+                draw(e.touches[0]); 
+            });
+            canvas.addEventListener('touchend', stopDrawing);
         }
 
-        // --- FUNCIONES INICIALES ---
-        // Genera un folio único basado en la hora actual
-        const generarFolio = () => { 
-            const random = Date.now().toString().slice(-6); 
-            document.getElementById('folioDisplay').innerText = `REQ-${random}`; 
-        };
+        function startDrawing(e) {
+            isDrawing = true;
+            ctx.beginPath();
+            const rect = canvas.getBoundingClientRect();
+            ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+        }
 
-        // Poner la fecha de hoy al cargar
-        document.getElementById('fechaHoy').innerText = new Date().toLocaleDateString('es-ES', { 
-            weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' 
-        });
+        function draw(e) {
+            if (!isDrawing) return;
+            const rect = canvas.getBoundingClientRect();
+            ctx.lineWidth = 2; // Grosor firma
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = '#000000'; // Color tinta
+            ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+            ctx.stroke();
+        }
 
-        // Evento de carga de página
+        function stopDrawing() { isDrawing = false; }
+        
+        window.clearSignature = () => { 
+            ctx.clearRect(0, 0, canvas.width, canvas.height); 
+            ctx.beginPath(); 
+        }
+
+        // Cargar eventos iniciales
         window.addEventListener('load', () => { 
             agregarServicio(); 
             generarFolio(); 
+            initSignaturePad(); 
         });
 
-        // Limpiar formulario manual
-        window.limpiarFormulario = function() { 
-            if(confirm("¿Estás segura de querer iniciar una nueva ficha vacía?")) {
-                location.reload(); 
-            }
-        }
-
-        // Cambiar entre vistas (Formulario <-> Base de Datos)
+        // --- NAVEGACIÓN ---
+        window.limpiarFormulario = function() { if(confirm("¿Nueva ficha vacía?")) location.reload(); }
         window.toggleView = (view) => {
             document.getElementById('viewForm').classList.toggle('hidden', view !== 'form');
             document.getElementById('viewList').classList.toggle('hidden', view !== 'list');
             if(view === 'list') loadData();
         };
 
-        // --- LÓGICA DE FILAS DE SERVICIOS ---
+        // --- FILAS DE SERVICIOS ---
         window.agregarServicio = function() {
             const container = document.getElementById('listaServicios');
-            const id = Date.now(); // ID único para cada fila
-            
-            // HTML de la fila nueva
+            const id = Date.now();
             const html = `
                 <div class="service-row" id="row-${id}">
                     <div>
@@ -519,7 +617,7 @@
                         <input type="number" class="input-pro text-right font-bold s-price" placeholder="0.00" oninput="calcularTotal()">
                     </div>
                     <div class="text-center pt-1">
-                        <button type="button" onclick="eliminarServicio('${id}')" class="text-gray-400 hover:text-red-500 transition p-2">
+                        <button type="button" onclick="eliminarServicio('${id}')" class="text-gray-400 hover:text-red-500 transition">
                             <i class="fas fa-trash-alt"></i>
                         </button>
                     </div>
@@ -527,101 +625,73 @@
             container.insertAdjacentHTML('beforeend', html);
         }
 
-        window.eliminarServicio = function(id) { 
+        window.eliminarServicio = (id) => { 
             if(document.querySelectorAll('.service-row').length > 1) { 
                 document.getElementById(`row-${id}`).remove(); 
                 calcularTotal(); 
             } else {
-                alert("Debes mantener al menos un servicio en la lista.");
+                alert("Mínimo 1 servicio requerido");
             }
         }
 
-        // Activa/Desactiva el campo "Zona" dependiendo del tratamiento
-        window.checkZone = function(select) {
+        window.checkZone = (select) => {
             const input = select.closest('.service-row').querySelector('.s-zone');
             if(!select.value.includes('Fibroblast') && !select.value.includes('Otro')) { 
-                input.value = ''; 
-                input.disabled = true; 
-                input.style.opacity = '0.5'; 
+                input.value = ''; input.disabled = true; input.style.opacity = '0.5'; 
             } else { 
-                input.disabled = false; 
-                input.style.opacity = '1'; 
+                input.disabled = false; input.style.opacity = '1'; 
             }
         }
 
         // --- CÁLCULOS MATEMÁTICOS ---
-        window.setPromo = function(pct) { 
-            document.getElementById('promo_pct').value = pct; 
-            calcularTotal(); 
-        }
-        
-        window.resetDesc = function() { 
-            document.getElementById('promo_pct').value = 0; 
-            calcularTotal(); 
-        }
+        window.setPromo = (pct) => { document.getElementById('promo_pct').value = pct; calcularTotal(); }
+        window.resetDesc = () => { document.getElementById('promo_pct').value = 0; calcularTotal(); }
 
-        window.calcularTotal = function() {
-            let sub = 0;
-            // Sumar todas las filas
+        window.calcularTotal = () => {
+            let sub = 0; 
             document.querySelectorAll('.s-price').forEach(i => sub += parseFloat(i.value) || 0);
             
-            // Calcular descuentos
             const pct = parseFloat(document.getElementById('promo_pct').value) || 0;
             const desc = sub * pct;
             const bono = parseFloat(document.getElementById('bono_extra').value) || 0;
-            
-            // Totales
             const total = sub - desc - bono;
             const abono = parseFloat(document.getElementById('abono').value) || 0;
             const pend = total - abono;
 
-            // Mostrar en pantalla
             document.getElementById('subtotal').value = "$" + sub.toFixed(2);
-            document.getElementById('descuento_txt').innerText = desc > 0 ? `- $${desc.toFixed(2)} (${pct*100}%)` : "";
+            document.getElementById('descuento_txt').innerText = desc > 0 ? `- $${desc.toFixed(2)}` : "";
             document.getElementById('lblTotal').innerText = "$" + total.toFixed(2);
             
-            const elPend = document.getElementById('lblPendiente');
+            const elPend = document.getElementById('lblPendiente'); 
             elPend.innerText = "$" + pend.toFixed(2);
             
-            // Colores condicionales
             if(pend <= 0.1 && total > 0) {
                 elPend.innerText = "PAGADO";
-                elPend.className = "text-2xl font-black text-green-500 font-mono tracking-tighter";
+                elPend.className = "text-2xl font-black text-green-500 font-mono";
             } else {
-                elPend.className = "text-2xl font-black text-rose-500 font-mono tracking-tighter";
+                elPend.className = "text-2xl font-black text-rose-500 font-mono";
             }
         }
 
-        // --- CALCULAR EDAD ---
-        window.calcularEdad = function() {
-            const d = document.getElementById('dia_nac').value;
-            const m = document.getElementById('mes_nac').value;
-            const y = document.getElementById('anio_nac').value;
-            
-            if(d && m && y && y.length===4) { 
-                const hoy = new Date();
-                const cumple = new Date(y, m-1, d); 
-                let edad = hoy.getFullYear() - cumple.getFullYear(); 
-                // Ajuste si aún no ha cumplido años este mes
-                if(hoy < new Date(hoy.getFullYear(), m-1, d)) {
-                    edad--; 
-                }
+        window.calcularEdad = () => {
+            const d=document.getElementById('dia_nac').value, m=document.getElementById('mes_nac').value, y=document.getElementById('anio_nac').value;
+            if(d&&m&&y&&y.length===4) { 
+                const hoy=new Date(), cumple=new Date(y, m-1, d); 
+                let edad=hoy.getFullYear()-cumple.getFullYear(); 
+                if(hoy<new Date(hoy.getFullYear(), m-1, d)) edad--; 
                 document.getElementById('edad').value = edad + " años"; 
             }
         }
 
-        // --- GUARDAR EN BASE DE DATOS (CREATE) ---
+        // --- GUARDAR DATOS (FIREBASE) ---
         document.getElementById('btnSave').addEventListener('click', async () => {
             const btn = document.getElementById('btnSave');
             const nombre = document.getElementById('nombre').value;
-            const folio = document.getElementById('folioDisplay').innerText;
-            const legal = document.getElementById('check_legal').checked;
+            
+            if(!nombre) return alert("⚠️ Falta Nombre");
+            if(!document.getElementById('check_legal').checked) return alert("⚠️ Acepta Términos");
 
-            if(!nombre) return alert("⚠️ Error: Falta el Nombre del Paciente");
-            if(!legal) return alert("⚠️ Error: Debes aceptar los Términos Legales");
-
-            // Recopilar la lista de servicios
-            let lista = [];
+            let lista = []; 
             document.querySelectorAll('.service-row').forEach(r => {
                 lista.push({ 
                     tipo: r.querySelector('.s-type').value, 
@@ -630,17 +700,15 @@
                 });
             });
 
-            // Animación de carga en el botón
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> GUARDANDO...';
+            const txt = btn.innerHTML; 
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> GUARDANDO...'; 
             btn.disabled = true;
 
             try {
-                // Enviar a Firebase
                 await addDoc(collection(db, colName), {
-                    folio: folio,
+                    folio: document.getElementById('folioDisplay').innerText,
                     paciente: { 
-                        nombre: nombre, 
+                        nombre, 
                         cedula: document.getElementById('cedula').value, 
                         telefono: document.getElementById('telefono').value, 
                         edad: document.getElementById('edad').value, 
@@ -654,67 +722,58 @@
                         abono: document.getElementById('abono').value, 
                         pendiente: document.getElementById('lblPendiente').innerText 
                     },
+                    medico: { especialista: document.getElementById('specialistName').value },
                     fecha: Timestamp.now()
                 });
                 
-                alert("✅ FICHA GUARDADA EXITOSAMENTE");
-                btn.innerHTML = '<i class="fas fa-check"></i> LISTO';
+                alert("✅ Guardado Exitosamente"); 
+                btn.innerHTML = '<i class="fas fa-check"></i> LISTO'; 
                 btn.classList.add('bg-green-600');
                 
-            } catch (e) {
-                console.error(e);
-                alert("Error: " + e.message);
-                btn.innerHTML = originalText;
-                btn.disabled = false;
+            } catch (e) { 
+                alert(e.message); 
+                btn.innerHTML = txt; 
+                btn.disabled = false; 
             }
         });
 
-        // --- CARGAR BASE DE DATOS (READ) ---
+        // --- CARGAR DATOS (HISTORIAL) ---
         window.loadData = async () => {
-            const tb = document.getElementById('tableBody');
-            const loader = document.getElementById('loader');
+            const tb = document.getElementById('tableBody'); 
+            tb.innerHTML=''; 
+            document.getElementById('loader').classList.remove('hidden');
             
-            tb.innerHTML = '';
-            loader.classList.remove('hidden');
-            
-            // Consultar Firebase ordenado por fecha
             const snap = await getDocs(query(collection(db, colName), orderBy("fecha", "desc")));
+            document.getElementById('loader').classList.add('hidden');
             
-            loader.classList.add('hidden');
-            
-            snap.forEach(doc => {
-                const d = doc.data();
-                // Renderizar fila en la tabla
+            snap.forEach(doc => { 
+                const d=doc.data(); 
                 tb.innerHTML += `
-                    <tr class="border-b dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-700 transition">
-                        <td class="p-3 text-brand-main font-bold font-mono">${d.folio || '--'}</td>
-                        <td class="p-3 dark:text-gray-300">${d.fecha.toDate().toLocaleDateString()}</td>
-                        <td class="p-3 font-bold dark:text-white">${d.paciente.nombre}</td>
-                        <td class="p-3 text-right font-mono font-bold dark:text-gray-300">${d.finanzas.total}</td>
-                        <td class="p-3 text-center">
-                            ${d.finanzas.pendiente.includes('PAGADO') 
-                                ? '<span class="text-green-500 font-bold">OK</span>' 
-                                : '<span class="text-rose-500 font-bold">DEBE</span>'}
-                        </td>
-                    </tr>`;
+                <tr class="border-b dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-700">
+                    <td class="p-3 text-brand-main font-bold font-mono">${d.folio||'--'}</td>
+                    <td class="p-3 dark:text-gray-300">${d.fecha.toDate().toLocaleDateString()}</td>
+                    <td class="p-3 font-bold dark:text-white">${d.paciente.nombre}</td>
+                    <td class="p-3 text-right font-mono font-bold dark:text-gray-300">${d.finanzas.total}</td>
+                    <td class="p-3 text-center">
+                        ${d.finanzas.pendiente.includes('PAGADO') ? 
+                        '<span class="text-green-500 font-bold">OK</span>' : 
+                        '<span class="text-rose-500 font-bold">DEBE</span>'}
+                    </td>
+                </tr>`; 
             });
         }
 
-        // --- GENERAR PDF "FLASH" (TRUCO MODO OSCURO) ---
+        // --- GENERAR PDF ---
         document.getElementById('btnPdf').addEventListener('click', () => {
             const el = document.getElementById('viewForm');
             const controls = document.querySelectorAll('.no-print, .btn-remove');
             const wasDark = document.documentElement.classList.contains('dark');
             
-            // 1. Apagar Modo Oscuro temporalmente (para que salga blanco el papel)
-            if(wasDark) {
-                document.documentElement.classList.remove('dark');
-            }
-            
-            // 2. Ocultar botones
+            // 1. Forzar modo claro para impresión limpia
+            if(wasDark) document.documentElement.classList.remove('dark');
             controls.forEach(e => e.style.display = 'none');
 
-            // 3. Generar PDF
+            // 2. Configurar PDF
             html2pdf().set({ 
                 margin: 0, 
                 filename: `Ficha_${document.getElementById('folioDisplay').innerText}.pdf`, 
@@ -723,14 +782,11 @@
                 jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' } 
             }).from(el).save().then(() => {
                 
-                // 4. Restaurar todo como estaba
+                // 3. Restaurar vista original
                 controls.forEach(e => e.style.display = '');
-                if(wasDark) {
-                    document.documentElement.classList.add('dark');
-                }
+                if(wasDark) document.documentElement.classList.add('dark');
             });
         });
-
     </script>
 </body>
 </html>
