@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ficha de Control | Figura Rostro KG</title>
+    <title>Ficha Clínica Pro | Figura Rostro KG</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -13,10 +13,10 @@
             theme: {
                 extend: {
                     colors: {
-                        darkbg: '#1e293b', // Slate 800
-                        darker: '#0f172a', // Slate 900
-                        accent: '#e11d48', // Red/Pink accent
-                        inputbg: '#334155', // Slate 700
+                        darkbg: '#0f172a', // Slate 900
+                        panel: '#1e293b', // Slate 800
+                        accent: '#e11d48', // Rose 600
+                        input: '#334155', // Slate 700
                     }
                 }
             }
@@ -24,207 +24,329 @@
     </script>
 
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0f172a; color: white; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #0f172a; color: #e2e8f0; }
         
-        /* Inputs oscuros personalizados */
+        /* Inputs Personalizados */
         .input-dark {
-            background-color: #1e293b;
+            background-color: #1e293b; /* Panel color */
             border: 1px solid #334155;
             color: white;
-            border-radius: 0.375rem;
-            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            padding: 0.6rem;
             width: 100%;
-            transition: all 0.2s;
+            font-size: 0.95rem;
+            transition: all 0.3s;
         }
         .input-dark:focus {
             outline: none;
             border-color: #e11d48;
-            box-shadow: 0 0 0 2px rgba(225, 29, 72, 0.2);
+            box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.2);
+        }
+        .input-dark:disabled {
+            background-color: #0f172a;
+            color: #64748b;
+            cursor: not-allowed;
         }
 
-        /* Sección Títulos con barra roja vertical */
-        .section-title {
+        /* Títulos de Sección */
+        .section-header {
             display: flex;
             align-items: center;
-            font-size: 0.85rem;
-            font-weight: 700;
+            font-size: 0.8rem;
+            font-weight: 800;
             text-transform: uppercase;
+            letter-spacing: 0.05em;
             color: #94a3b8;
             margin-bottom: 1rem;
-            margin-top: 1.5rem;
+            margin-top: 2rem;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 0.5rem;
         }
-        .section-title::before {
-            content: '';
-            display: block;
-            width: 4px;
-            height: 16px;
-            background-color: #e11d48; /* Accent color */
-            margin-right: 0.5rem;
+        .section-header i { color: #e11d48; margin-right: 8px; }
+
+        /* Checkbox personalizado */
+        .custom-check {
+            accent-color: #e11d48;
+            width: 1.1rem;
+            height: 1.1rem;
+            cursor: pointer;
         }
+
+        /* Scrollbar para términos */
+        .legal-scroll::-webkit-scrollbar { width: 6px; }
+        .legal-scroll::-webkit-scrollbar-track { background: #1e293b; }
+        .legal-scroll::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
 
         /* Loader */
-        .loader { border: 3px solid #334155; border-top: 3px solid #e11d48; border-radius: 50%; width: 20px; height: 20px; animation: spin 1s linear infinite; }
+        .loader { border: 3px solid #334155; border-top: 3px solid #e11d48; border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        /* Estilos de Impresión (PDF) */
+        /* Impresión */
         @media print {
             body { background-color: #0f172a !important; -webkit-print-color-adjust: exact; }
             .no-print { display: none !important; }
+            .legal-scroll { height: auto !important; overflow: visible !important; border: 1px solid #ccc; }
         }
     </style>
 </head>
-<body class="p-4 md:p-8">
+<body class="p-4 md:p-8 min-h-screen">
 
-    <nav class="flex justify-between items-center mb-8 no-print">
-        <a href="/" class="text-gray-400 hover:text-white flex items-center gap-2"><i class="fas fa-arrow-left"></i> Volver</a>
-        <div class="flex gap-3">
-            <button id="btnNew" class="bg-rose-600 hover:bg-rose-700 px-4 py-2 rounded text-sm font-bold transition">Nueva Ficha</button>
-            <button id="btnList" class="bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded text-sm font-bold transition">Consultar BD</button>
+    <nav class="flex justify-between items-center mb-6 max-w-5xl mx-auto no-print">
+        <div class="flex items-center gap-3">
+            <a href="/" class="text-gray-400 hover:text-white transition"><i class="fas fa-chevron-left"></i> Volver</a>
+            <span class="text-gray-600">|</span>
+            <span class="font-bold text-rose-500">SISTEMA CLÍNICO v2.0</span>
+        </div>
+        <div class="flex gap-2">
+            <button onclick="toggleView('form')" class="bg-rose-600 hover:bg-rose-700 text-white px-4 py-2 rounded-lg text-sm font-bold shadow-lg shadow-rose-900/50 transition">
+                <i class="fas fa-plus-circle mr-1"></i> Nueva Ficha
+            </button>
+            <button onclick="toggleView('list')" class="bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg text-sm font-bold transition">
+                <i class="fas fa-database mr-1"></i> Base de Datos
+            </button>
         </div>
     </nav>
 
-    <div id="viewForm" class="max-w-4xl mx-auto bg-slate-900 p-2 rounded-lg">
+    <div id="viewForm" class="max-w-5xl mx-auto bg-slate-900 rounded-xl shadow-2xl border border-slate-800 p-6 md:p-10 relative">
         
-        <div class="flex justify-between items-end border-b border-slate-700 pb-4 mb-2">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end border-b border-slate-700 pb-6 mb-2">
             <div>
-                <h1 class="text-2xl font-bold tracking-wide uppercase">Figura Rostro KG</h1>
-                <p class="text-xs text-gray-400">Estética Integral & Spa</p>
+                <h1 class="text-3xl font-extrabold text-white tracking-tight uppercase">Figura Rostro KG</h1>
+                <p class="text-rose-500 font-medium text-sm mt-1">Medicina Estética & Spa Integral</p>
             </div>
-            <div class="text-right">
-                <h2 class="text-lg font-bold text-gray-200">FICHA DE CONTROL</h2>
-                <p class="text-xs text-gray-400" id="fechaDisplay"></p>
+            <div class="mt-4 md:mt-0 text-right">
+                <div class="bg-slate-800 px-4 py-2 rounded border border-slate-700">
+                    <p class="text-xs text-gray-400 uppercase font-bold">Fecha de Registro</p>
+                    <p id="fechaHoy" class="text-lg font-bold text-white"></p>
+                </div>
             </div>
         </div>
 
-        <form id="treatmentForm">
+        <form id="clinicalForm">
             
-            <div class="section-title">Datos del Paciente</div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div class="section-header"><i class="fas fa-user-circle"></i> Información del Paciente</div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
                 <div>
-                    <label class="text-xs font-bold text-gray-500 mb-1 block">NOMBRE COMPLETO</label>
-                    <input type="text" id="nombre" class="input-dark" placeholder="Ingresa nombre..." required>
+                    <label class="text-xs font-bold text-gray-400 mb-1 block ml-1">NOMBRE COMPLETO</label>
+                    <input type="text" id="nombre" class="input-dark focus:ring-2 ring-rose-500" placeholder="Ej. Ana María Pérez" required>
                 </div>
-                <div>
-                    <label class="text-xs font-bold text-gray-500 mb-1 block">CÉDULA</label>
-                    <input type="text" id="cedula" class="input-dark" placeholder="V-..." required>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-xs font-bold text-gray-400 mb-1 block ml-1">CÉDULA / ID</label>
+                        <input type="text" id="cedula" class="input-dark" placeholder="V-12345678">
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold text-gray-400 mb-1 block ml-1">TELÉFONO</label>
+                        <input type="tel" id="telefono" class="input-dark" placeholder="0412...">
+                    </div>
                 </div>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-4">
-                <div>
-                    <label class="text-xs font-bold text-gray-500 mb-1 block">EDAD</label>
-                    <input type="number" id="edad" class="input-dark">
-                </div>
-                <div>
-                    <label class="text-xs font-bold text-gray-500 mb-1 block">TELÉFONO</label>
-                    <input type="tel" id="telefono" class="input-dark">
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-5 mb-5">
+                <div class="col-span-2 md:col-span-1">
+                    <label class="text-xs font-bold text-gray-400 mb-1 block ml-1">FECHA NACIMIENTO</label>
+                    <input type="date" id="nacimiento" class="input-dark text-gray-300" onchange="calcularEdad()">
                 </div>
                 <div class="col-span-2 md:col-span-1">
-                    <label class="text-xs font-bold text-gray-500 mb-1 block">CORREO</label>
-                    <input type="email" id="correo" class="input-dark">
+                    <label class="text-xs font-bold text-gray-400 mb-1 block ml-1">EDAD</label>
+                    <input type="number" id="edad" class="input-dark bg-slate-900 border-none font-bold text-rose-400" placeholder="Auto" readonly>
                 </div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <label class="text-xs font-bold text-gray-500 mb-1 block">OCUPACIÓN</label>
-                    <input type="text" id="ocupacion" class="input-dark">
-                </div>
-                <div>
-                    <label class="text-xs font-bold text-gray-500 mb-1 block">DIRECCIÓN</label>
-                    <input type="text" id="direccion" class="input-dark">
+                <div class="col-span-2">
+                    <label class="text-xs font-bold text-gray-400 mb-1 block ml-1">OCUPACIÓN</label>
+                    <input type="text" id="ocupacion" class="input-dark" placeholder="Profesión u oficio">
                 </div>
             </div>
 
-            <div class="section-title">Historial Médico</div>
-            <div class="bg-slate-800 p-4 rounded-lg border border-slate-700">
-                <div class="flex flex-wrap gap-6 mb-4 text-sm">
-                    <label class="flex items-center cursor-pointer"><input type="checkbox" id="chk_diabetes" class="mr-2 accent-rose-500"> Diabetes</label>
-                    <label class="flex items-center cursor-pointer"><input type="checkbox" id="chk_hipertension" class="mr-2 accent-rose-500"> Hipertensión</label>
-                    <label class="flex items-center cursor-pointer"><input type="checkbox" id="chk_alergias" class="mr-2 accent-rose-500"> Alergias</label>
-                    <label class="flex items-center cursor-pointer"><input type="checkbox" id="chk_embarazo" class="mr-2 accent-rose-500"> Embarazo</label>
-                </div>
-                <textarea id="notas_medicas" rows="2" class="input-dark resize-none text-sm" placeholder="Notas adicionales del paciente..."></textarea>
+            <div class="mb-6">
+                <label class="text-xs font-bold text-gray-400 mb-1 block ml-1">DIRECCIÓN DE HABITACIÓN</label>
+                <input type="text" id="direccion" class="input-dark" placeholder="Dirección completa...">
             </div>
 
-            <div class="section-title">Detalle del Servicio</div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                <div class="md:col-span-2">
-                    <label class="text-xs font-bold text-gray-500 mb-1 block">TRATAMIENTO / ZONA</label>
-                    <input type="text" id="tratamiento" class="input-dark" placeholder="Ej: Plasma Fibroblast en Párpados">
+            <div class="section-header"><i class="fas fa-heartbeat"></i> Evaluación Médica de Seguridad</div>
+            
+            <div class="bg-slate-800 p-5 rounded-lg border border-slate-700 mb-6">
+                <p class="text-xs text-gray-500 mb-3 uppercase font-bold tracking-wider">Marque si el paciente presenta:</p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                    <label class="flex items-center space-x-3 cursor-pointer p-2 rounded hover:bg-slate-700 transition">
+                        <input type="checkbox" id="med_diabetes" class="custom-check"> <span>Diabetes</span>
+                    </label>
+                    <label class="flex items-center space-x-3 cursor-pointer p-2 rounded hover:bg-slate-700 transition">
+                        <input type="checkbox" id="med_hipertension" class="custom-check"> <span>Hipertensión</span>
+                    </label>
+                    <label class="flex items-center space-x-3 cursor-pointer p-2 rounded hover:bg-slate-700 transition">
+                        <input type="checkbox" id="med_keloides" class="custom-check"> <span>Cicatriz. Keloide</span>
+                    </label>
+                    <label class="flex items-center space-x-3 cursor-pointer p-2 rounded hover:bg-slate-700 transition">
+                        <input type="checkbox" id="med_marcapasos" class="custom-check"> <span>Marcapasos</span>
+                    </label>
+                    <label class="flex items-center space-x-3 cursor-pointer p-2 rounded hover:bg-slate-700 transition">
+                        <input type="checkbox" id="med_embarazo" class="custom-check"> <span>Embarazo/Lact.</span>
+                    </label>
+                    <label class="flex items-center space-x-3 cursor-pointer p-2 rounded hover:bg-slate-700 transition">
+                        <input type="checkbox" id="med_herpes" class="custom-check"> <span>Herpes Activo</span>
+                    </label>
+                    <label class="flex items-center space-x-3 cursor-pointer p-2 rounded hover:bg-slate-700 transition">
+                        <input type="checkbox" id="med_alergias" class="custom-check"> <span>Alergias</span>
+                    </label>
+                    <label class="flex items-center space-x-3 cursor-pointer p-2 rounded hover:bg-slate-700 transition">
+                        <input type="checkbox" id="med_retinoides" class="custom-check"> <span>Uso Retinoides</span>
+                    </label>
                 </div>
+                <textarea id="notas_medicas" rows="2" class="input-dark resize-none text-sm" placeholder="Observaciones médicas adicionales, medicamentos actuales, etc..."></textarea>
+            </div>
+
+            <div class="section-header"><i class="fas fa-syringe"></i> Protocolo de Tratamiento</div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
-                    <label class="text-xs font-bold text-gray-500 mb-1 block">PRECIO ($)</label>
-                    <input type="number" id="precio" class="input-dark text-right font-bold text-lg" placeholder="0.00" oninput="calcularTotales()">
+                    <label class="text-xs font-bold text-gray-400 mb-1 block ml-1">TRATAMIENTO A REALIZAR</label>
+                    <select id="select_tratamiento" onchange="toggleZonas()" class="input-dark bg-slate-800 cursor-pointer">
+                        <option value="">-- Seleccionar --</option>
+                        <option value="Plasma Fibroblast">Plasma Fibroblast (Cauterización)</option>
+                        <option value="Limpieza Facial">Limpieza Facial Profunda</option>
+                        <option value="Dermapen">Dermapen (Microneedling)</option>
+                        <option value="Hidratación">Hidratación / Nutrición</option>
+                        <option value="Evaluación">Solo Evaluación</option>
+                    </select>
+                </div>
+
+                <div id="container_zonas" class="hidden transition-all duration-300">
+                    <label class="text-xs font-bold text-rose-400 mb-1 block ml-1">ZONA ESPECÍFICA (FIBROBLAST)</label>
+                    <select id="select_zona" class="input-dark bg-slate-800 border-rose-900/50">
+                        <option value="N/A">Selecciona la zona...</option>
+                        <option value="Párpado Superior">Párpado Superior (Blefaroplastia s/c)</option>
+                        <option value="Párpado Inferior">Párpado Inferior</option>
+                        <option value="Patas de Gallo">Patas de Gallo</option>
+                        <option value="Código de Barras">Código de Barras (Labios)</option>
+                        <option value="Papada">Papada / Cuello</option>
+                        <option value="Abdomen">Abdomen (Estrías/Flacidez)</option>
+                        <option value="Nasogenianos">Surcos Nasogenianos</option>
+                    </select>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                <div>
-                    <label class="text-xs font-bold text-gray-500 mb-1 block">DESCUENTO ($)</label>
-                    <input type="number" id="descuento" class="input-dark mb-2" placeholder="0" oninput="calcularTotales()">
-                    <div class="flex gap-1">
-                        <button type="button" onclick="aplicarDescuento(0.10)" class="flex-1 bg-slate-700 text-xs py-1 rounded hover:bg-slate-600">10%</button>
-                        <button type="button" onclick="aplicarDescuento(0.20)" class="flex-1 bg-slate-700 text-xs py-1 rounded hover:bg-slate-600">20%</button>
-                        <button type="button" onclick="aplicarDescuento(0.30)" class="flex-1 bg-slate-700 text-xs py-1 rounded hover:bg-slate-600">30%</button>
+            <div class="section-header"><i class="fas fa-calculator"></i> Gestión Administrativa</div>
+
+            <div class="bg-slate-800 p-6 rounded-lg border border-slate-700 shadow-inner">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <div>
+                        <label class="text-xs font-bold text-gray-400 mb-1 block">COSTO TOTAL ($)</label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-2.5 text-gray-400">$</span>
+                            <input type="number" id="costo" class="input-dark pl-8 font-bold text-lg" placeholder="0.00" oninput="calcularMath()">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="text-xs font-bold text-gray-400 mb-1 block">DESCUENTO ($)</label>
+                        <div class="flex gap-2 mb-2">
+                            <button type="button" onclick="setDesc(0.10)" class="flex-1 bg-slate-700 text-[10px] py-1 rounded hover:bg-slate-600 transition">10%</button>
+                            <button type="button" onclick="setDesc(0.20)" class="flex-1 bg-slate-700 text-[10px] py-1 rounded hover:bg-slate-600 transition">20%</button>
+                            <button type="button" onclick="setDesc(0.30)" class="flex-1 bg-slate-700 text-[10px] py-1 rounded hover:bg-slate-600 transition text-rose-300 font-bold">30%</button>
+                        </div>
+                        <input type="number" id="descuento" class="input-dark" placeholder="0.00" oninput="calcularMath()">
+                    </div>
+
+                    <div>
+                        <label class="text-xs font-bold text-gray-400 mb-1 block">ABONO INICIAL ($)</label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-2.5 text-green-500">$</span>
+                            <input type="number" id="abono" class="input-dark pl-8 font-bold text-green-400" placeholder="0.00" oninput="calcularMath()">
+                        </div>
                     </div>
                 </div>
-                
+
+                <div class="mt-6 pt-4 border-t border-slate-600 grid grid-cols-3 text-center">
+                    <div>
+                        <p class="text-xs text-gray-500 uppercase">Subtotal</p>
+                        <p id="lblSubtotal" class="text-gray-300 font-mono">$0.00</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-500 uppercase">Total Final</p>
+                        <p id="lblTotal" class="text-white font-bold text-lg font-mono">$0.00</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-500 uppercase">Saldo Pendiente</p>
+                        <p id="lblPendiente" class="text-rose-500 font-bold text-xl font-mono">$0.00</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header"><i class="fas fa-file-contract"></i> Consentimiento Informado</div>
+
+            <div class="bg-slate-800 p-4 rounded border border-slate-700 mb-4">
+                <div class="h-32 legal-scroll overflow-y-scroll text-xs text-gray-400 text-justify pr-2 leading-relaxed">
+                    <p class="mb-2"><strong>CLÁUSULA PRIMERA: DEL PROCEDIMIENTO.</strong> Yo, el paciente identificado en el encabezado, certifico que he sido informado/a detalladamente sobre la naturaleza del tratamiento estético seleccionado (Plasma Fibroblast, Limpieza, etc.). Entiendo que los resultados pueden variar según mi tipo de piel y cuidados posteriores.</p>
+                    <p class="mb-2"><strong>CLÁUSULA SEGUNDA: RIESGOS.</strong> Comprendo que, aunque mínimos, existen riesgos inherentes como enrojecimiento, inflamación temporal, costras (en caso de Fibroblast) o hiperpigmentación si no se siguen las instrucciones. Declaro NO haber omitido información médica relevante en la sección de antecedentes.</p>
+                    <p class="mb-2"><strong>CLÁUSULA TERCERA: FOTOGRAFÍA.</strong> Autorizo al personal de Figura Rostro KG a tomar fotografías de "Antes y Después" para mi expediente clínico privado. (La publicación en redes requiere autorización verbal o escrita adicional).</p>
+                    <p class="mb-2"><strong>CLÁUSULA CUARTA: PAGOS.</strong> Entiendo que el abono realizado reserva mi cita y materiales, y el saldo pendiente debe ser cancelado al finalizar la sesión. No se realizan devoluciones por servicios ya prestados.</p>
+                    <p>Al firmar este documento, eximo de responsabilidad a Figura Rostro KG por complicaciones derivadas de mi negligencia en el cuidado post-tratamiento (exposición solar, rascarse costras, falta de higiene, etc.).</p>
+                </div>
+                <div class="mt-3 flex items-center">
+                    <input type="checkbox" id="check_legal" class="custom-check mr-3">
+                    <label for="check_legal" class="text-xs text-gray-300 font-bold cursor-pointer hover:text-white">He leído y acepto los términos y condiciones del tratamiento.</label>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
                 <div>
-                    <label class="text-xs font-bold text-gray-500 mb-1 block">ABONO HOY ($)</label>
-                    <input type="number" id="abono" class="input-dark font-bold text-green-400" placeholder="0" oninput="calcularTotales()">
+                    <label class="text-xs font-bold text-gray-500 mb-1 block uppercase">Firma del Paciente</label>
+                    <div class="h-24 bg-white rounded flex items-end justify-center pb-2 border-2 border-dashed border-gray-400">
+                        <span class="text-xs text-gray-400">Espacio para firmar digital o manualmente</span>
+                    </div>
                 </div>
-
-                <div class="bg-slate-800 p-3 rounded border border-slate-700">
-                    <div class="flex justify-between text-xs text-gray-400 mb-1">
-                        <span>Subtotal:</span> <span id="lblSubtotal">0.00</span>
-                    </div>
-                    <div class="flex justify-between text-lg font-bold text-white mb-2 border-b border-slate-600 pb-1">
-                        <span>TOTAL:</span> <span id="lblTotal">$0.00</span>
-                    </div>
-                    <div class="flex justify-between text-sm text-blue-400 font-bold">
-                        <span>PENDIENTE:</span> <span id="lblPendiente">$0.00</span>
+                <div>
+                    <label class="text-xs font-bold text-gray-500 mb-1 block uppercase">Firma Especialista</label>
+                    <div class="h-24 bg-white rounded flex items-end justify-center pb-2 border-2 border-dashed border-gray-400">
+                        <span class="text-xs text-gray-400 font-serif italic text-black">Figura Rostro KG</span>
                     </div>
                 </div>
             </div>
 
-            <div class="mt-8">
-                <label class="text-xs font-bold text-gray-500 mb-1 block uppercase">Firma del Paciente</label>
-                <div class="h-24 bg-white rounded flex items-end justify-center pb-2 border-2 border-dashed border-gray-400">
-                    </div>
-            </div>
-
-            <div class="flex gap-4 mt-8 no-print">
-                <button type="button" id="btnSave" class="flex-1 bg-rose-600 text-white py-3 rounded-lg hover:bg-rose-700 transition font-bold shadow-lg flex justify-center items-center gap-2">
-                    <i class="fas fa-cloud-upload-alt"></i> GUARDAR
+            <div class="flex gap-4 mt-10 pt-6 border-t border-slate-700 no-print">
+                <button type="button" id="btnSave" class="flex-1 bg-gradient-to-r from-rose-700 to-rose-600 text-white py-4 rounded-lg hover:from-rose-600 hover:to-rose-500 transition font-bold shadow-lg shadow-rose-900/40 text-lg flex justify-center items-center gap-2">
+                    <i class="fas fa-cloud-upload-alt"></i> GUARDAR FICHA
                 </button>
-                <button type="button" id="btnPdf" class="md:w-1/3 py-3 border border-slate-600 rounded-lg hover:bg-slate-800 transition font-bold text-gray-300 flex justify-center items-center gap-2">
-                    <i class="fas fa-file-pdf"></i> PDF
+                <button type="button" id="btnPdf" class="md:w-1/4 py-4 border border-slate-600 bg-slate-800 text-gray-300 rounded-lg hover:bg-slate-700 transition font-bold flex justify-center items-center gap-2">
+                    <i class="fas fa-print"></i> PDF
                 </button>
             </div>
 
         </form>
     </div>
 
-    <div id="viewList" class="hidden max-w-6xl mx-auto mt-4">
-        <div class="bg-slate-800 rounded-lg shadow-xl overflow-hidden border border-slate-700">
-            <div class="p-4 border-b border-slate-700 flex justify-between items-center">
-                <h2 class="font-bold text-white">Pacientes Registrados</h2>
-                <button id="btnRefresh" class="text-xs bg-slate-700 hover:bg-slate-600 px-3 py-1 rounded text-white transition"><i class="fas fa-sync"></i></button>
+    <div id="viewList" class="hidden max-w-6xl mx-auto mt-6">
+        <div class="bg-slate-900 rounded-xl shadow-2xl border border-slate-800 overflow-hidden">
+            <div class="p-6 border-b border-slate-800 flex justify-between items-center bg-slate-900">
+                <div>
+                    <h2 class="font-bold text-xl text-white">Base de Datos de Pacientes</h2>
+                    <p class="text-xs text-gray-500">Historial clínico seguro en la nube</p>
+                </div>
+                <button onclick="loadData()" class="text-sm bg-slate-800 hover:bg-slate-700 text-blue-400 px-4 py-2 rounded transition font-bold border border-slate-700">
+                    <i class="fas fa-sync-alt mr-2"></i>Actualizar
+                </button>
             </div>
             <div class="overflow-x-auto">
                 <table class="w-full text-sm text-left text-gray-400">
-                    <thead class="text-xs text-gray-200 uppercase bg-slate-900">
+                    <thead class="text-xs text-gray-300 uppercase bg-slate-800 border-b border-slate-700">
                         <tr>
-                            <th class="px-6 py-3">Fecha</th>
-                            <th class="px-6 py-3">Paciente</th>
-                            <th class="px-6 py-3">Tratamiento</th>
-                            <th class="px-6 py-3">Económico</th>
+                            <th class="px-6 py-4">Fecha</th>
+                            <th class="px-6 py-4">Paciente</th>
+                            <th class="px-6 py-4">Tratamiento</th>
+                            <th class="px-6 py-4 text-center">Estado de Pago</th>
+                            <th class="px-6 py-4 text-right">Detalle</th>
                         </tr>
                     </thead>
-                    <tbody id="tableBody">
+                    <tbody id="tableBody" class="divide-y divide-slate-800">
                         </tbody>
                 </table>
             </div>
-            <div id="loadingIndicator" class="hidden p-8 flex justify-center"><div class="loader"></div></div>
+            <div id="loadingIndicator" class="hidden p-12 flex flex-col items-center justify-center">
+                <div class="loader mb-3"></div>
+                <span class="text-gray-500 text-xs animate-pulse">Consultando Firebase...</span>
+            </div>
         </div>
     </div>
 
@@ -233,103 +355,138 @@
         import { getFirestore, collection, addDoc, getDocs, orderBy, query, Timestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
         // ==========================================
-        // CONFIGURACIÓN FIREBASE (TUS LLAVES)
+        // CONFIGURACIÓN FIREBASE
         // ==========================================
         const firebaseConfig = {
-            // PEGA TUS LLAVES AQUI (Reemplaza este bloque)
+            // --- PEGA TUS LLAVES AQUI ---
             apiKey: "TU_API_KEY",
             authDomain: "TU_PROYECTO.firebaseapp.com",
             projectId: "TU_PROJECT_ID",
             storageBucket: "TU_PROYECTO.appspot.com",
             messagingSenderId: "123456",
             appId: "1:123456"
+            // ----------------------------
         };
 
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
-        const colName = "fichas_control";
+        const colName = "fichas_pro_v2"; // Nueva colección para esta versión mejorada
 
-        // UI HELPERS
-        document.getElementById('fechaDisplay').innerText = new Date().toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        // UI HELPERS GLOBALES
+        document.getElementById('fechaHoy').innerText = new Date().toLocaleDateString();
 
-        // CÁLCULOS MATEMÁTICOS EN VIVO
-        window.calcularTotales = function() {
-            const precio = parseFloat(document.getElementById('precio').value) || 0;
-            const descuento = parseFloat(document.getElementById('descuento').value) || 0;
+        window.toggleView = function(view) {
+            const form = document.getElementById('viewForm');
+            const list = document.getElementById('viewList');
+            if(view === 'form') {
+                form.classList.remove('hidden');
+                list.classList.add('hidden');
+            } else {
+                form.classList.add('hidden');
+                list.classList.remove('hidden');
+                loadData();
+            }
+        }
+
+        // LÓGICA DE NEGOCIO
+        window.toggleZonas = function() {
+            const tratamiento = document.getElementById('select_tratamiento').value;
+            const container = document.getElementById('container_zonas');
+            
+            // Si es Fibroblast, mostramos zonas. Si no, ocultamos.
+            if(tratamiento.includes('Fibroblast')) {
+                container.classList.remove('hidden');
+            } else {
+                container.classList.add('hidden');
+                document.getElementById('select_zona').value = "N/A"; // Reset
+            }
+        }
+
+        window.calcularEdad = function() {
+            const fechaNac = document.getElementById('nacimiento').value;
+            if(!fechaNac) return;
+            
+            const hoy = new Date();
+            const nacimiento = new Date(fechaNac);
+            let edad = hoy.getFullYear() - nacimiento.getFullYear();
+            const m = hoy.getMonth() - nacimiento.getMonth();
+            if (m < 0 || (m === 0 && hoy.getDate() < nacimiento.getDate())) {
+                edad--;
+            }
+            document.getElementById('edad').value = edad;
+        }
+
+        window.setDesc = function(pct) {
+            const costo = parseFloat(document.getElementById('costo').value) || 0;
+            if(costo > 0) {
+                document.getElementById('descuento').value = (costo * pct).toFixed(2);
+                calcularMath();
+            } else {
+                alert("Ingresa el Costo Total primero");
+            }
+        }
+
+        window.calcularMath = function() {
+            const costo = parseFloat(document.getElementById('costo').value) || 0;
+            const desc = parseFloat(document.getElementById('descuento').value) || 0;
             const abono = parseFloat(document.getElementById('abono').value) || 0;
 
-            const total = precio - descuento;
+            const total = costo - desc;
             const pendiente = total - abono;
 
-            // Renderizar
-            document.getElementById('lblSubtotal').innerText = precio.toFixed(2);
-            document.getElementById('lblTotal').innerText = '$' + total.toFixed(2);
-            
-            const elPendiente = document.getElementById('lblPendiente');
-            elPendiente.innerText = '$' + pendiente.toFixed(2);
-            
-            // Color rojo si debe dinero, verde si está pago
-            if(pendiente > 0) elPendiente.className = "text-xl font-bold text-red-400";
-            else elPendiente.className = "text-xl font-bold text-green-400";
+            document.getElementById('lblSubtotal').innerText = costo.toFixed(2);
+            document.getElementById('lblTotal').innerText = "$" + total.toFixed(2);
+            const elPend = document.getElementById('lblPendiente');
+            elPend.innerText = "$" + pendiente.toFixed(2);
+
+            // Colores dinámicos
+            if(pendiente <= 0 && costo > 0) {
+                elPend.className = "text-green-400 font-bold text-xl font-mono";
+                elPend.innerText = "PAGADO";
+            } else {
+                elPend.className = "text-rose-500 font-bold text-xl font-mono";
+            }
         }
 
-        window.aplicarDescuento = function(porcentaje) {
-            const precio = parseFloat(document.getElementById('precio').value);
-            if(!precio) return alert("Ingresa primero el precio base.");
-            const desc = (precio * porcentaje).toFixed(2);
-            document.getElementById('descuento').value = desc;
-            calcularTotales();
-        }
-
-        // NAVEGACIÓN
-        const formView = document.getElementById('viewForm');
-        const listView = document.getElementById('viewList');
-
-        document.getElementById('btnNew').addEventListener('click', () => {
-            formView.classList.remove('hidden');
-            listView.classList.add('hidden');
-        });
-
-        document.getElementById('btnList').addEventListener('click', () => {
-            formView.classList.add('hidden');
-            listView.classList.remove('hidden');
-            loadData();
-        });
-        document.getElementById('btnRefresh').addEventListener('click', loadData);
-
-        // GUARDAR (SAVE)
+        // FIREBASE GUARDAR
         document.getElementById('btnSave').addEventListener('click', async () => {
             const btn = document.getElementById('btnSave');
-            
+            const legal = document.getElementById('check_legal').checked;
             const nombre = document.getElementById('nombre').value;
-            if(!nombre) return alert("El nombre es obligatorio.");
+            
+            if(!nombre) return alert("⚠️ Falta el nombre del paciente");
+            if(!legal) return alert("⚠️ Debes aceptar los términos y condiciones");
 
             const originalText = btn.innerHTML;
-            btn.innerHTML = "Guardando...";
+            btn.innerHTML = '<div class="loader" style="width:20px;height:20px;border-width:2px;"></div> Guardando...';
             btn.disabled = true;
 
             try {
-                // Recopilar datos
                 const data = {
                     paciente: {
                         nombre: nombre,
                         cedula: document.getElementById('cedula').value,
-                        edad: document.getElementById('edad').value,
                         telefono: document.getElementById('telefono').value,
-                        correo: document.getElementById('correo').value,
+                        nacimiento: document.getElementById('nacimiento').value,
+                        edad: document.getElementById('edad').value,
                         ocupacion: document.getElementById('ocupacion').value,
                         direccion: document.getElementById('direccion').value
                     },
                     medico: {
-                        diabetes: document.getElementById('chk_diabetes').checked,
-                        hipertension: document.getElementById('chk_hipertension').checked,
-                        alergias: document.getElementById('chk_alergias').checked,
-                        embarazo: document.getElementById('chk_embarazo').checked,
+                        diabetes: document.getElementById('med_diabetes').checked,
+                        hipertension: document.getElementById('med_hipertension').checked,
+                        keloides: document.getElementById('med_keloides').checked,
+                        marcapasos: document.getElementById('med_marcapasos').checked,
+                        embarazo: document.getElementById('med_embarazo').checked,
+                        herpes: document.getElementById('med_herpes').checked,
+                        alergias: document.getElementById('med_alergias').checked,
+                        retinoides: document.getElementById('med_retinoides').checked,
                         notas: document.getElementById('notas_medicas').value
                     },
                     servicio: {
-                        tratamiento: document.getElementById('tratamiento').value,
-                        precio: document.getElementById('precio').value,
+                        tratamiento: document.getElementById('select_tratamiento').value,
+                        zona: document.getElementById('select_zona').value,
+                        costo: document.getElementById('costo').value,
                         descuento: document.getElementById('descuento').value,
                         abono: document.getElementById('abono').value,
                         total_pagar: document.getElementById('lblTotal').innerText,
@@ -340,9 +497,10 @@
 
                 await addDoc(collection(db, colName), data);
                 
-                alert("✅ Ficha Guardada");
-                document.getElementById('treatmentForm').reset();
-                calcularTotales(); // Reset labels
+                alert("✅ FICHA GUARDADA EXITOSAMENTE");
+                document.getElementById('clinicalForm').reset();
+                document.getElementById('container_zonas').classList.add('hidden');
+                calcularMath();
 
             } catch (e) {
                 console.error(e);
@@ -353,8 +511,8 @@
             }
         });
 
-        // CARGAR (LOAD)
-        async function loadData() {
+        // FIREBASE LEER
+        window.loadData = async function() {
             const tbody = document.getElementById('tableBody');
             const loader = document.getElementById('loadingIndicator');
             tbody.innerHTML = '';
@@ -365,23 +523,35 @@
                 const snap = await getDocs(q);
                 loader.classList.add('hidden');
 
+                if(snap.empty) {
+                    tbody.innerHTML = '<tr><td colspan="5" class="text-center p-6 text-gray-500">No hay registros aún.</td></tr>';
+                    return;
+                }
+
                 snap.forEach(doc => {
                     const d = doc.data();
                     const fecha = d.fecha.toDate().toLocaleDateString();
                     
+                    // Lógica visual de pago
+                    let estadoPago = `<span class="text-rose-400 font-bold">${d.servicio.pendiente}</span>`;
+                    if(d.servicio.pendiente === 'PAGADO' || d.servicio.pendiente === '$0.00') {
+                        estadoPago = `<span class="bg-green-900 text-green-300 px-2 py-1 rounded text-xs font-bold">PAGADO</span>`;
+                    }
+
                     const row = `
-                        <tr class="bg-slate-800 border-b border-slate-700 hover:bg-slate-700">
+                        <tr class="hover:bg-slate-800 transition">
                             <td class="px-6 py-4">${fecha}</td>
-                            <td class="px-6 py-4">
-                                <div class="font-bold text-white">${d.paciente.nombre}</div>
-                                <div class="text-xs">${d.paciente.cedula}</div>
+                            <td class="px-6 py-4 font-medium text-white">
+                                ${d.paciente.nombre}
+                                <div class="text-xs text-gray-500">${d.paciente.cedula || ''}</div>
                             </td>
-                            <td class="px-6 py-4">${d.servicio.tratamiento}</td>
                             <td class="px-6 py-4">
-                                <div class="text-white">Total: ${d.servicio.total_pagar}</div>
-                                <div class="${d.servicio.pendiente.includes('$0.00') ? 'text-green-400' : 'text-red-400'} font-bold">
-                                    Debe: ${d.servicio.pendiente}
-                                </div>
+                                <span class="text-rose-300">${d.servicio.tratamiento}</span>
+                                <div class="text-xs text-gray-500">${d.servicio.zona !== 'N/A' ? d.servicio.zona : ''}</div>
+                            </td>
+                            <td class="px-6 py-4 text-center">${estadoPago}</td>
+                            <td class="px-6 py-4 text-right">
+                                <button class="text-gray-400 hover:text-white"><i class="fas fa-eye"></i></button>
                             </td>
                         </tr>
                     `;
@@ -389,20 +559,22 @@
                 });
             } catch (e) {
                 console.error(e);
+                loader.classList.add('hidden');
+                alert("Error cargando lista");
             }
         }
 
-        // PDF
+        // GENERAR PDF
         document.getElementById('btnPdf').addEventListener('click', () => {
             const element = document.getElementById('viewForm');
+            const nombreArchivo = document.getElementById('nombre').value || 'Paciente';
             
-            // Ajustes para impresión oscura a PDF claro o mantener estilo
             const opt = {
-                margin: 0.2,
-                filename: `Ficha_${document.getElementById('nombre').value}.pdf`,
+                margin: [0.3, 0.3], // Márgenes ajustados
+                filename: `Ficha_${nombreArchivo}.pdf`,
                 image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2, backgroundColor: "#0f172a" }, // Fondo oscuro en PDF
-                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                html2canvas: { scale: 2, backgroundColor: "#0f172a", useCORS: true }, // Mantiene fondo oscuro
+                jsPDF: { unit: 'in', format: 'legal', orientation: 'portrait' } // Formato Legal para que quepa todo
             };
 
             const controls = document.querySelectorAll('.no-print');
