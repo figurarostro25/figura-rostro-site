@@ -78,7 +78,7 @@
             outline: none;
             border-width: 1px;
             background-color: white;
-            border-color: #d1d5db;
+            border-color: #6b7280;
             color: #111827;
         }
         .dark .input-pro {
@@ -359,27 +359,41 @@
             </div>
 
             <div class="p-8">
-                <div class="section-header mt-0"><i class="fas fa-file-contract"></i> Historial y Consentimiento</div>
+                <div class="section-header mt-0"><i class="fas fa-file-contract"></i> Consentimiento Informado</div>
                 
-                <div class="mb-6 bg-gray-50 dark:bg-slate-800/50 p-4 border border-gray-200 dark:border-slate-600 rounded-xl">
-                    <p class="label-pro mb-3 text-gray-400">Antecedentes Médicos:</p>
-                    <div class="flex flex-wrap gap-4 text-[10px] text-gray-600 dark:text-gray-300 font-bold uppercase">
-                        <label class="flex items-center gap-2"><input type="checkbox" id="m_diabetes" class="accent-fuchsia-600 cursor-pointer"> Diabetes</label>
-                        <label class="flex items-center gap-2"><input type="checkbox" id="m_hipertension" class="accent-fuchsia-600 cursor-pointer"> Hipertensión</label>
-                        <label class="flex items-center gap-2"><input type="checkbox" id="m_alergias" class="accent-fuchsia-600 cursor-pointer"> Alergias</label>
-                        <label class="flex items-center gap-2"><input type="checkbox" id="m_embarazo" class="accent-fuchsia-600 cursor-pointer"> Embarazo</label>
-                        <label class="flex items-center gap-2"><input type="checkbox" id="m_keloides" class="accent-fuchsia-600 cursor-pointer"> Keloide</label>
+                <div class="mb-5 bg-gray-50 dark:bg-slate-800/50 p-4 border border-gray-200 dark:border-slate-600 rounded-xl">
+                    <p class="label-pro mb-3 text-gray-400">Declaración de Antecedentes (Marque si aplica):</p>
+                    <div class="flex flex-wrap gap-3 text-[9px] text-gray-600 dark:text-gray-300 font-bold uppercase">
+                        <label class="flex items-center gap-2 border px-2 py-1 rounded hover:bg-white dark:hover:bg-slate-700 transition"><input type="checkbox" id="m_diabetes" class="accent-fuchsia-600"> Diabetes</label>
+                        <label class="flex items-center gap-2 border px-2 py-1 rounded hover:bg-white dark:hover:bg-slate-700 transition"><input type="checkbox" id="m_hipertension" class="accent-fuchsia-600"> Hipertensión</label>
+                        <label class="flex items-center gap-2 border px-2 py-1 rounded hover:bg-white dark:hover:bg-slate-700 transition"><input type="checkbox" id="m_alergias" class="accent-fuchsia-600"> Alergias</label>
+                        <label class="flex items-center gap-2 border px-2 py-1 rounded hover:bg-white dark:hover:bg-slate-700 transition"><input type="checkbox" id="m_embarazo" class="accent-fuchsia-600"> Embarazo</label>
+                        <label class="flex items-center gap-2 border px-2 py-1 rounded hover:bg-white dark:hover:bg-slate-700 transition"><input type="checkbox" id="m_keloides" class="accent-fuchsia-600"> Keloide</label>
+                        <label class="flex items-center gap-2 border px-2 py-1 rounded hover:bg-white dark:hover:bg-slate-700 transition"><input type="checkbox" id="m_implantes" class="accent-fuchsia-600"> Implantes Previos</label>
                     </div>
                 </div>
 
-                <div class="border-l-4 border-brand-light pl-5 py-3 text-justify mb-8">
-                    <p class="text-[10px] text-gray-500 dark:text-gray-400 leading-relaxed mb-4 font-medium">
-                        <strong>TÉRMINOS Y CONDICIONES:</strong> El paciente certifica que la información médica provista es verídica y completa. Autoriza a <strong>Figura Rostro KG</strong> a realizar los procedimientos estéticos acordados y consiente el registro fotográfico para el expediente clínico privado. Entiende que los resultados pueden variar según el organismo y exime al establecimiento de responsabilidad por complicaciones derivadas de un cuidado post-tratamiento inadecuado.
-                    </p>
-                    <label class="flex items-center gap-3 cursor-pointer group bg-gray-50 dark:bg-slate-800 p-3 rounded-lg border border-gray-200 dark:border-slate-600 w-fit hover:border-brand-light transition">
-                        <input type="checkbox" id="check_legal" class="accent-fuchsia-600 w-4 h-4 cursor-pointer"> 
-                        <span class="text-[11px] font-bold text-gray-800 dark:text-white group-hover:text-brand-main">HE LEÍDO Y ACEPTO LOS TÉRMINOS.</span>
-                    </label>
+                <div class="border-l-4 border-brand-main pl-5 py-2 text-justify mb-6">
+                    <div class="text-[9px] text-gray-600 dark:text-gray-400 leading-relaxed space-y-2 h-64 overflow-y-auto pr-2 font-medium">
+                        <p><strong>1. DECLARACIÓN DE VERACIDAD:</strong> Yo, el paciente identificado en la hoja 1, declaro que toda la información médica y personal proporcionada es verdadera y completa. Entiendo que ocultar antecedentes médicos (alergias, enfermedades, medicamentos) puede poner en riesgo mi salud y exime de responsabilidad al especialista.</p>
+                        
+                        <p><strong>2. NATURALEZA DEL PROCEDIMIENTO:</strong> Autorizo a <strong>Figura Rostro KG</strong> a realizar los procedimientos estéticos de rejuvenecimiento no invasivo descritos. Comprendo que, aunque son seguros, pueden existir reacciones temporales como inflamación, enrojecimiento, hematomas leves o sensibilidad en la zona tratada, las cuales son parte del proceso normal de recuperación.</p>
+                        
+                        <p><strong>3. RESULTADOS Y GARANTÍAS:</strong> Entiendo que la medicina estética no es una ciencia exacta. Los resultados varían según la edad, tipo de piel, hábitos y biología de cada paciente. <strong>No se ofrecen garantías explícitas de un resultado idéntico al de otras personas</strong> ni devoluciones de dinero por insatisfacción estética subjetiva una vez realizado el servicio profesional.</p>
+                        
+                        <p><strong>4. CUIDADOS POSTERIORES (OBLIGATORIO):</strong> Me comprometo a seguir estrictamente las indicaciones post-tratamiento (evitar sol, usar protección solar, higiene, no maquillar zona, etc.). Eximo a <strong>Figura Rostro KG</strong> de toda responsabilidad por infecciones, manchas o complicaciones derivadas de mi negligencia, falta de higiene o exposición solar prematura.</p>
+                        
+                        <p><strong>5. USO DE IMAGEN:</strong> Autorizo la toma de fotografías "Antes y Después" para mi expediente clínico privado. (Estas imágenes podrán ser usadas con fines académicos o publicitarios protegiendo mi identidad salvo que yo exprese lo contrario por escrito).</p>
+                    </div>
+                    
+                    <div class="mt-4 pt-4 border-t border-gray-200 dark:border-slate-600">
+                        <label class="flex items-center gap-3 cursor-pointer group w-fit">
+                            <input type="checkbox" id="check_legal" class="accent-fuchsia-600 w-4 h-4">
+                            <span class="text-[10px] font-extrabold text-gray-800 dark:text-white group-hover:text-brand-main uppercase tracking-wide">
+                                He leído, comprendo y acepto todos los términos y condiciones.
+                            </span>
+                        </label>
+                    </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
@@ -467,7 +481,6 @@
 
         const generarFolio = () => { 
             const f = `REQ-${Date.now().toString().slice(-6)}`;
-            // Actualiza el folio en ambas páginas
             document.querySelectorAll('.folio-display').forEach(el => el.innerText = f);
         };
 
@@ -483,7 +496,6 @@
             canvas = document.getElementById('signaturePad');
             ctx = canvas.getContext('2d');
             
-            // Función para ajustar la resolución
             function resizeCanvas() {
                 const ratio = Math.max(window.devicePixelRatio || 1, 1);
                 canvas.width = canvas.offsetWidth * ratio;
@@ -491,7 +503,7 @@
                 ctx.scale(ratio, ratio);
             }
             window.addEventListener('resize', resizeCanvas);
-            setTimeout(resizeCanvas, 500); // Esperar carga
+            setTimeout(resizeCanvas, 500);
 
             // Mouse
             canvas.addEventListener('mousedown', startDrawing);
@@ -599,7 +611,7 @@
             }
         }
 
-        // --- CÁLCULOS ---
+        // --- CÁLCULOS MATEMÁTICOS ---
         window.setPromo = (pct) => { document.getElementById('promo_pct').value = pct; calcularTotal(); }
         window.resetDesc = () => { document.getElementById('promo_pct').value = 0; calcularTotal(); }
 
@@ -610,7 +622,6 @@
             const pct = parseFloat(document.getElementById('promo_pct').value) || 0;
             const desc = sub * pct;
             const bono = parseFloat(document.getElementById('bono_extra').value) || 0;
-            
             const total = sub - desc - bono;
             const abono = parseFloat(document.getElementById('abono').value) || 0;
             const pend = total - abono;
@@ -662,7 +673,7 @@
             btn.disabled = true;
 
             try {
-                // Usamos el folio que está en el DOM (el primero que encuentre)
+                // Usamos el folio que está en el DOM
                 const folioActual = document.querySelector('.folio-display').innerText;
 
                 await addDoc(collection(db, colName), {
