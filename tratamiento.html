@@ -285,16 +285,18 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getFirestore, collection, addDoc, getDocs, orderBy, query, Timestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-        // --- PEGA TUS LLAVES AQUI ---
+        // ============================================
+        // --- TUS LLAVES CONFIGURADAS CORRECTAMENTE ---
+        // ============================================
         const firebaseConfig = {
-            apiKey: "TU_API_KEY",
-            authDomain: "TU_PROYECTO.firebaseapp.com",
-            projectId: "TU_PROJECT_ID",
-            storageBucket: "TU_PROYECTO.appspot.com",
-            messagingSenderId: "123456",
-            appId: "1:123456"
+            apiKey: "AIzaSyBAuTfBKGuG33c9NXc1s0lkQv-7GwA47l0",
+            authDomain: "figurarostro-system.firebaseapp.com",
+            projectId: "figurarostro-system",
+            storageBucket: "figurarostro-system.firebasestorage.app",
+            messagingSenderId: "803848354693",
+            appId: "1:803848354693:web:7144490abb18b0319822ec"
         };
-        // ----------------------------
+        // --------------------------------------------
 
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
@@ -541,20 +543,65 @@
             });
         }
 
-        // PDF
+        // ----------------------------------------------------
+        // PDF PRO (Modo Tinta Económica / Fondo Blanco)
+        // ----------------------------------------------------
+        // He mejorado esta función para que imprima en blanco y ahorre tinta
         document.getElementById('btnPdf').addEventListener('click', () => {
             const element = document.getElementById('viewForm');
+            
+            // 1. GUARDAR ESTADO ORIGINAL
+            const originalClasses = element.className;
+            const inputs = element.querySelectorAll('input, select, textarea');
+            const texts = element.querySelectorAll('.text-white, .text-gray-300, .text-gray-400, .text-gray-500');
+
+            // 2. MODO IMPRESIÓN (CAMBIO TEMPORAL A BLANCO)
+            element.classList.remove('bg-slate-900', 'text-white');
+            element.classList.add('bg-white', 'text-black');
+
+            inputs.forEach(input => {
+                input.dataset.originalBg = input.style.backgroundColor;
+                input.dataset.originalColor = input.style.color;
+                input.dataset.originalBorder = input.style.border;
+                
+                input.style.backgroundColor = '#ffffff';
+                input.style.color = '#000000';
+                input.style.border = '1px solid #ccc';
+            });
+
+            texts.forEach(t => {
+                t.dataset.originalClass = t.className;
+                t.classList.remove('text-white', 'text-gray-300', 'text-gray-400', 'text-gray-500');
+                t.classList.add('text-black');
+            });
+
+            const controls = document.querySelectorAll('.no-print');
+            controls.forEach(c => c.style.display = 'none');
+
+            // 3. GENERAR
             const opt = {
-                margin: 0.2,
-                filename: `Ficha_${document.getElementById('nombre').value}.pdf`,
+                margin: [0.3, 0.3],
+                filename: `Ficha_${document.getElementById('nombre').value || 'Paciente'}.pdf`,
                 image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2, backgroundColor: "#0f172a" },
+                html2canvas: { scale: 2, backgroundColor: "#ffffff", useCORS: true },
                 jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
             };
-            document.querySelectorAll('.no-print').forEach(e => e.style.display = 'none');
-            // Forzar mostrar botones de eliminar en PDF no se ve bien, los ocultamos con CSS print
+
             html2pdf().set(opt).from(element).save().then(() => {
-                document.querySelectorAll('.no-print').forEach(e => e.style.display = '');
+                // 4. RESTAURAR (MODO OSCURO)
+                element.className = originalClasses;
+
+                inputs.forEach(input => {
+                    input.style.backgroundColor = input.dataset.originalBg || '';
+                    input.style.color = input.dataset.originalColor || '';
+                    input.style.border = input.dataset.originalBorder || '';
+                });
+
+                texts.forEach(t => {
+                    t.className = t.dataset.originalClass;
+                });
+
+                controls.forEach(c => c.style.display = '');
             });
         });
 
