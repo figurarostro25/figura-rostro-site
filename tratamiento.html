@@ -16,20 +16,10 @@
             theme: {
                 extend: {
                     colors: {
-                        brand: { 
-                            dark: '#4a044e', 
-                            main: '#9333ea', 
-                            light: '#e879f9' 
-                        },
-                        night: { 
-                            bg: '#0f172a', 
-                            card: '#1e293b', 
-                            input: '#334155' 
-                        }
+                        brand: { dark: '#4a044e', main: '#9333ea', light: '#e879f9' },
+                        night: { bg: '#0f172a', card: '#1e293b', input: '#334155' }
                     },
-                    fontFamily: { 
-                        sans: ['Montserrat', 'sans-serif'] 
-                    }
+                    fontFamily: { sans: ['Montserrat', 'sans-serif'] }
                 }
             }
         }
@@ -113,165 +103,167 @@
     </nav>
     <div class="h-16 no-print"></div>
 
-    <div id="printContainer">
-        <div id="page1" class="paper-sheet rounded-t-2xl page-break border border-gray-200 dark:border-slate-700">
-            <div class="header-gradient bg-gradient-to-r from-brand-dark via-brand-main to-brand-dark p-6 flex justify-between items-start text-white">
-                <div class="relative z-10">
-                    <img src="logo-blanco.png" alt="Figura Rostro KG" class="h-16 w-auto object-contain mb-3">
-                    <h1 class="text-2xl font-black uppercase tracking-wider">Figura Rostro KG</h1>
-                    <p class="text-fuchsia-200 text-[9px] font-bold tracking-[0.2em] uppercase mt-1">Rejuvenecimiento No Invasivo</p>
-                </div>
-                <div class="text-right">
-                    <p class="text-[9px] uppercase opacity-90 mb-1 font-bold">Fecha</p>
-                    <div class="text-xs font-bold bg-white/10 px-3 py-1 rounded inline-block mb-2 fecha-display"></div>
-                    <div class="bg-white/95 text-brand-dark px-3 py-1 rounded shadow-lg border-l-4 border-fuchsia-500">
-                        <p class="text-[7px] uppercase text-gray-500 mb-0 font-bold">Solicitud</p>
-                        <div class="text-lg font-black font-mono tracking-widest folio-display">...</div>
+    <div id="seccionFormulario">
+        <div id="printContainer">
+            <div id="page1" class="paper-sheet rounded-t-2xl page-break border border-gray-200 dark:border-slate-700">
+                <div class="header-gradient bg-gradient-to-r from-brand-dark via-brand-main to-brand-dark p-6 flex justify-between items-start text-white">
+                    <div class="relative z-10">
+                        <img src="logo-blanco.png" alt="Figura Rostro KG" class="h-16 w-auto object-contain mb-3">
+                        <h1 class="text-2xl font-black uppercase tracking-wider">Figura Rostro KG</h1>
+                        <p class="text-fuchsia-200 text-[9px] font-bold tracking-[0.2em] uppercase mt-1">Rejuvenecimiento No Invasivo</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-[9px] uppercase opacity-90 mb-1 font-bold">Fecha</p>
+                        <div class="text-xs font-bold bg-white/10 px-3 py-1 rounded inline-block mb-2 fecha-display"></div>
+                        <div class="bg-white/95 text-brand-dark px-3 py-1 rounded shadow-lg border-l-4 border-fuchsia-500">
+                            <p class="text-[7px] uppercase text-gray-500 mb-0 font-bold">Solicitud</p>
+                            <div class="text-lg font-black font-mono tracking-widest folio-display">...</div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="p-8">
-                <form id="formPart1">
-                    <div class="section-header mt-0"><i class="fas fa-user-circle text-lg"></i> Datos del Paciente</div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                        <div>
-                            <label class="label-pro">Nombre Completo</label>
-                            <input type="text" id="nombre" class="input-pro border-l-4 border-l-brand-main" placeholder="Ej. Ana Pérez" required>
-                        </div>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div><label class="label-pro">Cédula</label><input type="text" id="cedula" class="input-pro"></div>
-                            <div><label class="label-pro">Teléfono</label><input type="tel" id="telefono" class="input-pro"></div>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                        <div>
-                            <label class="label-pro">Fecha Nacimiento</label>
-                            <div class="flex gap-2">
-                                <select id="dia_nac" class="input-pro w-16" onchange="calcularEdad()"><option value="">D</option><script>for(let i=1;i<=31;i++) document.write(`<option value="${i}">${i}</option>`);</script></select>
-                                <select id="mes_nac" class="input-pro flex-1" onchange="calcularEdad()"><option value="">Mes</option><option value="1">Ene</option><option value="2">Feb</option><option value="3">Mar</option><option value="4">Abr</option><option value="5">May</option><option value="6">Jun</option><option value="7">Jul</option><option value="8">Ago</option><option value="9">Sep</option><option value="10">Oct</option><option value="11">Nov</option><option value="12">Dic</option></select>
-                                <input type="number" id="anio_nac" class="input-pro w-20" placeholder="Año" onchange="calcularEdad()">
+                <div class="p-8">
+                    <form id="formPart1">
+                        <div class="section-header mt-0"><i class="fas fa-user-circle text-lg"></i> Datos del Paciente</div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="label-pro">Nombre Completo</label>
+                                <input type="text" id="nombre" class="input-pro border-l-4 border-l-brand-main" placeholder="Ej. Ana Pérez" required>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div><label class="label-pro">Cédula</label><input type="text" id="cedula" class="input-pro"></div>
+                                <div><label class="label-pro">Teléfono</label><input type="tel" id="telefono" class="input-pro"></div>
                             </div>
                         </div>
-                        <div class="flex gap-4">
-                            <div class="w-24"><label class="label-pro">Edad</label><input type="text" id="edad" class="input-pro bg-fuchsia-50 dark:bg-slate-800 text-center font-bold text-brand-main" readonly></div>
-                            <div class="flex-1"><label class="label-pro">Ocupación</label><input type="text" id="ocupacion" class="input-pro"></div>
-                        </div>
-                    </div>
-                    <div class="mb-6"><label class="label-pro">Dirección</label><input type="text" id="direccion" class="input-pro"></div>
-
-                    <div class="flex justify-between items-end border-b-2 border-fuchsia-100 dark:border-slate-700 pb-2 mt-6 mb-3">
-                        <div class="section-header border-0 m-0 w-full"><i class="fas fa-spa text-lg"></i> Tratamientos</div>
-                        <button type="button" onclick="agregarServicio()" class="text-[10px] bg-fuchsia-50 hover:bg-fuchsia-100 text-fuchsia-900 border border-fuchsia-200 dark:bg-slate-700 dark:text-white dark:border-slate-600 px-3 py-1.5 rounded-full transition no-print font-bold flex items-center shadow-sm">
-                            <i class="fas fa-plus text-green-500 mr-1.5"></i> AGREGAR
-                        </button>
-                    </div>
-                    
-                    <div id="listaServicios" class="mb-6 min-h-[50px]"></div>
-
-                    <div class="bg-gray-50 dark:bg-slate-800/50 p-5 rounded-xl border border-gray-200 dark:border-slate-600 mb-4">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div class="space-y-3">
-                                <div class="flex justify-between items-center"><label class="label-pro text-gray-500 dark:text-gray-400">Subtotal</label><input type="text" id="subtotal" class="input-pro w-28 text-right bg-transparent border-none font-bold text-gray-500 dark:text-gray-300" readonly value="$0.00"></div>
-                                <hr class="border-gray-200 dark:border-slate-600">
-                                <div class="flex justify-between items-center">
-                                    <label class="label-pro text-brand-main dark:text-fuchsia-400">Descuento (%)</label>
-                                    <div class="flex gap-1">
-                                        <button type="button" onclick="setPromo(0.10)" class="w-8 py-1 text-[9px] bg-white dark:bg-slate-700 border rounded font-bold hover:bg-fuchsia-100 transition dark:text-white">10%</button>
-                                        <button type="button" onclick="setPromo(0.20)" class="w-8 py-1 text-[9px] bg-white dark:bg-slate-700 border rounded font-bold hover:bg-fuchsia-100 transition dark:text-white">20%</button>
-                                        <button type="button" onclick="setPromo(0.30)" class="w-8 py-1 text-[9px] bg-white dark:bg-slate-700 border rounded font-bold hover:bg-fuchsia-100 transition dark:text-white">30%</button>
-                                        <button type="button" onclick="resetDesc()" class="text-red-400 px-2 font-bold hover:text-red-600"><i class="fas fa-times"></i></button>
-                                    </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="label-pro">Fecha Nacimiento</label>
+                                <div class="flex gap-2">
+                                    <select id="dia_nac" class="input-pro w-16" onchange="calcularEdad()"><option value="">D</option><script>for(let i=1;i<=31;i++) document.write(`<option value="${i}">${i}</option>`);</script></select>
+                                    <select id="mes_nac" class="input-pro flex-1" onchange="calcularEdad()"><option value="">Mes</option><option value="1">Ene</option><option value="2">Feb</option><option value="3">Mar</option><option value="4">Abr</option><option value="5">May</option><option value="6">Jun</option><option value="7">Jul</option><option value="8">Ago</option><option value="9">Sep</option><option value="10">Oct</option><option value="11">Nov</option><option value="12">Dic</option></select>
+                                    <input type="number" id="anio_nac" class="input-pro w-20" placeholder="Año" onchange="calcularEdad()">
                                 </div>
-                                <input type="hidden" id="promo_pct" value="0">
-                                <div class="text-right text-[10px] text-brand-light font-mono font-bold" id="descuento_txt"></div>
-                                <div class="flex justify-between items-center pt-1"><label class="label-pro text-brand-main dark:text-fuchsia-400">Bono Extra ($)</label><input type="number" id="bono_extra" class="input-pro w-28 text-right border-fuchsia-200 dark:border-slate-500 text-brand-main dark:text-fuchsia-300 font-bold" placeholder="0.00" oninput="calcularTotal()"></div>
                             </div>
-                            <div class="bg-white dark:bg-slate-900 p-4 border-2 border-fuchsia-50 dark:border-slate-600 rounded-xl shadow-sm flex flex-col justify-between relative">
-                                <div class="flex justify-between items-end mb-3 relative z-10"><span class="text-xs font-bold text-gray-400 uppercase">Total</span><span id="lblTotal" class="text-2xl font-black text-gray-800 dark:text-white font-mono">$0.00</span></div>
-                                <div class="flex justify-between items-center mb-3 bg-green-50 dark:bg-slate-800 p-2 rounded border border-green-100 dark:border-slate-600 relative z-10"><span class="text-[9px] font-bold text-green-700 uppercase">Abono Hoy</span><input type="number" id="abono" class="w-24 bg-transparent text-right font-black text-xl text-green-600 outline-none" placeholder="0" oninput="calcularTotal()"></div>
-                                <div class="border-t border-dashed border-gray-200 dark:border-slate-600 pt-2 flex justify-between items-end relative z-10"><span class="text-[10px] font-bold text-gray-400 uppercase">Pendiente</span><span id="lblPendiente" class="text-xl font-bold text-rose-500 font-mono">$0.00</span></div>
+                            <div class="flex gap-4">
+                                <div class="w-24"><label class="label-pro">Edad</label><input type="text" id="edad" class="input-pro bg-fuchsia-50 dark:bg-slate-800 text-center font-bold text-brand-main" readonly></div>
+                                <div class="flex-1"><label class="label-pro">Ocupación</label><input type="text" id="ocupacion" class="input-pro"></div>
                             </div>
                         </div>
-                    </div>
-                </form>
+                        <div class="mb-6"><label class="label-pro">Dirección</label><input type="text" id="direccion" class="input-pro"></div>
+
+                        <div class="flex justify-between items-end border-b-2 border-fuchsia-100 dark:border-slate-700 pb-2 mt-6 mb-3">
+                            <div class="section-header border-0 m-0 w-full"><i class="fas fa-spa text-lg"></i> Tratamientos</div>
+                            <button type="button" onclick="agregarServicio()" class="text-[10px] bg-fuchsia-50 hover:bg-fuchsia-100 text-fuchsia-900 border border-fuchsia-200 dark:bg-slate-700 dark:text-white dark:border-slate-600 px-3 py-1.5 rounded-full transition no-print font-bold flex items-center shadow-sm">
+                                <i class="fas fa-plus text-green-500 mr-1.5"></i> AGREGAR
+                            </button>
+                        </div>
+                        
+                        <div id="listaServicios" class="mb-6 min-h-[50px]"></div>
+
+                        <div class="bg-gray-50 dark:bg-slate-800/50 p-5 rounded-xl border border-gray-200 dark:border-slate-600 mb-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div class="space-y-3">
+                                    <div class="flex justify-between items-center"><label class="label-pro text-gray-500 dark:text-gray-400">Subtotal</label><input type="text" id="subtotal" class="input-pro w-28 text-right bg-transparent border-none font-bold text-gray-500 dark:text-gray-300" readonly value="$0.00"></div>
+                                    <hr class="border-gray-200 dark:border-slate-600">
+                                    <div class="flex justify-between items-center">
+                                        <label class="label-pro text-brand-main dark:text-fuchsia-400">Descuento (%)</label>
+                                        <div class="flex gap-1">
+                                            <button type="button" onclick="setPromo(0.10)" class="w-8 py-1 text-[9px] bg-white dark:bg-slate-700 border rounded font-bold hover:bg-fuchsia-100 transition dark:text-white">10%</button>
+                                            <button type="button" onclick="setPromo(0.20)" class="w-8 py-1 text-[9px] bg-white dark:bg-slate-700 border rounded font-bold hover:bg-fuchsia-100 transition dark:text-white">20%</button>
+                                            <button type="button" onclick="setPromo(0.30)" class="w-8 py-1 text-[9px] bg-white dark:bg-slate-700 border rounded font-bold hover:bg-fuchsia-100 transition dark:text-white">30%</button>
+                                            <button type="button" onclick="resetDesc()" class="text-red-400 px-2 font-bold hover:text-red-600"><i class="fas fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="promo_pct" value="0">
+                                    <div class="text-right text-[10px] text-brand-light font-mono font-bold" id="descuento_txt"></div>
+                                    <div class="flex justify-between items-center pt-1"><label class="label-pro text-brand-main dark:text-fuchsia-400">Bono Extra ($)</label><input type="number" id="bono_extra" class="input-pro w-28 text-right border-fuchsia-200 dark:border-slate-500 text-brand-main dark:text-fuchsia-300 font-bold" placeholder="0.00" oninput="calcularTotal()"></div>
+                                </div>
+                                <div class="bg-white dark:bg-slate-900 p-4 border-2 border-fuchsia-50 dark:border-slate-600 rounded-xl shadow-sm flex flex-col justify-between relative">
+                                    <div class="flex justify-between items-end mb-3 relative z-10"><span class="text-xs font-bold text-gray-400 uppercase">Total</span><span id="lblTotal" class="text-2xl font-black text-gray-800 dark:text-white font-mono">$0.00</span></div>
+                                    <div class="flex justify-between items-center mb-3 bg-green-50 dark:bg-slate-800 p-2 rounded border border-green-100 dark:border-slate-600 relative z-10"><span class="text-[9px] font-bold text-green-700 uppercase">Abono Hoy</span><input type="number" id="abono" class="w-24 bg-transparent text-right font-black text-xl text-green-600 outline-none" placeholder="0" oninput="calcularTotal()"></div>
+                                    <div class="border-t border-dashed border-gray-200 dark:border-slate-600 pt-2 flex justify-between items-end relative z-10"><span class="text-[10px] font-bold text-gray-400 uppercase">Pendiente</span><span id="lblPendiente" class="text-xl font-bold text-rose-500 font-mono">$0.00</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="absolute bottom-4 right-8 text-[9px] text-gray-400">Página 1 de 2</div>
             </div>
-            <div class="absolute bottom-4 right-8 text-[9px] text-gray-400">Página 1 de 2</div>
+
+            <div id="page2" class="paper-sheet rounded-b-2xl border border-gray-200 dark:border-slate-700">
+                <div class="header-gradient bg-gradient-to-r from-brand-dark via-brand-main to-brand-dark p-6 flex justify-between items-start text-white">
+                    <div class="relative z-10">
+                        <h1 class="text-xl font-black uppercase tracking-wider opacity-80">Figura Rostro KG</h1>
+                        <p class="text-fuchsia-200 text-[8px] font-bold tracking-[0.2em] uppercase">Continuación de Solicitud</p>
+                    </div>
+                    <div class="text-right">
+                        <div class="bg-white/95 text-brand-dark px-3 py-1 rounded shadow-lg border-l-4 border-fuchsia-500">
+                            <p class="text-[7px] uppercase text-gray-500 mb-0 font-bold">Solicitud</p>
+                            <div class="text-lg font-black font-mono tracking-widest folio-display">...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-8">
+                    <div class="section-header mt-0"><i class="fas fa-file-contract"></i> Consentimiento Informado</div>
+                    <div class="mb-5 bg-gray-50 dark:bg-slate-800/50 p-4 border border-gray-200 dark:border-slate-600 rounded-xl">
+                        <p class="label-pro mb-3 text-gray-400">Declaración de Antecedentes (Marque si aplica):</p>
+                        <div class="flex flex-wrap gap-3 text-[9px] text-gray-600 dark:text-gray-300 font-bold uppercase">
+                            <label class="flex items-center gap-2 border px-2 py-1 rounded hover:bg-white dark:hover:bg-slate-700 transition"><input type="checkbox" id="m_diabetes" class="accent-fuchsia-600"> Diabetes</label>
+                            <label class="flex items-center gap-2 border px-2 py-1 rounded hover:bg-white dark:hover:bg-slate-700 transition"><input type="checkbox" id="m_hipertension" class="accent-fuchsia-600"> Hipertensión</label>
+                            <label class="flex items-center gap-2 border px-2 py-1 rounded hover:bg-white dark:hover:bg-slate-700 transition"><input type="checkbox" id="m_alergias" class="accent-fuchsia-600"> Alergias</label>
+                            <label class="flex items-center gap-2 border px-2 py-1 rounded hover:bg-white dark:hover:bg-slate-700 transition"><input type="checkbox" id="m_embarazo" class="accent-fuchsia-600"> Embarazo</label>
+                            <label class="flex items-center gap-2 border px-2 py-1 rounded hover:bg-white dark:hover:bg-slate-700 transition"><input type="checkbox" id="m_keloides" class="accent-fuchsia-600"> Keloide</label>
+                            <label class="flex items-center gap-2 border px-2 py-1 rounded hover:bg-white dark:hover:bg-slate-700 transition"><input type="checkbox" id="m_implantes" class="accent-fuchsia-600"> Implantes Previos</label>
+                        </div>
+                    </div>
+
+                    <div class="border-l-4 border-brand-main pl-5 py-2 text-justify mb-6">
+                        <div class="text-[9px] text-gray-600 dark:text-gray-400 leading-relaxed space-y-2 h-64 overflow-y-auto pr-2 font-medium">
+                            <p><strong>1. DECLARACIÓN DE VERACIDAD:</strong> Yo, el paciente identificado en la hoja 1, declaro que toda la información médica y personal proporcionada es verdadera y completa.</p>
+                            <p><strong>2. NATURALEZA DEL PROCEDIMIENTO:</strong> Autorizo a <strong>Figura Rostro KG</strong> a realizar los procedimientos estéticos de rejuvenecimiento no invasivo descritos.</p>
+                            <p><strong>3. RESULTADOS Y GARANTÍAS:</strong> Entiendo que la medicina estética no es una ciencia exacta. <strong>No se ofrecen garantías explícitas</strong>.</p>
+                            <p><strong>4. CUIDADOS POSTERIORES (OBLIGATORIO):</strong> Me comprometo a seguir estrictamente las indicaciones post-tratamiento.</p>
+                            <p><strong>5. USO DE IMAGEN:</strong> Autorizo la toma de fotografías "Antes y Después" para mi expediente clínico privado.</p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-gray-200 dark:border-slate-600">
+                            <label class="flex items-center gap-3 cursor-pointer group w-fit">
+                                <input type="checkbox" id="check_legal" class="accent-fuchsia-600 w-4 h-4">
+                                <span class="text-[10px] font-extrabold text-gray-800 dark:text-white group-hover:text-brand-main uppercase tracking-wide">He leído, comprendo y acepto todos los términos y condiciones.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                        <div class="border-2 border-dashed border-gray-300 dark:border-slate-600 rounded-xl p-4 flex flex-col items-center bg-gray-50 dark:bg-slate-800/30">
+                            <p class="label-pro mb-2 text-center w-full">Firma del Paciente</p>
+                            <canvas id="signaturePad" class="w-full h-32 bg-white border-b-2 border-gray-400 cursor-crosshair touch-none rounded-t-lg shadow-inner mb-2" style="max-width: 100%;"></canvas>
+                            <div class="w-full flex justify-between items-center px-1">
+                                <p class="text-[9px] text-gray-400 italic">Firmar (Dedo) o dejar blanco</p>
+                                <button type="button" onclick="clearSignature()" class="text-[9px] text-rose-500 font-bold no-print border border-rose-200 rounded px-2 py-1 bg-white hover:bg-rose-50"><i class="fas fa-eraser"></i> Borrar</button>
+                            </div>
+                        </div>
+                        <div class="border border-gray-200 dark:border-slate-600 rounded-xl p-4 flex flex-col justify-end bg-white dark:bg-slate-800">
+                            <div class="mb-1 text-center"><input type="text" id="specialistName" class="w-full text-center bg-transparent border-b-2 border-gray-400 dark:border-gray-500 text-gray-800 dark:text-white font-bold pb-2 outline-none focus:border-brand-main text-sm" placeholder="Nombre Especialista / Sello"></div>
+                            <p class="text-[9px] text-center font-bold text-brand-dark dark:text-fuchsia-300 uppercase mt-2">Aprobado por Figura Rostro KG</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute bottom-4 right-8 text-[9px] text-gray-400">Página 2 de 2</div>
+            </div>
         </div>
 
-        <div id="page2" class="paper-sheet rounded-b-2xl border border-gray-200 dark:border-slate-700">
-            <div class="header-gradient bg-gradient-to-r from-brand-dark via-brand-main to-brand-dark p-6 flex justify-between items-start text-white">
-                <div class="relative z-10">
-                    <h1 class="text-xl font-black uppercase tracking-wider opacity-80">Figura Rostro KG</h1>
-                    <p class="text-fuchsia-200 text-[8px] font-bold tracking-[0.2em] uppercase">Continuación de Solicitud</p>
-                </div>
-                <div class="text-right">
-                    <div class="bg-white/95 text-brand-dark px-3 py-1 rounded shadow-lg border-l-4 border-fuchsia-500">
-                        <p class="text-[7px] uppercase text-gray-500 mb-0 font-bold">Solicitud</p>
-                        <div class="text-lg font-black font-mono tracking-widest folio-display">...</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="p-8">
-                <div class="section-header mt-0"><i class="fas fa-file-contract"></i> Consentimiento Informado</div>
-                <div class="mb-5 bg-gray-50 dark:bg-slate-800/50 p-4 border border-gray-200 dark:border-slate-600 rounded-xl">
-                    <p class="label-pro mb-3 text-gray-400">Declaración de Antecedentes (Marque si aplica):</p>
-                    <div class="flex flex-wrap gap-3 text-[9px] text-gray-600 dark:text-gray-300 font-bold uppercase">
-                        <label class="flex items-center gap-2 border px-2 py-1 rounded hover:bg-white dark:hover:bg-slate-700 transition"><input type="checkbox" id="m_diabetes" class="accent-fuchsia-600"> Diabetes</label>
-                        <label class="flex items-center gap-2 border px-2 py-1 rounded hover:bg-white dark:hover:bg-slate-700 transition"><input type="checkbox" id="m_hipertension" class="accent-fuchsia-600"> Hipertensión</label>
-                        <label class="flex items-center gap-2 border px-2 py-1 rounded hover:bg-white dark:hover:bg-slate-700 transition"><input type="checkbox" id="m_alergias" class="accent-fuchsia-600"> Alergias</label>
-                        <label class="flex items-center gap-2 border px-2 py-1 rounded hover:bg-white dark:hover:bg-slate-700 transition"><input type="checkbox" id="m_embarazo" class="accent-fuchsia-600"> Embarazo</label>
-                        <label class="flex items-center gap-2 border px-2 py-1 rounded hover:bg-white dark:hover:bg-slate-700 transition"><input type="checkbox" id="m_keloides" class="accent-fuchsia-600"> Keloide</label>
-                        <label class="flex items-center gap-2 border px-2 py-1 rounded hover:bg-white dark:hover:bg-slate-700 transition"><input type="checkbox" id="m_implantes" class="accent-fuchsia-600"> Implantes Previos</label>
-                    </div>
-                </div>
-
-                <div class="border-l-4 border-brand-main pl-5 py-2 text-justify mb-6">
-                    <div class="text-[9px] text-gray-600 dark:text-gray-400 leading-relaxed space-y-2 h-64 overflow-y-auto pr-2 font-medium">
-                        <p><strong>1. DECLARACIÓN DE VERACIDAD:</strong> Yo, el paciente identificado en la hoja 1, declaro que toda la información médica y personal proporcionada es verdadera y completa.</p>
-                        <p><strong>2. NATURALEZA DEL PROCEDIMIENTO:</strong> Autorizo a <strong>Figura Rostro KG</strong> a realizar los procedimientos estéticos de rejuvenecimiento no invasivo descritos.</p>
-                        <p><strong>3. RESULTADOS Y GARANTÍAS:</strong> Entiendo que la medicina estética no es una ciencia exacta. <strong>No se ofrecen garantías explícitas</strong>.</p>
-                        <p><strong>4. CUIDADOS POSTERIORES (OBLIGATORIO):</strong> Me comprometo a seguir estrictamente las indicaciones post-tratamiento.</p>
-                        <p><strong>5. USO DE IMAGEN:</strong> Autorizo la toma de fotografías "Antes y Después" para mi expediente clínico privado.</p>
-                    </div>
-                    <div class="mt-4 pt-4 border-t border-gray-200 dark:border-slate-600">
-                        <label class="flex items-center gap-3 cursor-pointer group w-fit">
-                            <input type="checkbox" id="check_legal" class="accent-fuchsia-600 w-4 h-4">
-                            <span class="text-[10px] font-extrabold text-gray-800 dark:text-white group-hover:text-brand-main uppercase tracking-wide">He leído, comprendo y acepto todos los términos y condiciones.</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-                    <div class="border-2 border-dashed border-gray-300 dark:border-slate-600 rounded-xl p-4 flex flex-col items-center bg-gray-50 dark:bg-slate-800/30">
-                        <p class="label-pro mb-2 text-center w-full">Firma del Paciente</p>
-                        <canvas id="signaturePad" class="w-full h-32 bg-white border-b-2 border-gray-400 cursor-crosshair touch-none rounded-t-lg shadow-inner mb-2" style="max-width: 100%;"></canvas>
-                        <div class="w-full flex justify-between items-center px-1">
-                            <p class="text-[9px] text-gray-400 italic">Firmar (Dedo) o dejar blanco</p>
-                            <button type="button" onclick="clearSignature()" class="text-[9px] text-rose-500 font-bold no-print border border-rose-200 rounded px-2 py-1 bg-white hover:bg-rose-50"><i class="fas fa-eraser"></i> Borrar</button>
-                        </div>
-                    </div>
-                    <div class="border border-gray-200 dark:border-slate-600 rounded-xl p-4 flex flex-col justify-end bg-white dark:bg-slate-800">
-                        <div class="mb-1 text-center"><input type="text" id="specialistName" class="w-full text-center bg-transparent border-b-2 border-gray-400 dark:border-gray-500 text-gray-800 dark:text-white font-bold pb-2 outline-none focus:border-brand-main text-sm" placeholder="Nombre Especialista / Sello"></div>
-                        <p class="text-[9px] text-center font-bold text-brand-dark dark:text-fuchsia-300 uppercase mt-2">Aprobado por Figura Rostro KG</p>
-                    </div>
-                </div>
-            </div>
-            <div class="absolute bottom-4 right-8 text-[9px] text-gray-400">Página 2 de 2</div>
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row gap-5 no-print mb-20 px-4 md:px-0">
+            <button type="button" id="btnSave" class="flex-1 bg-gradient-to-r from-brand-dark to-brand-main text-white py-4 rounded-xl hover:bg-brand-dark transition-all font-bold shadow-lg shadow-fuchsia-900/20 text-sm flex justify-center items-center gap-3 transform hover:-translate-y-1">
+                <i class="fas fa-save text-lg"></i> GUARDAR FICHA
+            </button>
+            <button type="button" id="btnPdf" class="md:w-1/3 bg-white dark:bg-slate-800 text-brand-dark dark:text-white border-2 border-gray-200 dark:border-slate-600 py-4 rounded-xl hover:bg-gray-50 dark:hover:bg-slate-700 transition font-bold text-sm flex justify-center items-center gap-3 transform hover:-translate-y-1">
+                <i class="fas fa-print text-lg text-brand-main"></i> IMPRIMIR PDF
+            </button>
         </div>
     </div>
 
-    <div class="max-w-4xl mx-auto flex flex-col md:flex-row gap-5 no-print mb-20 px-4 md:px-0">
-        <button type="button" id="btnSave" class="flex-1 bg-gradient-to-r from-brand-dark to-brand-main text-white py-4 rounded-xl hover:bg-brand-dark transition-all font-bold shadow-lg shadow-fuchsia-900/20 text-sm flex justify-center items-center gap-3 transform hover:-translate-y-1">
-            <i class="fas fa-save text-lg"></i> GUARDAR FICHA
-        </button>
-        <button type="button" id="btnPdf" class="md:w-1/3 bg-white dark:bg-slate-800 text-brand-dark dark:text-white border-2 border-gray-200 dark:border-slate-600 py-4 rounded-xl hover:bg-gray-50 dark:hover:bg-slate-700 transition font-bold text-sm flex justify-center items-center gap-3 transform hover:-translate-y-1">
-            <i class="fas fa-print text-lg text-brand-main"></i> IMPRIMIR PDF
-        </button>
-    </div>
-
-    <div id="viewList" class="hidden w-full max-w-5xl bg-white dark:bg-night-card shadow-2xl p-8 mt-10 rounded-2xl border border-gray-200 dark:border-slate-700 relative mb-20 mx-auto">
+    <div id="seccionBaseDatos" class="hidden w-full max-w-5xl bg-white dark:bg-night-card shadow-2xl p-8 mt-10 rounded-2xl border border-gray-200 dark:border-slate-700 relative mb-20 mx-auto">
         <div class="flex justify-between mb-6 border-b border-gray-200 dark:border-slate-600 pb-4">
             <h2 class="font-bold text-xl text-gray-800 dark:text-white">Base de Datos</h2>
             <button onclick="loadData()" class="text-xs bg-gray-100 dark:bg-slate-700 px-4 py-2 rounded-full font-bold dark:text-white border dark:border-slate-600 hover:bg-gray-200 transition">
@@ -287,7 +279,8 @@
                         <th class="p-4">Paciente</th>
                         <th class="p-4">Total</th>
                         <th class="p-4 text-center">Estado</th>
-                        <th class="p-4 text-center">Acciones</th> </tr>
+                        <th class="p-4 text-center">Acciones</th> 
+                    </tr>
                 </thead>
                 <tbody id="tableBody" class="divide-y divide-gray-100 dark:divide-slate-700 bg-white dark:bg-slate-800"></tbody>
             </table>
@@ -299,6 +292,7 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getFirestore, collection, addDoc, getDocs, orderBy, query, Timestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
+        // CONFIG FIREBASE (TU CONFIGURACIÓN)
         const firebaseConfig = {
             apiKey: "AIzaSyBAuTfBKGuG33c9NXc1s0lkQv-7GwA47l0",
             authDomain: "figurarostro-system.firebaseapp.com",
@@ -312,9 +306,25 @@
         const db = getFirestore(app);
         const colName = "fichas_v3_multi";
 
-        window.dbCache = []; // AQUÍ SE GUARDAN LOS DATOS PARA RE-USAR
+        window.dbCache = []; // AQUÍ SE GUARDAN LOS DATOS TEMPORALMENTE
 
+        // --- NAVEGACIÓN Y VISTAS ---
         window.toggleDarkMode = () => { document.documentElement.classList.toggle('dark'); }
+
+        window.toggleView = (view) => {
+            if(view === 'list') {
+                // MODO BASE DE DATOS
+                document.getElementById('seccionFormulario').classList.add('hidden');
+                document.getElementById('seccionBaseDatos').classList.remove('hidden');
+                loadData();
+            } else {
+                // MODO FORMULARIO
+                document.getElementById('seccionFormulario').classList.remove('hidden');
+                document.getElementById('seccionBaseDatos').classList.add('hidden');
+            }
+        };
+
+        window.limpiarFormulario = function() { if(confirm("¿Nueva ficha vacía?")) location.reload(); }
 
         const generarFolio = () => { 
             const f = `REQ-${Date.now().toString().slice(-6)}`;
@@ -326,7 +336,7 @@
             document.querySelectorAll('.fecha-display').forEach(el => el.innerText = d);
         }
 
-        // CANVAS FIRMA
+        // --- CANVAS FIRMA ---
         let canvas, ctx, isDrawing = false;
         function initSignaturePad() {
             canvas = document.getElementById('signaturePad');
@@ -363,20 +373,7 @@
 
         window.addEventListener('load', () => { agregarServicio(); generarFolio(); setFecha(); initSignaturePad(); });
 
-        window.limpiarFormulario = function() { if(confirm("¿Nueva ficha vacía?")) location.reload(); }
-
-        window.toggleView = (view) => {
-            if(view === 'list') {
-                document.getElementById('printContainer').classList.add('hidden');
-                document.getElementById('viewList').classList.remove('hidden');
-                loadData();
-            } else {
-                document.getElementById('printContainer').classList.remove('hidden');
-                document.getElementById('viewList').classList.add('hidden');
-            }
-        };
-
-        // LÓGICA DE SERVICIOS
+        // --- LÓGICA DE SERVICIOS ---
         window.agregarServicio = function() {
             const container = document.getElementById('listaServicios');
             const id = Date.now() + Math.random();
@@ -447,7 +444,7 @@
             }
         }
 
-        // GUARDAR
+        // --- GUARDAR DATOS (FIREBASE) ---
         document.getElementById('btnSave').addEventListener('click', async () => {
             const btn = document.getElementById('btnSave');
             const nombre = document.getElementById('nombre').value;
@@ -492,23 +489,26 @@
             } catch (e) { alert(e.message); btn.innerHTML = txt; btn.disabled = false; }
         });
 
-        // CARGAR BASE DE DATOS
+        // --- CARGAR BASE DE DATOS (LECTURA) ---
         window.loadData = async () => {
             const tb = document.getElementById('tableBody'); 
             tb.innerHTML=''; 
             document.getElementById('loader').classList.remove('hidden');
-            window.dbCache = [];
+            window.dbCache = []; // Limpiamos la memoria
             
             const snap = await getDocs(query(collection(db, colName), orderBy("fecha", "desc")));
             document.getElementById('loader').classList.add('hidden');
             
             snap.forEach(doc => { 
                 const d=doc.data();
-                window.dbCache.push(d); // Guardamos en memoria para luego usarlo
+                const folioSafe = d.folio || "SIN-FOLIO"; // Protección por si no tiene folio
+                d.folio = folioSafe; // Aseguramos que el objeto tenga folio
+                
+                window.dbCache.push(d); // Guardamos en memoria para usar al dar clic
 
                 tb.innerHTML += `
                 <tr class="border-b dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-700">
-                    <td class="p-3 text-brand-main font-bold font-mono">${d.folio||'--'}</td>
+                    <td class="p-3 text-brand-main font-bold font-mono">${folioSafe}</td>
                     <td class="p-3 dark:text-gray-300">${d.fecha.toDate().toLocaleDateString()}</td>
                     <td class="p-3 font-bold dark:text-white">${d.paciente.nombre}</td>
                     <td class="p-3 text-right font-mono font-bold dark:text-gray-300">${d.finanzas.total}</td>
@@ -518,7 +518,7 @@
                         '<span class="text-rose-500 font-bold">DEBE</span>'}
                     </td>
                     <td class="p-3 text-center">
-                        <button onclick="verFicha('${d.folio}')" class="bg-blue-500 text-white px-3 py-1 rounded text-xs font-bold hover:bg-blue-600 transition">
+                        <button onclick="verFicha('${folioSafe}')" class="bg-blue-500 text-white px-3 py-1 rounded text-xs font-bold hover:bg-blue-600 transition shadow-sm">
                             <i class="fas fa-eye mr-1"></i> Ver / PDF
                         </button>
                     </td>
@@ -526,17 +526,18 @@
             });
         }
 
-        // --- FUNCIÓN NUEVA: RELLENAR FORMULARIO CON DATOS GUARDADOS ---
+        // --- FUNCIÓN CLAVE: RELLENAR FORMULARIO CON DATOS ---
         window.verFicha = (folioBuscado) => {
+            // Buscamos en la memoria local
             const registro = window.dbCache.find(r => r.folio === folioBuscado);
-            if(!registro) return alert("Error al cargar datos");
+            
+            if(!registro) {
+                alert("Error: No se encontraron los datos de este folio. Intenta actualizar la tabla.");
+                return;
+            }
 
-            // 1. Rellenar Folio y Fechas
+            // 1. Rellenar Datos del Paciente
             document.querySelectorAll('.folio-display').forEach(el => el.innerText = registro.folio);
-            // Nota: La fecha se dejará la de hoy o la del registro si prefieres, 
-            // pero para re-imprimir tal cual, idealmente no tocar la fecha de hoy.
-
-            // 2. Rellenar Paciente
             document.getElementById('nombre').value = registro.paciente.nombre || '';
             document.getElementById('cedula').value = registro.paciente.cedula || '';
             document.getElementById('telefono').value = registro.paciente.telefono || '';
@@ -544,9 +545,9 @@
             document.getElementById('ocupacion').value = registro.paciente.ocupacion || '';
             document.getElementById('direccion').value = registro.paciente.direccion || '';
             
-            // 3. Rellenar Servicios (Reconstruir HTML)
+            // 2. Rellenar Servicios (Reconstruimos el HTML)
             const sContainer = document.getElementById('listaServicios');
-            sContainer.innerHTML = ''; // Limpiar actuales
+            sContainer.innerHTML = ''; // Borramos lo que haya
             
             if(registro.servicios && registro.servicios.length > 0) {
                 registro.servicios.forEach(s => {
@@ -572,20 +573,20 @@
                 agregarServicio();
             }
 
-            // 4. Rellenar Finanzas
+            // 3. Rellenar Finanzas
             document.getElementById('abono').value = registro.finanzas.abono || 0;
-            // El especialista
             document.getElementById('specialistName').value = registro.medico.especialista || '';
 
-            // 5. Recalcular todo visualmente
+            // 4. Recalcular y Cambiar Vista
             calcularTotal();
-
-            // 6. Volver a la vista del formulario
-            toggleView('form');
-            alert("Datos cargados. Puedes imprimir el PDF ahora.");
+            toggleView('form'); // VOLVEMOS AL FORMULARIO
+            
+            // 5. Mensaje sutil
+            // No usamos alert para que sea fluido, o puedes poner uno si prefieres:
+            // alert("Datos cargados. Listo para imprimir.");
         }
 
-        // GENERAR PDF
+        // --- GENERAR PDF ---
         document.getElementById('btnPdf').addEventListener('click', () => {
             const el = document.getElementById('printContainer');
             const controls = document.querySelectorAll('.no-print, .btn-remove');
