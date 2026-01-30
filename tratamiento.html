@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>Sistema Clínico | Figura Rostro KG</title>
+    <title>Sistema Clínico V2 | Figura Rostro KG</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -27,7 +27,7 @@
 
     <style>
         /* Estilos Base */
-        body, div, input, select, button { transition: background-color 0.3s, border-color 0.3s, color 0.3s; }
+        body, div, input, select, button, textarea { transition: background-color 0.3s, border-color 0.3s, color 0.3s; }
         body { background-color: #fdf4ff; color: #374151; touch-action: pan-y; }
         .dark body { background-color: #0f172a; color: #e2e8f0; }
         
@@ -66,7 +66,6 @@
         }
         .dark .section-header { color: #e879f9; border-color: #475569; }
 
-        .custom-check { accent-color: #d946ef; width: 1rem; height: 1rem; cursor: pointer; }
         .page-break { page-break-after: always; margin-bottom: 2rem; }
 
         /* MODO IMPRESIÓN */
@@ -76,7 +75,7 @@
             .no-print { display: none !important; }
             .paper-sheet { box-shadow: none !important; margin: 0 !important; border: none !important; min-height: 0 !important; }
             .header-gradient { -webkit-print-color-adjust: exact; print-color-adjust: exact; color: white !important; }
-            .input-pro { border: 1px solid #ccc !important; background-color: white !important; color: black !important; }
+            .input-pro, textarea { border: 1px solid #ccc !important; background-color: white !important; color: black !important; }
             canvas { border: 1px solid #ccc !important; }
         }
 
@@ -126,7 +125,7 @@
                     </div>
                 </div>
 
-                <div class="p-8">
+                <div class="p-8 pb-4">
                     <form id="formPart1">
                         <div class="section-header mt-0"><i class="fas fa-user-circle text-lg"></i> Datos del Paciente</div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -150,7 +149,7 @@
                                 <div class="flex-1"><label class="label-pro">Ocupación</label><input type="text" id="ocupacion" class="input-pro"></div>
                             </div>
                         </div>
-                        <div class="mb-6"><label class="label-pro">Dirección</label><input type="text" id="direccion" class="input-pro"></div>
+                        <div class="mb-4"><label class="label-pro">Dirección</label><input type="text" id="direccion" class="input-pro"></div>
 
                         <div class="flex justify-between items-end border-b-2 border-fuchsia-100 dark:border-slate-700 pb-2 mt-6 mb-3">
                             <div class="section-header border-0 m-0 w-full"><i class="fas fa-spa text-lg"></i> Tratamientos</div>
@@ -158,14 +157,12 @@
                                 <i class="fas fa-plus text-green-500 mr-1.5"></i> AGREGAR
                             </button>
                         </div>
-                        
-                        <div id="listaServicios" class="mb-6 min-h-[50px]"></div>
+                        <div id="listaServicios" class="mb-4 min-h-[50px]"></div>
 
-                        <div class="bg-gray-50 dark:bg-slate-800/50 p-5 rounded-xl border border-gray-200 dark:border-slate-600 mb-4">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                <div class="space-y-3">
+                        <div class="bg-gray-50 dark:bg-slate-800/50 p-4 rounded-xl border border-gray-200 dark:border-slate-600 mb-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="space-y-2">
                                     <div class="flex justify-between items-center"><label class="label-pro text-gray-500 dark:text-gray-400">Subtotal</label><input type="text" id="subtotal" class="input-pro w-28 text-right bg-transparent border-none font-bold text-gray-500 dark:text-gray-300" readonly value="$0.00"></div>
-                                    <hr class="border-gray-200 dark:border-slate-600">
                                     <div class="flex justify-between items-center">
                                         <label class="label-pro text-brand-main dark:text-fuchsia-400">Descuento (%)</label>
                                         <div class="flex gap-1">
@@ -180,15 +177,49 @@
                                     <div class="flex justify-between items-center pt-1"><label class="label-pro text-brand-main dark:text-fuchsia-400">Bono Extra ($)</label><input type="number" id="bono_extra" class="input-pro w-28 text-right border-fuchsia-200 dark:border-slate-500 text-brand-main dark:text-fuchsia-300 font-bold" placeholder="0.00" oninput="calcularTotal()"></div>
                                 </div>
                                 <div class="bg-white dark:bg-slate-900 p-4 border-2 border-fuchsia-50 dark:border-slate-600 rounded-xl shadow-sm flex flex-col justify-between relative">
-                                    <div class="flex justify-between items-end mb-3 relative z-10"><span class="text-xs font-bold text-gray-400 uppercase">Total</span><span id="lblTotal" class="text-2xl font-black text-gray-800 dark:text-white font-mono">$0.00</span></div>
-                                    <div class="flex justify-between items-center mb-3 bg-green-50 dark:bg-slate-800 p-2 rounded border border-green-100 dark:border-slate-600 relative z-10"><span class="text-[9px] font-bold text-green-700 uppercase">Abono Hoy</span><input type="number" id="abono" class="w-24 bg-transparent text-right font-black text-xl text-green-600 outline-none" placeholder="0" oninput="calcularTotal()"></div>
-                                    <div class="border-t border-dashed border-gray-200 dark:border-slate-600 pt-2 flex justify-between items-end relative z-10"><span class="text-[10px] font-bold text-gray-400 uppercase">Pendiente</span><span id="lblPendiente" class="text-xl font-bold text-rose-500 font-mono">$0.00</span></div>
+                                    <div class="flex justify-between items-end mb-2 relative z-10"><span class="text-xs font-bold text-gray-400 uppercase">Total a Pagar</span><span id="lblTotal" class="text-2xl font-black text-gray-800 dark:text-white font-mono">$0.00</span></div>
+                                    <div class="flex justify-between items-center mb-2 bg-green-50 dark:bg-slate-800 p-2 rounded border border-green-100 dark:border-slate-600 relative z-10"><span class="text-[9px] font-bold text-green-700 uppercase">Abono Inicial</span><input type="number" id="abono" class="w-24 bg-transparent text-right font-black text-xl text-green-600 outline-none" placeholder="0" oninput="calcularTotal()"></div>
+                                    <div class="border-t border-dashed border-gray-200 dark:border-slate-600 pt-2 flex justify-between items-end relative z-10"><span class="text-[10px] font-bold text-gray-400 uppercase">Saldo Pendiente</span><span id="lblPendiente" class="text-xl font-bold text-rose-500 font-mono">$0.00</span></div>
                                 </div>
                             </div>
                         </div>
+
+                        <div id="seccionFinanciamiento" class="hidden bg-indigo-50 dark:bg-slate-800/80 p-4 rounded-xl border border-indigo-200 dark:border-indigo-900 mb-4">
+                            <div class="section-header mt-0 text-indigo-700 dark:text-indigo-400 border-indigo-200"><i class="fas fa-hand-holding-usd"></i> Plan de Financiamiento (Saldo Pendiente)</div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                                <div class="p-3 bg-white dark:bg-slate-900 rounded-lg border border-indigo-100 dark:border-slate-700">
+                                    <label class="label-pro text-indigo-600 dark:text-indigo-400 mb-2">Referencia Personal (Garante)</label>
+                                    <input type="text" id="ref_nombre" class="input-pro mb-2" placeholder="Nombre Completo Referencia">
+                                    <input type="tel" id="ref_celular" class="input-pro" placeholder="Celular / Teléfono">
+                                </div>
+                                <div class="p-3 bg-white dark:bg-slate-900 rounded-lg border border-indigo-100 dark:border-slate-700">
+                                    <label class="label-pro text-indigo-600 dark:text-indigo-400 mb-2">Configuración de Cuotas</label>
+                                    <div class="flex gap-2 mb-2">
+                                        <div class="flex-1">
+                                            <label class="text-[9px] font-bold text-gray-500">Cuotas Quincenales</label>
+                                            <input type="number" id="num_cuotas" class="input-pro text-center font-bold" value="1" min="1" max="12" oninput="calcCuotas()">
+                                        </div>
+                                        <div class="flex-1">
+                                            <label class="text-[9px] font-bold text-gray-500">Inicio 1er Pago</label>
+                                            <input type="date" id="fecha_inicio_pago" class="input-pro text-xs px-1">
+                                        </div>
+                                    </div>
+                                    <div class="text-right text-xs font-bold text-indigo-600 dark:text-indigo-300 bg-indigo-50 dark:bg-slate-800 p-2 rounded">
+                                        Valor Cuota: <span id="val_cuota_display" class="text-lg">$0.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4">
+                            <label class="label-pro flex items-center gap-2"><i class="fas fa-comment-medical"></i> Observaciones Clínicas / Notas Especiales</label>
+                            <textarea id="observaciones" rows="3" class="input-pro w-full resize-none leading-relaxed" placeholder="Escriba aquí cualquier detalle importante del tratamiento o del paciente..."></textarea>
+                        </div>
+
                     </form>
                 </div>
-                <div class="absolute bottom-4 right-8 text-[9px] text-gray-400">Página 1 de 2</div>
+                <div class="absolute bottom-2 right-8 text-[9px] text-gray-400">Página 1 de 2</div>
             </div>
 
             <div id="page2" class="paper-sheet rounded-b-2xl border border-gray-200 dark:border-slate-700">
@@ -206,7 +237,7 @@
                 </div>
 
                 <div class="p-8">
-                    <div class="section-header mt-0"><i class="fas fa-file-contract"></i> Consentimiento Informado</div>
+                    <div class="section-header mt-0"><i class="fas fa-file-contract"></i> Consentimiento Informado & Términos</div>
                     <div class="mb-5 bg-gray-50 dark:bg-slate-800/50 p-4 border border-gray-200 dark:border-slate-600 rounded-xl">
                         <p class="label-pro mb-3 text-gray-400">Declaración de Antecedentes (Marque si aplica):</p>
                         <div class="flex flex-wrap gap-3 text-[9px] text-gray-600 dark:text-gray-300 font-bold uppercase">
@@ -215,7 +246,6 @@
                             <label class="flex items-center gap-2 border px-2 py-1 rounded hover:bg-white dark:hover:bg-slate-700 transition"><input type="checkbox" id="m_alergias" class="accent-fuchsia-600"> Alergias</label>
                             <label class="flex items-center gap-2 border px-2 py-1 rounded hover:bg-white dark:hover:bg-slate-700 transition"><input type="checkbox" id="m_embarazo" class="accent-fuchsia-600"> Embarazo</label>
                             <label class="flex items-center gap-2 border px-2 py-1 rounded hover:bg-white dark:hover:bg-slate-700 transition"><input type="checkbox" id="m_keloides" class="accent-fuchsia-600"> Keloide</label>
-                            <label class="flex items-center gap-2 border px-2 py-1 rounded hover:bg-white dark:hover:bg-slate-700 transition"><input type="checkbox" id="m_implantes" class="accent-fuchsia-600"> Implantes Previos</label>
                         </div>
                     </div>
 
@@ -223,14 +253,14 @@
                         <div class="text-[9px] text-gray-600 dark:text-gray-400 leading-relaxed space-y-2 h-64 overflow-y-auto pr-2 font-medium">
                             <p><strong>1. DECLARACIÓN DE VERACIDAD:</strong> Yo, el paciente identificado en la hoja 1, declaro que toda la información médica y personal proporcionada es verdadera y completa.</p>
                             <p><strong>2. NATURALEZA DEL PROCEDIMIENTO:</strong> Autorizo a <strong>Figura Rostro KG</strong> a realizar los procedimientos estéticos de rejuvenecimiento no invasivo descritos.</p>
-                            <p><strong>3. RESULTADOS Y GARANTÍAS:</strong> Entiendo que la medicina estética no es una ciencia exacta. <strong>No se ofrecen garantías explícitas</strong>.</p>
-                            <p><strong>4. CUIDADOS POSTERIORES (OBLIGATORIO):</strong> Me comprometo a seguir estrictamente las indicaciones post-tratamiento.</p>
+                            <p><strong>3. COMPROMISO DE PAGO (CLAUSULA OBLIGATORIA):</strong> Al existir un saldo pendiente detallado en la sección financiera, <strong>me comprometo incondicionalmente a pagar a FIGURA ROSTRO KG, o a sus dueños y asociados</strong>, el saldo restante total en las fechas estipuladas en el plan de financiamiento. Entiendo que el incumplimiento de estos pagos faculta a la clínica para tomar las medidas de cobro pertinentes.</p>
+                            <p><strong>4. RESULTADOS:</strong> Entiendo que la medicina estética no es una ciencia exacta. <strong>No se ofrecen garantías explícitas</strong> sobre resultados específicos.</p>
                             <p><strong>5. USO DE IMAGEN:</strong> Autorizo la toma de fotografías "Antes y Después" para mi expediente clínico privado.</p>
                         </div>
                         <div class="mt-4 pt-4 border-t border-gray-200 dark:border-slate-600">
                             <label class="flex items-center gap-3 cursor-pointer group w-fit">
                                 <input type="checkbox" id="check_legal" class="accent-fuchsia-600 w-4 h-4">
-                                <span class="text-[10px] font-extrabold text-gray-800 dark:text-white group-hover:text-brand-main uppercase tracking-wide">He leído, comprendo y acepto todos los términos y condiciones.</span>
+                                <span class="text-[10px] font-extrabold text-gray-800 dark:text-white group-hover:text-brand-main uppercase tracking-wide">He leído y acepto incondicionalmente los términos y condiciones.</span>
                             </label>
                         </div>
                     </div>
@@ -307,6 +337,7 @@
         const colName = "pacientes_2026_oficial";
 
         window.dbCache = [];
+        window.saldoPendienteGlobal = 0;
 
         window.toggleDarkMode = () => { document.documentElement.classList.toggle('dark'); }
 
@@ -347,6 +378,7 @@
             document.querySelectorAll('.fecha-display').forEach(el => el.innerText = d);
         }
 
+        // Configuración de Firma
         let canvas, ctx, isDrawing = false;
         function initSignaturePad() {
             canvas = document.getElementById('signaturePad');
@@ -430,6 +462,8 @@
             const total = sub - desc - bono;
             const abono = parseFloat(document.getElementById('abono').value) || 0;
             const pend = total - abono;
+            
+            window.saldoPendienteGlobal = pend;
 
             document.getElementById('subtotal').value = "$" + sub.toFixed(2);
             document.getElementById('descuento_txt').innerText = desc > 0 ? `- $${desc.toFixed(2)}` : "";
@@ -438,9 +472,27 @@
             const elPend = document.getElementById('lblPendiente'); 
             elPend.innerText = "$" + pend.toFixed(2);
             
+            // Lógica Mostrar Financiamiento
+            const finSection = document.getElementById('seccionFinanciamiento');
+            
             if(pend <= 0.1 && total > 0) {
-                elPend.innerText = "PAGADO"; elPend.className = "text-2xl font-black text-green-500 font-mono";
-            } else { elPend.className = "text-2xl font-black text-rose-500 font-mono"; }
+                elPend.innerText = "PAGADO"; 
+                elPend.className = "text-2xl font-black text-green-500 font-mono";
+                finSection.classList.add('hidden'); // Si pagó todo, ocultar financiamiento
+            } else if (pend > 0.1) {
+                elPend.className = "text-2xl font-black text-rose-500 font-mono";
+                finSection.classList.remove('hidden'); // Mostrar financiamiento si debe
+                calcCuotas(); // Recalcular cuotas
+            } else {
+                finSection.classList.add('hidden');
+            }
+        }
+
+        window.calcCuotas = () => {
+            if(window.saldoPendienteGlobal <= 0) return;
+            const n = parseInt(document.getElementById('num_cuotas').value) || 1;
+            const val = window.saldoPendienteGlobal / n;
+            document.getElementById('val_cuota_display').innerText = "$" + val.toFixed(2);
         }
 
         window.calcularEdad = () => {
@@ -453,12 +505,12 @@
             }
         }
 
-        // --- GUARDAR (Ahora sí guardamos descuentos y bonos) ---
+        // --- GUARDAR ---
         document.getElementById('btnSave').addEventListener('click', async () => {
             const btn = document.getElementById('btnSave');
             const nombre = document.getElementById('nombre').value;
             if(!nombre) return alert("⚠️ Falta Nombre");
-            if(!document.getElementById('check_legal').checked) return alert("⚠️ Acepta Términos");
+            if(!document.getElementById('check_legal').checked) return alert("⚠️ Acepta Términos y Condiciones");
 
             let lista = [];
             document.querySelectorAll('.service-row').forEach(r => {
@@ -473,6 +525,22 @@
 
             try {
                 const folioActual = document.querySelector('.folio-display').innerText;
+                
+                // Datos de financiamiento
+                const finData = {
+                    subtotal: document.getElementById('subtotal').value, 
+                    total: document.getElementById('lblTotal').innerText, 
+                    abono: document.getElementById('abono').value, 
+                    pendiente: document.getElementById('lblPendiente').innerText,
+                    descuentoPct: document.getElementById('promo_pct').value,
+                    bono: document.getElementById('bono_extra').value,
+                    // Nuevos datos del plan de pagos
+                    referenciaNombre: document.getElementById('ref_nombre').value,
+                    referenciaCelular: document.getElementById('ref_celular').value,
+                    cuotas: document.getElementById('num_cuotas').value,
+                    fechaInicioPago: document.getElementById('fecha_inicio_pago').value
+                };
+
                 await addDoc(collection(db, colName), {
                     folio: folioActual,
                     paciente: { 
@@ -484,15 +552,8 @@
                         direccion: document.getElementById('direccion').value 
                     },
                     servicios: lista,
-                    finanzas: { 
-                        subtotal: document.getElementById('subtotal').value, 
-                        total: document.getElementById('lblTotal').innerText, 
-                        abono: document.getElementById('abono').value, 
-                        pendiente: document.getElementById('lblPendiente').innerText,
-                        // ¡IMPORTANTE! Guardamos variables de cálculo
-                        descuentoPct: document.getElementById('promo_pct').value,
-                        bono: document.getElementById('bono_extra').value
-                    },
+                    finanzas: finData,
+                    observaciones: document.getElementById('observaciones').value, // Nueva observación
                     medico: { especialista: document.getElementById('specialistName').value },
                     fecha: Timestamp.now()
                 });
@@ -517,7 +578,6 @@
                     d.paciente = d.paciente || { nombre: "Sin Nombre" };
                     d.finanzas = d.finanzas || { total: "$0.00", pendiente: "DEBE" };
                     d.servicios = d.servicios || [];
-                    d.medico = d.medico || {};
                     
                     window.dbCache.push(d);
 
@@ -547,15 +607,11 @@
             document.getElementById('loader').classList.add('hidden');
         }
 
-        // --- RESTAURAR FICHA (Ahora restaura descuentos) ---
+        // --- VER FICHA ---
         window.verFicha = (folioBuscado) => {
             try {
                 const registro = window.dbCache.find(r => r.folio === folioBuscado);
-                
-                if(!registro) {
-                    alert("No se encontró el registro en memoria. Intenta dar clic en 'Actualizar'.");
-                    return;
-                }
+                if(!registro) return alert("No se encontró el registro en memoria. Actualiza.");
 
                 document.querySelectorAll('.folio-display').forEach(el => el.innerText = registro.folio || '---');
                 
@@ -567,9 +623,9 @@
                 document.getElementById('ocupacion').value = p.ocupacion || '';
                 document.getElementById('direccion').value = p.direccion || '';
                 
+                // Servicios
                 const sContainer = document.getElementById('listaServicios');
                 sContainer.innerHTML = ''; 
-                
                 const servicios = registro.servicios || [];
                 if(servicios.length > 0) {
                     servicios.forEach(s => {
@@ -591,16 +647,22 @@
                         </div>`;
                         sContainer.insertAdjacentHTML('beforeend', html);
                     });
-                } else {
-                    agregarServicio();
-                }
+                } else { agregarServicio(); }
 
+                // Finanzas y Observaciones
                 const f = registro.finanzas || {};
                 document.getElementById('abono').value = f.abono || 0;
-                
-                // --- RESTAURAR DESCUENTOS Y BONOS ---
                 document.getElementById('promo_pct').value = f.descuentoPct || 0;
                 document.getElementById('bono_extra').value = f.bono || 0;
+                
+                // Datos del Financiamiento
+                document.getElementById('ref_nombre').value = f.referenciaNombre || '';
+                document.getElementById('ref_celular').value = f.referenciaCelular || '';
+                document.getElementById('num_cuotas').value = f.cuotas || 1;
+                document.getElementById('fecha_inicio_pago').value = f.fechaInicioPago || '';
+
+                // Observaciones
+                document.getElementById('observaciones').value = registro.observaciones || '';
 
                 const m = registro.medico || {};
                 document.getElementById('specialistName').value = m.especialista || '';
@@ -608,10 +670,7 @@
                 calcularTotal();
                 toggleView('form'); 
                 
-            } catch (error) {
-                console.error(error);
-                alert("Ocurrió un error al abrir este archivo: " + error.message);
-            }
+            } catch (error) { console.error(error); alert("Error al abrir archivo."); }
         }
 
         document.getElementById('btnPdf').addEventListener('click', () => {
