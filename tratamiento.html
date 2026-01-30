@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>Sistema Clínico V2 | Figura Rostro KG</title>
+    <title>Sistema Clínico V3 | Figura Rostro KG</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -77,12 +77,17 @@
             .header-gradient { -webkit-print-color-adjust: exact; print-color-adjust: exact; color: white !important; }
             .input-pro, textarea { border: 1px solid #ccc !important; background-color: white !important; color: black !important; }
             canvas { border: 1px solid #ccc !important; }
+            .deduction-row { color: #dc2626 !important; } /* Rojo para impresiones a color */
         }
 
         /* Botones Menú */
         .nav-btn-active { background-color: #9333ea; color: white; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
         .nav-btn-inactive { background-color: transparent; color: #6b7280; }
         .dark .nav-btn-inactive { color: #94a3b8; }
+
+        /* Estilos nuevos V3 */
+        .btn-abono { @apply text-[9px] font-bold px-2 py-1 rounded border transition hover:scale-105; }
+        .deduction-row { @apply flex justify-between items-center text-xs font-bold text-rose-500 py-1 border-b border-dashed border-rose-100 dark:border-slate-700; }
     </style>
 </head>
 <body class="p-4 pt-20">
@@ -152,61 +157,103 @@
                         <div class="mb-4"><label class="label-pro">Dirección</label><input type="text" id="direccion" class="input-pro"></div>
 
                         <div class="flex justify-between items-end border-b-2 border-fuchsia-100 dark:border-slate-700 pb-2 mt-6 mb-3">
-                            <div class="section-header border-0 m-0 w-full"><i class="fas fa-spa text-lg"></i> Tratamientos</div>
+                            <div class="section-header border-0 m-0 w-full"><i class="fas fa-spa text-lg"></i> Lista de Servicios y Productos</div>
                             <button type="button" onclick="agregarServicio()" class="text-[10px] bg-fuchsia-50 hover:bg-fuchsia-100 text-fuchsia-900 border border-fuchsia-200 dark:bg-slate-700 dark:text-white dark:border-slate-600 px-3 py-1.5 rounded-full transition no-print font-bold flex items-center shadow-sm">
-                                <i class="fas fa-plus text-green-500 mr-1.5"></i> AGREGAR
+                                <i class="fas fa-plus text-green-500 mr-1.5"></i> AGREGAR ÍTEM
                             </button>
                         </div>
                         <div id="listaServicios" class="mb-4 min-h-[50px]"></div>
 
-                        <div class="bg-gray-50 dark:bg-slate-800/50 p-4 rounded-xl border border-gray-200 dark:border-slate-600 mb-4">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div class="space-y-2">
-                                    <div class="flex justify-between items-center"><label class="label-pro text-gray-500 dark:text-gray-400">Subtotal</label><input type="text" id="subtotal" class="input-pro w-28 text-right bg-transparent border-none font-bold text-gray-500 dark:text-gray-300" readonly value="$0.00"></div>
-                                    <div class="flex justify-between items-center">
-                                        <label class="label-pro text-brand-main dark:text-fuchsia-400">Descuento (%)</label>
-                                        <div class="flex gap-1">
-                                            <button type="button" onclick="setPromo(0.10)" class="w-8 py-1 text-[9px] bg-white dark:bg-slate-700 border rounded font-bold hover:bg-fuchsia-100 transition dark:text-white">10%</button>
-                                            <button type="button" onclick="setPromo(0.20)" class="w-8 py-1 text-[9px] bg-white dark:bg-slate-700 border rounded font-bold hover:bg-fuchsia-100 transition dark:text-white">20%</button>
-                                            <button type="button" onclick="setPromo(0.30)" class="w-8 py-1 text-[9px] bg-white dark:bg-slate-700 border rounded font-bold hover:bg-fuchsia-100 transition dark:text-white">30%</button>
-                                            <button type="button" onclick="resetDesc()" class="text-red-400 px-2 font-bold hover:text-red-600"><i class="fas fa-times"></i></button>
+                        <div class="bg-gray-50 dark:bg-slate-800/50 p-5 rounded-xl border border-gray-200 dark:border-slate-600 mb-4 shadow-sm">
+                            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+                                
+                                <div class="md:col-span-5 space-y-4 border-r border-gray-200 dark:border-slate-700 pr-4">
+                                    <div>
+                                        <label class="label-pro text-brand-main dark:text-fuchsia-400 mb-2">Aplicar Descuento Global (%)</label>
+                                        <div class="flex gap-2">
+                                            <button type="button" onclick="setPromo(0.10)" class="flex-1 py-2 text-[10px] bg-white dark:bg-slate-700 border rounded-lg font-bold hover:bg-fuchsia-50 transition dark:text-white hover:border-fuchsia-300 text-fuchsia-800">10% OFF</button>
+                                            <button type="button" onclick="setPromo(0.20)" class="flex-1 py-2 text-[10px] bg-white dark:bg-slate-700 border rounded-lg font-bold hover:bg-fuchsia-50 transition dark:text-white hover:border-fuchsia-300 text-fuchsia-800">20% OFF</button>
+                                            <button type="button" onclick="setPromo(0.30)" class="flex-1 py-2 text-[10px] bg-white dark:bg-slate-700 border rounded-lg font-bold hover:bg-fuchsia-50 transition dark:text-white hover:border-fuchsia-300 text-fuchsia-800">30% OFF</button>
+                                        </div>
+                                        <div class="flex justify-between items-center mt-2">
+                                            <span class="text-[9px] font-bold text-gray-400" id="promo_active_label">Sin descuento activo</span>
+                                            <button type="button" onclick="resetDesc()" class="text-xs text-red-400 hover:text-red-600 font-bold px-2"><i class="fas fa-trash-alt"></i> Quitar</button>
                                         </div>
                                     </div>
+                                    <div class="pt-2 border-t border-gray-100 dark:border-slate-700">
+                                        <label class="label-pro text-brand-main dark:text-fuchsia-400">Bono de Regalo / Otro Descuento ($)</label>
+                                        <input type="number" id="bono_extra" class="input-pro text-right border-fuchsia-200 dark:border-slate-500 text-brand-main dark:text-fuchsia-300 font-bold" placeholder="0.00" oninput="calcularTotal()">
+                                    </div>
                                     <input type="hidden" id="promo_pct" value="0">
-                                    <div class="text-right text-[10px] text-brand-light font-mono font-bold" id="descuento_txt"></div>
-                                    <div class="flex justify-between items-center pt-1"><label class="label-pro text-brand-main dark:text-fuchsia-400">Bono Extra ($)</label><input type="number" id="bono_extra" class="input-pro w-28 text-right border-fuchsia-200 dark:border-slate-500 text-brand-main dark:text-fuchsia-300 font-bold" placeholder="0.00" oninput="calcularTotal()"></div>
                                 </div>
-                                <div class="bg-white dark:bg-slate-900 p-4 border-2 border-fuchsia-50 dark:border-slate-600 rounded-xl shadow-sm flex flex-col justify-between relative">
-                                    <div class="flex justify-between items-end mb-2 relative z-10"><span class="text-xs font-bold text-gray-400 uppercase">Total a Pagar</span><span id="lblTotal" class="text-2xl font-black text-gray-800 dark:text-white font-mono">$0.00</span></div>
-                                    <div class="flex justify-between items-center mb-2 bg-green-50 dark:bg-slate-800 p-2 rounded border border-green-100 dark:border-slate-600 relative z-10"><span class="text-[9px] font-bold text-green-700 uppercase">Abono Inicial</span><input type="number" id="abono" class="w-24 bg-transparent text-right font-black text-xl text-green-600 outline-none" placeholder="0" oninput="calcularTotal()"></div>
-                                    <div class="border-t border-dashed border-gray-200 dark:border-slate-600 pt-2 flex justify-between items-end relative z-10"><span class="text-[10px] font-bold text-gray-400 uppercase">Saldo Pendiente</span><span id="lblPendiente" class="text-xl font-bold text-rose-500 font-mono">$0.00</span></div>
+
+                                <div class="md:col-span-7 flex flex-col justify-between pl-2">
+                                    <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-inner border border-gray-100 dark:border-slate-700 h-full flex flex-col justify-between">
+                                        <div class="space-y-1 mb-4">
+                                            <div class="flex justify-between items-center text-sm font-bold text-gray-600 dark:text-gray-300">
+                                                <span>Subtotal Servicios:</span>
+                                                <input type="text" id="subtotal" class="w-28 text-right bg-transparent border-none font-black text-gray-700 dark:text-gray-200 outline-none" readonly value="$0.00">
+                                            </div>
+                                            
+                                            <div id="listaDeducciones"></div>
+                                            
+                                            <div class="border-t-2 border-gray-200 dark:border-slate-600 my-2 pt-2 flex justify-between items-end relative z-10">
+                                                <span class="text-xs font-black text-brand-dark dark:text-white uppercase">Total a Pagar:</span>
+                                                <span id="lblTotal" class="text-3xl font-black text-brand-main dark:text-fuchsia-400 font-mono leading-none">$0.00</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="bg-green-50 dark:bg-slate-800/80 p-3 rounded-lg border border-green-100 dark:border-slate-700">
+                                            <div class="flex justify-between items-center mb-2">
+                                                <span class="text-[9px] font-bold text-green-700 uppercase">Abono Rápido:</span>
+                                                <div class="flex gap-1">
+                                                    <button type="button" onclick="setAbonoPercent(0.20)" class="btn-abono bg-green-100 text-green-800 border-green-200 hover:bg-green-200 dark:bg-slate-700 dark:text-green-400 dark:border-slate-600">20%</button>
+                                                    <button type="button" onclick="setAbonoPercent(0.30)" class="btn-abono bg-green-100 text-green-800 border-green-200 hover:bg-green-200 dark:bg-slate-700 dark:text-green-400 dark:border-slate-600">30%</button>
+                                                    <button type="button" onclick="setAbonoPercent(0.50)" class="btn-abono bg-green-100 text-green-800 border-green-200 hover:bg-green-200 dark:bg-slate-700 dark:text-green-400 dark:border-slate-600">50%</button>
+                                                </div>
+                                            </div>
+                                            <div class="flex justify-between items-center">
+                                                <label for="abono" class="text-xs font-bold text-green-700 uppercase">Abono Inicial ($):</label>
+                                                <input type="number" id="abono" class="w-32 bg-white dark:bg-slate-700 border border-green-200 dark:border-slate-600 rounded p-1 text-right font-black text-xl text-green-600 outline-none" placeholder="0.00" oninput="calcularTotal()">
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-3 pt-2 border-t border-dashed border-gray-300 dark:border-slate-600 flex justify-between items-end">
+                                            <span class="text-[10px] font-bold text-gray-400 uppercase">Saldo Pendiente:</span>
+                                            <span id="lblPendiente" class="text-xl font-bold text-rose-500 font-mono">$0.00</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div id="seccionFinanciamiento" class="hidden bg-indigo-50 dark:bg-slate-800/80 p-4 rounded-xl border border-indigo-200 dark:border-indigo-900 mb-4">
-                            <div class="section-header mt-0 text-indigo-700 dark:text-indigo-400 border-indigo-200"><i class="fas fa-hand-holding-usd"></i> Plan de Financiamiento (Saldo Pendiente)</div>
+                        <div id="seccionFinanciamiento" class="hidden bg-indigo-50 dark:bg-slate-800/80 p-4 rounded-xl border-2 border-indigo-200 dark:border-indigo-900 mb-4 shadow-md">
+                            <div class="section-header mt-0 text-indigo-700 dark:text-indigo-400 border-indigo-200 mb-3"><i class="fas fa-hand-holding-usd mr-2"></i> Plan de Financiamiento (Saldo Pendiente)</div>
+                            <p class="text-[10px] font-bold text-indigo-500 mb-4">Complete esta sección para diferir el pago del saldo pendiente.</p>
                             
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
-                                <div class="p-3 bg-white dark:bg-slate-900 rounded-lg border border-indigo-100 dark:border-slate-700">
-                                    <label class="label-pro text-indigo-600 dark:text-indigo-400 mb-2">Referencia Personal (Garante)</label>
-                                    <input type="text" id="ref_nombre" class="input-pro mb-2" placeholder="Nombre Completo Referencia">
-                                    <input type="tel" id="ref_celular" class="input-pro" placeholder="Celular / Teléfono">
+                                <div class="p-4 bg-white dark:bg-slate-900 rounded-xl border border-indigo-100 dark:border-slate-700">
+                                    <label class="label-pro text-indigo-600 dark:text-indigo-400 mb-3 flex items-center"><i class="fas fa-user-friends mr-1"></i> Referencia Personal (Garante)</label>
+                                    <input type="text" id="ref_nombre" class="input-pro mb-3 bg-indigo-50/30 border-indigo-100" placeholder="Nombre Completo Referencia">
+                                    <input type="tel" id="ref_celular" class="input-pro bg-indigo-50/30 border-indigo-100" placeholder="Celular / Teléfono">
                                 </div>
-                                <div class="p-3 bg-white dark:bg-slate-900 rounded-lg border border-indigo-100 dark:border-slate-700">
-                                    <label class="label-pro text-indigo-600 dark:text-indigo-400 mb-2">Configuración de Cuotas</label>
-                                    <div class="flex gap-2 mb-2">
-                                        <div class="flex-1">
-                                            <label class="text-[9px] font-bold text-gray-500">Cuotas Quincenales</label>
-                                            <input type="number" id="num_cuotas" class="input-pro text-center font-bold" value="1" min="1" max="12" oninput="calcCuotas()">
-                                        </div>
-                                        <div class="flex-1">
-                                            <label class="text-[9px] font-bold text-gray-500">Inicio 1er Pago</label>
-                                            <input type="date" id="fecha_inicio_pago" class="input-pro text-xs px-1">
+                                <div class="p-4 bg-white dark:bg-slate-900 rounded-xl border border-indigo-100 dark:border-slate-700 flex flex-col justify-between">
+                                    <div>
+                                        <label class="label-pro text-indigo-600 dark:text-indigo-400 mb-3 flex items-center"><i class="fas fa-calendar-alt mr-1"></i> Configuración de Cuotas</label>
+                                        <div class="flex gap-3 mb-3">
+                                            <div class="flex-1">
+                                                <label class="text-[9px] font-bold text-gray-500 mb-1 block">Cuotas Quincenales</label>
+                                                <input type="number" id="num_cuotas" class="input-pro text-center font-black text-indigo-700 text-lg" value="1" min="1" max="24" oninput="calcCuotas()">
+                                            </div>
+                                            <div class="flex-[1.5]">
+                                                <label class="text-[9px] font-bold text-gray-500 mb-1 block">Inicio 1er Pago</label>
+                                                <input type="date" id="fecha_inicio_pago" class="input-pro text-xs px-2 h-[38px]">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="text-right text-xs font-bold text-indigo-600 dark:text-indigo-300 bg-indigo-50 dark:bg-slate-800 p-2 rounded">
-                                        Valor Cuota: <span id="val_cuota_display" class="text-lg">$0.00</span>
+                                    <div class="flex justify-between items-center bg-indigo-100 dark:bg-indigo-900 p-3 rounded-lg">
+                                        <span class="text-xs font-bold text-indigo-700 dark:text-indigo-300">Valor por Cuota:</span>
+                                        <span id="val_cuota_display" class="text-xl font-black text-indigo-800 dark:text-indigo-200">$0.00</span>
                                     </div>
                                 </div>
                             </div>
@@ -334,10 +381,11 @@
 
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
-        const colName = "pacientes_2026_oficial";
+        const colName = "pacientes_2026_oficial_v3"; // Cambiado nombre colección para V3
 
         window.dbCache = [];
         window.saldoPendienteGlobal = 0;
+        window.totalCalculadoGlobal = 0;
 
         window.toggleDarkMode = () => { document.documentElement.classList.toggle('dark'); }
 
@@ -415,6 +463,7 @@
 
         window.addEventListener('load', () => { agregarServicio(); generarFolio(); setFecha(); initSignaturePad(); });
 
+        // NUEVA LISTA DE SERVICIOS V3
         window.agregarServicio = function() {
             const container = document.getElementById('listaServicios');
             const id = Date.now() + Math.random();
@@ -422,14 +471,25 @@
                 <div class="service-row" id="row-${id}">
                     <div>
                         <select class="input-pro cursor-pointer s-type font-bold" onchange="checkZone(this)">
-                            <option value="Plasma Fibroblast">Plasma Fibroblast</option>
-                            <option value="Limpieza Facial">Limpieza Facial</option>
-                            <option value="Dermapen">Dermapen</option>
-                            <option value="Hidratación">Hidratación</option>
-                            <option value="Otro">Otro</option>
+                            <option value="" disabled selected>-- Seleccionar Ítem --</option>
+                            <optgroup label="Tratamientos Principales">
+                                <option value="Plasma Fibroblast">Plasma Fibroblast</option>
+                                <option value="Peeling Quimico">Peeling Químico</option>
+                                <option value="Tratamiento Facial">Tratamiento Facial (Limpieza/Hidra)</option>
+                                <option value="Tratamiento Corporal">Tratamiento Corporal</option>
+                            </optgroup>
+                            <optgroup label="Complementarios">
+                                <option value="Masaje">Masaje</option>
+                                <option value="Cejas Henna">Cejas Henna</option>
+                                <option value="Dermapen">Dermapen</option>
+                            </optgroup>
+                            <optgroup label="Otros">
+                                <option value="Venta de Productos">Venta de Productos</option>
+                                <option value="Otro">Otro Servicio</option>
+                            </optgroup>
                         </select>
                     </div>
-                    <div><input type="text" class="input-pro s-zone" placeholder="Ej. Párpados"></div>
+                    <div><input type="text" class="input-pro s-zone" placeholder="Detalle / Zona (Opcional)"></div>
                     <div><input type="number" class="input-pro text-right font-bold s-price" placeholder="0.00" oninput="calcularTotal()"></div>
                     <div class="text-center pt-1"><button type="button" onclick="eliminarServicio('${id}')" class="text-gray-400 hover:text-red-500 transition"><i class="fas fa-trash-alt"></i></button></div>
                 </div>`;
@@ -437,53 +497,84 @@
         }
 
         window.eliminarServicio = (id) => { 
-            if(document.querySelectorAll('.service-row').length > 1) { 
+            if(document.querySelectorAll('.service-row').length > 0) { 
                 document.getElementById(`row-${id}`).remove(); calcularTotal(); 
             } 
         }
 
         window.checkZone = (select) => {
+            // Ya no bloqueamos el input de zona, lo dejamos opcional para todos
             const input = select.closest('.service-row').querySelector('.s-zone');
-            if(!select.value.includes('Fibroblast') && !select.value.includes('Otro')) { 
-                input.value = ''; input.disabled = true; input.style.opacity = '0.5'; 
-            } else { input.disabled = false; input.style.opacity = '1'; }
+             input.style.opacity = '1';
         }
 
-        window.setPromo = (pct) => { document.getElementById('promo_pct').value = pct; calcularTotal(); }
-        window.resetDesc = () => { document.getElementById('promo_pct').value = 0; calcularTotal(); }
+        window.setPromo = (pct) => { 
+            document.getElementById('promo_pct').value = pct; 
+            document.getElementById('promo_active_label').innerText = `${pct * 100}% Activo`;
+            document.getElementById('promo_active_label').className = "text-[9px] font-bold text-fuchsia-600";
+            calcularTotal(); 
+        }
+        window.resetDesc = () => { 
+            document.getElementById('promo_pct').value = 0; 
+            document.getElementById('promo_active_label').innerText = "Sin descuento activo";
+            document.getElementById('promo_active_label').className = "text-[9px] font-bold text-gray-400";
+            calcularTotal(); 
+        }
+
+        // NUEVA FUNCIÓN PARA BOTONES RÁPIDOS DE ABONO V3
+        window.setAbonoPercent = (pct) => {
+            if(window.totalCalculadoGlobal <= 0) return alert("Primero agregue servicios con precio.");
+            const abonoAmount = (window.totalCalculadoGlobal * pct).toFixed(2);
+            document.getElementById('abono').value = abonoAmount;
+            calcularTotal();
+        }
 
         window.calcularTotal = () => {
             let sub = 0;
             document.querySelectorAll('.s-price').forEach(i => sub += parseFloat(i.value) || 0);
             
             const pct = parseFloat(document.getElementById('promo_pct').value) || 0;
-            const desc = sub * pct;
-            const bono = parseFloat(document.getElementById('bono_extra').value) || 0;
-            const total = sub - desc - bono;
-            const abono = parseFloat(document.getElementById('abono').value) || 0;
-            const pend = total - abono;
+            const descAmount = sub * pct;
+            const bonoAmount = parseFloat(document.getElementById('bono_extra').value) || 0;
             
-            window.saldoPendienteGlobal = pend;
+            const total = sub - descAmount - bonoAmount;
+            window.totalCalculadoGlobal = total > 0 ? total : 0; // Evitar totales negativos
 
+            const abono = parseFloat(document.getElementById('abono').value) || 0;
+            const pend = window.totalCalculadoGlobal - abono;
+            window.saldoPendienteGlobal = pend > 0 ? pend : 0;
+
+            // Actualizar UI Financiera
             document.getElementById('subtotal').value = "$" + sub.toFixed(2);
-            document.getElementById('descuento_txt').innerText = desc > 0 ? `- $${desc.toFixed(2)}` : "";
-            document.getElementById('lblTotal').innerText = "$" + total.toFixed(2);
+            document.getElementById('lblTotal').innerText = "$" + window.totalCalculadoGlobal.toFixed(2);
             
+            // NUEVO: Visualizar Descuentos en Lista V3
+            const listaDeducciones = document.getElementById('listaDeducciones');
+            listaDeducciones.innerHTML = '';
+            if(descAmount > 0.01) {
+                listaDeducciones.innerHTML += `<div class="deduction-row"><span>Descuento Global (${pct*100}%):</span><span>- $${descAmount.toFixed(2)}</span></div>`;
+            }
+            if(bonoAmount > 0.01) {
+                listaDeducciones.innerHTML += `<div class="deduction-row"><span>Bono / Otro Descuento:</span><span>- $${bonoAmount.toFixed(2)}</span></div>`;
+            }
+
+            // Actualizar Pendiente UI
             const elPend = document.getElementById('lblPendiente'); 
-            elPend.innerText = "$" + pend.toFixed(2);
+            elPend.innerText = "$" + window.saldoPendienteGlobal.toFixed(2);
             
             // Lógica Mostrar Financiamiento
             const finSection = document.getElementById('seccionFinanciamiento');
             
-            if(pend <= 0.1 && total > 0) {
+            if(window.saldoPendienteGlobal <= 0.1 && window.totalCalculadoGlobal > 0) {
                 elPend.innerText = "PAGADO"; 
                 elPend.className = "text-2xl font-black text-green-500 font-mono";
-                finSection.classList.add('hidden'); // Si pagó todo, ocultar financiamiento
-            } else if (pend > 0.1) {
+                finSection.classList.add('hidden');
+            } else if (window.saldoPendienteGlobal > 0.1) {
                 elPend.className = "text-2xl font-black text-rose-500 font-mono";
-                finSection.classList.remove('hidden'); // Mostrar financiamiento si debe
-                calcCuotas(); // Recalcular cuotas
+                finSection.classList.remove('hidden'); // Mostrar si hay saldo
+                calcCuotas();
             } else {
+                elPend.innerText = "$0.00";
                 finSection.classList.add('hidden');
             }
         }
@@ -514,19 +605,24 @@
 
             let lista = [];
             document.querySelectorAll('.service-row').forEach(r => {
-                lista.push({ 
-                    tipo: r.querySelector('.s-type').value, 
-                    zona: r.querySelector('.s-zone').value, 
-                    precio: r.querySelector('.s-price').value 
-                });
+                const tipo = r.querySelector('.s-type').value;
+                const precio = r.querySelector('.s-price').value;
+                if(tipo && precio) { // Solo guardar filas con datos
+                    lista.push({ 
+                        tipo: tipo, 
+                        zona: r.querySelector('.s-zone').value, 
+                        precio: precio 
+                    });
+                }
             });
+
+            if(lista.length === 0) return alert("⚠️ Agrega al menos un servicio con precio.");
 
             const txt = btn.innerHTML; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> GUARDANDO...'; btn.disabled = true;
 
             try {
                 const folioActual = document.querySelector('.folio-display').innerText;
                 
-                // Datos de financiamiento
                 const finData = {
                     subtotal: document.getElementById('subtotal').value, 
                     total: document.getElementById('lblTotal').innerText, 
@@ -534,7 +630,6 @@
                     pendiente: document.getElementById('lblPendiente').innerText,
                     descuentoPct: document.getElementById('promo_pct').value,
                     bono: document.getElementById('bono_extra').value,
-                    // Nuevos datos del plan de pagos
                     referenciaNombre: document.getElementById('ref_nombre').value,
                     referenciaCelular: document.getElementById('ref_celular').value,
                     cuotas: document.getElementById('num_cuotas').value,
@@ -553,7 +648,7 @@
                     },
                     servicios: lista,
                     finanzas: finData,
-                    observaciones: document.getElementById('observaciones').value, // Nueva observación
+                    observaciones: document.getElementById('observaciones').value,
                     medico: { especialista: document.getElementById('specialistName').value },
                     fecha: Timestamp.now()
                 });
@@ -630,18 +725,30 @@
                 if(servicios.length > 0) {
                     servicios.forEach(s => {
                         const id = Date.now() + Math.random();
+                        // Recreamos el select con las nuevas opciones V3
                         const html = `
                         <div class="service-row" id="row-${id}">
                             <div>
                                 <select class="input-pro cursor-pointer s-type font-bold" onchange="checkZone(this)">
-                                    <option value="Plasma Fibroblast" ${s.tipo==='Plasma Fibroblast'?'selected':''}>Plasma Fibroblast</option>
-                                    <option value="Limpieza Facial" ${s.tipo==='Limpieza Facial'?'selected':''}>Limpieza Facial</option>
-                                    <option value="Dermapen" ${s.tipo==='Dermapen'?'selected':''}>Dermapen</option>
-                                    <option value="Hidratación" ${s.tipo==='Hidratación'?'selected':''}>Hidratación</option>
-                                    <option value="Otro" ${s.tipo==='Otro'?'selected':''}>Otro</option>
+                                     <option value="" disabled>-- Seleccionar Ítem --</option>
+                                    <optgroup label="Tratamientos Principales">
+                                        <option value="Plasma Fibroblast" ${s.tipo==='Plasma Fibroblast'?'selected':''}>Plasma Fibroblast</option>
+                                        <option value="Peeling Quimico" ${s.tipo==='Peeling Quimico'?'selected':''}>Peeling Químico</option>
+                                        <option value="Tratamiento Facial" ${s.tipo==='Tratamiento Facial'?'selected':''}>Tratamiento Facial</option>
+                                        <option value="Tratamiento Corporal" ${s.tipo==='Tratamiento Corporal'?'selected':''}>Tratamiento Corporal</option>
+                                    </optgroup>
+                                    <optgroup label="Complementarios">
+                                        <option value="Masaje" ${s.tipo==='Masaje'?'selected':''}>Masaje</option>
+                                        <option value="Cejas Henna" ${s.tipo==='Cejas Henna'?'selected':''}>Cejas Henna</option>
+                                        <option value="Dermapen" ${s.tipo==='Dermapen'?'selected':''}>Dermapen</option>
+                                    </optgroup>
+                                    <optgroup label="Otros">
+                                        <option value="Venta de Productos" ${s.tipo==='Venta de Productos'?'selected':''}>Venta de Productos</option>
+                                        <option value="Otro" ${s.tipo==='Otro'?'selected':''}>Otro Servicio</option>
+                                    </optgroup>
                                 </select>
                             </div>
-                            <div><input type="text" class="input-pro s-zone" value="${s.zona || ''}" ${!s.tipo.includes('Fibroblast')&&!s.tipo.includes('Otro')?'disabled style="opacity:0.5"':''}></div>
+                            <div><input type="text" class="input-pro s-zone" value="${s.zona || ''}"></div>
                             <div><input type="number" class="input-pro text-right font-bold s-price" value="${s.precio || 0}" oninput="calcularTotal()"></div>
                             <div class="text-center pt-1"><button type="button" onclick="eliminarServicio('${id}')" class="text-gray-400 hover:text-red-500 transition"><i class="fas fa-trash-alt"></i></button></div>
                         </div>`;
@@ -652,16 +759,24 @@
                 // Finanzas y Observaciones
                 const f = registro.finanzas || {};
                 document.getElementById('abono').value = f.abono || 0;
-                document.getElementById('promo_pct').value = f.descuentoPct || 0;
+                
+                // Restaurar estado del descuento visualmente
+                const pctSaved = f.descuentoPct || 0;
+                document.getElementById('promo_pct').value = pctSaved;
+                if(pctSaved > 0) {
+                     document.getElementById('promo_active_label').innerText = `${pctSaved * 100}% Activo`;
+                     document.getElementById('promo_active_label').className = "text-[9px] font-bold text-fuchsia-600";
+                } else {
+                     resetDesc();
+                }
+
                 document.getElementById('bono_extra').value = f.bono || 0;
                 
-                // Datos del Financiamiento
                 document.getElementById('ref_nombre').value = f.referenciaNombre || '';
                 document.getElementById('ref_celular').value = f.referenciaCelular || '';
                 document.getElementById('num_cuotas').value = f.cuotas || 1;
                 document.getElementById('fecha_inicio_pago').value = f.fechaInicioPago || '';
 
-                // Observaciones
                 document.getElementById('observaciones').value = registro.observaciones || '';
 
                 const m = registro.medico || {};
