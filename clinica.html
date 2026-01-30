@@ -30,12 +30,12 @@
         body { background-color: #fdf4ff; color: #374151; touch-action: pan-y; transition: 0.3s; }
         .dark body { background-color: #0f172a; color: #e2e8f0; }
         
-        /* Hoja de Papel */
+        /* Hoja de Papel (Estilo Pantalla) */
         .paper-sheet {
             width: 100%; max-width: 56rem; background-color: white;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
             margin: 0 auto; position: relative; overflow: hidden;
-            min-height: auto; /* Altura automática */
+            min-height: auto;
             padding-bottom: 2rem;
         }
         .dark .paper-sheet { background-color: #1e293b; }
@@ -68,18 +68,38 @@
         .nav-btn-active { background-color: #9333ea; color: white; }
         .nav-btn-inactive { background-color: transparent; color: #9ca3af; }
         
-        /* Impresión y PDF */
-        @media print {
-            body { background-color: white !important; margin: 0; }
-            .no-print { display: none !important; }
-            .paper-sheet { box-shadow: none; margin: 0; width: 100%; border: none; }
-            .dark { color-scheme: light; }
-            .dark .paper-sheet { background-color: white; color: black; }
-            .dark .input-pro { background-color: white; color: black; border: 1px solid #ccc; }
+        /* --- MODO IMPRESIÓN ESTRICTO (CORRIGE EL DESFASE) --- */
+        /* Esta clase se activa SOLO al generar el PDF */
+        body.is-printing {
+            background: white !important;
+            padding: 0 !important; /* Elimina el padding top del body */
+            margin: 0 !important;
         }
+        
+        body.is-printing .paper-sheet {
+            box-shadow: none !important;
+            margin: 0 !important; /* Elimina el centrado horizontal */
+            width: 100% !important;
+            max-width: none !important; /* Permite usar el 100% real del ancho PDF */
+            border: none !important;
+            border-radius: 0 !important;
+        }
+
+        body.is-printing .no-print { display: none !important; }
+        
+        /* Ajustes específicos para inputs en PDF para que se lean bien */
+        body.is-printing .input-pro {
+            background-color: white !important;
+            border: 1px solid #ccc !important;
+            color: black !important;
+        }
+        
+        /* Forzar colores claros si estaba en modo oscuro */
+        body.is-printing .dark { color-scheme: light !important; }
+
     </style>
 </head>
-<body class="p-4 pt-20">
+<body class="p-4 pt-20 transition-all">
 
     <nav class="fixed top-0 inset-x-0 bg-white/95 dark:bg-night-card/95 backdrop-blur shadow-md p-2 z-50 border-b border-gray-200 dark:border-slate-700 no-print">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
@@ -374,7 +394,7 @@
             document.querySelectorAll('.fecha-display').forEach(el => el.innerText = new Date().toLocaleDateString());
         }
 
-        // --- FIRMA (PAD) ---
+        // --- FIRMA ---
         let canvas, ctx, isDrawing = false;
         function initSignaturePad() {
             canvas = document.getElementById('signaturePad');
@@ -532,46 +552,43 @@
             toggleView('form');
         }
 
-        // --- PDF ROBUSTO (ANTI-ATRAPAMIENTO) ---
+        // --- PDF CORREGIDO (MODO ESTRICTO) ---
         document.getElementById('btnPdf').addEventListener('click', () => {
             const btn = document.getElementById('btnPdf');
             const originalText = btn.innerHTML;
-            
-            // 1. Referencias
             const el = document.getElementById('printContainer');
-            const controls = document.querySelectorAll('.no-print'); 
             const wasDark = document.documentElement.classList.contains('dark'); 
 
-            // 2. Función de rescate
+            // Función de rescate: Devuelve todo a la normalidad
             const restaurarTodo = () => {
-                controls.forEach(e => e.style.display = ''); 
+                document.body.classList.remove('is-printing'); // Quita el modo impresión
                 if(wasDark) document.documentElement.classList.add('dark'); 
                 btn.innerHTML = originalText;
                 btn.disabled = false;
                 document.body.style.cursor = 'default';
             };
 
-            // 3. Inicio
             try {
                 btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> CREANDO PDF...';
                 btn.disabled = true;
                 document.body.style.cursor = 'wait';
 
+                // ACTIVAR MODO IMPRESIÓN (Elimina márgenes y espacios)
                 if(wasDark) document.documentElement.classList.remove('dark');
-                controls.forEach(e => e.style.display = 'none');
+                document.body.classList.add('is-printing');
 
                 const folio = document.querySelector('.folio-display').innerText || 'HC_SinFolio';
                 
-                // 4. Generación
                 html2pdf().set({
-                    margin: [0, 0, 0, 0],
+                    margin: [0, 0, 0, 0], // Margen 0 porque la hoja ya tiene padding
                     filename: `HC_${folio}.pdf`,
                     image: {type:'jpeg', quality:0.98},
                     html2canvas: {
                         scale: 2, 
                         useCORS: true, 
-                        logging: true,
-                        letterRendering: true
+                        logging: false,
+                        letterRendering: true,
+                        scrollY: 0 // Forza a empezar desde arriba
                     },
                     jsPDF: {unit:'in', format:'letter', orientation:'portrait'}
                 }).from(el).save()
@@ -580,13 +597,12 @@
                 })
                 .catch((err) => {
                     console.error("Error al generar PDF:", err);
-                    alert("Error menor generando PDF. Pantalla restaurada.");
+                    alert("Error generando PDF. Pantalla restaurada.");
                     restaurarTodo();
                 });
 
             } catch (e) {
                 console.error("Error crítico:", e);
-                alert("Error crítico.");
                 restaurarTodo();
             }
         });
