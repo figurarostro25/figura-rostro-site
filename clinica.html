@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Historia Clínica | Figura Rostro KG</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { dark: '#4a044e', main: '#9333ea', light: '#e879f9' },
+                        night: { bg: '#0f172a', card: '#1e293b', input: '#334155' }
+                    },
+                    fontFamily: { sans: ['Montserrat', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Estilos Generales */
+        body { background-color: #fdf4ff; color: #374151; touch-action: pan-y; transition: 0.3s; }
+        .dark body { background-color: #0f172a; color: #e2e8f0; }
+        
+        /* Hoja de Papel */
+        .paper-sheet {
+            width: 100%; max-width: 56rem; background-color: white;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            margin: 0 auto; position: relative; overflow: hidden; min-height: 1000px;
+        }
+        .dark .paper-sheet { background-color: #1e293b; }
+
+        /* Inputs & Controles */
+        .input-pro {
+            width: 100%; border-radius: 0.5rem; padding: 0.5rem 0.75rem;
+            font-size: 0.8rem; font-weight: 600; outline: none; border: 1px solid #cbd5e1;
+            background-color: #f8fafc; color: #334155;
+        }
+        .dark .input-pro { background-color: #334155; border-color: #475569; color: white; }
+        .input-pro:focus { border-color: #d946ef; ring: 2px; ring-color: #d946ef; }
+
+        .label-pro { display: block; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; margin-bottom: 0.25rem; color: #9333ea; }
+        .dark .label-pro { color: #e879f9; }
+
+        /* Checkboxes Médicos */
+        .med-check { display: flex; align-items: center; gap: 8px; padding: 8px; border: 1px solid #e2e8f0; border-radius: 6px; cursor: pointer; transition: 0.2s; }
+        .med-check:hover { background-color: #f3e8ff; }
+        .dark .med-check { border-color: #475569; }
+        .dark .med-check:hover { background-color: #334155; }
+        .med-check input { accent-color: #9333ea; transform: scale(1.2); }
+        .med-alert { border-color: #ef4444 !important; background-color: #fef2f2; color: #b91c1c; }
+        .dark .med-alert { background-color: #450a0a; color: #fecaca; }
+
+        /* Header Gradiente */
+        .header-gradient { background: linear-gradient(135deg, #4a044e 0%, #9333ea 100%); color: white; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+        /* Botones Navegación */
+        .nav-btn-active { background-color: #9333ea; color: white; }
+        .nav-btn-inactive { background-color: transparent; color: #9ca3af; }
+        
+        /* Impresión */
+        @media print {
+            body { background-color: white !important; margin: 0; }
+            .no-print { display: none !important; }
+            .paper-sheet { box-shadow: none; margin: 0; width: 100%; border: none; }
+            .dark { color-scheme: light; }
+            .dark .paper-sheet { background-color: white; color: black; }
+            .dark .input-pro { background-color: white; color: black; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body class="p-4 pt-20">
+
+    <nav class="fixed top-0 inset-x-0 bg-white/95 dark:bg-night-card/95 backdrop-blur shadow-md p-2 z-50 border-b border-gray-200 dark:border-slate-700 no-print">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <button onclick="toggleDarkMode()" class="w-10 h-10 rounded-full flex items-center justify-center bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-yellow-400">
+                <i class="fas fa-moon dark:hidden"></i><i class="fas fa-sun hidden dark:inline"></i>
+            </button>
+
+            <div class="flex bg-gray-100 dark:bg-slate-800 p-1 rounded-full border border-gray-200 dark:border-slate-600">
+                <button onclick="toggleView('form')" id="navForm" class="nav-btn-active px-4 sm:px-6 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-2">
+                    <i class="fas fa-notes-medical"></i> <span class="hidden sm:inline">Historial Clínico</span>
+                </button>
+                <button onclick="toggleView('list')" id="navList" class="nav-btn-inactive px-4 sm:px-6 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-2">
+                    <i class="fas fa-database"></i> <span class="hidden sm:inline">Base de Datos</span>
+                </button>
+            </div>
+
+            <button onclick="limpiarFormulario()" class="bg-rose-50 hover:bg-rose-100 text-rose-600 dark:bg-slate-800 dark:text-rose-400 px-4 py-2 rounded-full text-xs font-bold border border-rose-200 dark:border-slate-600 transition flex items-center gap-2">
+                <i class="fas fa-plus"></i> <span class="hidden sm:inline">Nueva</span>
+            </button>
+        </div>
+    </nav>
+
+    <div id="seccionFormulario" class="transition-opacity duration-300 pb-20">
+        <div id="printContainer">
+            <div class="paper-sheet rounded-2xl border border-gray-200 dark:border-slate-700">
+                
+                <div class="header-gradient p-6 flex justify-between items-start">
+                    <div>
+                        <img src="logo-blanco.png" alt="Logo" class="h-14 w-auto object-contain mb-2 opacity-90">
+                        <h1 class="text-xl font-black uppercase tracking-wider">Historia Clínica</h1>
+                        <p class="text-fuchsia-200 text-[10px] font-bold tracking-widest uppercase">Estética Avanzada & Reparadora</p>
+                    </div>
+                    <div class="text-right">
+                        <div class="bg-white/10 px-3 py-1 rounded mb-1 text-xs font-bold fecha-display"></div>
+                        <div class="bg-white text-brand-dark px-3 py-1 rounded font-black font-mono text-lg folio-display">HC-0000</div>
+                    </div>
+                </div>
+
+                <div class="p-8">
+                    <h3 class="text-brand-main dark:text-brand-light font-bold uppercase text-xs border-b border-gray-200 dark:border-slate-600 pb-1 mb-4 flex items-center gap-2">
+                        <i class="fas fa-user"></i> Datos del Paciente
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div><label class="label-pro">Nombre Completo</label><input type="text" id="nombre" class="input-pro"></div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div><label class="label-pro">Edad</label><input type="number" id="edad" class="input-pro"></div>
+                            <div><label class="label-pro">Teléfono</label><input type="tel" id="telefono" class="input-pro"></div>
+                        </div>
+                        <div><label class="label-pro">Ocupación</label><input type="text" id="ocupacion" class="input-pro"></div>
+                        <div><label class="label-pro">Dirección</label><input type="text" id="direccion" class="input-pro"></div>
+                    </div>
+
+                    <div class="bg-rose-50 dark:bg-rose-900/20 border border-rose-200 dark:border-rose-800 p-4 rounded-lg mb-6">
+                        <h3 class="text-rose-600 dark:text-rose-400 font-black uppercase text-xs mb-3 flex items-center gap-2">
+                            <i class="fas fa-heartbeat"></i> Antecedentes Críticos (Contraindicaciones)
+                        </h3>
+                        <p class="text-[10px] text-gray-500 dark:text-gray-400 mb-3 italic">Marque SOLO si padece alguna condición:</p>
+                        
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-3 text-xs font-bold text-gray-700 dark:text-gray-300">
+                            <label class="med-check med-alert"><input type="checkbox" id="c_diabetes"> DIABETES (Mala Cicatrización)</label>
+                            <label class="med-check med-alert"><input type="checkbox" id="c_keloide"> CICATRIZ KELOIDE</label>
+                            <label class="med-check med-alert"><input type="checkbox" id="c_marcapasos"> MARCAPASOS / METAL</label>
+                            <label class="med-check"><input type="checkbox" id="c_hipertension"> Hipertensión</label>
+                            <label class="med-check"><input type="checkbox" id="c_embarazo"> Embarazo / Lactancia</label>
+                            <label class="med-check"><input type="checkbox" id="c_herpes"> Herpes Activo</label>
+                            <label class="med-check"><input type="checkbox" id="c_alergias"> Alergias</label>
+                            <label class="med-check"><input type="checkbox" id="c_autoinmune"> Enf. Autoinmunes</label>
+                            <label class="med-check"><input type="checkbox" id="c_otros"> Otros</label>
+                        </div>
+                        <div class="mt-3">
+                            <label class="label-pro text-rose-500">Detalles / Medicamentos Actuales:</label>
+                            <input type="text" id="detalles_medicos" class="input-pro" placeholder="Especifique alergias o medicamentos...">
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <div class="flex border-b border-gray-200 dark:border-slate-600 mb-4">
+                            <button onclick="switchTab('facial')" id="tabFacial" class="px-4 py-2 text-xs font-bold text-brand-main border-b-2 border-brand-main">FACIAL</button>
+                            <button onclick="switchTab('corporal')" id="tabCorporal" class="px-4 py-2 text-xs font-bold text-gray-400 hover:text-brand-main">CORPORAL</button>
+                        </div>
+
+                        <div id="panelFacial">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="label-pro">Biotipo Cutáneo</label>
+                                    <select id="f_biotipo" class="input-pro cursor-pointer">
+                                        <option value="">Seleccione...</option>
+                                        <option value="Eudérmica (Normal)">Eudérmica (Normal)</option>
+                                        <option value="Grasa">Grasa</option>
+                                        <option value="Seca / Alípica">Seca / Alípica</option>
+                                        <option value="Mixta">Mixta</option>
+                                        <option value="Sensible / Rosácea">Sensible / Rosácea</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="label-pro">Fototipo (Fitzpatrick)</label>
+                                    <select id="f_fototipo" class="input-pro cursor-pointer">
+                                        <option value="">Seleccione...</option>
+                                        <option value="I - II (Clara)">I - II (Clara)</option>
+                                        <option value="III (Intermedia)">III (Intermedia)</option>
+                                        <option value="IV - V (Morena)">IV - V (Morena)</option>
+                                        <option value="VI (Oscura)">VI (Oscura)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <label class="label-pro">Alteraciones Visibles</label>
+                                <div class="grid grid-cols-2 gap-2 text-xs text-gray-600 dark:text-gray-300">
+                                    <label><input type="checkbox" class="accent-brand-main" id="f_acne"> Acné Activo</label>
+                                    <label><input type="checkbox" class="accent-brand-main" id="f_secuelas"> Secuelas/Cicatrices</label>
+                                    <label><input type="checkbox" class="accent-brand-main" id="f_manchas"> Melasma/Manchas</label>
+                                    <label><input type="checkbox" class="accent-brand-main" id="f_flacidez"> Flacidez/Arrugas</label>
+                                    <label><input type="checkbox" class="accent-brand-main" id="f_bolsas"> Bolsas/Ojeras</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="panelCorporal" class="hidden">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="label-pro">Zona a Tratar</label>
+                                    <input type="text" id="c_zona" class="input-pro" placeholder="Ej. Abdomen, Brazos...">
+                                </div>
+                                <div>
+                                    <label class="label-pro">Tipo de Adiposidad</label>
+                                    <select id="c_adiposidad" class="input-pro">
+                                        <option value="Compacta (Dura)">Compacta (Dura)</option>
+                                        <option value="Edematosa (Retención)">Edematosa (Retención)</option>
+                                        <option value="Flácida">Flácida</option>
+                                        <option value="Mixta">Mixta</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <label class="label-pro">Observaciones</label>
+                                <textarea id="c_obs" class="input-pro h-16" placeholder="Celulitis, estrías, fibrosis..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-600 p-4 rounded-lg mb-6">
+                        <label class="label-pro text-brand-main">Plan de Tratamiento Sugerido</label>
+                        <textarea id="plan_tratamiento" class="input-pro h-20 bg-white dark:bg-night-input" placeholder="Describa el protocolo a realizar..."></textarea>
+                    </div>
+
+                    <div class="border-t-2 border-dashed border-gray-300 dark:border-slate-600 pt-4 mt-6">
+                        <h4 class="text-xs font-black uppercase text-gray-500 mb-2">Consentimiento Informado y Liberación de Responsabilidad</h4>
+                        <div class="text-[9px] text-justify text-gray-500 dark:text-gray-400 leading-tight h-24 overflow-y-auto bg-gray-50 dark:bg-slate-900/50 p-3 rounded border border-gray-200 dark:border-slate-700">
+                            <p class="mb-2"><strong>1. VERACIDAD:</strong> Declaro bajo juramento que la información médica proporcionada es verdadera. Eximo a <strong>FIGURA ROSTRO KG</strong> de responsabilidad por complicaciones derivadas de omitir antecedentes (ej. diabetes, keloides, implantes).</p>
+                            <p class="mb-2"><strong>2. RIESGOS:</strong> Entiendo que procedimientos como Plasma Fibroblast, Peelings o Micropunción generan lesiones controladas. Acepto riesgos normales como: inflamación, costras (carbonización), enrojecimiento y sensibilidad. Entiendo que rascarse o quitar costras causa cicatrices.</p>
+                            <p class="mb-2"><strong>3. RESULTADOS:</strong> Comprendo que la estética no es una ciencia exacta. Los resultados dependen de mi biología y cuidados. <strong>NO existen garantías de perfección</strong> ni devoluciones de dinero una vez realizado el servicio.</p>
+                            <p><strong>4. CUIDADOS POST:</strong> Me comprometo a no exponer la zona al sol, usar protector solar, mantener higiene y seguir las indicaciones. Si no cumplo, asumo la responsabilidad de manchas o infecciones.</p>
+                        </div>
+                        <label class="flex items-center gap-2 mt-2 cursor-pointer">
+                            <input type="checkbox" id="check_legal" class="accent-brand-main">
+                            <span class="text-[10px] font-bold text-brand-dark dark:text-brand-light uppercase">He leído, comprendo y acepto los riesgos y condiciones.</span>
+                        </label>
+                    </div>
+
+                    <div class="mt-6 flex flex-col items-center">
+                        <div class="border-2 border-dashed border-gray-300 dark:border-slate-600 rounded-lg w-full max-w-sm h-32 relative bg-white touch-none">
+                            <canvas id="signaturePad" class="w-full h-full cursor-crosshair"></canvas>
+                            <div class="absolute bottom-1 right-1">
+                                <button type="button" onclick="clearSignature()" class="text-[9px] bg-gray-200 text-gray-600 px-2 py-1 rounded hover:bg-red-100 hover:text-red-500 no-print">Borrar</button>
+                            </div>
+                        </div>
+                        <p class="text-[10px] uppercase font-bold text-gray-400 mt-2 border-t border-gray-400 px-10 pt-1">Firma del Paciente</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-4xl mx-auto flex gap-4 mt-8 px-4 justify-center no-print">
+            <button id="btnSave" class="bg-brand-main hover:bg-brand-dark text-white px-8 py-3 rounded-full font-bold shadow-lg shadow-purple-900/30 transition transform hover:-translate-y-1 flex items-center gap-2">
+                <i class="fas fa-save"></i> GUARDAR FICHA
+            </button>
+            <button id="btnPdf" class="bg-white dark:bg-slate-800 text-gray-700 dark:text-white border border-gray-300 dark:border-slate-600 px-8 py-3 rounded-full font-bold shadow-sm transition hover:bg-gray-50 dark:hover:bg-slate-700 flex items-center gap-2">
+                <i class="fas fa-print"></i> PDF
+            </button>
+        </div>
+    </div>
+
+    <div id="seccionBaseDatos" class="hidden max-w-6xl mx-auto mt-6 px-4 pb-20 transition-opacity duration-300">
+        <div class="bg-white dark:bg-night-card shadow-2xl rounded-2xl overflow-hidden border border-gray-200 dark:border-slate-700">
+            <div class="p-6 border-b border-gray-200 dark:border-slate-700 flex justify-between items-center">
+                <h2 class="font-bold text-lg text-gray-800 dark:text-white"><i class="fas fa-history mr-2 text-brand-main"></i> Historial de Pacientes</h2>
+                <button onclick="loadData()" class="text-xs bg-gray-100 dark:bg-slate-700 px-4 py-2 rounded-full font-bold dark:text-white hover:bg-gray-200 transition"><i class="fas fa-sync"></i></button>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs text-left">
+                    <thead class="bg-gray-100 dark:bg-slate-900 text-gray-600 dark:text-gray-400 uppercase font-bold">
+                        <tr>
+                            <th class="p-4">Folio</th>
+                            <th class="p-4">Fecha</th>
+                            <th class="p-4">Paciente</th>
+                            <th class="p-4">Teléfono</th>
+                            <th class="p-4 text-center">Riesgo</th>
+                            <th class="p-4 text-center">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody" class="divide-y divide-gray-100 dark:divide-slate-700 dark:text-gray-300"></tbody>
+                </table>
+            </div>
+            <div id="loader" class="hidden text-center py-10"><i class="fas fa-circle-notch fa-spin text-2xl text-brand-main"></i></div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, getDocs, orderBy, query, Timestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        // CONFIG FIREBASE
+        const firebaseConfig = {
+            apiKey: "AIzaSyBAuTfBKGuG33c9NXc1s0lkQv-7GwA47l0",
+            authDomain: "figurarostro-system.firebaseapp.com",
+            projectId: "figurarostro-system",
+            storageBucket: "figurarostro-system.firebasestorage.app",
+            messagingSenderId: "803848354693",
+            appId: "1:803848354693:web:7144490abb18b0319822ec"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const colName = "historias_clinicas_2026"; // Colección separada para Historias
+
+        window.dbCache = [];
+
+        // --- UTILIDADES ---
+        window.toggleDarkMode = () => document.documentElement.classList.toggle('dark');
+        
+        window.switchTab = (tab) => {
+            document.getElementById('panelFacial').classList.add('hidden');
+            document.getElementById('panelCorporal').classList.add('hidden');
+            document.getElementById('tabFacial').className = "px-4 py-2 text-xs font-bold text-gray-400 hover:text-brand-main";
+            document.getElementById('tabCorporal').className = "px-4 py-2 text-xs font-bold text-gray-400 hover:text-brand-main";
+
+            if(tab === 'facial') {
+                document.getElementById('panelFacial').classList.remove('hidden');
+                document.getElementById('tabFacial').className = "px-4 py-2 text-xs font-bold text-brand-main border-b-2 border-brand-main";
+            } else {
+                document.getElementById('panelCorporal').classList.remove('hidden');
+                document.getElementById('tabCorporal').className = "px-4 py-2 text-xs font-bold text-brand-main border-b-2 border-brand-main";
+            }
+        }
+
+        window.toggleView = (view) => {
+            const navForm = document.getElementById('navForm');
+            const navList = document.getElementById('navList');
+            const formSec = document.getElementById('seccionFormulario');
+            const dataSec = document.getElementById('seccionBaseDatos');
+
+            if(view === 'list') {
+                formSec.classList.add('hidden');
+                dataSec.classList.remove('hidden');
+                navForm.className = "nav-btn-inactive px-4 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-2";
+                navList.className = "nav-btn-active px-4 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-2";
+                loadData();
+            } else {
+                formSec.classList.remove('hidden');
+                dataSec.classList.add('hidden');
+                navForm.className = "nav-btn-active px-4 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-2";
+                navList.className = "nav-btn-inactive px-4 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-2";
+            }
+        }
+
+        window.limpiarFormulario = () => { if(confirm("¿Limpiar todo?")) location.reload(); }
+
+        const generarFolio = () => { 
+            const f = `HC-${Math.floor(1000 + Math.random() * 9000)}`;
+            document.querySelectorAll('.folio-display').forEach(el => el.innerText = f);
+        };
+        const setFecha = () => {
+            document.querySelectorAll('.fecha-display').forEach(el => el.innerText = new Date().toLocaleDateString());
+        }
+
+        // --- FIRMA ---
+        let canvas, ctx, isDrawing = false;
+        function initSignaturePad() {
+            canvas = document.getElementById('signaturePad');
+            ctx = canvas.getContext('2d');
+            function resize() {
+                const ratio = Math.max(window.devicePixelRatio || 1, 1);
+                canvas.width = canvas.offsetWidth * ratio;
+                canvas.height = canvas.offsetHeight * ratio;
+                ctx.scale(ratio, ratio);
+            }
+            window.addEventListener('resize', resize); setTimeout(resize, 500);
+            
+            const start = (e) => { isDrawing = true; ctx.beginPath(); const rect = canvas.getBoundingClientRect(); const clientX = e.touches ? e.touches[0].clientX : e.clientX; const clientY = e.touches ? e.touches[0].clientY : e.clientY; ctx.moveTo(clientX - rect.left, clientY - rect.top); }
+            const draw = (e) => { if(!isDrawing) return; e.preventDefault(); const rect = canvas.getBoundingClientRect(); const clientX = e.touches ? e.touches[0].clientX : e.clientX; const clientY = e.touches ? e.touches[0].clientY : e.clientY; ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.lineTo(clientX - rect.left, clientY - rect.top); ctx.stroke(); }
+            const stop = () => isDrawing = false;
+
+            canvas.addEventListener('mousedown', start); canvas.addEventListener('mousemove', draw); canvas.addEventListener('mouseup', stop);
+            canvas.addEventListener('touchstart', start); canvas.addEventListener('touchmove', draw); canvas.addEventListener('touchend', stop);
+        }
+        window.clearSignature = () => { ctx.clearRect(0, 0, canvas.width, canvas.height); ctx.beginPath(); }
+
+        window.addEventListener('load', () => { generarFolio(); setFecha(); initSignaturePad(); });
+
+        // --- GUARDAR EN FIREBASE ---
+        document.getElementById('btnSave').addEventListener('click', async () => {
+            const btn = document.getElementById('btnSave');
+            const nombre = document.getElementById('nombre').value;
+            if(!nombre) return alert("⚠️ Falta Nombre");
+            if(!document.getElementById('check_legal').checked) return alert("⚠️ Debe aceptar el consentimiento legal.");
+
+            // Recopilar Checks Médicos
+            const medicos = {
+                diabetes: document.getElementById('c_diabetes').checked,
+                keloide: document.getElementById('c_keloide').checked,
+                marcapasos: document.getElementById('c_marcapasos').checked,
+                hipertension: document.getElementById('c_hipertension').checked,
+                embarazo: document.getElementById('c_embarazo').checked,
+                herpes: document.getElementById('c_herpes').checked,
+                alergias: document.getElementById('c_alergias').checked,
+                detalles: document.getElementById('detalles_medicos').value
+            };
+
+            const tieneRiesgo = medicos.diabetes || medicos.keloide || medicos.marcapasos;
+
+            const txt = btn.innerHTML; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> GUARDANDO...'; btn.disabled = true;
+
+            try {
+                await addDoc(collection(db, colName), {
+                    folio: document.querySelector('.folio-display').innerText,
+                    fecha: Timestamp.now(),
+                    paciente: {
+                        nombre,
+                        edad: document.getElementById('edad').value,
+                        telefono: document.getElementById('telefono').value,
+                        ocupacion: document.getElementById('ocupacion').value,
+                        direccion: document.getElementById('direccion').value
+                    },
+                    antecedentes: medicos,
+                    facial: {
+                        biotipo: document.getElementById('f_biotipo').value,
+                        fototipo: document.getElementById('f_fototipo').value,
+                        acne: document.getElementById('f_acne').checked,
+                        secuelas: document.getElementById('f_secuelas').checked,
+                        manchas: document.getElementById('f_manchas').checked,
+                        flacidez: document.getElementById('f_flacidez').checked
+                    },
+                    corporal: {
+                        zona: document.getElementById('c_zona').value,
+                        adiposidad: document.getElementById('c_adiposidad').value,
+                        obs: document.getElementById('c_obs').value
+                    },
+                    plan: document.getElementById('plan_tratamiento').value,
+                    riesgoAlto: tieneRiesgo
+                });
+
+                alert("✅ Historia Clínica Guardada.");
+                btn.innerHTML = '<i class="fas fa-check"></i> LISTO'; btn.classList.add('bg-green-600');
+            } catch (e) { alert("Error: " + e.message); btn.innerHTML = txt; btn.disabled = false; }
+        });
+
+        // --- CARGAR BASE DATOS ---
+        window.loadData = async () => {
+            const tb = document.getElementById('tableBody'); 
+            tb.innerHTML=''; 
+            document.getElementById('loader').classList.remove('hidden');
+            window.dbCache = [];
+            
+            try {
+                const snap = await getDocs(query(collection(db, colName), orderBy("fecha", "desc")));
+                snap.forEach(doc => {
+                    let d = doc.data();
+                    window.dbCache.push(d);
+                    
+                    let alertaHTML = d.riesgoAlto 
+                        ? '<span class="bg-red-100 text-red-600 px-2 py-1 rounded text-[10px] font-bold">ALTO</span>' 
+                        : '<span class="bg-green-100 text-green-600 px-2 py-1 rounded text-[10px] font-bold">BAJO</span>';
+
+                    tb.innerHTML += `
+                    <tr class="border-b dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-700">
+                        <td class="p-3 font-mono text-brand-main font-bold">${d.folio}</td>
+                        <td class="p-3">${d.fecha.toDate().toLocaleDateString()}</td>
+                        <td class="p-3 font-bold dark:text-white uppercase">${d.paciente.nombre}</td>
+                        <td class="p-3 text-gray-500">${d.paciente.telefono}</td>
+                        <td class="p-3 text-center">${alertaHTML}</td>
+                        <td class="p-3 text-center">
+                            <button onclick="verFicha('${d.folio}')" class="bg-blue-500 text-white px-3 py-1 rounded text-xs hover:bg-blue-600"><i class="fas fa-eye"></i></button>
+                        </td>
+                    </tr>`;
+                });
+            } catch (e) { console.error(e); }
+            document.getElementById('loader').classList.add('hidden');
+        }
+
+        // --- VER / RELLENAR ---
+        window.verFicha = (folio) => {
+            const r = window.dbCache.find(x => x.folio === folio);
+            if(!r) return;
+
+            document.querySelectorAll('.folio-display').forEach(el => el.innerText = r.folio);
+            document.getElementById('nombre').value = r.paciente.nombre;
+            document.getElementById('edad').value = r.paciente.edad;
+            document.getElementById('telefono').value = r.paciente.telefono;
+            document.getElementById('ocupacion').value = r.paciente.ocupacion;
+            document.getElementById('direccion').value = r.paciente.direccion;
+
+            // Antecedentes
+            document.getElementById('c_diabetes').checked = r.antecedentes.diabetes;
+            document.getElementById('c_keloide').checked = r.antecedentes.keloide;
+            document.getElementById('c_marcapasos').checked = r.antecedentes.marcapasos;
+            document.getElementById('c_hipertension').checked = r.antecedentes.hipertension;
+            document.getElementById('c_embarazo').checked = r.antecedentes.embarazo;
+            document.getElementById('c_herpes').checked = r.antecedentes.herpes;
+            document.getElementById('c_alergias').checked = r.antecedentes.alergias;
+            document.getElementById('detalles_medicos').value = r.antecedentes.detalles;
+
+            // Facial
+            if(r.facial) {
+                document.getElementById('f_biotipo').value = r.facial.biotipo;
+                document.getElementById('f_fototipo').value = r.facial.fototipo;
+                document.getElementById('f_acne').checked = r.facial.acne;
+                document.getElementById('f_secuelas').checked = r.facial.secuelas;
+                document.getElementById('f_manchas').checked = r.facial.manchas;
+                document.getElementById('f_flacidez').checked = r.facial.flacidez;
+            }
+
+            // Corporal
+            if(r.corporal) {
+                document.getElementById('c_zona').value = r.corporal.zona;
+                document.getElementById('c_adiposidad').value = r.corporal.adiposidad;
+                document.getElementById('c_obs').value = r.corporal.obs;
+            }
+
+            document.getElementById('plan_tratamiento').value = r.plan;
+
+            toggleView('form');
+        }
+
+        // --- PDF ---
+        document.getElementById('btnPdf').addEventListener('click', () => {
+            const el = document.getElementById('printContainer');
+            const controls = document.querySelectorAll('.no-print');
+            const wasDark = document.documentElement.classList.contains('dark');
+            if(wasDark) document.documentElement.classList.remove('dark');
+            controls.forEach(e => e.style.display='none');
+
+            html2pdf().set({
+                margin: [0.3,0,0.3,0],
+                filename: `HC_${document.querySelector('.folio-display').innerText}.pdf`,
+                image: {type:'jpeg', quality:0.98},
+                html2canvas: {scale:2, useCORS:true},
+                jsPDF: {unit:'in', format:'letter', orientation:'portrait'}
+            }).from(el).save().then(() => {
+                controls.forEach(e => e.style.display='');
+                if(wasDark) document.documentElement.classList.add('dark');
+            });
+        });
+    </script>
+</body>
+</html>
