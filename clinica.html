@@ -35,8 +35,7 @@
             width: 100%; max-width: 56rem; background-color: white;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
             margin: 0 auto; position: relative; overflow: hidden;
-            /* Quitamos el min-height fijo para que se ajuste al contenido de cada pagina */
-            min-height: auto; 
+            min-height: auto; /* Altura automática */
             padding-bottom: 2rem;
         }
         .dark .paper-sheet { background-color: #1e293b; }
@@ -157,8 +156,7 @@
                         </div>
                     </div>
                 </div>
-                </div>
-
+            </div>
             <div class="html2pdf__page-break"></div>
 
             <div class="paper-sheet rounded-2xl border border-gray-200 dark:border-slate-700">
@@ -324,7 +322,7 @@
 
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
-        const colName = "historias_clinicas_2026"; // Colección separada para Historias
+        const colName = "historias_clinicas_2026";
 
         window.dbCache = [];
 
@@ -376,7 +374,7 @@
             document.querySelectorAll('.fecha-display').forEach(el => el.innerText = new Date().toLocaleDateString());
         }
 
-        // --- FIRMA ---
+        // --- FIRMA (PAD) ---
         let canvas, ctx, isDrawing = false;
         function initSignaturePad() {
             canvas = document.getElementById('signaturePad');
@@ -534,24 +532,63 @@
             toggleView('form');
         }
 
-        // --- PDF ---
+        // --- PDF ROBUSTO (ANTI-ATRAPAMIENTO) ---
         document.getElementById('btnPdf').addEventListener('click', () => {
+            const btn = document.getElementById('btnPdf');
+            const originalText = btn.innerHTML;
+            
+            // 1. Referencias
             const el = document.getElementById('printContainer');
-            const controls = document.querySelectorAll('.no-print');
-            const wasDark = document.documentElement.classList.contains('dark');
-            if(wasDark) document.documentElement.classList.remove('dark');
-            controls.forEach(e => e.style.display='none');
+            const controls = document.querySelectorAll('.no-print'); 
+            const wasDark = document.documentElement.classList.contains('dark'); 
 
-            html2pdf().set({
-                margin: [0, 0, 0, 0], // Margen cero porque ya lo manejamos con el padding del body
-                filename: `HC_${document.querySelector('.folio-display').innerText}.pdf`,
-                image: {type:'jpeg', quality:0.98},
-                html2canvas: {scale:2, useCORS:true},
-                jsPDF: {unit:'in', format:'letter', orientation:'portrait'}
-            }).from(el).save().then(() => {
-                controls.forEach(e => e.style.display='');
-                if(wasDark) document.documentElement.classList.add('dark');
-            });
+            // 2. Función de rescate
+            const restaurarTodo = () => {
+                controls.forEach(e => e.style.display = ''); 
+                if(wasDark) document.documentElement.classList.add('dark'); 
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                document.body.style.cursor = 'default';
+            };
+
+            // 3. Inicio
+            try {
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> CREANDO PDF...';
+                btn.disabled = true;
+                document.body.style.cursor = 'wait';
+
+                if(wasDark) document.documentElement.classList.remove('dark');
+                controls.forEach(e => e.style.display = 'none');
+
+                const folio = document.querySelector('.folio-display').innerText || 'HC_SinFolio';
+                
+                // 4. Generación
+                html2pdf().set({
+                    margin: [0, 0, 0, 0],
+                    filename: `HC_${folio}.pdf`,
+                    image: {type:'jpeg', quality:0.98},
+                    html2canvas: {
+                        scale: 2, 
+                        useCORS: true, 
+                        logging: true,
+                        letterRendering: true
+                    },
+                    jsPDF: {unit:'in', format:'letter', orientation:'portrait'}
+                }).from(el).save()
+                .then(() => {
+                    restaurarTodo(); 
+                })
+                .catch((err) => {
+                    console.error("Error al generar PDF:", err);
+                    alert("Error menor generando PDF. Pantalla restaurada.");
+                    restaurarTodo();
+                });
+
+            } catch (e) {
+                console.error("Error crítico:", e);
+                alert("Error crítico.");
+                restaurarTodo();
+            }
         });
     </script>
 </body>
