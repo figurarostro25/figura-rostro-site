@@ -385,8 +385,11 @@
         window.currentDocId = null; 
         window.totalCalculadoGlobal = 0;
         window.saldoPendienteGlobal = 0;
+        
+        // Función vacía para evitar error en consola si se cambia el select
+        window.checkZone = (e) => {};
 
-        // LISTA DE OPCIONES REUTILIZABLE (PARA AGREGAR Y PARA EDITAR)
+        // LISTA DE OPCIONES REUTILIZABLE
         const OPCIONES_HTML = `
             <option value="" disabled selected>-- SELECCIONAR --</option>
             <optgroup label="Tratamientos Principales">
@@ -595,9 +598,12 @@
             document.querySelectorAll('.service-row').forEach(r => {
                 const t = r.querySelector('.s-type').value;
                 const p = r.querySelector('.s-price').value; 
+                // Aceptamos si hay precio, aunque el tipo pueda fallar visualmente,
+                // pero con el fix de arriba, t ya no debería ser vacío.
                 if(t && p) serv.push({ tipo: t, zona: r.querySelector('.s-zone').value, precio: p });
             });
-            if(serv.length === 0) return alert("⚠️ Agregue al menos un servicio");
+            
+            if(serv.length === 0) return alert("⚠️ Agregue al menos un servicio con su precio.");
 
             // CALCULAR EL ABONO TOTAL A GUARDAR
             const abonoAnt = parseFloat(document.getElementById('abono_anterior').value) || 0;
@@ -620,7 +626,7 @@
                 servicios: serv,
                 finanzas: {
                     total: document.getElementById('lblTotal').innerText,
-                    abono: abonoTotalFinal, // IMPORTANTE: Guardamos la suma acumulada
+                    abono: abonoTotalFinal, 
                     pendiente: document.getElementById('lblPendiente').innerText,
                     descuentoPct: document.getElementById('promo_pct').value,
                     bono: document.getElementById('bono_extra').value
@@ -671,7 +677,6 @@
                     let d = docSnap.data(); 
                     d.id = docSnap.id; 
                     
-                    // Asegurar datos mínimos
                     d.folio = d.folio || "S/F"; 
                     d.paciente = d.paciente || { nombre: "?" }; 
                     d.finanzas = d.finanzas || {};
@@ -712,7 +717,6 @@
             window.currentDocId = fid; 
             document.getElementById('editModeBanner').classList.remove('hidden');
             
-            // Llenar datos básicos
             document.querySelectorAll('.folio-display').forEach(e => e.innerText = r.folio);
             const p = r.paciente; 
             document.getElementById('nombre').value = p.nombre; 
@@ -722,7 +726,6 @@
             document.getElementById('ocupacion').value = p.ocupacion || ''; 
             document.getElementById('direccion').value = p.direccion || '';
             
-            // Llenar antecedentes
             const ant = r.antecedentes || {}; 
             document.getElementById('m_diabetes').checked = ant.diabetes; 
             document.getElementById('m_hipertension').checked = ant.hipertension; 
@@ -730,16 +733,21 @@
             document.getElementById('m_embarazo').checked = ant.embarazo; 
             document.getElementById('m_keloides').checked = ant.keloides;
 
-            // Reconstruir lista de servicios con la variable OPCIONES_HTML
+            // --- RECONSTRUCCIÓN DE SERVICIOS (CORREGIDO) ---
             document.getElementById('listaServicios').innerHTML = ''; 
             (r.servicios || []).forEach(s => { 
                 const id = Date.now() + Math.random(); 
+                
+                // TRUCO CLAVE: Limpiamos el 'selected' del placeholder para que no pelee 
+                // con el valor guardado que queremos mostrar.
+                const opcionesLimpias = OPCIONES_HTML.replace('selected', '');
+
                 const html = `
                 <div class="service-row" id="row-${id}">
                     <div>
-                        <select class="input-pro cursor-pointer s-type text-xs font-bold">
+                        <select class="input-pro cursor-pointer s-type text-xs font-bold" onchange="checkZone(this)">
                             <option value="${s.tipo}" selected>${s.tipo}</option>
-                            ${OPCIONES_HTML}
+                            ${opcionesLimpias}
                         </select>
                     </div>
                     <div><input type="text" class="input-pro s-zone text-xs" value="${s.zona || ''}"></div>
@@ -752,11 +760,15 @@
                 </div>`; 
                 document.getElementById('listaServicios').insertAdjacentHTML('beforeend', html); 
             });
+            
+            // Si por alguna razón la lista está vacía pero hay datos antiguos, agregamos uno vacío
+            if((!r.servicios || r.servicios.length === 0)) {
+                // Opcional: Podríamos agregar uno vacío, pero mejor dejar que el usuario lo agregue si lo necesita
+            }
 
-            // Configurar Finanzas para Pagos Acumulativos
             const f = r.finanzas; 
-            document.getElementById('abono_anterior').value = f.abono || 0; // Lo que ya pagó pasa al historial
-            document.getElementById('abono_nuevo').value = ''; // Campo limpio para nuevos pagos
+            document.getElementById('abono_anterior').value = f.abono || 0; 
+            document.getElementById('abono_nuevo').value = ''; 
             
             document.getElementById('bono_extra').value = f.bono || 0; 
             setPromo(parseFloat(f.descuentoPct) || 0);
@@ -765,6 +777,8 @@
             document.getElementById('specialistName').value = (r.medico && r.medico.especialista) ? r.medico.especialista : '';
             
             toggleView('form');
+            // Recalcular para asegurar que los totales cuadren visualmente
+            calcularTotal();
         }
 
         document.getElementById('btnPdf').addEventListener('click', () => { 
