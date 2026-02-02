@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Agenda | Figura Rostro KG</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="tu-logo.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-slate-900 text-white font-sans">
+    <div class="max-w-md mx-auto p-6">
+        <div class="text-center mb-8">
+            <h1 class="text-2xl font-bold text-teal-400 uppercase">Reserva tu Cita</h1>
+            <p class="text-slate-400 text-sm">Completa tus datos para agendarte</p>
+        </div>
+
+        <form id="reservaForm" class="space-y-4">
+            <div>
+                <label class="block text-xs font-bold uppercase text-slate-500 mb-1">Nombre Completo</label>
+                <input type="text" id="nombre" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-3 text-white focus:border-teal-500 outline-none" required>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-500 mb-1">Fecha</label>
+                    <input type="date" id="fecha_cita" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-3 text-white outline-none" required>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-500 mb-1">Hora</label>
+                    <input type="time" id="hora_cita" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-3 text-white outline-none" required>
+                </div>
+            </div>
+            <div>
+                <label class="block text-xs font-bold uppercase text-slate-500 mb-1">WhatsApp</label>
+                <input type="tel" id="whatsapp" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-3 text-white outline-none" required>
+            </div>
+            
+            <button type="submit" id="btnEnviar" class="w-full bg-teal-600 hover:bg-teal-500 text-white font-bold py-4 rounded-xl shadow-lg transition-all mt-6">
+                SOLICITAR CITA
+            </button>
+        </form>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, Timestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        // Tu configuración de Firebase (Misma que ya usas)
+        const firebaseConfig = {
+            apiKey: "AIzaSyBAuTfBKGuG33c9NXc1s0lkQv-7GwA47l0",
+            authDomain: "figurarostro-system.firebaseapp.com",
+            projectId: "figurarostro-system",
+            storageBucket: "figurarostro-system.firebasestorage.app",
+            messagingSenderId: "803848354693",
+            appId: "1:803848354693:web:7144490abb18b0319822ec"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        document.getElementById('reservaForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('btnEnviar');
+            btn.disabled = true;
+            btn.innerText = "ENVIANDO...";
+
+            const datos = {
+                nombre: document.getElementById('nombre').value,
+                fecha_cita: document.getElementById('fecha_cita').value,
+                hora_cita: document.getElementById('hora_cita').value,
+                whatsapp: document.getElementById('whatsapp').value,
+                estado: "Pendiente",
+                fecha_registro: Timestamp.now()
+            };
+
+            try {
+                await addDoc(collection(db, "reservas_entrantes"), datos);
+                alert("¡Cita solicitada con éxito! Nos contactaremos pronto.");
+                location.reload();
+            } catch (error) {
+                alert("Error al enviar: " + error.message);
+                btn.disabled = false;
+                btn.innerText = "SOLICITAR CITA";
+            }
+        });
+    </script>
+</body>
+</html>
