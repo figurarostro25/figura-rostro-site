@@ -6,33 +6,22 @@
     <title>Agenda tu Cita | Figura Rostro KG</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #4c1d95; font-family: 'Montserrat', sans-serif; }
-        .main-card { background: white; border-radius: 2rem; max-width: 500px; margin: auto; overflow: hidden; }
-        .input-styled { width: 100%; border: 1px solid #e2e8f0; border-radius: 0.75rem; padding: 0.75rem; font-size: 0.9rem; outline: none; background-color: #f9fafb; }
-        .input-styled:focus { border-color: #7c3aed; background-color: #fff; }
-        .label-styled { display: block; font-weight: 700; color: #4b5563; font-size: 0.75rem; margin-bottom: 0.4rem; margin-left: 0.2rem; }
-        .btn-submit { background-color: #6d28d9; color: white; font-weight: 800; padding: 1.2rem; border-radius: 1rem; width: 100%; text-transform: uppercase; transition: all 0.3s; shadow: 0 10px 15px -3px rgba(124, 58, 237, 0.4); }
-        .btn-submit:active { transform: scale(0.95); }
-        .promo-banner { background-color: #16a34a; color: white; text-align: center; padding: 0.6rem; font-size: 0.7rem; font-weight: 700; }
+        body { background-color: #4c1d95; font-family: sans-serif; }
+        .main-card { background: white; border-radius: 1.5rem; max-width: 500px; margin: auto; overflow: hidden; }
+        .input-styled { width: 100%; border: 1px solid #e2e8f0; border-radius: 0.75rem; padding: 0.75rem; font-size: 0.9rem; outline: none; background: #f9fafb; }
+        .label-styled { display: block; font-weight: 700; color: #4b5563; font-size: 0.75rem; margin-bottom: 0.4rem; }
     </style>
 </head>
 <body class="py-6 px-4">
 
-    <div class="max-w-[500px] mx-auto mb-4">
-        <div class="promo-banner rounded-t-2xl shadow-lg">
-            <i class="fas fa-star mr-1"></i> Promo Activa: Seguidores IG por solo $5.95
-        </div>
-    </div>
-
     <div class="main-card shadow-2xl">
-        <div class="p-8 text-center bg-gradient-to-b from-white to-purple-50">
-            <h1 class="text-3xl font-extrabold text-[#4c1d95] italic tracking-tighter">Agenda tu Cita</h1>
+        <div class="p-8 text-center border-b border-slate-50">
+            <h1 class="text-2xl font-black text-[#4c1d95] uppercase italic">Agenda tu Cita</h1>
             <p class="text-[10px] text-amber-600 font-bold uppercase tracking-widest mt-1">Pre-Evaluación Figura Rostro KG</p>
         </div>
 
-        <form id="formCitaFinal" class="px-8 pb-10 space-y-5">
+        <form id="formFinal" class="px-8 pb-10 space-y-4">
             <div>
                 <label class="label-styled">Nombre Completo</label>
                 <input type="text" id="nombre" class="input-styled" placeholder="Nombre y Apellido" required>
@@ -44,52 +33,83 @@
                     <input type="number" id="edad" class="input-styled" placeholder="Ej: 30">
                 </div>
                 <div class="flex-1">
+                    <label class="label-styled">Ocupación</label>
+                    <input type="text" id="ocupacion" class="input-styled" placeholder="Ej: Abogada...">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+                <div>
                     <label class="label-styled">WhatsApp</label>
-                    <input type="tel" id="whatsapp" class="input-styled" placeholder="Ej: 6474-8168" required>
+                    <input type="tel" id="whatsapp" class="input-styled" required>
+                </div>
+                <div>
+                    <label class="label-styled">Provincia</label>
+                    <select id="provincia" class="input-styled">
+                        <option value="">-- Elige --</option>
+                        <option>Panamá</option><option>Panamá Oeste</option><option>Chiriquí</option><option>Coclé</option><option>Veraguas</option><option>Colón</option><option>Herrera / Los Santos</option>
+                    </select>
                 </div>
             </div>
 
             <div>
-                <label class="label-styled">¿Qué desea realizar?</label>
-                <select id="intencion" class="input-styled border-l-4 border-l-purple-500" required>
-                    <option value="" disabled selected>-- Elige una opción --</option>
+                <label class="label-styled">Correo Electrónico</label>
+                <input type="email" id="email" class="input-styled" placeholder="Para confirmación">
+            </div>
+
+            <div>
+                <label class="label-styled">¿Qué le inspira a tomar el tratamiento?</label>
+                <select id="motivacion" class="input-styled">
+                    <option value="">-- Elige motivo --</option>
+                    <option>Mejorar mi apariencia</option>
+                    <option>Sentirme bien conmigo misma</option>
+                    <option>Rejuvenecimiento</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="label-styled">Zona Principal a Tratar</label>
+                <select id="zona" class="input-styled">
+                    <option value="">-- Seleccione la zona --</option>
+                    <option>Párpados</option><option>Rostro Completo</option><option>Abdomen</option><option>Cuello / Papada</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="label-styled text-purple-700">Intención de la Visita</label>
+                <select id="intencion" class="input-styled border-purple-200">
                     <option value="Solo Valoracion">Solo Valoración (Diagnóstico)</option>
-                    <option value="Procedimiento">Me gustaría hacerme el procedimiento (Mismo día)</option>
+                    <option value="Procedimiento">Valoración y Procedimiento (Mismo día)</option>
                 </select>
             </div>
 
             <div>
                 <label class="label-styled">Servicio de Interés</label>
                 <select id="servicio" class="input-styled" required>
-                    <option value="" disabled selected>-- Seleccione el servicio --</option>
                     <option value="Valoracion Oferta $12.95">Valoración Estética en Oferta - $12.95</option>
                     <option value="Promo Seguidores $5.95">Promo de Seguidores IG - $5.95</option>
-                    <option value="Plasma Fibroblast">Plasma Fibroblast (Consulta General)</option>
                 </select>
             </div>
 
             <div>
-                <label class="label-styled">Medio de pago que frecuenta</label>
-                <select id="metodo_pago" class="input-styled bg-purple-50 border-purple-200">
-                    <option value="" disabled selected>-- Seleccione su preferido --</option>
-                    <option value="Yappi">Yappi (Bono de $15)</option>
-                    <option value="Tarjeta">Tarjeta de Crédito</option>
-                    <option value="Efectivo">Efectivo / Otros</option>
+                <label class="label-styled">Medio de pago que usará</label>
+                <select id="metodo_pago" class="input-styled">
+                    <option value="Yappi">Directorio Yappi (Bono de $15)</option>
+                    <option value="Tarjeta">Tarjeta de Crédito / Directorio</option>
                 </select>
             </div>
 
-            <div class="bg-blue-50 p-4 rounded-xl border border-blue-100 flex gap-3">
-                <i class="fas fa-gift text-blue-500 text-lg"></i>
-                <p class="text-[10px] text-blue-800 font-bold leading-snug">Las citas por Directorio Yappi se convierten en un bono de $15 para usar en la estética.</p>
+            <div class="bg-blue-50 p-4 rounded-xl border border-blue-100 text-[10px] text-blue-800 font-bold">
+                <i class="fas fa-gift mr-1"></i> Las citas por Directorio Yappi se convierten en un bono de $15.
             </div>
 
             <div class="p-4 border border-slate-100 rounded-xl bg-slate-50">
-                <p class="text-[9px] font-bold text-slate-400 uppercase mb-3">Seguridad Médica</p>
+                <p class="text-[9px] font-bold text-slate-400 uppercase mb-2">Seguridad Médica</p>
                 <div class="grid grid-cols-2 gap-2 text-[10px]">
                     <label class="flex items-center gap-2"><input type="checkbox" class="med-check" value="Diabetes"> Diabetes</label>
                     <label class="flex items-center gap-2"><input type="checkbox" class="med-check" value="Embarazo"> Embarazo</label>
                     <label class="flex items-center gap-2"><input type="checkbox" class="med-check" value="Keloide"> Keloide</label>
-                    <label class="flex items-center gap-2"><input type="checkbox" class="med-check" value="Alergias"> Alergias</label>
+                    <label class="flex items-center gap-2"><input type="checkbox" class="med-check" value="Infeccion"> Infección Activa</label>
                 </div>
             </div>
 
@@ -101,27 +121,22 @@
                 <div>
                     <label class="label-styled">Horario</label>
                     <select id="hora" class="input-styled" required>
-                        <option value="">Seleccionar...</option>
-                        <option>08:00 AM</option>
-                        <option>10:00 AM</option>
-                        <option>12:00 PM</option>
-                        <option>02:00 PM</option>
-                        <option>04:00 PM</option>
-                        <option>06:00 PM</option>
-                        <option>08:00 PM</option>
-                        <option>10:00 PM</option>
+                        <option>08:00 AM</option><option>10:00 AM</option><option>12:00 PM</option>
+                        <option>02:00 PM</option><option>04:00 PM</option><option>06:00 PM</option>
+                        <option>08:00 PM</option><option>10:00 PM</option>
                     </select>
                 </div>
             </div>
 
-            <button type="submit" id="btnEnviar" class="btn-submit shadow-xl">ENVIAR SOLICITUD SEGURA</button>
+            <button type="submit" id="btnEnviar" class="w-full bg-purple-700 text-white font-black py-4 rounded-xl shadow-lg uppercase text-sm tracking-widest">
+                ENVIAR SOLICITUD SEGURA
+            </button>
         </form>
 
         <div id="successCard" class="hidden p-16 text-center animate-fade-in">
             <i class="fas fa-check-circle text-6xl text-green-500 mb-4"></i>
             <h2 class="text-2xl font-black text-gray-800 uppercase italic">¡Recibido!</h2>
-            <p class="text-xs text-gray-500 mt-4 leading-relaxed">Tu solicitud ha sido enviada. Te esperamos en el horario seleccionado. <br><strong>Por favor llegar 15 minutos antes.</strong></p>
-            <button onclick="location.reload()" class="mt-8 text-[10px] font-bold text-slate-300 underline uppercase">Agendar otra</button>
+            <p class="text-xs text-gray-500 mt-4 leading-relaxed">Te esperamos. <strong>Por favor llegar 15 minutos antes.</strong></p>
         </div>
     </div>
 
@@ -141,7 +156,7 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        document.getElementById('formCitaFinal').addEventListener('submit', async (e) => {
+        document.getElementById('formFinal').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = document.getElementById('btnEnviar');
             btn.disabled = true;
@@ -152,7 +167,12 @@
             const data = {
                 nombre: document.getElementById('nombre').value,
                 edad: document.getElementById('edad').value,
+                ocupacion: document.getElementById('ocupacion').value,
                 whatsapp: document.getElementById('whatsapp').value,
+                email: document.getElementById('email').value,
+                provincia: document.getElementById('provincia').value,
+                motivacion: document.getElementById('motivacion').value,
+                zona: document.getElementById('zona').value,
                 intencion: document.getElementById('intencion').value,
                 servicio: document.getElementById('servicio').value,
                 metodo_pago: document.getElementById('metodo_pago').value,
@@ -165,7 +185,7 @@
 
             try {
                 await addDoc(collection(db, "reservas_entrantes"), data);
-                document.getElementById('formCitaFinal').classList.add('hidden');
+                document.getElementById('formFinal').classList.add('hidden');
                 document.getElementById('successCard').classList.remove('hidden');
             } catch (error) {
                 alert("Error: " + error.message);
