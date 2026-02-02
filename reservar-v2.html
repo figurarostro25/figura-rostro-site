@@ -6,79 +6,134 @@
     <title>Agenda tu Cita | Figura Rostro KG</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #4c1d95; } /* Fondo morado corporativo */
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        .input-field { @apply w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-sm outline-none focus:border-purple-500 transition-all; }
+        .label-style { @apply block text-[10px] font-bold text-slate-500 uppercase mb-1 ml-1; }
+    </style>
 </head>
-<body class="bg-[#4c1d95] min-h-screen p-4 flex items-center justify-center">
+<body class="min-h-screen p-4 md:p-8 flex justify-center">
 
-    <div id="formContainer" class="bg-white rounded-3xl shadow-2xl w-full max-w-lg overflow-hidden transition-all">
-        <div class="p-6 text-center border-b border-slate-100">
-            <h1 class="text-2xl font-black text-purple-900 uppercase">Agenda tu Cita</h1>
-            <p class="text-xs text-amber-600 font-bold uppercase tracking-widest mt-1">Tratamiento Plasma Fibroblast</p>
+    <div id="mainContainer" class="glass-card rounded-[2rem] shadow-2xl w-full max-w-2xl overflow-hidden self-start">
+        <div class="p-8 text-center border-b border-slate-100">
+            <div class="flex justify-center mb-4">
+                <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center text-purple-700 text-3xl">
+                    <i class="fas fa-spa"></i>
+                </div>
+            </div>
+            <h1 class="text-3xl font-black text-purple-900 uppercase tracking-tighter">Agenda tu Cita</h1>
+            <p class="text-[10px] text-amber-600 font-bold uppercase tracking-[0.3em] mt-2">Estética Avanzada Figura Rostro KG</p>
         </div>
 
-        <form id="citaForm" class="p-6 space-y-4 max-h-[70vh] overflow-y-auto">
-            <div class="grid grid-cols-2 gap-3">
-                <div class="col-span-2">
-                    <label class="text-[10px] font-bold text-slate-400 uppercase">Nombre Completo</label>
-                    <input type="text" id="nombre" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-sm outline-none focus:border-purple-500" required>
+        <form id="fullCitaForm" class="p-8 space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="md:col-span-2">
+                    <label class="label-style">Nombre Completo</label>
+                    <input type="text" id="nombre" class="input-field border-l-4 border-l-purple-500" placeholder="Ej: Maria Perez" required>
                 </div>
                 <div>
-                    <label class="text-[10px] font-bold text-slate-400 uppercase">WhatsApp</label>
-                    <input type="tel" id="whatsapp" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-sm" required>
+                    <label class="label-style">WhatsApp</label>
+                    <input type="tel" id="whatsapp" class="input-field" placeholder="Ej: 6474-8168" required>
                 </div>
                 <div>
-                    <label class="text-[10px] font-bold text-slate-400 uppercase">Edad</label>
-                    <input type="number" id="edad" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-sm">
+                    <label class="label-style">Edad</label>
+                    <input type="number" id="edad" class="input-field" placeholder="Ej: 30">
+                </div>
+                <div class="md:col-span-2">
+                    <label class="label-style">Provincia</label>
+                    <select id="provincia" class="input-field">
+                        <option value="" disabled selected>-- Elige una opción --</option>
+                        <option>Panamá</option>
+                        <option>Panamá Oeste</option>
+                        <option>Chiriquí</option>
+                        <option>Coclé</option>
+                        <option>Otros</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="label-style">¿Qué le inspira a tomar el tratamiento?</label>
+                    <select id="motivacion" class="input-field">
+                        <option value="" disabled selected>-- Seleccione su motivo principal --</option>
+                        <option>Mejorar mi apariencia</option>
+                        <option>Eliminar manchas/cicatrices</option>
+                        <option>Rejuvenecimiento facial</option>
+                        <option>Recomendación</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="label-style">Zona Principal a Tratar</label>
+                    <select id="zona" class="input-field">
+                        <option value="" disabled selected>-- Seleccione la zona --</option>
+                        <option>Facial (Párpados, Rostro, Cuello)</option>
+                        <option>Corporal (Abdomen, Brazos)</option>
+                        <option>Otros</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="bg-amber-50 p-6 rounded-2xl border border-amber-100 space-y-4">
+                <div>
+                    <label class="label-style text-amber-700">¿Con cuál medio de pago le gustaría recibir oferta?</label>
+                    <select id="metodo_pago" class="input-field border-amber-200">
+                        <option value="" disabled selected>-- Preferencia de Pago --</option>
+                        <option value="Yappi">Yappi (Aplica Bono de $12)</option>
+                        <option value="PayPal">PayPal / Tarjeta</option>
+                        <option value="Efectivo">Efectivo / ACH</option>
+                    </select>
+                </div>
+                <div class="flex items-center gap-2 p-2 bg-white/50 rounded-lg border border-amber-200">
+                    <i class="fas fa-info-circle text-amber-500 text-xs"></i>
+                    <p class="text-[9px] text-amber-800 font-bold uppercase">Las citas reservadas por Yappi generan un Bono de $12.</p>
+                </div>
+            </div>
+
+            <div class="bg-purple-50 p-6 rounded-2xl border border-purple-100">
+                <p class="text-[10px] font-bold text-purple-800 uppercase mb-3">Seguridad Médica (Marca si presentas):</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-[11px] text-purple-900 font-medium">
+                    <label class="flex items-center gap-3 bg-white p-2 rounded-lg cursor-pointer"><input type="checkbox" class="med-check w-4 h-4" value="Diabetes"> Diabetes</label>
+                    <label class="flex items-center gap-3 bg-white p-2 rounded-lg cursor-pointer"><input type="checkbox" class="med-check w-4 h-4" value="Embarazo"> Embarazo / Lactancia</label>
+                    <label class="flex items-center gap-3 bg-white p-2 rounded-lg cursor-pointer"><input type="checkbox" class="med-check w-4 h-4" value="Hipertensión"> Hipertensión</label>
+                    <label class="flex items-center gap-3 bg-white p-2 rounded-lg cursor-pointer"><input type="checkbox" class="med-check w-4 h-4" value="Keloides"> Cicatrización Keloide</label>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="label-style">Fecha Deseada</label>
+                    <input type="date" id="fecha" class="input-field" required>
+                </div>
+                <div>
+                    <label class="label-style">Horario</label>
+                    <input type="time" id="hora" class="input-field" required>
                 </div>
             </div>
 
             <div>
-                <label class="text-[10px] font-bold text-slate-400 uppercase">Zona Principal a Tratar</label>
-                <select id="zona" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-sm outline-none">
-                    <option>Facial Completo</option>
-                    <option>Párpados</option>
-                    <option>Abdomen</option>
-                    <option>Otro</option>
-                </select>
+                <label class="label-style">Observaciones adicionales</label>
+                <textarea id="obs" rows="3" class="input-field resize-none" placeholder="¿Algún detalle que debamos saber?"></textarea>
             </div>
 
-            <div class="bg-purple-50 p-4 rounded-xl border border-purple-100">
-                <p class="text-[10px] font-bold text-purple-800 uppercase mb-2">Seguridad Médica (Marca si presentas):</p>
-                <div class="grid grid-cols-2 gap-2 text-[11px] text-purple-900">
-                    <label class="flex items-center gap-2"><input type="checkbox" class="med-check" value="Diabetes"> Diabetes</label>
-                    <label class="flex items-center gap-2"><input type="checkbox" class="med-check" value="Embarazo"> Embarazo</label>
-                    <label class="flex items-center gap-2"><input type="checkbox" class="med-check" value="Alergias"> Alergias</label>
-                    <label class="flex items-center gap-2"><input type="checkbox" class="med-check" value="Keloides"> Queloides</label>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-2 gap-3">
-                <div>
-                    <label class="text-[10px] font-bold text-slate-400 uppercase">Fecha</label>
-                    <input type="date" id="fecha" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-sm" required>
-                </div>
-                <div>
-                    <label class="text-[10px] font-bold text-slate-400 uppercase">Hora</label>
-                    <input type="time" id="hora" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-sm" required>
-                </div>
-            </div>
-
-            <button type="submit" id="btnEnviar" class="w-full bg-purple-700 text-white font-bold py-4 rounded-2xl shadow-lg hover:bg-purple-800 transition-all">ENVIAR SOLICITUD SEGURA</button>
+            <button type="submit" id="btnEnviar" class="w-full bg-purple-800 text-white font-black py-5 rounded-[1.5rem] shadow-xl hover:bg-purple-700 transition-all text-sm uppercase tracking-widest active:scale-95">
+                Enviar Solicitud Segura <i class="fas fa-shield-alt ml-2"></i>
+            </button>
         </form>
 
-        <div id="successCard" class="hidden p-10 text-center space-y-6 animate-fade-in">
-            <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-3xl">
+        <div id="successView" class="hidden p-12 text-center space-y-6">
+            <div class="w-24 h-24 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-4xl animate-bounce">
                 <i class="fas fa-check"></i>
             </div>
-            <div>
-                <h2 class="text-2xl font-black text-slate-800">¡Todo Listo!</h2>
-                <p class="text-slate-500 text-sm mt-2">Hemos recibido tu solicitud, <span id="userGreet" class="font-bold text-purple-700"></span>.</p>
+            <h2 class="text-3xl font-black text-slate-800 uppercase">¡Solicitud Enviada!</h2>
+            <p class="text-slate-500">Gracias <span id="spanNombre" class="font-bold text-purple-700"></span>, hemos recibido tus datos correctamente.</p>
+            <div class="bg-slate-50 p-6 rounded-[2rem] border-2 border-dashed border-slate-200 inline-block w-full">
+                <p class="text-xs font-bold text-slate-400 uppercase">Te esperamos el:</p>
+                <p class="text-xl font-black text-purple-900" id="pFechaHora"></p>
+                <p class="text-[10px] text-purple-600 font-bold mt-4 uppercase"><i class="fas fa-clock mr-1"></i> Favor llegar 15 min antes de su cita.</p>
             </div>
-            <div class="bg-slate-50 border border-dashed border-slate-200 p-4 rounded-2xl text-left">
-                <p class="text-[10px] font-bold text-slate-400 uppercase">Tu Cita:</p>
-                <p class="text-sm font-bold text-slate-700" id="resumenCita"></p>
-                <p class="text-[11px] text-purple-600 font-medium mt-2"><i class="fas fa-info-circle"></i> Por favor, llega 15 minutos antes de tu hora para la valoración clínica.</p>
-            </div>
-            <button onclick="location.reload()" class="text-xs text-slate-400 underline uppercase font-bold">Cerrar</button>
+            <button onclick="location.reload()" class="text-xs text-slate-400 font-bold underline uppercase">Volver</button>
         </div>
     </div>
 
@@ -98,40 +153,42 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        document.getElementById('citaForm').addEventListener('submit', async (e) => {
+        document.getElementById('fullCitaForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = document.getElementById('btnEnviar');
             btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> PROCESANDO...';
 
             const checks = Array.from(document.querySelectorAll('.med-check:checked')).map(c => c.value);
-            const nombre = document.getElementById('nombre').value;
-            const fecha = document.getElementById('fecha').value;
-            const hora = document.getElementById('hora').value;
-
-            const datos = {
-                nombre: nombre,
+            
+            const data = {
+                nombre: document.getElementById('nombre').value,
                 whatsapp: document.getElementById('whatsapp').value,
                 edad: document.getElementById('edad').value,
+                provincia: document.getElementById('provincia').value,
+                motivacion: document.getElementById('motivacion').value,
                 zona: document.getElementById('zona').value,
+                metodo_pago: document.getElementById('metodo_pago').value,
                 antecedentes: checks,
-                fecha_cita: fecha,
-                hora_cita: hora,
+                fecha_cita: document.getElementById('fecha').value,
+                hora_cita: document.getElementById('hora').value,
+                observaciones: document.getElementById('obs').value,
                 estado: "Pendiente",
                 fecha_registro: Timestamp.now()
             };
 
             try {
-                await addDoc(collection(db, "reservas_entrantes"), datos);
+                await addDoc(collection(db, "reservas_entrantes"), data);
                 
-                // Mostrar pantalla de éxito
-                document.getElementById('citaForm').classList.add('hidden');
-                document.getElementById('successCard').classList.remove('hidden');
-                document.getElementById('userGreet').innerText = nombre;
-                document.getElementById('resumenCita').innerText = `${fecha} a las ${hora}`;
-
+                // UI Éxito
+                document.getElementById('fullCitaForm').classList.add('hidden');
+                document.getElementById('successView').classList.remove('hidden');
+                document.getElementById('spanNombre').innerText = data.nombre;
+                document.getElementById('pFechaHora').innerText = `${data.fecha_cita} a las ${data.hora_cita}`;
             } catch (error) {
                 alert("Error: " + error.message);
                 btn.disabled = false;
+                btn.innerText = "Enviar Solicitud Segura";
             }
         });
     </script>
