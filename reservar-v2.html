@@ -3,52 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Agenda | Figura Rostro KG</title>
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="apple-touch-icon" href="tu-logo.png">
-    
+    <title>Agenda tu Cita | Figura Rostro KG</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
-<body class="bg-slate-900 text-white font-sans">
-    <div class="max-w-md mx-auto p-6">
-        <div class="text-center mb-8">
-            <h1 class="text-2xl font-bold text-teal-400 uppercase">Reserva tu Cita</h1>
-            <p class="text-slate-400 text-sm">Completa tus datos para agendarte</p>
+<body class="bg-[#4c1d95] min-h-screen p-4 flex items-center justify-center">
+
+    <div id="formContainer" class="bg-white rounded-3xl shadow-2xl w-full max-w-lg overflow-hidden transition-all">
+        <div class="p-6 text-center border-b border-slate-100">
+            <h1 class="text-2xl font-black text-purple-900 uppercase">Agenda tu Cita</h1>
+            <p class="text-xs text-amber-600 font-bold uppercase tracking-widest mt-1">Tratamiento Plasma Fibroblast</p>
         </div>
 
-        <form id="reservaForm" class="space-y-4">
-            <div>
-                <label class="block text-xs font-bold uppercase text-slate-500 mb-1">Nombre Completo</label>
-                <input type="text" id="nombre" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-3 text-white focus:border-teal-500 outline-none" required>
-            </div>
-            <div class="grid grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-xs font-bold uppercase text-slate-500 mb-1">Fecha</label>
-                    <input type="date" id="fecha_cita" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-3 text-white outline-none" required>
+        <form id="citaForm" class="p-6 space-y-4 max-h-[70vh] overflow-y-auto">
+            <div class="grid grid-cols-2 gap-3">
+                <div class="col-span-2">
+                    <label class="text-[10px] font-bold text-slate-400 uppercase">Nombre Completo</label>
+                    <input type="text" id="nombre" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-sm outline-none focus:border-purple-500" required>
                 </div>
                 <div>
-                    <label class="block text-xs font-bold uppercase text-slate-500 mb-1">Hora</label>
-                    <input type="time" id="hora_cita" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-3 text-white outline-none" required>
+                    <label class="text-[10px] font-bold text-slate-400 uppercase">WhatsApp</label>
+                    <input type="tel" id="whatsapp" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-sm" required>
+                </div>
+                <div>
+                    <label class="text-[10px] font-bold text-slate-400 uppercase">Edad</label>
+                    <input type="number" id="edad" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-sm">
                 </div>
             </div>
+
             <div>
-                <label class="block text-xs font-bold uppercase text-slate-500 mb-1">WhatsApp</label>
-                <input type="tel" id="whatsapp" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-3 text-white outline-none" required>
+                <label class="text-[10px] font-bold text-slate-400 uppercase">Zona Principal a Tratar</label>
+                <select id="zona" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-sm outline-none">
+                    <option>Facial Completo</option>
+                    <option>Párpados</option>
+                    <option>Abdomen</option>
+                    <option>Otro</option>
+                </select>
             </div>
-            
-            <button type="submit" id="btnEnviar" class="w-full bg-teal-600 hover:bg-teal-500 text-white font-bold py-4 rounded-xl shadow-lg transition-all mt-6">
-                SOLICITAR CITA
-            </button>
+
+            <div class="bg-purple-50 p-4 rounded-xl border border-purple-100">
+                <p class="text-[10px] font-bold text-purple-800 uppercase mb-2">Seguridad Médica (Marca si presentas):</p>
+                <div class="grid grid-cols-2 gap-2 text-[11px] text-purple-900">
+                    <label class="flex items-center gap-2"><input type="checkbox" class="med-check" value="Diabetes"> Diabetes</label>
+                    <label class="flex items-center gap-2"><input type="checkbox" class="med-check" value="Embarazo"> Embarazo</label>
+                    <label class="flex items-center gap-2"><input type="checkbox" class="med-check" value="Alergias"> Alergias</label>
+                    <label class="flex items-center gap-2"><input type="checkbox" class="med-check" value="Keloides"> Queloides</label>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+                <div>
+                    <label class="text-[10px] font-bold text-slate-400 uppercase">Fecha</label>
+                    <input type="date" id="fecha" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-sm" required>
+                </div>
+                <div>
+                    <label class="text-[10px] font-bold text-slate-400 uppercase">Hora</label>
+                    <input type="time" id="hora" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-sm" required>
+                </div>
+            </div>
+
+            <button type="submit" id="btnEnviar" class="w-full bg-purple-700 text-white font-bold py-4 rounded-2xl shadow-lg hover:bg-purple-800 transition-all">ENVIAR SOLICITUD SEGURA</button>
         </form>
+
+        <div id="successCard" class="hidden p-10 text-center space-y-6 animate-fade-in">
+            <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-3xl">
+                <i class="fas fa-check"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-black text-slate-800">¡Todo Listo!</h2>
+                <p class="text-slate-500 text-sm mt-2">Hemos recibido tu solicitud, <span id="userGreet" class="font-bold text-purple-700"></span>.</p>
+            </div>
+            <div class="bg-slate-50 border border-dashed border-slate-200 p-4 rounded-2xl text-left">
+                <p class="text-[10px] font-bold text-slate-400 uppercase">Tu Cita:</p>
+                <p class="text-sm font-bold text-slate-700" id="resumenCita"></p>
+                <p class="text-[11px] text-purple-600 font-medium mt-2"><i class="fas fa-info-circle"></i> Por favor, llega 15 minutos antes de tu hora para la valoración clínica.</p>
+            </div>
+            <button onclick="location.reload()" class="text-xs text-slate-400 underline uppercase font-bold">Cerrar</button>
+        </div>
     </div>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getFirestore, collection, addDoc, Timestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-        // Tu configuración de Firebase (Misma que ya usas)
         const firebaseConfig = {
             apiKey: "AIzaSyBAuTfBKGuG33c9NXc1s0lkQv-7GwA47l0",
             authDomain: "figurarostro-system.firebaseapp.com",
@@ -61,29 +98,40 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        document.getElementById('reservaForm').addEventListener('submit', async (e) => {
+        document.getElementById('citaForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = document.getElementById('btnEnviar');
             btn.disabled = true;
-            btn.innerText = "ENVIANDO...";
+
+            const checks = Array.from(document.querySelectorAll('.med-check:checked')).map(c => c.value);
+            const nombre = document.getElementById('nombre').value;
+            const fecha = document.getElementById('fecha').value;
+            const hora = document.getElementById('hora').value;
 
             const datos = {
-                nombre: document.getElementById('nombre').value,
-                fecha_cita: document.getElementById('fecha_cita').value,
-                hora_cita: document.getElementById('hora_cita').value,
+                nombre: nombre,
                 whatsapp: document.getElementById('whatsapp').value,
+                edad: document.getElementById('edad').value,
+                zona: document.getElementById('zona').value,
+                antecedentes: checks,
+                fecha_cita: fecha,
+                hora_cita: hora,
                 estado: "Pendiente",
                 fecha_registro: Timestamp.now()
             };
 
             try {
                 await addDoc(collection(db, "reservas_entrantes"), datos);
-                alert("¡Cita solicitada con éxito! Nos contactaremos pronto.");
-                location.reload();
+                
+                // Mostrar pantalla de éxito
+                document.getElementById('citaForm').classList.add('hidden');
+                document.getElementById('successCard').classList.remove('hidden');
+                document.getElementById('userGreet').innerText = nombre;
+                document.getElementById('resumenCita').innerText = `${fecha} a las ${hora}`;
+
             } catch (error) {
-                alert("Error al enviar: " + error.message);
+                alert("Error: " + error.message);
                 btn.disabled = false;
-                btn.innerText = "SOLICITAR CITA";
             }
         });
     </script>
