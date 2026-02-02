@@ -289,6 +289,11 @@
                         </div>
 
                         <div><label class="label-pro mb-1">Notas Clínicas</label><textarea id="observaciones" rows="3" class="input-pro w-full resize-none leading-relaxed text-xs" placeholder="Detalles..."></textarea></div>
+
+                        <div id="seccionHistorialPagos" class="hidden mt-6 p-4 border border-slate-200 rounded-lg bg-slate-50">
+                            <h3 class="text-[10px] font-bold text-slate-500 uppercase mb-2 flex items-center gap-2"><i class="fas fa-history text-teal-600"></i> Historial de Movimientos</h3>
+                            <div id="listaHistorial" class="space-y-1 max-h-40 overflow-y-auto"></div>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -338,7 +343,7 @@
                 <i class="fas fa-save"></i> GUARDAR FICHA
             </button>
             <button type="button" id="btnPdf" class="md:w-1/3 bg-white text-slate-700 border border-slate-300 py-3 rounded shadow-sm hover:bg-slate-50 transition font-bold text-sm flex justify-center items-center gap-2">
-                <i class="fas fa-print text-teal-600"></i> IMPRIMIR PDF
+                <i class="fas fa-print text-teal-600"></i> IMPRIMIR EXPEDIENTE
             </button>
         </div>
     </div>
@@ -361,6 +366,27 @@
             </table>
         </div>
         <div id="loader" class="hidden text-center py-10"><i class="fas fa-circle-notch fa-spin text-teal-500 text-2xl"></i></div>
+    </div>
+
+    <div id="receiptTemplate" class="hidden overflow-hidden" style="width: 400px; padding: 30px; background: white; color: #333; font-family: 'Inter', sans-serif;">
+        <div style="text-align: center; border-bottom: 2px solid #14b8a6; padding-bottom: 10px; margin-bottom: 15px;">
+            <h2 style="margin: 0; color: #0f766e; font-size: 18px; text-transform: uppercase;">Recibo de Pago</h2>
+            <p style="margin: 5px 0 0 0; font-size: 10px; font-weight: bold; color: #14b8a6;">FIGURA ROSTRO KG</p>
+        </div>
+        <div style="font-size: 11px; margin-bottom: 15px;">
+            <p style="margin: 2px 0;"><strong>Folio:</strong> <span id="r_folio">---</span></p>
+            <p style="margin: 2px 0;"><strong>Fecha:</strong> <span id="r_fecha">--/--/--</span></p>
+            <p style="margin: 2px 0;"><strong>Paciente:</strong> <span id="r_paciente">---</span></p>
+        </div>
+        <div style="background: #f8fafc; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; text-align: center; margin-bottom: 15px;">
+            <p style="margin: 0; font-size: 10px; text-transform: uppercase; color: #64748b;">Monto Abonado</p>
+            <h1 style="margin: 5px 0; font-size: 28px; color: #059669;">$<span id="r_monto">0.00</span></h1>
+        </div>
+        <div style="font-size: 10px; color: #64748b; border-top: 1px dashed #cbd5e1; pt-10; margin-top: 10px; display: flex; justify-content: space-between;">
+            <span>Saldo Pendiente:</span>
+            <span id="r_pendiente" style="font-weight: bold; color: #e11d48;">$0.00</span>
+        </div>
+        <p style="margin-top: 20px; font-size: 8px; text-align: center; color: #94a3b8; font-style: italic;">"Gracias por confiar en nuestra estética avanzada."</p>
     </div>
 
     <script type="module">
@@ -586,6 +612,46 @@
             }
         }
 
+        // --- FUNCIONES NUEVAS DE PDF RÁPIDO Y RECIBO ---
+
+        window.descargarPDFRapido = (id) => {
+            window.editarFicha(id);
+            setTimeout(() => {
+                document.getElementById('btnPdf').click();
+                alert("Generando expediente del paciente...");
+            }, 500);
+        }
+
+        window.generarRecibo = (id) => {
+            const d = window.dbCache.find(x => x.id === id);
+            if(!d) return;
+
+            // Llenar plantilla de recibo
+            document.getElementById('r_folio').innerText = d.folio;
+            document.getElementById('r_fecha').innerText = new Date().toLocaleDateString();
+            document.getElementById('r_paciente').innerText = d.paciente.nombre;
+            
+            // Si el monto del último abono no existe (datos viejos), mostrar el total abonado
+            const ultimoMonto = d.finanzas.ultimoAbono || d.finanzas.abono || "0.00";
+            document.getElementById('r_monto').innerText = parseFloat(ultimoMonto).toFixed(2);
+            document.getElementById('r_pendiente').innerText = d.finanzas.pendiente;
+
+            const element = document.getElementById('receiptTemplate');
+            element.classList.remove('hidden');
+
+            const opt = {
+                margin: 0.5,
+                filename: `Recibo_${d.folio}.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 3 },
+                jsPDF: { unit: 'in', format: [4, 6], orientation: 'portrait' }
+            };
+
+            html2pdf().set(opt).from(element).save().then(() => {
+                element.classList.add('hidden');
+            });
+        }
+
         // --- GUARDAR ---
         document.getElementById('btnSave').addEventListener('click', async () => {
             const btn = document.getElementById('btnSave'); 
@@ -598,17 +664,29 @@
             document.querySelectorAll('.service-row').forEach(r => {
                 const t = r.querySelector('.s-type').value;
                 const p = r.querySelector('.s-price').value; 
-                // Aceptamos si hay precio, aunque el tipo pueda fallar visualmente,
-                // pero con el fix de arriba, t ya no debería ser vacío.
                 if(t && p) serv.push({ tipo: t, zona: r.querySelector('.s-zone').value, precio: p });
             });
             
             if(serv.length === 0) return alert("⚠️ Agregue al menos un servicio con su precio.");
 
-            // CALCULAR EL ABONO TOTAL A GUARDAR
             const abonoAnt = parseFloat(document.getElementById('abono_anterior').value) || 0;
             const abonoHoy = parseFloat(document.getElementById('abono_nuevo').value) || 0;
             const abonoTotalFinal = abonoAnt + abonoHoy;
+
+            // Manejo de HISTORIAL
+            let historialExistente = [];
+            if(window.currentDocId) {
+                const cache = window.dbCache.find(x => x.id === window.currentDocId);
+                historialExistente = cache.historialPagos || [];
+            }
+            
+            if(abonoHoy > 0) {
+                historialExistente.push({
+                    fecha: new Date().toLocaleString(),
+                    monto: abonoHoy,
+                    folio: document.querySelector('.folio-display').innerText
+                });
+            }
 
             const txt = btn.innerHTML; 
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> PROCESANDO...'; 
@@ -627,10 +705,12 @@
                 finanzas: {
                     total: document.getElementById('lblTotal').innerText,
                     abono: abonoTotalFinal, 
+                    ultimoAbono: abonoHoy, // Guardamos el de hoy para el recibo
                     pendiente: document.getElementById('lblPendiente').innerText,
                     descuentoPct: document.getElementById('promo_pct').value,
                     bono: document.getElementById('bono_extra').value
                 },
+                historialPagos: historialExistente,
                 observaciones: document.getElementById('observaciones').value,
                 medico: { especialista: document.getElementById('specialistName').value },
                 antecedentes: {
@@ -645,12 +725,10 @@
 
             try {
                 if(window.currentDocId) {
-                    // Actualizar
                     data.folio = document.querySelector('.folio-display').innerText;
                     await updateDoc(doc(db, colName, window.currentDocId), data);
                     alert("✅ Ficha ACTUALIZADA correctamente.");
                 } else {
-                    // Nuevo
                     data.folio = document.querySelector('.folio-display').innerText;
                     await addDoc(collection(db, colName), data);
                     alert("✅ Ficha NUEVA guardada correctamente.");
@@ -698,10 +776,18 @@
                         <td class="p-3 text-center">
                             ${isP ? '<i class="fas fa-check-circle text-emerald-500"></i>' : '<i class="fas fa-clock text-rose-400"></i>'}
                         </td>
-                        <td class="p-3 text-center">
-                            <button onclick="editarFicha('${d.id}')" class="bg-white border border-slate-300 text-slate-600 hover:text-teal-600 px-3 py-1 rounded shadow-sm transition text-[10px] font-bold uppercase">
-                                <i class="fas fa-pen"></i> Editar
-                            </button>
+                        <td class="p-3">
+                            <div class="flex justify-center gap-1">
+                                <button onclick="editarFicha('${d.id}')" class="bg-white border border-slate-300 text-slate-600 hover:text-teal-600 p-2 rounded shadow-sm transition" title="Editar / Abonar">
+                                    <i class="fas fa-pen text-[10px]"></i>
+                                </button>
+                                <button onclick="descargarPDFRapido('${d.id}')" class="bg-white border border-slate-300 text-teal-600 hover:bg-teal-50 p-2 rounded shadow-sm transition" title="PDF Expediente">
+                                    <i class="fas fa-file-pdf text-[10px]"></i>
+                                </button>
+                                <button onclick="generarRecibo('${d.id}')" class="bg-white border border-slate-300 text-emerald-600 hover:bg-emerald-50 p-2 rounded shadow-sm transition" title="Generar Recibo">
+                                    <i class="fas fa-receipt text-[10px]"></i>
+                                </button>
+                            </div>
                         </td>
                     </tr>`;
                 });
@@ -733,19 +819,14 @@
             document.getElementById('m_embarazo').checked = ant.embarazo; 
             document.getElementById('m_keloides').checked = ant.keloides;
 
-            // --- RECONSTRUCCIÓN DE SERVICIOS (CORREGIDO) ---
             document.getElementById('listaServicios').innerHTML = ''; 
             (r.servicios || []).forEach(s => { 
                 const id = Date.now() + Math.random(); 
-                
-                // TRUCO CLAVE: Limpiamos el 'selected' del placeholder para que no pelee 
-                // con el valor guardado que queremos mostrar.
                 const opcionesLimpias = OPCIONES_HTML.replace('selected', '');
-
                 const html = `
                 <div class="service-row" id="row-${id}">
                     <div>
-                        <select class="input-pro cursor-pointer s-type text-xs font-bold" onchange="checkZone(this)">
+                        <select class="input-pro cursor-pointer s-type text-xs font-bold">
                             <option value="${s.tipo}" selected>${s.tipo}</option>
                             ${opcionesLimpias}
                         </select>
@@ -760,24 +841,35 @@
                 </div>`; 
                 document.getElementById('listaServicios').insertAdjacentHTML('beforeend', html); 
             });
+
+            // MOSTRAR HISTORIAL DE PAGOS
+            const histCont = document.getElementById('seccionHistorialPagos');
+            const listaHist = document.getElementById('listaHistorial');
+            listaHist.innerHTML = '';
             
-            // Si por alguna razón la lista está vacía pero hay datos antiguos, agregamos uno vacío
-            if((!r.servicios || r.servicios.length === 0)) {
-                // Opcional: Podríamos agregar uno vacío, pero mejor dejar que el usuario lo agregue si lo necesita
+            if(r.historialPagos && r.historialPagos.length > 0) {
+                histCont.classList.remove('hidden');
+                r.historialPagos.forEach(h => {
+                    listaHist.innerHTML += `
+                        <div class="flex justify-between items-center text-[10px] py-1 border-b border-slate-200">
+                            <span class="text-slate-400">${h.fecha}</span>
+                            <span class="font-bold text-emerald-600">+$${parseFloat(h.monto).toFixed(2)}</span>
+                        </div>
+                    `;
+                });
+            } else {
+                histCont.classList.add('hidden');
             }
 
             const f = r.finanzas; 
             document.getElementById('abono_anterior').value = f.abono || 0; 
             document.getElementById('abono_nuevo').value = ''; 
-            
             document.getElementById('bono_extra').value = f.bono || 0; 
             setPromo(parseFloat(f.descuentoPct) || 0);
-            
             document.getElementById('observaciones').value = r.observaciones || ''; 
             document.getElementById('specialistName').value = (r.medico && r.medico.especialista) ? r.medico.especialista : '';
             
             toggleView('form');
-            // Recalcular para asegurar que los totales cuadren visualmente
             calcularTotal();
         }
 
