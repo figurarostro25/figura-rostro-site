@@ -67,7 +67,7 @@
                         <textarea id="val-notas" rows="4" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-sm" placeholder="Escribe lo que observas..."></textarea>
                     </div>
 
-                    <button onclick="guardarValoracion()" class="w-full bg-teal-600 text-white font-bold py-4 rounded-xl shadow-lg">
+                    <button id="btnGuardarVal" onclick="guardarValoracion()" class="w-full bg-teal-600 text-white font-bold py-4 rounded-xl shadow-lg transition-all active:scale-95">
                         GUARDAR Y CREAR PRESUPUESTO
                     </button>
                 </div>
@@ -95,10 +95,12 @@
         // NAVEGACIÓN
         window.showSection = (section) => {
             document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
-            document.querySelectorAll('nav button').forEach(b => b.classList.remove('tab-active', 'text-teal-600'));
+            document.querySelectorAll('nav button').forEach(b => b.classList.remove('tab-active'));
+            document.querySelectorAll('nav button').forEach(b => b.classList.add('text-slate-400'));
             
             document.getElementById('sec-' + section).classList.remove('hidden');
             document.getElementById('tab-' + section).classList.add('tab-active');
+            document.getElementById('tab-' + section).classList.remove('text-slate-400');
         }
 
         // CARGAR CITAS
@@ -144,7 +146,56 @@
             showSection('valoracion');
         }
 
-        // Ejecutar al cargar
+        // FUNCIONES DE CÁMARA
+        window.abrirCamara = (tipo) => {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.capture = 'environment'; 
+
+            input.onchange = e => {
+                const file = e.target.files[0];
+                if (file) {
+                    alert(`✅ Foto de ${tipo} capturada con éxito.`);
+                    window.fotoCapturada = file; 
+                }
+            };
+            input.click();
+        };
+
+        // GUARDAR VALORACIÓN Y SALTAR A PRESUPUESTO
+        window.guardarValoracion = async () => {
+            const btn = document.getElementById('btnGuardarVal');
+            const notas = document.getElementById('val-notas').value;
+            const nombre = document.getElementById('val-nombre').value;
+
+            if(!notas) return alert("Por favor, escribe el diagnóstico o notas de la valoración.");
+
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> PROCESANDO...';
+
+            try {
+                // Actualizar estado en Firebase
+                await updateDoc(doc(db, "reservas_entrantes", window.currentCitaId), {
+                    notas_valoracion: notas,
+                    estado: "Valorada",
+                    fecha_valoracion: Timestamp.now()
+                });
+
+                if(confirm("✅ Valoración guardada. ¿Deseas ir al sistema de PAGOS para crear el presupuesto?")) {
+                    // Aquí asumo que tu archivo principal se llama index.html
+                    // Enviamos el nombre del paciente por la URL para que se cargue solo
+                    window.location.href = `index.html?paciente=${encodeURIComponent(nombre)}&desdeCita=true`;
+                } else {
+                    location.reload();
+                }
+            } catch (e) {
+                alert("Error: " + e.message);
+                btn.disabled = false;
+                btn.innerText = "GUARDAR Y CREAR PRESUPUESTO";
+            }
+        };
+
         window.onload = loadReservas;
 
     </script>
