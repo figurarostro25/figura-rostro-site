@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Dashboard | Figura Rostro KG</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <style>
+        .tab-active { border-bottom: 4px solid #14b8a6; color: #14b8a6; font-weight: 800; }
+        .card-appointment { transition: transform 0.2s; }
+        .card-appointment:active { transform: scale(0.98); }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 pb-20">
+
+    <header class="bg-white shadow-sm p-4 sticky top-0 z-50 flex justify-between items-center">
+        <h1 class="text-xl font-black text-teal-700 uppercase tracking-tighter">Figura Rostro KG</h1>
+        <button onclick="loadReservas()" class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-teal-600">
+            <i class="fas fa-sync-alt"></i>
+        </button>
+    </header>
+
+    <nav class="bg-white border-b flex justify-around text-[10px] font-bold uppercase tracking-widest">
+        <button onclick="showSection('agenda')" id="tab-agenda" class="flex-1 py-4 tab-active">Agenda</button>
+        <button onclick="showSection('valoracion')" id="tab-valoracion" class="flex-1 py-4 text-slate-400">Valoración</button>
+        <button onclick="showSection('expedientes')" id="tab-expedientes" class="flex-1 py-4 text-slate-400">Pacientes</button>
+    </nav>
+
+    <main class="p-4 max-w-4xl mx-auto">
+        
+        <section id="sec-agenda" class="space-y-4">
+            <div class="flex justify-between items-center mb-2">
+                <h2 class="text-sm font-bold text-slate-500 uppercase">Solicitudes de Hoy</h2>
+                <span id="count-citas" class="bg-teal-100 text-teal-700 px-2 py-0.5 rounded-full text-[10px] font-bold">0</span>
+            </div>
+            
+            <div id="lista-reservas" class="space-y-3">
+                <p class="text-center text-slate-400 py-10 text-xs">Cargando agenda...</p>
+            </div>
+        </section>
+
+        <section id="sec-valoracion" class="hidden space-y-6">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <h2 class="text-lg font-bold text-teal-800 mb-4">Hoja de Valoración</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-[10px] font-bold text-slate-400 uppercase">Paciente Seleccionado</label>
+                        <input type="text" id="val-nombre" class="w-full bg-slate-50 border-none rounded-lg p-3 font-bold" readonly>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <button onclick="abrirCamara('antes')" class="h-32 bg-slate-100 rounded-xl border-2 border-dashed border-slate-300 flex flex-col items-center justify-center text-slate-400">
+                            <i class="fas fa-camera text-2xl mb-2"></i>
+                            <span class="text-[10px] font-bold">FOTO ANTES</span>
+                        </button>
+                        <button onclick="abrirCamara('afectacion')" class="h-32 bg-slate-100 rounded-xl border-2 border-dashed border-slate-300 flex flex-col items-center justify-center text-slate-400">
+                            <i class="fas fa-microscope text-2xl mb-2"></i>
+                            <span class="text-[10px] font-bold">DETALLE ZONA</span>
+                        </button>
+                    </div>
+
+                    <div>
+                        <label class="block text-[10px] font-bold text-slate-400 uppercase">Diagnóstico / Notas de Valoración</label>
+                        <textarea id="val-notas" rows="4" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-sm" placeholder="Escribe lo que observas..."></textarea>
+                    </div>
+
+                    <button onclick="guardarValoracion()" class="w-full bg-teal-600 text-white font-bold py-4 rounded-xl shadow-lg">
+                        GUARDAR Y CREAR PRESUPUESTO
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, collection, getDocs, orderBy, query, doc, updateDoc, Timestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBAuTfBKGuG33c9NXc1s0lkQv-7GwA47l0",
+            authDomain: "figurarostro-system.firebaseapp.com",
+            projectId: "figurarostro-system",
+            storageBucket: "figurarostro-system.firebasestorage.app",
+            messagingSenderId: "803848354693",
+            appId: "1:803848354693:web:7144490abb18b0319822ec"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // NAVEGACIÓN
+        window.showSection = (section) => {
+            document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
+            document.querySelectorAll('nav button').forEach(b => b.classList.remove('tab-active', 'text-teal-600'));
+            
+            document.getElementById('sec-' + section).classList.remove('hidden');
+            document.getElementById('tab-' + section).classList.add('tab-active');
+        }
+
+        // CARGAR CITAS
+        window.loadReservas = async () => {
+            const container = document.getElementById('lista-reservas');
+            container.innerHTML = '<p class="text-center text-slate-400 py-10 text-xs">Actualizando...</p>';
+            
+            try {
+                const q = query(collection(db, "reservas_entrantes"), orderBy("fecha_cita", "asc"));
+                const querySnapshot = await getDocs(q);
+                container.innerHTML = '';
+                let count = 0;
+
+                querySnapshot.forEach((doc) => {
+                    const cita = doc.data();
+                    count++;
+                    const card = `
+                        <div class="bg-white p-4 rounded-2xl shadow-sm border-l-4 ${cita.estado === 'Confirmada' ? 'border-l-emerald-500' : 'border-l-amber-500'} card-appointment">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="font-bold text-slate-800 uppercase text-sm">${cita.nombre}</h3>
+                                    <p class="text-xs text-slate-500"><i class="far fa-calendar-alt mr-1"></i> ${cita.fecha_cita} | <i class="far fa-clock mr-1"></i> ${cita.hora_cita}</p>
+                                </div>
+                                <span class="text-[9px] font-black px-2 py-1 rounded bg-slate-100 text-slate-500 uppercase">${cita.estado}</span>
+                            </div>
+                            <div class="flex gap-2 mt-4">
+                                <button onclick="iniciarValoracion('${doc.id}', '${cita.nombre}')" class="flex-1 bg-teal-50 text-teal-700 text-[10px] font-bold py-2 rounded-lg border border-teal-100">VALORAR</button>
+                                <a href="https://wa.me/${cita.whatsapp}" class="w-10 bg-emerald-500 text-white rounded-lg flex items-center justify-center"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    `;
+                    container.insertAdjacentHTML('beforeend', card);
+                });
+                document.getElementById('count-citas').innerText = count;
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        window.iniciarValoracion = (id, nombre) => {
+            document.getElementById('val-nombre').value = nombre;
+            window.currentCitaId = id;
+            showSection('valoracion');
+        }
+
+        // Ejecutar al cargar
+        window.onload = loadReservas;
+
+    </script>
+</body>
+</html>
