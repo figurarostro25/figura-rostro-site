@@ -16,12 +16,7 @@
             theme: {
                 extend: {
                     colors: {
-                        brand: { 
-                            dark: '#0f766e', 
-                            main: '#14b8a6', 
-                            light: '#ccfbf1', 
-                            accent: '#0ea5e9' 
-                        },
+                        brand: { dark: '#0f766e', main: '#14b8a6', light: '#ccfbf1', accent: '#0ea5e9' },
                         night: { bg: '#0f172a', card: '#1e293b', input: '#334155' }
                     },
                     fontFamily: { sans: ['Inter', 'sans-serif'] }
@@ -31,268 +26,175 @@
     </script>
 
     <style>
-        /* ESTILOS BASE */
-        body { 
-            background-color: #f1f5f9; 
-            color: #334155; 
-            touch-action: pan-y; 
-            -webkit-font-smoothing: antialiased; 
-        }
-        .dark body { 
-            background-color: #0f172a; 
-            color: #e2e8f0; 
-        }
-        
-        /* HOJA DE PAPEL */
-        .paper-sheet {
-            width: 100%; 
-            max-width: 56rem; 
-            background-color: white;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            margin: 0 auto; 
-            position: relative; 
-            overflow: hidden; 
-            min-height: 1000px;
-            border: 1px solid #e2e8f0;
-        }
-        .dark .paper-sheet { 
-            background-color: #1e293b; 
-            border-color: #334155; 
-        }
-
-        /* INPUTS */
-        .input-pro {
-            width: 100%; 
-            border-radius: 0.375rem; 
-            padding: 0.5rem 0.75rem;
-            font-size: 0.85rem; 
-            font-weight: 500; 
-            outline: none; 
-            border: 1px solid #cbd5e1;
-            background-color: #f8fafc; 
-            color: #1e293b; 
-            transition: all 0.2s;
-        }
-        .dark .input-pro { 
-            background-color: #334155; 
-            border-color: #475569; 
-            color: white; 
-        }
-        .input-pro:focus { 
-            border-color: #14b8a6; 
-            background-color: white; 
-            box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.1); 
-        }
-        
-        .label-pro { 
-            display: block; 
-            font-size: 0.7rem; 
-            font-weight: 700; 
-            text-transform: uppercase; 
-            margin-bottom: 0.3rem; 
-            letter-spacing: 0.05em; 
-            color: #475569; 
-        }
+        body { background-color: #f1f5f9; color: #334155; touch-action: pan-y; -webkit-font-smoothing: antialiased; }
+        .dark body { background-color: #0f172a; color: #e2e8f0; }
+        .paper-sheet { width: 100%; max-width: 56rem; background-color: white; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); margin: 0 auto; position: relative; overflow: hidden; min-height: 1000px; border: 1px solid #e2e8f0; }
+        .dark .paper-sheet { background-color: #1e293b; border-color: #334155; }
+        .input-pro { width: 100%; border-radius: 0.375rem; padding: 0.5rem 0.75rem; font-size: 0.85rem; border: 1px solid #cbd5e1; background-color: #f8fafc; outline: none; transition: all 0.2s; }
+        .dark .input-pro { background-color: #334155; border-color: #475569; color: white; }
+        .input-pro:focus { border-color: #14b8a6; box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.1); }
+        .label-pro { display: block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.3rem; color: #475569; }
         .dark .label-pro { color: #cbd5e1; }
-        
-        .service-row {
-            display: grid; 
-            gap: 0.5rem; 
-            padding: 0.5rem; 
-            border-radius: 0.375rem; 
-            border: 1px solid #e2e8f0;
-            margin-bottom: 0.5rem; 
-            align-items: center; 
-            background-color: #fff;
-            grid-template-columns: 2fr 2fr 1fr 40px;
-        }
-        .dark .service-row { 
-            background-color: #1e293b; 
-            border-color: #475569; 
-        }
-
-        .section-header {
-            display: flex; 
-            align-items: center; 
-            gap: 0.5rem; 
-            font-size: 0.8rem; 
-            font-weight: 800;
-            text-transform: uppercase; 
-            margin-top: 1.5rem; 
-            margin-bottom: 1rem; 
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #e2e8f0; 
-            color: #0f766e; 
-            letter-spacing: 0.05em;
-        }
-        .dark .section-header { 
-            color: #2dd4bf; 
-            border-color: #334155; 
-        }
-
-        .page-break { page-break-after: always; margin-bottom: 2rem; }
-
-        /* IMPRESIÓN */
-        @media print {
-            body { background-color: white !important; }
-            .dark { color-scheme: light; }
-            .no-print { display: none !important; }
-            .paper-sheet { box-shadow: none !important; margin: 0 !important; border: none !important; min-height: 0 !important; }
-            .header-gradient { background: #0f766e !important; color: white !important; -webkit-print-color-adjust: exact; }
-            .input-pro, textarea { border: 1px solid #ddd !important; background-color: white !important; color: black !important; }
-        }
-
+        .section-header { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; border-bottom: 2px solid #e2e8f0; color: #0f766e; padding-bottom: 0.5rem; margin-top: 1.5rem; margin-bottom: 1rem; }
         .nav-btn-active { background-color: #0f766e; color: white; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
         .nav-btn-inactive { background-color: transparent; color: #64748b; }
-        .btn-abono { @apply text-[10px] font-bold px-3 py-1 rounded border transition hover:bg-emerald-50 text-emerald-700 border-emerald-200; }
-        .deduction-row { @apply flex justify-between items-center text-xs font-medium text-rose-600 py-1; }
+        @media (max-width: 640px) {
+            .nav-container button { padding: 0.5rem 0.75rem !important; font-size: 10px !important; }
+            .service-row { grid-template-columns: 1fr !important; }
+        }
+        .service-row { display: grid; gap: 0.5rem; padding: 0.5rem; border-radius: 0.375rem; border: 1px solid #e2e8f0; background-color: #fff; grid-template-columns: 2fr 2fr 1fr 40px; margin-bottom: 0.5rem; }
+        .dark .service-row { background-color: #1e293b; border-color: #475569; }
+        @media print { .no-print { display: none !important; } .paper-sheet { box-shadow: none !important; border: none !important; } }
     </style>
 </head>
 <body class="p-4 pt-20">
 
+    <div id="dashboardStats" class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6 no-print">
+        <div class="bg-white dark:bg-night-card p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+            <p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Ventas del Mes</p>
+            <p id="monthSales" class="text-xl font-black text-slate-800 dark:text-white">$0.00</p>
+        </div>
+        <div class="bg-white dark:bg-night-card p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+            <p class="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Abonos Cobrados</p>
+            <p id="monthCollected" class="text-xl font-black text-emerald-600">$0.00</p>
+        </div>
+        <div class="bg-white dark:bg-night-card p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+            <p class="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Saldo por Cobrar</p>
+            <p id="monthPending" class="text-xl font-black text-rose-500">$0.00</p>
+        </div>
+    </div>
+
     <nav class="fixed top-0 inset-x-0 bg-white/95 dark:bg-night-card/95 backdrop-blur shadow-sm p-3 z-50 border-b border-slate-200 dark:border-slate-700 no-print">
         <div class="max-w-5xl mx-auto flex justify-between items-center">
-            <button onclick="toggleDarkMode()" class="w-9 h-9 rounded-full flex items-center justify-center bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-yellow-400 border border-slate-200 dark:border-slate-600 transition hover:bg-slate-200">
+            <button onclick="toggleDarkMode()" class="w-9 h-9 rounded-full flex items-center justify-center bg-slate-100 dark:bg-slate-700 text-slate-500">
                 <i class="fas fa-moon dark:hidden"></i><i class="fas fa-sun hidden dark:inline"></i>
             </button>
-            <div class="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-lg border border-slate-200 dark:border-slate-600">
-                <button onclick="toggleView('form')" id="navForm" class="nav-btn-active px-5 py-2 rounded-md text-xs font-bold transition-all flex items-center gap-2">
-                    <i class="fas fa-file-medical"></i> <span class="hidden sm:inline">Expediente</span>
-                </button>
-                <button onclick="toggleView('list')" id="navList" class="nav-btn-inactive px-5 py-2 rounded-md text-xs font-bold transition-all flex items-center gap-2 hover:bg-slate-200 dark:hover:bg-slate-700">
-                    <i class="fas fa-database"></i> <span class="hidden sm:inline">Pacientes</span>
-                </button>
+            <div class="flex nav-container bg-slate-100 dark:bg-slate-800 p-1 rounded-lg border border-slate-200 dark:border-slate-600">
+                <button onclick="toggleView('form')" id="navForm" class="nav-btn-active px-5 py-2 rounded-md text-xs font-bold transition-all">Ficha</button>
+                <button onclick="toggleView('list')" id="navList" class="nav-btn-inactive px-5 py-2 rounded-md text-xs font-bold transition-all">Pacientes</button>
+                <button onclick="toggleView('appointments')" id="navAppts" class="nav-btn-inactive px-5 py-2 rounded-md text-xs font-bold transition-all">Citas</button>
             </div>
-            <button onclick="limpiarFormulario()" class="bg-white hover:bg-rose-50 text-rose-600 border border-rose-200 px-4 py-2 rounded-md text-xs font-bold transition flex items-center gap-2 shadow-sm">
-                <i class="fas fa-plus"></i> Nuevo
+            <button onclick="limpiarFormulario()" class="bg-white hover:bg-rose-50 text-rose-600 border border-rose-200 px-4 py-2 rounded-md text-xs font-bold shadow-sm">
+                <i class="fas fa-plus"></i> <span class="hidden sm:inline">Nuevo</span>
             </button>
         </div>
     </nav>
 
     <div id="seccionFormulario" class="transition-opacity duration-300">
         <div id="editModeBanner" class="hidden max-w-5xl mx-auto mb-4 bg-amber-50 border-l-4 border-amber-500 p-4 rounded shadow-sm flex justify-between items-center">
-            <div>
-                <p class="font-bold text-amber-800 text-sm"><i class="fas fa-edit mr-2"></i>MODO EDICIÓN ACTIVADO</p>
-                <p class="text-xs text-amber-700">Está agregando un pago o modificando un expediente existente.</p>
+            <div class="flex items-center gap-3">
+                <i class="fas fa-edit text-amber-600 text-xl"></i>
+                <div>
+                    <p class="font-bold text-amber-800 text-sm">MODO EDICIÓN ACTIVADO</p>
+                    <p class="text-[10px] text-amber-700 uppercase font-medium">Actualizando expediente o pagos.</p>
+                </div>
             </div>
-            <button onclick="limpiarFormulario()" class="text-xs underline text-amber-900 font-bold">Cancelar / Salir</button>
+            <button onclick="limpiarFormulario()" class="text-xs font-bold text-amber-900 border border-amber-200 px-3 py-1 rounded hover:bg-amber-100">SALIR</button>
         </div>
 
         <div id="printContainer">
             <div id="page1" class="paper-sheet rounded-t-lg page-break">
                 <div class="header-gradient bg-slate-800 p-8 flex justify-between items-start text-white relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -translate-y-10 translate-x-10"></div>
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
                     <div class="relative z-10">
                         <div class="flex items-center gap-3 mb-2">
-                            <div class="w-10 h-10 bg-white rounded flex items-center justify-center text-teal-700 text-xl font-bold"><i class="fas fa-spa"></i></div>
+                            <div class="w-10 h-10 bg-white rounded flex items-center justify-center text-teal-700 text-xl font-bold">KG</div>
                             <div>
                                 <h1 class="text-xl font-bold uppercase tracking-wide leading-none">Figura Rostro KG</h1>
-                                <p class="text-teal-200 text-[10px] font-medium tracking-[0.2em] uppercase mt-1">Estética Avanzada & Rejuvenecimiento</p>
+                                <p class="text-teal-200 text-[10px] font-medium tracking-[0.2em] uppercase mt-1">Estética Avanzada</p>
                             </div>
                         </div>
                     </div>
                     <div class="text-right relative z-10">
                         <div class="bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 rounded mb-2">
-                            <p class="text-[9px] uppercase opacity-70 mb-0 font-bold tracking-wider">N° Expediente</p>
-                            <div class="text-lg font-mono font-bold tracking-widest folio-display">---</div>
+                            <p class="text-[9px] uppercase opacity-70 mb-0 font-bold">Folio</p>
+                            <div class="text-lg font-mono font-bold folio-display">---</div>
                         </div>
-                        <p class="text-[10px] font-medium opacity-80 fecha-display">--/--/----</p>
+                        <div class="flex flex-col items-end">
+                            <label class="text-[8px] font-bold text-teal-400 uppercase">Inicio Tratamiento *</label>
+                            <input type="date" id="fecha_procedimiento" class="bg-transparent border-b border-white/30 text-xs text-right outline-none cursor-pointer">
+                        </div>
                     </div>
                 </div>
 
                 <div class="p-10 pt-6">
                     <form id="formPart1">
                         <div class="section-header mt-0 border-teal-100 text-teal-800">
-                            <i class="far fa-id-card mr-2 opacity-75"></i> Información del Paciente
+                            <i class="far fa-id-card mr-2 opacity-75"></i> Datos del Paciente
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mb-4">
-                            <div class="md:col-span-8"><label class="label-pro">Nombre Completo</label><input type="text" id="nombre" class="input-pro border-l-4 border-l-teal-500" placeholder="Nombre y Apellidos" required></div>
-                            <div class="md:col-span-4"><label class="label-pro">Cédula / ID</label><input type="text" id="cedula" class="input-pro"></div>
+                            <div class="md:col-span-6"><label class="label-pro">Nombre Completo *</label><input type="text" id="nombre" class="input-pro border-l-4 border-l-teal-500" required></div>
+                            <div class="md:col-span-3"><label class="label-pro">Celular (WhatsApp) *</label><input type="tel" id="telefono" class="input-pro" placeholder="Ej: 6000-0000" required></div>
+                            <div class="md:col-span-3"><label class="label-pro">Correo Electrónico *</label><input type="email" id="correo" class="input-pro" placeholder="paciente@ejemplo.com" required></div>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                            <div><label class="label-pro">Fecha Nacimiento</label><div class="flex gap-1"><select id="dia_nac" class="input-pro w-14 px-1" onchange="calcularEdad()"><option value="">D</option><script>for(let i=1;i<=31;i++) document.write(`<option value="${i}">${i}</option>`);</script></select><select id="mes_nac" class="input-pro flex-1 px-1" onchange="calcularEdad()"><option value="">Mes</option><option value="1">Ene</option><option value="2">Feb</option><option value="3">Mar</option><option value="4">Abr</option><option value="5">May</option><option value="6">Jun</option><option value="7">Jul</option><option value="8">Ago</option><option value="9">Sep</option><option value="10">Oct</option><option value="11">Nov</option><option value="12">Dic</option></select><input type="number" id="anio_nac" class="input-pro w-16 px-1" placeholder="Año" onchange="calcularEdad()"></div></div>
-                            <div><label class="label-pro">Edad</label><input type="text" id="edad" class="input-pro bg-teal-50 text-teal-800 font-bold text-center border-teal-200" readonly></div>
-                            <div><label class="label-pro">Teléfono</label><input type="tel" id="telefono" class="input-pro"></div>
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                             <div><label class="label-pro">Ocupación</label><input type="text" id="ocupacion" class="input-pro"></div>
-                             <div><label class="label-pro">Dirección</label><input type="text" id="direccion" class="input-pro"></div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                            <div><label class="label-pro">ID / Cédula</label><input type="text" id="cedula" class="input-pro"></div>
+                            <div>
+                                <label class="label-pro">Fecha Nacimiento</label>
+                                <div class="flex gap-1">
+                                    <select id="dia_nac" class="input-pro w-14" onchange="calcularEdad()"><option value="">D</option><script>for(let i=1;i<=31;i++) document.write(`<option value="${i}">${i}</option>`);</script></select>
+                                    <select id="mes_nac" class="input-pro flex-1" onchange="calcularEdad()"><option value="">Mes</option><script>const ms=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];ms.forEach((m,i)=>document.write(`<option value="${i+1}">${m}</option>`));</script></select>
+                                    <input type="number" id="anio_nac" class="input-pro w-16" placeholder="Año" onchange="calcularEdad()">
+                                </div>
+                            </div>
+                            <div><label class="label-pro">Edad</label><input type="text" id="edad" class="input-pro bg-teal-50 text-teal-800 font-bold text-center" readonly></div>
                         </div>
 
                         <div class="flex justify-between items-end border-b border-slate-200 pb-2 mt-8 mb-4">
                             <div class="section-header m-0 border-0 p-0 text-teal-800"><i class="fas fa-list-ul mr-2 opacity-75"></i> Plan de Tratamiento</div>
-                            <button type="button" onclick="agregarServicio()" class="text-[10px] bg-teal-50 hover:bg-teal-100 text-teal-800 border border-teal-200 px-3 py-1.5 rounded transition no-print font-bold flex items-center"><i class="fas fa-plus mr-1"></i> AGREGAR</button>
+                            <button type="button" onclick="agregarServicio()" class="text-[9px] bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 px-3 py-1 rounded no-print font-bold">+ AGREGAR</button>
                         </div>
                         <div id="listaServicios" class="mb-6 space-y-2"></div>
 
-                        <div class="bg-slate-50 dark:bg-slate-800/50 p-6 rounded border border-slate-200 dark:border-slate-700 mb-6 relative overflow-hidden">
-                            <div class="absolute top-0 right-0 w-32 h-32 bg-teal-100/50 rounded-full blur-2xl -translate-y-10 translate-x-10 pointer-events-none"></div>
-
-                            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 relative z-10">
-                                <div class="md:col-span-5 space-y-4 border-r border-slate-200 dark:border-slate-700 pr-6">
+                        <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl border border-slate-200 mb-6">
+                            <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+                                <div class="md:col-span-5 space-y-4">
                                     <div>
-                                        <label class="label-pro text-teal-700 mb-2">Descuento Promocional</label>
-                                        <div class="flex gap-2">
-                                            <button type="button" onclick="setPromo(0.10)" class="flex-1 py-2 text-[10px] bg-white border border-slate-300 rounded font-bold hover:border-teal-400 hover:text-teal-600 transition">10%</button>
-                                            <button type="button" onclick="setPromo(0.20)" class="flex-1 py-2 text-[10px] bg-white border border-slate-300 rounded font-bold hover:border-teal-400 hover:text-teal-600 transition">20%</button>
-                                            <button type="button" onclick="setPromo(0.30)" class="flex-1 py-2 text-[10px] bg-white border border-slate-300 rounded font-bold hover:border-teal-400 hover:text-teal-600 transition">30%</button>
-                                        </div>
-                                        <div class="flex justify-between items-center mt-2">
-                                            <span class="text-[10px] font-bold text-slate-400" id="promo_active_label">Ninguno</span>
-                                            <button type="button" onclick="resetDesc()" class="text-[10px] text-rose-500 font-bold hover:underline">Eliminar</button>
-                                        </div>
+                                        <label class="label-pro text-teal-700">Ajuste Manual / Bono ($)</label>
+                                        <input type="number" id="bono_extra" class="input-pro text-lg font-bold text-teal-600" oninput="calcularTotal()">
                                     </div>
-                                    <div class="pt-3 border-t border-slate-200">
-                                        <label class="label-pro">Ajuste Manual / Bono ($)</label>
-                                        <input type="number" id="bono_extra" class="input-pro text-right font-bold text-teal-600" placeholder="0.00" oninput="calcularTotal()">
+                                    <div class="p-4 bg-white dark:bg-slate-700 rounded-lg border border-dashed">
+                                        <label class="label-pro text-rose-500">¿Diferir en Cuotas?</label>
+                                        <select id="cuotas_plan" class="input-pro mb-3 text-xs font-bold">
+                                            <option value="1">Pago de Contado</option>
+                                            <option value="2">2 Cuotas</option>
+                                            <option value="3">3 Cuotas</option>
+                                            <option value="4">4 Cuotas</option>
+                                        </select>
+                                        <label class="label-pro">Fecha Próximo Pago *</label>
+                                        <input type="date" id="fecha_proximo_pago" class="input-pro">
                                     </div>
-                                    <input type="hidden" id="promo_pct" value="0">
                                 </div>
 
-                                <div class="md:col-span-7 pl-2 flex flex-col justify-between">
+                                <div class="md:col-span-7 flex flex-col justify-end text-right">
                                     <div class="space-y-1 mb-4">
-                                        <div class="flex justify-between text-xs text-slate-500 font-medium">
-                                            <span>Subtotal:</span>
-                                            <input type="text" id="subtotal" class="w-24 text-right bg-transparent border-none font-bold outline-none" readonly value="$0.00">
-                                        </div>
-                                        <div id="listaDeducciones"></div>
-                                        <div class="flex justify-between items-end border-t border-slate-300 pt-2 mt-2">
-                                            <span class="text-sm font-bold text-slate-800 dark:text-white">TOTAL A PAGAR:</span>
-                                            <span id="lblTotal" class="text-2xl font-black text-slate-800 dark:text-white tracking-tight">$0.00</span>
-                                        </div>
+                                        <span class="text-[10px] font-bold text-slate-400 uppercase">Total Tratamiento</span>
+                                        <div id="lblTotal" class="text-4xl font-black text-slate-800 dark:text-white tracking-tighter">$0.00</div>
+                                        <div id="listaDeducciones" class="flex flex-col items-end"></div>
                                     </div>
 
-                                    <div class="bg-white dark:bg-slate-800 p-3 rounded-lg border border-slate-200 shadow-sm">
-                                        <div class="grid grid-cols-2 gap-3 mb-2">
-                                            <div class="bg-slate-100 dark:bg-slate-700 p-2 rounded border border-slate-200 dark:border-slate-600">
-                                                <label class="text-[9px] font-bold text-slate-500 block uppercase">Acumulado Anterior</label>
-                                                <input type="number" id="abono_anterior" class="w-full bg-transparent font-bold text-slate-500 outline-none" readonly value="0.00">
-                                            </div>
-                                            <div class="bg-emerald-50 dark:bg-emerald-900/30 p-2 rounded border border-emerald-200 dark:border-emerald-800">
-                                                <label class="text-[9px] font-bold text-emerald-700 dark:text-emerald-400 block uppercase">Pago de HOY (+)</label>
-                                                <input type="number" id="abono_nuevo" class="w-full bg-transparent font-black text-emerald-600 dark:text-emerald-400 outline-none text-lg" placeholder="0.00" oninput="calcularTotal()">
-                                            </div>
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <div class="bg-emerald-50 p-2 rounded-lg border border-emerald-100">
+                                            <label class="text-[8px] font-bold text-emerald-600 block uppercase">Cobrado Acum.</label>
+                                            <input type="number" id="abono_anterior" class="w-full bg-transparent font-bold text-emerald-600 outline-none text-right" readonly value="0.00">
                                         </div>
-                                        
-                                        <div class="flex justify-end gap-1 mb-1">
-                                            <button type="button" onclick="setAbonoPercent(0.50)" class="text-[9px] bg-slate-100 hover:bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded border border-slate-200 transition">50%</button>
-                                            <button type="button" onclick="liquidarDeuda()" class="text-[9px] bg-emerald-100 hover:bg-emerald-200 text-emerald-800 px-2 py-0.5 rounded border border-emerald-200 transition font-bold"><i class="fas fa-check"></i> Liquidar Todo</button>
+                                        <div class="bg-emerald-600 p-2 rounded-lg shadow-sm">
+                                            <label class="text-[8px] font-bold text-emerald-100 block uppercase">Pago hoy (+)</label>
+                                            <input type="number" id="abono_nuevo" class="w-full bg-transparent font-black text-white outline-none text-right text-lg" placeholder="0.00" oninput="calcularTotal()">
                                         </div>
-
-                                        <div class="border-t border-dashed border-slate-300 pt-2 mt-2 flex justify-between items-end">
-                                            <span class="text-[10px] font-bold text-slate-400 uppercase">Deuda Restante:</span>
-                                            <span id="lblPendiente" class="text-xl font-bold text-rose-500 font-mono">$0.00</span>
-                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-end mt-4 pt-4 border-t border-slate-200">
+                                        <span class="text-[10px] font-bold text-slate-400 uppercase">Deuda Pendiente:</span>
+                                        <span id="lblPendiente" class="text-2xl font-black text-rose-500 font-mono">$0.00</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div><label class="label-pro mb-1">Notas Clínicas</label><textarea id="observaciones" rows="3" class="input-pro w-full resize-none leading-relaxed text-xs" placeholder="Detalles..."></textarea></div>
-
-                        <div id="seccionHistorialPagos" class="hidden mt-6 p-4 border border-slate-200 rounded-lg bg-slate-50">
-                            <h3 class="text-[10px] font-bold text-slate-500 uppercase mb-2 flex items-center gap-2"><i class="fas fa-history text-teal-600"></i> Historial de Movimientos</h3>
-                            <div id="listaHistorial" class="space-y-1 max-h-40 overflow-y-auto"></div>
+                        <div><label class="label-pro">Observaciones Clínicas</label><textarea id="observaciones" rows="3" class="input-pro w-full resize-none text-xs" placeholder="Detalles..."></textarea></div>
+                        <div id="seccionHistorialPagos" class="hidden mt-6 p-4 border border-slate-200 rounded-lg bg-slate-50 text-[10px]">
+                            <p class="font-bold text-slate-400 uppercase mb-2">Historial de Transacciones</p>
+                            <div id="listaHistorial" class="space-y-1"></div>
                         </div>
                     </form>
                 </div>
@@ -300,66 +202,56 @@
 
             <div id="page2" class="paper-sheet rounded-b-lg border-t-0 page-break">
                 <div class="p-10">
-                    <div class="section-header mt-0 text-slate-800 border-slate-200"><i class="fas fa-signature mr-2 opacity-75"></i> Consentimiento Legal</div>
+                    <div class="section-header mt-0 text-slate-800 border-slate-200"><i class="fas fa-signature mr-2 opacity-75"></i> Consentimiento y Antecedentes</div>
                     <div class="mb-6 p-4 border border-slate-200 bg-slate-50 rounded text-xs">
-                        <p class="font-bold text-slate-500 mb-2 uppercase text-[10px]">Antecedentes:</p>
-                        <div class="flex flex-wrap gap-4 font-medium text-slate-700">
+                        <div class="flex flex-wrap gap-4 font-bold text-slate-600 uppercase text-[10px]">
                             <label class="flex items-center gap-2"><input type="checkbox" id="m_diabetes" class="accent-teal-600"> Diabetes</label>
                             <label class="flex items-center gap-2"><input type="checkbox" id="m_hipertension" class="accent-teal-600"> Hipertensión</label>
                             <label class="flex items-center gap-2"><input type="checkbox" id="m_alergias" class="accent-teal-600"> Alergias</label>
-                            <label class="flex items-center gap-2"><input type="checkbox" id="m_embarazo" class="accent-teal-600"> Embarazo/Lactancia</label>
-                            <label class="flex items-center gap-2"><input type="checkbox" id="m_keloides" class="accent-teal-600"> Keloide</label>
+                            <label class="flex items-center gap-2"><input type="checkbox" id="m_embarazo" class="accent-teal-600"> Embarazo</label>
                         </div>
                     </div>
-                    <div class="text-[10px] text-justify text-slate-600 leading-relaxed space-y-3 mb-8 px-2 border-l-2 border-slate-300">
-                        <p><strong>1. NATURALEZA DE LOS TRATAMIENTOS:</strong> Entiendo que los procedimientos estéticos de <strong>Figura Rostro KG</strong> son progresivos. Los resultados varían según la fisiología individual.</p>
-                        <p><strong>2. EXPECTATIVAS:</strong> Se me ha explicado que los tratamientos trabajan sobre capas específicas. <strong>No se garantizan resultados absolutos en una sola sesión.</strong> Imperfecciones profundas pueden requerir múltiples sesiones. La clínica no es responsable por expectativas irreales.</p>
-                        <p><strong>3. POLÍTICA DE PAGOS:</strong> Declaro conocer que <strong>todo abono realizado NO ES REEMBOLSABLE</strong>. El abono asegura el espacio en agenda y los insumos médicos.</p>
-                        <p><strong>4. DEUDA:</strong> Reconozco la deuda detallada en la sección financiera y me comprometo a cancelarla totalmente.</p>
-                        <p><strong>5. AUTORIZACIÓN:</strong> Autorizo el procedimiento y la toma de fotografías para el expediente.</p>
+                    <div class="text-[10px] text-justify text-slate-600 leading-relaxed border-l-2 border-slate-300 pl-4 mb-8">
+                        <p>Declaro que los tratamientos de <strong>Figura Rostro KG</strong> son progresivos. Los abonos no son reembolsables ya que garantizan mi cupo e insumos. Autorizo el procedimiento y el uso de fotos para mi expediente.</p>
                     </div>
                     <div class="mb-8">
-                        <label class="flex items-center gap-3 p-3 border border-teal-100 bg-teal-50/30 rounded cursor-pointer hover:bg-teal-50 transition">
+                        <label class="flex items-center gap-3 p-3 border border-teal-100 bg-teal-50/30 rounded cursor-pointer no-print">
                             <input type="checkbox" id="check_legal" class="w-4 h-4 accent-teal-600">
-                            <span class="text-[10px] font-bold text-teal-900 uppercase">He leído y acepto las condiciones descritas.</span>
+                            <span class="text-[10px] font-bold text-teal-900 uppercase tracking-wider">Acepto los términos y condiciones.</span>
                         </label>
                     </div>
                     <div class="grid grid-cols-2 gap-10 mt-12">
                         <div class="text-center">
-                            <div class="border-b border-slate-400 mb-2 h-20 flex items-end justify-center"><canvas id="signaturePad" class="w-full h-full cursor-crosshair"></canvas></div>
-                            <div class="flex justify-center items-center gap-2 mb-1"><p class="text-[10px] font-bold uppercase text-slate-700">Firma del Paciente</p><button type="button" onclick="clearSignature()" class="text-[9px] text-rose-500 no-print hover:underline">(Borrar)</button></div>
+                            <div class="border-b border-slate-400 mb-2 h-20 flex items-center justify-center"><canvas id="signaturePad" class="w-full h-full"></canvas></div>
+                            <p class="text-[10px] font-bold uppercase">Firma del Paciente</p>
+                            <button type="button" onclick="clearSignature()" class="text-[8px] text-rose-500 no-print underline">(Borrar)</button>
                         </div>
                         <div class="text-center flex flex-col justify-end">
                              <input type="text" id="specialistName" class="w-full text-center border-b border-slate-400 text-xs font-bold pb-1 bg-transparent outline-none" placeholder="Nombre Especialista">
-                             <p class="text-[10px] font-bold uppercase text-slate-500 mt-2">Aprobado por Figura Rostro KG</p>
+                             <p class="text-[10px] font-bold uppercase text-slate-500 mt-2">Certificado por KG</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="max-w-4xl mx-auto flex flex-col md:flex-row gap-4 no-print mb-20 px-4 md:px-0">
-            <button type="button" id="btnSave" class="flex-1 bg-slate-800 text-white py-3 rounded shadow hover:bg-slate-900 transition font-bold text-sm flex justify-center items-center gap-2">
-                <i class="fas fa-save"></i> GUARDAR FICHA
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row gap-4 no-print mb-20 px-4">
+            <button type="button" id="btnSave" class="flex-1 bg-slate-900 text-white py-3 rounded-lg shadow-xl font-bold text-sm flex justify-center items-center gap-2 uppercase tracking-widest">
+                <i class="fas fa-save"></i> Guardar Expediente
             </button>
-            <button type="button" id="btnPdf" class="md:w-1/3 bg-white text-slate-700 border border-slate-300 py-3 rounded shadow-sm hover:bg-slate-50 transition font-bold text-sm flex justify-center items-center gap-2">
-                <i class="fas fa-print text-teal-600"></i> IMPRIMIR EXPEDIENTE
+            <button type="button" id="btnPdf" class="md:w-1/3 bg-white text-slate-700 border border-slate-300 py-3 rounded-lg shadow-sm font-bold text-sm flex justify-center items-center gap-2 uppercase">
+                <i class="fas fa-print"></i> PDF
             </button>
         </div>
     </div>
 
-    <div id="seccionBaseDatos" class="hidden w-full max-w-6xl mx-auto bg-white dark:bg-night-card shadow-lg p-6 mt-6 rounded border border-slate-200 dark:border-slate-700 relative mb-20">
-        <div class="flex justify-between items-center mb-6 pb-4 border-b border-slate-100 dark:border-slate-700">
-            <h2 class="font-bold text-lg text-slate-800 dark:text-white flex items-center gap-2"><i class="fas fa-users text-teal-600"></i> Base de Pacientes</h2>
-            <button onclick="loadData()" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 px-4 py-2 rounded font-bold transition"><i class="fas fa-sync-alt mr-1"></i> Refrescar</button>
-        </div>
+    <div id="seccionBaseDatos" class="hidden w-full max-w-6xl mx-auto bg-white dark:bg-night-card shadow-lg p-6 mt-6 rounded-2xl border border-slate-200 no-print mb-20">
+        <h2 class="font-black text-xl mb-6 flex items-center gap-2"><i class="fas fa-users text-teal-600"></i> Historial Clínico</h2>
         <div class="overflow-x-auto">
-            <table class="w-full text-xs text-left text-slate-600 dark:text-slate-300">
-                <thead class="bg-slate-50 dark:bg-slate-800 text-slate-500 dark:text-slate-400 uppercase font-bold tracking-wider">
+            <table class="w-full text-xs text-left">
+                <thead class="bg-slate-50 dark:bg-slate-800 text-slate-500 font-black uppercase">
                     <tr>
-                        <th class="p-3">Folio</th><th class="p-3">Fecha</th><th class="p-3">Paciente</th>
-                        <th class="p-3 text-right">Total</th><th class="p-3 text-right text-emerald-600">Pagado</th>
-                        <th class="p-3 text-right text-rose-600">Deuda</th><th class="p-3 text-center">Estado</th><th class="p-3 text-center">Acciones</th>
+                        <th class="p-3">Folio</th><th>Paciente</th><th class="text-right">Total</th><th class="text-right text-emerald-600">Cobrado</th><th class="text-right text-rose-600">Saldo</th><th class="p-3 text-center">Acciones</th>
                     </tr>
                 </thead>
                 <tbody id="tableBody" class="divide-y divide-slate-100 dark:divide-slate-700"></tbody>
@@ -368,25 +260,31 @@
         <div id="loader" class="hidden text-center py-10"><i class="fas fa-circle-notch fa-spin text-teal-500 text-2xl"></i></div>
     </div>
 
-    <div id="receiptTemplate" class="hidden overflow-hidden" style="width: 400px; padding: 30px; background: white; color: #333; font-family: 'Inter', sans-serif;">
-        <div style="text-align: center; border-bottom: 2px solid #14b8a6; padding-bottom: 10px; margin-bottom: 15px;">
-            <h2 style="margin: 0; color: #0f766e; font-size: 18px; text-transform: uppercase;">Recibo de Pago</h2>
-            <p style="margin: 5px 0 0 0; font-size: 10px; font-weight: bold; color: #14b8a6;">FIGURA ROSTRO KG</p>
+    <div id="seccionCitas" class="hidden w-full max-w-6xl mx-auto bg-white dark:bg-night-card shadow-lg p-6 mt-6 rounded-2xl border border-slate-200 no-print mb-20">
+        <h2 class="font-black text-xl mb-6 flex items-center gap-2"><i class="fas fa-calendar-check text-indigo-600"></i> Solicitudes de Citas</h2>
+        <div class="overflow-x-auto">
+            <table class="w-full text-xs text-left">
+                <thead class="bg-slate-50 text-slate-500 font-black uppercase">
+                    <tr>
+                        <th class="p-3">Fecha Cita</th><th>Paciente</th><th>Tratamiento</th><th>WhatsApp</th><th class="p-3 text-center">Gestionar</th>
+                    </tr>
+                </thead>
+                <tbody id="tableAppointments" class="divide-y divide-slate-100"></tbody>
+            </table>
         </div>
-        <div style="font-size: 11px; margin-bottom: 15px;">
-            <p style="margin: 2px 0;"><strong>Folio:</strong> <span id="r_folio">---</span></p>
-            <p style="margin: 2px 0;"><strong>Fecha:</strong> <span id="r_fecha">--/--/--</span></p>
-            <p style="margin: 2px 0;"><strong>Paciente:</strong> <span id="r_paciente">---</span></p>
+    </div>
+
+    <div id="receiptTemplate" class="hidden" style="width: 400px; padding: 30px; background: white; font-family: 'Inter', sans-serif;">
+        <div style="text-align: center; border-bottom: 2px solid #14b8a6; padding-bottom: 10px; margin-bottom: 20px;">
+            <h2 style="margin: 0; color: #0f766e; text-transform: uppercase;">Recibo de Caja</h2>
+            <p style="margin: 5px 0; font-size: 10px; font-weight: bold;">FIGURA ROSTRO KG</p>
         </div>
-        <div style="background: #f8fafc; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; text-align: center; margin-bottom: 15px;">
-            <p style="margin: 0; font-size: 10px; text-transform: uppercase; color: #64748b;">Monto Abonado</p>
-            <h1 style="margin: 5px 0; font-size: 28px; color: #059669;">$<span id="r_monto">0.00</span></h1>
+        <div style="font-size: 11px;">
+            <p><strong>Folio:</strong> <span id="r_folio">---</span></p>
+            <p><strong>Paciente:</strong> <span id="r_paciente">---</span></p>
+            <p><strong>Monto:</strong> <h1 id="r_monto" style="margin: 10px 0; color: #059669;">$0.00</h1></p>
+            <p><strong>Deuda:</strong> <span id="r_deuda" style="color: #e11d48; font-weight: bold;">$0.00</span></p>
         </div>
-        <div style="font-size: 10px; color: #64748b; border-top: 1px dashed #cbd5e1; pt-10; margin-top: 10px; display: flex; justify-content: space-between;">
-            <span>Saldo Pendiente:</span>
-            <span id="r_pendiente" style="font-weight: bold; color: #e11d48;">$0.00</span>
-        </div>
-        <p style="margin-top: 20px; font-size: 8px; text-align: center; color: #94a3b8; font-style: italic;">"Gracias por confiar en nuestra estética avanzada."</p>
     </div>
 
     <script type="module">
@@ -405,488 +303,214 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
         const colName = "pacientes_2026_oficial_v3";
+        const colCitas = "citas_web"; // Colección para las citas centralizadas
 
-        // VARIABLES GLOBALES
         window.dbCache = [];
-        window.currentDocId = null; 
-        window.totalCalculadoGlobal = 0;
-        window.saldoPendienteGlobal = 0;
-        
-        // Función vacía para evitar error en consola si se cambia el select
-        window.checkZone = (e) => {};
-
-        // LISTA DE OPCIONES REUTILIZABLE
-        const OPCIONES_HTML = `
-            <option value="" disabled selected>-- SELECCIONAR --</option>
-            <optgroup label="Tratamientos Principales">
-                <option value="Plasma Fibroblast">Plasma Fibroblast</option>
-                <option value="Peeling Quimico">Peeling Químico</option>
-                <option value="Tratamiento Facial">Tratamiento Facial</option>
-                <option value="Tratamiento Corporal">Tratamiento Corporal</option>
-            </optgroup>
-            <optgroup label="Complementarios">
-                <option value="Masaje">Masaje</option>
-                <option value="Cejas Henna">Cejas Henna</option>
-                <option value="Dermapen">Dermapen</option>
-            </optgroup>
-            <optgroup label="Otros">
-                <option value="Venta de Productos">Producto / Insumo</option>
-                <option value="Otro">Otro</option>
-            </optgroup>
-        `;
+        window.currentDocId = null;
 
         window.toggleDarkMode = () => document.documentElement.classList.toggle('dark');
 
         window.toggleView = (view) => {
-            const f = document.getElementById('seccionFormulario');
-            const l = document.getElementById('seccionBaseDatos');
-            const btnF = document.getElementById('navForm');
-            const btnL = document.getElementById('navList');
+            const sections = ['seccionFormulario', 'seccionBaseDatos', 'seccionCitas'];
+            sections.forEach(s => document.getElementById(s).classList.add('hidden'));
             
-            if(view === 'list') {
-                f.classList.add('hidden'); 
-                l.classList.remove('hidden'); 
-                btnF.classList.replace('nav-btn-active', 'nav-btn-inactive'); 
-                btnL.classList.replace('nav-btn-inactive', 'nav-btn-active'); 
-                loadData(); 
-            } else {
-                f.classList.remove('hidden'); 
-                l.classList.add('hidden'); 
-                btnF.classList.replace('nav-btn-inactive', 'nav-btn-active'); 
-                btnL.classList.replace('nav-btn-active', 'nav-btn-inactive'); 
-            }
+            const btnF = document.getElementById('navForm'), btnL = document.getElementById('navList'), btnA = document.getElementById('navAppts');
+            [btnF, btnL, btnA].forEach(b => b.className = 'nav-btn-inactive px-5 py-2 rounded-md text-xs font-bold transition-all');
+
+            if(view === 'form') { document.getElementById('seccionFormulario').classList.remove('hidden'); btnF.classList.add('nav-btn-active'); }
+            if(view === 'list') { document.getElementById('seccionBaseDatos').classList.remove('hidden'); btnL.classList.add('nav-btn-active'); loadData(); }
+            if(view === 'appointments') { document.getElementById('seccionCitas').classList.remove('hidden'); btnA.classList.add('nav-btn-active'); loadAppointments(); }
         };
 
-        window.limpiarFormulario = () => { 
-            if(confirm("¿Estás seguro de limpiar todo y empezar una nueva ficha?")) {
-                window.location.reload(); 
-            }
-        }
+        window.limpiarFormulario = () => { if(confirm("¿Nueva ficha?")) location.reload(); }
 
-        const generarFolio = () => document.querySelectorAll('.folio-display').forEach(el => el.innerText = `REQ-${Date.now().toString().slice(-6)}`);
-        const setFecha = () => document.querySelectorAll('.fecha-display').forEach(el => el.innerText = new Date().toLocaleDateString());
-
-        // CONFIGURACIÓN DE FIRMA
+        // FIRMA
         let canvas, ctx, isDrawing = false;
-        function initSignaturePad() {
-            canvas = document.getElementById('signaturePad'); 
-            ctx = canvas.getContext('2d');
-            function resize() { 
-                canvas.width = canvas.offsetWidth; 
-                canvas.height = canvas.offsetHeight; 
-                ctx.lineWidth = 2; 
-                ctx.lineCap = 'round'; 
-                ctx.strokeStyle = '#000'; 
-            }
-            window.addEventListener('resize', resize); 
-            setTimeout(resize, 500);
-            
-            const start = (e) => { 
-                isDrawing = true; 
-                ctx.beginPath(); 
-                const r = canvas.getBoundingClientRect(); 
-                ctx.moveTo((e.clientX || e.touches[0].clientX) - r.left, (e.clientY || e.touches[0].clientY) - r.top); 
-            }
-            const move = (e) => { 
-                if(!isDrawing) return; 
-                e.preventDefault(); 
-                const r = canvas.getBoundingClientRect(); 
-                ctx.lineTo((e.clientX || e.touches[0].clientX) - r.left, (e.clientY || e.touches[0].clientY) - r.top); 
-                ctx.stroke(); 
-            }
+        const initSign = () => {
+            canvas = document.getElementById('signaturePad'); ctx = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; ctx.lineWidth = 2;
+            const start = (e) => { isDrawing = true; ctx.beginPath(); const r = canvas.getBoundingClientRect(); ctx.moveTo((e.clientX || e.touches[0].clientX)-r.left, (e.clientY || e.touches[0].clientY)-r.top); };
+            const move = (e) => { if(!isDrawing) return; e.preventDefault(); const r = canvas.getBoundingClientRect(); ctx.lineTo((e.clientX || e.touches[0].clientX)-r.left, (e.clientY || e.touches[0].clientY)-r.top); ctx.stroke(); };
             const stop = () => isDrawing = false;
-            
             canvas.addEventListener('mousedown', start); canvas.addEventListener('mousemove', move); canvas.addEventListener('mouseup', stop);
             canvas.addEventListener('touchstart', start); canvas.addEventListener('touchmove', move); canvas.addEventListener('touchend', stop);
         }
-        window.clearSignature = () => ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        window.addEventListener('load', () => { 
-            agregarServicio(); 
-            generarFolio(); 
-            setFecha(); 
-            initSignaturePad(); 
-        });
+        window.clearSignature = () => ctx.clearRect(0,0,canvas.width,canvas.height);
 
-        // FUNCIONES DE SERVICIOS
-        window.agregarServicio = () => {
+        // SERVICIOS
+        window.agregarServicio = (t='', z='', p='') => {
             const id = Date.now() + Math.random();
-            const html = `
-                <div class="service-row" id="row-${id}">
-                    <div>
-                        <select class="input-pro cursor-pointer s-type text-xs font-bold" onchange="checkZone(this)">
-                            ${OPCIONES_HTML}
-                        </select>
-                    </div>
-                    <div><input type="text" class="input-pro s-zone text-xs" placeholder="Zona/Detalle"></div>
-                    <div><input type="number" class="input-pro text-right font-bold s-price text-xs" placeholder="0.00" oninput="calcularTotal()"></div>
-                    <div class="text-center">
-                        <button type="button" onclick="document.getElementById('row-${id}').remove(); calcularTotal();" class="text-slate-400 hover:text-rose-500">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                </div>`;
+            const html = `<div class="service-row" id="row-${id}">
+                <input type="text" class="input-pro s-type text-xs font-bold" placeholder="Tratamiento" value="${t}">
+                <input type="text" class="input-pro s-zone text-xs" placeholder="Zona" value="${z}">
+                <input type="number" class="input-pro text-right font-bold s-price text-xs" placeholder="0" value="${p}" oninput="calcularTotal()">
+                <button type="button" onclick="document.getElementById('row-${id}').remove(); calcularTotal();" class="text-rose-400"><i class="fas fa-trash"></i></button>
+            </div>`;
             document.getElementById('listaServicios').insertAdjacentHTML('beforeend', html);
         }
 
-        window.setPromo = (p) => { 
-            document.getElementById('promo_pct').value = p; 
-            document.getElementById('promo_active_label').innerText = `${p * 100}% APLICADO`; 
-            document.getElementById('promo_active_label').className = "text-[10px] font-bold text-teal-600"; 
-            calcularTotal(); 
-        }
-        
-        window.resetDesc = () => { 
-            document.getElementById('promo_pct').value = 0; 
-            document.getElementById('promo_active_label').innerText = "Ninguno"; 
-            document.getElementById('promo_active_label').className = "text-[10px] font-bold text-slate-400"; 
-            calcularTotal(); 
-        }
-        
-        // CALCULO DE ABONO RÁPIDO
-        window.setAbonoPercent = (pct) => {
-            if(window.totalCalculadoGlobal <= 0) return alert("Primero agregue servicios con precio.");
+        // CALCULO MAESTRO Y DASHBOARD
+        window.calcularTotal = () => {
+            let sub = 0; document.querySelectorAll('.s-price').forEach(i => sub += parseFloat(i.value) || 0);
+            const bono = parseFloat(document.getElementById('bono_extra').value) || 0;
+            const total = Math.max(0, sub - bono);
             
             const abonoAnt = parseFloat(document.getElementById('abono_anterior').value) || 0;
-            const deudaReal = window.totalCalculadoGlobal - abonoAnt;
+            const abonoHoy = parseFloat(document.getElementById('abono_nuevo').value) || 0;
+            const deuda = Math.max(0, total - (abonoAnt + abonoHoy));
+
+            document.getElementById('lblTotal').innerText = `$${total.toFixed(2)}`;
+            document.getElementById('lblPendiente').innerText = `$${deuda.toFixed(2)}`;
             
-            if(deudaReal <= 0) return alert("El cliente no tiene deuda pendiente sobre la cual calcular abonos.");
-            
-            document.getElementById('abono_nuevo').value = (deudaReal * pct).toFixed(2);
-            calcularTotal();
-        }
-        
-        window.liquidarDeuda = () => {
-             const abonoAnt = parseFloat(document.getElementById('abono_anterior').value) || 0;
-             const resto = window.totalCalculadoGlobal - abonoAnt;
-             if(resto > 0) {
-                 document.getElementById('abono_nuevo').value = resto.toFixed(2);
-                 calcularTotal();
-             }
+            const fProx = document.getElementById('fecha_proximo_pago');
+            if(deuda > 0) { fProx.style.borderColor = "#f43f5e"; fProx.style.backgroundColor = "#fff1f2"; }
+            else { fProx.style.borderColor = "#cbd5e1"; fProx.style.backgroundColor = "#f8fafc"; }
         }
 
-        // CÁLCULO MAESTRO
-        window.calcularTotal = () => {
-            let sub = 0; 
-            document.querySelectorAll('.s-price').forEach(i => sub += parseFloat(i.value) || 0);
-            
-            const pct = parseFloat(document.getElementById('promo_pct').value) || 0;
-            const desc = sub * pct;
-            const bono = parseFloat(document.getElementById('bono_extra').value) || 0;
-            
-            window.totalCalculadoGlobal = Math.max(0, sub - desc - bono);
-            
-            // SUMA DE PAGOS (Anterior + Nuevo)
-            const pagadoAntes = parseFloat(document.getElementById('abono_anterior').value) || 0;
-            const pagadoHoy = parseFloat(document.getElementById('abono_nuevo').value) || 0;
-            const totalAbonadoReal = pagadoAntes + pagadoHoy;
+        // CARGAR DATOS Y PROCESAR DASHBOARD DEL MES
+        window.loadData = async () => {
+            const tb = document.getElementById('tableBody'); tb.innerHTML = '';
+            document.getElementById('loader').classList.remove('hidden');
+            let vMes = 0, cMes = 0, pMes = 0;
+            const curMonth = new Date().getMonth(), curYear = new Date().getFullYear();
 
-            window.saldoPendienteGlobal = Math.max(0, window.totalCalculadoGlobal - totalAbonadoReal);
+            try {
+                const s = await getDocs(query(collection(db, colName), orderBy("fecha", "desc")));
+                window.dbCache = [];
+                s.forEach(docSnap => {
+                    const d = { id: docSnap.id, ...docSnap.data() };
+                    window.dbCache.push(d);
+                    const f = d.fecha.toDate();
+                    const totalVal = parseFloat(d.finanzas.total.replace('$','')) || 0;
+                    const abonoVal = parseFloat(d.finanzas.abono) || 0;
+                    const deudaVal = parseFloat(d.finanzas.pendiente.replace('$','')) || 0;
 
-            // Actualizar UI
-            document.getElementById('subtotal').value = "$" + sub.toFixed(2);
-            document.getElementById('lblTotal').innerText = "$" + window.totalCalculadoGlobal.toFixed(2);
-            
-            let htmlDeduc = '';
-            if(desc > 0) htmlDeduc += `<div class="deduction-row"><span>Descuento (${pct*100}%):</span><span>- $${desc.toFixed(2)}</span></div>`;
-            if(bono > 0) htmlDeduc += `<div class="deduction-row"><span>Ajuste/Bono:</span><span>- $${bono.toFixed(2)}</span></div>`;
-            document.getElementById('listaDeducciones').innerHTML = htmlDeduc;
+                    if(f.getMonth() === curMonth && f.getFullYear() === curYear) {
+                        vMes += totalVal; cMes += abonoVal; pMes += deudaVal;
+                    }
 
-            const elPend = document.getElementById('lblPendiente');
-            if(window.saldoPendienteGlobal < 0.1 && window.totalCalculadoGlobal > 0) {
-                elPend.innerText = "PAGADO"; 
-                elPend.className = "text-xl font-black text-emerald-500 font-mono";
-            } else {
-                elPend.innerText = "$" + window.saldoPendienteGlobal.toFixed(2); 
-                elPend.className = "text-xl font-bold text-rose-500 font-mono";
-            }
+                    tb.innerHTML += `<tr class="border-b hover:bg-slate-50 transition">
+                        <td class="p-3 font-mono font-bold text-slate-400">${d.folio}</td>
+                        <td class="font-bold uppercase">${d.paciente.nombre}</td>
+                        <td class="text-right font-bold text-slate-700">${d.finanzas.total}</td>
+                        <td class="text-right text-emerald-600 font-bold">$${abonoVal.toFixed(2)}</td>
+                        <td class="text-right text-rose-500 font-black">${d.finanzas.pendiente}</td>
+                        <td class="p-3 flex justify-center gap-1">
+                            <button onclick="editarFicha('${d.id}')" class="p-2 bg-white border rounded shadow-sm"><i class="fas fa-pen text-[10px]"></i></button>
+                            <button onclick="generarRecibo('${d.id}')" class="p-2 bg-emerald-50 text-emerald-600 rounded border border-emerald-200"><i class="fas fa-receipt text-[10px]"></i></button>
+                        </td>
+                    </tr>`;
+                });
+                document.getElementById('monthSales').innerText = `$${vMes.toFixed(2)}`;
+                document.getElementById('monthCollected').innerText = `$${cMes.toFixed(2)}`;
+                document.getElementById('monthPending').innerText = `$${pMes.toFixed(2)}`;
+            } catch(e) { console.error(e); }
+            document.getElementById('loader').classList.add('hidden');
         }
 
-        window.calcularEdad = () => {
-            const d = document.getElementById('dia_nac').value, m = document.getElementById('mes_nac').value, y = document.getElementById('anio_nac').value;
-            if(d && m && y && y.length === 4) { 
-                const h = new Date(), c = new Date(y, m-1, d); 
-                let e = h.getFullYear() - c.getFullYear(); 
-                if(h < new Date(h.getFullYear(), m-1, d)) e--; 
-                document.getElementById('edad').value = e + " años"; 
-            }
+        // GESTIÓN DE CITAS WEB
+        window.loadAppointments = async () => {
+            const tb = document.getElementById('tableAppointments'); tb.innerHTML = '';
+            try {
+                const s = await getDocs(collection(db, colCitas));
+                s.forEach(docSnap => {
+                    const c = docSnap.data();
+                    tb.innerHTML += `<tr class="border-b">
+                        <td class="p-3 font-bold">${c.fecha_cita || '-'}</td>
+                        <td class="font-bold uppercase">${c.nombre}</td>
+                        <td>${c.tratamiento}</td>
+                        <td class="text-teal-600 font-bold">${c.telefono}</td>
+                        <td class="p-3 text-center">
+                            <button onclick="convertirACita('${docSnap.id}')" class="bg-indigo-600 text-white px-3 py-1 rounded text-[10px] font-bold">Abrir Ficha</button>
+                        </td>
+                    </tr>`;
+                });
+            } catch(e) { tb.innerHTML = '<tr><td colspan="5" class="p-5 text-center text-slate-400">Sin citas pendientes.</td></tr>'; }
         }
 
-        // --- FUNCIONES NUEVAS DE PDF RÁPIDO Y RECIBO ---
+        window.convertirACita = (id) => {
+            alert("Cargando datos de la cita...");
+            // Aquí iría la lógica para pre-llenar el formulario con los datos de la cita
+            toggleView('form');
+        }
 
-        window.descargarPDFRapido = (id) => {
-            window.editarFicha(id);
-            setTimeout(() => {
-                document.getElementById('btnPdf').click();
-                alert("Generando expediente del paciente...");
-            }, 500);
+        // GUARDAR FINAL
+        document.getElementById('btnSave').addEventListener('click', async () => {
+            const nom = document.getElementById('nombre').value;
+            const tel = document.getElementById('telefono').value;
+            const cor = document.getElementById('correo').value;
+            const fIni = document.getElementById('fecha_procedimiento').value;
+            const deuda = parseFloat(document.getElementById('lblPendiente').innerText.replace('$',''));
+            const fProx = document.getElementById('fecha_proximo_pago').value;
+
+            if(!nom || !tel || !cor || !fIni) return alert("⚠️ Campos obligatorios faltantes (Nombre, Celular, Correo, Inicio)");
+            if(deuda > 0 && !fProx) return alert("⚠️ Es obligatorio poner la Fecha de Próximo Pago si hay saldo.");
+            if(!document.getElementById('check_legal').checked) return alert("⚠️ Acepte los términos legales.");
+
+            const btn = document.getElementById('btnSave'); btn.disabled = true; btn.innerText = "Guardando...";
+
+            const serv = []; document.querySelectorAll('.service-row').forEach(r => {
+                const t = r.querySelector('.s-type').value, p = r.querySelector('.s-price').value;
+                if(t && p) serv.push({ tipo: t, zona: r.querySelector('.s-zone').value, precio: p });
+            });
+
+            const abonoHoy = parseFloat(document.getElementById('abono_nuevo').value) || 0;
+            const abonoTotal = (parseFloat(document.getElementById('abono_anterior').value) || 0) + abonoHoy;
+
+            const data = {
+                paciente: { nombre: nom, celular: tel, correo: cor, cedula: document.getElementById('cedula').value, edad: document.getElementById('edad').value },
+                servicios: serv,
+                finanzas: { total: document.getElementById('lblTotal').innerText, abono: abonoTotal, pendiente: document.getElementById('lblPendiente').innerText, bono: document.getElementById('bono_extra').value, cuotas: document.getElementById('cuotas_plan').value, prox_pago: fProx },
+                fecha_inicio: fIni,
+                fecha: Timestamp.now(),
+                folio: document.querySelector('.folio-display').innerText
+            };
+
+            try {
+                if(window.currentDocId) await updateDoc(doc(db, colName, window.currentDocId), data);
+                else await addDoc(collection(db, colName), data);
+                alert("✅ Guardado con éxito."); location.reload();
+            } catch(e) { alert("Error: " + e.message); btn.disabled = false; btn.innerText = "Guardar"; }
+        });
+
+        // EDITAR FICHA
+        window.editarFicha = (id) => {
+            const r = window.dbCache.find(x => x.id === id);
+            window.currentDocId = id;
+            document.getElementById('editModeBanner').classList.remove('hidden');
+            document.querySelectorAll('.folio-display').forEach(e => e.innerText = r.folio);
+            
+            document.getElementById('nombre').value = r.paciente.nombre;
+            document.getElementById('telefono').value = r.paciente.celular || r.paciente.telefono;
+            document.getElementById('correo').value = r.paciente.correo || '';
+            document.getElementById('fecha_procedimiento').value = r.fecha_inicio || '';
+            document.getElementById('abono_anterior').value = r.finanzas.abono;
+            document.getElementById('bono_extra').value = r.finanzas.bono || 0;
+            document.getElementById('cuotas_plan').value = r.finanzas.cuotas || 1;
+            document.getElementById('fecha_proximo_pago').value = r.finanzas.prox_pago || '';
+
+            document.getElementById('listaServicios').innerHTML = '';
+            r.servicios.forEach(s => agregarServicio(s.tipo, s.zona, s.precio));
+            
+            toggleView('form'); calcularTotal();
         }
 
         window.generarRecibo = (id) => {
             const d = window.dbCache.find(x => x.id === id);
-            if(!d) return;
-
-            // Llenar plantilla de recibo
             document.getElementById('r_folio').innerText = d.folio;
-            document.getElementById('r_fecha').innerText = new Date().toLocaleDateString();
             document.getElementById('r_paciente').innerText = d.paciente.nombre;
-            
-            // Si el monto del último abono no existe (datos viejos), mostrar el total abonado
-            const ultimoMonto = d.finanzas.ultimoAbono || d.finanzas.abono || "0.00";
-            document.getElementById('r_monto').innerText = parseFloat(ultimoMonto).toFixed(2);
-            document.getElementById('r_pendiente').innerText = d.finanzas.pendiente;
-
-            const element = document.getElementById('receiptTemplate');
-            element.classList.remove('hidden');
-
-            const opt = {
-                margin: 0.5,
-                filename: `Recibo_${d.folio}.pdf`,
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 3 },
-                jsPDF: { unit: 'in', format: [4, 6], orientation: 'portrait' }
-            };
-
-            html2pdf().set(opt).from(element).save().then(() => {
-                element.classList.add('hidden');
-            });
+            document.getElementById('r_monto').innerText = `$${d.finanzas.abono}`;
+            document.getElementById('r_deuda').innerText = d.finanzas.pendiente;
+            const el = document.getElementById('receiptTemplate'); el.classList.remove('hidden');
+            html2pdf().from(el).set({ margin: 1, filename: `Recibo_${d.folio}.pdf` }).save().then(()=>el.classList.add('hidden'));
         }
 
-        // --- GUARDAR ---
-        document.getElementById('btnSave').addEventListener('click', async () => {
-            const btn = document.getElementById('btnSave'); 
-            const nom = document.getElementById('nombre').value;
-            
-            if(!nom) return alert("⚠️ Falta el Nombre del Paciente");
-            if(!document.getElementById('check_legal').checked) return alert("⚠️ Debe aceptar los términos y condiciones");
-            
-            let serv = []; 
-            document.querySelectorAll('.service-row').forEach(r => {
-                const t = r.querySelector('.s-type').value;
-                const p = r.querySelector('.s-price').value; 
-                if(t && p) serv.push({ tipo: t, zona: r.querySelector('.s-zone').value, precio: p });
-            });
-            
-            if(serv.length === 0) return alert("⚠️ Agregue al menos un servicio con su precio.");
+        window.calcEdad = () => { /* lógica edad */ }
 
-            const abonoAnt = parseFloat(document.getElementById('abono_anterior').value) || 0;
-            const abonoHoy = parseFloat(document.getElementById('abono_nuevo').value) || 0;
-            const abonoTotalFinal = abonoAnt + abonoHoy;
-
-            // Manejo de HISTORIAL
-            let historialExistente = [];
-            if(window.currentDocId) {
-                const cache = window.dbCache.find(x => x.id === window.currentDocId);
-                historialExistente = cache.historialPagos || [];
-            }
-            
-            if(abonoHoy > 0) {
-                historialExistente.push({
-                    fecha: new Date().toLocaleString(),
-                    monto: abonoHoy,
-                    folio: document.querySelector('.folio-display').innerText
-                });
-            }
-
-            const txt = btn.innerHTML; 
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> PROCESANDO...'; 
-            btn.disabled = true;
-            
-            const data = {
-                paciente: {
-                    nombre: nom,
-                    cedula: document.getElementById('cedula').value,
-                    telefono: document.getElementById('telefono').value,
-                    edad: document.getElementById('edad').value,
-                    ocupacion: document.getElementById('ocupacion').value,
-                    direccion: document.getElementById('direccion').value
-                },
-                servicios: serv,
-                finanzas: {
-                    total: document.getElementById('lblTotal').innerText,
-                    abono: abonoTotalFinal, 
-                    ultimoAbono: abonoHoy, // Guardamos el de hoy para el recibo
-                    pendiente: document.getElementById('lblPendiente').innerText,
-                    descuentoPct: document.getElementById('promo_pct').value,
-                    bono: document.getElementById('bono_extra').value
-                },
-                historialPagos: historialExistente,
-                observaciones: document.getElementById('observaciones').value,
-                medico: { especialista: document.getElementById('specialistName').value },
-                antecedentes: {
-                    diabetes: document.getElementById('m_diabetes').checked,
-                    hipertension: document.getElementById('m_hipertension').checked,
-                    alergias: document.getElementById('m_alergias').checked,
-                    embarazo: document.getElementById('m_embarazo').checked,
-                    keloides: document.getElementById('m_keloides').checked
-                },
-                fecha: Timestamp.now()
-            };
-
-            try {
-                if(window.currentDocId) {
-                    data.folio = document.querySelector('.folio-display').innerText;
-                    await updateDoc(doc(db, colName, window.currentDocId), data);
-                    alert("✅ Ficha ACTUALIZADA correctamente.");
-                } else {
-                    data.folio = document.querySelector('.folio-display').innerText;
-                    await addDoc(collection(db, colName), data);
-                    alert("✅ Ficha NUEVA guardada correctamente.");
-                }
-                location.reload();
-            } catch(e){ 
-                console.error(e); 
-                alert("Error: " + e.message); 
-                btn.innerHTML = txt; 
-                btn.disabled = false; 
-            }
-        });
-
-        // --- CARGAR DATOS ---
-        window.loadData = async () => {
-            const tb = document.getElementById('tableBody'); 
-            tb.innerHTML = ''; 
-            document.getElementById('loader').classList.remove('hidden'); 
-            window.dbCache = [];
-            
-            try {
-                const s = await getDocs(query(collection(db, colName), orderBy("fecha", "desc")));
-                s.forEach(docSnap => {
-                    let d = docSnap.data(); 
-                    d.id = docSnap.id; 
-                    
-                    d.folio = d.folio || "S/F"; 
-                    d.paciente = d.paciente || { nombre: "?" }; 
-                    d.finanzas = d.finanzas || {};
-                    
-                    window.dbCache.push(d);
-                    
-                    let ab = parseFloat(d.finanzas.abono) || 0;
-                    let pend = d.finanzas.pendiente || "DEBE";
-                    let isP = pend.includes('PAGADO');
-                    
-                    tb.innerHTML += `
-                    <tr class="border-b dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition">
-                        <td class="p-3 font-mono font-bold text-slate-500">${d.folio}</td>
-                        <td class="p-3 text-slate-500">${d.fecha?.toDate().toLocaleDateString() || '-'}</td>
-                        <td class="p-3 font-bold text-slate-700 dark:text-slate-200 uppercase">${d.paciente.nombre}</td>
-                        <td class="p-3 text-right font-mono font-bold">${d.finanzas.total || '$0'}</td>
-                        <td class="p-3 text-right font-mono font-bold text-emerald-600">$${ab.toFixed(2)}</td>
-                        <td class="p-3 text-right font-mono font-bold ${isP ? 'text-emerald-500' : 'text-rose-500'}">${pend}</td>
-                        <td class="p-3 text-center">
-                            ${isP ? '<i class="fas fa-check-circle text-emerald-500"></i>' : '<i class="fas fa-clock text-rose-400"></i>'}
-                        </td>
-                        <td class="p-3">
-                            <div class="flex justify-center gap-1">
-                                <button onclick="editarFicha('${d.id}')" class="bg-white border border-slate-300 text-slate-600 hover:text-teal-600 p-2 rounded shadow-sm transition" title="Editar / Abonar">
-                                    <i class="fas fa-pen text-[10px]"></i>
-                                </button>
-                                <button onclick="descargarPDFRapido('${d.id}')" class="bg-white border border-slate-300 text-teal-600 hover:bg-teal-50 p-2 rounded shadow-sm transition" title="PDF Expediente">
-                                    <i class="fas fa-file-pdf text-[10px]"></i>
-                                </button>
-                                <button onclick="generarRecibo('${d.id}')" class="bg-white border border-slate-300 text-emerald-600 hover:bg-emerald-50 p-2 rounded shadow-sm transition" title="Generar Recibo">
-                                    <i class="fas fa-receipt text-[10px]"></i>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>`;
-                });
-            } catch(e){ console.error(e); }
-            document.getElementById('loader').classList.add('hidden');
-        }
-
-        // --- EDITAR FICHA ---
-        window.editarFicha = (fid) => {
-            const r = window.dbCache.find(x => x.id === fid); 
-            if(!r) return;
-            
-            window.currentDocId = fid; 
-            document.getElementById('editModeBanner').classList.remove('hidden');
-            
-            document.querySelectorAll('.folio-display').forEach(e => e.innerText = r.folio);
-            const p = r.paciente; 
-            document.getElementById('nombre').value = p.nombre; 
-            document.getElementById('cedula').value = p.cedula || ''; 
-            document.getElementById('telefono').value = p.telefono || ''; 
-            document.getElementById('edad').value = p.edad || ''; 
-            document.getElementById('ocupacion').value = p.ocupacion || ''; 
-            document.getElementById('direccion').value = p.direccion || '';
-            
-            const ant = r.antecedentes || {}; 
-            document.getElementById('m_diabetes').checked = ant.diabetes; 
-            document.getElementById('m_hipertension').checked = ant.hipertension; 
-            document.getElementById('m_alergias').checked = ant.alergias; 
-            document.getElementById('m_embarazo').checked = ant.embarazo; 
-            document.getElementById('m_keloides').checked = ant.keloides;
-
-            document.getElementById('listaServicios').innerHTML = ''; 
-            (r.servicios || []).forEach(s => { 
-                const id = Date.now() + Math.random(); 
-                const opcionesLimpias = OPCIONES_HTML.replace('selected', '');
-                const html = `
-                <div class="service-row" id="row-${id}">
-                    <div>
-                        <select class="input-pro cursor-pointer s-type text-xs font-bold">
-                            <option value="${s.tipo}" selected>${s.tipo}</option>
-                            ${opcionesLimpias}
-                        </select>
-                    </div>
-                    <div><input type="text" class="input-pro s-zone text-xs" value="${s.zona || ''}"></div>
-                    <div><input type="number" class="input-pro text-right font-bold s-price text-xs" value="${s.precio}" oninput="calcularTotal()"></div>
-                    <div class="text-center">
-                        <button type="button" onclick="document.getElementById('row-${id}').remove(); calcularTotal();" class="text-slate-400 hover:text-rose-500">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                </div>`; 
-                document.getElementById('listaServicios').insertAdjacentHTML('beforeend', html); 
-            });
-
-            // MOSTRAR HISTORIAL DE PAGOS
-            const histCont = document.getElementById('seccionHistorialPagos');
-            const listaHist = document.getElementById('listaHistorial');
-            listaHist.innerHTML = '';
-            
-            if(r.historialPagos && r.historialPagos.length > 0) {
-                histCont.classList.remove('hidden');
-                r.historialPagos.forEach(h => {
-                    listaHist.innerHTML += `
-                        <div class="flex justify-between items-center text-[10px] py-1 border-b border-slate-200">
-                            <span class="text-slate-400">${h.fecha}</span>
-                            <span class="font-bold text-emerald-600">+$${parseFloat(h.monto).toFixed(2)}</span>
-                        </div>
-                    `;
-                });
-            } else {
-                histCont.classList.add('hidden');
-            }
-
-            const f = r.finanzas; 
-            document.getElementById('abono_anterior').value = f.abono || 0; 
-            document.getElementById('abono_nuevo').value = ''; 
-            document.getElementById('bono_extra').value = f.bono || 0; 
-            setPromo(parseFloat(f.descuentoPct) || 0);
-            document.getElementById('observaciones').value = r.observaciones || ''; 
-            document.getElementById('specialistName').value = (r.medico && r.medico.especialista) ? r.medico.especialista : '';
-            
-            toggleView('form');
-            calcularTotal();
-        }
-
-        document.getElementById('btnPdf').addEventListener('click', () => { 
-            const e = document.getElementById('printContainer'); 
-            const c = document.querySelectorAll('.no-print, #editModeBanner'); 
-            c.forEach(x => x.style.display = 'none'); 
-            
-            const opt = {
-                margin: 0.2,
-                filename: `Exp_${document.querySelector('.folio-display').innerText}.pdf`,
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2, useCORS: true },
-                jsPDF: { unit: 'in', format: 'letter' }
-            }; 
-            
-            html2pdf().set(opt).from(e).save().then(() => c.forEach(x => x.style.display = 'flex')); 
+        window.addEventListener('load', () => { 
+            const f = `REQ-${Date.now().toString().slice(-6)}`;
+            document.querySelectorAll('.folio-display').forEach(el => el.innerText = f);
+            agregarServicio(); initSign(); loadData();
         });
     </script>
 </body>
