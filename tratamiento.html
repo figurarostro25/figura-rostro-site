@@ -38,6 +38,9 @@
         .section-header { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; border-bottom: 2px solid #e2e8f0; color: #0f766e; padding-bottom: 0.5rem; margin-top: 1.5rem; margin-bottom: 1rem; }
         .nav-btn-active { background-color: #0f766e; color: white; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
         .nav-btn-inactive { background-color: transparent; color: #64748b; }
+        .quick-btn { font-size: 10px; font-weight: 800; padding: 4px 8px; border-radius: 4px; border: 1px solid #e2e8f0; transition: all 0.2s; }
+        .quick-btn:hover { background-color: #14b8a6; color: white; border-color: #14b8a6; }
+        
         @media (max-width: 640px) {
             .nav-container button { padding: 0.5rem 0.75rem !important; font-size: 10px !important; }
             .service-row { grid-template-columns: 1fr !important; }
@@ -125,19 +128,25 @@
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mb-4">
                             <div class="md:col-span-6"><label class="label-pro">Nombre Completo *</label><input type="text" id="nombre" class="input-pro border-l-4 border-l-teal-500" required></div>
                             <div class="md:col-span-3"><label class="label-pro">Celular (WhatsApp) *</label><input type="tel" id="telefono" class="input-pro" placeholder="Ej: 6000-0000" required></div>
-                            <div class="md:col-span-3"><label class="label-pro">Correo Electrónico *</label><input type="email" id="correo" class="input-pro" placeholder="paciente@ejemplo.com" required></div>
+                            <div class="md:col-span-3"><label class="label-pro">ID / Cédula</label><input type="text" id="cedula" class="input-pro"></div>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                            <div><label class="label-pro">ID / Cédula</label><input type="text" id="cedula" class="input-pro"></div>
-                            <div>
-                                <label class="label-pro">Fecha Nacimiento</label>
+
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                            <div class="md:col-span-1">
+                                <label class="label-pro">F. Nacimiento</label>
                                 <div class="flex gap-1">
-                                    <select id="dia_nac" class="input-pro w-14" onchange="calcularEdad()"><option value="">D</option><script>for(let i=1;i<=31;i++) document.write(`<option value="${i}">${i}</option>`);</script></select>
-                                    <select id="mes_nac" class="input-pro flex-1" onchange="calcularEdad()"><option value="">Mes</option><script>const ms=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];ms.forEach((m,i)=>document.write(`<option value="${i+1}">${m}</option>`));</script></select>
-                                    <input type="number" id="anio_nac" class="input-pro w-16" placeholder="Año" onchange="calcularEdad()">
+                                    <select id="dia_nac" class="input-pro px-1 text-[10px]" onchange="calcularEdad()"><option value="">D</option><script>for(let i=1;i<=31;i++) document.write(`<option value="${i}">${i}</option>`);</script></select>
+                                    <select id="mes_nac" class="input-pro px-1 text-[10px] flex-1" onchange="calcularEdad()"><option value="">Mes</option><script>const ms=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];ms.forEach((m,i)=>document.write(`<option value="${i+1}">${m}</option>`));</script></select>
+                                    <input type="number" id="anio_nac" class="input-pro w-14 text-[10px]" placeholder="Año" onchange="calcularEdad()">
                                 </div>
                             </div>
-                            <div><label class="label-pro">Edad</label><input type="text" id="edad" class="input-pro bg-teal-50 text-teal-800 font-bold text-center" readonly></div>
+                            <div class="md:col-span-1"><label class="label-pro">Edad</label><input type="text" id="edad" class="input-pro bg-teal-50 text-teal-800 font-bold text-center" readonly></div>
+                            <div class="md:col-span-2"><label class="label-pro">Ocupación</label><input type="text" id="ocupacion" class="input-pro"></div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mb-6">
+                            <div class="md:col-span-8"><label class="label-pro">Dirección Residencia</label><input type="text" id="direccion" class="input-pro"></div>
+                            <div class="md:col-span-4"><label class="label-pro">Correo Electrónico</label><input type="email" id="correo" class="input-pro" placeholder="paciente@ejemplo.com"></div>
                         </div>
 
                         <div class="flex justify-between items-end border-b border-slate-200 pb-2 mt-8 mb-4">
@@ -150,7 +159,12 @@
                             <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
                                 <div class="md:col-span-5 space-y-4">
                                     <div>
-                                        <label class="label-pro text-teal-700">Ajuste Manual / Bono ($)</label>
+                                        <label class="label-pro text-teal-700">Ajuste / Bono ($)</label>
+                                        <div class="flex gap-2 mb-2 no-print">
+                                            <button type="button" onclick="setBono(30)" class="quick-btn">+$30</button>
+                                            <button type="button" onclick="setBono(50)" class="quick-btn">+$50</button>
+                                            <button type="button" onclick="setBono(505)" class="quick-btn">+$505</button>
+                                        </div>
                                         <input type="number" id="bono_extra" class="input-pro text-lg font-bold text-teal-600" oninput="calcularTotal()">
                                     </div>
                                     <div class="p-4 bg-white dark:bg-slate-700 rounded-lg border border-dashed">
@@ -170,7 +184,6 @@
                                     <div class="space-y-1 mb-4">
                                         <span class="text-[10px] font-bold text-slate-400 uppercase">Total Tratamiento</span>
                                         <div id="lblTotal" class="text-4xl font-black text-slate-800 dark:text-white tracking-tighter">$0.00</div>
-                                        <div id="listaDeducciones" class="flex flex-col items-end"></div>
                                     </div>
 
                                     <div class="grid grid-cols-2 gap-3">
@@ -180,6 +193,10 @@
                                         </div>
                                         <div class="bg-emerald-600 p-2 rounded-lg shadow-sm">
                                             <label class="text-[8px] font-bold text-emerald-100 block uppercase">Pago hoy (+)</label>
+                                            <div class="flex gap-1 mb-1 no-print justify-end">
+                                                <button type="button" onclick="setAbono(30)" class="text-[9px] bg-white/20 text-white px-1 rounded">30</button>
+                                                <button type="button" onclick="setAbono(50)" class="text-[9px] bg-white/20 text-white px-1 rounded">50</button>
+                                            </div>
                                             <input type="number" id="abono_nuevo" class="w-full bg-transparent font-black text-white outline-none text-right text-lg" placeholder="0.00" oninput="calcularTotal()">
                                         </div>
                                     </div>
@@ -192,10 +209,6 @@
                         </div>
 
                         <div><label class="label-pro">Observaciones Clínicas</label><textarea id="observaciones" rows="3" class="input-pro w-full resize-none text-xs" placeholder="Detalles..."></textarea></div>
-                        <div id="seccionHistorialPagos" class="hidden mt-6 p-4 border border-slate-200 rounded-lg bg-slate-50 text-[10px]">
-                            <p class="font-bold text-slate-400 uppercase mb-2">Historial de Transacciones</p>
-                            <div id="listaHistorial" class="space-y-1"></div>
-                        </div>
                     </form>
                 </div>
             </div>
@@ -240,16 +253,16 @@
                 <i class="fas fa-save"></i> Guardar Expediente
             </button>
             <button type="button" id="btnPdf" class="md:w-1/3 bg-white text-slate-700 border border-slate-300 py-3 rounded-lg shadow-sm font-bold text-sm flex justify-center items-center gap-2 uppercase">
-                <i class="fas fa-print"></i> PDF
+                <i class="fas fa-print"></i> Imprimir
             </button>
         </div>
     </div>
 
-    <div id="seccionBaseDatos" class="hidden w-full max-w-6xl mx-auto bg-white dark:bg-night-card shadow-lg p-6 mt-6 rounded-2xl border border-slate-200 no-print mb-20">
+    <div id="seccionBaseDatos" class="hidden w-full max-w-6xl mx-auto bg-white dark:bg-night-card shadow-lg p-6 mt-6 rounded-2xl border border-slate-200 no-print mb-32">
         <h2 class="font-black text-xl mb-6 flex items-center gap-2"><i class="fas fa-users text-teal-600"></i> Historial Clínico</h2>
-        <div class="overflow-x-auto">
+        <div class="overflow-x-auto overflow-y-auto max-h-[600px]">
             <table class="w-full text-xs text-left">
-                <thead class="bg-slate-50 dark:bg-slate-800 text-slate-500 font-black uppercase">
+                <thead class="bg-slate-50 dark:bg-slate-800 text-slate-500 font-black uppercase sticky top-0">
                     <tr>
                         <th class="p-3">Folio</th><th>Paciente</th><th class="text-right">Total</th><th class="text-right text-emerald-600">Cobrado</th><th class="text-right text-rose-600">Saldo</th><th class="p-3 text-center">Acciones</th>
                     </tr>
@@ -274,19 +287,6 @@
         </div>
     </div>
 
-    <div id="receiptTemplate" class="hidden" style="width: 400px; padding: 30px; background: white; font-family: 'Inter', sans-serif;">
-        <div style="text-align: center; border-bottom: 2px solid #14b8a6; padding-bottom: 10px; margin-bottom: 20px;">
-            <h2 style="margin: 0; color: #0f766e; text-transform: uppercase;">Recibo de Caja</h2>
-            <p style="margin: 5px 0; font-size: 10px; font-weight: bold;">FIGURA ROSTRO KG</p>
-        </div>
-        <div style="font-size: 11px;">
-            <p><strong>Folio:</strong> <span id="r_folio">---</span></p>
-            <p><strong>Paciente:</strong> <span id="r_paciente">---</span></p>
-            <p><strong>Monto:</strong> <h1 id="r_monto" style="margin: 10px 0; color: #059669;">$0.00</h1></p>
-            <p><strong>Deuda:</strong> <span id="r_deuda" style="color: #e11d48; font-weight: bold;">$0.00</span></p>
-        </div>
-    </div>
-
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getFirestore, collection, addDoc, getDocs, orderBy, query, Timestamp, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
@@ -303,7 +303,7 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
         const colName = "pacientes_2026_oficial_v3";
-        const colCitas = "citas_web"; // Colección para las citas centralizadas
+        const colCitas = "citas_web";
 
         window.dbCache = [];
         window.currentDocId = null;
@@ -323,6 +323,27 @@
         };
 
         window.limpiarFormulario = () => { if(confirm("¿Nueva ficha?")) location.reload(); }
+
+        // CÁLCULO DE EDAD REAL
+        window.calcularEdad = () => {
+            const d = document.getElementById('dia_nac').value;
+            const m = document.getElementById('mes_nac').value;
+            const a = document.getElementById('anio_nac').value;
+            if(d && m && a) {
+                const birth = new Date(a, m - 1, d);
+                const today = new Date();
+                let age = today.getFullYear() - birth.getFullYear();
+                const mDiff = today.getMonth() - birth.getMonth();
+                if (mDiff < 0 || (mDiff === 0 && today.getDate() < birth.getDate())) {
+                    age--;
+                }
+                document.getElementById('edad').value = age > 0 ? `${age} años` : "0 años";
+            }
+        }
+
+        // FUNCIONES RÁPIDAS DE DINERO
+        window.setBono = (val) => { document.getElementById('bono_extra').value = val; calcularTotal(); }
+        window.setAbono = (val) => { document.getElementById('abono_nuevo').value = val; calcularTotal(); }
 
         // FIRMA
         let canvas, ctx, isDrawing = false;
@@ -349,7 +370,6 @@
             document.getElementById('listaServicios').insertAdjacentHTML('beforeend', html);
         }
 
-        // CALCULO MAESTRO Y DASHBOARD
         window.calcularTotal = () => {
             let sub = 0; document.querySelectorAll('.s-price').forEach(i => sub += parseFloat(i.value) || 0);
             const bono = parseFloat(document.getElementById('bono_extra').value) || 0;
@@ -367,7 +387,6 @@
             else { fProx.style.borderColor = "#cbd5e1"; fProx.style.backgroundColor = "#f8fafc"; }
         }
 
-        // CARGAR DATOS Y PROCESAR DASHBOARD DEL MES
         window.loadData = async () => {
             const tb = document.getElementById('tableBody'); tb.innerHTML = '';
             document.getElementById('loader').classList.remove('hidden');
@@ -397,7 +416,6 @@
                         <td class="text-right text-rose-500 font-black">${d.finanzas.pendiente}</td>
                         <td class="p-3 flex justify-center gap-1">
                             <button onclick="editarFicha('${d.id}')" class="p-2 bg-white border rounded shadow-sm"><i class="fas fa-pen text-[10px]"></i></button>
-                            <button onclick="generarRecibo('${d.id}')" class="p-2 bg-emerald-50 text-emerald-600 rounded border border-emerald-200"><i class="fas fa-receipt text-[10px]"></i></button>
                         </td>
                     </tr>`;
                 });
@@ -408,44 +426,16 @@
             document.getElementById('loader').classList.add('hidden');
         }
 
-        // GESTIÓN DE CITAS WEB
-        window.loadAppointments = async () => {
-            const tb = document.getElementById('tableAppointments'); tb.innerHTML = '';
-            try {
-                const s = await getDocs(collection(db, colCitas));
-                s.forEach(docSnap => {
-                    const c = docSnap.data();
-                    tb.innerHTML += `<tr class="border-b">
-                        <td class="p-3 font-bold">${c.fecha_cita || '-'}</td>
-                        <td class="font-bold uppercase">${c.nombre}</td>
-                        <td>${c.tratamiento}</td>
-                        <td class="text-teal-600 font-bold">${c.telefono}</td>
-                        <td class="p-3 text-center">
-                            <button onclick="convertirACita('${docSnap.id}')" class="bg-indigo-600 text-white px-3 py-1 rounded text-[10px] font-bold">Abrir Ficha</button>
-                        </td>
-                    </tr>`;
-                });
-            } catch(e) { tb.innerHTML = '<tr><td colspan="5" class="p-5 text-center text-slate-400">Sin citas pendientes.</td></tr>'; }
-        }
-
-        window.convertirACita = (id) => {
-            alert("Cargando datos de la cita...");
-            // Aquí iría la lógica para pre-llenar el formulario con los datos de la cita
-            toggleView('form');
-        }
-
-        // GUARDAR FINAL
         document.getElementById('btnSave').addEventListener('click', async () => {
             const nom = document.getElementById('nombre').value;
             const tel = document.getElementById('telefono').value;
-            const cor = document.getElementById('correo').value;
             const fIni = document.getElementById('fecha_procedimiento').value;
             const deuda = parseFloat(document.getElementById('lblPendiente').innerText.replace('$',''));
             const fProx = document.getElementById('fecha_proximo_pago').value;
 
-            if(!nom || !tel || !cor || !fIni) return alert("⚠️ Campos obligatorios faltantes (Nombre, Celular, Correo, Inicio)");
-            if(deuda > 0 && !fProx) return alert("⚠️ Es obligatorio poner la Fecha de Próximo Pago si hay saldo.");
-            if(!document.getElementById('check_legal').checked) return alert("⚠️ Acepte los términos legales.");
+            if(!nom || !tel || !fIni) return alert("⚠️ Nombre, Celular e Inicio son obligatorios.");
+            if(deuda > 0 && !fProx) return alert("⚠️ Indica la fecha del próximo pago.");
+            if(!document.getElementById('check_legal').checked) return alert("⚠️ Acepte los términos.");
 
             const btn = document.getElementById('btnSave'); btn.disabled = true; btn.innerText = "Guardando...";
 
@@ -458,7 +448,11 @@
             const abonoTotal = (parseFloat(document.getElementById('abono_anterior').value) || 0) + abonoHoy;
 
             const data = {
-                paciente: { nombre: nom, celular: tel, correo: cor, cedula: document.getElementById('cedula').value, edad: document.getElementById('edad').value },
+                paciente: { 
+                    nombre: nom, celular: tel, correo: document.getElementById('correo').value, 
+                    cedula: document.getElementById('cedula').value, edad: document.getElementById('edad').value,
+                    ocupacion: document.getElementById('ocupacion').value, direccion: document.getElementById('direccion').value
+                },
                 servicios: serv,
                 finanzas: { total: document.getElementById('lblTotal').innerText, abono: abonoTotal, pendiente: document.getElementById('lblPendiente').innerText, bono: document.getElementById('bono_extra').value, cuotas: document.getElementById('cuotas_plan').value, prox_pago: fProx },
                 fecha_inicio: fIni,
@@ -473,7 +467,6 @@
             } catch(e) { alert("Error: " + e.message); btn.disabled = false; btn.innerText = "Guardar"; }
         });
 
-        // EDITAR FICHA
         window.editarFicha = (id) => {
             const r = window.dbCache.find(x => x.id === id);
             window.currentDocId = id;
@@ -483,6 +476,10 @@
             document.getElementById('nombre').value = r.paciente.nombre;
             document.getElementById('telefono').value = r.paciente.celular || r.paciente.telefono;
             document.getElementById('correo').value = r.paciente.correo || '';
+            document.getElementById('cedula').value = r.paciente.cedula || '';
+            document.getElementById('edad').value = r.paciente.edad || '';
+            document.getElementById('ocupacion').value = r.paciente.ocupacion || '';
+            document.getElementById('direccion').value = r.paciente.direccion || '';
             document.getElementById('fecha_procedimiento').value = r.fecha_inicio || '';
             document.getElementById('abono_anterior').value = r.finanzas.abono;
             document.getElementById('bono_extra').value = r.finanzas.bono || 0;
@@ -495,20 +492,13 @@
             toggleView('form'); calcularTotal();
         }
 
-        window.generarRecibo = (id) => {
-            const d = window.dbCache.find(x => x.id === id);
-            document.getElementById('r_folio').innerText = d.folio;
-            document.getElementById('r_paciente').innerText = d.paciente.nombre;
-            document.getElementById('r_monto').innerText = `$${d.finanzas.abono}`;
-            document.getElementById('r_deuda').innerText = d.finanzas.pendiente;
-            const el = document.getElementById('receiptTemplate'); el.classList.remove('hidden');
-            html2pdf().from(el).set({ margin: 1, filename: `Recibo_${d.folio}.pdf` }).save().then(()=>el.classList.add('hidden'));
-        }
-
-        window.calcEdad = () => { /* lógica edad */ }
+        document.getElementById('btnPdf').addEventListener('click', () => {
+            const opt = { margin: 0, filename: `Expediente_${document.getElementById('nombre').value}.pdf`, image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2 }, jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' } };
+            html2pdf().set(opt).from(document.getElementById('printContainer')).save();
+        });
 
         window.addEventListener('load', () => { 
-            const f = `REQ-${Date.now().toString().slice(-6)}`;
+            const f = `KG-${Date.now().toString().slice(-6)}`;
             document.querySelectorAll('.folio-display').forEach(el => el.innerText = f);
             agregarServicio(); initSign(); loadData();
         });
