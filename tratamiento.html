@@ -31,10 +31,10 @@
         .input-pro:focus { border-color: #14b8a6; box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.1); }
         .label-pro { display: block; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; margin-bottom: 0.2rem; color: #475569; letter-spacing: 0.025em; }
         .section-header { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; border-bottom: 2px solid #f1f5f9; color: #0f766e; padding-bottom: 0.5rem; margin-top: 1.5rem; margin-bottom: 1rem; }
-        .quick-btn { font-size: 9px; font-weight: 800; padding: 3px 8px; border-radius: 4px; border: 1px solid #e2e8f0; background: white; cursor: pointer; transition: 0.2s; }
+        .nav-btn-active { background-color: #0f766e; color: white; border-radius: 0.5rem; }
+        .quick-btn { font-size: 10px; font-weight: 800; padding: 4px 10px; border-radius: 4px; border: 1px solid #e2e8f0; background: white; cursor: pointer; transition: 0.2s; }
         .quick-btn:hover { background: #14b8a6; color: white; border-color: #14b8a6; }
         .service-row { display: grid; gap: 0.5rem; padding: 0.5rem; border-radius: 0.375rem; border: 1px solid #e2e8f0; background-color: #fff; grid-template-columns: 2.5fr 2fr 1fr 40px; margin-bottom: 0.5rem; }
-        .nav-btn-active { background-color: #0f766e; color: white; border-radius: 0.5rem; }
         #tableContainer { max-height: 550px; overflow-y: auto; border-radius: 12px; }
         @media print { .no-print { display: none !important; } .paper-sheet { box-shadow: none !important; border: none !important; margin: 0 !important; width: 100% !important; } }
     </style>
@@ -88,7 +88,7 @@
                             <label class="label-pro">Fecha Nacimiento</label>
                             <div class="flex gap-1">
                                 <select id="dia_nac" class="input-pro w-16" onchange="calcularEdad()"><option value="">D</option><script>for(let i=1;i<=31;i++) document.write(`<option value="${i}">${i}</option>`);</script></select>
-                                <select id="mes_nac" class="input-pro flex-1" onchange="calcularEdad()">
+                                <select id="mes_nac" class="input-pro flex-1 min-w-[100px]" onchange="calcularEdad()">
                                     <option value="">Mes</option><option value="1">Enero</option><option value="2">Febrero</option><option value="3">Marzo</option><option value="4">Abril</option><option value="5">Mayo</option><option value="6">Junio</option><option value="7">Julio</option><option value="8">Agosto</option><option value="9">Septiembre</option><option value="10">Octubre</option><option value="11">Noviembre</option><option value="12">Diciembre</option>
                                 </select>
                                 <input type="number" id="anio_nac" class="input-pro w-20" placeholder="Año" onchange="calcularEdad()">
@@ -129,8 +129,8 @@
                                     </div>
                                     <input type="number" id="bono_manual" class="input-pro text-lg font-bold text-teal-600" oninput="calcularTotal()" value="0">
                                 </div>
-                                <div class="p-4 bg-white rounded-lg border border-dashed border-emerald-200">
-                                    <label class="label-pro text-emerald-600 font-black italic mb-2 text-center">Abonar Hoy (%)</label>
+                                <div class="p-4 bg-white rounded-lg border border-dashed border-emerald-200 text-center">
+                                    <label class="label-pro text-emerald-600 font-black italic mb-2">Abonar Hoy (%)</label>
                                     <div class="flex justify-center gap-2 no-print">
                                         <button type="button" onclick="aplicarPctAbono(10)" class="quick-btn border-emerald-200">10%</button>
                                         <button type="button" onclick="aplicarPctAbono(30)" class="quick-btn border-emerald-200">30%</button>
@@ -140,13 +140,13 @@
                             </div>
 
                             <div class="md:col-span-7 text-right flex flex-col justify-end">
-                                <div id="desgloseVisual" class="mb-4 text-[11px] font-bold text-slate-400 space-y-1">
-                                    <div>SUBTOTAL: <span id="sub_txt" class="text-slate-600">$0.00</span></div>
-                                    <div class="text-rose-400">DESC. PROMO: <span id="desc_txt">-$0.00</span></div>
-                                    <div class="text-teal-500">BONO APLICADO: <span id="bono_txt">-$0.00</span></div>
+                                <div id="desgloseVisual" class="mb-4 text-[13px] font-bold text-slate-400 space-y-1">
+                                    <div>SUBTOTAL: <span id="sub_txt" class="text-slate-600 font-black text-lg">$0.00</span></div>
+                                    <div class="text-rose-400">DESC. PROMO: <span id="desc_txt" class="font-black text-lg">-$0.00</span></div>
+                                    <div class="text-teal-500">BONO APLICADO: <span id="bono_txt" class="font-black text-lg">-$0.00</span></div>
                                 </div>
                                 <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Total Final a Pagar</span>
-                                <div id="lblTotal" class="text-6xl font-black text-slate-900 tracking-tighter">$0.00</div>
+                                <div id="lblTotal" class="text-4xl font-black text-slate-900 tracking-tighter">$0.00</div>
                                 
                                 <div class="grid grid-cols-2 gap-3 mt-8">
                                     <div class="bg-white p-3 rounded-lg border border-slate-200 shadow-inner text-center">
@@ -170,12 +170,12 @@
 
             <div id="page2" class="paper-sheet rounded-b-lg border-t-0">
                 <div class="p-10">
-                    <div class="section-header mt-0 text-slate-800 border-slate-200 uppercase tracking-widest">Planificación de Saldo</div>
+                    <div class="section-header mt-0 text-slate-800 border-slate-200 uppercase tracking-widest">Gestión de Cuotas y Seguimiento</div>
                     
                     <div class="mb-10 p-6 bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl">
                         <label class="flex items-center gap-4 mb-4 cursor-pointer no-print group">
                             <input type="checkbox" id="usa_cuotas" class="w-6 h-6 accent-rose-500 rounded" onchange="toggleCuotas()">
-                            <span class="font-black text-rose-600 uppercase text-xs">Habilitar Desglose de Cuotas Diferidas</span>
+                            <span class="font-black text-rose-600 uppercase text-xs group-hover:underline">Habilitar Desglose de Cuotas Quincenales</span>
                         </label>
                         
                         <div id="cuotasContainer" class="hidden space-y-6 border-t pt-6">
@@ -187,22 +187,25 @@
                                     </select>
                                 </div>
                                 <div class="flex-1">
-                                    <label class="label-pro text-rose-500">Valor cada Cuota:</label>
+                                    <label class="label-pro text-rose-500">Valor de cada Cuota:</label>
                                     <div id="desgloseCuotas" class="p-3 bg-white rounded-lg border font-mono text-xl font-black text-rose-600 shadow-inner"></div>
                                 </div>
                             </div>
-                            <div id="camposFechas" class="grid grid-cols-2 gap-4">
-                                </div>
+                            <div id="camposFechas" class="grid grid-cols-2 gap-4"></div>
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mt-8 mb-10">
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-10">
                         <div class="md:col-span-4">
                             <label class="label-pro font-black text-rose-600 italic">Fecha Inicio Procedimiento *</label>
-                            <input type="date" id="fecha_pro_inicio" class="input-pro border-rose-300 shadow-sm">
+                            <input type="date" id="fecha_inicio_pro" class="input-pro border-rose-300 shadow-sm">
                         </div>
-                        <div class="md:col-span-8">
-                            <label class="label-pro italic">Observaciones Clínicas / Notas de Seguimiento</label>
+                        <div class="md:col-span-4">
+                            <label class="label-pro font-black text-brand-dark">Próxima Fecha de Cobro</label>
+                            <input type="date" id="fecha_proximo_pago" class="input-pro shadow-sm">
+                        </div>
+                        <div class="md:col-span-12">
+                            <label class="label-pro italic">Observaciones Clínicas / Notas de Evolución</label>
                             <textarea id="observaciones" rows="3" class="input-pro text-xs resize-none" placeholder="Escriba detalles del avance..."></textarea>
                         </div>
                     </div>
@@ -210,15 +213,14 @@
                     <div class="bg-slate-50 p-8 rounded-2xl border-2 border-slate-100 mb-10">
                         <h3 class="text-[11px] font-black uppercase mb-4 text-slate-800 border-b-2 border-white pb-2 tracking-widest italic">Consentimiento Informado y Protección de Datos</h3>
                         <div class="text-[9px] text-justify text-slate-600 leading-relaxed max-h-56 overflow-y-auto mb-6 border-b border-white pb-4 pr-3">
-                            <p class="mb-2"><strong>1. NATURALEZA:</strong> Entiendo que los procedimientos de Figura Rostro KG son de carácter estético y progresivo. Los resultados definitivos dependen de factores individuales como el metabolismo y el cuidado personal.</p>
-                            <p class="mb-2"><strong>2. POLÍTICA DE NO RETRACTO:</strong> Todo abono o pago realizado NO es reembolsable ni transferible. Estos montos garantizan la reserva de agenda, la preparación personalizada de insumos estériles y la disposición del personal técnico.</p>
-                            <p class="mb-2"><strong>3. LEY 81 (PANAMÁ):</strong> Autorizo el tratamiento confidencial de mis datos clínicos. Doy mi consentimiento para la toma de registros fotográficos y de video antes y después del tratamiento para fines de expediente clínico y material promocional de la marca.</p>
-                            <p class="mb-2"><strong>4. COMPROMISO POST-CUIDADO:</strong> Es mi total responsabilidad seguir las pautas de higiene y protección solar indicadas por el especialista. La clínica no responde por complicaciones derivadas de negligencia en el cuidado externo.</p>
-                            <p><strong>5. VIGENCIA DE PLANES:</strong> Los planes diferidos deben ser cancelados puntualmente en las fechas pactadas para mantener el beneficio promocional.</p>
+                            <p class="mb-3"><strong>1. NATURALEZA DEL TRATAMIENTO:</strong> Entiendo que los procedimientos de Figura Rostro KG (Plasma Fibroblast, Hidroplasia, etc.) son progresivos y los resultados dependen de factores individuales como edad y cuidado personal.</p>
+                            <p class="mb-3"><strong>2. POLÍTICA DE NO RETRACTO:</strong> Los abonos realizados NO son reembolsables. Garantizan el bloqueo de agenda e insumos estériles.</p>
+                            <p class="mb-3"><strong>3. LEY 81 (PANAMÁ):</strong> Autorizo el tratamiento confidencial de mis datos. Doy consentimiento para la toma de fotografías de las zonas tratadas para fines clínicos y promocionales.</p>
+                            <p><strong>4. RESPONSABILIDAD:</strong> Es mi responsabilidad seguir las pautas de cuidado post-tratamiento indicadas por el especialista.</p>
                         </div>
-                        <label class="flex items-center gap-4 no-print cursor-pointer p-4 bg-teal-50 border border-teal-100 rounded-xl group hover:bg-teal-100 transition-all">
-                            <input type="checkbox" id="check_legal" class="w-6 h-6 accent-teal-600 group-hover:scale-110 transition-transform">
-                            <span class="text-[10px] font-black text-teal-900 uppercase tracking-tighter">He leído, comprendo y acepto la totalidad de los términos legales descritos.</span>
+                        <label class="flex items-center gap-4 no-print cursor-pointer p-4 bg-teal-50 border border-teal-100 rounded-xl group transition-all hover:bg-teal-100">
+                            <input type="checkbox" id="check_legal" class="w-6 h-6 accent-teal-600">
+                            <span class="text-[11px] font-black text-teal-900 uppercase">Acepto los términos legales y el consentimiento informado.</span>
                         </label>
                     </div>
 
@@ -226,11 +228,11 @@
                         <div class="text-center">
                             <div class="border-b-2 border-slate-400 mb-2 h-24 flex items-center justify-center"><canvas id="signaturePad" class="w-full h-full cursor-crosshair"></canvas></div>
                             <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Firma del Paciente</p>
-                            <button type="button" onclick="clearSignature()" class="text-[8px] text-rose-500 no-print underline uppercase mt-2">Borrar Firma</button>
+                            <button type="button" onclick="clearSignature()" class="text-[8px] text-rose-500 no-print underline uppercase mt-2">Borrar</button>
                         </div>
                         <div class="text-center flex flex-col justify-end">
-                             <input type="text" id="specialistName" class="w-full text-center border-b-2 border-slate-300 text-sm font-black pb-2 bg-transparent outline-none uppercase italic" placeholder="Nombre Especialista">
-                             <p class="text-[10px] font-black uppercase text-slate-400 mt-2 tracking-widest text-center">Firma Autorizada KG</p>
+                             <input type="text" id="specialistName" class="w-full text-center border-b-2 border-slate-300 text-sm font-black pb-2 bg-transparent outline-none uppercase italic" placeholder="Firma Especialista">
+                             <p class="text-[10px] font-black uppercase text-slate-400 mt-2 tracking-widest">Sello Autorizado KG</p>
                         </div>
                     </div>
                 </div>
@@ -238,21 +240,21 @@
         </div>
 
         <div class="max-w-4xl mx-auto flex flex-col md:flex-row gap-4 no-print mb-24 px-4 mt-10">
-            <button id="btnSave" class="flex-1 bg-slate-900 text-white py-5 rounded-xl font-black uppercase text-sm shadow-xl tracking-widest transition-transform hover:scale-[1.03] active:scale-95"><i class="fas fa-save mr-3"></i> GUARDAR TODO</button>
-            <button id="btnPdf" class="bg-white border-2 border-slate-200 text-slate-700 px-10 py-5 rounded-xl font-black uppercase text-sm hover:bg-slate-50 shadow-lg"><i class="fas fa-file-pdf mr-3 text-rose-500"></i> FICHA PDF</button>
+            <button id="btnSave" class="flex-1 bg-slate-900 text-white py-5 rounded-xl font-black uppercase text-sm shadow-xl tracking-widest transition-transform hover:scale-[1.03] active:scale-95"><i class="fas fa-save mr-3"></i> GUARDAR EXPEDIENTE</button>
+            <button id="btnPdf" class="bg-white border-2 border-slate-200 text-slate-700 px-10 py-5 rounded-xl font-black uppercase text-sm hover:bg-slate-50 shadow-lg"><i class="fas fa-file-pdf mr-3 text-rose-500"></i> DESCARGAR FICHA</button>
         </div>
     </div>
 
     <div id="seccionBaseDatos" class="hidden w-full max-w-6xl mx-auto bg-white shadow-2xl p-8 rounded-3xl border no-print mb-32">
         <div class="flex justify-between items-center mb-6">
             <h2 class="font-black text-xl uppercase tracking-tighter text-teal-700"><i class="fas fa-users mr-2"></i> Historial Clínico</h2>
-            <input type="text" id="buscador" placeholder="Buscar paciente por nombre..." class="input-pro w-64 border-teal-100" onkeyup="filtrarTabla()">
+            <input type="text" id="buscador" placeholder="Buscar por nombre..." class="input-pro w-64 border-teal-100" onkeyup="filtrarTabla()">
         </div>
-        <div id="tableContainer" class="border rounded-xl overflow-hidden">
+        <div id="tableContainer" class="border rounded-xl">
             <table class="w-full text-xs text-left">
                 <thead class="bg-slate-800 text-white font-black uppercase sticky top-0">
                     <tr>
-                        <th class="p-4">Folio</th><th>Paciente</th><th class="text-right">Total</th><th class="text-right text-emerald-400">Cobrado</th><th class="text-right text-rose-400">Saldo</th><th class="p-4 text-center">Acción</th>
+                        <th class="p-4">Folio</th><th>Paciente</th><th class="text-right">Total</th><th class="text-right text-emerald-400">Cobrado</th><th class="text-right text-rose-400">Saldo</th><th class="p-4 text-center">Gestión</th>
                     </tr>
                 </thead>
                 <tbody id="tableBody" class="divide-y"></tbody>
@@ -262,23 +264,22 @@
 
     <div id="seccionCitas" class="hidden w-full max-w-6xl mx-auto bg-white shadow-2xl p-6 rounded-2xl border no-print mb-32">
         <h2 class="font-black text-xl mb-6 uppercase tracking-tighter"><i class="fas fa-calendar-alt text-indigo-600 mr-2"></i> Citas Web</h2>
-        <div id="tableAppointments" class="overflow-x-auto text-slate-400 italic text-center p-10">Buscando citas web en espera...</div>
+        <div id="tableAppointments" class="overflow-x-auto text-slate-400 italic text-center p-10">Buscando citas pendientes...</div>
     </div>
 
     <div id="receiptTemplate" class="hidden" style="width: 400px; padding: 40px; background: white; border: 1px solid #eee; font-family: 'Inter', sans-serif;">
         <div style="text-align: center; border-bottom: 4px solid #14b8a6; padding-bottom: 20px;">
-            <h1 style="margin: 0; font-size: 20px; color: #0f766e; letter-spacing: 2px;">FIGURA ROSTRO KG</h1>
+            <h1 style="margin: 0; font-size: 20px; color: #0f766e;">FIGURA ROSTRO KG</h1>
             <p style="margin: 0; font-size: 11px; font-weight: 800; color: #64748b;">RECIBO DE CAJA OFICIAL</p>
         </div>
         <div style="margin-top: 30px; font-size: 13px;">
             <p><strong>FOLIO:</strong> <span id="r_folio"></span></p>
             <p><strong>PACIENTE:</strong> <span id="r_paciente" style="text-transform: uppercase; font-weight: 800;"></span></p>
-            <p><strong>FECHA:</strong> <span id="r_fecha"></span></p>
-            <div style="background: #f0fdfa; padding: 25px; border-radius: 15px; margin: 25px 0; text-align: center; border: 1px solid #ccfbf1;">
-                <p style="margin: 0; font-size: 9px; font-weight: 800; color: #0f766e; text-transform: uppercase;">Monto Abonado Hoy</p>
+            <div style="background: #f0fdfa; padding: 25px; border-radius: 12px; margin: 25px 0; text-align: center; border: 1px solid #ccfbf1;">
+                <p style="margin: 0; font-size: 9px; font-weight: 800; color: #0f766e;">Monto de este Pago</p>
                 <h1 id="r_monto" style="margin: 5px 0; font-size: 34px; color: #059669; font-weight: 900;">$0.00</h1>
             </div>
-            <p style="text-align: right; color: #e11d48; font-weight: 900; font-size: 16px;">SALDO PENDIENTE: <span id="r_deuda"></span></p>
+            <p style="text-align: right; color: #e11d48; font-weight: 800;">Saldo Pendiente: <span id="r_deuda"></span></p>
         </div>
     </div>
 
@@ -308,14 +309,15 @@
             document.getElementById('seccionBaseDatos').classList.toggle('hidden', view !== 'list');
             document.getElementById('seccionCitas').classList.toggle('hidden', view !== 'appointments');
             
-            document.getElementById('navForm').className = view === 'form' ? 'nav-btn-active px-5 py-2 text-xs font-bold' : 'px-5 py-2 text-xs font-bold';
-            document.getElementById('navList').className = view === 'list' ? 'nav-btn-active px-5 py-2 text-xs font-bold' : 'px-5 py-2 text-xs font-bold';
-            document.getElementById('navAppts').className = view === 'appointments' ? 'nav-btn-active px-5 py-2 text-xs font-bold' : 'px-5 py-2 text-xs font-bold';
+            document.getElementById('navForm').className = view === 'form' ? 'nav-btn-active px-5 py-2 text-xs font-bold transition-all' : 'px-5 py-2 text-xs font-bold transition-all';
+            document.getElementById('navList').className = view === 'list' ? 'nav-btn-active px-5 py-2 text-xs font-bold transition-all' : 'px-5 py-2 text-xs font-bold transition-all';
+            document.getElementById('navAppts').className = view === 'appointments' ? 'nav-btn-active px-5 py-2 text-xs font-bold transition-all' : 'px-5 py-2 text-xs font-bold transition-all';
             
             if(view === 'list') loadData();
+            if(view === 'appointments') loadAppointments();
         };
 
-        window.limpiarFormulario = () => { if(confirm("¿Seguro que deseas iniciar una nueva ficha?")) location.reload(); }
+        window.limpiarFormulario = () => { if(confirm("¿Nueva ficha?")) location.reload(); }
 
         window.calcularEdad = () => {
             const d = document.getElementById('dia_nac').value, m = document.getElementById('mes_nac').value, a = document.getElementById('anio_nac').value;
@@ -348,15 +350,15 @@
             const container = document.getElementById('camposFechas');
             container.innerHTML = '';
             for(let i=1; i<=num; i++){
-                container.innerHTML += `<div><label class="label-pro italic">Fecha Pago Cuota ${i}</label><input type="date" class="input-pro f-cuota"></div>`;
+                container.innerHTML += `<div><label class="label-pro italic">Fecha Cuota ${i}</label><input type="date" class="input-pro f-cuota"></div>`;
             }
         };
 
         window.agregarServicio = (t='Plasma Fibroblast', z='', p='') => {
             const id = Date.now() + Math.random();
             const html = `<div class="service-row" id="row-${id}">
-                <select class="input-pro s-type font-black text-[11px] h-12"><option value="Plasma Fibroblast" ${t==='Plasma Fibroblast'?'selected':''}>Plasma Fibroblast</option><option value="Hidroplasia" ${t==='Hidroplasia'?'selected':''}>Hidroplasia</option><option value="Limpieza Profunda" ${t==='Limpieza Profunda'?'selected':''}>Limpieza Profunda</option><option value="Otro" ${t==='Otro'?'selected':''}>Otro servicio...</option></select>
-                <input type="text" class="input-pro s-zone text-[11px] h-12" placeholder="Zona (Ej: Cuello)" value="${z}">
+                <select class="input-pro s-type font-black text-[11px] h-12"><option value="Plasma Fibroblast" ${t==='Plasma Fibroblast'?'selected':''}>Plasma Fibroblast</option><option value="Hidroplasia" ${t==='Hidroplasia'?'selected':''}>Hidroplasia</option><option value="Limpieza Profunda" ${t==='Limpieza Profunda'?'selected':''}>Limpieza Profunda</option><option value="Dermapen" ${t==='Dermapen'?'selected':''}>Dermapen</option><option value="Peeling Químico" ${t==='Peeling Químico'?'selected':''}>Peeling Químico</option><option value="Masaje Reductor" ${t==='Masaje Reductor'?'selected':''}>Masaje Reductor</option><option value="Radiofrecuencia" ${t==='Radiofrecuencia'?'selected':''}>Radiofrecuencia</option><option value="Lipoláser" ${t==='Lipoláser'?'selected':''}>Lipoláser</option><option value="Otro" ${t==='Otro'?'selected':''}>Otro...</option></select>
+                <input type="text" class="input-pro s-zone text-[11px] h-12" placeholder="Zona" value="${z}">
                 <input type="number" class="input-pro text-right font-black s-price text-[11px] h-12" placeholder="0" value="${p}" oninput="calcularTotal()">
                 <button type="button" onclick="document.getElementById('row-${id}').remove(); calcularTotal();" class="text-rose-500 hover:scale-110 transition-all"><i class="fas fa-trash-alt"></i></button>
             </div>`;
@@ -375,7 +377,6 @@
             const abonoHoy = parseFloat(document.getElementById('abono_nuevo').value) || 0;
             const saldo = Math.max(0, totalFinal - (abonoAnt + abonoHoy));
 
-            // Actualización Visual
             document.getElementById('sub_txt').innerText = `$${sub.toFixed(2)}`;
             document.getElementById('desc_txt').innerText = `-$${montoDesc.toFixed(2)}`;
             document.getElementById('bono_txt').innerText = `-$${bono.toFixed(2)}`;
@@ -384,7 +385,7 @@
 
             if(document.getElementById('usa_cuotas').checked) {
                 const n = parseInt(document.getElementById('num_cuotas').value);
-                document.getElementById('desgloseCuotas').innerText = `${n} CUOTAS DE $${(saldo / n).toFixed(2)}`;
+                document.getElementById('desgloseCuotas').innerText = `${n} cuotas de $${(saldo / n).toFixed(2)}`;
             }
         };
 
@@ -395,15 +396,15 @@
                 window.dbCache = []; tb.innerHTML = '';
                 s.forEach(snap => {
                     const d = { id: snap.id, ...snap.data() }; window.dbCache.push(d);
-                    tb.innerHTML += `<tr class="border-b hover:bg-slate-50">
+                    tb.innerHTML += `<tr class="border-b hover:bg-slate-50 transition-all group">
                         <td class="p-4 font-mono font-bold text-slate-400">${d.folio}</td>
                         <td class="font-black uppercase text-slate-700">${d.paciente.nombre}</td>
                         <td class="text-right font-bold text-slate-500">${d.finanzas.total}</td>
                         <td class="text-right text-emerald-600 font-bold">$${parseFloat(d.finanzas.abono).toFixed(2)}</td>
                         <td class="text-right text-rose-500 font-black tracking-tighter">${d.finanzas.pendiente}</td>
                         <td class="p-4 flex justify-center gap-2">
-                            <button onclick="editarFicha('${snap.id}')" class="p-3 bg-slate-100 rounded-lg text-teal-600 hover:bg-teal-600 hover:text-white transition-all"><i class="fas fa-edit"></i></button>
-                            <button onclick="generarRecibo('${snap.id}')" class="p-3 bg-emerald-50 text-emerald-600 rounded-lg hover:bg-emerald-600 hover:text-white transition-all"><i class="fas fa-receipt"></i></button>
+                            <button onclick="editarFicha('${snap.id}')" class="p-3 bg-slate-100 rounded-xl text-teal-600 hover:bg-teal-600 hover:text-white transition-all"><i class="fas fa-edit"></i></button>
+                            <button onclick="generarRecibo('${snap.id}')" class="p-3 bg-emerald-50 text-emerald-600 rounded-xl hover:bg-emerald-600 hover:text-white transition-all"><i class="fas fa-receipt"></i></button>
                         </td>
                     </tr>`;
                 });
@@ -426,14 +427,14 @@
             document.getElementById('edad').value = r.paciente.edad || '';
             document.getElementById('ocupacion').value = r.paciente.ocupacion || '';
             document.getElementById('direccion').value = r.paciente.direccion || '';
-            document.getElementById('fecha_pro_inicio').value = r.fecha_inicio || '';
+            document.getElementById('fecha_inicio_pro').value = r.fecha_inicio || '';
             document.getElementById('abono_anterior').value = r.finanzas.abono;
             document.getElementById('descuento_pct').value = r.finanzas.descuento_pct || 0;
             document.getElementById('bono_manual').value = r.finanzas.bono || 0;
             document.getElementById('usa_cuotas').checked = r.finanzas.usa_cuotas || false;
             if(r.finanzas.usa_cuotas) { 
                 document.getElementById('cuotasContainer').classList.remove('hidden');
-                document.getElementById('num_cuotas').value = r.finanzas.num_cuotas || 2;
+                document.getElementById('num_cuotas').value = r.finanzas.cuotas || 2;
                 generarCamposFechas();
             }
             document.getElementById('fecha_proximo_pago').value = r.finanzas.prox_pago || '';
@@ -456,9 +457,9 @@
 
         document.getElementById('btnSave').addEventListener('click', async () => {
             const nom = document.getElementById('nombre').value;
-            const fReal = document.getElementById('fecha_pro_inicio').value;
+            const fReal = document.getElementById('fecha_inicio_pro').value;
             if(!nom || !fReal || !document.getElementById('check_legal').checked) {
-                return alert("⚠️ ERROR: Faltan campos obligatorios:\n1. Nombre\n2. Fecha de Inicio\n3. Aceptar Términos Legales");
+                return alert("⚠️ ERROR: Nombre, Fecha de Inicio y Términos son obligatorios.");
             }
             const btn = document.getElementById('btnSave'); btn.disabled = true; btn.innerText = "PROCESANDO...";
             const serv = []; document.querySelectorAll('.service-row').forEach(r => {
@@ -469,7 +470,17 @@
             const data = {
                 paciente: { nombre: nom, celular: document.getElementById('telefono').value, cedula: document.getElementById('cedula').value, edad: document.getElementById('edad').value, ocupacion: document.getElementById('ocupacion').value, direccion: document.getElementById('direccion').value },
                 servicios: serv,
-                finanzas: { total: document.getElementById('lblTotal').innerText, abono: (parseFloat(document.getElementById('abono_anterior').value) || 0) + hoy, abono_hoy: hoy, pendiente: document.getElementById('lblPendiente').innerText, descuento_pct: document.getElementById('descuento_pct').value, bono: document.getElementById('bono_manual').value, usa_cuotas: document.getElementById('usa_cuotas').checked, num_cuotas: document.getElementById('num_cuotas').value, prox_pago: document.getElementById('fecha_proximo_pago').value },
+                finanzas: { 
+                    total: document.getElementById('lblTotal').innerText, 
+                    abono: (parseFloat(document.getElementById('abono_anterior').value) || 0) + hoy, 
+                    abono_hoy: hoy, 
+                    pendiente: document.getElementById('lblPendiente').innerText, 
+                    descuento_pct: document.getElementById('descuento_pct').value, 
+                    bono: document.getElementById('bono_manual').value, 
+                    usa_cuotas: document.getElementById('usa_cuotas').checked,
+                    cuotas: document.getElementById('num_cuotas').value, 
+                    prox_pago: document.getElementById('fecha_proximo_pago').value 
+                },
                 fecha_inicio: fReal, fecha: Timestamp.now(), folio: document.querySelector('.folio-display').innerText, observaciones: document.getElementById('observaciones').value
             };
             try {
