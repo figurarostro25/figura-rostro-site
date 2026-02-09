@@ -382,13 +382,12 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
     const colName = "pacientes_2026_oficial_v3";
-    const colCitas = "reservas_entrantes"; // Colección del formulario web
+    const colCitas = "reservas_entrantes";
 
     window.dbCache = [];
     window.currentDocId = null;
     window.historialLocal = [];
     
-    // VARIABLES NUEVAS PARA LA AGENDA
     let unsuscribeCitas = null; 
     window.vistaCitasActual = 'pendientes';
 
@@ -398,131 +397,213 @@
         const sections = ['seccionFormulario', 'seccionBaseDatos', 'seccionCitas'];
         sections.forEach(s => document.getElementById(s).classList.add('hidden'));
         
-        // Detener escucha de citas si salimos de esa vista (Ahorro de recursos)
-        if (unsuscribeCitas && view !== 'appointments') {
-            unsuscribeCitas();
-            unsuscribeCitas = null;
-        }
+        if (unsuscribeCitas && view !== 'appointments') { unsuscribeCitas(); unsuscribeCitas = null; }
 
         if(view === 'form') document.getElementById('seccionFormulario').classList.remove('hidden');
         if(view === 'list') { document.getElementById('seccionBaseDatos').classList.remove('hidden'); loadData(); checkAlerts(); }
-        if(view === 'appointments') { 
-            document.getElementById('seccionCitas').classList.remove('hidden'); 
-            loadCitas(); // Cargar la nueva agenda
-        }
+        if(view === 'appointments') { document.getElementById('seccionCitas').classList.remove('hidden'); loadCitas(); }
         
+        // Botones Nav
         document.getElementById('navForm').className = view === 'form' ? 'nav-btn-active px-4 py-2 text-[10px] font-bold transition-all' : 'px-4 py-2 text-[10px] font-bold dark:text-slate-400 transition-all';
         document.getElementById('navList').className = view === 'list' ? 'nav-btn-active px-4 py-2 text-[10px] font-bold transition-all' : 'px-4 py-2 text-[10px] font-bold dark:text-slate-400 transition-all';
         document.getElementById('navAppts').className = view === 'appointments' ? 'nav-btn-active px-4 py-2 text-[10px] font-bold transition-all' : 'px-4 py-2 text-[10px] font-bold dark:text-slate-400 transition-all';
     };
 
-    // ==========================================
-    // NUEVA LÓGICA DE CITAS (AGENDA PRO)
-    // ==========================================
-    
+    // --- NUEVA LÓGICA DE CITAS MEJORADA ---
     window.filtrarVistaCitas = (vista) => {
         window.vistaCitasActual = vista;
         const btnP = document.getElementById('tabPendientes');
         const btnH = document.getElementById('tabHistorial');
         
         if(vista === 'pendientes') {
-            btnP.className = "px-6 py-2 rounded-lg text-xs font-black uppercase transition-all bg-white dark:bg-slate-700 shadow-sm text-teal-700 dark:text-teal-400";
-            btnH.className = "px-6 py-2 rounded-lg text-xs font-black uppercase transition-all text-slate-400 hover:text-slate-600";
+            btnP.className = "px-5 py-2 rounded-md text-[10px] font-black uppercase transition-all bg-white dark:bg-slate-700 shadow-sm text-teal-700 dark:text-teal-400";
+            btnH.className = "px-5 py-2 rounded-md text-[10px] font-black uppercase transition-all text-slate-400 hover:text-slate-600";
         } else {
-            btnP.className = "px-6 py-2 rounded-lg text-xs font-black uppercase transition-all text-slate-400 hover:text-slate-600";
-            btnH.className = "px-6 py-2 rounded-lg text-xs font-black uppercase transition-all bg-white dark:bg-slate-700 shadow-sm text-purple-700 dark:text-purple-400";
+            btnP.className = "px-5 py-2 rounded-md text-[10px] font-black uppercase transition-all text-slate-400 hover:text-slate-600";
+            btnH.className = "px-5 py-2 rounded-md text-[10px] font-black uppercase transition-all bg-white dark:bg-slate-700 shadow-sm text-purple-700 dark:text-purple-400";
         }
         loadCitas();
     };
 
     window.loadCitas = () => {
         const container = document.getElementById('containerCitasWeb');
-        container.innerHTML = '<div class="text-center p-10"><i class="fas fa-spinner fa-spin text-teal-500 text-3xl"></i><p class="mt-2 text-xs font-bold text-slate-400 uppercase">Sincronizando Agenda...</p></div>';
+        container.innerHTML = '<div class="text-center p-10"><i class="fas fa-spinner fa-spin text-teal-500 text-3xl"></i><p class="mt-2 text-xs font-bold text-slate-400 uppercase">Organizando Agenda...</p></div>';
 
         const q = query(collection(db, colCitas), orderBy("fecha_cita", "asc"));
-        
         if (unsuscribeCitas) unsuscribeCitas();
 
         unsuscribeCitas = onSnapshot(q, (snapshot) => {
             container.innerHTML = '';
-            const today = new Date().toISOString().split('T')[0];
-            let hayCitas = false;
+            
+            // 1. Obtenemos fecha de hoy para comparar
+            const todayStr = new Date().toLocaleDateString('en-CA'); // Formato YYYY-MM-DD local
+            
+            let pendientesFuturas = [];
+            let pendientesVencidas = [];
+            let historial = [];
 
             snapshot.forEach((docSnap) => {
-                const cita = docSnap.data();
-                const id = docSnap.id;
-                const estado = cita.estado || "Pendiente";
-                
-                let mostrar = false;
-                if (window.vistaCitasActual === 'pendientes') {
-                    if (estado === 'Pendiente') mostrar = true;
+                const c = { id: docSnap.id, ...docSnap.data() };
+                const est = c.estado || "Pendiente";
+
+                if (est === 'Pendiente') {
+                    // Si la fecha es menor a hoy, es vencida. Si es hoy o mayor, es futura.
+                    if (c.fecha_cita < todayStr) pendientesVencidas.push(c);
+                    else pendientesFuturas.push(c);
                 } else {
-                    if (estado !== 'Pendiente') mostrar = true;
-                }
-
-                if (mostrar) {
-                    hayCitas = true;
-                    // Fix visual de fecha
-                    const [year, month, day] = cita.fecha_cita.split('-');
-                    const fCitaObj = new Date(year, month - 1, day);
-                    
-                    const diaNum = day;
-                    const mesTexto = fCitaObj.toLocaleString('es-ES', { month: 'short' }).toUpperCase();
-                    const esVencida = cita.fecha_cita < today && estado === 'Pendiente';
-
-                    let bordeClass = "border-l-4 border-teal-500";
-                    let bgDateClass = "bg-teal-50 text-teal-700";
-                    
-                    if (esVencida) { bordeClass = "border-l-4 border-rose-500 opacity-75"; bgDateClass = "bg-rose-100 text-rose-700"; }
-                    if (estado === 'Asistió') { bordeClass = "border-l-4 border-emerald-500 opacity-60 grayscale"; bgDateClass = "bg-emerald-100 text-emerald-700"; }
-                    if (estado === 'Faltó') { bordeClass = "border-l-4 border-slate-400 opacity-50 grayscale"; bgDateClass = "bg-slate-200 text-slate-500"; }
-
-                    container.innerHTML += `
-                        <div class="bg-white dark:bg-slate-800 p-0 rounded-2xl shadow-sm hover:shadow-md transition-all flex overflow-hidden border border-slate-100 dark:border-slate-700 ${bordeClass}">
-                            <div class="${bgDateClass} w-24 flex flex-col items-center justify-center p-2 border-r border-slate-100 dark:border-slate-700 shrink-0">
-                                <span class="text-[10px] font-black uppercase tracking-widest opacity-60">${mesTexto}</span>
-                                <span class="text-4xl font-black leading-none my-1">${diaNum}</span>
-                                <span class="text-[11px] font-bold bg-white/50 px-2 py-1 rounded-md mt-1 whitespace-nowrap">${tConvert(cita.hora_cita)}</span>
-                            </div>
-                            <div class="p-4 flex-1 flex flex-col justify-center min-w-0">
-                                <div class="flex justify-between items-start">
-                                    <h3 class="font-black text-base md:text-lg text-slate-800 dark:text-white truncate uppercase">${cita.nombre}</h3>
-                                    ${esVencida ? '<span class="bg-rose-100 text-rose-600 text-[9px] font-black px-2 py-0.5 rounded uppercase">Vencida</span>' : ''}
-                                    ${estado !== 'Pendiente' ? `<span class="bg-slate-100 text-slate-500 text-[9px] font-black px-2 py-0.5 rounded uppercase">${estado}</span>` : ''}
-                                </div>
-                                <p class="text-[11px] font-bold text-teal-600 dark:text-teal-400 uppercase mb-1 truncate">${cita.servicio}</p>
-                                <div class="flex items-center gap-3 text-[10px] text-slate-400 font-medium">
-                                    <span><i class="fab fa-whatsapp text-green-500 text-xs"></i> ${cita.whatsapp}</span>
-                                    <span class="hidden md:inline">|</span>
-                                    <span class="truncate hidden md:inline"><i class="fas fa-map-marker-alt text-slate-300"></i> ${cita.zona}</span>
-                                </div>
-                                ${cita.antecedentes && cita.antecedentes.length > 0 ? `<div class="mt-1 text-[9px] text-rose-500 font-bold uppercase"><i class="fas fa-notes-medical"></i> ${cita.antecedentes.join(", ")}</div>` : ''}
-                            </div>
-                            <div class="flex flex-col border-l border-slate-100 dark:border-slate-700 w-16">
-                                ${window.vistaCitasActual === 'pendientes' ? `
-                                    <button onclick="cambiarEstadoCita('${id}', 'Asistió')" class="h-1/2 flex items-center justify-center bg-emerald-50 hover:bg-emerald-500 text-emerald-500 hover:text-white transition-all" title="Confirmar Asistencia">
-                                        <i class="fas fa-check text-lg"></i>
-                                    </button>
-                                    <button onclick="cambiarEstadoCita('${id}', 'Faltó')" class="h-1/2 flex items-center justify-center bg-slate-50 hover:bg-rose-500 text-slate-400 hover:text-white transition-all" title="Marcar Falta">
-                                        <i class="fas fa-times text-lg"></i>
-                                    </button>
-                                ` : `
-                                    <button onclick="eliminarCitaDefinitiva('${id}')" class="h-full flex items-center justify-center bg-rose-50 hover:bg-rose-600 text-rose-400 hover:text-white transition-all" title="Eliminar Registro">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                                `}
-                            </div>
-                        </div>
-                    `;
+                    historial.push(c);
                 }
             });
 
-            if (!hayCitas) {
-                container.innerHTML = `<div class="p-10 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-2xl text-center opacity-60"><i class="far fa-calendar-check text-4xl text-slate-300 mb-2"></i><p class="text-slate-400 font-bold uppercase text-xs">No hay citas en esta lista</p></div>`;
+            // LOGICA DE RENDERIZADO
+            if (window.vistaCitasActual === 'pendientes') {
+                if (pendientesFuturas.length === 0 && pendientesVencidas.length === 0) {
+                    container.innerHTML = `<div class="p-10 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-2xl text-center opacity-60"><i class="far fa-calendar-check text-4xl text-slate-300 mb-2"></i><p class="text-slate-400 font-bold uppercase text-xs">Agenda al día. No hay pendientes.</p></div>`;
+                    return;
+                }
+
+                // A. RENDERIZAR FUTURAS (PRIORIDAD)
+                if (pendientesFuturas.length > 0) {
+                    container.innerHTML += `<div class="text-xs font-black text-teal-600 uppercase tracking-widest mb-3 border-b pb-1">📅 Próximas Citas (Prioridad)</div>`;
+                    container.innerHTML += `<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">` + pendientesFuturas.map(c => renderCard(c, false)).join('') + `</div>`;
+                }
+
+                // B. RENDERIZAR VENCIDAS (SECUNDARIO)
+                if (pendientesVencidas.length > 0) {
+                    container.innerHTML += `<div class="text-xs font-black text-rose-400 uppercase tracking-widest mb-3 border-b border-rose-100 pb-1 mt-6">⚠️ Citas Vencidas / Por Recuperar</div>`;
+                    container.innerHTML += `<div class="grid grid-cols-1 md:grid-cols-2 gap-3 opacity-90">` + pendientesVencidas.map(c => renderCard(c, true)).join('') + `</div>`;
+                }
+
+            } else {
+                // VISTA HISTORIAL
+                if (historial.length === 0) {
+                    container.innerHTML = `<div class="p-10 text-center opacity-50"><p class="text-slate-400 font-bold uppercase text-xs">Historial Vacío</p></div>`;
+                } else {
+                    container.innerHTML += `<div class="grid grid-cols-1 md:grid-cols-2 gap-3">` + historial.map(c => renderCard(c, false)).join('') + `</div>`;
+                }
             }
         });
     };
 
+    // Plantilla de Tarjeta Optimizada
+    const renderCard = (c, esVencida) => {
+        const [y, m, d] = c.fecha_cita.split('-');
+        const fObj = new Date(y, m - 1, d);
+        const mes = fObj.toLocaleString('es-ES', { month: 'short' }).toUpperCase();
+        
+        // Estilos según estado
+        let colorBorde = esVencida ? "border-rose-400" : "border-teal-500";
+        let bgFecha = esVencida ? "bg-rose-50 text-rose-600" : "bg-teal-50 text-teal-700";
+        if(c.estado === 'Asistió') { colorBorde = "border-emerald-500 opacity-70 grayscale"; bgFecha = "bg-emerald-100 text-emerald-700"; }
+        if(c.estado === 'Faltó') { colorBorde = "border-slate-400 opacity-60 grayscale"; bgFecha = "bg-slate-200 text-slate-500"; }
+
+        // Botones de acción
+        let acciones = '';
+        if (window.vistaCitasActual === 'pendientes') {
+            acciones = `
+                <div class="flex flex-col h-full border-l border-slate-100 dark:border-slate-700">
+                    <button onclick='verDetalles(${JSON.stringify(c).replace(/'/g, "&#39;")})' class="flex-1 px-3 bg-blue-50 text-blue-500 hover:bg-blue-500 hover:text-white transition-all text-xs" title="Ver Ficha Completa"><i class="fas fa-eye"></i></button>
+                    <button onclick="cambiarEstadoCita('${c.id}', 'Asistió')" class="flex-1 px-3 bg-emerald-50 text-emerald-500 hover:bg-emerald-500 hover:text-white transition-all text-xs" title="Asistió"><i class="fas fa-check"></i></button>
+                    <button onclick="cambiarEstadoCita('${c.id}', 'Faltó')" class="flex-1 px-3 bg-rose-50 text-rose-400 hover:bg-rose-500 hover:text-white transition-all text-xs" title="No Vino"><i class="fas fa-times"></i></button>
+                </div>
+            `;
+        } else {
+            acciones = `
+                <div class="flex flex-col h-full border-l border-slate-100 dark:border-slate-700">
+                     <button onclick='verDetalles(${JSON.stringify(c).replace(/'/g, "&#39;")})' class="h-1/2 px-3 bg-blue-50 text-blue-500 hover:bg-blue-500 hover:text-white transition-all text-xs" title="Ver Ficha"><i class="fas fa-eye"></i></button>
+                     <button onclick="eliminarCitaDefinitiva('${c.id}')" class="h-1/2 px-3 bg-slate-100 text-slate-400 hover:bg-rose-500 hover:text-white transition-all text-xs" title="Eliminar"><i class="fas fa-trash"></i></button>
+                </div>
+            `;
+        }
+
+        return `
+            <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border-l-4 ${colorBorde} flex overflow-hidden h-28 relative border-y border-r border-slate-100 dark:border-slate-700">
+                <div class="${bgFecha} w-20 flex flex-col items-center justify-center shrink-0 border-r border-slate-100 dark:border-slate-700 p-1">
+                    <span class="text-[9px] font-black uppercase tracking-wider opacity-60">${mes}</span>
+                    <span class="text-3xl font-black leading-none my-1">${d}</span>
+                    <span class="text-[9px] font-bold bg-white/60 px-1.5 py-0.5 rounded text-slate-600">${tConvert(c.hora_cita)}</span>
+                </div>
+                
+                <div class="p-3 flex-1 min-w-0 flex flex-col justify-center text-left">
+                    <div class="flex items-center gap-2 mb-0.5">
+                        <h3 class="font-black text-sm text-slate-800 dark:text-white truncate uppercase">${c.nombre}</h3>
+                        ${esVencida ? '<span class="bg-rose-100 text-rose-600 text-[8px] font-black px-1.5 rounded uppercase">Vencida</span>' : ''}
+                        ${c.estado && c.estado !== 'Pendiente' ? `<span class="bg-slate-100 text-slate-500 text-[8px] font-black px-1.5 rounded uppercase">${c.estado}</span>` : ''}
+                    </div>
+                    <p class="text-[9px] font-bold text-slate-400 uppercase mb-1 truncate"><i class="fas fa-briefcase mr-1 text-slate-300"></i> ${c.ocupacion || 'Sin ocupación'}</p>
+                    <p class="text-[10px] font-black text-teal-600 dark:text-teal-400 uppercase truncate mb-1">${c.servicio}</p>
+                    <div class="flex items-center gap-2 text-[9px] text-slate-400 font-medium">
+                        <a href="https://wa.me/507${c.whatsapp}" target="_blank" class="hover:text-green-500 flex items-center gap-1"><i class="fab fa-whatsapp"></i> ${c.whatsapp}</a>
+                        <span class="text-slate-300">|</span>
+                        <span class="truncate"><i class="fas fa-map-marker-alt text-slate-300"></i> ${c.zona}</span>
+                    </div>
+                </div>
+
+                ${acciones}
+            </div>
+        `;
+    };
+
+    // --- VISOR DE DETALLES ---
+    window.verDetalles = (c) => {
+        const modal = document.getElementById('modalVisor');
+        const contenido = document.getElementById('contenidoVisor');
+        const antecedentes = c.antecedentes ? c.antecedentes.join(", ") : "Ninguno";
+        
+        contenido.innerHTML = `
+            <div class="space-y-4 text-xs text-slate-600 dark:text-slate-300">
+                <div class="bg-slate-50 dark:bg-slate-700/50 p-3 rounded-lg border border-slate-100 dark:border-slate-700">
+                    <p><strong>FECHA REGISTRO:</strong> ${c.fecha_registro ? new Date(c.fecha_registro.seconds * 1000).toLocaleString() : 'N/A'}</p>
+                    <p class="mt-1"><strong>INTENCIÓN:</strong> <span class="text-teal-600 font-black uppercase">${c.intencion}</span></p>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <p class="label-pro mb-1">Nombre</p>
+                        <p class="font-bold text-slate-800 dark:text-white uppercase">${c.nombre}</p>
+                    </div>
+                    <div>
+                        <p class="label-pro mb-1">Edad</p>
+                        <p class="font-bold">${c.edad || '-'} Años</p>
+                    </div>
+                    <div>
+                        <p class="label-pro mb-1">Ocupación</p>
+                        <p class="font-bold uppercase">${c.ocupacion || '-'}</p>
+                    </div>
+                    <div>
+                        <p class="label-pro mb-1">Provincia</p>
+                        <p class="font-bold uppercase">${c.provincia || '-'}</p>
+                    </div>
+                </div>
+                
+                <div class="border-t border-slate-100 dark:border-slate-700 pt-3">
+                    <p class="label-pro mb-1 text-purple-600">Motivación (¿Qué le inspira?)</p>
+                    <p class="italic">"${c.motivacion || '-'}"</p>
+                </div>
+
+                <div>
+                    <p class="label-pro mb-1 text-rose-500">Antecedentes Médicos</p>
+                    <p class="font-bold uppercase text-rose-600">${antecedentes}</p>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-2 mt-4">
+                    <div class="bg-teal-50 p-2 rounded border border-teal-100">
+                        <p class="text-[9px] font-black text-teal-700 uppercase">Servicio</p>
+                        <p class="font-bold text-teal-800 text-[10px]">${c.servicio}</p>
+                    </div>
+                    <div class="bg-blue-50 p-2 rounded border border-blue-100">
+                        <p class="text-[9px] font-black text-blue-700 uppercase">Método Pago</p>
+                        <p class="font-bold text-blue-800 text-[10px]">${c.metodo_pago}</p>
+                    </div>
+                </div>
+            </div>
+        `;
+        modal.classList.remove('hidden');
+    };
+
+    window.cerrarVisor = () => document.getElementById('modalVisor').classList.add('hidden');
+    
+    // --- UTILIDADES ---
     window.tConvert = (time) => {
         if(!time) return '--:--';
         time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
@@ -531,23 +612,20 @@
     }
 
     window.cambiarEstadoCita = async (id, nuevoEstado) => {
-        if(confirm(`¿Marcar como "${nuevoEstado}"?`)){
+        if(confirm(`¿Marcar como "${nuevoEstado}"?`)) {
             try { await updateDoc(doc(db, colCitas, id), { estado: nuevoEstado }); } 
             catch (e) { alert("Error: " + e.message); }
         }
     };
 
     window.eliminarCitaDefinitiva = async (id) => {
-        if(confirm("¿Borrar permanentemente?")){
+        if(confirm("¿Borrar permanentemente?")) {
             try { await deleteDoc(doc(db, colCitas, id)); } 
             catch (e) { alert("Error: " + e.message); }
         }
     };
 
-    // ==========================================
-    // LÓGICA DEL FORMULARIO Y FICHAS (INTACTA)
-    // ==========================================
-
+    // --- FORMULARIO & FICHAS (INTACTO) ---
     window.limpiarFormulario = () => { if(confirm("¿Nueva ficha?")) location.reload(); }
 
     window.calcularEdad = () => {
