@@ -37,7 +37,7 @@
       --bg:#0b0812;            /* fondo principal (no negro puro) */
       --bg2:#0f0b19;           /* secciones alternas */
       --card:#121024;          /* tarjetas */
-      --card2:#151131;         /* tarjetas + form */
+      --card2:#151131;         /* tarjetas */
       --text:#f2ecff;          /* texto principal */
       --muted:#cdbdf2;         /* texto morado claro */
       --muted2:#a69ac4;        /* texto secundario */
@@ -109,36 +109,6 @@
     }
     .btn-primary:hover{transform:translateY(-1px);text-decoration:none}
 
-    .btn-ghost{
-      background:rgba(255,255,255,.04);
-      color:rgba(242,236,255,.92);
-      border:1px solid rgba(191,160,255,.22);
-      padding:12px 16px;
-      border-radius:14px;
-      font-weight:900;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      cursor:pointer;
-      box-shadow:0 10px 22px rgba(0,0,0,.25);
-    }
-    .btn-ghost:hover{border-color:rgba(191,160,255,.45);transform:translateY(-1px);text-decoration:none}
-
-    .coming{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      margin-left:8px;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid rgba(191,160,255,.22);
-      background:rgba(255,255,255,.03);
-      color:rgba(242,236,255,.92);
-      font-weight:900;
-      font-size:.85rem;
-    }
-
     #menuBtn{
       position:absolute;
       right:12px;
@@ -146,26 +116,12 @@
       transform:translateY(-50%);
       z-index:60
     }
-
-    #loginBtn{
-      position:absolute;
-      right:132px;
-      top:50%;
-      transform:translateY(-50%);
-      z-index:60
-    }
-
     @media (min-width:769px){
-      #menuBtn,#loginBtn{position:static;transform:none}
-      #loginBtn{margin-left:auto}
-      #menuBtn{margin-left:10px}
+      #menuBtn{position:static;transform:none;margin-left:auto}
     }
     @media (max-width:768px){
       nav.site-nav{display:none !important}
       .btn-primary{padding:8px 12px;border-radius:12px;font-size:14px}
-      .btn-ghost{padding:8px 10px;border-radius:12px;font-size:13px}
-      #loginBtn{right:102px}
-      .coming{display:none}
     }
 
     /* ===== HERO (3 SLIDERS) ===== */
@@ -299,9 +255,7 @@
       box-shadow:var(--shadow2);
       overflow:hidden;
     }
-    details.blog{
-      padding:0;
-    }
+    details.blog{padding:0}
     details.blog summary{
       list-style:none;
       cursor:pointer;
@@ -316,20 +270,9 @@
       border-bottom:1px solid rgba(255,255,255,.08);
     }
     details.blog summary::-webkit-details-marker{display:none}
-    .blog-body{
-      padding:18px;
-      line-height:1.75;
-      color:rgba(242,236,255,.88);
-    }
-    .blog-body h3{
-      margin:0 0 10px;
-      color:var(--muted);
-      font-size:1.2rem;
-    }
-    .blog-body ul{
-      margin:10px 0 0;
-      padding-left:18px;
-    }
+    .blog-body{padding:18px;line-height:1.75;color:rgba(242,236,255,.88)}
+    .blog-body h3{margin:0 0 10px;color:var(--muted);font-size:1.2rem}
+    .blog-body ul{margin:10px 0 0;padding-left:18px}
 
     /* FAB flotante */
     .fr-fab{
@@ -423,14 +366,8 @@
           <li><a href="#servicios">Servicios</a></li>
           <li><a href="/fibroblast.html">Plasma Fibroblast</a></li>
           <li><a href="#contacto">Contacto</a></li>
-          <li><a href="https://figurarostro.life/talento">Trabaja con nosotros</a></li>
         </ul>
       </nav>
-
-      <!-- Login (Próximamente) -->
-      <a id="loginBtn" href="#" class="btn-ghost" aria-label="Login (Próximamente)" onclick="return false;">
-        🔒 Login <span class="coming">Próximamente</span>
-      </a>
 
       <!-- Botón Agendar (link único) -->
       <a id="menuBtn" href="https://figurarostro.life/reservar-v2.html" class="btn-primary" aria-label="Reservar cita en Figura Rostro KG">
@@ -593,7 +530,7 @@
             <li>✔️ Cabinas privadas, trato humano y ambiente relajante.</li>
           </ul>
 
-          <!-- Blog desplegable (pestaña) -->
+          <!-- Blog desplegable -->
           <div class="blog-wrap" aria-label="Blog desplegable">
             <details class="blog">
               <summary>
@@ -620,13 +557,13 @@
                 </ul>
 
                 <p style="margin-top:12px">
-                  En <strong style="color:#fff">Figura Rostro KG</strong>, la especialización y formación en técnicas europeas (incluyendo entrenamiento en España)
-                  permite trabajar con un enfoque profesional, protocolos claros y expectativas realistas.
+                  En <strong style="color:#fff">Figura Rostro KG</strong>, la especialización en técnicas europeas permite trabajar con un enfoque profesional,
+                  protocolos claros y expectativas realistas.
                 </p>
 
                 <p style="margin-top:14px">
                   <a class="btn-primary" href="/fibroblast.html">Ver Plasma Fibroblast</a>
-                  <a class="btn-ghost" href="https://figurarostro.life/reservar-v2.html" style="margin-left:8px">Reservar cita</a>
+                  <a class="btn-primary" href="https://figurarostro.life/reservar-v2.html" style="margin-left:8px">Reservar cita</a>
                 </p>
               </div>
             </details>
@@ -646,7 +583,7 @@
     </div>
   </section>
 
-  <!-- Servicios estrella -->
+  <!-- Servicios -->
   <section id="servicios" style="background:linear-gradient(180deg, rgba(15,11,25,.92), rgba(11,8,18,.92)); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
     <div class="container">
       <h2 class="muted" style="font-size:34px;margin:0 0 10px">Servicios · estética avanzada</h2>
@@ -657,21 +594,18 @@
           <img src="servicio-fibroblast.jpg" alt="Plasma Fibroblast en Panamá">
           <h3>Plasma Fibroblast</h3>
           <p>Retracción controlada y estimulación de colágeno para mejorar firmeza y apariencia sin cirugía. Zonas: abdomen, párpados, contorno y más (según valoración).</p>
-          <p style="margin:12px 0 0"><a class="btn-primary" href="/fibroblast.html">Ver detalles</a></p>
         </article>
 
         <article class="card">
           <img src="servicio-acne.jpg" alt="Tratamiento para el acné con peeling en Panamá">
           <h3>Tratamiento para el Acné</h3>
           <p>Protocolos con limpieza profunda y peeling adaptado para ayudar a mejorar brotes, textura y marcas. Plan según tu tipo de piel.</p>
-          <p style="margin:12px 0 0"><a class="btn-primary" href="/menu.html">Ver en menú</a></p>
         </article>
 
         <article class="card">
           <img src="servicio-peeling.jpg" alt="Peeling facial en Panamá">
           <h3>Peeling Facial</h3>
           <p>Ayuda a unificar el tono, mejorar luminosidad y textura. Ideal para piel apagada, manchas finas y renovación visible.</p>
-          <p style="margin:12px 0 0"><a class="btn-primary" href="/menu.html">Ver en menú</a></p>
         </article>
       </div>
 
@@ -679,14 +613,11 @@
         <a href="/menu.html" class="btn-primary" style="padding:12px 24px;font-size:17px;border-radius:14px;display:inline-block">
           Ver más (Menú de servicios)
         </a>
-        <a href="https://figurarostro.life/reservar-v2.html" class="btn-ghost" style="margin-left:10px;display:inline-block">
-          Reservar cita
-        </a>
       </div>
     </div>
   </section>
 
-  <!-- (Formulario eliminado por completo) -->
+  <!-- (Formulario eliminado) -->
 
   <!-- Contacto -->
   <section id="contacto" style="background:linear-gradient(180deg, rgba(15,11,25,.92), rgba(11,8,18,.92)); border-top:1px solid var(--line);">
@@ -709,7 +640,6 @@
 
         <p style="margin-top:14px">
           <a class="btn-primary" href="https://figurarostro.life/reservar-v2.html">Reservar cita</a>
-          <a class="btn-ghost" href="https://figurarostro.life/talento" style="margin-left:10px">Trabaja con nosotros</a>
         </p>
       </div>
     </div>
@@ -745,7 +675,7 @@
         </ul>
       </div>
 
-      <!-- Mantengo links para curiosos (como pediste) -->
+      <!-- Mantengo links para curiosos -->
       <div class="f-col">
         <h4>Servicios</h4>
         <ul>
