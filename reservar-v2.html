@@ -56,14 +56,17 @@
                 </div>
             </div>
 
-            <input type="email" id="email" class="hidden">
+            <div>
+                <label class="label-styled">Correo Electrónico</label>
+                <input type="email" id="email" class="input-styled" placeholder="Para confirmación de cita">
+            </div>
 
             <div class="bg-purple-50/50 p-4 rounded-xl border border-purple-100">
                 <label class="label-styled text-purple-800">Servicio de Interés</label>
                 <select id="servicio" class="input-styled border-purple-200 font-bold text-purple-900" required onchange="checkServicio()">
                     <option value="">-- Seleccione una opción --</option>
                     <option value="Valoracion 9.95">Reservar Valoración - $9.95 (45 min)</option>
-                    <option value="Valoracion Yappi">Reserva Valoración Directorio Yappi</option>
+                    <option value="Valoracion Yappi">Reserva Directorio Yappi - $5.95</option>
                     <option value="Tratamiento Abonado">Cita para realizar tratamiento (Abonado)</option>
                     <option value="Procedimiento 10%">Cita para procedimiento (Abonar 10%)</option>
                     <option value="Otros Tratamientos">Otros tratamientos faciales y corporales</option>
@@ -232,7 +235,6 @@
 
             const checks = Array.from(document.querySelectorAll('.med-check:checked')).map(c => c.value);
             
-            // Usamos el textarea como "zona" o descripción general
             let detallesTexto = document.getElementById('detalles').value;
             if(!detallesTexto) detallesTexto = "No especificado"; 
 
@@ -241,9 +243,10 @@
                 edad: document.getElementById('edad').value,
                 ocupacion: document.getElementById('ocupacion').value,
                 whatsapp: document.getElementById('whatsapp').value,
+                email: document.getElementById('email').value, // <--- AHORA SÍ SE GUARDARÁ
                 provincia: document.getElementById('provincia').value,
                 motivacion: document.getElementById('motivacion').value,
-                zona: detallesTexto, // Guardamos los comentarios aquí
+                zona: detallesTexto, 
                 intencion: "Cita Agendada",
                 servicio: document.getElementById('servicio').value,
                 metodo_pago: document.getElementById('metodo_pago').value,
