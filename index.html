@@ -90,28 +90,9 @@
     @media (max-width:768px){.brand img{height:44px}}
 
     .site-nav{display:flex;align-items:center}
-    .site-nav .menu{display:flex;gap:24px;list-style:none;margin:0;padding:0}
-    .site-nav .menu>li{position:relative}
-    .site-nav a{color:rgba(255,255,255,.92);font-weight:700;text-decoration:none}
+    .site-nav .menu{display:flex;gap:22px;list-style:none;margin:0;padding:0}
+    .site-nav a{color:rgba(255,255,255,.92);font-weight:800;text-decoration:none}
     .site-nav a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
-
-    .submenu{
-      position:absolute;
-      top:100%;left:0;
-      min-width:220px;
-      background:linear-gradient(180deg, rgba(18,16,36,.98), rgba(12,10,26,.98));
-      border:1px solid var(--line);
-      border-radius:14px;
-      padding:8px;
-      list-style:none;
-      margin:10px 0 0;
-      box-shadow:var(--shadow2);
-      display:none;
-      z-index:60
-    }
-    .has-sub:hover>.submenu,.has-sub:focus-within>.submenu{display:block}
-    .submenu a{display:block;padding:10px 12px;border-radius:10px}
-    .submenu a:hover{background:rgba(191,160,255,.10);text-decoration:none}
 
     .btn-primary{
       background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,255,255,.88));
@@ -128,6 +109,36 @@
     }
     .btn-primary:hover{transform:translateY(-1px);text-decoration:none}
 
+    .btn-ghost{
+      background:rgba(255,255,255,.04);
+      color:rgba(242,236,255,.92);
+      border:1px solid rgba(191,160,255,.22);
+      padding:12px 16px;
+      border-radius:14px;
+      font-weight:900;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      cursor:pointer;
+      box-shadow:0 10px 22px rgba(0,0,0,.25);
+    }
+    .btn-ghost:hover{border-color:rgba(191,160,255,.45);transform:translateY(-1px);text-decoration:none}
+
+    .coming{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin-left:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(191,160,255,.22);
+      background:rgba(255,255,255,.03);
+      color:rgba(242,236,255,.92);
+      font-weight:900;
+      font-size:.85rem;
+    }
+
     #menuBtn{
       position:absolute;
       right:12px;
@@ -135,10 +146,26 @@
       transform:translateY(-50%);
       z-index:60
     }
-    @media (min-width:769px){#menuBtn{position:static;transform:none;margin-left:auto}}
+
+    #loginBtn{
+      position:absolute;
+      right:132px;
+      top:50%;
+      transform:translateY(-50%);
+      z-index:60
+    }
+
+    @media (min-width:769px){
+      #menuBtn,#loginBtn{position:static;transform:none}
+      #loginBtn{margin-left:auto}
+      #menuBtn{margin-left:10px}
+    }
     @media (max-width:768px){
       nav.site-nav{display:none !important}
       .btn-primary{padding:8px 12px;border-radius:12px;font-size:14px}
+      .btn-ghost{padding:8px 10px;border-radius:12px;font-size:13px}
+      #loginBtn{right:102px}
+      .coming{display:none}
     }
 
     /* ===== HERO (3 SLIDERS) ===== */
@@ -240,56 +267,7 @@
     }
     @media (max-width:900px){.two-col{grid-template-columns:1fr}}
 
-    /* ===== Formulario ===== */
-    .form-card{
-      background:linear-gradient(180deg, rgba(21,17,49,.95), rgba(12,10,26,.95));
-      border:1px solid var(--line2);
-      border-radius:18px;
-      padding:18px;
-      box-shadow:var(--shadow);
-    }
-    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    @media (max-width:800px){.form-grid{grid-template-columns:1fr}}
-
-    .form-card label{
-      display:block;font-weight:800;font-size:.92rem;
-      margin:10px 0 6px;color:rgba(242,236,255,.92)
-    }
-    .form-card input,.form-card select,.form-card textarea{
-      width:100%;
-      padding:11px 12px;
-      border:1px solid rgba(191,160,255,.18);
-      border-radius:12px;
-      font:inherit;
-      font-size:14px;
-      background:rgba(255,255,255,.04);
-      color:rgba(242,236,255,.94);
-      outline:none;
-    }
-    .form-card input::placeholder,.form-card textarea::placeholder{color:rgba(242,236,255,.45)}
-    .form-card input:focus,.form-card select:focus,.form-card textarea:focus{
-      border-color:rgba(191,160,255,.52);
-      box-shadow:0 0 0 4px rgba(124,92,255,.18);
-    }
-    .hint{font-size:.86rem;color:rgba(242,236,255,.65);margin-top:8px;line-height:1.5}
-
-    .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;align-items:center}
-    .btn-ghost{
-      background:rgba(255,255,255,.04);
-      color:rgba(242,236,255,.92);
-      border:1px solid rgba(191,160,255,.22);
-      padding:12px 20px;
-      border-radius:14px;
-      font-weight:900;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      cursor:pointer;
-      box-shadow:0 10px 22px rgba(0,0,0,.25);
-    }
-    .btn-ghost:hover{border-color:rgba(191,160,255,.45);transform:translateY(-1px);text-decoration:none}
-
+    /* ===== Pills ===== */
     .mini-badges{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
     .pill{
       display:inline-flex;gap:8px;align-items:center;
@@ -311,6 +289,47 @@
     @media (max-width:900px){.contact{grid-template-columns:1fr}}
     #contacto ul a{color:rgba(242,236,255,.92)}
     #contacto ul a:hover{color:#fff}
+
+    /* ===== Blog desplegable ===== */
+    .blog-wrap{
+      margin-top:22px;
+      border:1px solid rgba(191,160,255,.18);
+      background:rgba(255,255,255,.03);
+      border-radius:18px;
+      box-shadow:var(--shadow2);
+      overflow:hidden;
+    }
+    details.blog{
+      padding:0;
+    }
+    details.blog summary{
+      list-style:none;
+      cursor:pointer;
+      padding:16px 18px;
+      font-weight:900;
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      background:linear-gradient(180deg, rgba(18,16,36,.96), rgba(14,11,28,.96));
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    details.blog summary::-webkit-details-marker{display:none}
+    .blog-body{
+      padding:18px;
+      line-height:1.75;
+      color:rgba(242,236,255,.88);
+    }
+    .blog-body h3{
+      margin:0 0 10px;
+      color:var(--muted);
+      font-size:1.2rem;
+    }
+    .blog-body ul{
+      margin:10px 0 0;
+      padding-left:18px;
+    }
 
     /* FAB flotante */
     .fr-fab{
@@ -396,42 +415,25 @@
         <img src="logo-header-white.png" alt="Figura Rostro KG — Estética en Panamá">
       </a>
 
+      <!-- Menú simplificado -->
       <nav class="site-nav" aria-label="Menú principal">
         <ul class="menu">
-          <li class="has-sub">
-            <a href="/fibroblast.html">Plasma Fibroblast</a>
-            <ul class="submenu">
-              <li><a href="/fibroblast.html">¿Qué es Plasma Fibroblast?</a></li>
-              <li><a href="#zonas">Zonas más solicitadas</a></li>
-              <li><a href="#agendar">Agendar valoración</a></li>
-            </ul>
-          </li>
-          <li class="has-sub">
-            <a href="/tratamientos-faciales/">Faciales</a>
-            <ul class="submenu">
-              <li><a href="/peeling-facial.html">Peeling Facial</a></li>
-              <li><a href="/radiofrecuencia-facial.html">Radiofrecuencia Facial</a></li>
-              <li><a href="/lifting-sin-cirugia.html">Lifting sin cirugía</a></li>
-            </ul>
-          </li>
-          <li class="has-sub">
-            <a href="/masajes-terapeuticos/">Terapias</a>
-            <ul class="submenu">
-              <li><a href="/masaje-relajante.html">Terapia relajante</a></li>
-              <li><a href="/masajes-terapeuticos/">Descontracturante</a></li>
-              <li><a href="/masajes-terapeuticos/">Drenaje linfático</a></li>
-              <li><a href="/masaje-terapeutico-adultos-mayores.html">Adultos Mayores</a></li>
-              <li><a href="/terapia-masaje-discapacidad.html">Terapia adaptada</a></li>
-            </ul>
-          </li>
+          <li><a href="/">Inicio</a></li>
           <li><a href="#sobre">Nosotros</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="/fibroblast.html">Plasma Fibroblast</a></li>
           <li><a href="#contacto">Contacto</a></li>
-          <li><a href="/menu.html">Servicios</a></li>
+          <li><a href="https://figurarostro.life/talento">Trabaja con nosotros</a></li>
         </ul>
       </nav>
 
-      <!-- Botón Agendar -->
-      <a id="menuBtn" href="#agendar" class="btn-primary" aria-label="Agendar cita en Figura Rostro KG">
+      <!-- Login (Próximamente) -->
+      <a id="loginBtn" href="#" class="btn-ghost" aria-label="Login (Próximamente)" onclick="return false;">
+        🔒 Login <span class="coming">Próximamente</span>
+      </a>
+
+      <!-- Botón Agendar (link único) -->
+      <a id="menuBtn" href="https://figurarostro.life/reservar-v2.html" class="btn-primary" aria-label="Reservar cita en Figura Rostro KG">
         Agendar
       </a>
     </div>
@@ -443,7 +445,9 @@
       <h1 id="heroTitle">Centro Estético para el Rejuvenecimiento Facial y Corporal</h1>
       <p id="heroDesc">Especialistas en la Técnica del Plasma Fibroblast en Panamá.</p>
       <div class="hero-actions">
-        <a id="heroBtn" href="#agendar" class="btn-primary" style="margin-top:10px">Me interesa agendar una Cita</a>
+        <a id="heroBtn" href="https://figurarostro.life/reservar-v2.html" class="btn-primary" style="margin-top:10px">
+          Reservar mi cita
+        </a>
       </div>
     </div>
   </section>
@@ -455,24 +459,26 @@
       const desc  = document.getElementById('heroDesc');
       const btn   = document.getElementById('heroBtn');
 
+      const reservar = "https://figurarostro.life/reservar-v2.html";
+
       const slides = [
         {
           t: "Centro Estético para el Rejuvenecimiento Facial y Corporal",
           d: "Especialistas en la Técnica del Plasma Fibroblast en Panamá.",
-          b: "Me interesa agendar una Cita",
-          href: "#agendar"
+          b: "Reservar mi cita",
+          href: reservar
         },
         {
           t: "Recupera tu abdomen y reduce la flacidez",
           d: "Valoración y plan personalizado según tu caso. Resultados progresivos sin cirugía.",
-          b: "Me interesa el Tratamiento, Agendar Cita!",
-          href: "#agendar"
+          b: "Reservar cita",
+          href: reservar
         },
         {
           t: "Rejuvenece tu rostro sin Cirugía",
-          d: "Ideal para párpados, contorno de ojos y líneas finas. Agenda tu valoración.",
-          b: "Agendar Valoración!",
-          href: "#agendar"
+          d: "Ideal para párpados, contorno de ojos y líneas finas. Reserva tu cita.",
+          b: "Reservar ahora",
+          href: reservar
         }
       ];
 
@@ -526,6 +532,10 @@
           <li>✔️ Procedimiento no quirúrgico</li>
           <li>✔️ Valoración para protocolo personalizado</li>
         </ul>
+
+        <p style="margin-top:14px">
+          <a class="btn-primary" href="https://figurarostro.life/reservar-v2.html">Reservar mi cita</a>
+        </p>
       </div>
     </div>
   </section>
@@ -541,21 +551,21 @@
           <img src="zona-abdomen.jpg" alt="Plasma Fibroblast en abdomen en Panamá">
           <h3>Abdomen</h3>
           <p>Mejora la apariencia de flacidez suave y textura en piel. Valoración para ver si eres candidata y definir protocolo.</p>
-          <p style="margin:10px 0 0"><a class="btn-primary" href="#agendar">Agendar valoración</a></p>
+          <p style="margin:10px 0 0"><a class="btn-primary" href="https://figurarostro.life/reservar-v2.html">Reservar cita</a></p>
         </article>
 
         <article class="card promo">
           <img src="zona-parpados.jpg" alt="Plasma Fibroblast en párpados en Panamá">
           <h3>Párpados</h3>
           <p>Uno de los usos más solicitados. Apoya el rejuvenecimiento del contorno ocular con evaluación previa.</p>
-          <p style="margin:10px 0 0"><a class="btn-primary" href="#agendar">Agendar valoración</a></p>
+          <p style="margin:10px 0 0"><a class="btn-primary" href="https://figurarostro.life/reservar-v2.html">Reservar cita</a></p>
         </article>
 
         <article class="card promo">
           <img src="zona-ojeras.jpg" alt="Plasma Fibroblast para ojeras y contorno de ojos en Panamá">
           <h3>Ojeras / Contorno</h3>
           <p>Ayuda a suavizar líneas finas y mejorar la apariencia del contorno de ojos. Se define según tu caso.</p>
-          <p style="margin:10px 0 0"><a class="btn-primary" href="#agendar">Agendar valoración</a></p>
+          <p style="margin:10px 0 0"><a class="btn-primary" href="https://figurarostro.life/reservar-v2.html">Reservar cita</a></p>
         </article>
       </div>
     </div>
@@ -582,6 +592,46 @@
             <li>✔️ Protocolos enfocados en resultados reales y progresivos.</li>
             <li>✔️ Cabinas privadas, trato humano y ambiente relajante.</li>
           </ul>
+
+          <!-- Blog desplegable (pestaña) -->
+          <div class="blog-wrap" aria-label="Blog desplegable">
+            <details class="blog">
+              <summary>
+                📚 Blog · Tensado con Plasma Fibroblast: mitos y realidades
+                <span style="opacity:.85">↕</span>
+              </summary>
+              <div class="blog-body">
+                <h3>¿De verdad funciona el tensado de piel con Plasma Fibroblast?</h3>
+                <p>
+                  El <strong style="color:#fff">Plasma Fibroblast</strong> es una técnica avanzada de origen europeo, muy utilizada en protocolos
+                  estéticos para <strong style="color:#fff">tensar la piel</strong> y mejorar la apariencia de flacidez leve, líneas finas y textura,
+                  sin recurrir a cirugía. Trabaja con una <strong style="color:#fff">retracción controlada</strong> en la superficie y estimula procesos naturales
+                  de regeneración, especialmente el colágeno.
+                </p>
+
+                <p style="margin-top:10px;font-weight:900;color:#fff">Mitos vs Realidades</p>
+                <ul>
+                  <li><strong style="color:#fff">Mito:</strong> “Es como un láser.” <br>
+                      <strong style="color:#fff">Realidad:</strong> No es láser; es plasma con una acción controlada sobre la piel.</li>
+                  <li><strong style="color:#fff">Mito:</strong> “Los resultados son inmediatos.” <br>
+                      <strong style="color:#fff">Realidad:</strong> Hay cambios visibles, pero el resultado real es <strong style="color:#fff">progresivo</strong> (se consolida con el tiempo).</li>
+                  <li><strong style="color:#fff">Mito:</strong> “Sirve para todo y para todos.” <br>
+                      <strong style="color:#fff">Realidad:</strong> Requiere <strong style="color:#fff">valoración</strong> para definir si eres candidata y qué protocolo corresponde.</li>
+                </ul>
+
+                <p style="margin-top:12px">
+                  En <strong style="color:#fff">Figura Rostro KG</strong>, la especialización y formación en técnicas europeas (incluyendo entrenamiento en España)
+                  permite trabajar con un enfoque profesional, protocolos claros y expectativas realistas.
+                </p>
+
+                <p style="margin-top:14px">
+                  <a class="btn-primary" href="/fibroblast.html">Ver Plasma Fibroblast</a>
+                  <a class="btn-ghost" href="https://figurarostro.life/reservar-v2.html" style="margin-left:8px">Reservar cita</a>
+                </p>
+              </div>
+            </details>
+          </div>
+
         </div>
 
         <div>
@@ -599,7 +649,7 @@
   <!-- Servicios estrella -->
   <section id="servicios" style="background:linear-gradient(180deg, rgba(15,11,25,.92), rgba(11,8,18,.92)); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
     <div class="container">
-      <h2 class="muted" style="font-size:34px;margin:0 0 10px">Estética avanzada · servicios estrella</h2>
+      <h2 class="muted" style="font-size:34px;margin:0 0 10px">Servicios · estética avanzada</h2>
       <p style="opacity:.88;margin-bottom:16px">Tres de los tratamientos más consultados. Para ver el listado completo, visita nuestro menú de servicios.</p>
 
       <div class="cards">
@@ -607,18 +657,21 @@
           <img src="servicio-fibroblast.jpg" alt="Plasma Fibroblast en Panamá">
           <h3>Plasma Fibroblast</h3>
           <p>Retracción controlada y estimulación de colágeno para mejorar firmeza y apariencia sin cirugía. Zonas: abdomen, párpados, contorno y más (según valoración).</p>
+          <p style="margin:12px 0 0"><a class="btn-primary" href="/fibroblast.html">Ver detalles</a></p>
         </article>
 
         <article class="card">
           <img src="servicio-acne.jpg" alt="Tratamiento para el acné con peeling en Panamá">
           <h3>Tratamiento para el Acné</h3>
           <p>Protocolos con limpieza profunda y peeling adaptado para ayudar a mejorar brotes, textura y marcas. Plan según tu tipo de piel.</p>
+          <p style="margin:12px 0 0"><a class="btn-primary" href="/menu.html">Ver en menú</a></p>
         </article>
 
         <article class="card">
           <img src="servicio-peeling.jpg" alt="Peeling facial en Panamá">
           <h3>Peeling Facial</h3>
           <p>Ayuda a unificar el tono, mejorar luminosidad y textura. Ideal para piel apagada, manchas finas y renovación visible.</p>
+          <p style="margin:12px 0 0"><a class="btn-primary" href="/menu.html">Ver en menú</a></p>
         </article>
       </div>
 
@@ -626,193 +679,14 @@
         <a href="/menu.html" class="btn-primary" style="padding:12px 24px;font-size:17px;border-radius:14px;display:inline-block">
           Ver más (Menú de servicios)
         </a>
+        <a href="https://figurarostro.life/reservar-v2.html" class="btn-ghost" style="margin-left:10px;display:inline-block">
+          Reservar cita
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- AGENDAR CITA -->
-  <section id="agendar">
-    <div class="container">
-      <h2 class="muted" style="font-size:34px;margin:0 0 10px">Agendar cita</h2>
-      <p style="opacity:.88;max-width:860px;margin:0 0 18px;line-height:1.7">
-        Envía tu solicitud con el <strong style="color:#fff">día y hora deseados</strong>. Te contactamos para confirmar disponibilidad.
-        Puedes adjuntar una <strong style="color:#fff">foto opcional</strong> de la zona a tratar.
-      </p>
-
-      <div class="form-card">
-        <div class="mini-badges">
-          <span class="pill">✅ Confirmación por WhatsApp o llamada</span>
-          <span class="pill">📍 Royal Park – Av. Ernesto T. Lefevre</span>
-        </div>
-
-        <form id="citaForm"
-              action="https://formsubmit.co/figurarostro25@gmail.com"
-              method="POST"
-              enctype="multipart/form-data">
-
-          <!-- FormSubmit config -->
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_subject" value="Solicitud de cita | Figura Rostro KG">
-          <input type="hidden" name="_cc" value="figurarostro24@gmail.com">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_next" value="https://figurarostro.life/#agendar">
-          <input type="hidden" name="_autoresponse"
-            value="¡Hola! Recibimos tu solicitud en Figura Rostro KG. En breve te contactaremos para confirmar disponibilidad del día/hora que elegiste. Dirección: Royal Park – Av. Ernesto T. Lefevre. WhatsApp: +507 6474-6168.">
-
-          <div class="form-grid">
-            <div>
-              <label for="nombre">Nombre completo</label>
-              <input id="nombre" name="Nombre" type="text" placeholder="Tu nombre" required>
-            </div>
-            <div>
-              <label for="telefono">WhatsApp / Teléfono</label>
-              <input id="telefono" name="WhatsApp / Teléfono" type="tel" placeholder="Ej: 6474-6168" required>
-            </div>
-          </div>
-
-          <div class="form-grid">
-            <div>
-              <label for="email">Correo</label>
-              <input id="email" name="Email" type="email" placeholder="tucorreo@email.com" required>
-            </div>
-            <div>
-              <label for="preferencia">¿Cómo prefieres que confirmemos?</label>
-              <select id="preferencia" name="Preferencia de confirmación" required>
-                <option value="WhatsApp">WhatsApp</option>
-                <option value="Llamada">Llamada</option>
-                <option value="WhatsApp o llamada">WhatsApp o llamada</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-grid">
-            <div>
-              <label for="servicio">Servicio</label>
-              <select id="servicio" name="Servicio" required>
-                <option value="">Selecciona una opción</option>
-                <option value="Valoración">Valoración</option>
-                <option value="Consulta">Consulta</option>
-                <option value="Tratamiento facial">Tratamiento facial</option>
-                <option value="Tratamiento corporal">Tratamiento corporal</option>
-                <option value="Otros">Otros</option>
-              </select>
-
-              <div id="otrosBox" style="display:none">
-                <label for="otrosTexto">Describe el tratamiento</label>
-                <input id="otrosTexto" name="Detalle (Otros)" type="text" placeholder="Ej: cuello, verrugas, flacidez, etc.">
-              </div>
-            </div>
-
-            <div>
-              <label for="zona">Zona a tratar</label>
-              <select id="zona" name="Zona a tratar" required>
-                <option value="Párpados">Párpados</option>
-                <option value="Ojeras / Contorno de ojos">Ojeras / Contorno de ojos</option>
-                <option value="Abdomen">Abdomen</option>
-                <option value="Cuello">Cuello</option>
-                <option value="Código de barras">Código de barras</option>
-                <option value="Otra zona">Otra zona</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-grid">
-            <div>
-              <label for="dia">Día deseado</label>
-              <input id="dia" name="Día deseado" type="date" required>
-            </div>
-            <div>
-              <label for="hora">Hora deseada</label>
-              <input id="hora" name="Hora deseada" type="time" required>
-            </div>
-          </div>
-
-          <label for="foto">Foto de la zona (opcional)</label>
-          <input id="foto" type="file" name="attachment" accept="image/*" capture="environment">
-          <div class="hint">En celular se abre cámara/galería. Recomendado: 1 foto clara.</div>
-
-          <label for="nota">Notas (opcional)</label>
-          <textarea id="nota" name="Notas" placeholder="Cuéntanos breve: objetivo, si es post embarazo, flacidez leve, etc."></textarea>
-
-          <div class="actions">
-            <button class="btn-primary" type="submit">Enviar solicitud</button>
-            <a id="btnEspecialista" class="btn-ghost" href="https://wa.me/50764746168" target="_blank" rel="noopener">
-              Hablar con una especialista
-            </a>
-          </div>
-
-          <div class="hint">
-            Ubicación:
-            <a href="https://maps.google.com/?q=Royal+Park+Ernesto+T+Lefevre+Panama" target="_blank" rel="noopener">Google Maps</a> ·
-            <a href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noopener">Waze</a>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <script>
-    // WhatsApp con datos del formulario + soporte "Otros"
-    (function(){
-      const $ = (id)=>document.getElementById(id);
-
-      const btnWA = $('btnEspecialista');
-      const servicio = $('servicio');
-      const otrosBox = $('otrosBox');
-      const otrosTxt = $('otrosTexto');
-
-      function buildWA(){
-        const nombre = ($('nombre').value || '').trim();
-        const tel = ($('telefono').value || '').trim();
-        const email = ($('email').value || '').trim();
-        const zona = $('zona').value;
-        const dia = $('dia').value;
-        const hora = $('hora').value;
-        const pref = $('preferencia').value;
-
-        let serv = servicio.value || '';
-        if(serv === 'Otros'){
-          const extra = (otrosTxt.value || '').trim();
-          serv = extra ? ('Otros: ' + extra) : 'Otros';
-        }
-
-        const msg =
-`Hola 👋, quisiera hablar con una especialista de Figura Rostro KG.
-
-Nombre: ${nombre || '___'}
-WhatsApp/Teléfono: ${tel || '___'}
-Correo: ${email || '___'}
-Servicio: ${serv || '___'}
-Zona: ${zona || '___'}
-Día / Hora deseados: ${dia || '___'} ${hora || ''}
-
-Preferencia de confirmación: ${pref || '___'}
-
-¿Hay disponibilidad?`;
-
-        btnWA.href = "https://wa.me/50764746168?text=" + encodeURIComponent(msg);
-      }
-
-      function toggleOtros(){
-        const show = servicio.value === 'Otros';
-        otrosBox.style.display = show ? 'block' : 'none';
-        buildWA();
-      }
-
-      ['nombre','telefono','email','zona','dia','hora','preferencia'].forEach(id=>{
-        const el = $(id);
-        if(el){
-          el.addEventListener('input', buildWA);
-          el.addEventListener('change', buildWA);
-        }
-      });
-
-      servicio.addEventListener('change', toggleOtros);
-      if(otrosTxt) otrosTxt.addEventListener('input', buildWA);
-
-      toggleOtros();
-    })();
-  </script>
+  <!-- (Formulario eliminado por completo) -->
 
   <!-- Contacto -->
   <section id="contacto" style="background:linear-gradient(180deg, rgba(15,11,25,.92), rgba(11,8,18,.92)); border-top:1px solid var(--line);">
@@ -830,8 +704,12 @@ Preferencia de confirmación: ${pref || '___'}
           </li>
         </ul>
         <p style="margin:8px 0 0;opacity:.85;max-width:520px">
-          Para agendar tu cita puedes escribirnos por <strong style="color:#fff">WhatsApp</strong>, llamarnos por teléfono
-          o usar el <strong style="color:#fff">chat en vivo (PureChat)</strong>.
+          Para reservar tu cita, utiliza nuestro enlace oficial o escríbenos por <strong style="color:#fff">WhatsApp</strong>.
+        </p>
+
+        <p style="margin-top:14px">
+          <a class="btn-primary" href="https://figurarostro.life/reservar-v2.html">Reservar cita</a>
+          <a class="btn-ghost" href="https://figurarostro.life/talento" style="margin-left:10px">Trabaja con nosotros</a>
         </p>
       </div>
     </div>
@@ -863,10 +741,11 @@ Preferencia de confirmación: ${pref || '___'}
         <ul>
           <li><a href="/fibroblast.html">¿Qué es Plasma Fibroblast?</a></li>
           <li><a href="#zonas">Zonas más solicitadas</a></li>
-          <li><a href="#agendar">Agendar valoración</a></li>
+          <li><a href="https://figurarostro.life/reservar-v2.html">Reservar cita</a></li>
         </ul>
       </div>
 
+      <!-- Mantengo links para curiosos (como pediste) -->
       <div class="f-col">
         <h4>Servicios</h4>
         <ul>
@@ -883,7 +762,7 @@ Preferencia de confirmación: ${pref || '___'}
           <a href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noopener">Abrir en Waze</a> ·
           <a href="https://maps.google.com/?q=Royal+Park+Ernesto+T+Lefevre+Panama" target="_blank" rel="noopener">Google Maps</a>
           <p style="margin:10px 0 0;font-size:.9rem;opacity:.85;">
-            También puedes chatear con nosotros por <strong style="color:#fff">WhatsApp</strong> o usar el <strong style="color:#fff">chat en vivo (PureChat)</strong>.
+            Reserva tu cita por <strong style="color:#fff">WhatsApp</strong> o en nuestro enlace oficial.
           </p>
         </div>
       </div>
@@ -912,25 +791,6 @@ Preferencia de confirmación: ${pref || '___'}
       const now = new Date();
       const y = document.getElementById('year');
       if (y) y.textContent = now.getFullYear();
-    })();
-  </script>
-
-  <!-- PURECHAT -->
-  <script type='text/javascript' data-cfasync='false'>
-    window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } };
-    (function () {
-      var done = false;
-      var script = document.createElement('script');
-      script.async = true;
-      script.type = 'text/javascript';
-      script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript';
-      document.getElementsByTagName('HEAD').item(0).appendChild(script);
-      script.onreadystatechange = script.onload = function (e) {
-        if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
-          var w = new PCWidget({c: '39cf325c-2286-4b58-b2af-9c647e257085', f: true });
-          done = true;
-        }
-      };
     })();
   </script>
 
