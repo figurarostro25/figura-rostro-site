@@ -291,14 +291,32 @@
 
     <div id="seccionCitas" class="hidden w-full max-w-6xl mx-auto bg-white dark:bg-slate-900 shadow-2xl p-6 md:p-8 rounded-3xl border dark:border-slate-700 no-print mb-32 min-h-[600px]">
         
+        <!-- HEADER CITAS (MEJORADO: campana nuevas + refrescar) -->
         <div class="flex flex-col md:flex-row justify-between items-center mb-6 border-b border-slate-100 dark:border-slate-800 pb-4 gap-4">
             <div>
-                <h2 class="text-xl font-black uppercase italic text-slate-800 dark:text-white"><i class="far fa-calendar-alt mr-2 text-teal-500"></i> Agenda Pro</h2>
+                <h2 class="text-xl font-black uppercase italic text-slate-800 dark:text-white">
+                    <i class="far fa-calendar-alt mr-2 text-teal-500"></i> Agenda Pro
+                </h2>
                 <p class="text-[10px] text-slate-400 uppercase font-bold tracking-[0.2em]">Gestión Inteligente de Pacientes</p>
             </div>
-            <div class="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">
-                <button onclick="filtrarVistaCitas('pendientes')" id="tabPendientes" class="px-5 py-2 rounded-md text-[10px] font-black uppercase transition-all bg-white dark:bg-slate-700 shadow-sm text-teal-700 dark:text-teal-400">Por Venir</button>
-                <button onclick="filtrarVistaCitas('historial')" id="tabHistorial" class="px-5 py-2 rounded-md text-[10px] font-black uppercase transition-all text-slate-400 hover:text-slate-600">Historial</button>
+
+            <div class="flex items-center gap-2">
+                <!-- Campanita NUEVAS RESERVAS (solo para CITAS) -->
+                <button onclick="toggleCitasFeed()" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center relative border border-slate-200 dark:border-slate-700" title="Nuevas reservas">
+                    <i id="citasBellIcon" class="fas fa-bell text-slate-600 dark:text-slate-300 text-sm"></i>
+                    <span id="citasNewCount" class="absolute -top-1 -right-1 bg-rose-500 text-white text-[9px] font-black w-5 h-5 rounded-full flex items-center justify-center hidden">0</span>
+                </button>
+
+                <!-- Botón refrescar lista -->
+                <button onclick="refreshCitas()" class="w-10 h-10 rounded-full bg-white dark:bg-slate-800 flex items-center justify-center border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700" title="Refrescar">
+                    <i class="fas fa-rotate-right text-slate-600 dark:text-slate-300 text-sm"></i>
+                </button>
+
+                <!-- Tabs -->
+                <div class="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">
+                    <button onclick="filtrarVistaCitas('pendientes')" id="tabPendientes" class="px-5 py-2 rounded-md text-[10px] font-black uppercase transition-all bg-white dark:bg-slate-700 shadow-sm text-teal-700 dark:text-teal-400">Por Venir</button>
+                    <button onclick="filtrarVistaCitas('historial')" id="tabHistorial" class="px-5 py-2 rounded-md text-[10px] font-black uppercase transition-all text-slate-400 hover:text-slate-600">Historial</button>
+                </div>
             </div>
         </div>
 
@@ -315,6 +333,14 @@
                 <div class="p-4 bg-slate-50 dark:bg-slate-900/50 border-t text-center">
                     <button onclick="cerrarVisor()" class="bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-6 py-2 rounded-lg font-bold text-xs uppercase hover:bg-slate-300 transition-all">Cerrar Visor</button>
                 </div>
+            </div>
+        </div>
+
+        <!-- Toast / Aviso de nueva reserva -->
+        <div id="toastCitas" class="fixed bottom-6 right-6 hidden z-[120]">
+            <div class="bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-2xl border border-white/10 max-w-sm">
+                <p class="text-[10px] font-black uppercase tracking-widest text-teal-300">Nueva reserva</p>
+                <p id="toastCitasText" class="text-sm font-bold mt-1"></p>
             </div>
         </div>
     </div>
@@ -442,6 +468,10 @@
         if (unsuscribeCitas) unsuscribeCitas();
 
         unsuscribeCitas = onSnapshot(q, (snapshot) => {
+
+            // ✅ Detectar nuevas reservas (solo después de la primera carga)
+            handleNewIncomingCitas(snapshot);
+
             container.innerHTML = '';
             
             // 1. Obtenemos fecha de hoy para comparar
@@ -494,19 +524,94 @@
         });
     };
 
-    // Plantilla de Tarjeta Optimizada
+    // ===== NUEVAS RESERVAS: campanita + toast + beep =====
+    window.citasNewCounter = 0;
+    window.citasFirstSnapshotDone = false;
+
+    window.toggleCitasFeed = () => {
+        window.citasNewCounter = 0;
+        updateCitasBellUI();
+        toastCitas("Contador reiniciado.");
+    };
+
+    window.refreshCitas = () => {
+        loadCitas();
+        toastCitas("Agenda actualizada.");
+    };
+
+    const updateCitasBellUI = () => {
+        const badge = document.getElementById('citasNewCount');
+        const icon  = document.getElementById('citasBellIcon');
+
+        badge.innerText = window.citasNewCounter;
+        badge.classList.toggle('hidden', window.citasNewCounter <= 0);
+
+        if (window.citasNewCounter > 0) icon.classList.add('animate-pulse');
+        else icon.classList.remove('animate-pulse');
+    };
+
+    const toastCitas = (msg) => {
+        const box = document.getElementById('toastCitas');
+        const txt = document.getElementById('toastCitasText');
+        txt.innerText = msg;
+        box.classList.remove('hidden');
+        setTimeout(() => box.classList.add('hidden'), 3500);
+    };
+
+    const beepCitas = () => {
+        try {
+            const AudioCtx = window.AudioContext || window.webkitAudioContext;
+            const ctx = new AudioCtx();
+            const o = ctx.createOscillator();
+            const g = ctx.createGain();
+            o.type = 'sine';
+            o.frequency.value = 880;
+            g.gain.value = 0.05;
+            o.connect(g); g.connect(ctx.destination);
+            o.start();
+            setTimeout(() => { o.stop(); ctx.close(); }, 140);
+        } catch(e) {}
+    };
+
+    const handleNewIncomingCitas = (snapshot) => {
+        if (!window.citasFirstSnapshotDone) {
+            window.citasFirstSnapshotDone = true;
+            return;
+        }
+
+        const seccionCitasVisible = !document.getElementById('seccionCitas').classList.contains('hidden');
+        if (!seccionCitasVisible) return;
+
+        const changes = snapshot.docChanges();
+        const nuevos = changes.filter(ch => ch.type === 'added').map(ch => ({ id: ch.doc.id, ...ch.doc.data() }));
+
+        if (nuevos.length > 0) {
+            const nuevosPend = nuevos.filter(n => (n.estado || 'Pendiente') === 'Pendiente');
+            if (nuevosPend.length === 0) return;
+
+            window.citasNewCounter += nuevosPend.length;
+            updateCitasBellUI();
+
+            const n = nuevosPend[0];
+            toastCitas(`${n.nombre || 'Nueva paciente'} • ${n.fecha_cita || ''} • ${tConvert(n.hora_cita)}`);
+            beepCitas();
+        }
+    };
+
+    // Plantilla de Tarjeta Optimizada (MEJORA: día texto + día número + mes / hora visible)
     const renderCard = (c, esVencida) => {
         const [y, m, d] = c.fecha_cita.split('-');
         const fObj = new Date(y, m - 1, d);
-        const mes = fObj.toLocaleString('es-ES', { month: 'short' }).toUpperCase();
-        
-        // Estilos según estado
-        let colorBorde = esVencida ? "border-rose-400" : "border-teal-500";
-        let bgFecha = esVencida ? "bg-rose-50 text-rose-600" : "bg-teal-50 text-teal-700";
-        if(c.estado === 'Asistió') { colorBorde = "border-emerald-500 opacity-70 grayscale"; bgFecha = "bg-emerald-100 text-emerald-700"; }
-        if(c.estado === 'Faltó') { colorBorde = "border-slate-400 opacity-60 grayscale"; bgFecha = "bg-slate-200 text-slate-500"; }
 
-        // Botones de acción
+        const diaTxt = fObj.toLocaleString('es-ES', { weekday: 'short' }).replace('.', '').toUpperCase();
+        const mesTxt = fObj.toLocaleString('es-ES', { month: 'short' }).replace('.', '').toUpperCase();
+
+        let colorBorde = esVencida ? "border-rose-400" : "border-teal-500";
+        let bgFecha = esVencida ? "bg-rose-50 text-rose-700" : "bg-teal-50 text-teal-800";
+
+        if (c.estado === 'Asistió') { colorBorde = "border-emerald-500 opacity-70 grayscale"; bgFecha = "bg-emerald-100 text-emerald-800"; }
+        if (c.estado === 'Faltó')   { colorBorde = "border-slate-400 opacity-60 grayscale"; bgFecha = "bg-slate-200 text-slate-700"; }
+
         let acciones = '';
         if (window.vistaCitasActual === 'pendientes') {
             acciones = `
@@ -525,20 +630,31 @@
             `;
         }
 
+        const horaBonita = tConvert(c.hora_cita);
+
         return `
             <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border-l-4 ${colorBorde} flex overflow-hidden h-28 relative border-y border-r border-slate-100 dark:border-slate-700">
-                <div class="${bgFecha} w-20 flex flex-col items-center justify-center shrink-0 border-r border-slate-100 dark:border-slate-700 p-1">
-                    <span class="text-[9px] font-black uppercase tracking-wider opacity-60">${mes}</span>
-                    <span class="text-3xl font-black leading-none my-1">${d}</span>
-                    <span class="text-[9px] font-bold bg-white/60 px-1.5 py-0.5 rounded text-slate-600">${tConvert(c.hora_cita)}</span>
+                <div class="${bgFecha} w-20 flex flex-col items-center justify-center shrink-0 border-r border-slate-100 dark:border-slate-700 p-1 leading-none">
+                    <span class="text-[10px] font-black uppercase tracking-wider opacity-80">${diaTxt}</span>
+                    <span class="text-3xl font-black my-1">${d}</span>
+                    <span class="text-[10px] font-black uppercase tracking-wider opacity-80">${mesTxt}</span>
                 </div>
                 
                 <div class="p-3 flex-1 min-w-0 flex flex-col justify-center text-left">
-                    <div class="flex items-center gap-2 mb-0.5">
-                        <h3 class="font-black text-sm text-slate-800 dark:text-white truncate uppercase">${c.nombre}</h3>
-                        ${esVencida ? '<span class="bg-rose-100 text-rose-600 text-[8px] font-black px-1.5 rounded uppercase">Vencida</span>' : ''}
-                        ${c.estado && c.estado !== 'Pendiente' ? `<span class="bg-slate-100 text-slate-500 text-[8px] font-black px-1.5 rounded uppercase">${c.estado}</span>` : ''}
+                    <div class="flex items-start justify-between gap-2 mb-0.5">
+                        <div class="min-w-0">
+                            <div class="flex items-center gap-2">
+                                <h3 class="font-black text-sm text-slate-800 dark:text-white truncate uppercase">${c.nombre}</h3>
+                                ${esVencida ? '<span class="bg-rose-100 text-rose-600 text-[8px] font-black px-1.5 rounded uppercase">Vencida</span>' : ''}
+                                ${c.estado && c.estado !== 'Pendiente' ? `<span class="bg-slate-100 text-slate-500 text-[8px] font-black px-1.5 rounded uppercase">${c.estado}</span>` : ''}
+                            </div>
+                        </div>
+
+                        <span class="shrink-0 bg-slate-900 text-white text-[10px] font-black px-2 py-1 rounded-lg shadow-sm uppercase">
+                            <i class="far fa-clock mr-1 text-teal-300"></i>${horaBonita}
+                        </span>
                     </div>
+
                     <p class="text-[9px] font-bold text-slate-400 uppercase mb-1 truncate"><i class="fas fa-briefcase mr-1 text-slate-300"></i> ${c.ocupacion || 'Sin ocupación'}</p>
                     <p class="text-[10px] font-black text-teal-600 dark:text-teal-400 uppercase truncate mb-1">${c.servicio}</p>
                     
