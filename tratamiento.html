@@ -39,7 +39,15 @@
         
         .service-row { display: grid; gap: 0.5rem; padding: 0.75rem; border-radius: 0.75rem; border: 1px solid #e2e8f0; background-color: #fff; grid-template-columns: 2fr 1fr 80px 40px; margin-bottom: 0.75rem; }
         .dark .service-row { background-color: #1e293b; border-color: #475569; }
-        
+
+        /* ✅ Para que “VALORACION...” NO se corte */
+        .line-clamp-2{
+            display:-webkit-box;
+            -webkit-box-orient:vertical;
+            -webkit-line-clamp:2;
+            overflow:hidden;
+        }
+
         @media (max-width: 768px) {
             .service-row { grid-template-columns: 1fr; }
             .paper-sheet { border-radius: 0; padding: 15px; }
@@ -47,25 +55,6 @@
         }
         
         @media print { .no-print { display: none !important; } .paper-sheet { box-shadow: none !important; border: none !important; margin: 0 !important; width: 100% !important; padding: 10mm !important; } }
-
-        /* ====== SOLO CITAS (MEJORAS VISUALES) ====== */
-        .line-clamp-2{
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        @keyframes softPulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.03); opacity: 0.92; }
-        }
-        .badge-proxima {
-            animation: softPulse 1.1s ease-in-out infinite;
-            box-shadow: 0 10px 25px -10px rgba(245, 158, 11, 0.65);
-        }
-        .card-proxima-glow{
-            box-shadow: 0 18px 45px -25px rgba(245, 158, 11, 0.55);
-        }
     </style>
 </head>
 <body class="p-0 pt-20 md:p-4 md:pt-24">
@@ -308,10 +297,10 @@
         </div>
     </div>
 
-    <!-- ====================== SOLO SE TOCÓ CITAS AQUÍ ====================== -->
+    <!-- ✅✅✅ SOLO CITAS MODIFICADO -->
     <div id="seccionCitas" class="hidden w-full max-w-6xl mx-auto bg-white dark:bg-slate-900 shadow-2xl p-6 md:p-8 rounded-3xl border dark:border-slate-700 no-print mb-32 min-h-[600px]">
         
-        <div class="flex flex-col md:flex-row justify-between items-center mb-6 border-b border-slate-100 dark:border-slate-800 pb-4 gap-4 relative">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-6 border-b border-slate-100 dark:border-slate-800 pb-4 gap-4">
             <div>
                 <h2 class="text-xl font-black uppercase italic text-slate-800 dark:text-white">
                     <i class="far fa-calendar-alt mr-2 text-teal-500"></i> Agenda Pro
@@ -319,31 +308,36 @@
                 <p class="text-[10px] text-slate-400 uppercase font-bold tracking-[0.2em]">Gestión Inteligente de Pacientes</p>
             </div>
 
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-2 relative">
+                <!-- Campanita NUEVAS RESERVAS -->
                 <button onclick="toggleCitasFeed()" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center relative border border-slate-200 dark:border-slate-700" title="Nuevas reservas">
                     <i id="citasBellIcon" class="fas fa-bell text-slate-600 dark:text-slate-300 text-sm"></i>
                     <span id="citasNewCount" class="absolute -top-1 -right-1 bg-rose-500 text-white text-[9px] font-black w-5 h-5 rounded-full flex items-center justify-center hidden">0</span>
                 </button>
 
+                <!-- Panel feed (ahora sí muestra qué es la alerta) -->
+                <div id="citasFeed" class="hidden absolute right-0 top-12 w-[340px] max-w-[90vw] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-2xl z-[200] overflow-hidden">
+                    <div class="p-3 border-b border-slate-100 dark:border-slate-700 flex items-center justify-between">
+                        <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Notificaciones de Reservas</p>
+                        <button onclick="clearCitasFeed()" class="text-[10px] font-black text-rose-500 uppercase underline">Limpiar</button>
+                    </div>
+                    <div id="citasFeedList" class="max-h-[320px] overflow-y-auto p-3 space-y-2"></div>
+                    <div class="p-3 border-t border-slate-100 dark:border-slate-700 text-center">
+                        <button onclick="toggleCitasFeed()" class="px-4 py-2 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold text-[10px] uppercase">Cerrar</button>
+                    </div>
+                </div>
+
+                <!-- Botón refrescar lista -->
                 <button onclick="refreshCitas()" class="w-10 h-10 rounded-full bg-white dark:bg-slate-800 flex items-center justify-center border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700" title="Refrescar">
                     <i class="fas fa-rotate-right text-slate-600 dark:text-slate-300 text-sm"></i>
                 </button>
 
+                <!-- Tabs -->
                 <div class="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">
                     <button onclick="filtrarVistaCitas('pendientes')" id="tabPendientes" class="px-5 py-2 rounded-md text-[10px] font-black uppercase transition-all bg-white dark:bg-slate-700 shadow-sm text-teal-700 dark:text-teal-400">Por Venir</button>
                     <button onclick="filtrarVistaCitas('historial')" id="tabHistorial" class="px-5 py-2 rounded-md text-[10px] font-black uppercase transition-all text-slate-400 hover:text-slate-600">Historial</button>
                 </div>
             </div>
-        </div>
-
-        <!-- FEED DE NOTIFICACIONES (CITAS) -->
-        <div id="citasFeedBox" class="fixed top-28 right-6 w-80 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-2xl hidden z-[130] p-4 no-print">
-            <div class="flex items-center justify-between border-b pb-2 mb-2">
-                <p class="text-[10px] font-black uppercase text-slate-400">Nuevas Reservas</p>
-                <button onclick="clearCitasFeed()" class="text-[10px] font-black uppercase text-teal-600 underline">Marcar visto</button>
-            </div>
-            <div id="citasFeedList" class="space-y-2 max-h-72 overflow-y-auto"></div>
-            <p class="mt-2 text-[9px] text-slate-400 font-bold uppercase">Tip: al abrir aquí ves qué llegó (ya no sale viejo).</p>
         </div>
 
         <div id="containerCitasWeb" class="space-y-6"></div>
@@ -354,22 +348,21 @@
                     <h3 class="text-white font-black uppercase italic text-sm"><i class="fas fa-file-medical mr-2"></i> Ficha de Solicitud</h3>
                     <button onclick="cerrarVisor()" class="text-white/70 hover:text-white"><i class="fas fa-times text-lg"></i></button>
                 </div>
-                <div id="contenidoVisor" class="p-6 overflow-y-auto max-h-[70vh] text-left">
-                    </div>
+                <div id="contenidoVisor" class="p-6 overflow-y-auto max-h-[70vh] text-left"></div>
                 <div class="p-4 bg-slate-50 dark:bg-slate-900/50 border-t text-center">
                     <button onclick="cerrarVisor()" class="bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-6 py-2 rounded-lg font-bold text-xs uppercase hover:bg-slate-300 transition-all">Cerrar Visor</button>
                 </div>
             </div>
         </div>
 
+        <!-- Toast / Aviso (solo para mensajes de sistema) -->
         <div id="toastCitas" class="fixed bottom-6 right-6 hidden z-[120]">
             <div class="bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-2xl border border-white/10 max-w-sm">
-                <p class="text-[10px] font-black uppercase tracking-widest text-teal-300">Aviso</p>
+                <p class="text-[10px] font-black uppercase tracking-widest text-teal-300">Sistema</p>
                 <p id="toastCitasText" class="text-sm font-bold mt-1"></p>
             </div>
         </div>
     </div>
-    <!-- ====================== FIN CITAS ====================== -->
 
     <div id="modalPago" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden z-[100] flex items-center justify-center p-4">
         <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-2xl w-full max-w-md overflow-hidden text-left">
@@ -462,17 +455,54 @@
 
         if(view === 'form') document.getElementById('seccionFormulario').classList.remove('hidden');
         if(view === 'list') { document.getElementById('seccionBaseDatos').classList.remove('hidden'); loadData(); checkAlerts(); }
-        if(view === 'appointments') { 
-            document.getElementById('seccionCitas').classList.remove('hidden'); 
-            // marca "ahora" como visto, para que refresh no dispare cosas viejas
-            window.citasLastSeenAt = Date.now();
-            loadCitas(); 
-        }
+        if(view === 'appointments') { document.getElementById('seccionCitas').classList.remove('hidden'); loadCitas(); }
         
         document.getElementById('navForm').className = view === 'form' ? 'nav-btn-active px-4 py-2 text-[10px] font-bold transition-all' : 'px-4 py-2 text-[10px] font-bold dark:text-slate-400 transition-all';
         document.getElementById('navList').className = view === 'list' ? 'nav-btn-active px-4 py-2 text-[10px] font-bold transition-all' : 'px-4 py-2 text-[10px] font-bold dark:text-slate-400 transition-all';
         document.getElementById('navAppts').className = view === 'appointments' ? 'nav-btn-active px-4 py-2 text-[10px] font-bold transition-all' : 'px-4 py-2 text-[10px] font-bold dark:text-slate-400 transition-all';
     };
+
+    // =========================
+    // ✅ CITAS: HELPERS ROBUSTOS
+    // =========================
+    const pad2 = (n) => String(n).padStart(2,'0');
+
+    const parseHoraTo24 = (horaRaw) => {
+        if(!horaRaw) return "00:00";
+        const h = String(horaRaw).trim().toUpperCase();
+
+        // Formato 24h: "20:00"
+        if (/^\d{1,2}:\d{2}$/.test(h)) {
+            const [hh, mm] = h.split(':').map(Number);
+            return `${pad2(hh)}:${pad2(mm)}`;
+        }
+
+        // Formato 12h: "06:00 PM" / "6:00PM"
+        const m = h.match(/^(\d{1,2})(?::(\d{2}))?\s*(AM|PM)$/);
+        if (m) {
+            let hh = parseInt(m[1], 10);
+            const mm = parseInt(m[2] || "00", 10);
+            const ampm = m[3];
+            if (ampm === "PM" && hh < 12) hh += 12;
+            if (ampm === "AM" && hh === 12) hh = 0;
+            return `${pad2(hh)}:${pad2(mm)}`;
+        }
+
+        return "00:00";
+    };
+
+    const citaDateTime = (fechaYYYYMMDD, horaRaw) => {
+        try {
+            const [y,m,d] = (fechaYYYYMMDD || "1970-01-01").split('-').map(Number);
+            const hhmm = parseHoraTo24(horaRaw);
+            const [hh, mm] = hhmm.split(':').map(Number);
+            return new Date(y, (m||1)-1, d||1, hh||0, mm||0, 0, 0);
+        } catch(e) {
+            return new Date(1970,0,1);
+        }
+    };
+
+    const minutesDiff = (a, b) => Math.round((a - b) / 60000);
 
     // --- NUEVA LÓGICA DE CITAS MEJORADA ---
     window.filtrarVistaCitas = (vista) => {
@@ -490,161 +520,56 @@
         loadCitas();
     };
 
-    // ===== Helpers SOLO CITAS =====
-    const safeTime = (t) => (t && /^([01]\d|2[0-3]):[0-5]\d$/.test(t)) ? t : "00:00";
-
-    const citaDateTimeObj = (c) => {
-        if(!c?.fecha_cita) return null;
-        const hhmm = safeTime(c.hora_cita);
-        const iso = `${c.fecha_cita}T${hhmm}:00`;
-        const d = new Date(iso);
-        return isNaN(d.getTime()) ? null : d;
-    };
-
-    const minutesDiff = (a, b) => Math.round((a - b) / (1000 * 60)); // a - b en minutos
-
-    // === Auto-archivo: 3 horas después de la hora de la cita (si sigue Pendiente) ===
-    window.citasArchivedOnce = new Set();
-    const autoArchiveIfNeeded = async (c) => {
-        try {
-            if(!c?.id) return;
-            if(window.citasArchivedOnce.has(c.id)) return;
-            if((c.estado || "Pendiente") !== "Pendiente") return;
-
-            const dt = citaDateTimeObj(c);
-            if(!dt) return;
-
-            const now = new Date();
-            const plus3h = new Date(dt.getTime() + 3 * 60 * 60 * 1000);
-            if(now > plus3h) {
-                window.citasArchivedOnce.add(c.id);
-                await updateDoc(doc(db, colCitas, c.id), { estado: "Archivada" });
-            }
-        } catch(e) {}
-    };
-
-    window.loadCitas = () => {
-        const container = document.getElementById('containerCitasWeb');
-        container.innerHTML = '<div class="text-center p-10"><i class="fas fa-spinner fa-spin text-teal-500 text-3xl"></i><p class="mt-2 text-xs font-bold text-slate-400 uppercase">Organizando Agenda...</p></div>';
-
-        const q = query(collection(db, colCitas), orderBy("fecha_cita", "asc"));
-        if (unsuscribeCitas) unsuscribeCitas();
-
-        unsuscribeCitas = onSnapshot(q, (snapshot) => {
-
-            handleNewIncomingCitas(snapshot);
-
-            container.innerHTML = '';
-
-            const now = new Date();
-
-            let pendientes = [];
-            let historial = [];
-            let vencidas = [];
-
-            snapshot.forEach((docSnap) => {
-                const c = { id: docSnap.id, ...docSnap.data() };
-                const est = c.estado || "Pendiente";
-
-                // Auto-archivo (3h después de iniciar)
-                if(est === "Pendiente") autoArchiveIfNeeded(c);
-
-                const dt = citaDateTimeObj(c);
-
-                if (est === 'Pendiente') {
-                    // separa: vencidas (ya pasaron más de 3h NO, esas ya se archivan solas)
-                    // aquí solo manejamos "por venir" y "vencidas" por fecha anterior (si todavía no archivó)
-                    if(dt) {
-                        const plus3h = new Date(dt.getTime() + 3*60*60*1000);
-                        if(now > plus3h) {
-                            // será archivada por autoArchiveIfNeeded, no la pintamos
-                            return;
-                        }
-                        // si su fecha/hora ya pasó pero aún no llega a 3h: la dejamos visible
-                        pendientes.push(c);
-                    } else {
-                        // sin hora => la tratamos como pendiente normal
-                        pendientes.push(c);
-                    }
-                } else {
-                    historial.push(c);
-                }
-            });
-
-            // Orden real por fecha + hora (para que la próxima suba)
-            pendientes.sort((a,b) => {
-                const da = citaDateTimeObj(a) || new Date(`${a.fecha_cita}T00:00:00`);
-                const dbb = citaDateTimeObj(b) || new Date(`${b.fecha_cita}T00:00:00`);
-                return da - dbb;
-            });
-
-            // Próxima cita: la más cercana, pero la etiqueta se mantiene hasta 1h después de iniciar
-            // (después de 1h se mueve a la siguiente)
-            let proximaId = null;
-            let proximaMinsToStart = null;
-
-            const elegibles = pendientes
-                .map(c => ({ c, dt: citaDateTimeObj(c) }))
-                .filter(x => x.dt);
-
-            if(elegibles.length > 0) {
-                // elegible si aún no ha pasado 1h desde el inicio
-                const cand = elegibles.filter(x => now <= new Date(x.dt.getTime() + 60*60*1000));
-                if(cand.length > 0) {
-                    // escoger la más cercana (por dt)
-                    cand.sort((x,y) => x.dt - y.dt);
-                    proximaId = cand[0].c.id;
-                    proximaMinsToStart = minutesDiff(cand[0].dt, now); // puede ser negativo si ya empezó
-                }
-            } else if(pendientes.length > 0) {
-                proximaId = pendientes[0].id;
-                proximaMinsToStart = null;
-            }
-
-            if (window.vistaCitasActual === 'pendientes') {
-                if (pendientes.length === 0) {
-                    container.innerHTML = `<div class="p-10 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-2xl text-center opacity-60"><i class="far fa-calendar-check text-4xl text-slate-300 mb-2"></i><p class="text-slate-400 font-bold uppercase text-xs">Agenda al día. No hay pendientes.</p></div>`;
-                    return;
-                }
-
-                container.innerHTML += `<div class="text-xs font-black text-teal-600 uppercase tracking-widest mb-3 border-b pb-1">📅 Próximas Citas (Prioridad)</div>`;
-                container.innerHTML += `<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">` 
-                    + pendientes.map(c => {
-                        const isProxima = (c.id === proximaId);
-                        const dt = citaDateTimeObj(c);
-                        const mins = dt ? minutesDiff(dt, now) : null;
-                        return renderCard(c, false, { isProxima, minsToStart: mins, now });
-                    }).join('') 
-                    + `</div>`;
-
-            } else {
-                if (historial.length === 0) {
-                    container.innerHTML = `<div class="p-10 text-center opacity-50"><p class="text-slate-400 font-bold uppercase text-xs">Historial Vacío</p></div>`;
-                } else {
-                    container.innerHTML += `<div class="grid grid-cols-1 md:grid-cols-2 gap-3">` 
-                        + historial.map(c => renderCard(c, false, { isProxima:false, minsToStart:null, now })).join('') 
-                        + `</div>`;
-                }
-            }
-        });
-    };
-
-    // ===== NUEVAS RESERVAS: campanita + feed + toast + beep (SIN VIEJAS) =====
-    window.citasNewCounter = 0;
+    // =====================================
+    // ✅ NUEVAS RESERVAS (campana REAL + feed)
+    // =====================================
     window.citasFirstSnapshotDone = false;
 
-    window.citasFeedItems = []; // últimos avisos
-    window.citasLastSeenAt = window.citasLastSeenAt || Date.now(); // para filtrar “viejas”
+    const LS_FEED = "kg_citas_feed_items_v1";
+    const LS_UNSEEN = "kg_citas_unseen_v1";
+    const LS_BASELINE = "kg_citas_baseline_reg_v1";
+
+    window.citasFeedItems = JSON.parse(localStorage.getItem(LS_FEED) || "[]");
+    window.citasUnseen = parseInt(localStorage.getItem(LS_UNSEEN) || "0", 10);
+    window.citasBaselineReg = localStorage.getItem(LS_BASELINE) || null; // ISO string
+
+    const saveCitasFeed = () => {
+        localStorage.setItem(LS_FEED, JSON.stringify(window.citasFeedItems.slice(0, 50)));
+        localStorage.setItem(LS_UNSEEN, String(window.citasUnseen));
+        localStorage.setItem(LS_BASELINE, window.citasBaselineReg || "");
+    };
 
     const updateCitasBellUI = () => {
         const badge = document.getElementById('citasNewCount');
         const icon  = document.getElementById('citasBellIcon');
-
-        badge.innerText = window.citasNewCounter;
-        badge.classList.toggle('hidden', window.citasNewCounter <= 0);
-
-        if (window.citasNewCounter > 0) icon.classList.add('animate-pulse');
+        badge.innerText = window.citasUnseen;
+        badge.classList.toggle('hidden', window.citasUnseen <= 0);
+        if (window.citasUnseen > 0) icon.classList.add('animate-pulse');
         else icon.classList.remove('animate-pulse');
+    };
+
+    const renderCitasFeed = () => {
+        const list = document.getElementById('citasFeedList');
+        if (!list) return;
+        if (!window.citasFeedItems.length) {
+            list.innerHTML = `<div class="p-6 text-center opacity-60">
+                <i class="far fa-bell text-3xl text-slate-300"></i>
+                <p class="mt-2 text-xs font-bold text-slate-400 uppercase">Sin notificaciones nuevas</p>
+            </div>`;
+            return;
+        }
+        list.innerHTML = window.citasFeedItems.map(item => `
+            <div class="p-3 rounded-xl border border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/30">
+                <p class="text-[9px] font-black uppercase tracking-widest text-teal-600">Nueva reserva</p>
+                <p class="text-sm font-black text-slate-800 dark:text-white mt-0.5">${item.nombre || 'Paciente'}</p>
+                <p class="text-[10px] font-bold text-slate-500 mt-1">
+                    <i class="far fa-calendar mr-1 text-slate-400"></i>${item.fecha || '--'}
+                    <span class="mx-2 opacity-40">•</span>
+                    <i class="far fa-clock mr-1 text-slate-400"></i>${item.hora || '--'}
+                </p>
+                <p class="text-[10px] font-bold text-slate-500 mt-1 line-clamp-2">${item.servicio || ''}</p>
+            </div>
+        `).join('');
     };
 
     const toastCitas = (msg) => {
@@ -652,7 +577,7 @@
         const txt = document.getElementById('toastCitasText');
         txt.innerText = msg;
         box.classList.remove('hidden');
-        setTimeout(() => box.classList.add('hidden'), 3500);
+        setTimeout(() => box.classList.add('hidden'), 2500);
     };
 
     const beepCitas = () => {
@@ -670,57 +595,166 @@
         } catch(e) {}
     };
 
-    const renderFeed = () => {
-        const list = document.getElementById('citasFeedList');
-        list.innerHTML = '';
-        if(window.citasFeedItems.length === 0) {
-            list.innerHTML = `<div class="p-3 rounded-xl border border-dashed text-center text-slate-400 text-xs font-bold uppercase">Sin avisos recientes</div>`;
-            return;
-        }
-
-        window.citasFeedItems.slice(0, 12).forEach(it => {
-            list.innerHTML += `
-                <div class="p-3 rounded-xl border border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/30">
-                    <p class="text-[9px] font-black uppercase text-teal-600">Nueva reserva</p>
-                    <p class="text-sm font-black text-slate-800 dark:text-white truncate">${it.nombre}</p>
-                    <p class="text-[10px] font-bold text-slate-500 uppercase">${it.fecha} • ${it.hora}</p>
-                </div>
-            `;
-        });
-    };
-
     window.toggleCitasFeed = () => {
-        const box = document.getElementById('citasFeedBox');
-        box.classList.toggle('hidden');
-        if(!box.classList.contains('hidden')) {
-            // al abrir, se marca visto (se borra contador, pero NO se borra el historial del feed)
-            window.citasNewCounter = 0;
-            window.citasLastSeenAt = Date.now();
+        const panel = document.getElementById('citasFeed');
+        panel.classList.toggle('hidden');
+        renderCitasFeed();
+
+        // Si abrió el panel, se considera "visto"
+        if (!panel.classList.contains('hidden')) {
+            window.citasUnseen = 0;
+            saveCitasFeed();
             updateCitasBellUI();
-            renderFeed();
         }
     };
 
     window.clearCitasFeed = () => {
-        window.citasNewCounter = 0;
-        window.citasLastSeenAt = Date.now();
+        window.citasFeedItems = [];
+        window.citasUnseen = 0;
+        saveCitasFeed();
         updateCitasBellUI();
-        toastCitas("Notificaciones marcadas como vistas.");
-        document.getElementById('citasFeedBox').classList.add('hidden');
+        renderCitasFeed();
+        toastCitas("Notificaciones limpiadas.");
     };
 
+    // Evita que "refrescar" dispare falsas nuevas reservas
     window.refreshCitas = () => {
-        // al refrescar, NO debe disparar “nuevas” viejas
-        window.citasLastSeenAt = Date.now();
-        window.citasFirstSnapshotDone = false; 
-        loadCitas();
+        loadCitas(true);
         toastCitas("Agenda actualizada.");
     };
 
+    // =========================
+    // ✅ LOAD CITAS (con PRÓXIMA real + auto-archivo visual)
+    // =========================
+    window.loadCitas = (isManualRefresh = false) => {
+        const container = document.getElementById('containerCitasWeb');
+        container.innerHTML = '<div class="text-center p-10"><i class="fas fa-spinner fa-spin text-teal-500 text-3xl"></i><p class="mt-2 text-xs font-bold text-slate-400 uppercase">Organizando Agenda...</p></div>';
+
+        const q = query(collection(db, colCitas), orderBy("fecha_cita", "asc"));
+        if (unsuscribeCitas) unsuscribeCitas();
+
+        // ✅ IMPORTANTE: al re-suscribir (por refresh), reiniciamos bandera de primer snapshot
+        window.citasFirstSnapshotDone = false;
+
+        unsuscribeCitas = onSnapshot(q, (snapshot) => {
+            const now = new Date();
+
+            // ✅ Baseline (para NO contar viejas como nuevas)
+            if (!window.citasBaselineReg) {
+                let maxISO = null;
+                snapshot.forEach(ds => {
+                    const d = ds.data();
+                    const fr = d.fecha_registro?.seconds ? new Date(d.fecha_registro.seconds * 1000) : null;
+                    if (fr) {
+                        const iso = fr.toISOString();
+                        if (!maxISO || iso > maxISO) maxISO = iso;
+                    }
+                });
+                window.citasBaselineReg = maxISO || now.toISOString();
+                saveCitasFeed();
+            }
+
+            // ✅ Solo detectar nuevas reservas cuando ya pasó el primer snapshot
+            handleNewIncomingCitas(snapshot);
+
+            container.innerHTML = '';
+
+            let pendientesActivas = [];   // Pendientes aún “vigentes” (<=3h de iniciada)
+            let pendientesVencidas = [];  // Pendientes con fecha pasada (pero no auto-archivadas)
+            let historial = [];           // Asistió/Faltó + auto-archivadas
+
+            snapshot.forEach((docSnap) => {
+                const c = { id: docSnap.id, ...docSnap.data() };
+                const est = c.estado || "Pendiente";
+
+                // datetime real
+                const dt = citaDateTime(c.fecha_cita, c.hora_cita);
+                const diffMin = minutesDiff(dt, now); // dt - now en minutos
+
+                // ✅ Auto-archivo VISUAL: 3 horas después de iniciada (180 min después del start)
+                const minutesSinceStart = minutesDiff(now, dt); // now - dt
+                const autoArchivada = (est === 'Pendiente' && minutesSinceStart >= 180);
+
+                if (autoArchivada) {
+                    c._autoArchived = true;
+                    c._estadoVisual = "Archivada";
+                    historial.push(c);
+                    return;
+                }
+
+                if (est === 'Pendiente') {
+                    // “Vencida” por fecha (para recuperar) pero NO auto-archivada aún (<=3h desde inicio o sin hora)
+                    // Si ya pasó la fecha (día anterior) o ya pasó hora pero aún dentro de 3h => la dejamos visible, pero cae en sección “vencidas” si su fecha < hoy.
+                    const todayStr = new Date().toLocaleDateString('en-CA');
+                    if (c.fecha_cita < todayStr) pendientesVencidas.push(c);
+                    else pendientesActivas.push(c);
+                } else {
+                    historial.push(c);
+                }
+            });
+
+            // ✅ Determinar la PRÓXIMA REAL:
+            // Regla: la más cercana en tiempo, y la etiqueta se queda hasta 1 hora después de iniciada.
+            const allPendientesVigentes = [...pendientesActivas, ...pendientesVencidas];
+            let proximaId = null;
+
+            const eligibles = allPendientesVigentes
+                .map(c => ({ c, dt: citaDateTime(c.fecha_cita, c.hora_cita) }))
+                .filter(x => x.dt.getTime() >= (now.getTime() - 60 * 60000)) // desde 1h antes
+                .sort((a,b) => a.dt - b.dt);
+
+            if (eligibles.length) proximaId = eligibles[0].c.id;
+            else {
+                const future = allPendientesVigentes
+                    .map(c => ({ c, dt: citaDateTime(c.fecha_cita, c.hora_cita) }))
+                    .filter(x => x.dt.getTime() >= now.getTime())
+                    .sort((a,b) => a.dt - b.dt);
+                if (future.length) proximaId = future[0].c.id;
+            }
+
+            // ✅ Ordenar activas por datetime real (fecha + hora)
+            pendientesActivas.sort((a,b) => citaDateTime(a.fecha_cita, a.hora_cita) - citaDateTime(b.fecha_cita, b.hora_cita));
+            pendientesVencidas.sort((a,b) => citaDateTime(a.fecha_cita, a.hora_cita) - citaDateTime(b.fecha_cita, b.hora_cita));
+            historial.sort((a,b) => citaDateTime(b.fecha_cita, b.hora_cita) - citaDateTime(a.fecha_cita, a.hora_cita));
+
+            // LOGICA DE RENDERIZADO
+            if (window.vistaCitasActual === 'pendientes') {
+                if (pendientesActivas.length === 0 && pendientesVencidas.length === 0) {
+                    container.innerHTML = `<div class="p-10 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-2xl text-center opacity-60"><i class="far fa-calendar-check text-4xl text-slate-300 mb-2"></i><p class="text-slate-400 font-bold uppercase text-xs">Agenda al día. No hay pendientes.</p></div>`;
+                    return;
+                }
+
+                if (pendientesActivas.length > 0) {
+                    container.innerHTML += `<div class="text-xs font-black text-teal-600 uppercase tracking-widest mb-3 border-b pb-1">📅 Próximas Citas (Prioridad)</div>`;
+                    container.innerHTML += `<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">` 
+                        + pendientesActivas.map(c => renderCard(c, false, c.id === proximaId)).join('') 
+                        + `</div>`;
+                }
+
+                if (pendientesVencidas.length > 0) {
+                    container.innerHTML += `<div class="text-xs font-black text-rose-400 uppercase tracking-widest mb-3 border-b border-rose-100 pb-1 mt-6">⚠️ Citas Vencidas / Por Recuperar</div>`;
+                    container.innerHTML += `<div class="grid grid-cols-1 md:grid-cols-2 gap-3 opacity-90">` 
+                        + pendientesVencidas.map(c => renderCard(c, true, c.id === proximaId)).join('') 
+                        + `</div>`;
+                }
+
+            } else {
+                if (historial.length === 0) {
+                    container.innerHTML = `<div class="p-10 text-center opacity-50"><p class="text-slate-400 font-bold uppercase text-xs">Historial Vacío</p></div>`;
+                } else {
+                    container.innerHTML += `<div class="grid grid-cols-1 md:grid-cols-2 gap-3">` 
+                        + historial.map(c => renderCard(c, false, false)).join('') 
+                        + `</div>`;
+                }
+            }
+        });
+    };
+
     const handleNewIncomingCitas = (snapshot) => {
-        // primera carga de cada suscripción: NO notificar
+        // Primer snapshot: solo “marca base”, NO cuenta
         if (!window.citasFirstSnapshotDone) {
             window.citasFirstSnapshotDone = true;
+            updateCitasBellUI();
             return;
         }
 
@@ -732,37 +766,60 @@
             .filter(ch => ch.type === 'added')
             .map(ch => ({ id: ch.doc.id, ...ch.doc.data() }));
 
-        if (nuevos.length === 0) return;
+        if (!nuevos.length) return;
 
-        // filtrar: solo notificar si el registro es realmente nuevo (fecha_registro > lastSeenAt)
-        const realmenteNuevos = nuevos.filter(n => {
-            const ts = n.fecha_registro?.seconds ? n.fecha_registro.seconds * 1000 : Date.now();
-            return ts > (window.citasLastSeenAt || 0);
+        // Filtrar por estado pendiente + por fecha_registro > baseline (para evitar “viejas”)
+        const baselineISO = window.citasBaselineReg || new Date().toISOString();
+
+        const nuevosReales = nuevos.filter(n => {
+            const est = (n.estado || 'Pendiente');
+            if (est !== 'Pendiente') return false;
+            const fr = n.fecha_registro?.seconds ? new Date(n.fecha_registro.seconds * 1000).toISOString() : null;
+            if (!fr) return false;
+            return fr > baselineISO;
         });
 
-        const nuevosPend = realmenteNuevos.filter(n => (n.estado || 'Pendiente') === 'Pendiente');
-        if (nuevosPend.length === 0) return;
+        if (!nuevosReales.length) return;
 
-        window.citasNewCounter += nuevosPend.length;
+        // Actualizar baseline al más reciente de los nuevos
+        let maxISO = baselineISO;
+        nuevosReales.forEach(n => {
+            const frISO = new Date(n.fecha_registro.seconds * 1000).toISOString();
+            if (frISO > maxISO) maxISO = frISO;
+        });
+        window.citasBaselineReg = maxISO;
+
+        // Insertar al feed
+        nuevosReales.forEach(n => {
+            const item = {
+                nombre: n.nombre || "Paciente",
+                fecha: n.fecha_cita || "",
+                hora: tConvert(n.hora_cita),
+                servicio: n.servicio || "",
+                ts: Date.now()
+            };
+            window.citasFeedItems.unshift(item);
+        });
+
+        window.citasUnseen += nuevosReales.length;
+        saveCitasFeed();
         updateCitasBellUI();
 
-        const n = nuevosPend[0];
-        const nombre = n.nombre || 'Nueva paciente';
-        const fecha = n.fecha_cita || '';
-        const hora  = tConvert(n.hora_cita);
-
-        // feed
-        window.citasFeedItems.unshift({ nombre, fecha, hora });
-        window.citasFeedItems = window.citasFeedItems.slice(0, 20);
-
-        toastCitas(`${nombre} • ${fecha} • ${hora}`);
+        const n0 = nuevosReales[0];
+        toastCitas(`Nueva reserva: ${n0.nombre || 'Paciente'} • ${n0.fecha_cita || ''} • ${tConvert(n0.hora_cita)}`);
         beepCitas();
     };
 
-    // Plantilla de Tarjeta Optimizada (MEJORAS: hora más amigable + PROXIMA real + aviso 2h + servicio 2 líneas)
-    const renderCard = (c, esVencida, meta={ isProxima:false, minsToStart:null, now:new Date() }) => {
-        const [y, m, d] = c.fecha_cita.split('-');
-        const fObj = new Date(y, m - 1, d);
+    // Plantilla de Tarjeta Optimizada + PRÓXIMA + alerta <2h + hora amigable
+    const renderCard = (c, esVencida, esProxima) => {
+        const dt = citaDateTime(c.fecha_cita, c.hora_cita);
+        const now = new Date();
+        const minsTo = minutesDiff(dt, now);      // dt - now
+        const minsSince = minutesDiff(now, dt);   // now - dt
+        const inLessThan2h = (minsTo >= 0 && minsTo <= 120);
+
+        const [y, m, d] = (c.fecha_cita || "1970-01-01").split('-');
+        const fObj = new Date(parseInt(y,10), parseInt(m,10) - 1, parseInt(d,10));
 
         const diaTxt = fObj.toLocaleString('es-ES', { weekday: 'short' }).replace('.', '').toUpperCase();
         const mesTxt = fObj.toLocaleString('es-ES', { month: 'short' }).replace('.', '').toUpperCase();
@@ -770,9 +827,12 @@
         let colorBorde = esVencida ? "border-rose-400" : "border-teal-500";
         let bgFecha = esVencida ? "bg-rose-50 text-rose-700" : "bg-teal-50 text-teal-800";
 
-        if (c.estado === 'Asistió') { colorBorde = "border-emerald-500 opacity-70 grayscale"; bgFecha = "bg-emerald-100 text-emerald-800"; }
-        if (c.estado === 'Faltó')   { colorBorde = "border-slate-400 opacity-60 grayscale"; bgFecha = "bg-slate-200 text-slate-700"; }
-        if (c.estado === 'Archivada') { colorBorde = "border-slate-300 opacity-70"; bgFecha = "bg-slate-100 text-slate-700"; }
+        // estados
+        const estadoReal = c._autoArchived ? "Archivada" : (c.estado || "Pendiente");
+
+        if (estadoReal === 'Asistió') { colorBorde = "border-emerald-500 opacity-70 grayscale"; bgFecha = "bg-emerald-100 text-emerald-800"; }
+        if (estadoReal === 'Faltó')   { colorBorde = "border-slate-400 opacity-60 grayscale"; bgFecha = "bg-slate-200 text-slate-700"; }
+        if (estadoReal === 'Archivada') { colorBorde = "border-slate-300 opacity-70"; bgFecha = "bg-slate-100 text-slate-700"; }
 
         let acciones = '';
         if (window.vistaCitasActual === 'pendientes') {
@@ -794,65 +854,62 @@
 
         const horaBonita = tConvert(c.hora_cita);
 
-        const isProxima = !!meta.isProxima;
-        const mins = meta.minsToStart;
+        // etiqueta PROXIMA + alerta <2h
+        const badgeProxima = esProxima ? `
+            <span class="bg-amber-100 text-amber-800 border border-amber-200 text-[9px] font-black px-2 py-1 rounded-lg uppercase animate-pulse">
+                <i class="fas fa-bolt mr-1"></i> PRÓXIMA
+            </span>` : '';
 
-        const en2Horas = (typeof mins === 'number') ? (mins <= 120 && mins >= 0) : false;
+        const badge2h = (inLessThan2h && (estadoReal === 'Pendiente')) ? `
+            <span class="bg-rose-100 text-rose-700 border border-rose-200 text-[9px] font-black px-2 py-1 rounded-lg uppercase animate-pulse">
+                <i class="far fa-clock mr-1"></i> EN &lt; 2H
+            </span>` : '';
 
-        const proximaBadge = isProxima ? `
-            <span class="badge-proxima bg-amber-100 text-amber-800 text-[9px] font-black px-2 py-1 rounded-lg uppercase tracking-wider border border-amber-200">
-                <i class="fas fa-bolt mr-1"></i>PRÓXIMA
-            </span>
-        ` : '';
+        const badgeEstado = (estadoReal && estadoReal !== 'Pendiente') ? `
+            <span class="bg-slate-100 text-slate-500 text-[8px] font-black px-1.5 rounded uppercase">
+                ${estadoReal}
+            </span>` : '';
 
-        const en2hBadge = en2Horas ? `
-            <span class="badge-proxima bg-rose-100 text-rose-700 text-[9px] font-black px-2 py-1 rounded-lg uppercase tracking-wider border border-rose-200">
-                <i class="far fa-clock mr-1"></i>EN ≤2H
-            </span>
-        ` : '';
+        const badgeVencida = esVencida ? `<span class="bg-rose-100 text-rose-600 text-[8px] font-black px-1.5 rounded uppercase">Vencida</span>` : '';
 
-        const extraCardGlow = (isProxima || en2Horas) ? 'card-proxima-glow ring-2 ring-amber-200/60 dark:ring-amber-400/30' : '';
-
-        // Hora más amigable (no negro pesado)
-        const horaClass = isProxima ? 
-            "shrink-0 bg-amber-50 text-amber-900 border border-amber-200 text-xs font-black px-3 py-1.5 rounded-xl shadow-sm uppercase" :
-            "shrink-0 bg-teal-50 text-teal-900 border border-teal-200 dark:bg-slate-700 dark:text-teal-200 dark:border-slate-600 text-xs font-black px-3 py-1.5 rounded-xl shadow-sm uppercase";
+        // hora más amigable (no negro pesado)
+        const timePill = `
+            <span class="shrink-0 bg-teal-50 text-teal-800 border border-teal-200 text-[12px] font-black px-3 py-1.5 rounded-full shadow-sm uppercase">
+                <i class="far fa-clock mr-1 text-teal-500"></i>${horaBonita}
+            </span>`;
 
         return `
-            <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border-l-4 ${colorBorde} flex overflow-hidden h-28 relative border-y border-r border-slate-100 dark:border-slate-700 ${extraCardGlow}">
+            <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border-l-4 ${colorBorde} flex overflow-hidden h-32 relative border-y border-r border-slate-100 dark:border-slate-700">
                 <div class="${bgFecha} w-20 flex flex-col items-center justify-center shrink-0 border-r border-slate-100 dark:border-slate-700 p-1 leading-none">
                     <span class="text-[10px] font-black uppercase tracking-wider opacity-80">${diaTxt}</span>
-                    <span class="text-3xl font-black my-1">${d}</span>
+                    <span class="text-3xl font-black my-1">${parseInt(d,10)}</span>
                     <span class="text-[10px] font-black uppercase tracking-wider opacity-80">${mesTxt}</span>
                 </div>
                 
                 <div class="p-3 flex-1 min-w-0 flex flex-col justify-center text-left">
-                    <div class="flex items-start justify-between gap-2 mb-0.5">
+                    <div class="flex items-start justify-between gap-2 mb-1">
                         <div class="min-w-0">
-                            <div class="flex items-center gap-2 flex-wrap">
+                            <div class="flex flex-wrap items-center gap-2">
                                 <h3 class="font-black text-sm text-slate-800 dark:text-white truncate uppercase">${c.nombre}</h3>
-                                ${esVencida ? '<span class="bg-rose-100 text-rose-600 text-[8px] font-black px-1.5 rounded uppercase">Vencida</span>' : ''}
-                                ${c.estado && c.estado !== 'Pendiente' ? `<span class="bg-slate-100 text-slate-500 text-[8px] font-black px-1.5 rounded uppercase">${c.estado}</span>` : ''}
-                                ${proximaBadge}
-                                ${en2hBadge}
+                                ${badgeProxima}
+                                ${badge2h}
+                                ${badgeVencida}
+                                ${badgeEstado}
                             </div>
                         </div>
-
-                        <span class="${horaClass}">
-                            <i class="far fa-clock mr-1 text-teal-600"></i>${horaBonita}
-                        </span>
+                        ${timePill}
                     </div>
 
                     <p class="text-[9px] font-bold text-slate-400 uppercase mb-1 truncate"><i class="fas fa-briefcase mr-1 text-slate-300"></i> ${c.ocupacion || 'Sin ocupación'}</p>
 
-                    <!-- Servicio SIN CORTARSE: 2 líneas -->
-                    <p class="text-[10px] font-black text-teal-600 dark:text-teal-400 uppercase mb-1 line-clamp-2 leading-tight">${c.servicio}</p>
+                    <!-- ✅ NO se corta, permite 2 líneas -->
+                    <p class="text-[10px] font-black text-teal-600 dark:text-teal-400 uppercase mb-1 line-clamp-2">${c.servicio || ''}</p>
                     
                     <div class="flex items-center gap-2 mt-1">
                         <a href="https://wa.me/507${c.whatsapp}" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded shadow-sm font-bold text-[10px] flex items-center gap-1 transition-all no-print">
                             <i class="fab fa-whatsapp"></i> ${c.whatsapp}
                         </a>
-                        <span class="text-[9px] text-slate-400 truncate"><i class="fas fa-map-marker-alt text-slate-300 ml-1"></i> ${c.zona}</span>
+                        <span class="text-[9px] text-slate-400 truncate"><i class="fas fa-map-marker-alt text-slate-300 ml-1"></i> ${c.zona || ''}</span>
                     </div>
                 </div>
 
@@ -871,13 +928,13 @@
             <div class="space-y-4 text-xs text-slate-600 dark:text-slate-300">
                 <div class="bg-slate-50 dark:bg-slate-700/50 p-3 rounded-lg border border-slate-100 dark:border-slate-700">
                     <p><strong>FECHA REGISTRO:</strong> ${c.fecha_registro ? new Date(c.fecha_registro.seconds * 1000).toLocaleString() : 'N/A'}</p>
-                    <p class="mt-1"><strong>INTENCIÓN:</strong> <span class="text-teal-600 font-black uppercase">${c.intencion}</span></p>
+                    <p class="mt-1"><strong>INTENCIÓN:</strong> <span class="text-teal-600 font-black uppercase">${c.intencion || '-'}</span></p>
                 </div>
                 
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <p class="label-pro mb-1">Nombre</p>
-                        <p class="font-bold text-slate-800 dark:text-white uppercase">${c.nombre}</p>
+                        <p class="font-bold text-slate-800 dark:text-white uppercase">${c.nombre || '-'}</p>
                     </div>
                     <div>
                         <p class="label-pro mb-1">Edad</p>
@@ -906,11 +963,11 @@
                 <div class="grid grid-cols-2 gap-2 mt-4">
                     <div class="bg-teal-50 p-2 rounded border border-teal-100">
                         <p class="text-[9px] font-black text-teal-700 uppercase">Servicio</p>
-                        <p class="font-bold text-teal-800 text-[10px]">${c.servicio}</p>
+                        <p class="font-bold text-teal-800 text-[10px]">${c.servicio || '-'}</p>
                     </div>
                     <div class="bg-blue-50 p-2 rounded border border-blue-100">
                         <p class="text-[9px] font-black text-blue-700 uppercase">Método Pago</p>
-                        <p class="font-bold text-blue-800 text-[10px]">${c.metodo_pago}</p>
+                        <p class="font-bold text-blue-800 text-[10px]">${c.metodo_pago || '-'}</p>
                     </div>
                 </div>
             </div>
@@ -923,9 +980,16 @@
     // --- UTILIDADES ---
     window.tConvert = (time) => {
         if(!time) return '--:--';
-        time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
-        if (time.length > 1) { time = time.slice(1); time[5] = +time[0] < 12 ? ' AM' : ' PM'; time[0] = +time[0] % 12 || 12; }
-        return time.join(''); 
+        time = time.toString().trim();
+        // si ya es 12h, la dejamos
+        if (/(AM|PM)$/i.test(time)) return time.toUpperCase().replace(/\s+/g,' ');
+        // si es 24h
+        let m = time.match(/^([01]?\d|2[0-3]):([0-5]\d)$/);
+        if (!m) return time;
+        let hh = parseInt(m[1],10), mm = m[2];
+        const ampm = hh < 12 ? 'AM' : 'PM';
+        hh = hh % 12; if (hh === 0) hh = 12;
+        return `${pad2(hh)}:${mm} ${ampm}`;
     }
 
     window.cambiarEstadoCita = async (id, nuevoEstado) => {
@@ -1239,6 +1303,9 @@
         
         document.getElementById('seccionFormulario').addEventListener('input', marcarComoPendiente);
         document.getElementById('seccionFormulario').addEventListener('change', marcarComoPendiente);
+
+        // ✅ refrescar UI de campana (por si hay cache)
+        updateCitasBellUI();
     });
     window.clearSignature = () => ctx.clearRect(0,0,canvas.width,canvas.height);
     </script>
