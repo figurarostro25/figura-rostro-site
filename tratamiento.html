@@ -40,7 +40,13 @@
         .service-row { display: grid; gap: 0.5rem; padding: 0.75rem; border-radius: 0.75rem; border: 1px solid #e2e8f0; background-color: #fff; grid-template-columns: 2fr 1fr 80px 40px; margin-bottom: 0.75rem; }
         .dark .service-row { background-color: #1e293b; border-color: #475569; }
 
-        .line-clamp-2{ display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; overflow:hidden; }
+        /* ✅ Para que “VALORACION...” NO se corte */
+        .line-clamp-2{
+            display:-webkit-box;
+            -webkit-box-orient:vertical;
+            -webkit-line-clamp:2;
+            overflow:hidden;
+        }
 
         @media (max-width: 768px) {
             .service-row { grid-template-columns: 1fr; }
@@ -60,6 +66,7 @@
             </div>
             <h2 class="text-2xl font-black uppercase text-slate-800 dark:text-white mb-2 italic">Acceso Restringido</h2>
             <p class="text-xs text-slate-400 mb-6 uppercase tracking-widest font-bold">Sistema Administrativo</p>
+            
             <form id="loginForm" class="space-y-4 text-left">
                 <div>
                     <label class="text-[10px] font-black uppercase text-slate-500 mb-1 block">Correo Autorizado</label>
@@ -88,11 +95,13 @@
                     <span class="hidden xs:inline">Figura Rostro</span>
                 </div>
             </div>
+            
             <div class="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-xl border dark:border-slate-700">
                 <button onclick="toggleView('form')" id="navForm" class="nav-btn-active px-4 py-2 text-[10px] font-bold">FICHA</button>
                 <button onclick="toggleView('list')" id="navList" class="px-4 py-2 text-[10px] font-bold dark:text-slate-400">PACIENTES</button>
                 <button onclick="toggleView('appointments')" id="navAppts" class="px-4 py-2 text-[10px] font-bold dark:text-slate-400">CITAS</button>
             </div>
+
             <div class="flex items-center gap-2">
                 <button onclick="logout()" class="w-9 h-9 rounded-full bg-rose-50 dark:bg-rose-900/30 text-rose-500 flex items-center justify-center shadow-sm" title="Cerrar Sesión">
                     <i class="fas fa-sign-out-alt text-sm"></i>
@@ -131,9 +140,11 @@
                 </div>
 
                 <div class="section-header text-teal-800 border-teal-100 italic">DATOS PERSONALES</div>
+                
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mb-4">
-                    <div class="md:col-span-8"><label class="label-pro">Nombre Completo *</label><input type="text" id="nombre" class="input-pro border-l-4 border-teal-500 shadow-sm"></div>
-                    <div class="md:col-span-4"><label class="label-pro">WhatsApp *</label><input type="tel" id="telefono" class="input-pro shadow-sm"></div>
+                    <div class="md:col-span-5"><label class="label-pro">Nombre Completo *</label><input type="text" id="nombre" class="input-pro border-l-4 border-teal-500 shadow-sm"></div>
+                    <div class="md:col-span-4"><label class="label-pro text-purple-600">Email (App Cliente)</label><input type="email" id="email_paciente" class="input-pro shadow-inner border-purple-100" placeholder="cliente@gmail.com"></div>
+                    <div class="md:col-span-3"><label class="label-pro">WhatsApp *</label><input type="tel" id="telefono" class="input-pro shadow-sm"></div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mb-4">
@@ -148,11 +159,10 @@
                     </div>
                     <div class="md:col-span-3"><label class="label-pro">Edad</label><input type="text" id="edad" class="input-pro bg-teal-50 dark:bg-slate-700 font-bold text-center text-teal-700 dark:text-teal-400" readonly></div>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mb-4">
-    <div class="md:col-span-5"><label class="label-pro">Nombre Completo *</label><input type="text" id="nombre" class="input-pro border-l-4 border-teal-500 shadow-sm"></div>
-    <div class="md:col-span-4"><label class="label-pro text-purple-600">Email (Para App Cliente)</label><input type="email" id="email_paciente" class="input-pro shadow-inner border-purple-100" placeholder="cliente@gmail.com"></div>
-    <div class="md:col-span-3"><label class="label-pro">WhatsApp *</label><input type="tel" id="telefono" class="input-pro shadow-sm"></div>
-</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <div class="text-left"><label class="label-pro">Ocupación / Profesión</label><input type="text" id="ocupacion" class="input-pro"></div>
+                    <div class="text-left"><label class="label-pro">Dirección Residencia</label><input type="text" id="direccion" class="input-pro"></div>
+                </div>
 
                 <div class="section-header text-teal-800 border-teal-100 italic">PLAN DE TRATAMIENTO</div>
                 <div id="listaServicios" class="mb-4 space-y-2"></div>
@@ -302,7 +312,7 @@
 
     <div id="seccionBaseDatos" class="hidden w-full max-w-7xl mx-auto bg-white dark:bg-slate-900 shadow-2xl p-4 md:p-8 rounded-3xl border dark:border-slate-700 no-print mb-32">
         <div class="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
-            <h2 class="font-black text-2xl uppercase tracking-tighter text-teal-700 italic text-left"><i class="fas fa-users mr-3"></i> Historial Clínico Integral</h2>
+            <h2 class="font-black text-2xl uppercase tracking-tighter text-teal-700 italic text-left"><i class="fas fa-users mr-3"></i> Historial Clínico</h2>
             <input type="text" id="buscador" placeholder="Buscar paciente..." class="input-pro w-full md:w-80 border-teal-100 shadow-inner uppercase" onkeyup="filtrarTabla()">
         </div>
 
@@ -331,7 +341,6 @@
     </div>
 
     <div id="seccionCitas" class="hidden w-full max-w-6xl mx-auto bg-white dark:bg-slate-900 shadow-2xl p-6 md:p-8 rounded-3xl border dark:border-slate-700 no-print mb-32 min-h-[600px]">
-        
         <div class="flex flex-col md:flex-row justify-between items-center mb-6 border-b border-slate-100 dark:border-slate-800 pb-4 gap-4">
             <div>
                 <h2 class="text-xl font-black uppercase italic text-slate-800 dark:text-white">
@@ -339,13 +348,11 @@
                 </h2>
                 <p class="text-[10px] text-slate-400 uppercase font-bold tracking-[0.2em]">Gestión Inteligente de Pacientes</p>
             </div>
-
             <div class="flex items-center gap-2 relative">
                 <button onclick="toggleCitasFeed()" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center relative border border-slate-200 dark:border-slate-700" title="Nuevas reservas">
                     <i id="citasBellIcon" class="fas fa-bell text-slate-600 dark:text-slate-300 text-sm"></i>
                     <span id="citasNewCount" class="absolute -top-1 -right-1 bg-rose-500 text-white text-[9px] font-black w-5 h-5 rounded-full flex items-center justify-center hidden">0</span>
                 </button>
-
                 <div id="citasFeed" class="hidden absolute right-0 top-12 w-[340px] max-w-[90vw] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-2xl z-[200] overflow-hidden">
                     <div class="p-3 border-b border-slate-100 dark:border-slate-700 flex items-center justify-between">
                         <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Notificaciones de Reservas</p>
@@ -356,20 +363,16 @@
                         <button onclick="toggleCitasFeed()" class="px-4 py-2 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold text-[10px] uppercase">Cerrar</button>
                     </div>
                 </div>
-
                 <button onclick="refreshCitas()" class="w-10 h-10 rounded-full bg-white dark:bg-slate-800 flex items-center justify-center border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700" title="Refrescar">
                     <i class="fas fa-rotate-right text-slate-600 dark:text-slate-300 text-sm"></i>
                 </button>
-
                 <div class="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">
                     <button onclick="filtrarVistaCitas('pendientes')" id="tabPendientes" class="px-5 py-2 rounded-md text-[10px] font-black uppercase transition-all bg-white dark:bg-slate-700 shadow-sm text-teal-700 dark:text-teal-400">Por Venir</button>
                     <button onclick="filtrarVistaCitas('historial')" id="tabHistorial" class="px-5 py-2 rounded-md text-[10px] font-black uppercase transition-all text-slate-400 hover:text-slate-600">Historial</button>
                 </div>
             </div>
         </div>
-
         <div id="containerCitasWeb" class="space-y-6"></div>
-
         <div id="modalVisor" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm hidden z-[100] flex items-center justify-center p-4">
             <div class="bg-white dark:bg-slate-800 w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden animate-fade-in border border-slate-200 dark:border-slate-700">
                 <div class="bg-teal-600 p-4 flex justify-between items-center">
@@ -382,7 +385,6 @@
                 </div>
             </div>
         </div>
-
         <div id="toastCitas" class="fixed bottom-6 right-6 hidden z-[120]">
             <div class="bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-2xl border border-white/10 max-w-sm">
                 <p class="text-[10px] font-black uppercase tracking-widest text-teal-300">Sistema</p>
@@ -619,7 +621,8 @@
         const icon  = document.getElementById('citasBellIcon');
         badge.innerText = window.citasUnseen;
         badge.classList.toggle('hidden', window.citasUnseen <= 0);
-        if (window.citasUnseen > 0) icon.classList.add('animate-pulse'); else icon.classList.remove('animate-pulse');
+        if (window.citasUnseen > 0) icon.classList.add('animate-pulse');
+        else icon.classList.remove('animate-pulse');
     };
 
     const renderCitasFeed = () => {
@@ -677,6 +680,9 @@
 
     window.refreshCitas = () => { loadCitas(true); toastCitas("Agenda actualizada."); };
 
+    // =========================
+    // ✅ LOAD CITAS (RESTORED)
+    // =========================
     window.loadCitas = (isManualRefresh = false) => {
         const container = document.getElementById('containerCitasWeb');
         container.innerHTML = '<div class="text-center p-10"><i class="fas fa-spinner fa-spin text-teal-500 text-3xl"></i><p class="mt-2 text-xs font-bold text-slate-400 uppercase">Organizando Agenda...</p></div>';
@@ -689,12 +695,16 @@
         unsuscribeCitas = onSnapshot(q, (snapshot) => {
             const now = new Date();
 
+            // Baseline
             if (!window.citasBaselineReg) {
                 let maxISO = null;
                 snapshot.forEach(ds => {
                     const d = ds.data();
                     const fr = d.fecha_registro?.seconds ? new Date(d.fecha_registro.seconds * 1000) : null;
-                    if (fr) { const iso = fr.toISOString(); if (!maxISO || iso > maxISO) maxISO = iso; }
+                    if (fr) {
+                        const iso = fr.toISOString();
+                        if (!maxISO || iso > maxISO) maxISO = iso;
+                    }
                 });
                 window.citasBaselineReg = maxISO || now.toISOString();
                 saveCitasFeed();
@@ -725,6 +735,7 @@
                 }
             });
 
+            // Proxima Real
             const allPendientesVigentes = [...pendientesActivas, ...pendientesVencidas];
             let proximaId = null;
             const eligibles = allPendientesVigentes
@@ -1193,6 +1204,7 @@
         document.getElementById('editModeBanner').classList.remove('hidden');
         document.querySelectorAll('.folio-display').forEach(e => e.innerText = r.folio);
         document.getElementById('nombre').value = r.paciente.nombre;
+        document.getElementById('email_paciente').value = r.paciente.email || ''; 
         document.getElementById('telefono').value = r.paciente.celular;
         document.getElementById('cedula').value = r.paciente.cedula || '';
         document.getElementById('edad').value = r.paciente.edad || '';
@@ -1302,15 +1314,20 @@
         const data = {
             paciente: { 
                 nombre: nom, 
-                email: document.getElementById('email_paciente').value.trim(), 
+                email: (document.getElementById('email_paciente') || {}).value || '', 
                 celular: document.getElementById('telefono').value, 
                 cedula: document.getElementById('cedula').value, 
                 edad: document.getElementById('edad').value, 
                 ocupacion: document.getElementById('ocupacion').value, 
                 direccion: document.getElementById('direccion').value 
             },
+            servicios: serv,
             finanzas: { total: document.getElementById('lblTotal').innerText, abono: cobrado, pendiente: document.getElementById('lblPendiente').innerText, descuento_pct: document.getElementById('descuento_pct').value, bono: document.getElementById('bono_manual').value, usa_cuotas: document.getElementById('usa_cuotas').checked, num_cuotas: document.getElementById('num_cuotas').value, fechas_cuotas: fCuotas, prox_pago: document.getElementById('fecha_proximo_pago_auto').value },
-            historial: window.historialLocal, fecha_inicio: fReal, fecha: Timestamp.now(), folio: document.querySelector('.folio-display').innerText, observaciones: document.getElementById('observaciones').value
+            historial: window.historialLocal, 
+            fecha_inicio: fReal, 
+            fecha: Timestamp.now(), 
+            folio: document.querySelector('.folio-display').innerText, 
+            observaciones: document.getElementById('observaciones').value 
         };
         
         try {
