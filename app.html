@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mi Perfil | Figura Rostro KG</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { brand: { dark: '#0f766e', main: '#14b8a6' } } } }
+        }
+    </script>
+    <style>
+        body { background: #0f172a; color: white; font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.05); }
+        .loader { border-top-color: #14b8a6; -webkit-animation: spinner 1.5s linear infinite; animation: spinner 1.5s linear infinite; }
+        @keyframes spinner { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <div id="loginScreen" class="flex-1 flex flex-col items-center justify-center p-6 text-center relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 opacity-30">
+            <div class="absolute -top-20 -left-20 w-72 h-72 bg-teal-600 rounded-full blur-[100px] mix-blend-multiply animate-pulse"></div>
+            <div class="absolute bottom-0 right-0 w-80 h-80 bg-purple-600 rounded-full blur-[120px] mix-blend-multiply opacity-50"></div>
+        </div>
+
+        <div class="w-16 h-16 bg-gradient-to-br from-teal-400 to-teal-600 rounded-2xl flex items-center justify-center shadow-2xl mb-6 rotate-3">
+            <span class="font-black text-2xl text-white italic">KG</span>
+        </div>
+        
+        <h1 class="text-3xl font-black uppercase tracking-tighter mb-2">Figura Rostro</h1>
+        <p class="text-slate-400 text-sm font-medium mb-10 max-w-xs">Accede a tu historial clínico, revisa tus citas y gestiona tus pagos de forma segura.</p>
+
+        <button onclick="loginGoogle()" class="flex items-center gap-3 bg-
