@@ -59,6 +59,31 @@
 </head>
 <body class="p-0 pt-20 md:p-4 md:pt-24">
 
+    <div id="loginOverlay" class="fixed inset-0 z-[9999] bg-slate-900 flex items-center justify-center transition-all duration-500">
+        <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-2xl w-full max-w-sm text-center border border-slate-700 mx-4">
+            <div class="mb-6 flex justify-center">
+                <div class="w-16 h-16 bg-teal-600 rounded-xl flex items-center justify-center text-white text-2xl font-black italic shadow-lg">KG</div>
+            </div>
+            <h2 class="text-2xl font-black uppercase text-slate-800 dark:text-white mb-2 italic">Acceso Restringido</h2>
+            <p class="text-xs text-slate-400 mb-6 uppercase tracking-widest font-bold">Sistema Administrativo</p>
+            
+            <form id="loginForm" class="space-y-4 text-left">
+                <div>
+                    <label class="text-[10px] font-black uppercase text-slate-500 mb-1 block">Correo Autorizado</label>
+                    <input type="email" id="loginEmail" class="input-pro border-slate-300 dark:border-slate-600 shadow-inner" placeholder="usuario@figurarostro.com" required>
+                </div>
+                <div>
+                    <label class="text-[10px] font-black uppercase text-slate-500 mb-1 block">Contraseña</label>
+                    <input type="password" id="loginPass" class="input-pro border-slate-300 dark:border-slate-600 shadow-inner" placeholder="••••••••" required>
+                </div>
+                <p id="loginError" class="text-rose-500 text-xs font-bold text-center hidden"></p>
+                <button type="submit" class="w-full bg-teal-600 hover:bg-teal-500 text-white py-4 rounded-xl font-black uppercase shadow-lg transition-all active:scale-95 text-sm italic">
+                    <i class="fas fa-lock mr-2"></i> Iniciar Sesión
+                </button>
+            </form>
+        </div>
+    </div>
+
     <nav class="fixed top-0 inset-x-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-md p-3 z-50 border-b border-slate-200 dark:border-slate-700 no-print">
         <div class="max-w-7xl mx-auto flex justify-between items-center px-2">
             <div class="flex items-center gap-3">
@@ -78,6 +103,9 @@
             </div>
 
             <div class="flex items-center gap-2">
+                <button onclick="logout()" class="w-9 h-9 rounded-full bg-rose-50 dark:bg-rose-900/30 text-rose-500 flex items-center justify-center shadow-sm" title="Cerrar Sesión">
+                    <i class="fas fa-sign-out-alt text-sm"></i>
+                </button>
                 <button onclick="toggleAlerts()" class="w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center relative">
                     <i class="fas fa-bell text-slate-500 dark:text-slate-400 text-sm"></i>
                     <span id="alertCount" class="absolute -top-1 -right-1 bg-rose-500 text-white text-[8px] font-black w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
@@ -285,6 +313,19 @@
             <h2 class="font-black text-2xl uppercase tracking-tighter text-teal-700 italic text-left"><i class="fas fa-users mr-3"></i> Historial Clínico Integral</h2>
             <input type="text" id="buscador" placeholder="Buscar paciente..." class="input-pro w-full md:w-80 border-teal-100 shadow-inner uppercase" onkeyup="filtrarTabla()">
         </div>
+
+        <div class="flex flex-wrap gap-2 mb-4 border-b border-slate-100 dark:border-slate-800 pb-4">
+            <button onclick="filtrarFinanzas('todos')" id="tabTodos" class="px-5 py-2 text-[10px] font-black uppercase rounded-lg bg-slate-800 text-white shadow-md transition-all">
+                Todos
+            </button>
+            <button onclick="filtrarFinanzas('deuda')" id="tabDeuda" class="px-5 py-2 text-[10px] font-black uppercase rounded-lg bg-white dark:bg-slate-700 text-slate-500 hover:bg-rose-50 hover:text-rose-500 border border-slate-200 dark:border-slate-600 transition-all">
+                <i class="fas fa-circle text-[8px] mr-2 text-rose-500"></i> Con Saldo Pendiente
+            </button>
+            <button onclick="filtrarFinanzas('aldia')" id="tabAldia" class="px-5 py-2 text-[10px] font-black uppercase rounded-lg bg-white dark:bg-slate-700 text-slate-500 hover:bg-emerald-50 hover:text-emerald-500 border border-slate-200 dark:border-slate-600 transition-all">
+                <i class="fas fa-check-circle text-[8px] mr-2 text-emerald-500"></i> Pagados / Al día
+            </button>
+        </div>
+
         <div id="tableContainer" class="border overflow-hidden rounded-xl bg-white dark:bg-slate-800 shadow-sm overflow-x-auto">
             <table class="w-full text-xs text-left min-w-[600px]">
                 <thead class="bg-slate-800 text-white font-black uppercase sticky top-0">
@@ -297,7 +338,6 @@
         </div>
     </div>
 
-    <!-- ✅✅✅ SOLO CITAS MODIFICADO -->
     <div id="seccionCitas" class="hidden w-full max-w-6xl mx-auto bg-white dark:bg-slate-900 shadow-2xl p-6 md:p-8 rounded-3xl border dark:border-slate-700 no-print mb-32 min-h-[600px]">
         
         <div class="flex flex-col md:flex-row justify-between items-center mb-6 border-b border-slate-100 dark:border-slate-800 pb-4 gap-4">
@@ -309,13 +349,11 @@
             </div>
 
             <div class="flex items-center gap-2 relative">
-                <!-- Campanita NUEVAS RESERVAS -->
                 <button onclick="toggleCitasFeed()" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center relative border border-slate-200 dark:border-slate-700" title="Nuevas reservas">
                     <i id="citasBellIcon" class="fas fa-bell text-slate-600 dark:text-slate-300 text-sm"></i>
                     <span id="citasNewCount" class="absolute -top-1 -right-1 bg-rose-500 text-white text-[9px] font-black w-5 h-5 rounded-full flex items-center justify-center hidden">0</span>
                 </button>
 
-                <!-- Panel feed (ahora sí muestra qué es la alerta) -->
                 <div id="citasFeed" class="hidden absolute right-0 top-12 w-[340px] max-w-[90vw] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-2xl z-[200] overflow-hidden">
                     <div class="p-3 border-b border-slate-100 dark:border-slate-700 flex items-center justify-between">
                         <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Notificaciones de Reservas</p>
@@ -327,12 +365,10 @@
                     </div>
                 </div>
 
-                <!-- Botón refrescar lista -->
                 <button onclick="refreshCitas()" class="w-10 h-10 rounded-full bg-white dark:bg-slate-800 flex items-center justify-center border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700" title="Refrescar">
                     <i class="fas fa-rotate-right text-slate-600 dark:text-slate-300 text-sm"></i>
                 </button>
 
-                <!-- Tabs -->
                 <div class="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">
                     <button onclick="filtrarVistaCitas('pendientes')" id="tabPendientes" class="px-5 py-2 rounded-md text-[10px] font-black uppercase transition-all bg-white dark:bg-slate-700 shadow-sm text-teal-700 dark:text-teal-400">Por Venir</button>
                     <button onclick="filtrarVistaCitas('historial')" id="tabHistorial" class="px-5 py-2 rounded-md text-[10px] font-black uppercase transition-all text-slate-400 hover:text-slate-600">Historial</button>
@@ -355,7 +391,6 @@
             </div>
         </div>
 
-        <!-- Toast / Aviso (solo para mensajes de sistema) -->
         <div id="toastCitas" class="fixed bottom-6 right-6 hidden z-[120]">
             <div class="bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-2xl border border-white/10 max-w-sm">
                 <p class="text-[10px] font-black uppercase tracking-widest text-teal-300">Sistema</p>
@@ -421,9 +456,12 @@
     </div>
 
     <script type="module">
+    // 1. IMPORTACIONES COMPLETAS (Firestore + Auth)
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { getFirestore, collection, addDoc, getDocs, orderBy, query, Timestamp, doc, updateDoc, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+    import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
+    // 2. CONFIGURACIÓN FIREBASE
     const firebaseConfig = {
         apiKey: "AIzaSyBAuTfBKGuG33c9NXc1s0lkQv-7GwA47l0",
         authDomain: "figurarostro-system.firebaseapp.com",
@@ -435,6 +473,9 @@
 
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
+    const auth = getAuth(app); // INICIAMOS AUTH
+
+    // CONSTANTES GLOBALES
     const colName = "pacientes_2026_oficial_v3";
     const colCitas = "reservas_entrantes";
 
@@ -444,6 +485,87 @@
     
     let unsuscribeCitas = null; 
     window.vistaCitasActual = 'pendientes';
+    window.filtroFinancieroActual = 'todos'; // Nuevo filtro financiero
+
+    // ==========================================
+    // 🔐 SEGURIDAD: LÓGICA DE LOGIN
+    // ==========================================
+    
+    // A. Manejar el Formulario de Login
+    const loginForm = document.getElementById('loginForm');
+    if(loginForm) {
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const pass = document.getElementById('loginPass').value;
+            const btn = e.target.querySelector('button');
+            const err = document.getElementById('loginError');
+
+            btn.disabled = true; 
+            btn.innerHTML = '<i class="fas fa-circle-notch fa-spin mr-2"></i> VERIFICANDO...';
+            err.classList.add('hidden');
+
+            try {
+                await signInWithEmailAndPassword(auth, email, pass);
+                // Si es correcto, el observador (punto B) quitará el overlay
+            } catch (error) {
+                console.error("Error Auth:", error);
+                err.innerText = "ACCESO DENEGADO: Credenciales incorrectas.";
+                err.classList.remove('hidden');
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-lock mr-2"></i> Iniciar Sesión';
+            }
+        });
+    }
+
+    // B. El "Portero": Vigila si hay usuario logueado
+    onAuthStateChanged(auth, (user) => {
+        const overlay = document.getElementById('loginOverlay');
+        
+        if (user) {
+            // === USUARIO AUTORIZADO ===
+            console.log("Acceso concedido:", user.email);
+            overlay.classList.add('opacity-0', 'pointer-events-none'); // Quita pantalla negra
+            
+            // INICIAMOS EL SISTEMA (Cargar datos)
+            initSystem(); 
+        } else {
+            // === NO AUTORIZADO ===
+            overlay.classList.remove('opacity-0', 'pointer-events-none'); // Pone pantalla negra
+            console.log("Esperando inicio de sesión...");
+            
+            // Limpieza de seguridad
+            if(unsuscribeCitas) unsuscribeCitas();
+            document.getElementById('tableBody').innerHTML = ''; 
+        }
+    });
+
+    // C. Función para Cerrar Sesión
+    window.logout = () => {
+        if(confirm("¿Cerrar sesión de seguridad?")) {
+            signOut(auth).then(() => location.reload());
+        }
+    };
+
+    // ==========================================
+    // 🚀 INICIALIZACIÓN DEL SISTEMA
+    // ==========================================
+
+    function initSystem() {
+        // Inicialización normal
+        document.querySelectorAll('.folio-display').forEach(el => el.innerText = `REQ-${Date.now().toString().slice(-6)}`);
+        agregarServicio();
+        setupCanvas();
+        updateCitasBellUI();
+        
+        // Cargar citas automáticamente
+        loadCitas();
+        
+        // Si estamos en vista de lista, cargar datos
+        if(!document.getElementById('seccionBaseDatos').classList.contains('hidden')) {
+            loadData();
+        }
+    }
 
     window.toggleDarkMode = () => document.documentElement.classList.toggle('dark');
 
@@ -454,30 +576,34 @@
         if (unsuscribeCitas && view !== 'appointments') { unsuscribeCitas(); unsuscribeCitas = null; }
 
         if(view === 'form') document.getElementById('seccionFormulario').classList.remove('hidden');
-        if(view === 'list') { document.getElementById('seccionBaseDatos').classList.remove('hidden'); loadData(); checkAlerts(); }
-        if(view === 'appointments') { document.getElementById('seccionCitas').classList.remove('hidden'); loadCitas(); }
+        if(view === 'list') { 
+            document.getElementById('seccionBaseDatos').classList.remove('hidden'); 
+            loadData(); // Carga protegida
+            checkAlerts(); 
+        }
+        if(view === 'appointments') { 
+            document.getElementById('seccionCitas').classList.remove('hidden'); 
+            loadCitas(); 
+        }
         
+        // Update nav styles
         document.getElementById('navForm').className = view === 'form' ? 'nav-btn-active px-4 py-2 text-[10px] font-bold transition-all' : 'px-4 py-2 text-[10px] font-bold dark:text-slate-400 transition-all';
         document.getElementById('navList').className = view === 'list' ? 'nav-btn-active px-4 py-2 text-[10px] font-bold transition-all' : 'px-4 py-2 text-[10px] font-bold dark:text-slate-400 transition-all';
         document.getElementById('navAppts').className = view === 'appointments' ? 'nav-btn-active px-4 py-2 text-[10px] font-bold transition-all' : 'px-4 py-2 text-[10px] font-bold dark:text-slate-400 transition-all';
     };
 
     // =========================
-    // ✅ CITAS: HELPERS ROBUSTOS
+    // ✅ CITAS: HELPERS ROBUSTOS (RESTORED)
     // =========================
     const pad2 = (n) => String(n).padStart(2,'0');
 
     const parseHoraTo24 = (horaRaw) => {
         if(!horaRaw) return "00:00";
         const h = String(horaRaw).trim().toUpperCase();
-
-        // Formato 24h: "20:00"
         if (/^\d{1,2}:\d{2}$/.test(h)) {
             const [hh, mm] = h.split(':').map(Number);
             return `${pad2(hh)}:${pad2(mm)}`;
         }
-
-        // Formato 12h: "06:00 PM" / "6:00PM"
         const m = h.match(/^(\d{1,2})(?::(\d{2}))?\s*(AM|PM)$/);
         if (m) {
             let hh = parseInt(m[1], 10);
@@ -487,7 +613,6 @@
             if (ampm === "AM" && hh === 12) hh = 0;
             return `${pad2(hh)}:${pad2(mm)}`;
         }
-
         return "00:00";
     };
 
@@ -504,7 +629,6 @@
 
     const minutesDiff = (a, b) => Math.round((a - b) / 60000);
 
-    // --- NUEVA LÓGICA DE CITAS MEJORADA ---
     window.filtrarVistaCitas = (vista) => {
         window.vistaCitasActual = vista;
         const btnP = document.getElementById('tabPendientes');
@@ -524,14 +648,13 @@
     // ✅ NUEVAS RESERVAS (campana REAL + feed)
     // =====================================
     window.citasFirstSnapshotDone = false;
-
     const LS_FEED = "kg_citas_feed_items_v1";
     const LS_UNSEEN = "kg_citas_unseen_v1";
     const LS_BASELINE = "kg_citas_baseline_reg_v1";
 
     window.citasFeedItems = JSON.parse(localStorage.getItem(LS_FEED) || "[]");
     window.citasUnseen = parseInt(localStorage.getItem(LS_UNSEEN) || "0", 10);
-    window.citasBaselineReg = localStorage.getItem(LS_BASELINE) || null; // ISO string
+    window.citasBaselineReg = localStorage.getItem(LS_BASELINE) || null; 
 
     const saveCitasFeed = () => {
         localStorage.setItem(LS_FEED, JSON.stringify(window.citasFeedItems.slice(0, 50)));
@@ -552,10 +675,7 @@
         const list = document.getElementById('citasFeedList');
         if (!list) return;
         if (!window.citasFeedItems.length) {
-            list.innerHTML = `<div class="p-6 text-center opacity-60">
-                <i class="far fa-bell text-3xl text-slate-300"></i>
-                <p class="mt-2 text-xs font-bold text-slate-400 uppercase">Sin notificaciones nuevas</p>
-            </div>`;
+            list.innerHTML = `<div class="p-6 text-center opacity-60"><i class="far fa-bell text-3xl text-slate-300"></i><p class="mt-2 text-xs font-bold text-slate-400 uppercase">Sin notificaciones nuevas</p></div>`;
             return;
         }
         list.innerHTML = window.citasFeedItems.map(item => `
@@ -568,8 +688,7 @@
                     <i class="far fa-clock mr-1 text-slate-400"></i>${item.hora || '--'}
                 </p>
                 <p class="text-[10px] font-bold text-slate-500 mt-1 line-clamp-2">${item.servicio || ''}</p>
-            </div>
-        `).join('');
+            </div>`).join('');
     };
 
     const toastCitas = (msg) => {
@@ -586,12 +705,9 @@
             const ctx = new AudioCtx();
             const o = ctx.createOscillator();
             const g = ctx.createGain();
-            o.type = 'sine';
-            o.frequency.value = 880;
-            g.gain.value = 0.05;
+            o.type = 'sine'; o.frequency.value = 880; g.gain.value = 0.05;
             o.connect(g); g.connect(ctx.destination);
-            o.start();
-            setTimeout(() => { o.stop(); ctx.close(); }, 140);
+            o.start(); setTimeout(() => { o.stop(); ctx.close(); }, 140);
         } catch(e) {}
     };
 
@@ -599,8 +715,6 @@
         const panel = document.getElementById('citasFeed');
         panel.classList.toggle('hidden');
         renderCitasFeed();
-
-        // Si abrió el panel, se considera "visto"
         if (!panel.classList.contains('hidden')) {
             window.citasUnseen = 0;
             saveCitasFeed();
@@ -609,22 +723,15 @@
     };
 
     window.clearCitasFeed = () => {
-        window.citasFeedItems = [];
-        window.citasUnseen = 0;
-        saveCitasFeed();
-        updateCitasBellUI();
-        renderCitasFeed();
+        window.citasFeedItems = []; window.citasUnseen = 0;
+        saveCitasFeed(); updateCitasBellUI(); renderCitasFeed();
         toastCitas("Notificaciones limpiadas.");
     };
 
-    // Evita que "refrescar" dispare falsas nuevas reservas
-    window.refreshCitas = () => {
-        loadCitas(true);
-        toastCitas("Agenda actualizada.");
-    };
+    window.refreshCitas = () => { loadCitas(true); toastCitas("Agenda actualizada."); };
 
     // =========================
-    // ✅ LOAD CITAS (con PRÓXIMA real + auto-archivo visual)
+    // ✅ LOAD CITAS (RESTORED)
     // =========================
     window.loadCitas = (isManualRefresh = false) => {
         const container = document.getElementById('containerCitasWeb');
@@ -633,13 +740,12 @@
         const q = query(collection(db, colCitas), orderBy("fecha_cita", "asc"));
         if (unsuscribeCitas) unsuscribeCitas();
 
-        // ✅ IMPORTANTE: al re-suscribir (por refresh), reiniciamos bandera de primer snapshot
         window.citasFirstSnapshotDone = false;
 
         unsuscribeCitas = onSnapshot(q, (snapshot) => {
             const now = new Date();
 
-            // ✅ Baseline (para NO contar viejas como nuevas)
+            // Baseline
             if (!window.citasBaselineReg) {
                 let maxISO = null;
                 snapshot.forEach(ds => {
@@ -654,37 +760,23 @@
                 saveCitasFeed();
             }
 
-            // ✅ Solo detectar nuevas reservas cuando ya pasó el primer snapshot
             handleNewIncomingCitas(snapshot);
 
             container.innerHTML = '';
-
-            let pendientesActivas = [];   // Pendientes aún “vigentes” (<=3h de iniciada)
-            let pendientesVencidas = [];  // Pendientes con fecha pasada (pero no auto-archivadas)
-            let historial = [];           // Asistió/Faltó + auto-archivadas
+            let pendientesActivas = []; let pendientesVencidas = []; let historial = [];
 
             snapshot.forEach((docSnap) => {
                 const c = { id: docSnap.id, ...docSnap.data() };
                 const est = c.estado || "Pendiente";
-
-                // datetime real
                 const dt = citaDateTime(c.fecha_cita, c.hora_cita);
-                const diffMin = minutesDiff(dt, now); // dt - now en minutos
-
-                // ✅ Auto-archivo VISUAL: 3 horas después de iniciada (180 min después del start)
-                const minutesSinceStart = minutesDiff(now, dt); // now - dt
+                const minutesSinceStart = minutesDiff(now, dt);
                 const autoArchivada = (est === 'Pendiente' && minutesSinceStart >= 180);
 
                 if (autoArchivada) {
-                    c._autoArchived = true;
-                    c._estadoVisual = "Archivada";
-                    historial.push(c);
-                    return;
+                    c._autoArchived = true; c._estadoVisual = "Archivada"; historial.push(c); return;
                 }
 
                 if (est === 'Pendiente') {
-                    // “Vencida” por fecha (para recuperar) pero NO auto-archivada aún (<=3h desde inicio o sin hora)
-                    // Si ya pasó la fecha (día anterior) o ya pasó hora pero aún dentro de 3h => la dejamos visible, pero cae en sección “vencidas” si su fecha < hoy.
                     const todayStr = new Date().toLocaleDateString('en-CA');
                     if (c.fecha_cita < todayStr) pendientesVencidas.push(c);
                     else pendientesActivas.push(c);
@@ -693,14 +785,12 @@
                 }
             });
 
-            // ✅ Determinar la PRÓXIMA REAL:
-            // Regla: la más cercana en tiempo, y la etiqueta se queda hasta 1 hora después de iniciada.
+            // Proxima Real
             const allPendientesVigentes = [...pendientesActivas, ...pendientesVencidas];
             let proximaId = null;
-
             const eligibles = allPendientesVigentes
                 .map(c => ({ c, dt: citaDateTime(c.fecha_cita, c.hora_cita) }))
-                .filter(x => x.dt.getTime() >= (now.getTime() - 60 * 60000)) // desde 1h antes
+                .filter(x => x.dt.getTime() >= (now.getTime() - 60 * 60000))
                 .sort((a,b) => a.dt - b.dt);
 
             if (eligibles.length) proximaId = eligibles[0].c.id;
@@ -712,65 +802,43 @@
                 if (future.length) proximaId = future[0].c.id;
             }
 
-            // ✅ Ordenar activas por datetime real (fecha + hora)
             pendientesActivas.sort((a,b) => citaDateTime(a.fecha_cita, a.hora_cita) - citaDateTime(b.fecha_cita, b.hora_cita));
             pendientesVencidas.sort((a,b) => citaDateTime(a.fecha_cita, a.hora_cita) - citaDateTime(b.fecha_cita, b.hora_cita));
             historial.sort((a,b) => citaDateTime(b.fecha_cita, b.hora_cita) - citaDateTime(a.fecha_cita, a.hora_cita));
 
-            // LOGICA DE RENDERIZADO
             if (window.vistaCitasActual === 'pendientes') {
                 if (pendientesActivas.length === 0 && pendientesVencidas.length === 0) {
                     container.innerHTML = `<div class="p-10 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-2xl text-center opacity-60"><i class="far fa-calendar-check text-4xl text-slate-300 mb-2"></i><p class="text-slate-400 font-bold uppercase text-xs">Agenda al día. No hay pendientes.</p></div>`;
                     return;
                 }
-
                 if (pendientesActivas.length > 0) {
                     container.innerHTML += `<div class="text-xs font-black text-teal-600 uppercase tracking-widest mb-3 border-b pb-1">📅 Próximas Citas (Prioridad)</div>`;
-                    container.innerHTML += `<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">` 
-                        + pendientesActivas.map(c => renderCard(c, false, c.id === proximaId)).join('') 
-                        + `</div>`;
+                    container.innerHTML += `<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">` + pendientesActivas.map(c => renderCard(c, false, c.id === proximaId)).join('') + `</div>`;
                 }
-
                 if (pendientesVencidas.length > 0) {
                     container.innerHTML += `<div class="text-xs font-black text-rose-400 uppercase tracking-widest mb-3 border-b border-rose-100 pb-1 mt-6">⚠️ Citas Vencidas / Por Recuperar</div>`;
-                    container.innerHTML += `<div class="grid grid-cols-1 md:grid-cols-2 gap-3 opacity-90">` 
-                        + pendientesVencidas.map(c => renderCard(c, true, c.id === proximaId)).join('') 
-                        + `</div>`;
+                    container.innerHTML += `<div class="grid grid-cols-1 md:grid-cols-2 gap-3 opacity-90">` + pendientesVencidas.map(c => renderCard(c, true, c.id === proximaId)).join('') + `</div>`;
                 }
-
             } else {
                 if (historial.length === 0) {
                     container.innerHTML = `<div class="p-10 text-center opacity-50"><p class="text-slate-400 font-bold uppercase text-xs">Historial Vacío</p></div>`;
                 } else {
-                    container.innerHTML += `<div class="grid grid-cols-1 md:grid-cols-2 gap-3">` 
-                        + historial.map(c => renderCard(c, false, false)).join('') 
-                        + `</div>`;
+                    container.innerHTML += `<div class="grid grid-cols-1 md:grid-cols-2 gap-3">` + historial.map(c => renderCard(c, false, false)).join('') + `</div>`;
                 }
             }
         });
     };
 
     const handleNewIncomingCitas = (snapshot) => {
-        // Primer snapshot: solo “marca base”, NO cuenta
-        if (!window.citasFirstSnapshotDone) {
-            window.citasFirstSnapshotDone = true;
-            updateCitasBellUI();
-            return;
-        }
-
+        if (!window.citasFirstSnapshotDone) { window.citasFirstSnapshotDone = true; updateCitasBellUI(); return; }
         const seccionCitasVisible = !document.getElementById('seccionCitas').classList.contains('hidden');
         if (!seccionCitasVisible) return;
 
         const changes = snapshot.docChanges();
-        const nuevos = changes
-            .filter(ch => ch.type === 'added')
-            .map(ch => ({ id: ch.doc.id, ...ch.doc.data() }));
-
+        const nuevos = changes.filter(ch => ch.type === 'added').map(ch => ({ id: ch.doc.id, ...ch.doc.data() }));
         if (!nuevos.length) return;
 
-        // Filtrar por estado pendiente + por fecha_registro > baseline (para evitar “viejas”)
         const baselineISO = window.citasBaselineReg || new Date().toISOString();
-
         const nuevosReales = nuevos.filter(n => {
             const est = (n.estado || 'Pendiente');
             if (est !== 'Pendiente') return false;
@@ -781,7 +849,6 @@
 
         if (!nuevosReales.length) return;
 
-        // Actualizar baseline al más reciente de los nuevos
         let maxISO = baselineISO;
         nuevosReales.forEach(n => {
             const frISO = new Date(n.fecha_registro.seconds * 1000).toISOString();
@@ -789,45 +856,30 @@
         });
         window.citasBaselineReg = maxISO;
 
-        // Insertar al feed
         nuevosReales.forEach(n => {
-            const item = {
-                nombre: n.nombre || "Paciente",
-                fecha: n.fecha_cita || "",
-                hora: tConvert(n.hora_cita),
-                servicio: n.servicio || "",
-                ts: Date.now()
-            };
+            const item = { nombre: n.nombre || "Paciente", fecha: n.fecha_cita || "", hora: tConvert(n.hora_cita), servicio: n.servicio || "", ts: Date.now() };
             window.citasFeedItems.unshift(item);
         });
 
         window.citasUnseen += nuevosReales.length;
-        saveCitasFeed();
-        updateCitasBellUI();
-
+        saveCitasFeed(); updateCitasBellUI();
         const n0 = nuevosReales[0];
         toastCitas(`Nueva reserva: ${n0.nombre || 'Paciente'} • ${n0.fecha_cita || ''} • ${tConvert(n0.hora_cita)}`);
         beepCitas();
     };
 
-    // Plantilla de Tarjeta Optimizada + PRÓXIMA + alerta <2h + hora amigable
     const renderCard = (c, esVencida, esProxima) => {
         const dt = citaDateTime(c.fecha_cita, c.hora_cita);
         const now = new Date();
-        const minsTo = minutesDiff(dt, now);      // dt - now
-        const minsSince = minutesDiff(now, dt);   // now - dt
+        const minsTo = minutesDiff(dt, now); const minsSince = minutesDiff(now, dt);
         const inLessThan2h = (minsTo >= 0 && minsTo <= 120);
-
         const [y, m, d] = (c.fecha_cita || "1970-01-01").split('-');
         const fObj = new Date(parseInt(y,10), parseInt(m,10) - 1, parseInt(d,10));
-
         const diaTxt = fObj.toLocaleString('es-ES', { weekday: 'short' }).replace('.', '').toUpperCase();
         const mesTxt = fObj.toLocaleString('es-ES', { month: 'short' }).replace('.', '').toUpperCase();
 
         let colorBorde = esVencida ? "border-rose-400" : "border-teal-500";
         let bgFecha = esVencida ? "bg-rose-50 text-rose-700" : "bg-teal-50 text-teal-800";
-
-        // estados
         const estadoReal = c._autoArchived ? "Archivada" : (c.estado || "Pendiente");
 
         if (estadoReal === 'Asistió') { colorBorde = "border-emerald-500 opacity-70 grayscale"; bgFecha = "bg-emerald-100 text-emerald-800"; }
@@ -836,179 +888,125 @@
 
         let acciones = '';
         if (window.vistaCitasActual === 'pendientes') {
-            acciones = `
-                <div class="flex flex-col h-full border-l border-slate-100 dark:border-slate-700">
+            acciones = `<div class="flex flex-col h-full border-l border-slate-100 dark:border-slate-700">
                     <button onclick='verDetalles(${JSON.stringify(c).replace(/'/g, "&#39;")})' class="flex-1 px-3 bg-blue-50 text-blue-500 hover:bg-blue-500 hover:text-white transition-all text-xs" title="Ver Ficha Completa"><i class="fas fa-eye"></i></button>
                     <button onclick="cambiarEstadoCita('${c.id}', 'Asistió')" class="flex-1 px-3 bg-emerald-50 text-emerald-500 hover:bg-emerald-500 hover:text-white transition-all text-xs" title="Asistió"><i class="fas fa-check"></i></button>
                     <button onclick="cambiarEstadoCita('${c.id}', 'Faltó')" class="flex-1 px-3 bg-rose-50 text-rose-400 hover:bg-rose-500 hover:text-white transition-all text-xs" title="No Vino"><i class="fas fa-times"></i></button>
-                </div>
-            `;
+                </div>`;
         } else {
-            acciones = `
-                <div class="flex flex-col h-full border-l border-slate-100 dark:border-slate-700">
+            acciones = `<div class="flex flex-col h-full border-l border-slate-100 dark:border-slate-700">
                      <button onclick='verDetalles(${JSON.stringify(c).replace(/'/g, "&#39;")})' class="h-1/2 px-3 bg-blue-50 text-blue-500 hover:bg-blue-500 hover:text-white transition-all text-xs" title="Ver Ficha"><i class="fas fa-eye"></i></button>
                      <button onclick="eliminarCitaDefinitiva('${c.id}')" class="h-1/2 px-3 bg-slate-100 text-slate-400 hover:bg-rose-500 hover:text-white transition-all text-xs" title="Eliminar"><i class="fas fa-trash"></i></button>
-                </div>
-            `;
+                </div>`;
         }
 
         const horaBonita = tConvert(c.hora_cita);
-
-        // etiqueta PROXIMA + alerta <2h
-        const badgeProxima = esProxima ? `
-            <span class="bg-amber-100 text-amber-800 border border-amber-200 text-[9px] font-black px-2 py-1 rounded-lg uppercase animate-pulse">
-                <i class="fas fa-bolt mr-1"></i> PRÓXIMA
-            </span>` : '';
-
-        const badge2h = (inLessThan2h && (estadoReal === 'Pendiente')) ? `
-            <span class="bg-rose-100 text-rose-700 border border-rose-200 text-[9px] font-black px-2 py-1 rounded-lg uppercase animate-pulse">
-                <i class="far fa-clock mr-1"></i> EN &lt; 2H
-            </span>` : '';
-
-        const badgeEstado = (estadoReal && estadoReal !== 'Pendiente') ? `
-            <span class="bg-slate-100 text-slate-500 text-[8px] font-black px-1.5 rounded uppercase">
-                ${estadoReal}
-            </span>` : '';
-
+        const badgeProxima = esProxima ? `<span class="bg-amber-100 text-amber-800 border border-amber-200 text-[9px] font-black px-2 py-1 rounded-lg uppercase animate-pulse"><i class="fas fa-bolt mr-1"></i> PRÓXIMA</span>` : '';
+        const badge2h = (inLessThan2h && (estadoReal === 'Pendiente')) ? `<span class="bg-rose-100 text-rose-700 border border-rose-200 text-[9px] font-black px-2 py-1 rounded-lg uppercase animate-pulse"><i class="far fa-clock mr-1"></i> EN &lt; 2H</span>` : '';
+        const badgeEstado = (estadoReal && estadoReal !== 'Pendiente') ? `<span class="bg-slate-100 text-slate-500 text-[8px] font-black px-1.5 rounded uppercase">${estadoReal}</span>` : '';
         const badgeVencida = esVencida ? `<span class="bg-rose-100 text-rose-600 text-[8px] font-black px-1.5 rounded uppercase">Vencida</span>` : '';
+        const timePill = `<span class="shrink-0 bg-teal-50 text-teal-800 border border-teal-200 text-[12px] font-black px-3 py-1.5 rounded-full shadow-sm uppercase"><i class="far fa-clock mr-1 text-teal-500"></i>${horaBonita}</span>`;
 
-        // hora más amigable (no negro pesado)
-        const timePill = `
-            <span class="shrink-0 bg-teal-50 text-teal-800 border border-teal-200 text-[12px] font-black px-3 py-1.5 rounded-full shadow-sm uppercase">
-                <i class="far fa-clock mr-1 text-teal-500"></i>${horaBonita}
-            </span>`;
-
-        return `
-            <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border-l-4 ${colorBorde} flex overflow-hidden h-32 relative border-y border-r border-slate-100 dark:border-slate-700">
-                <div class="${bgFecha} w-20 flex flex-col items-center justify-center shrink-0 border-r border-slate-100 dark:border-slate-700 p-1 leading-none">
-                    <span class="text-[10px] font-black uppercase tracking-wider opacity-80">${diaTxt}</span>
-                    <span class="text-3xl font-black my-1">${parseInt(d,10)}</span>
-                    <span class="text-[10px] font-black uppercase tracking-wider opacity-80">${mesTxt}</span>
-                </div>
-                
+        return `<div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border-l-4 ${colorBorde} flex overflow-hidden h-32 relative border-y border-r border-slate-100 dark:border-slate-700">
+                <div class="${bgFecha} w-20 flex flex-col items-center justify-center shrink-0 border-r border-slate-100 dark:border-slate-700 p-1 leading-none"><span class="text-[10px] font-black uppercase tracking-wider opacity-80">${diaTxt}</span><span class="text-3xl font-black my-1">${parseInt(d,10)}</span><span class="text-[10px] font-black uppercase tracking-wider opacity-80">${mesTxt}</span></div>
                 <div class="p-3 flex-1 min-w-0 flex flex-col justify-center text-left">
-                    <div class="flex items-start justify-between gap-2 mb-1">
-                        <div class="min-w-0">
-                            <div class="flex flex-wrap items-center gap-2">
-                                <h3 class="font-black text-sm text-slate-800 dark:text-white truncate uppercase">${c.nombre}</h3>
-                                ${badgeProxima}
-                                ${badge2h}
-                                ${badgeVencida}
-                                ${badgeEstado}
-                            </div>
-                        </div>
-                        ${timePill}
-                    </div>
-
+                    <div class="flex items-start justify-between gap-2 mb-1"><div class="min-w-0"><div class="flex flex-wrap items-center gap-2"><h3 class="font-black text-sm text-slate-800 dark:text-white truncate uppercase">${c.nombre}</h3>${badgeProxima}${badge2h}${badgeVencida}${badgeEstado}</div></div>${timePill}</div>
                     <p class="text-[9px] font-bold text-slate-400 uppercase mb-1 truncate"><i class="fas fa-briefcase mr-1 text-slate-300"></i> ${c.ocupacion || 'Sin ocupación'}</p>
-
-                    <!-- ✅ NO se corta, permite 2 líneas -->
                     <p class="text-[10px] font-black text-teal-600 dark:text-teal-400 uppercase mb-1 line-clamp-2">${c.servicio || ''}</p>
-                    
-                    <div class="flex items-center gap-2 mt-1">
-                        <a href="https://wa.me/507${c.whatsapp}" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded shadow-sm font-bold text-[10px] flex items-center gap-1 transition-all no-print">
-                            <i class="fab fa-whatsapp"></i> ${c.whatsapp}
-                        </a>
-                        <span class="text-[9px] text-slate-400 truncate"><i class="fas fa-map-marker-alt text-slate-300 ml-1"></i> ${c.zona || ''}</span>
-                    </div>
-                </div>
-
-                ${acciones}
-            </div>
-        `;
+                    <div class="flex items-center gap-2 mt-1"><a href="https://wa.me/507${c.whatsapp}" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded shadow-sm font-bold text-[10px] flex items-center gap-1 transition-all no-print"><i class="fab fa-whatsapp"></i> ${c.whatsapp}</a><span class="text-[9px] text-slate-400 truncate"><i class="fas fa-map-marker-alt text-slate-300 ml-1"></i> ${c.zona || ''}</span></div>
+                </div>${acciones}</div>`;
     };
 
-    // --- VISOR DE DETALLES ---
     window.verDetalles = (c) => {
         const modal = document.getElementById('modalVisor');
         const contenido = document.getElementById('contenidoVisor');
         const antecedentes = c.antecedentes ? c.antecedentes.join(", ") : "Ninguno";
-        
-        contenido.innerHTML = `
-            <div class="space-y-4 text-xs text-slate-600 dark:text-slate-300">
-                <div class="bg-slate-50 dark:bg-slate-700/50 p-3 rounded-lg border border-slate-100 dark:border-slate-700">
-                    <p><strong>FECHA REGISTRO:</strong> ${c.fecha_registro ? new Date(c.fecha_registro.seconds * 1000).toLocaleString() : 'N/A'}</p>
-                    <p class="mt-1"><strong>INTENCIÓN:</strong> <span class="text-teal-600 font-black uppercase">${c.intencion || '-'}</span></p>
-                </div>
-                
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <p class="label-pro mb-1">Nombre</p>
-                        <p class="font-bold text-slate-800 dark:text-white uppercase">${c.nombre || '-'}</p>
-                    </div>
-                    <div>
-                        <p class="label-pro mb-1">Edad</p>
-                        <p class="font-bold">${c.edad || '-'} Años</p>
-                    </div>
-                    <div>
-                        <p class="label-pro mb-1">Ocupación</p>
-                        <p class="font-bold uppercase">${c.ocupacion || '-'}</p>
-                    </div>
-                    <div>
-                        <p class="label-pro mb-1">Provincia</p>
-                        <p class="font-bold uppercase">${c.provincia || '-'}</p>
-                    </div>
-                </div>
-                
-                <div class="border-t border-slate-100 dark:border-slate-700 pt-3">
-                    <p class="label-pro mb-1 text-purple-600">Motivación (¿Qué le inspira?)</p>
-                    <p class="italic">"${c.motivacion || '-'}"</p>
-                </div>
-
-                <div>
-                    <p class="label-pro mb-1 text-rose-500">Antecedentes Médicos</p>
-                    <p class="font-bold uppercase text-rose-600">${antecedentes}</p>
-                </div>
-                
-                <div class="grid grid-cols-2 gap-2 mt-4">
-                    <div class="bg-teal-50 p-2 rounded border border-teal-100">
-                        <p class="text-[9px] font-black text-teal-700 uppercase">Servicio</p>
-                        <p class="font-bold text-teal-800 text-[10px]">${c.servicio || '-'}</p>
-                    </div>
-                    <div class="bg-blue-50 p-2 rounded border border-blue-100">
-                        <p class="text-[9px] font-black text-blue-700 uppercase">Método Pago</p>
-                        <p class="font-bold text-blue-800 text-[10px]">${c.metodo_pago || '-'}</p>
-                    </div>
-                </div>
-            </div>
-        `;
+        contenido.innerHTML = `<div class="space-y-4 text-xs text-slate-600 dark:text-slate-300">
+                <div class="bg-slate-50 dark:bg-slate-700/50 p-3 rounded-lg border border-slate-100 dark:border-slate-700"><p><strong>FECHA REGISTRO:</strong> ${c.fecha_registro ? new Date(c.fecha_registro.seconds * 1000).toLocaleString() : 'N/A'}</p><p class="mt-1"><strong>INTENCIÓN:</strong> <span class="text-teal-600 font-black uppercase">${c.intencion || '-'}</span></p></div>
+                <div class="grid grid-cols-2 gap-4"><div><p class="label-pro mb-1">Nombre</p><p class="font-bold text-slate-800 dark:text-white uppercase">${c.nombre || '-'}</p></div><div><p class="label-pro mb-1">Edad</p><p class="font-bold">${c.edad || '-'} Años</p></div><div><p class="label-pro mb-1">Ocupación</p><p class="font-bold uppercase">${c.ocupacion || '-'}</p></div><div><p class="label-pro mb-1">Provincia</p><p class="font-bold uppercase">${c.provincia || '-'}</p></div></div>
+                <div class="border-t border-slate-100 dark:border-slate-700 pt-3"><p class="label-pro mb-1 text-purple-600">Motivación (¿Qué le inspira?)</p><p class="italic">"${c.motivacion || '-'}"</p></div>
+                <div><p class="label-pro mb-1 text-rose-500">Antecedentes Médicos</p><p class="font-bold uppercase text-rose-600">${antecedentes}</p></div>
+                <div class="grid grid-cols-2 gap-2 mt-4"><div class="bg-teal-50 p-2 rounded border border-teal-100"><p class="text-[9px] font-black text-teal-700 uppercase">Servicio</p><p class="font-bold text-teal-800 text-[10px]">${c.servicio || '-'}</p></div><div class="bg-blue-50 p-2 rounded border border-blue-100"><p class="text-[9px] font-black text-blue-700 uppercase">Método Pago</p><p class="font-bold text-blue-800 text-[10px]">${c.metodo_pago || '-'}</p></div></div></div>`;
         modal.classList.remove('hidden');
     };
 
     window.cerrarVisor = () => document.getElementById('modalVisor').classList.add('hidden');
-    
-    // --- UTILIDADES ---
     window.tConvert = (time) => {
         if(!time) return '--:--';
         time = time.toString().trim();
-        // si ya es 12h, la dejamos
         if (/(AM|PM)$/i.test(time)) return time.toUpperCase().replace(/\s+/g,' ');
-        // si es 24h
         let m = time.match(/^([01]?\d|2[0-3]):([0-5]\d)$/);
         if (!m) return time;
         let hh = parseInt(m[1],10), mm = m[2];
         const ampm = hh < 12 ? 'AM' : 'PM';
         hh = hh % 12; if (hh === 0) hh = 12;
         return `${pad2(hh)}:${mm} ${ampm}`;
-    }
+    };
+    window.cambiarEstadoCita = async (id, nuevoEstado) => { if(confirm(`¿Marcar como "${nuevoEstado}"?`)) { try { await updateDoc(doc(db, colCitas, id), { estado: nuevoEstado }); } catch (e) { alert("Error: " + e.message); } } };
+    window.eliminarCitaDefinitiva = async (id) => { if(confirm("¿Borrar permanentemente?")) { try { await deleteDoc(doc(db, colCitas, id)); } catch (e) { alert("Error: " + e.message); } } };
 
-    window.cambiarEstadoCita = async (id, nuevoEstado) => {
-        if(confirm(`¿Marcar como "${nuevoEstado}"?`)) {
-            try { await updateDoc(doc(db, colCitas, id), { estado: nuevoEstado }); } 
-            catch (e) { alert("Error: " + e.message); }
-        }
+    // ==========================================
+    // 💰 3. NUEVA LÓGICA FINANCIERA (FILTROS)
+    // ==========================================
+
+    window.filtrarFinanzas = (tipo) => {
+        window.filtroFinancieroActual = tipo;
+        const inactivo = "px-5 py-2 text-[10px] font-black uppercase rounded-lg bg-white dark:bg-slate-700 text-slate-500 hover:bg-slate-50 border border-slate-200 dark:border-slate-600 transition-all";
+        const activoBase = "px-5 py-2 text-[10px] font-black uppercase rounded-lg text-white shadow-md transition-all border-transparent";
+        document.getElementById('tabTodos').className = inactivo; document.getElementById('tabDeuda').className = inactivo; document.getElementById('tabAldia').className = inactivo;
+        if(tipo === 'todos') document.getElementById('tabTodos').className = activoBase + " bg-slate-800";
+        if(tipo === 'deuda') document.getElementById('tabDeuda').className = activoBase + " bg-rose-500";
+        if(tipo === 'aldia') document.getElementById('tabAldia').className = activoBase + " bg-emerald-500";
+        renderTabla(); 
     };
 
-    window.eliminarCitaDefinitiva = async (id) => {
-        if(confirm("¿Borrar permanentemente?")) {
-            try { await deleteDoc(doc(db, colCitas, id)); } 
-            catch (e) { alert("Error: " + e.message); }
-        }
+    window.renderTabla = () => {
+        const tb = document.getElementById('tableBody'); tb.innerHTML = '';
+        const filtro = window.filtroFinancieroActual;
+        const datosFiltrados = window.dbCache.filter(d => {
+            let pendienteRaw = d.finanzas.pendiente || "0";
+            if(typeof pendienteRaw === 'string') pendienteRaw = pendienteRaw.replace('$','').replace('S. Favor: ','');
+            const pendienteVal = parseFloat(pendienteRaw);
+            if (filtro === 'deuda') return pendienteVal > 0.50; 
+            if (filtro === 'aldia') return pendienteVal <= 0.50;
+            return true; 
+        });
+
+        if(datosFiltrados.length === 0) { tb.innerHTML = '<tr><td colspan="7" class="p-10 text-center opacity-50 font-bold italic text-slate-400">NO HAY REGISTROS EN ESTA VISTA</td></tr>'; return; }
+
+        datosFiltrados.forEach(d => {
+            let pendienteRaw = d.finanzas.pendiente || "0"; let esDeuda = false;
+            if(typeof pendienteRaw === 'string') { const val = parseFloat(pendienteRaw.replace('$','').replace('S. Favor: ','')); esDeuda = val > 0.50; }
+            const bgRow = esDeuda ? "bg-rose-50/60 dark:bg-rose-900/20" : "";
+            const txtPendiente = esDeuda ? "text-rose-600 dark:text-rose-400" : "text-emerald-400 opacity-60";
+            const badgeDeuda = esDeuda ? '<span class="ml-2 bg-rose-500 text-white text-[7px] px-1.5 py-0.5 rounded tracking-wider">PENDIENTE</span>' : '';
+
+            tb.innerHTML += `<tr class="border-b ${bgRow} hover:bg-slate-100 dark:hover:bg-slate-800 transition-all text-left group">
+                <td class="p-4 font-mono font-bold text-slate-400 text-[10px]">${d.folio}</td>
+                <td class="font-black uppercase text-slate-700 dark:text-white text-xs">${d.paciente.nombre}${badgeDeuda}</td>
+                <td class="text-slate-400 italic text-[10px]">${d.paciente.ocupacion || '-'}</td>
+                <td class="text-right font-black dark:text-slate-300 text-xs">${d.finanzas.total}</td>
+                <td class="text-right text-emerald-600 font-bold text-xs opacity-80">$${parseFloat(d.finanzas.abono || 0).toFixed(2)}</td>
+                <td class="text-right ${txtPendiente} font-black tracking-tighter text-sm">${d.finanzas.pendiente}</td>
+                <td class="p-4 flex justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <button onclick="editarFicha('${d.id}')" class="p-2 bg-slate-800 text-white rounded shadow hover:scale-110 transition-all" title="Editar / Cobrar"><i class="fas fa-edit text-xs"></i></button>
+                    <button onclick="descargarEstadoCuenta('${d.id}')" class="p-2 bg-white border border-slate-200 text-slate-600 rounded shadow hover:scale-110 transition-all" title="Estado de Cuenta"><i class="fas fa-file-invoice-dollar text-xs"></i></button>
+                </td></tr>`;
+        });
     };
 
-    // --- FORMULARIO & FICHAS (INTACTO) ---
+    window.loadData = async () => {
+        const tb = document.getElementById('tableBody'); tb.innerHTML = '<tr><td colspan="7" class="p-10 text-center font-bold text-slate-400 animate-pulse text-xs tracking-widest">CARGANDO BASE DE DATOS...</td></tr>';
+        try {
+            const q = query(collection(db, colName), orderBy("fecha", "desc"));
+            const s = await getDocs(q);
+            window.dbCache = []; s.forEach(snap => { window.dbCache.push({ id: snap.id, ...snap.data() }); });
+            renderTabla(); checkAlerts();
+        } catch(e) { console.error(e); tb.innerHTML = `<tr><td colspan="7" class="p-4 text-center text-rose-500 font-bold">Error: ${e.message}</td></tr>`; }
+    };
+
+    // FORMULARIO & LOGICA GENERAL (RESTORED)
     window.limpiarFormulario = () => { if(confirm("¿Nueva ficha?")) location.reload(); }
-
     window.calcularEdad = () => {
         const d = document.getElementById('dia_nac').value, m = document.getElementById('mes_nac').value, a = document.getElementById('anio_nac').value;
         if(d && m && a) {
@@ -1018,295 +1016,126 @@
             document.getElementById('edad').value = `${age} años`;
         }
     };
-
     window.setDescuento = (val) => { document.getElementById('descuento_pct').value = val; calcularTotal(); }
     window.setBono = (val) => { document.getElementById('bono_manual').value = val; calcularTotal(); }
-    
     window.aplicarPctAbono = (pct) => {
         const total = parseFloat(document.getElementById('lblTotal').innerText.replace('$','')) || 0;
         document.getElementById('m_monto').value = (total * (pct / 100)).toFixed(2);
         abrirModalPago();
     };
-
     window.toggleCuotas = () => {
         const usa = document.getElementById('usa_cuotas').checked;
         document.getElementById('cuotasContainer').classList.toggle('hidden', !usa);
         if(usa && !window.currentDocId) generarCamposFechas();
         calcularTotal();
     };
-
     window.generarCamposFechas = () => {
         const n = parseInt(document.getElementById('num_cuotas').value);
         const container = document.getElementById('camposFechas'); container.innerHTML = '';
         for(let i=1; i<=n; i++) container.innerHTML += `<div class="text-left"><label class="label-pro italic uppercase text-[9px]">Pago Cuota ${i}</label><input type="date" class="input-pro f-cuota shadow-inner" onchange="calcularTotal()"></div>`;
     };
-
     window.agregarServicio = (t='Plasma Fibroblast', z='', p='') => {
         const id = Date.now() + Math.random();
-        const html = `<div class="service-row" id="row-${id}">
-            <select class="input-pro s-type font-black text-[11px] h-12 uppercase"><option value="Plasma Fibroblast" ${t==='Plasma Fibroblast'?'selected':''}>Plasma Fibroblast</option><option value="Hidroplasia" ${t==='Hidroplasia'?'selected':''}>Hidroplasia</option><option value="Dermapen" ${t==='Dermapen'?'selected':''}>Dermapen</option><option value="Otro" ${t==='Otro'?'selected':''}>Otro...</option></select>
+        const html = `<div class="service-row" id="row-${id}">            <select class="input-pro s-type font-black text-[11px] h-12 uppercase"><option value="Plasma Fibroblast" ${t==='Plasma Fibroblast'?'selected':''}>Plasma Fibroblast</option><option value="Hidroplasia" ${t==='Hidroplasia'?'selected':''}>Hidroplasia</option><option value="Dermapen" ${t==='Dermapen'?'selected':''}>Dermapen</option><option value="Otro" ${t==='Otro'?'selected':''}>Otro...</option></select>
             <input type="text" class="input-pro s-zone text-[11px] h-12 uppercase" placeholder="ZONA" value="${z}">
             <input type="number" class="input-pro text-right font-black s-price text-[11px] h-12" placeholder="0" value="${p}" oninput="calcularTotal()">
             <button type="button" onclick="document.getElementById('row-${id}').remove(); calcularTotal();" class="text-rose-500 hover:scale-110 transition-all"><i class="fas fa-trash"></i></button>
-        </div>`;
-        document.getElementById('listaServicios').insertAdjacentHTML('beforeend', html);
+        </div>`;        document.getElementById('listaServicios').insertAdjacentHTML('beforeend', html);
     };
-
     window.calcularTotal = () => {
         let sub = 0; document.querySelectorAll('.s-price').forEach(i => sub += parseFloat(i.value) || 0);
         const pct = parseFloat(document.getElementById('descuento_pct').value) || 0;
         const bono = parseFloat(document.getElementById('bono_manual').value) || 0;
         const totalFinal = Math.max(0, sub - (sub * (pct / 100)) - bono);
-        
         const cobrado = window.historialLocal.reduce((acc, curr) => acc + parseFloat(curr.monto), 0);
         const saldo = totalFinal - cobrado;
-
         document.getElementById('sub_txt').innerText = `$${sub.toFixed(2)}`;
         document.getElementById('desc_txt').innerText = `-$${(sub * (pct / 100)).toFixed(2)}`;
         document.getElementById('bono_txt').innerText = `-$${bono.toFixed(2)}`;
         document.getElementById('lblTotal').innerText = `$${totalFinal.toFixed(2)}`;
-        document.getElementById('lblPendiente').innerText = (saldo < 0.05 && saldo > -0.05) ? "$0.00" : (saldo < 0 ? `S. Favor: $${Math.abs(saldo).toFixed(2)}` : `$${saldo.toFixed(2)}`);
-        document.getElementById('lblPendiente').className = saldo < 0 ? "text-3xl font-black text-brand-main font-mono italic" : "text-3xl font-black text-rose-500 font-mono italic";
+        const lblP = document.getElementById('lblPendiente');
+        if(saldo < 0.05 && saldo > -0.05) { lblP.innerText = "$0.00"; lblP.className = "text-3xl font-black text-emerald-500 font-mono italic"; } 
+        else if (saldo < 0) { lblP.innerText = `S. Favor: $${Math.abs(saldo).toFixed(2)}`; lblP.className = "text-3xl font-black text-brand-main font-mono italic"; } 
+        else { lblP.innerText = `$${saldo.toFixed(2)}`; lblP.className = "text-3xl font-black text-rose-500 font-mono italic"; }
         document.getElementById('abono_anterior').value = cobrado.toFixed(2);
         document.getElementById('pagoHoyVisual').innerText = `$${parseFloat(document.getElementById('abono_nuevo').value || 0).toFixed(2)}`;
-
         if(document.getElementById('usa_cuotas').checked) {
-            if(!window.currentDocId) {
-                const n = parseInt(document.getElementById('num_cuotas').value);
-                document.getElementById('desgloseCuotas').innerText = `${n} CUOTAS DE $${(saldo / n).toFixed(2)}`;
-            }
+            if(!window.currentDocId) { const n = parseInt(document.getElementById('num_cuotas').value); document.getElementById('desgloseCuotas').innerText = `${n} CUOTAS DE $${(saldo / n).toFixed(2)}`; }
             const dates = Array.from(document.querySelectorAll('.f-cuota')).map(i => i.value).filter(v => v);
             const today = new Date().toISOString().split('T')[0];
             const nextDate = dates.sort().find(d => d >= today);
             document.getElementById('fecha_proximo_pago_auto').value = nextDate || 'No definida';
         } else { document.getElementById('fecha_proximo_pago_auto').value = 'N/A'; }
     };
-
-    window.abrirModalPago = () => {
-        const saldoStr = document.getElementById('lblPendiente').innerText.replace('$','').replace('S. Favor: ','');
-        document.getElementById('saldoModal').innerText = `$${parseFloat(saldoStr).toFixed(2)}`;
-        document.getElementById('modalPago').classList.remove('hidden');
-    };
-
+    window.abrirModalPago = () => { const saldoStr = document.getElementById('lblPendiente').innerText.replace('$','').replace('S. Favor: ',''); document.getElementById('saldoModal').innerText = `$${parseFloat(saldoStr).toFixed(2)}`; document.getElementById('modalPago').classList.remove('hidden'); };
     window.cerrarModalPago = () => document.getElementById('modalPago').classList.add('hidden');
-    window.montoTotalADeuda = () => {
-        const saldo = parseFloat(document.getElementById('lblPendiente').innerText.replace('$','').replace('S. Favor: ',''));
-        document.getElementById('m_monto').value = Math.max(0, saldo).toFixed(2);
-    };
-
+    window.montoTotalADeuda = () => { const saldo = parseFloat(document.getElementById('lblPendiente').innerText.replace('$','').replace('S. Favor: ','')); document.getElementById('m_monto').value = Math.max(0, saldo).toFixed(2); };
     window.checkCanje = () => document.getElementById('canjeContainer').classList.toggle('hidden', document.getElementById('m_metodo').value !== 'Canje');
-
     window.confirmarPago = () => {
         const monto = parseFloat(document.getElementById('m_monto').value);
-        const saldoActual = parseFloat(document.getElementById('lblPendiente').innerText.replace('$','').replace('S. Favor: ',''));
         if(!monto || monto <= 0) return alert("Ingrese un monto válido.");
-        if(monto > (saldoActual + 0.10)) return alert("⚠️ ERROR: Pago excede la deuda.");
         const motivo = document.querySelector('input[name="m_motivo"]:checked').value;
         const nRec = window.historialLocal.filter(h => h.motivo.includes('Recaudo')).length + 1;
         const pago = { fecha: new Date().toLocaleDateString('es-PA'), monto, metodo: document.getElementById('m_metodo').value, motivo: (motivo === 'Recaudo Cuota' ? `Recaudo ${nRec}` : motivo), detalle: document.getElementById('m_detalle_canje').value };
-        window.historialLocal.push(pago);
-        actualizarHistorialUI(); calcularTotal(); cerrarModalPago();
+        window.historialLocal.push(pago); actualizarHistorialUI(); calcularTotal(); cerrarModalPago();
     };
-
-    window.actualizarHistorialUI = () => {
-        const container = document.getElementById('listaHistorial'); container.innerHTML = '';
-        window.historialLocal.forEach((p, idx) => {
-            container.innerHTML += `<div class="p-2 border-b bg-white dark:bg-slate-700 rounded flex justify-between items-center group transition-all">
-                <span class="text-left">${p.fecha} - <b>${p.metodo}</b> (${p.motivo}) ${p.detalle || ''}</span>
-                <div class="flex items-center gap-4"><span class="text-emerald-600 font-bold">$${p.monto.toFixed(2)}</span><button onclick="borrarPago(${idx})" class="text-rose-400 no-print opacity-0 group-hover:opacity-100"><i class="fas fa-trash"></i></button></div>
-            </div>`;
-        });
-    };
-
+    window.actualizarHistorialUI = () => { const container = document.getElementById('listaHistorial'); container.innerHTML = ''; window.historialLocal.forEach((p, idx) => { container.innerHTML += `<div class="p-2 border-b bg-white dark:bg-slate-700 rounded flex justify-between items-center group transition-all"><span class="text-left">${p.fecha} - <b>${p.metodo}</b> (${p.motivo}) ${p.detalle || ''}</span><div class="flex items-center gap-4"><span class="text-emerald-600 font-bold">$${p.monto.toFixed(2)}</span><button onclick="borrarPago(${idx})" class="text-rose-400 no-print opacity-0 group-hover:opacity-100"><i class="fas fa-trash"></i></button></div></div>`; }); };
     window.borrarPago = (idx) => { if(confirm("¿Eliminar pago?")) { window.historialLocal.splice(idx,1); actualizarHistorialUI(); calcularTotal(); } };
-
-    window.loadData = async () => {
-        const tb = document.getElementById('tableBody'); tb.innerHTML = '<tr><td colspan="7" class="p-10 text-center font-bold">CARGANDO...</td></tr>';
-        try {
-            const s = await getDocs(query(collection(db, colName), orderBy("fecha", "desc")));
-            window.dbCache = []; tb.innerHTML = '';
-            s.forEach(snap => {
-                const d = { id: snap.id, ...snap.data() }; window.dbCache.push(d);
-                tb.innerHTML += `<tr class="border-b hover:bg-teal-50/10 dark:hover:bg-slate-700 transition-all text-left">
-                    <td class="p-4 font-mono font-bold text-slate-400 text-[10px]">${d.folio}</td>
-                    <td class="font-black uppercase text-slate-700 dark:text-white">${d.paciente.nombre}</td>
-                    <td class="text-slate-400 italic">${d.paciente.ocupacion || '-'}</td>
-                    <td class="text-right font-black dark:text-slate-300">${d.finanzas.total}</td>
-                    <td class="text-right text-emerald-600 font-black">$${parseFloat(d.finanzas.abono || 0).toFixed(2)}</td>
-                    <td class="text-right text-rose-500 font-black tracking-tighter">${d.finanzas.pendiente}</td>
-                    <td class="p-4 flex justify-center gap-2">
-                        <button onclick="editarFicha('${snap.id}')" class="p-2 bg-slate-100 dark:bg-slate-800 rounded text-teal-600 shadow-sm"><i class="fas fa-edit text-xs"></i></button>
-                        <button onclick="descargarEstadoCuenta('${snap.id}')" class="p-2 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 rounded shadow-sm"><i class="fas fa-file-invoice-dollar text-xs"></i></button>
-                    </td>
-                </tr>`;
-            });
-        } catch(e) { console.error(e); }
-    };
-
-    window.filtrarTabla = () => {
-        const val = document.getElementById('buscador').value.toUpperCase();
-        const rows = document.getElementById('tableBody').getElementsByTagName('tr');
-        for(let r of rows) r.style.display = r.innerText.toUpperCase().includes(val) ? '' : 'none';
-    };
-
+    window.filtrarTabla = () => { const val = document.getElementById('buscador').value.toUpperCase(); const rows = document.getElementById('tableBody').getElementsByTagName('tr'); for(let r of rows) r.style.display = r.innerText.toUpperCase().includes(val) ? '' : 'none'; };
     window.editarFicha = (id) => {
         const r = window.dbCache.find(x => x.id === id); window.currentDocId = id;
         document.getElementById('editModeBanner').classList.remove('hidden');
         document.querySelectorAll('.folio-display').forEach(e => e.innerText = r.folio);
-        document.getElementById('nombre').value = r.paciente.nombre;
-        document.getElementById('telefono').value = r.paciente.celular;
-        document.getElementById('cedula').value = r.paciente.cedula || '';
-        document.getElementById('edad').value = r.paciente.edad || '';
-        document.getElementById('ocupacion').value = r.paciente.ocupacion || '';
-        document.getElementById('direccion').value = r.paciente.direccion || '';
-        document.getElementById('fecha_inicio_real').value = r.fecha_inicio || '';
-        document.getElementById('descuento_pct').value = r.finanzas.descuento_pct || 0;
-        document.getElementById('bono_manual').value = r.finanzas.bono || 0;
-        
-        const checkC = document.getElementById('usa_cuotas');
-        checkC.checked = r.finanzas.usa_cuotas || false;
-        if(checkC.checked) {
-            checkC.disabled = true;
-            document.getElementById('planEditableUI').classList.add('hidden');
-            document.getElementById('planPactadoDisplay').classList.remove('hidden');
-            document.getElementById('txtPlanPactado').innerText = `${r.finanzas.num_cuotas} CUOTAS QUINCENALES (PACTO ORIGINAL)`;
-            document.getElementById('cuotasContainer').classList.remove('hidden');
-        } else {
-            checkC.disabled = false;
-            document.getElementById('planEditableUI').classList.remove('hidden');
-            document.getElementById('planPactadoDisplay').classList.add('hidden');
-            document.getElementById('cuotasContainer').classList.add('hidden');
-        }
-
-        document.getElementById('observaciones').value = r.observaciones || '';
-        window.historialLocal = r.historial || [];
-        actualizarHistorialUI();
-        document.getElementById('listaServicios').innerHTML = '';
-        r.servicios.forEach(s => agregarServicio(s.tipo, s.zona, s.precio));
-        
-        setTimeout(() => {
-            const inputs = document.querySelectorAll('.f-cuota');
-            if(r.finanzas.fechas_cuotas) r.finanzas.fechas_cuotas.forEach((f, i) => { if(inputs[i]) { inputs[i].value = f; inputs[i].disabled = true; } });
-        }, 200);
-
+        document.getElementById('nombre').value = r.paciente.nombre; document.getElementById('telefono').value = r.paciente.celular; document.getElementById('cedula').value = r.paciente.cedula || ''; document.getElementById('edad').value = r.paciente.edad || ''; document.getElementById('ocupacion').value = r.paciente.ocupacion || ''; document.getElementById('direccion').value = r.paciente.direccion || ''; document.getElementById('fecha_inicio_real').value = r.fecha_inicio || ''; document.getElementById('descuento_pct').value = r.finanzas.descuento_pct || 0; document.getElementById('bono_manual').value = r.finanzas.bono || 0;
+        const checkC = document.getElementById('usa_cuotas'); checkC.checked = r.finanzas.usa_cuotas || false;
+        if(checkC.checked) { checkC.disabled = true; document.getElementById('planEditableUI').classList.add('hidden'); document.getElementById('planPactadoDisplay').classList.remove('hidden'); document.getElementById('txtPlanPactado').innerText = `${r.finanzas.num_cuotas} CUOTAS QUINCENALES (PACTO ORIGINAL)`; document.getElementById('cuotasContainer').classList.remove('hidden'); } 
+        else { checkC.disabled = false; document.getElementById('planEditableUI').classList.remove('hidden'); document.getElementById('planPactadoDisplay').classList.add('hidden'); document.getElementById('cuotasContainer').classList.add('hidden'); }
+        document.getElementById('observaciones').value = r.observaciones || ''; window.historialLocal = r.historial || []; actualizarHistorialUI();
+        document.getElementById('listaServicios').innerHTML = ''; if(r.servicios) r.servicios.forEach(s => agregarServicio(s.tipo, s.zona, s.precio));
+        setTimeout(() => { const inputs = document.querySelectorAll('.f-cuota'); if(r.finanzas.fechas_cuotas) r.finanzas.fechas_cuotas.forEach((f, i) => { if(inputs[i]) { inputs[i].value = f; inputs[i].disabled = true; } }); }, 200);
         toggleView('form'); window.scrollTo({top: 0, behavior: 'smooth'}); calcularTotal();
     };
-
     window.descargarEstadoCuenta = (id) => {
-        const d = window.dbCache.find(x => x.id === id);
-        document.getElementById('s_paciente').innerText = d.paciente.nombre;
-        document.getElementById('s_folio').innerText = d.folio;
-        document.getElementById('s_total').innerText = d.finanzas.total;
-        document.getElementById('s_cobrado').innerText = `$${parseFloat(d.finanzas.abono).toFixed(2)}`;
-        document.getElementById('s_saldo').innerText = d.finanzas.pendiente;
-        const tb = document.getElementById('s_cuerpo'); tb.innerHTML = '';
-        d.historial.forEach(p => { tb.innerHTML += `<tr><td style="padding:10px; border-bottom:1px solid #eee;">${p.fecha}</td><td style="padding:10px; border-bottom:1px solid #eee;">${p.metodo} (${p.motivo})</td><td style="padding:10px; border-bottom:1px solid #eee; text-align:right;">$${parseFloat(p.monto).toFixed(2)}</td></tr>`; });
+        const d = window.dbCache.find(x => x.id === id); document.getElementById('s_paciente').innerText = d.paciente.nombre; document.getElementById('s_folio').innerText = d.folio; document.getElementById('s_total').innerText = d.finanzas.total; document.getElementById('s_cobrado').innerText = `$${parseFloat(d.finanzas.abono).toFixed(2)}`; document.getElementById('s_saldo').innerText = d.finanzas.pendiente;
+        const tb = document.getElementById('s_cuerpo'); tb.innerHTML = ''; d.historial.forEach(p => { tb.innerHTML += `<tr><td style="padding:10px; border-bottom:1px solid #eee;">${p.fecha}</td><td style="padding:10px; border-bottom:1px solid #eee;">${p.metodo} (${p.motivo})</td><td style="padding:10px; border-bottom:1px solid #eee; text-align:right;">$${parseFloat(p.monto).toFixed(2)}</td></tr>`; });
         const el = document.getElementById('statementTemplate'); el.classList.remove('hidden');
         html2pdf().from(el).set({ margin: 10, filename: `EstadoCuenta_${d.paciente.nombre}.pdf` }).save().then(()=>el.classList.add('hidden'));
     };
-
     window.checkAlerts = () => {
         const list = document.getElementById('alertList'); list.innerHTML = ''; let count = 0; const today = new Date();
-        
         window.dbCache.forEach(d => {
             if(d.finanzas.prox_pago && d.finanzas.prox_pago !== 'N/A' && d.finanzas.prox_pago !== 'No definida') {
-                const payDate = new Date(d.finanzas.prox_pago);
-                const diff = Math.ceil((payDate - today) / (1000 * 60 * 60 * 24));
-                if(diff >= 0 && diff <= 3) {
-                    count++;
-                    list.innerHTML += `<div onclick="editarFicha('${d.id}')" class="p-3 bg-rose-50 dark:bg-rose-900/30 border-l-4 border-rose-500 cursor-pointer rounded-xl hover:bg-rose-100 transition-all text-left shadow-sm">
-                        <p class="text-[9px] font-black uppercase text-rose-700 italic">Vence en ${diff} día(s)</p>
-                        <p class="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase">${d.paciente.nombre}</p>
-                        <p class="text-[8px] text-slate-500">Saldo: ${d.finanzas.pendiente}</p>
-                    </div>`;
-                }
+                const payDate = new Date(d.finanzas.prox_pago); const diff = Math.ceil((payDate - today) / (1000 * 60 * 60 * 24));
+                if(diff >= 0 && diff <= 3) { count++; list.innerHTML += `<div onclick="editarFicha('${d.id}')" class="p-3 bg-rose-50 dark:bg-rose-900/30 border-l-4 border-rose-500 cursor-pointer rounded-xl hover:bg-rose-100 transition-all text-left shadow-sm"><p class="text-[9px] font-black uppercase text-rose-700 italic">Vence en ${diff} día(s)</p><p class="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase">${d.paciente.nombre}</p><p class="text-[8px] text-slate-500">Saldo: ${d.finanzas.pendiente}</p></div>`; }
             }
         });
-
-        list.innerHTML += `<div onclick="toggleView('appointments')" class="p-3 bg-teal-50 dark:bg-teal-900/30 border-l-4 border-teal-500 cursor-pointer rounded-xl hover:bg-teal-100 transition-all text-left shadow-sm mt-2">
-            <p class="text-[9px] font-black uppercase text-teal-700 italic">Central de Citas</p>
-            <p class="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase">Monitorear Solicitudes Web</p>
-        </div>`;
-
-        document.getElementById('alertCount').innerText = count; 
-        document.getElementById('alertCount').classList.toggle('hidden', count === 0);
+        list.innerHTML += `<div onclick="toggleView('appointments')" class="p-3 bg-teal-50 dark:bg-teal-900/30 border-l-4 border-teal-500 cursor-pointer rounded-xl hover:bg-teal-100 transition-all text-left shadow-sm mt-2"><p class="text-[9px] font-black uppercase text-teal-700 italic">Central de Citas</p><p class="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase">Monitorear Solicitudes Web</p></div>`;
+        document.getElementById('alertCount').innerText = count; document.getElementById('alertCount').classList.toggle('hidden', count === 0);
     };
-
     window.toggleAlerts = () => document.getElementById('alertBox').classList.toggle('hidden');
-
-    window.marcarComoPendiente = () => {
-        const btn = document.getElementById('btnSave');
-        if(btn.innerText.includes("LISTO")) {
-            btn.innerHTML = '<i class="fas fa-save mr-3 text-teal-400"></i> GUARDAR EXPEDIENTE';
-            btn.classList.remove('bg-emerald-600');
-            btn.classList.add('bg-slate-900');
-        }
-    };
-
+    window.marcarComoPendiente = () => { const btn = document.getElementById('btnSave'); if(btn.innerText.includes("LISTO")) { btn.innerHTML = '<i class="fas fa-save mr-3 text-teal-400"></i> GUARDAR EXPEDIENTE'; btn.classList.remove('bg-emerald-600'); btn.classList.add('bg-slate-900'); } };
     document.getElementById('btnSave').addEventListener('click', async () => {
-        const nom = document.getElementById('nombre').value;
-        const fReal = document.getElementById('fecha_inicio_real').value;
-        const legal = document.getElementById('check_legal').checked;
+        const nom = document.getElementById('nombre').value; const fReal = document.getElementById('fecha_inicio_real').value; const legal = document.getElementById('check_legal').checked;
         if(!nom || !fReal || !legal) return alert("⚠️ ERROR: Nombre, Fecha y Términos son obligatorios.");
-        
-        const btn = document.getElementById('btnSave'); 
-        btn.disabled = true; 
-        btn.innerText = "PROCESANDO...";
-        
-        const serv = []; 
-        document.querySelectorAll('.service-row').forEach(r => {
-            const t = r.querySelector('.s-type').value, p = r.querySelector('.s-price').value;
-            if(t && p) serv.push({ tipo: t, zona: r.querySelector('.s-zone').value, precio: p });
-        });
-        
+        const btn = document.getElementById('btnSave'); btn.disabled = true; btn.innerText = "PROCESANDO...";
+        const serv = []; document.querySelectorAll('.service-row').forEach(r => { const t = r.querySelector('.s-type').value, p = r.querySelector('.s-price').value; if(t && p) serv.push({ tipo: t, zona: r.querySelector('.s-zone').value, precio: p }); });
         const fCuotas = Array.from(document.querySelectorAll('.f-cuota')).map(i => i.value);
         const cobrado = window.historialLocal.reduce((acc, curr) => acc + parseFloat(curr.monto), 0);
-        const data = {
-            paciente: { nombre: nom, celular: document.getElementById('telefono').value, cedula: document.getElementById('cedula').value, edad: document.getElementById('edad').value, ocupacion: document.getElementById('ocupacion').value, direccion: document.getElementById('direccion').value },
-            servicios: serv,
-            finanzas: { total: document.getElementById('lblTotal').innerText, abono: cobrado, pendiente: document.getElementById('lblPendiente').innerText, descuento_pct: document.getElementById('descuento_pct').value, bono: document.getElementById('bono_manual').value, usa_cuotas: document.getElementById('usa_cuotas').checked, num_cuotas: document.getElementById('num_cuotas').value, fechas_cuotas: fCuotas, prox_pago: document.getElementById('fecha_proximo_pago_auto').value },
-            historial: window.historialLocal, fecha_inicio: fReal, fecha: Timestamp.now(), folio: document.querySelector('.folio-display').innerText, observaciones: document.getElementById('observaciones').value
-        };
-        
-        try {
-            if(window.currentDocId) await updateDoc(doc(db, colName, window.currentDocId), data);
-            else await addDoc(collection(db, colName), data);
-            
-            btn.disabled = false;
-            btn.innerHTML = '<i class="fas fa-check-circle mr-3"></i> ¡LISTO!';
-            btn.classList.remove('bg-slate-900');
-            btn.classList.add('bg-emerald-600');
-            
-        } catch(e) { 
-            alert("Error de red."); 
-            btn.disabled = false; 
-            btn.innerText = "GUARDAR EXPEDIENTE"; 
-        }
+        const data = { paciente: { nombre: nom, celular: document.getElementById('telefono').value, cedula: document.getElementById('cedula').value, edad: document.getElementById('edad').value, ocupacion: document.getElementById('ocupacion').value, direccion: document.getElementById('direccion').value }, servicios: serv, finanzas: { total: document.getElementById('lblTotal').innerText, abono: cobrado, pendiente: document.getElementById('lblPendiente').innerText, descuento_pct: document.getElementById('descuento_pct').value, bono: document.getElementById('bono_manual').value, usa_cuotas: document.getElementById('usa_cuotas').checked, num_cuotas: document.getElementById('num_cuotas').value, fechas_cuotas: fCuotas, prox_pago: document.getElementById('fecha_proximo_pago_auto').value }, historial: window.historialLocal, fecha_inicio: fReal, fecha: Timestamp.now(), folio: document.querySelector('.folio-display').innerText, observaciones: document.getElementById('observaciones').value };
+        try { if(window.currentDocId) await updateDoc(doc(db, colName, window.currentDocId), data); else await addDoc(collection(db, colName), data); btn.disabled = false; btn.innerHTML = '<i class="fas fa-check-circle mr-3"></i> ¡LISTO!'; btn.classList.remove('bg-slate-900'); btn.classList.add('bg-emerald-600'); } catch(e) { alert("Error de red."); btn.disabled = false; btn.innerText = "GUARDAR EXPEDIENTE"; }
     });
-
-    document.getElementById('btnPdf').addEventListener('click', () => {
-        const opt = { margin: 0, filename: `Ficha_${document.getElementById('nombre').value}.pdf`, html2canvas: { scale: 3 }, jsPDF: { unit: 'in', format: 'letter' } };
-        html2pdf().set(opt).from(document.getElementById('printContainer')).save();
-    });
-
+    document.getElementById('btnPdf').addEventListener('click', () => { const opt = { margin: 0, filename: `Ficha_${document.getElementById('nombre').value}.pdf`, html2canvas: { scale: 3 }, jsPDF: { unit: 'in', format: 'letter' } }; html2pdf().set(opt).from(document.getElementById('printContainer')).save(); });
     let canvas, ctx, isDrawing = false;
-    window.addEventListener('load', () => { 
-        document.querySelectorAll('.folio-display').forEach(el => el.innerText = `REQ-${Date.now().toString().slice(-6)}`);
-        agregarServicio();
-        canvas = document.getElementById('signaturePad'); ctx = canvas.getContext('2d');
-        canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; ctx.lineWidth = 2.5;
+    function setupCanvas() {
+        canvas = document.getElementById('signaturePad'); if(!canvas) return;
+        ctx = canvas.getContext('2d'); canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; ctx.lineWidth = 2.5;
         const start = (e) => { isDrawing = true; ctx.beginPath(); const r = canvas.getBoundingClientRect(); ctx.moveTo((e.clientX || e.touches[0].clientX)-r.left, (e.clientY || e.touches[0].clientY)-r.top); };
         const move = (e) => { if(!isDrawing) return; e.preventDefault(); const r = canvas.getBoundingClientRect(); ctx.lineTo((e.clientX || e.touches[0].clientX)-r.left, (e.clientY || e.touches[0].clientY)-r.top); ctx.stroke(); };
         const stop = () => isDrawing = false;
         canvas.addEventListener('mousedown', start); canvas.addEventListener('mousemove', move); canvas.addEventListener('mouseup', stop);
         canvas.addEventListener('touchstart', start); canvas.addEventListener('touchmove', move); canvas.addEventListener('touchend', stop);
-        
-        document.getElementById('seccionFormulario').addEventListener('input', marcarComoPendiente);
-        document.getElementById('seccionFormulario').addEventListener('change', marcarComoPendiente);
-
-        // ✅ refrescar UI de campana (por si hay cache)
-        updateCitasBellUI();
-    });
+        document.getElementById('seccionFormulario').addEventListener('input', marcarComoPendiente); document.getElementById('seccionFormulario').addEventListener('change', marcarComoPendiente);
+    }
     window.clearSignature = () => ctx.clearRect(0,0,canvas.width,canvas.height);
     </script>
 </body>
