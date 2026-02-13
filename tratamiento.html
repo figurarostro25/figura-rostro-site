@@ -1300,8 +1300,15 @@
         const fCuotas = Array.from(document.querySelectorAll('.f-cuota')).map(i => i.value);
         const cobrado = window.historialLocal.reduce((acc, curr) => acc + parseFloat(curr.monto), 0);
         const data = {
-            paciente: { nombre: nom, celular: document.getElementById('telefono').value, cedula: document.getElementById('cedula').value, edad: document.getElementById('edad').value, ocupacion: document.getElementById('ocupacion').value, direccion: document.getElementById('direccion').value },
-            servicios: serv,
+            paciente: { 
+                nombre: nom, 
+                email: document.getElementById('email_paciente').value.trim(), 
+                celular: document.getElementById('telefono').value, 
+                cedula: document.getElementById('cedula').value, 
+                edad: document.getElementById('edad').value, 
+                ocupacion: document.getElementById('ocupacion').value, 
+                direccion: document.getElementById('direccion').value 
+            },
             finanzas: { total: document.getElementById('lblTotal').innerText, abono: cobrado, pendiente: document.getElementById('lblPendiente').innerText, descuento_pct: document.getElementById('descuento_pct').value, bono: document.getElementById('bono_manual').value, usa_cuotas: document.getElementById('usa_cuotas').checked, num_cuotas: document.getElementById('num_cuotas').value, fechas_cuotas: fCuotas, prox_pago: document.getElementById('fecha_proximo_pago_auto').value },
             historial: window.historialLocal, fecha_inicio: fReal, fecha: Timestamp.now(), folio: document.querySelector('.folio-display').innerText, observaciones: document.getElementById('observaciones').value
         };
