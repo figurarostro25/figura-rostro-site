@@ -55,6 +55,7 @@
         </header>
 
         <div class="p-6 space-y-6">
+            
             <div class="glass rounded-3xl p-6 relative overflow-hidden">
                 <div class="absolute right-0 top-0 w-32 h-32 bg-teal-500/10 rounded-full blur-3xl"></div>
                 <p class="text-xs font-black text-slate-400 uppercase tracking-widest mb-2">Estado de Cuenta</p>
@@ -123,9 +124,11 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        // ✅ IMPORTANTE: Aquí importamos signInWithRedirect para celulares
+        import { getAuth, signInWithRedirect, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
         import { getFirestore, collection, query, where, getDocs, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
+        // TUS CREDENCIALES
         const firebaseConfig = {
             apiKey: "AIzaSyBAuTfBKGuG33c9NXc1s0lkQv-7GwA47l0",
             authDomain: "figurarostro-system.firebaseapp.com",
@@ -140,32 +143,47 @@
         const db = getFirestore(app);
         const provider = new GoogleAuthProvider();
 
+        // ELEMENTOS UI
         const loginScreen = document.getElementById('loginScreen');
         const appScreen = document.getElementById('appScreen');
         const loader = document.getElementById('loaderData');
         const noData = document.getElementById('noDataMsg');
         const content = document.getElementById('dataContent');
 
+        // 1. LOGIN CON GOOGLE (MODO REDIRECCIÓN PARA CELULAR)
         window.loginGoogle = async () => {
-            try { await signInWithPopup(auth, provider); } 
-            catch (error) { alert("Error al iniciar: " + error.message); }
+            try {
+                // Usamos Redirect en vez de Popup para evitar bloqueos
+                await signInWithRedirect(auth, provider);
+            } catch (error) {
+                alert("Error al iniciar: " + error.message);
+            }
         };
 
+        // 2. LOGOUT
         window.logout = () => signOut(auth).then(() => location.reload());
 
+        // 3. MONITOR DE SESIÓN
         onAuthStateChanged(auth, async (user) => {
             if (user) {
+                // Usuario Entró
                 loginScreen.classList.add('hidden');
                 appScreen.classList.remove('hidden');
+                
+                // Poner datos básicos (Foto y Nombre de Google)
                 document.getElementById('userName').innerText = user.displayName;
                 document.getElementById('userPhoto').src = user.photoURL;
+
+                // BUSCAR SUS DATOS EN LA BASE DE DATOS
                 buscarDatosPaciente(user.email);
             } else {
+                // Usuario Salió
                 loginScreen.classList.remove('hidden');
                 appScreen.classList.add('hidden');
             }
         });
 
+        // 4. BUSCAR LA FICHA DEL PACIENTE
         async function buscarDatosPaciente(email) {
             console.log("Buscando ficha para:", email);
             loader.classList.remove('hidden');
@@ -173,23 +191,27 @@
             content.classList.add('hidden');
 
             try {
-                // Busca en la base de datos por el campo email que acabamos de poner
+                // Buscamos en la colección usando el email que agregamos en tratamiento.html
                 const q = query(collection(db, "pacientes_2026_oficial_v3"), where("paciente.email", "==", email));
                 const querySnapshot = await getDocs(q);
 
                 if (querySnapshot.empty) {
+                    // No se encontró ficha con ese correo
                     loader.classList.add('hidden');
                     noData.classList.remove('hidden');
                     return;
                 }
 
+                // Si encontramos ficha (tomamos la primera si hubiera varias)
                 const docData = querySnapshot.docs[0].data();
                 renderizarDatos(docData);
+                
+                // También buscamos si tiene citas pendientes
                 buscarProximaCita(docData.paciente.nombre);
 
             } catch (error) {
-                console.error("Error:", error);
-                alert("Hubo un error cargando tu información.");
+                console.error("Error trayendo datos:", error);
+                // Si falla, es probable que no esté logueado o error de red
             }
         }
 
@@ -197,7 +219,7 @@
             loader.classList.add('hidden');
             content.classList.remove('hidden');
 
-            // Saldo y Color
+            // 1. SALDO
             let pendienteStr = d.finanzas.pendiente || "$0.00";
             let pendienteVal = 0;
             if(typeof pendienteStr === 'string') {
@@ -215,44 +237,58 @@
                 estadoEl.className = "text-[10px] text-teal-400 font-bold mt-1 uppercase";
             }
 
-            // Barra Progreso
-            const total = parseFloat(d.finanzas.total.replace('$','')) || 1;
+            // 2. BARRA DE PROGRESO DE PAGO
+            const total = parseFloat(d.finanzas.total.replace('$','')) || 1; // Evitar div/0
             const abono = d.finanzas.abono || 0;
             const porcentaje = Math.min(100, Math.round((abono / total) * 100));
+            
             document.getElementById('barraProgreso').style.width = porcentaje + "%";
             document.getElementById('txtProgreso').innerText = porcentaje + "% Pagado";
 
-            // Datos
+            // 3. RESUMEN
             document.getElementById('resumenServicios').innerText = d.servicios.map(s => s.tipo).join(', ');
             document.getElementById('resumenFecha').innerText = d.fecha_inicio || '---';
 
-            // Historial
+            // 4. HISTORIAL
             const lista = document.getElementById('listaPagos');
             lista.innerHTML = '';
             if(d.historial && d.historial.length > 0) {
+                // Mostrar solo los últimos 3
                 d.historial.slice(-3).reverse().forEach(h => {
                     lista.innerHTML += `
                         <div class="flex justify-between items-center border-b border-white/5 pb-2 last:border-0 last:pb-0">
-                            <div><p class="font-bold text-white">${h.metodo}</p><p class="text-[10px] text-slate-400">${h.fecha}</p></div>
+                            <div>
+                                <p class="font-bold text-white">${h.metodo}</p>
+                                <p class="text-[10px] text-slate-400">${h.fecha}</p>
+                            </div>
                             <span class="text-teal-400 font-bold">+$${parseFloat(h.monto).toFixed(2)}</span>
-                        </div>`;
+                        </div>
+                    `;
                 });
             } else {
-                lista.innerHTML = '<p class="text-slate-500 italic text-center">Aún no hay pagos.</p>';
+                lista.innerHTML = '<p class="text-slate-500 italic text-center">Aún no hay pagos registrados.</p>';
             }
         }
 
         async function buscarProximaCita(nombre) {
             const hoy = new Date().toISOString().split('T')[0];
-            const q = query(collection(db, "reservas_entrantes"), where("nombre", "==", nombre), where("fecha_cita", ">=", hoy), orderBy("fecha_cita", "asc"), limit(1));
+            const q = query(
+                collection(db, "reservas_entrantes"), 
+                where("nombre", "==", nombre),
+                where("fecha_cita", ">=", hoy),
+                orderBy("fecha_cita", "asc"),
+                limit(1)
+            );
+
             const snap = await getDocs(q);
             if(!snap.empty) {
                 const cita = snap.docs[0].data();
                 document.getElementById('citaCard').classList.remove('hidden');
-                document.getElementById('citaServicio').innerText = cita.servicio || 'Cita Programada';
+                document.getElementById('citaServicio').innerText = cita.servicio || 'Cita de Control';
                 document.getElementById('citaFecha').innerText = `${cita.fecha_cita} a las ${cita.hora_cita}`;
             }
         }
+
     </script>
 </body>
 </html>
