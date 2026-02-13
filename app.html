@@ -28,11 +28,268 @@
             <div class="absolute bottom-0 right-0 w-80 h-80 bg-purple-600 rounded-full blur-[120px] mix-blend-multiply opacity-50"></div>
         </div>
 
-        <div class="w-16 h-16 bg-gradient-to-br from-teal-400 to-teal-600 rounded-2xl flex items-center justify-center shadow-2xl mb-6 rotate-3">
-            <span class="font-black text-2xl text-white italic">KG</span>
+        <div class="w-20 h-20 bg-gradient-to-br from-teal-400 to-teal-600 rounded-3xl flex items-center justify-center shadow-2xl mb-8 rotate-3 border border-white/10">
+            <span class="font-black text-3xl text-white italic">KG</span>
         </div>
         
-        <h1 class="text-3xl font-black uppercase tracking-tighter mb-2">Figura Rostro</h1>
-        <p class="text-slate-400 text-sm font-medium mb-10 max-w-xs">Accede a tu historial clínico, revisa tus citas y gestiona tus pagos de forma segura.</p>
+        <h1 class="text-3xl font-black uppercase tracking-tighter mb-3">Bienvenido</h1>
+        <p class="text-slate-400 text-sm font-medium mb-12 max-w-xs leading-relaxed">Accede a tu historial clínico, revisa tus citas y gestiona tus pagos de forma segura.</p>
 
-        <button onclick="loginGoogle()" class="flex items-center gap-3 bg-
+        <button onclick="loginGoogle()" class="flex items-center gap-4 bg-white text-slate-900 px-8 py-4 rounded-2xl font-bold shadow-xl active:scale-95 transition-all hover:bg-slate-50 w-full max-w-xs justify-center group">
+            <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-6 h-6 group-hover:scale-110 transition-transform">
+            <span>Acceder con Google</span>
+        </button>
+        
+        <p class="mt-8 text-[10px] text-slate-500 uppercase tracking-widest font-bold">Figura Rostro KG • Panamá</p>
+    </div>
+
+    <div id="appScreen" class="hidden min-h-screen pb-24">
+        <header class="p-6 flex justify-between items-center bg-slate-900/50 backdrop-blur-md sticky top-0 z-50 border-b border-white/5">
+            <div>
+                <p class="text-xs text-teal-400 font-black uppercase tracking-widest mb-1">Hola,</p>
+                <h2 id="userName" class="text-xl font-bold capitalize">Paciente</h2>
+            </div>
+            <div class="w-10 h-10 rounded-full bg-slate-800 border border-white/10 overflow-hidden">
+                <img id="userPhoto" class="w-full h-full object-cover">
+            </div>
+        </header>
+
+        <div class="p-6 space-y-6">
+            
+            <div class="glass rounded-3xl p-6 relative overflow-hidden">
+                <div class="absolute right-0 top-0 w-32 h-32 bg-teal-500/10 rounded-full blur-3xl"></div>
+                <p class="text-xs font-black text-slate-400 uppercase tracking-widest mb-2">Estado de Cuenta</p>
+                <div class="flex justify-between items-end">
+                    <div>
+                        <p class="text-4xl font-black text-white tracking-tighter" id="saldoDisplay">$0.00</p>
+                        <p class="text-[10px] text-teal-400 font-bold mt-1 uppercase" id="estadoSaldo">Al día</p>
+                    </div>
+                    <div class="w-12 h-12 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-400">
+                        <i class="fas fa-wallet text-xl"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div id="citaCard" class="hidden bg-gradient-to-r from-purple-900/50 to-slate-900 border border-purple-500/20 rounded-3xl p-6 relative">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-purple-500 text-white text-[9px] font-black px-2 py-1 rounded uppercase animate-pulse">Próxima Cita</span>
+                    <i class="far fa-calendar-alt text-purple-400"></i>
+                </div>
+                <h3 class="font-bold text-lg text-white mb-1" id="citaServicio">...</h3>
+                <p class="text-sm text-purple-200" id="citaFecha">...</p>
+                <a href="https://wa.me/50764746168" target="_blank" class="mt-4 block w-full py-3 bg-white/10 hover:bg-white/20 rounded-xl text-center text-xs font-black uppercase transition-all">Confirmar Asistencia</a>
+            </div>
+
+            <div>
+                <h3 class="text-sm font-black text-slate-400 uppercase tracking-widest mb-4 border-b border-white/10 pb-2">Mi Tratamiento</h3>
+                
+                <div id="loaderData" class="flex justify-center py-10">
+                    <div class="loader ease-linear rounded-full border-4 border-t-4 border-slate-700 h-8 w-8"></div>
+                </div>
+
+                <div id="noDataMsg" class="hidden text-center py-10 opacity-50">
+                    <i class="fas fa-folder-open text-4xl mb-3 text-slate-600"></i>
+                    <p class="text-sm font-bold">No encontramos tu expediente aún.</p>
+                    <p class="text-xs mt-1">Asegúrate de usar el mismo correo que diste en la clínica.</p>
+                </div>
+
+                <div id="dataContent" class="hidden space-y-4">
+                    <div class="bg-slate-800/50 rounded-2xl p-5 border border-white/5">
+                        <div class="flex justify-between text-xs mb-3">
+                            <span class="text-slate-400 uppercase font-bold">Tratamiento</span>
+                            <span class="text-white font-bold text-right" id="resumenServicios">...</span>
+                        </div>
+                        <div class="flex justify-between text-xs mb-3">
+                            <span class="text-slate-400 uppercase font-bold">Inició</span>
+                            <span class="text-white font-bold" id="resumenFecha">...</span>
+                        </div>
+                        <div class="w-full bg-slate-700 h-2 rounded-full overflow-hidden mt-4">
+                            <div id="barraProgreso" class="bg-teal-500 h-full w-0 transition-all duration-1000"></div>
+                        </div>
+                        <p class="text-[10px] text-right mt-1 text-teal-400 font-bold" id="txtProgreso">0% Pagado</p>
+                    </div>
+
+                    <div class="bg-slate-800/50 rounded-2xl p-5 border border-white/5">
+                        <p class="text-[10px] font-black uppercase text-slate-500 mb-3">Últimos Movimientos</p>
+                        <div id="listaPagos" class="space-y-3 text-xs"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <button onclick="logout()" class="text-xs font-bold text-rose-500 uppercase tracking-widest hover:text-rose-400 transition-colors">Cerrar Sesión</button>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        import { getFirestore, collection, query, where, getDocs, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        // TUS CREDENCIALES (Mismas que tratamiento.html)
+        const firebaseConfig = {
+            apiKey: "AIzaSyBAuTfBKGuG33c9NXc1s0lkQv-7GwA47l0",
+            authDomain: "figurarostro-system.firebaseapp.com",
+            projectId: "figurarostro-system",
+            storageBucket: "figurarostro-system.firebasestorage.app",
+            messagingSenderId: "803848354693",
+            appId: "1:803848354693:web:7144490abb18b0319822ec"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const provider = new GoogleAuthProvider();
+
+        // ELEMENTOS UI
+        const loginScreen = document.getElementById('loginScreen');
+        const appScreen = document.getElementById('appScreen');
+        const loader = document.getElementById('loaderData');
+        const noData = document.getElementById('noDataMsg');
+        const content = document.getElementById('dataContent');
+
+        // 1. LOGIN CON GOOGLE
+        window.loginGoogle = async () => {
+            try {
+                await signInWithPopup(auth, provider);
+            } catch (error) {
+                alert("Error al iniciar: " + error.message);
+            }
+        };
+
+        // 2. LOGOUT
+        window.logout = () => signOut(auth).then(() => location.reload());
+
+        // 3. MONITOR DE SESIÓN
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                // Usuario Entró
+                loginScreen.classList.add('hidden');
+                appScreen.classList.remove('hidden');
+                
+                // Poner datos básicos (Foto y Nombre de Google)
+                document.getElementById('userName').innerText = user.displayName;
+                document.getElementById('userPhoto').src = user.photoURL;
+
+                // BUSCAR SUS DATOS EN LA BASE DE DATOS
+                buscarDatosPaciente(user.email);
+            } else {
+                // Usuario Salió
+                loginScreen.classList.remove('hidden');
+                appScreen.classList.add('hidden');
+            }
+        });
+
+        // 4. BUSCAR LA FICHA DEL PACIENTE
+        async function buscarDatosPaciente(email) {
+            console.log("Buscando ficha para:", email);
+            loader.classList.remove('hidden');
+            noData.classList.add('hidden');
+            content.classList.add('hidden');
+
+            try {
+                // Buscamos en la colección usando el email que agregamos en tratamiento.html
+                const q = query(collection(db, "pacientes_2026_oficial_v3"), where("paciente.email", "==", email));
+                const querySnapshot = await getDocs(q);
+
+                if (querySnapshot.empty) {
+                    // No se encontró ficha con ese correo
+                    loader.classList.add('hidden');
+                    noData.classList.remove('hidden');
+                    return;
+                }
+
+                // Si encontramos ficha (tomamos la primera si hubiera varias)
+                const docData = querySnapshot.docs[0].data();
+                renderizarDatos(docData);
+                
+                // También buscamos si tiene citas pendientes
+                buscarProximaCita(docData.paciente.nombre); // Buscamos por nombre aprox (mejor sería por ID, pero esto sirve por ahora)
+
+            } catch (error) {
+                console.error("Error trayendo datos:", error);
+                alert("Hubo un error cargando tu información.");
+            }
+        }
+
+        function renderizarDatos(d) {
+            loader.classList.add('hidden');
+            content.classList.remove('hidden');
+
+            // 1. SALDO
+            let pendienteStr = d.finanzas.pendiente || "$0.00";
+            let pendienteVal = 0;
+            if(typeof pendienteStr === 'string') {
+                pendienteVal = parseFloat(pendienteStr.replace('$','').replace('S. Favor: ',''));
+            }
+            
+            document.getElementById('saldoDisplay').innerText = pendienteStr;
+            const estadoEl = document.getElementById('estadoSaldo');
+            
+            if(pendienteVal > 0.50) {
+                estadoEl.innerText = "Pago Pendiente";
+                estadoEl.className = "text-[10px] text-rose-400 font-bold mt-1 uppercase animate-pulse";
+            } else {
+                estadoEl.innerText = "¡Estás al día!";
+                estadoEl.className = "text-[10px] text-teal-400 font-bold mt-1 uppercase";
+            }
+
+            // 2. BARRA DE PROGRESO DE PAGO
+            const total = parseFloat(d.finanzas.total.replace('$','')) || 1; // Evitar div/0
+            const abono = d.finanzas.abono || 0;
+            const porcentaje = Math.min(100, Math.round((abono / total) * 100));
+            
+            document.getElementById('barraProgreso').style.width = porcentaje + "%";
+            document.getElementById('txtProgreso').innerText = porcentaje + "% Pagado";
+
+            // 3. RESUMEN
+            document.getElementById('resumenServicios').innerText = d.servicios.map(s => s.tipo).join(', ');
+            document.getElementById('resumenFecha').innerText = d.fecha_inicio || '---';
+
+            // 4. HISTORIAL
+            const lista = document.getElementById('listaPagos');
+            lista.innerHTML = '';
+            if(d.historial && d.historial.length > 0) {
+                // Mostrar solo los últimos 3
+                d.historial.slice(-3).reverse().forEach(h => {
+                    lista.innerHTML += `
+                        <div class="flex justify-between items-center border-b border-white/5 pb-2 last:border-0 last:pb-0">
+                            <div>
+                                <p class="font-bold text-white">${h.metodo}</p>
+                                <p class="text-[10px] text-slate-400">${h.fecha}</p>
+                            </div>
+                            <span class="text-teal-400 font-bold">+$${parseFloat(h.monto).toFixed(2)}</span>
+                        </div>
+                    `;
+                });
+            } else {
+                lista.innerHTML = '<p class="text-slate-500 italic text-center">Aún no hay pagos registrados.</p>';
+            }
+        }
+
+        async function buscarProximaCita(nombre) {
+            // Buscamos en la colección de citas por nombre (match simple)
+            // Nota: Esto asume que el nombre en la cita es igual al de la ficha.
+            // Para V2, vincularemos mejor con ID.
+            const hoy = new Date().toISOString().split('T')[0];
+            const q = query(
+                collection(db, "reservas_entrantes"), 
+                where("nombre", "==", nombre),
+                where("fecha_cita", ">=", hoy),
+                orderBy("fecha_cita", "asc"),
+                limit(1)
+            );
+
+            const snap = await getDocs(q);
+            if(!snap.empty) {
+                const cita = snap.docs[0].data();
+                document.getElementById('citaCard').classList.remove('hidden');
+                document.getElementById('citaServicio').innerText = cita.servicio || 'Cita de Control';
+                document.getElementById('citaFecha').innerText = `${cita.fecha_cita} a las ${cita.hora_cita}`;
+            }
+        }
+
+    </script>
+</body>
+</html>
