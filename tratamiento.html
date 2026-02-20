@@ -1287,14 +1287,22 @@
     };
 
     document.getElementById('btnSave').addEventListener('click', async () => {
-        const nom = document.getElementById('nombre').value;
-        const fReal = document.getElementById('fecha_inicio_real').value;
-        const legal = document.getElementById('check_legal').checked;
-        if(!nom || !fReal || !legal) return alert("⚠️ ERROR: Nombre, Fecha y Términos son obligatorios.");
-        
-        const btn = document.getElementById('btnSave'); 
-        btn.disabled = true; 
-        btn.innerText = "PROCESANDO...";
+    const btn = document.getElementById('btnSave');
+    
+    // REPARACIÓN: Si el botón ya está bloqueado o ya terminó con éxito, no hace nada más.
+    if (btn.disabled || btn.innerText.includes("LISTO")) return;
+
+    const nom = document.getElementById('nombre').value;
+    const fReal = document.getElementById('fecha_inicio_real').value;
+    const legal = document.getElementById('check_legal').checked;
+    
+    if(!nom || !fReal || !legal) return alert("⚠️ ERROR: Nombre, Fecha y Términos son obligatorios.");
+    
+    // REPARACIÓN: Bloqueamos el botón y cambiamos el texto al instante
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-3"></i> GUARDANDO...';
+    
+    // Aquí continúa tu código normal definiendo la variable 'const data = {'
         
         const serv = []; 
         document.querySelectorAll('.service-row').forEach(r => {
