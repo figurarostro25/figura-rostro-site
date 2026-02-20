@@ -1223,7 +1223,6 @@
     actualizarHistorialUI();
 
     // 6. REPARACIÓN MAESTRA: Forzar el recálculo total. 
-    // Esto hará que el Saldo y el Total Cobrado aparezcan correctos de inmediato.
     setTimeout(() => {
         calcularTotal();
     }, 200);
@@ -1247,19 +1246,44 @@
     toggleView('form'); 
     window.scrollTo({top: 0, behavior: 'smooth'});
 };
-    window.descargarEstadoCuenta = (id) => {
-        const d = window.dbCache.find(x => x.id === id);
-        document.getElementById('s_paciente').innerText = d.paciente.nombre;
-        document.getElementById('s_folio').innerText = d.folio;
-        document.getElementById('s_total').innerText = d.finanzas.total;
-        document.getElementById('s_cobrado').innerText = `$${parseFloat(d.finanzas.abono).toFixed(2)}`;
-        document.getElementById('s_saldo').innerText = d.finanzas.pendiente;
-        const tb = document.getElementById('s_cuerpo'); tb.innerHTML = '';
-        d.historial.forEach(p => { tb.innerHTML += `<tr><td style="padding:10px; border-bottom:1px solid #eee;">${p.fecha}</td><td style="padding:10px; border-bottom:1px solid #eee;">${p.metodo} (${p.motivo})</td><td style="padding:10px; border-bottom:1px solid #eee; text-align:right;">$${parseFloat(p.monto).toFixed(2)}</td></tr>`; });
-        const el = document.getElementById('statementTemplate'); el.classList.remove('hidden');
-        html2pdf().from(el).set({ margin: 10, filename: `EstadoCuenta_${d.paciente.nombre}.pdf` }).save().then(()=>el.classList.add('hidden'));
-    };
 
+window.descargarEstadoCuenta = (id) => {
+    const d = window.dbCache.find(x => x.id === id);
+    if (!d) return alert("No se encontró el expediente");
+
+    document.getElementById('s_paciente').innerText = d.paciente.nombre;
+    document.getElementById('s_folio').innerText = d.folio;
+    document.getElementById('s_total').innerText = d.finanzas.total;
+    
+    // REPARACIÓN: Asegurar que el monto cobrado use el número real de la base de datos
+    const totalCobrado = (d.finanzas.abono || 0);
+    document.getElementById('s_cobrado').innerText = `$${totalCobrado.toFixed(2)}`;
+    document.getElementById('s_saldo').innerText = d.finanzas.pendiente;
+    
+    const tb = document.getElementById('s_cuerpo'); 
+    tb.innerHTML = '';
+    
+    if (d.historial && d.historial.length > 0) {
+        d.historial.forEach(p => {
+            tb.innerHTML += `<tr>
+                <td style="padding:10px; border-bottom:1px solid #eee;">${p.fecha}</td>
+                <td style="padding:10px; border-bottom:1px solid #eee;">${p.metodo} (${p.motivo})</td>
+                <td style="padding:10px; border-bottom:1px solid #eee; text-align:right;">$${parseFloat(p.monto).toFixed(2)}</td>
+            </tr>`;
+        });
+    } else {
+        tb.innerHTML = '<tr><td colspan="3" style="text-align:center; padding:10px;">Sin abonos registrados</td></tr>';
+    }
+
+    const el = document.getElementById('statementTemplate'); 
+    el.classList.remove('hidden');
+    
+    html2pdf().from(el).set({ 
+        margin: 10, 
+        filename: `Estado_Cuenta_${d.paciente.nombre}.pdf`,
+        html2canvas: { scale: 2 }
+    }).save().then(() => el.classList.add('hidden'));
+};
     window.checkAlerts = () => {
         const list = document.getElementById('alertList'); list.innerHTML = ''; let count = 0; const today = new Date();
         
