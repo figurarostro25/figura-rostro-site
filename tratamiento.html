@@ -1193,33 +1193,60 @@
     };
 
     window.editarFicha = (id) => {
-        const r = window.dbCache.find(x => x.id === id); window.currentDocId = id;
-        document.getElementById('editModeBanner').classList.remove('hidden');
-        document.querySelectorAll('.folio-display').forEach(e => e.innerText = r.folio);
-        document.getElementById('nombre').value = r.paciente.nombre;
-        document.getElementById('email_paciente').value = r.paciente.email || ''; 
-        document.getElementById('telefono').value = r.paciente.celular;
-        document.getElementById('cedula').value = r.paciente.cedula || '';
-        document.getElementById('edad').value = r.paciente.edad || '';
-        document.getElementById('ocupacion').value = r.paciente.ocupacion || '';
-        document.getElementById('direccion').value = r.paciente.direccion || '';
-        document.getElementById('fecha_inicio_real').value = r.fecha_inicio || '';
-        document.getElementById('descuento_pct').value = r.finanzas.descuento_pct || 0;
-        document.getElementById('bono_manual').value = r.finanzas.bono || 0;
-        
-        const checkC = document.getElementById('usa_cuotas');
-        checkC.checked = r.finanzas.usa_cuotas || false;
-        if(checkC.checked) {
-            checkC.disabled = true;
-            document.getElementById('planEditableUI').classList.add('hidden');
-            document.getElementById('planPactadoDisplay').classList.remove('hidden');
-            document.getElementById('txtPlanPactado').innerText = `${r.finanzas.num_cuotas} CUOTAS QUINCENALES (PACTO ORIGINAL)`;
-            document.getElementById('cuotasContainer').classList.remove('hidden');
-        } else {
-            checkC.disabled = false;
-            document.getElementById('planEditableUI').classList.remove('hidden');
-            document.getElementById('planPactadoDisplay').classList.add('hidden');
-            document.getElementById('cuotasContainer').classList.add('hidden');
+    const r = window.dbCache.find(x => x.id === id); 
+    window.currentDocId = id;
+    
+    // 1. Mostrar banner de edición y cargar Folio
+    document.getElementById('editModeBanner').classList.remove('hidden');
+    document.querySelectorAll('.folio-display').forEach(e => e.innerText = r.folio);
+    
+    // 2. Cargar Datos Personales
+    document.getElementById('nombre').value = r.paciente.nombre;
+    document.getElementById('telefono').value = r.paciente.celular;
+    document.getElementById('cedula').value = r.paciente.cedula || '';
+    document.getElementById('email_paciente').value = r.paciente.email || '';
+    document.getElementById('ocupacion').value = r.paciente.ocupacion || '';
+    document.getElementById('direccion').value = r.paciente.direccion || '';
+    document.getElementById('fecha_inicio_real').value = r.fecha_inicio || '';
+    document.getElementById('observaciones').value = r.observaciones || '';
+
+    // 3. REPARACIÓN: Cargar Descuento y Bono ANTES de calcular
+    document.getElementById('descuento_pct').value = r.finanzas.descuento_pct || 0;
+    document.getElementById('bono_manual').value = r.finanzas.bono || 0;
+    
+    // 4. Limpiar y cargar los servicios contratados
+    document.getElementById('listaServicios').innerHTML = '';
+    if(r.servicios) r.servicios.forEach(s => agregarServicio(s.tipo, s.zona, s.precio));
+
+    // 5. REPARACIÓN: Cargar el historial de pagos completo para que el saldo sea exacto
+    window.historialLocal = r.historial || [];
+    actualizarHistorialUI();
+
+    // 6. REPARACIÓN CLAVE: Forzamos el recálculo inmediato. 
+    // Esto hace que el Saldo y el Total aparezcan idénticos a como los dejaste antes.
+    setTimeout(() => {
+        calcularTotal();
+    }, 150);
+
+    // Lógica para el plan de cuotas pactado
+    const checkC = document.getElementById('usa_cuotas');
+    checkC.checked = r.finanzas.usa_cuotas || false;
+    if(checkC.checked) {
+        checkC.disabled = true;
+        document.getElementById('planEditableUI').classList.add('hidden');
+        document.getElementById('planPactadoDisplay').classList.remove('hidden');
+        document.getElementById('txtPlanPactado').innerText = `${r.finanzas.num_cuotas} CUOTAS QUINCENALES (PACTO ORIGINAL)`;
+        document.getElementById('cuotasContainer').classList.remove('hidden');
+    } else {
+        checkC.disabled = false;
+        document.getElementById('planEditableUI').classList.remove('hidden');
+        document.getElementById('planPactadoDisplay').classList.add('hidden');
+    }
+
+    // Cambiar vista y subir el scroll
+    toggleView('form'); 
+    window.scrollTo({top: 0, behavior: 'smooth'});
+};
         }
 
         document.getElementById('observaciones').value = r.observaciones || '';
