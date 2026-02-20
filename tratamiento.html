@@ -1116,45 +1116,38 @@
     };
 
     window.calcularTotal = () => {
-        let sub = 0; document.querySelectorAll('.s-price').forEach(i => sub += parseFloat(i.value) || 0);
-        const pct = parseFloat(document.getElementById('descuento_pct').value) || 0;
-        const bono = parseFloat(document.getElementById('bono_manual').value) || 0;
-        const totalFinal = Math.max(0, sub - (sub * (pct / 100)) - bono);
-        
-        const cobrado = window.historialLocal.reduce((acc, curr) => acc + parseFloat(curr.monto), 0);
-        const saldo = totalFinal - cobrado;
+    let sub = 0; 
+    document.querySelectorAll('.s-price').forEach(i => sub += parseFloat(i.value) || 0);
+    
+    const pct = parseFloat(document.getElementById('descuento_pct').value) || 0;
+    const bono = parseFloat(document.getElementById('bono_manual').value) || 0;
+    const totalFinal = Math.max(0, sub - (sub * (pct / 100)) - bono);
+    
+    // Suma de todo el historial sin errores
+    const cobradoTotal = window.historialLocal.reduce((acc, curr) => acc + (parseFloat(curr.monto) || 0), 0);
+    const saldo = totalFinal - cobradoTotal;
 
-        document.getElementById('sub_txt').innerText = `$${sub.toFixed(2)}`;
-        document.getElementById('desc_txt').innerText = `-$${(sub * (pct / 100)).toFixed(2)}`;
-        document.getElementById('bono_txt').innerText = `-$${bono.toFixed(2)}`;
-        document.getElementById('lblTotal').innerText = `$${totalFinal.toFixed(2)}`;
-        
-        const lblP = document.getElementById('lblPendiente');
-        if(saldo < 0.05 && saldo > -0.05) {
-             lblP.innerText = "$0.00";
-             lblP.className = "text-3xl font-black text-emerald-500 font-mono italic";
-        } else if (saldo < 0) {
-             lblP.innerText = `S. Favor: $${Math.abs(saldo).toFixed(2)}`;
-             lblP.className = "text-3xl font-black text-brand-main font-mono italic";
-        } else {
-             lblP.innerText = `$${saldo.toFixed(2)}`;
-             lblP.className = "text-3xl font-black text-rose-500 font-mono italic";
-        }
+    document.getElementById('sub_txt').innerText = `$${sub.toFixed(2)}`;
+    document.getElementById('desc_txt').innerText = `-$${(sub * (pct / 100)).toFixed(2)}`;
+    document.getElementById('bono_txt').innerText = `-$${bono.toFixed(2)}`;
+    document.getElementById('lblTotal').innerText = `$${totalFinal.toFixed(2)}`;
+    
+    const lblP = document.getElementById('lblPendiente');
+    if (saldo <= 0.05) {
+        lblP.innerText = "$0.00";
+        lblP.className = "text-3xl font-black text-emerald-500 font-mono italic";
+    } else {
+        lblP.innerText = `$${saldo.toFixed(2)}`;
+        lblP.className = "text-3xl font-black text-rose-500 font-mono italic";
+    }
 
-        document.getElementById('abono_anterior').value = cobrado.toFixed(2);
-        document.getElementById('pagoHoyVisual').innerText = `$${parseFloat(document.getElementById('abono_nuevo').value || 0).toFixed(2)}`;
-
-        if(document.getElementById('usa_cuotas').checked) {
-            if(!window.currentDocId) {
-                const n = parseInt(document.getElementById('num_cuotas').value);
-                document.getElementById('desgloseCuotas').innerText = `${n} CUOTAS DE $${(saldo / n).toFixed(2)}`;
-            }
-            const dates = Array.from(document.querySelectorAll('.f-cuota')).map(i => i.value).filter(v => v);
-            const today = new Date().toISOString().split('T')[0];
-            const nextDate = dates.sort().find(d => d >= today);
-            document.getElementById('fecha_proximo_pago_auto').value = nextDate || 'No definida';
-        } else { document.getElementById('fecha_proximo_pago_auto').value = 'N/A'; }
-    };
+    document.getElementById('abono_anterior').value = cobradoTotal.toFixed(2);
+    
+    if(document.getElementById('usa_cuotas').checked && !window.currentDocId) {
+        const n = parseInt(document.getElementById('num_cuotas').value);
+        document.getElementById('desgloseCuotas').innerText = `${n} CUOTAS DE $${(saldo / n).toFixed(2)}`;
+    }
+};
 
     window.abrirModalPago = () => {
         const saldoStr = document.getElementById('lblPendiente').innerText.replace('$','').replace('S. Favor: ','');
