@@ -1009,7 +1009,7 @@
         renderTabla(); 
     };
 
-   window.renderTabla = () => {
+window.renderTabla = () => {
         const tb = document.getElementById('tableBody');
         tb.innerHTML = '';
         const filtro = window.filtroFinancieroActual;
@@ -1064,10 +1064,10 @@
                 bgFecha = 'bg-teal-50 border-teal-100 text-teal-700'; 
             }
 
-            // LÓGICA DE EDAD (Aparece FALTA EDAD si no hay)
-            const edadBadge = d.paciente.edad ? 
-                `<span class="bg-blue-50 text-blue-600 border border-blue-100 px-2 py-1 rounded text-[10px] font-black">${d.paciente.edad}</span>` : 
-                `<span class="bg-rose-50 text-rose-500 border border-rose-100 px-2 py-1 rounded text-[9px] font-black uppercase animate-pulse">Falta Edad</span>`;
+            // EDAD: Más grande y con mejor ubicación
+            const edadDisplay = d.paciente.edad ? 
+                `<div class="text-[13px] font-black text-slate-700 dark:text-slate-300 mt-0.5">${d.paciente.edad} AÑOS</div>` : 
+                `<div class="text-[9px] font-black text-rose-400 uppercase italic">Falta Edad</div>`;
 
             const btnWpp = `<a href="https://wa.me/507${d.paciente.celular}" target="_blank" class="bg-emerald-50 hover:bg-emerald-100 border border-emerald-100 text-emerald-600 px-2 py-1 rounded shadow-sm font-bold text-[10px] inline-flex items-center gap-1 transition-all no-print">
                 <i class="fab fa-whatsapp text-sm"></i> ${d.paciente.celular}
@@ -1077,20 +1077,14 @@
             <tr class="border-b ${bgRow} hover:bg-white dark:hover:bg-slate-800 transition-all text-left group">
                 <td class="p-4 font-mono font-bold text-slate-400 text-[10px]">${d.folio}</td>
                 <td class="py-3 pr-2">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <div class="font-black uppercase text-slate-700 dark:text-white text-xs mb-1">
-                                ${d.paciente.nombre} ${badgeDeuda}
-                            </div>
-                            <div class="text-[9px] font-bold text-slate-400 uppercase mb-1.5 flex items-center gap-1">
-                                <i class="fas fa-briefcase"></i> ${d.paciente.ocupacion || 'NO ESPECIFICADA'}
-                            </div>
-                            ${btnWpp}
-                        </div>
-                        <div class="pr-4 mt-1">
-                            ${edadBadge}
-                        </div>
+                    <div class="font-black uppercase text-slate-800 dark:text-white text-xs">
+                        ${d.paciente.nombre} ${badgeDeuda}
                     </div>
+                    ${edadDisplay}
+                    <div class="text-[9px] font-bold text-slate-400 uppercase mb-1.5 flex items-center gap-1">
+                        <i class="fas fa-briefcase"></i> ${d.paciente.ocupacion || 'NO ESPECIFICADA'}
+                    </div>
+                    ${btnWpp}
                 </td>
                 <td class="py-3">
                     <div class="font-black text-slate-700 dark:text-slate-300 uppercase text-[10px]">VALORACIÓN</div>
@@ -1099,15 +1093,14 @@
                 <td class="text-right font-black dark:text-slate-300 text-xs">${d.finanzas.total}</td>
                 <td class="text-right text-emerald-600 font-bold text-xs opacity-80">$${parseFloat(d.finanzas.abono || 0).toFixed(2)}</td>
                 <td class="text-right ${txtPendiente} font-black tracking-tighter text-sm">${d.finanzas.pendiente}</td>
-                <td class="p-4 flex justify-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <button onclick="verFichaVisor('${d.id}')" class="p-2 bg-blue-50 text-blue-500 rounded shadow hover:scale-110 transition-all border border-blue-100" title="Ver Datos Rápidos"><i class="fas fa-eye text-xs"></i></button>
+                <td class="p-4 flex justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                     <button onclick="editarFicha('${d.id}')" class="p-2 bg-slate-800 text-white rounded shadow hover:scale-110 transition-all" title="Registrar Cobro"><i class="fas fa-edit text-xs"></i></button>
-                    <button onclick="descargarPdfDirecto('${d.id}')" class="p-2 bg-rose-50 text-rose-500 rounded shadow hover:scale-110 transition-all border border-rose-100" title="Descargar Expediente PDF"><i class="fas fa-file-pdf text-xs"></i></button>
-                    <button onclick="eliminarFichaDefinitiva('${d.id}')" class="p-2 bg-red-50 text-red-500 rounded shadow hover:scale-110 transition-all border border-red-100" title="Borrar Paciente (Limpieza)"><i class="fas fa-trash text-xs"></i></button>
+                    <button onclick="descargarPdfDirecto('${d.id}')" class="p-2 bg-rose-50 text-rose-500 rounded shadow hover:scale-110 transition-all border border-rose-100" title="Descargar PDF"><i class="fas fa-file-pdf text-xs"></i></button>
+                    <button onclick="descargarEstadoCuenta('${d.id}')" class="p-2 bg-white border border-slate-200 text-slate-600 rounded shadow hover:scale-110 transition-all" title="Estado de Cuenta"><i class="fas fa-file-invoice-dollar text-xs"></i></button>
                 </td>
             </tr>`;
         });
-    };
+    };   
 
     window.eliminarFichaDefinitiva = async (id) => {
         if(confirm("⚠️ ¿ESTÁS SEGURO? Vas a borrar a este paciente y todos sus pagos del sistema. Esta acción NO se puede deshacer.")) {
