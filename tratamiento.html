@@ -1024,6 +1024,22 @@
             return true; 
         });
 
+        // NUEVO: Calcular totales para las tarjetas en tiempo real
+        let tVentas = 0, tCobrado = 0, tPendiente = 0;
+        datosFiltrados.forEach(d => {
+            let totalRaw = d.finanzas.total || "0";
+            let pendRaw = d.finanzas.pendiente || "0";
+            if(typeof totalRaw === 'string') totalRaw = totalRaw.replace(/[^0-9.-]+/g,"");
+            if(typeof pendRaw === 'string') pendRaw = pendRaw.replace(/[^0-9.-]+/g,"");
+            
+            tVentas += parseFloat(totalRaw) || 0;
+            tCobrado += parseFloat(d.finanzas.abono) || 0;
+            tPendiente += parseFloat(pendRaw) || 0;
+        });
+        document.getElementById('cardVentas').innerText = `$${tVentas.toFixed(2)}`;
+        document.getElementById('cardCobrado').innerText = `$${tCobrado.toFixed(2)}`;
+        document.getElementById('cardPendiente').innerText = `$${tPendiente.toFixed(2)}`;
+
         if(datosFiltrados.length === 0) {
             tb.innerHTML = '<tr><td colspan="7" class="p-10 text-center opacity-50 font-bold italic text-slate-400">NO HAY REGISTROS EN ESTA VISTA</td></tr>';
             return;
@@ -1041,6 +1057,12 @@
             const txtPendiente = esDeuda ? "text-rose-600 dark:text-rose-400" : "text-emerald-400 opacity-60";
             const badgeDeuda = esDeuda ? '<span class="ml-2 bg-rose-500 text-white text-[7px] px-1.5 py-0.5 rounded tracking-wider">PENDIENTE</span>' : '';
 
+            // Obtener fecha de creación (prioriza fecha inicio real, luego el timestamp de Firebase)
+            let fechaCreacion = d.fecha_inicio || '-';
+            if (fechaCreacion === '-' && d.fecha && d.fecha.seconds) {
+                fechaCreacion = new Date(d.fecha.seconds * 1000).toLocaleDateString('es-PA');
+            }
+
             tb.innerHTML += `
             <tr class="border-b ${bgRow} hover:bg-slate-100 dark:hover:bg-slate-800 transition-all text-left group">
                 <td class="p-4 font-mono font-bold text-slate-400 text-[10px]">${d.folio}</td>
@@ -1048,7 +1070,10 @@
                     ${d.paciente.nombre}
                     ${badgeDeuda}
                 </td>
-                <td class="text-slate-400 italic text-[10px]">${d.paciente.ocupacion || '-'}</td>
+                <td class="py-3">
+                    <div class="font-black text-slate-700 dark:text-slate-300 uppercase text-[10px]">VALORACIÓN</div>
+                    <div class="text-slate-400 italic text-[10px]">${fechaCreacion}</div>
+                </td>
                 <td class="text-right font-black dark:text-slate-300 text-xs">${d.finanzas.total}</td>
                 <td class="text-right text-emerald-600 font-bold text-xs opacity-80">$${parseFloat(d.finanzas.abono || 0).toFixed(2)}</td>
                 <td class="text-right ${txtPendiente} font-black tracking-tighter text-sm">${d.finanzas.pendiente}</td>
