@@ -1117,6 +1117,92 @@
             }
         }
     };
+
+  window.verFichaVisor = (id) => {
+        const d = window.dbCache.find(x => x.id === id);
+        if(!d) return;
+        const modal = document.getElementById('modalVisor');
+        const contenido = document.getElementById('contenidoVisor');
+        
+        let servHtml = '';
+        if(d.servicios && d.servicios.length > 0) {
+            d.servicios.forEach(s => {
+                servHtml += `<div class="flex justify-between border-b border-slate-100 dark:border-slate-600 py-1"><span class="uppercase text-[10px] font-bold">${s.tipo} (${s.zona || '-'})</span><span class="text-[10px] font-mono">$${s.precio}</span></div>`;
+            });
+        }
+
+        contenido.innerHTML = `
+            <div class="space-y-4 text-xs text-slate-600 dark:text-slate-300 text-left">
+                <div class="grid grid-cols-2 gap-4 bg-slate-50 dark:bg-slate-700/50 p-4 rounded-xl border border-slate-100 dark:border-slate-600">
+                    <div><p class="text-[9px] font-black uppercase text-slate-400">Paciente</p><p class="font-bold text-slate-800 dark:text-white uppercase">${d.paciente.nombre}</p></div>
+                    <div><p class="text-[9px] font-black uppercase text-slate-400">Folio</p><p class="font-mono font-bold text-teal-600">${d.folio}</p></div>
+                    <div><p class="text-[9px] font-black uppercase text-slate-400">Edad / Ocup.</p><p class="font-bold uppercase">${d.paciente.edad || '-'} • ${d.paciente.ocupacion || '-'}</p></div>
+                    <div><p class="text-[9px] font-black uppercase text-slate-400">WhatsApp</p><p class="font-bold">${d.paciente.celular}</p></div>
+                </div>
+                
+                <div class="p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-600 shadow-sm">
+                    <p class="text-[10px] font-black uppercase text-teal-600 mb-2 border-b pb-1">Tratamiento Solicitado</p>
+                    ${servHtml}
+                    <div class="flex justify-between mt-2 pt-2 font-black text-sm uppercase"><span class="text-slate-400">Total General</span><span class="text-teal-600">${d.finanzas.total}</span></div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 mt-4">
+                    <div class="bg-emerald-50 border border-emerald-100 p-3 rounded-xl text-center shadow-inner">
+                        <p class="text-[9px] font-black text-emerald-600 uppercase">Cobrado</p>
+                        <p class="font-black text-emerald-700 text-lg">$${parseFloat(d.finanzas.abono || 0).toFixed(2)}</p>
+                    </div>
+                    <div class="bg-rose-50 border border-rose-100 p-3 rounded-xl text-center shadow-inner">
+                        <p class="text-[9px] font-black text-rose-600 uppercase">Saldo Pendiente</p>
+                        <p class="font-black text-rose-700 text-lg">${d.finanzas.pendiente}</p>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <button onclick="descargarPdfDirecto('${d.id}')" class="bg-slate-800 text-white px-6 py-3 rounded-lg font-bold text-[10px] uppercase shadow-md hover:bg-slate-700 transition-all"><i class="fas fa-file-pdf mr-2 text-rose-400"></i> Descargar Expediente en PDF</button>
+                </div>
+            </div>
+        `;
+        
+        const modalTitle = modal.querySelector('h3');
+        if(modalTitle) modalTitle.innerHTML = `<i class="fas fa-eye mr-2"></i> Vista Rápida del Expediente`;
+        modal.classList.remove('hidden');
+    };
+
+    window.descargarPdfDirecto = (id) => {
+        // Cierra el visor si está abierto
+        document.getElementById('modalVisor').classList.add('hidden');
+        
+        // 1. Entrar en modo edición rápido para llenar el DOM oculto
+        window.editarFicha(id);
+        
+        // 2. Darle medio segundo para que la pantalla cargue y luego generar el PDF perfecto a 2 páginas
+        setTimeout(() => {
+            const opt = { 
+                margin: [0.3, 0.2], // [Márgen superior, Márgen lateral]
+                filename: `Expediente_${document.getElementById('nombre').value}.pdf`, 
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 }, 
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+                pagebreak: { mode: ['css', 'legacy'], before: '.page-break' } // Esto corta las 2 páginas exactas
+            };
+            
+            html2pdf().set(opt).from(document.getElementById('printContainer')).save().then(() => {
+                // 3. Volver a la lista al terminar
+                toggleView('list');
+            });
+        }, 600);
+    };
+
+    // Actualizamos también el botón original del formulario por si tu compañera le da click ahí
+    document.getElementById('btnPdf').addEventListener('click', () => {
+        const opt = { 
+            margin: [0.3, 0.2], 
+            filename: `Ficha_${document.getElementById('nombre').value}.pdf`, 
+            html2canvas: { scale: 2 }, 
+            jsPDF: { unit: 'in', format: 'letter' },
+            pagebreak: { mode: ['css', 'legacy'], before: '.page-break' }
+        };
+        html2pdf().set(opt).from(document.getElementById('printContainer')).save();
+    });      
         
         window.loadData = async () => {
         const tb = document.getElementById('tableBody'); 
@@ -1449,10 +1535,6 @@ window.descargarEstadoCuenta = (id) => {
         }
     });
 
-    document.getElementById('btnPdf').addEventListener('click', () => {
-        const opt = { margin: 0, filename: `Ficha_${document.getElementById('nombre').value}.pdf`, html2canvas: { scale: 3 }, jsPDF: { unit: 'in', format: 'letter' } };
-        html2pdf().set(opt).from(document.getElementById('printContainer')).save();
-    });
 
     let canvas, ctx, isDrawing = false;
     function setupCanvas() {
