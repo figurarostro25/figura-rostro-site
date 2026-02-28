@@ -1101,7 +1101,10 @@ window.renderTabla = () => {
                 <td class="text-right font-black tracking-tighter text-sm">${d.finanzas.pendiente}</td>
                 <td class="p-4 flex justify-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                     <button onclick="editarFicha('${d.id}')" class="p-2 bg-slate-800 text-white rounded shadow" title="Cobrar"><i class="fas fa-edit text-xs"></i></button>
+                    
                     <button onclick="descargarPdfDirecto('${d.id}')" class="p-2 bg-rose-50 text-rose-500 rounded border border-rose-100 shadow" title="PDF"><i class="fas fa-file-pdf text-xs"></i></button>
+                    
+                    <button onclick="descargarEstadoCuenta('${d.id}')" class="p-2 bg-white border border-slate-200 text-slate-600 rounded shadow" title="Estado Cuenta"><i class="fas fa-file-invoice-dollar text-xs"></i></button>
                     
                     <button onclick="eliminarFichaDefinitiva('${d.id}')" class="p-2 bg-red-100 text-red-600 rounded border border-red-200 shadow hover:bg-red-600 hover:text-white transition-all" title="ELIMINAR">
                         <i class="fas fa-trash-alt text-xs"></i>
