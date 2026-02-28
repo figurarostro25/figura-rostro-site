@@ -1368,23 +1368,119 @@ window.renderTabla = () => {
         for(let r of rows) r.style.display = r.innerText.toUpperCase().includes(val) ? '' : 'none';
     };
 
+   </td>
+            </tr>`;
+        });
+    };
+
+    // FUNCIÓN DE EDICIÓN CON CANDADO DE SEGURIDAD
     window.editarFicha = (id) => {
-    const r = window.dbCache.find(x => x.id === id); 
-    window.currentDocId = id;
-    
-    // 1. Mostrar banner de edición y cargar Folio
-    document.getElementById('editModeBanner').classList.remove('hidden');
-    document.querySelectorAll('.folio-display').forEach(e => e.innerText = r.folio);
-    
-    // 2. Cargar Datos Personales
-    document.getElementById('nombre').value = r.paciente.nombre;
-    document.getElementById('telefono').value = r.paciente.celular;
-    document.getElementById('cedula').value = r.paciente.cedula || '';
-    document.getElementById('email_paciente').value = r.paciente.email || '';
-    document.getElementById('ocupacion').value = r.paciente.ocupacion || '';
-    document.getElementById('direccion').value = r.paciente.direccion || '';
-    document.getElementById('fecha_inicio_real').value = r.fecha_inicio || '';
-    document.getElementById('observaciones').value = r.observaciones || '';
+        const r = window.dbCache.find(x => x.id === id); 
+        window.currentDocId = id;
+        
+        // 1. Mostrar banner de edición y cargar Folio
+        document.getElementById('editModeBanner').classList.remove('hidden');
+        document.querySelectorAll('.folio-display').forEach(e => e.innerText = r.folio);
+        
+        // 2. Cargar Datos Personales
+        document.getElementById('nombre').value = r.paciente.nombre;
+        document.getElementById('telefono').value = r.paciente.celular;
+        document.getElementById('cedula').value = r.paciente.cedula || '';
+        document.getElementById('email_paciente').value = r.paciente.email || '';
+        document.getElementById('ocupacion').value = r.paciente.ocupacion || '';
+        document.getElementById('direccion').value = r.paciente.direccion || '';
+        document.getElementById('fecha_inicio_real').value = r.fecha_inicio || '';
+        document.getElementById('observaciones').value = r.observaciones || '';
+
+        // 3. Cargar Descuento y Bono
+        document.getElementById('descuento_pct').value = r.finanzas.descuento_pct || 0;
+        document.getElementById('bono_manual').value = r.finanzas.bono || 0;
+        
+        // 4. Cargar servicios contratados
+        document.getElementById('listaServicios').innerHTML = '';
+        if(r.servicios) r.servicios.forEach(s => agregarServicio(s.tipo, s.zona, s.precio));
+
+        // 5. Cargar historial de pagos
+        window.historialLocal = [...(r.historial || [])];
+        actualizarHistorialUI();
+
+        // === 🛡️ EL CANDADO DE SEGURIDAD (SOLO PARA EDICIÓN) ===
+        if(window.currentDocId) {
+            // Bloqueamos descuentos y bonos para que no alteren el pacto original
+            document.getElementById('descuento_pct').readOnly = true;
+            document.getElementById('bono_manual').readOnly = true;
+            
+            // Bloqueamos la lista de servicios (no se pueden borrar ni cambiar precios)
+            document.getElementById('listaServicios').style.pointerEvents = 'none';
+            document.getElementById('listaServicios').style.opacity = '0.7';
+            
+            // Escondemos el botón de agregar servicios
+            const btnAdd = document.querySelector('button[onclick="agregarServicio()"]');
+            if(btnAdd) btnAdd.style.display = 'none';
+        } else {
+            // Si es un cliente nuevo, dejamos todo editable
+            document.getElementById('descuento_pct').readOnly = false;
+            document.getElementById('bono_manual').readOnly = false;
+            document.getElementById('listaServicios').style.pointerEvents = 'auto';
+            document.getElementById('listaServicios').style.opacity = '1';
+            const btnAdd = document.querySelector('button[onclick="agregarServicio()"]');
+            if(btnAdd) btnAdd.style.display = 'block';
+        }
+
+        // Recálculo final
+        setTimeout(() => { calcularTotal(); }, 200);
+
+        // Lógica de cuotas (Solo lectura si ya existe)
+        const checkC = document.getElementById('usa_cuotas');
+        checkC.checked = r.finanzas.usa_cuotas || false;
+        if(checkC.checked) {
+            checkC.disabled = true;
+            document.getElementById('planEditableUI').classList.add('hidden');
+            document.getElementById('planPactadoDisplay').classList.remove('hidden');
+            document.getElementById('txtPlanPactado').innerText = `${r.finanzas.num_cuotas} CUOTAS QUINCENALES (PACTO ORIGINAL)`;
+            document.getElementById('cuotasContainer').classList.remove('hidden');
+        } else {
+            checkC.disabled = false;
+            document.getElementById('planEditableUI').classList.remove('hidden');
+            document.getElementById('planPactadoDisplay').classList.add('hidden');
+        }
+
+        toggleView('form'); 
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    };
+
+    // VISOR RÁPIDO ("EL OJITO") RESTAURADO
+    window.verFichaVisor = (id) => {
+        const d = window.dbCache.find(x => x.id === id);
+        if(!d) return;
+        const modal = document.getElementById('modalVisor');
+        const contenido = document.getElementById('contenidoVisor');
+        
+        let servHtml = '';
+        if(d.servicios) d.servicios.forEach(s => {
+            servHtml += `<div class="flex justify-between border-b border-slate-100 py-1"><span class="uppercase text-[10px] font-bold">${s.tipo} (${s.zona || '-'})</span><span class="text-[10px] font-mono">$${s.precio}</span></div>`;
+        });
+
+        contenido.innerHTML = `
+            <div class="space-y-4 text-xs text-slate-600 text-left">
+                <div class="grid grid-cols-2 gap-4 bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <div><p class="text-[9px] font-black uppercase text-slate-400">Paciente</p><p class="font-bold text-slate-800 uppercase">${d.paciente.nombre}</p></div>
+                    <div><p class="text-[9px] font-black uppercase text-slate-400">Folio</p><p class="font-mono font-bold text-teal-600">${d.folio}</p></div>
+                    <div><p class="text-[9px] font-black uppercase text-slate-400">Edad</p><p class="font-bold">${d.paciente.edad || '-'}</p></div>
+                    <div><p class="text-[9px] font-black uppercase text-slate-400">WhatsApp</p><p class="font-bold">${d.paciente.celular}</p></div>
+                </div>
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm">
+                    <p class="text-[10px] font-black uppercase text-teal-600 mb-2 border-b pb-1">Tratamiento Solicitado</p>
+                    ${servHtml}
+                    <div class="flex justify-between mt-2 pt-2 font-black text-sm uppercase"><span class="text-slate-400">Total</span><span class="text-teal-600">${d.finanzas.total}</span></div>
+                </div>
+                <div class="text-center mt-4">
+                    <button onclick="descargarPdfDirecto('${d.id}')" class="bg-slate-800 text-white px-6 py-3 rounded-lg font-bold text-[10px] uppercase shadow-md hover:bg-slate-700 transition-all"><i class="fas fa-file-pdf mr-2 text-rose-400"></i> Descargar Expediente</button>
+                </div>
+            </div>
+        `;
+        modal.classList.remove('hidden');
+    }; 
 
     // 3. REPARACIÓN: Cargar Descuento y Bono ANTES de calcular
     document.getElementById('descuento_pct').value = r.finanzas.descuento_pct || 0;
