@@ -1009,7 +1009,73 @@
         renderTabla(); 
     };
 
-tb.innerHTML += `
+window.renderTabla = () => {
+        const tb = document.getElementById('tableBody');
+        tb.innerHTML = '';
+        const filtro = window.filtroFinancieroActual;
+
+        const datosFiltrados = window.dbCache.filter(d => {
+            let pendienteRaw = d.finanzas.pendiente || "0";
+            if(typeof pendienteRaw === 'string') pendienteRaw = pendienteRaw.replace('$','').replace('S. Favor: ','');
+            const pendienteVal = parseFloat(pendienteRaw);
+
+            if (filtro === 'deuda') return pendienteVal > 0.50; 
+            if (filtro === 'aldia') return pendienteVal <= 0.50;
+            return true; 
+        });
+
+        // Totales de tarjetas
+        let tVentas = 0, tCobrado = 0, tPendiente = 0;
+        datosFiltrados.forEach(d => {
+            let totalRaw = d.finanzas.total || "0";
+            let pendRaw = d.finanzas.pendiente || "0";
+            if(typeof totalRaw === 'string') totalRaw = totalRaw.replace(/[^0-9.-]+/g,"");
+            if(typeof pendRaw === 'string') pendRaw = pendRaw.replace(/[^0-9.-]+/g,"");
+            
+            tVentas += parseFloat(totalRaw) || 0;
+            tCobrado += parseFloat(d.finanzas.abono) || 0;
+            tPendiente += parseFloat(pendRaw) || 0;
+        });
+        document.getElementById('cardVentas').innerText = `$${tVentas.toFixed(2)}`;
+        document.getElementById('cardCobrado').innerText = `$${tCobrado.toFixed(2)}`;
+        document.getElementById('cardPendiente').innerText = `$${tPendiente.toFixed(2)}`;
+
+        if(datosFiltrados.length === 0) {
+            tb.innerHTML = '<tr><td colspan="7" class="p-10 text-center opacity-50 font-bold italic text-slate-400">NO HAY REGISTROS EN ESTA VISTA</td></tr>';
+            return;
+        }
+
+        datosFiltrados.forEach(d => {
+            let pendienteRaw = d.finanzas.pendiente || "0";
+            let esDeuda = false;
+            if(typeof pendienteRaw === 'string') {
+                 const val = parseFloat(pendienteRaw.replace('$','').replace('S. Favor: ',''));
+                 esDeuda = val > 0.50;
+            }
+
+            const bgRow = esDeuda ? "bg-slate-50/50" : ""; 
+            const badgeDeuda = esDeuda ? '<span class="ml-1 text-slate-400 text-[9px] font-bold italic">(Pte.)</span>' : '';
+
+            // Fecha de Valoración (Regla del primer abono)
+            let fechaValoracion = 'SIN ABONO';
+            let estiloFecha = 'bg-rose-50 border-rose-200 text-rose-500 animate-pulse'; 
+            if (d.historial && d.historial.length > 0) {
+                fechaValoracion = d.historial[0].fecha; 
+                estiloFecha = 'bg-teal-50 border-teal-100 text-teal-700'; 
+            }
+
+            // EDAD: Grande (24px) y a la derecha dentro de la columna paciente
+            const edadDisplay = d.paciente.edad ? 
+                `<div class="text-[24px] font-black text-slate-300 dark:text-slate-600">${parseInt(d.paciente.edad)} <span class="text-[9px]">AÑOS</span></div>` : 
+                `<div class="text-[9px] font-black text-rose-300 uppercase italic">FALTA EDAD</div>`;
+
+            // WhatsApp Verde Clínico (Validado para evitar error 404)
+            const numCel = d.paciente.celular || "";
+            const btnWpp = `<a href="https://wa.me/507${numCel}" target="_blank" class="bg-emerald-50 hover:bg-emerald-100 border border-emerald-100 text-emerald-600 px-2 py-1 rounded shadow-sm font-bold text-[10px] inline-flex items-center gap-1 transition-all">
+                <i class="fab fa-whatsapp text-sm"></i> ${numCel || 'SIN NÚMERO'}
+            </a>`;
+
+            tb.innerHTML += `
             <tr class="border-b ${bgRow} hover:bg-white transition-all text-left group">
                 <td class="p-4 font-mono font-bold text-slate-400 text-[10px]">${d.folio}</td>
                 <td class="py-3 px-2">
@@ -1034,17 +1100,16 @@ tb.innerHTML += `
                 <td class="text-right text-emerald-600 font-bold text-xs">$${parseFloat(d.finanzas.abono || 0).toFixed(2)}</td>
                 <td class="text-right font-black tracking-tighter text-sm">${d.finanzas.pendiente}</td>
                 <td class="p-4 flex justify-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <button onclick="editarFicha('${d.id}')" class="p-2 bg-slate-800 text-white rounded shadow hover:scale-110" title="Cobrar"><i class="fas fa-edit text-xs"></i></button>
-                    
-                    <button onclick="descargarPdfDirecto('${d.id}')" class="p-2 bg-rose-50 text-rose-500 rounded border border-rose-100 shadow hover:scale-110" title="PDF"><i class="fas fa-file-pdf text-xs"></i></button>
-                    
-                    <button onclick="descargarEstadoCuenta('${d.id}')" class="p-2 bg-white border border-slate-200 text-slate-600 rounded shadow hover:scale-110" title="Estado Cuenta"><i class="fas fa-file-invoice-dollar text-xs"></i></button>
+                    <button onclick="editarFicha('${d.id}')" class="p-2 bg-slate-800 text-white rounded shadow" title="Cobrar"><i class="fas fa-edit text-xs"></i></button>
+                    <button onclick="descargarPdfDirecto('${d.id}')" class="p-2 bg-rose-50 text-rose-500 rounded border border-rose-100 shadow" title="PDF"><i class="fas fa-file-pdf text-xs"></i></button>
                     
                     <button onclick="eliminarFichaDefinitiva('${d.id}')" class="p-2 bg-red-100 text-red-600 rounded border border-red-200 shadow hover:bg-red-600 hover:text-white transition-all" title="ELIMINAR">
                         <i class="fas fa-trash-alt text-xs"></i>
                     </button>
                 </td>
             </tr>`;
+        });
+    };
     window.eliminarFichaDefinitiva = async (id) => {
         if(confirm("⚠️ ¿ESTÁS SEGURO? Vas a borrar a este paciente y todos sus pagos del sistema. Esta acción NO se puede deshacer.")) {
             try {
@@ -1303,23 +1368,119 @@ tb.innerHTML += `
         for(let r of rows) r.style.display = r.innerText.toUpperCase().includes(val) ? '' : 'none';
     };
 
+   </td>
+            </tr>`;
+        });
+    };
+
+    // FUNCIÓN DE EDICIÓN CON CANDADO DE SEGURIDAD
     window.editarFicha = (id) => {
-    const r = window.dbCache.find(x => x.id === id); 
-    window.currentDocId = id;
-    
-    // 1. Mostrar banner de edición y cargar Folio
-    document.getElementById('editModeBanner').classList.remove('hidden');
-    document.querySelectorAll('.folio-display').forEach(e => e.innerText = r.folio);
-    
-    // 2. Cargar Datos Personales
-    document.getElementById('nombre').value = r.paciente.nombre;
-    document.getElementById('telefono').value = r.paciente.celular;
-    document.getElementById('cedula').value = r.paciente.cedula || '';
-    document.getElementById('email_paciente').value = r.paciente.email || '';
-    document.getElementById('ocupacion').value = r.paciente.ocupacion || '';
-    document.getElementById('direccion').value = r.paciente.direccion || '';
-    document.getElementById('fecha_inicio_real').value = r.fecha_inicio || '';
-    document.getElementById('observaciones').value = r.observaciones || '';
+        const r = window.dbCache.find(x => x.id === id); 
+        window.currentDocId = id;
+        
+        // 1. Mostrar banner de edición y cargar Folio
+        document.getElementById('editModeBanner').classList.remove('hidden');
+        document.querySelectorAll('.folio-display').forEach(e => e.innerText = r.folio);
+        
+        // 2. Cargar Datos Personales
+        document.getElementById('nombre').value = r.paciente.nombre;
+        document.getElementById('telefono').value = r.paciente.celular;
+        document.getElementById('cedula').value = r.paciente.cedula || '';
+        document.getElementById('email_paciente').value = r.paciente.email || '';
+        document.getElementById('ocupacion').value = r.paciente.ocupacion || '';
+        document.getElementById('direccion').value = r.paciente.direccion || '';
+        document.getElementById('fecha_inicio_real').value = r.fecha_inicio || '';
+        document.getElementById('observaciones').value = r.observaciones || '';
+
+        // 3. Cargar Descuento y Bono
+        document.getElementById('descuento_pct').value = r.finanzas.descuento_pct || 0;
+        document.getElementById('bono_manual').value = r.finanzas.bono || 0;
+        
+        // 4. Cargar servicios contratados
+        document.getElementById('listaServicios').innerHTML = '';
+        if(r.servicios) r.servicios.forEach(s => agregarServicio(s.tipo, s.zona, s.precio));
+
+        // 5. Cargar historial de pagos
+        window.historialLocal = [...(r.historial || [])];
+        actualizarHistorialUI();
+
+        // === 🛡️ EL CANDADO DE SEGURIDAD (SOLO PARA EDICIÓN) ===
+        if(window.currentDocId) {
+            // Bloqueamos descuentos y bonos para que no alteren el pacto original
+            document.getElementById('descuento_pct').readOnly = true;
+            document.getElementById('bono_manual').readOnly = true;
+            
+            // Bloqueamos la lista de servicios (no se pueden borrar ni cambiar precios)
+            document.getElementById('listaServicios').style.pointerEvents = 'none';
+            document.getElementById('listaServicios').style.opacity = '0.7';
+            
+            // Escondemos el botón de agregar servicios
+            const btnAdd = document.querySelector('button[onclick="agregarServicio()"]');
+            if(btnAdd) btnAdd.style.display = 'none';
+        } else {
+            // Si es un cliente nuevo, dejamos todo editable
+            document.getElementById('descuento_pct').readOnly = false;
+            document.getElementById('bono_manual').readOnly = false;
+            document.getElementById('listaServicios').style.pointerEvents = 'auto';
+            document.getElementById('listaServicios').style.opacity = '1';
+            const btnAdd = document.querySelector('button[onclick="agregarServicio()"]');
+            if(btnAdd) btnAdd.style.display = 'block';
+        }
+
+        // Recálculo final
+        setTimeout(() => { calcularTotal(); }, 200);
+
+        // Lógica de cuotas (Solo lectura si ya existe)
+        const checkC = document.getElementById('usa_cuotas');
+        checkC.checked = r.finanzas.usa_cuotas || false;
+        if(checkC.checked) {
+            checkC.disabled = true;
+            document.getElementById('planEditableUI').classList.add('hidden');
+            document.getElementById('planPactadoDisplay').classList.remove('hidden');
+            document.getElementById('txtPlanPactado').innerText = `${r.finanzas.num_cuotas} CUOTAS QUINCENALES (PACTO ORIGINAL)`;
+            document.getElementById('cuotasContainer').classList.remove('hidden');
+        } else {
+            checkC.disabled = false;
+            document.getElementById('planEditableUI').classList.remove('hidden');
+            document.getElementById('planPactadoDisplay').classList.add('hidden');
+        }
+
+        toggleView('form'); 
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    };
+
+    // VISOR RÁPIDO ("EL OJITO") RESTAURADO
+    window.verFichaVisor = (id) => {
+        const d = window.dbCache.find(x => x.id === id);
+        if(!d) return;
+        const modal = document.getElementById('modalVisor');
+        const contenido = document.getElementById('contenidoVisor');
+        
+        let servHtml = '';
+        if(d.servicios) d.servicios.forEach(s => {
+            servHtml += `<div class="flex justify-between border-b border-slate-100 py-1"><span class="uppercase text-[10px] font-bold">${s.tipo} (${s.zona || '-'})</span><span class="text-[10px] font-mono">$${s.precio}</span></div>`;
+        });
+
+        contenido.innerHTML = `
+            <div class="space-y-4 text-xs text-slate-600 text-left">
+                <div class="grid grid-cols-2 gap-4 bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <div><p class="text-[9px] font-black uppercase text-slate-400">Paciente</p><p class="font-bold text-slate-800 uppercase">${d.paciente.nombre}</p></div>
+                    <div><p class="text-[9px] font-black uppercase text-slate-400">Folio</p><p class="font-mono font-bold text-teal-600">${d.folio}</p></div>
+                    <div><p class="text-[9px] font-black uppercase text-slate-400">Edad</p><p class="font-bold">${d.paciente.edad || '-'}</p></div>
+                    <div><p class="text-[9px] font-black uppercase text-slate-400">WhatsApp</p><p class="font-bold">${d.paciente.celular}</p></div>
+                </div>
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm">
+                    <p class="text-[10px] font-black uppercase text-teal-600 mb-2 border-b pb-1">Tratamiento Solicitado</p>
+                    ${servHtml}
+                    <div class="flex justify-between mt-2 pt-2 font-black text-sm uppercase"><span class="text-slate-400">Total</span><span class="text-teal-600">${d.finanzas.total}</span></div>
+                </div>
+                <div class="text-center mt-4">
+                    <button onclick="descargarPdfDirecto('${d.id}')" class="bg-slate-800 text-white px-6 py-3 rounded-lg font-bold text-[10px] uppercase shadow-md hover:bg-slate-700 transition-all"><i class="fas fa-file-pdf mr-2 text-rose-400"></i> Descargar Expediente</button>
+                </div>
+            </div>
+        `;
+        modal.classList.remove('hidden');
+    }; 
 
     // 3. REPARACIÓN: Cargar Descuento y Bono ANTES de calcular
     document.getElementById('descuento_pct').value = r.finanzas.descuento_pct || 0;
