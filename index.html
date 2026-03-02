@@ -900,6 +900,8 @@
   </script>
 
   <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
     const firebaseConfig = {
         apiKey: "AIzaSyBAuTfBKGuG33c9NXc1s0lkQv-7GwA47l0",
@@ -914,17 +916,23 @@
     const auth = getAuth(app);
     const provider = new GoogleAuthProvider();
 
-    // Cambiado a Popup para mayor compatibilidad
-    window.loginCliente = () => signInWithPopup(auth, provider);
+    // Función para iniciar sesión con ventana emergente
+    window.loginCliente = () => {
+      signInWithPopup(auth, provider)
+        .then(() => console.log("Acceso exitoso"))
+        .catch((error) => {
+          console.error("Error de login:", error);
+          alert("Error de conexión: " + error.code);
+        });
+    };
+
     window.logoutCliente = () => signOut(auth).then(() => location.reload());
 
     const authContainer = document.getElementById('authContainer');
 
     onAuthStateChanged(auth, (user) => {
         if (user) {
-            // USUARIO LOGUEADO (CLIENTE)
             const primerNombre = user.displayName ? user.displayName.split(' ')[0] : 'Cliente';
-            
             authContainer.innerHTML = `
               <div style="display: flex; align-items: center; gap: 10px;">
                 <a href="/app.html" class="btn-ghost" style="border-color: #14b8a6; color: #14b8a6;">
@@ -933,24 +941,18 @@
                 <button onclick="logoutCliente()" style="background:transparent; border:none; color: rgba(255,255,255,0.5); cursor:pointer; font-size:12px; text-decoration:underline;">Salir</button>
               </div>
             `;
-
-            // Mostrar todos los mensajes VIP
+            // Activa los mensajes VIP
             document.querySelectorAll('.promo-vip').forEach(el => el.style.display = 'block');
-            
-            // Cambiar texto del botón principal
             const heroBtn = document.getElementById('heroBtn');
             if(heroBtn) heroBtn.textContent = "Canjear mis bonos ahora";
-
         } else {
-            // PÚBLICO GENERAL (NO LOGUEADO)
             authContainer.innerHTML = `
               <button onclick="loginCliente()" class="btn-ghost" style="background: rgba(255,255,255,0.05);">
                 <img src="https://www.svgrepo.com/show/475656/google-color.svg" style="width: 16px; height: 16px; margin-right: 8px; display: inline-block; vertical-align: middle;">
                 Soy Cliente
               </button>
             `;
-            
-            // Ocultar mensajes VIP
+            // Oculta los mensajes VIP
             document.querySelectorAll('.promo-vip').forEach(el => el.style.display = 'none');
         }
     });
