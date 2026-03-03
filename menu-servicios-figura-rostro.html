@@ -684,7 +684,7 @@
 
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+  import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, setPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
   const firebaseConfig = {
       apiKey: "AIzaSyBAuTfBKGuG33c9NXc1s0lkQv-7GwA47l0",
@@ -699,25 +699,54 @@
   const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
 
-  window.loginCliente = () => signInWithPopup(auth, provider);
+  // 1. FORZAMOS PERSISTENCIA: Esto hace que la sesión no se borre al recargar
+  setPersistence(auth, browserLocalPersistence);
+
+  // 2. FUNCIÓN DE LOGIN MEJORADA
+  window.loginCliente = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      console.log("Login exitoso para:", result.user.displayName);
+      // No redirigimos, dejamos que onAuthStateChanged haga la magia
+    } catch (error) {
+      console.error("Error detallado:", error.code, error.message);
+      if(error.code === 'auth/unauthorized-domain') {
+        alert("ERROR: Este dominio no está autorizado en Firebase. Ve a Authentication > Settings > Authorized Domains.");
+      } else {
+        alert("Error de conexión: " + error.message);
+      }
+    }
+  };
+
   window.logoutCliente = () => signOut(auth).then(() => location.reload());
 
   const authContainer = document.getElementById('authContainer');
 
+  // 3. ESCUCHA ACTIVA DE SESIÓN
   onAuthStateChanged(auth, (user) => {
       if (user) {
-          const nombre = user.displayName ? user.displayName.split(' ')[0] : 'Cliente';
+          const primerNombre = user.displayName ? user.displayName.split(' ')[0] : 'Cliente';
+          
+          // Cambiamos el diseño a VIP
           authContainer.innerHTML = `
-            <div style="display:flex; align-items:center; gap:10px;">
-              <span style="color:var(--vip-teal); font-weight:800; font-size:13px;">👋 Hola, ${nombre}</span>
-              <button onclick="logoutCliente()" style="background:none; border:none; color:gray; cursor:pointer; font-size:11px; text-decoration:underline;">Salir</button>
-            </div>`;
-          document.querySelectorAll('.promo-vip').forEach(el => el.style.display = 'block');
+            <div style="display:flex; align-items:center; gap:12px; background: rgba(20, 184, 166, 0.1); padding: 6px 15px; border-radius: 50px; border: 1px solid #14b8a6;">
+              <span style="color:#0f766e; font-weight:800; font-size:14px;">👑 VIP: ${primerNombre}</span>
+              <button onclick="logoutCliente()" style="background:transparent; border:none; color:#666; cursor:pointer; font-size:10px; text-decoration:underline;">Salir</button>
+            </div>
+          `;
+
+          // ACTIVAR PRECIOS VIP (Busca todos los cuadros de oferta)
+          document.querySelectorAll('.promo-vip').forEach(el => {
+              el.style.display = 'block';
+          });
+
+          console.log("Precios VIP activados");
       } else {
           authContainer.innerHTML = `
             <button onclick="loginCliente()" class="btn-login">
-              <img src="https://www.svgrepo.com/show/475656/google-color.svg" width="14"> Ver mis Descuentos
-            </button>`;
+              <img src="https://www.svgrepo.com/show/475656/google-color.svg" width="16"> Ver Precios VIP
+            </button>
+          `;
           document.querySelectorAll('.promo-vip').forEach(el => el.style.display = 'none');
       }
   });
