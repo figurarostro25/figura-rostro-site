@@ -39,7 +39,7 @@
     p{line-height: 1.6; color: #555; font-size: 1rem;}
     img { max-width: 100%; display: block; }
 
-    /* --- ESTILOS DEL MENÚ (Copiados y adaptados de tu Home) --- */
+    /* --- ESTILOS DEL MENÚ --- */
     header{
       position:sticky;
       top:0;
@@ -65,7 +65,6 @@
     }
     .brand:hover img { transform: scale(1.05); }
 
-    /* Navegación y Submenús */
     .site-nav { display: flex; align-items: center; }
     .site-nav .menu { display: flex; gap: 24px; list-style: none; margin: 0; padding: 0; }
     .site-nav .menu > li { position: relative; }
@@ -81,17 +80,16 @@
       position: absolute;
       top: 100%; left: 0;
       min-width: 220px;
-      background: #1a0925; /* Fondo oscuro sólido para el submenú */
+      background: #1a0925;
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 14px;
       padding: 8px;
       list-style: none;
       margin: 10px 0 0;
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      display: none; /* Oculto por defecto */
+      display: none;
       z-index: 60;
     }
-    /* Mostrar submenú al pasar el mouse (hover) */
     .has-sub:hover > .submenu, .has-sub:focus-within > .submenu { display: block; }
     
     .submenu li { display: block; width: 100%; }
@@ -107,12 +105,27 @@
         color: var(--gold); 
     }
 
-    /* Botón del Header */
     .btn-primary.header-btn {
         margin-left: 20px;
     }
 
-    /* --- ESTILOS GENERALES (Resto de la página) --- */
+    /* --- ESTILOS LOGIN --- */
+    #authContainer { margin-left: 15px; display: flex; align-items: center; }
+    .btn-login {
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* --- ESTILOS GENERALES --- */
     .btn-primary{
       display: inline-flex; align-items: center; justify-content: center;
       background: var(--brand); color: #fff; border: 0;
@@ -133,7 +146,6 @@
     }
     .btn-ig:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(220, 39, 67, 0.5); }
 
-    /* BARRA CHIRIQUÍ */
     .chiriqui-bar {
       background: #0f0518; color: #fff; text-align: center; padding: 12px 20px;
       font-weight: 500; font-size: 14px; position: relative; z-index: 101;
@@ -150,7 +162,6 @@
       display: inline-flex; align-items: center; gap: 5px;
     }
 
-    /* HERO SECTION */
     .hero{
       position:relative; height: 85vh; min-height: 550px;
       display:flex; align-items:center; justify-content: center; text-align:center;
@@ -171,7 +182,6 @@
       margin: 0 auto 35px; max-width: 650px; font-weight: 300;
     }
 
-    /* BARRA RESULTADOS */
     .results-bar {
       background: #fff; padding: 50px 20px; margin-top: -60px;
       position: relative; z-index: 10; border-radius: 20px 20px 0 0;
@@ -186,13 +196,11 @@
     .result-item span { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: #888; font-weight: 600; }
     .result-icon { font-size: 30px; margin-bottom: 10px; display: block; }
 
-    /* CONTENIDO */
     .wrap{max-width:1100px;margin:0 auto;padding:80px 20px;}
     .section-title { text-align: center; margin-bottom: 50px; }
     .section-title h2 { font-size: 42px; margin-bottom: 15px; color: var(--brand-dark); }
     .section-title p { max-width: 700px; margin: auto; color: #666; }
 
-    /* ZONAS GRID CON DEGRADADO */
     .zones-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 30px; margin-top: 40px;
@@ -224,7 +232,6 @@
     .zone-content h3 { color: var(--brand); margin-top: 0; font-size: 20px; margin-bottom: 8px;}
     .zone-content p { font-size: 14px; margin: 0; color: #666; }
 
-    /* BLOG SEO DESPLEGABLE */
     .seo-blog-section { max-width: 900px; margin: 60px auto; padding: 0 20px; }
     .seo-blog-section details {
         background: #fff; border-radius: 15px; box-shadow: var(--shadow);
@@ -244,7 +251,6 @@
     .blog-content h3 { color: var(--brand); font-size: 22px; margin-top: 30px; border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 5px; }
     .blog-content h3:first-child { margin-top: 0; }
 
-    /* PREGUNTAS FRECUENTES */
     .faq-section { background: #fdfbfd; margin-top: 40px; }
     .faq-item {
       background: #fff; border: 1px solid #eee; border-radius: 10px;
@@ -259,7 +265,6 @@
     .faq-item[open] summary::after { content: '-'; }
     .faq-item p { padding: 0 20px 20px; margin: 0; font-size: 15px; color: #666; }
 
-    /* CTA FINAL */
     .final-cta {
       background: linear-gradient(135deg, #160c1f 0%, #3a1555 100%);
       color: #fff; text-align: center; padding: 80px 20px;
@@ -268,12 +273,10 @@
     .final-cta h2 { color: #fff; font-size: 38px; margin-bottom: 20px; }
     .final-cta p { color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 40px; }
 
-    /* FOOTER */
     footer{background: #fff; padding: 60px 20px; text-align:center; font-size:14px; color:#666; border-top: 1px solid #eee;}
     footer .links{display:flex;flex-wrap:wrap;gap:15px;justify-content:center;margin-top:20px}
     footer a{color: var(--brand);}
     
-    /* MÓVIL Y FLOTANTES */
     .fr-fab{position:fixed;right:20px;bottom:30px;z-index:9999;display:flex;flex-direction:column-reverse;gap:15px;}
     .fr-ic{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,0.2); transition: transform 0.2s;}
     .fr-ic svg{fill:#fff;width:24px;height:24px}
@@ -285,7 +288,7 @@
 
     @media (max-width:768px){
       .header-inner { justify-content: space-between; }
-      .site-nav, .btn-primary.header-btn { display: none; } /* Ocultar menú en móvil para no romper diseño */
+      .site-nav, .btn-primary.header-btn { display: none; }
       .hero { height: 75vh; }
       .results-bar { margin-top: 0; border-radius: 0; }
       .zones-grid { grid-template-columns: 1fr; }
@@ -349,6 +352,10 @@
         </ul>
       </nav>
 
+      <div id="authContainer" class="site-nav">
+        <button class="btn-login" style="opacity: 0.5;">Cargando...</button>
+      </div>
+
       <a class="btn-primary header-btn" href="/chat-citas.html">Agendar Cita</a>
     </div>
   </header>
@@ -363,11 +370,9 @@
           📅 Solicitar Valoración
         </a>
         <a class="btn-ig" href="https://instagram.com/figurarostrokg" target="_blank">
-          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
           Síguenos
         </a>
       </div>
-
     </div>
   </section>
 
@@ -389,7 +394,7 @@
         <span>Regeneración real de tejido</span>
       </div>
     </div>
-    <p style="text-align: center; font-size: 12px; margin-top: 15px; color: #999;">*El resultado es definitivo ya que es tu piel nueva. El proceso de envejecimiento natural continúa con los años.</p>
+    <p style="text-align: center; font-size: 12px; margin-top: 15px; color: #999;">*El resultado es definitivo ya que es tu piel nueva.</p>
   </div>
 
   <section>
@@ -399,104 +404,46 @@
         <div style="font-size: 40px;">👩‍⚕️</div>
         <div>
           <h4 style="margin: 0 0 10px; color: #b8860b; font-size: 20px;">Valoración Previa Obligatoria</h4>
-          <p style="margin: 0; font-size: 15px; color: #555;">Para garantizar tu seguridad y el éxito del tratamiento, analizamos tu <strong>fototipo de piel</strong> y capacidad de cicatrización antes de cualquier procedimiento. Solo trabajamos en pieles aptas para asegurar resultados impecables.</p>
+          <p style="margin: 0; font-size: 15px; color: #555;">Para garantizar tu seguridad y el éxito del tratamiento, analizamos tu fototipo de piel y capacidad de cicatrización.</p>
         </div>
       </div>
 
       <div class="section-title">
         <h2>Identifica tu Zona Ideal</h2>
-        <p>El Plasma Fibroblast es versátil. Desde blefaroplastia sin cortes hasta eliminación de arrugas profundas y tensado corporal.</p>
       </div>
 
       <div class="zones-grid" id="zonas">
         
         <div class="zone-card">
           <div class="zone-img-wrap">
-            <img src="zona-parpados.jpg" alt="Blefaroplastia sin cirugía panamá" loading="lazy">
+            <img src="zona-parpados.jpg" alt="Blefaroplastia" loading="lazy">
           </div>
           <div class="zone-content">
             <h3>Párpados (Blefaroplastia)</h3>
-            <p>Retrae la piel sobrante del párpado superior o inferior. Ideal para mirada cansada o encapotada.</p>
+            <p>Retrae la piel sobrante del párpado superior o inferior.</p>
           </div>
         </div>
 
-        <div class="zone-card">
-          <div class="zone-img-wrap">
-            <img src="zona-patasgallo.jpg" alt="Eliminar patas de gallo panamá" loading="lazy">
-          </div>
-          <div class="zone-content">
-            <h3>Patas de Gallo</h3>
-            <p>Suaviza las arrugas perioculares profundas que se marcan al sonreír, rejuveneciendo la mirada.</p>
-          </div>
-        </div>
-
-        <div class="zone-card">
-          <div class="zone-img-wrap">
-            <img src="zona-labios.jpg" alt="Código de barras labios tratamiento" loading="lazy">
-          </div>
-          <div class="zone-content">
-            <h3>Código de Barras</h3>
-            <p>Elimina las líneas verticales sobre el labio superior y tensa la zona del arco de cupido.</p>
-          </div>
-        </div>
-
-        <div class="zone-card">
-          <div class="zone-img-wrap">
-            <img src="zona-frente.jpg" alt="Arrugas en frente tratamiento" loading="lazy">
-          </div>
-          <div class="zone-content">
-            <h3>Líneas de Frente</h3>
-            <p>Atenúa las líneas horizontales y del entrecejo sin paralizar tus gestos naturales.</p>
-          </div>
-        </div>
-        
         <div class="zone-card" style="border: 2px solid var(--gold);">
           <div class="zone-img-wrap">
-            <img src="zona-abdomen.jpg" alt="Eliminar estrias y flacidez abdomen" loading="lazy">
+            <img src="zona-abdomen.jpg" alt="Abdomen" loading="lazy">
           </div>
           <div class="zone-content">
             <h3>Abdomen y Estrías</h3>
-            <p>Excelente para flacidez post-parto y para reducir el ancho y profundidad de estrías blancas.</p>
+            <p>Excelente para flacidez post-parto y estrías blancas.</p>
+            <div class="promo-vip" style="display: none; background: rgba(20, 184, 166, 0.1); border: 1px solid #14b8a6; padding: 10px; border-radius: 12px; margin-top: 10px; color: #14b8a6; font-weight: 800;">
+              ✨ PRECIO VIP ACTIVADO: Usa tus bonos en este servicio.
+            </div>
           </div>
         </div>
 
         <div class="zone-card">
           <div class="zone-img-wrap">
-            <img src="zona-cuello.jpg" alt="Lifting de cuello sin cirugia" loading="lazy">
+            <img src="zona-cuello.jpg" alt="Cuello" loading="lazy">
           </div>
           <div class="zone-content">
             <h3>Cuello y Papada</h3>
-            <p>Combate la flacidez (cuello de pavo) y logrando un perfil más definido y elegante.</p>
-          </div>
-        </div>
-
-        <div class="zone-card">
-          <div class="zone-img-wrap">
-            <img src="zona-orejas.jpg" alt="Rejuvenecimiento de orejas" loading="lazy">
-          </div>
-          <div class="zone-content">
-            <h3>Rejuvenecimiento Orejas</h3>
-            <p>Elimina arrugas pre-auriculares y tensa la zona del lóbulo para un aspecto más joven.</p>
-          </div>
-        </div>
-
-        <div class="zone-card">
-          <div class="zone-img-wrap">
-            <img src="zona-brazos.jpg" alt="Flacidez en brazos tratamiento" loading="lazy">
-          </div>
-          <div class="zone-content">
-            <h3>Brazos Flácidos</h3>
-            <p>Tensa la piel de la cara interna de los brazos ("alas de murciélago") para mayor firmeza.</p>
-          </div>
-        </div>
-
-        <div class="zone-card">
-          <div class="zone-img-wrap">
-            <img src="zona-manos.jpg" alt="Rejuvenecimiento de manos" loading="lazy">
-          </div>
-          <div class="zone-content">
-            <h3>Rejuvenecimiento de Manos</h3>
-            <p>Elimina manchas de edad y tensa la piel fina del dorso de las manos para un aspecto joven.</p>
+            <p>Combate la flacidez logrando un perfil más definido.</p>
           </div>
         </div>
 
@@ -504,25 +451,20 @@
 
       <section class="seo-blog-section">
         <details>
-            <summary>📖 La Ciencia detrás del Rejuvenecimiento: Todo sobre el Plasma Fibroblast en Figura Rostro KG</summary>
+            <summary>📖 La Ciencia detrás del Rejuvenecimiento: Todo sobre el Plasma Fibroblast</summary>
             <div class="blog-content">
                 <h3>Tecnología Europea de Vanguardia en Panamá</h3>
-                <p>El Plasma Fibroblast no es una moda pasajera; es una <strong>evolución científica</strong> en la medicina estética que ha dominado el mercado europeo y coreano (países líderes en cuidado de la piel) durante la última década. En <strong>Figura Rostro KG</strong>, hemos importado y perfeccionado esta técnica para ofrecerte resultados de primer mundo sin salir de Panamá.</p>
-
+                <p>El Plasma Fibroblast no es una moda pasajera; es una evolución científica en la medicina estética.</p>
                 <h3>¿Cómo funciona la "Magia" Biológica?</h3>
-                <p>A diferencia del láser que quema o del bisturí que corta, el Plasma Fibroblast utiliza el cuarto estado de la materia: el plasma. El dispositivo ioniza el aire entre la punta y tu piel, creando un pequeño arco eléctrico controlado (sublimación). Este proceso envía una señal inmediata a las capas profundas de tu dermis, despertando a los <strong>fibroblastos</strong>, las células encargadas de producir colágeno.</p>
-
+                <p>A diferencia del láser que quema o del bisturí que corta, el Plasma Fibroblast utiliza el plasma.</p>
                 <h3>Estimulación de Colágeno Tipo III y I</h3>
-                <p>El tratamiento induce una regeneración masiva de colágeno tipo III (el colágeno "joven" que tenemos en la infancia) que luego se madura a colágeno tipo I. Esto resulta en una piel no solo más tensa, sino estructuralmente más joven, densa y resistente. Es un proceso <strong>100% natural</strong> porque es tu propio cuerpo el que realiza la reparación; nosotros solo damos el estímulo preciso.</p>
-
+                <p>El tratamiento induce una regeneración masiva de colágeno joven.</p>
                 <h3>Un Procedimiento de Alto Confort</h3>
-                <p>Olvídate de los mitos sobre el dolor. En Figura Rostro KG, utilizamos protocolos avanzados de preparación tópica que garantizan una experiencia confortable. Nuestros pacientes suelen describir la sensación como totalmente manejable, relajada y libre de estrés. Nos esmeramos en que tu visita sea un momento de cuidado personal, no de sufrimiento.</p>
-
+                <p>Olvídate de los mitos sobre el dolor. Utilizamos protocolos avanzados.</p>
                 <h3>Resultados Permanentes vs. Temporales</h3>
-                <p>A diferencia del Botox o los rellenos (ácido hialurónico) que se reabsorben en meses, el Plasma Fibroblast ofrece resultados <strong>permanentes</strong>. La piel que se tensa, se queda tensa. Por supuesto, el proceso de envejecimiento natural continúa con los años, pero el retroceso que logramos en el tiempo es definitivo. Es una inversión única para un beneficio duradero.</p>
-
+                <p>A diferencia del Botox, el Plasma Fibroblast ofrece resultados permanentes.</p>
                 <h3>El Respaldo de Figura Rostro KG</h3>
-                <p>No somos un salón convencional; somos especialistas en ingeniería de la piel. Cada procedimiento está respaldado por un análisis riguroso, higiene hospitalaria y una técnica depurada que minimiza el tiempo de recuperación y maximiza los resultados estéticos. Hacemos las cosas bien porque tu rostro es nuestra carta de presentación.</p>
+                <p>Somos especialistas en ingeniería de la piel.</p>
             </div>
         </details>
       </section>
@@ -534,19 +476,11 @@
         <div class="faq-section">
             <details class="faq-item">
                 <summary>¿Qué tan confortable es el procedimiento?</summary>
-                <p>En Figura Rostro KG, tu comodidad es nuestra prioridad absoluta. Aplicamos un protocolo de preparación tópica de alto confort antes de iniciar, garantizando que tu experiencia sea totalmente relajada, tranquila y segura mientras renovamos tu piel.</p>
+                <p>Aplicamos un protocolo de preparación tópica de alto confort.</p>
             </details>
             <details class="faq-item">
                 <summary>¿Cuánto dura la recuperación?</summary>
-                <p>Los "puntitos" (costras de carbono) duran entre 5 y 7 días. Después caen solos, dejando una piel rosada nueva. La inflamación suele durar los primeros 3 días. Puedes volver a tus actividades normales casi de inmediato, protegiéndote del sol.</p>
-            </details>
-            <details class="faq-item">
-                <summary>¿Cuántas sesiones necesito?</summary>
-                <p>Muchos pacientes ven resultados espectaculares con una sola sesión. Sin embargo, dependiendo de la flacidez de la piel y la edad, podrían requerirse de 1 a 3 sesiones espaciadas cada 3 meses para un resultado óptimo.</p>
-            </details>
-            <details class="faq-item">
-                <summary>¿Diferencia entre Fibroblast y Láser CO2?</summary>
-                <p>El Fibroblast es más preciso para zonas delicadas como párpados (donde el láser es riesgoso) y tiene un tiempo de recuperación generalmente más amable. Además, estimula el colágeno de forma muy focalizada.</p>
+                <p>Los "puntitos" duran entre 5 y 7 días.</p>
             </details>
         </div>
       </div>
@@ -556,7 +490,7 @@
 
   <section class="final-cta">
     <h2>¿Lista para el cambio?</h2>
-    <p>El primer paso es un diagnóstico profesional. Agenda tu valoración hoy y recibe un plan personalizado.</p>
+    <p>El primer paso es un diagnóstico profesional.</p>
     <a class="btn-primary" style="background:#fff; color:var(--brand); font-size:18px; padding: 18px 40px;" href="/chat-citas.html">
       📅 Solicitar Valoración
     </a>
@@ -577,16 +511,53 @@
     <a class="fr-ic fr-wa" href="https://wa.me/50764746168" target="_blank" aria-label="WhatsApp">
       <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.94 14.5L2 22l5.7-1.5A10 10 0 1 0 12 2zm5.5 14.1c-.24.68-1.4 1.3-1.96 1.34-.5.03-1.14.05-1.84-.12-.42-.1-.97-.31-1.67-.61-2.94-1.27-4.86-4.2-5.01-4.4-.15-.2-1.2-1.6-1.2-3.06 0-1.45.76-2.16 1.03-2.45.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.24.59.82 2.05.9 2.2.07.15.12.33.01.53-.1.2-.15.33-.3.51-.15.18-.31.4-.44.54-.15.15-.31.32-.13.62.18.3.8 1.3 1.71 2.1 1.18 1.05 2.17 1.37 2.47 1.52.3.15.48.13.66-.08.18-.2.76-.89.96-1.2.2-.3.41-.26.67-.15.26.1 1.64.77 1.92.91.29.15.48.22.55.34.07.12.07.7-.17 1.38z"/></svg>
     </a>
-    <a class="fr-ic fr-ig" href="https://instagram.com/figurarostrokg" target="_blank" aria-label="Instagram">
-      <svg viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm4.25 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10z"/></svg>
-    </a>
-    <a class="fr-ic fr-call" href="tel:+50764746168" aria-label="Llamar">
-      <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1v3.5c0 .55-.45 1-1 1A17.92 17.92 0 0 1 2 6c0-.55.45-1 1-1H6.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.12.35.03.75-.24 1.02l-2.2 2.2z"/></svg>
-    </a>
   </div>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyBAuTfBKGuG33c9NXc1s0lkQv-7GwA47l0",
+        authDomain: "figurarostro-system.firebaseapp.com",
+        projectId: "figurarostro-system",
+        storageBucket: "figurarostro-system.firebasestorage.app",
+        messagingSenderId: "803848354693",
+        appId: "1:803848354693:web:7144490abb18b0319822ec"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+
+    window.loginCliente = () => signInWithPopup(auth, provider).catch((error) => alert("Error: " + error.code));
+    window.logoutCliente = () => signOut(auth).then(() => location.reload());
+
+    const authContainer = document.getElementById('authContainer');
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            const primerNombre = user.displayName ? user.displayName.split(' ')[0] : 'Cliente';
+            authContainer.innerHTML = `
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <a href="/app.html" class="btn-login" style="border-color: #14b8a6; color: #14b8a6; background: rgba(20,184,166,0.1);">
+                  👋 Hola, ${primerNombre}
+                </a>
+                <button onclick="logoutCliente()" style="background:transparent; border:none; color: rgba(255,255,255,0.5); cursor:pointer; font-size:10px; text-decoration:underline;">Salir</button>
+              </div>`;
+            document.querySelectorAll('.promo-vip').forEach(el => el.style.display = 'block');
+        } else {
+            authContainer.innerHTML = `
+              <button onclick="loginCliente()" class="btn-login">
+                <img src="https://www.svgrepo.com/show/475656/google-color.svg" width="14" style="margin-right:5px;"> Soy Cliente
+              </button>`;
+            document.querySelectorAll('.promo-vip').forEach(el => el.style.display = 'none');
+        }
+    });
   </script>
   <script type='text/javascript' data-cfasync='false'>window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: '39cf325c-2286-4b58-b2af-9c647e257085', f: true }); done = true; } }; })();</script> 
 </body>
