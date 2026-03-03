@@ -31,6 +31,7 @@
       /* Nuevo degradado para la promo (más suave y elegante) */
       --promo-bg: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
       --promo-text: #5e3a00;
+      --vip-teal: #14b8a6;
     }
 
     *{box-sizing:border-box;}
@@ -50,15 +51,33 @@
       padding:0 16px;
     }
 
-    /* HEADER */
+    /* HEADER AJUSTADO CON LOGIN */
     header{
       text-align:center;
       padding:24px 0 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    /* Asegúrate de tener un logo oscuro para fondo claro, o usa texto */
-    header img{height:66px; margin: 0 auto;} 
-    /* Si no tienes logo, puedes usar esto temporalmente:
-    header h1 { color: var(--brand); margin: 0; } */
+    header img{height:66px; margin: 0 auto 15px;} 
+
+    #authContainer {
+      margin-bottom: 20px;
+    }
+    .btn-login {
+      background: #fff;
+      color: var(--brand);
+      border: 1px solid var(--brand-soft);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--shadow-sm);
+    }
 
     .pill{
       display:inline-block;
@@ -90,7 +109,21 @@
     }
     .sub strong { color: var(--brand); }
 
-    /* BANNER PROMO (Se ocultará el 19 de Enero) */
+    /* ESTILO PRECIO VIP */
+    .promo-vip {
+      display: none;
+      background: rgba(20, 184, 166, 0.1);
+      border: 1px solid var(--vip-teal);
+      color: var(--vip-teal);
+      padding: 8px;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 0.85rem;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    /* BANNER PROMO */
     #promo-banner {
       background: var(--promo-bg);
       color: var(--promo-text);
@@ -184,7 +217,7 @@
       gap:20px;
     }
 
-    /* TARJETA (Fondo claro) */
+    /* TARJETA */
     .svc-card{
       border-radius:18px;
       overflow:hidden;
@@ -264,7 +297,7 @@
     }
     .btn-dark:hover{ background: #23272b; box-shadow: 0 6px 16px rgba(0,0,0,0.15); }
 
-    /* MODAL (Fondo claro) */
+    /* MODAL */
     .modal{
       position:fixed;
       inset:0;
@@ -324,7 +357,7 @@
       background: #f8f9fa;
     }
 
-    /* FORM CONTACTO (Fondo claro) */
+    /* FORM CONTACTO */
     .contact-wrap{ margin:50px 0; }
     .contact-card{
       background: var(--card-bg);
@@ -338,10 +371,6 @@
       font-size:1.4rem;
       font-weight:900;
       color: var(--brand);
-    }
-    .contact-text{
-      margin:0 0 20px;
-      color: var(--text-muted);
     }
     .label{
       font-size:.85rem;
@@ -362,54 +391,44 @@
       font-size:.95rem;
       transition: border-color 0.2s, background 0.2s;
     }
-    .input:focus, .select:focus, .textarea:focus {
-        border-color: var(--brand-soft);
-        background: #fff;
-    }
-    .help{ color: var(--text-muted); }
-    
-    @media (max-width:880px){
-      .contact-grid{ grid-template-columns: 1fr; gap: 30px; }
-    }
 
-    /* CTA HOME */
     .btn-home{
       background: var(--brand);
       color:#fff;
       padding:12px 24px;
-      border-radius:99px;
+      border-radius:999px;
       text-decoration:none;
       font-weight:700;
       box-shadow: 0 4px 12px rgba(91, 37, 128, 0.3);
     }
-    .btn-home:hover { background: #4a1e69; box-shadow: 0 6px 16px rgba(91, 37, 128, 0.4); }
 
-    /* FOOTER (Fondo claro) */
     footer{
       background: #ffffff;
       color: var(--text-muted);
       margin-top: 40px;
       border-top: 1px solid var(--card-border);
       padding-top: 20px;
+      text-align: center;
     }
-    .footer-block strong{ color: var(--brand); }
     .footer-bottom{
       border-top: 1px solid var(--card-border);
       background: #f8f9fa;
     }
     footer a{ color: var(--brand); }
-    footer a:hover{ color: var(--brand-soft); }
 
-    /* FABs */
-    .fab{ box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+    .fab-wrap{ position: fixed; bottom: 20px; right: 20px; z-index: 99; }
+    .fab{ width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(0,0,0,0.2); background: var(--green); }
   </style>
 </head>
 
 <body>
 
 <header>
+  <div id="authContainer">
+    <button class="btn-login" style="opacity:0.6;">Cargando beneficios...</button>
+  </div>
   <a href="/"><img src="logo-header-dark.png" alt="Figura Rostro KG"></a>
-  </header>
+</header>
 
 <div class="container">
   <div style="text-align:center;">
@@ -424,11 +443,9 @@
   <div id="promo-banner" class="promo-banner">
     <h2>✨ Oferta Especial de Enero ✨</h2>
     <p class="promo-text">
-      ¡Empieza el año radiante! Disfruta de un <span class="promo-highlight">30% DE DESCUENTO</span> exclusivo en tratamientos de <strong>Plasma Fibroblast</strong> durante todo el mes.<br><br>
-      🔥 <strong>MEGA PROMO (Válida hasta el 18 de Enero):</strong><br>
-      Reserva antes de esta fecha para asegurar tu descuento y obtener beneficios adicionales.
+      ¡Empieza el año radiante! Disfruta de un <span class="promo-highlight">30% DE DESCUENTO</span> exclusivo en tratamientos de <strong>Plasma Fibroblast</strong> durante todo el mes.
     </p>
-    <a class="btn-promo" href="https://plasmafibroblastpanama.com" target="_blank">Ver Info y Reservar en Plasma Fibroblast Panamá</a>
+    <a class="btn-promo" href="https://plasmafibroblastpanama.com" target="_blank">Ver Info Plasma Fibroblast</a>
   </div>
 
   <section class="section" id="estetica-avanzada">
@@ -437,151 +454,151 @@
         <h2 class="section-title">Estética Avanzada</h2>
         <div class="section-label">Faciales · Láser · Inyectables</div>
       </div>
-      <p class="section-desc">
-        Tecnología de vanguardia y protocolos médicos para el cuidado y rejuvenecimiento de tu piel.
-      </p>
+      <p class="section-desc">Tecnología de vanguardia para el cuidado de tu piel.</p>
 
       <div class="card-grid">
 
-        <article class="svc-card" data-title="Limpieza Facial Esencial" data-desc="Higiene profunda para eliminar impurezas y devolver la luminosidad a tu piel.">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=80" alt="Limpieza Facial">
+        <article class="svc-card" data-title="Limpieza Facial Esencial" data-desc="Higiene profunda para eliminar impurezas.">
+          <img class="svc-img" src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=80">
           <div class="svc-body">
             <h3 class="svc-title">Limpieza Facial Esencial</h3>
             <p class="svc-text">Piel limpia, fresca y equilibrada.</p>
+            <div class="promo-vip">✨ PRECIO VIP: $35.00 (Antes $45)</div>
             <div class="svc-actions">
-              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20info%20sobre%20Limpieza%20Facial%20Esencial." target="_blank">Contactar</a>
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Info%20Limpieza%20Facial" target="_blank">Contactar</a>
               <button class="btn btn-dark" onclick="openModal(this)">Detalles</button>
             </div>
           </div>
         </article>
 
-        <article class="svc-card" data-title="Hidrafacial" data-desc="Hidrodermoabrasión que limpia, exfolia e hidrata profundamente con sueros específicos.">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=600&q=80" alt="Hidrafacial">
+        <article class="svc-card" data-title="Hidrafacial" data-desc="Limpieza, exfoliación e hidratación profunda.">
+          <img class="svc-img" src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=600&q=80">
           <div class="svc-body">
             <h3 class="svc-title">Hidrafacial</h3>
             <p class="svc-text">Limpieza profunda y glow inmediato.</p>
+            <div class="promo-vip">✨ OFERTA VIP: Bono de $10 aplicado</div>
             <div class="svc-actions">
-              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20info%20sobre%20Hidrafacial." target="_blank">Contactar</a>
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Info%20Hidrafacial" target="_blank">Contactar</a>
               <button class="btn btn-dark" onclick="openModal(this)">Detalles</button>
             </div>
           </div>
         </article>
 
-        <article class="svc-card" data-title="Peeling Químico" data-desc="Renovación celular controlada para tratar manchas, acné y textura irregular.">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=600&q=80" alt="Peeling">
+        <article class="svc-card" data-title="Peeling Químico" data-desc="Renovación celular controlada para tratar manchas y acné.">
+          <img class="svc-img" src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=600&q=80">
           <div class="svc-body">
             <h3 class="svc-title">Peeling Químico</h3>
             <p class="svc-text">Renueva tu piel y unifica el tono.</p>
             <div class="svc-actions">
-              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20info%20sobre%20Peeling%20Qu%C3%ADmico." target="_blank">Contactar</a>
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Info%20Peeling" target="_blank">Contactar</a>
               <button class="btn btn-dark" onclick="openModal(this)">Detalles</button>
             </div>
           </div>
         </article>
 
-        <article class="svc-card" data-title="Exosomas y PRP" data-desc="Terapia regenerativa avanzada para rejuvenecimiento y reparación tisular profunda.">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1612538949668-a08a4263103c?auto=format&fit=crop&w=600&q=80" alt="Exosomas PRP">
+        <article class="svc-card" data-title="Exosomas y PRP" data-desc="Terapia regenerativa avanzada.">
+          <img class="svc-img" src="https://images.unsplash.com/photo-1612538949668-a08a4263103c?auto=format&fit=crop&w=600&q=80">
           <div class="svc-body">
             <h3 class="svc-title">Exosomas y PRP</h3>
             <p class="svc-text">Regeneración celular avanzada.</p>
             <div class="svc-actions">
-              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20info%20sobre%20Exosomas%20y%20PRP." target="_blank">Contactar</a>
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Info%20Exosomas" target="_blank">Contactar</a>
               <button class="btn btn-dark" onclick="openModal(this)">Detalles</button>
             </div>
           </div>
         </article>
 
-        <article class="svc-card" data-title="Hollywood Peeling (Carbón)" data-desc="Tratamiento láser no invasivo para luminosidad instantánea, poros y textura.">
-          <img class="svc-img" src="https://plus.unsplash.com/premium_photo-1664298177755-318058e10792?auto=format&fit=crop&w=600&q=80" alt="Hollywood Peeling">
+        <article class="svc-card" data-title="Hollywood Peeling (Carbón)" data-desc="Láser para luminosidad instantánea.">
+          <img class="svc-img" src="https://plus.unsplash.com/premium_photo-1664298177755-318058e10792?auto=format&fit=crop&w=600&q=80">
           <div class="svc-body">
             <h3 class="svc-title">Hollywood Peeling</h3>
             <p class="svc-text">Piel de alfombra roja al instante.</p>
             <div class="svc-actions">
-              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20info%20sobre%20Hollywood%20Peeling." target="_blank">Contactar</a>
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Info%20Hollywood" target="_blank">Contactar</a>
               <button class="btn btn-dark" onclick="openModal(this)">Detalles</button>
             </div>
           </div>
         </article>
 
-        <article class="svc-card" data-title="Fibroblast (Verrugas/Acrocordones)" data-desc="Eliminación precisa de imperfecciones benignas de la piel con plasma pen.">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1629142278138-09e41569c569?auto=format&fit=crop&w=600&q=80" alt="Fibroblast">
+        <article class="svc-card" data-title="Fibroblast (Verrugas/Acrocordones)" data-desc="Eliminación precisa de imperfecciones.">
+          <img class="svc-img" src="https://images.unsplash.com/photo-1629142278138-09e41569c569?auto=format&fit=crop&w=600&q=80">
           <div class="svc-body">
             <h3 class="svc-title">Fibroblast (Imperfecciones)</h3>
             <p class="svc-text">Eliminación puntual y segura.</p>
             <div class="svc-actions">
-              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20info%20sobre%20Fibroblast%20para%20imperfecciones." target="_blank">Contactar</a>
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Info%20Fibroblast" target="_blank">Contactar</a>
               <button class="btn btn-dark" onclick="openModal(this)">Detalles</button>
             </div>
           </div>
         </article>
 
-        <article class="svc-card" data-title="Toxina Botulínica (Botox)" data-desc="Suaviza arrugas de expresión en frente, entrecejo y patas de gallo. Resultados naturales.">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1519415510236-718bdfcd4788?auto=format&fit=crop&w=600&q=80" alt="Botox">
+        <article class="svc-card" data-title="Toxina Botulínica (Botox)" data-desc="Suaviza arrugas de expresión.">
+          <img class="svc-img" src="https://images.unsplash.com/photo-1519415510236-718bdfcd4788?auto=format&fit=crop&w=600&q=80">
           <div class="svc-body">
             <h3 class="svc-title">Toxina Botulínica</h3>
             <p class="svc-text">Adiós arrugas de expresión.</p>
             <div class="svc-actions">
-              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20info%20sobre%20Toxina%20Botul%C3%ADnica." target="_blank">Contactar</a>
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Info%20Botox" target="_blank">Contactar</a>
               <button class="btn btn-dark" onclick="openModal(this)">Detalles</button>
             </div>
           </div>
         </article>
 
-        <article class="svc-card" data-title="Ácido Hialurónico (Rellenos)" data-desc="Reposición de volumen, hidratación y armonización facial (labios, ojeras, pómulos, mentón).">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1612833606937-5f8b7418733c?auto=format&fit=crop&w=600&q=80" alt="Ácido Hialurónico">
+        <article class="svc-card" data-title="Ácido Hialurónico (Rellenos)" data-desc="Reposición de volumen e hidratación.">
+          <img class="svc-img" src="https://images.unsplash.com/photo-1612833606937-5f8b7418733c?auto=format&fit=crop&w=600&q=80">
           <div class="svc-body">
             <h3 class="svc-title">Ácido Hialurónico</h3>
             <p class="svc-text">Volumen y armonización facial.</p>
             <div class="svc-actions">
-              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20info%20sobre%20%C3%81cido%20Hialur%C3%B3nico." target="_blank">Contactar</a>
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Info%20Hialuronico" target="_blank">Contactar</a>
               <button class="btn btn-dark" onclick="openModal(this)">Detalles</button>
             </div>
           </div>
         </article>
 
-        <article class="svc-card" data-title="Bioestimuladores de Colágeno" data-desc="Tratamiento inyectable (Radiesse, Sculptra) que estimula tu propia producción de colágeno para combatir la flacidez.">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1606202227593-c64b2a011773?auto=format&fit=crop&w=600&q=80" alt="Bioestimuladores">
+        <article class="svc-card" data-title="Bioestimuladores de Colágeno" data-desc="Radiesse o Sculptra para firmeza.">
+          <img class="svc-img" src="https://images.unsplash.com/photo-1606202227593-c64b2a011773?auto=format&fit=crop&w=600&q=80">
           <div class="svc-body">
             <h3 class="svc-title">Bioestimuladores</h3>
             <p class="svc-text">Firmeza duradera desde el interior.</p>
             <div class="svc-actions">
-              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20info%20sobre%20Bioestimuladores." target="_blank">Contactar</a>
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Info%20Bioestimuladores" target="_blank">Contactar</a>
               <button class="btn btn-dark" onclick="openModal(this)">Detalles</button>
             </div>
           </div>
         </article>
 
-        <article class="svc-card" data-title="Hilos Tensores Especulados" data-desc="Efecto lifting inmediato y estimulación de colágeno para definir el contorno facial o lograr 'Foxy Eyes'.">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1597060465530-349c25437721?auto=format&fit=crop&w=600&q=80" alt="Hilos Tensores">
+        <article class="svc-card" data-title="Hilos Tensores Especulados" data-desc="Lifting inmediato y Foxy Eyes.">
+          <img class="svc-img" src="https://images.unsplash.com/photo-1597060465530-349c25437721?auto=format&fit=crop&w=600&q=80">
           <div class="svc-body">
             <h3 class="svc-title">Hilos Tensores</h3>
             <p class="svc-text">Lifting sin cirugía y Foxy Eyes.</p>
             <div class="svc-actions">
-              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20info%20sobre%20Hilos%20Tensores." target="_blank">Contactar</a>
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Info%20Hilos" target="_blank">Contactar</a>
               <button class="btn btn-dark" onclick="openModal(this)">Detalles</button>
             </div>
           </div>
         </article>
 
-        <article class="svc-card" data-title="HIFU / Morpheus8 (Tensado)" data-desc="Tecnologías avanzadas (Ultrasonido o Radiofrecuencia fraccionada) para tensado de piel y remodelación grasa.">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1628146747942-70b1cb355039?auto=format&fit=crop&w=600&q=80" alt="HIFU Morpheus">
+        <article class="svc-card" data-title="HIFU / Morpheus8 (Tensado)" data-desc="Tensado de piel potente y no invasivo.">
+          <img class="svc-img" src="https://images.unsplash.com/photo-1628146747942-70b1cb355039?auto=format&fit=crop&w=600&q=80">
           <div class="svc-body">
             <h3 class="svc-title">HIFU / Morpheus8</h3>
-            <p class="svc-text">Tensado de piel potente y no invasivo.</p>
+            <p class="svc-text">Tensado de piel potente.</p>
             <div class="svc-actions">
-              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20info%20sobre%20HIFU%20o%20Morpheus." target="_blank">Contactar</a>
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Info%20HIFU" target="_blank">Contactar</a>
               <button class="btn btn-dark" onclick="openModal(this)">Detalles</button>
             </div>
           </div>
         </article>
 
-        <article class="svc-card" data-title="Depilación Láser Diodo" data-desc="Eliminación progresiva y permanente del vello no deseado de forma rápida y segura.">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1553548695-8f501009245b?auto=format&fit=crop&w=600&q=80" alt="Láser Diodo">
+        <article class="svc-card" data-title="Depilación Láser Diodo" data-desc="Eliminación progresiva del vello.">
+          <img class="svc-img" src="https://images.unsplash.com/photo-1553548695-8f501009245b?auto=format&fit=crop&w=600&q=80">
           <div class="svc-body">
             <h3 class="svc-title">Láser Diodo</h3>
-            <p class="svc-text">Piel suave y sin vello permanentemente.</p>
+            <p class="svc-text">Piel suave y sin vello.</p>
             <div class="svc-actions">
-              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Hola%2C%20info%20sobre%20Depilaci%C3%B3n%20L%C3%A1ser." target="_blank">Contactar</a>
+              <a class="btn btn-wa" href="https://wa.me/50764746168?text=Info%20Laser" target="_blank">Contactar</a>
               <button class="btn btn-dark" onclick="openModal(this)">Detalles</button>
             </div>
           </div>
@@ -593,56 +610,36 @@
 
   <section class="contact-wrap" id="contacto">
     <div class="contact-card">
-      <div class="contact-grid">
-        <div>
-          <h3 class="contact-title">¿Dudas? Escríbenos</h3>
-          <p class="contact-text">
-            Completa el formulario y te responderemos por WhatsApp con disponibilidad y valoración preliminar.
-          </p>
-          <p class="help">
-            📍 Parque Lefevre, Plaza Royal Park<br>
-            📲 WhatsApp Directo: <strong>6474-6168</strong>
-          </p>
+      <h3 class="contact-title">¿Dudas? Escríbenos</h3>
+      <form onsubmit="return sendToWhatsApp(event)">
+        <div style="margin-bottom:15px;">
+          <label class="label">Tu Nombre</label>
+          <input class="input" id="c-nombre" type="text" placeholder="Ej: Ana López" required>
         </div>
-
-        <form class="form" onsubmit="return sendToWhatsApp(event)">
-          <div class="field">
-            <label class="label" for="c-nombre">Tu Nombre</label>
-            <input class="input" id="c-nombre" type="text" placeholder="Ej: Ana López" required>
-          </div>
-          <div class="field">
-            <label class="label" for="c-servicio">Servicio de Interés</label>
-            <select class="select" id="c-servicio" required>
-              <option value="" disabled selected>Selecciona...</option>
-              <option>Limpieza Facial / Hidrafacial</option>
-              <option>Peelings / Despigmentante</option>
-              <option>Plasma Fibroblast (Promo)</option>
-              <option>Botox / Ácido Hialurónico</option>
-              <option>Bioestimuladores / Hilos</option>
-              <option>Aparatología (HIFU/Morpheus)</option>
-              <option>Depilación Láser</option>
-              <option>Otro (Detallar en mensaje)</option>
-            </select>
-          </div>
-          <div class="field">
-            <label class="label" for="c-msg">Mensaje Adicional</label>
-            <textarea class="textarea" id="c-msg" placeholder="Ej: Quisiera cita para evaluación la próxima semana..."></textarea>
-          </div>
-          <div class="form-actions">
-            <button class="btn btn-wa" type="submit" style="width:100%; font-size:1rem; padding:12px;">Enviar Mensaje de WhatsApp</button>
-          </div>
-        </form>
-      </div>
+        <div style="margin-bottom:15px;">
+          <label class="label">Servicio de Interés</label>
+          <select class="select" id="c-servicio" required>
+            <option value="" disabled selected>Selecciona...</option>
+            <option>Limpieza Facial / Hidrafacial</option>
+            <option>Plasma Fibroblast</option>
+            <option>Otros</option>
+          </select>
+        </div>
+        <div style="margin-bottom:15px;">
+          <label class="label">Mensaje</label>
+          <textarea class="textarea" id="c-msg"></textarea>
+        </div>
+        <button class="btn btn-wa" type="submit" style="width:100%;">Enviar WhatsApp</button>
+      </form>
     </div>
   </section>
 
-  <div class="home-cta" style="text-align:center; margin-bottom:40px;">
+  <div style="text-align:center; margin-bottom:40px;">
     <a class="btn-home" href="/">⬅ Volver al Inicio</a>
   </div>
-
 </div>
 
-<div class="modal" id="svcModal" aria-hidden="true">
+<div class="modal" id="svcModal">
   <div class="modal-card">
     <div class="modal-head">
       <h3 class="modal-title" id="mTitle"></h3>
@@ -651,105 +648,88 @@
     <div class="modal-body" id="mBody"></div>
     <div class="modal-foot">
       <button class="btn btn-dark" onclick="closeModal()">Cerrar</button>
-      <a class="btn btn-wa" id="mWa" href="#" target="_blank">Agendar por WhatsApp</a>
+      <a class="btn btn-wa" id="mWa" href="#" target="_blank">Agendar</a>
     </div>
   </div>
 </div>
 
 <footer>
-  <div class="container footer-inner">
-    <div class="footer-block">
-      <strong>Figura Rostro KG</strong><br>
-      Estética Avanzada en Panamá.
-    </div>
-    <div class="footer-block">
-      <strong>Ubicación</strong><br>
-      <a href="https://waze.com/ul/hd1r000000" target="_blank">Plaza Royal Park, Parque Lefevre</a>
-    </div>
-    <div class="footer-block">
-      <strong>Contacto</strong><br>
-      WhatsApp: <a href="https://wa.me/50764746168" target="_blank">6474-6168</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <div class="container" style="padding:15px 0;">
-      © <script>document.write(new Date().getFullYear())</script> Figura Rostro KG. Todos los derechos reservados.
-    </div>
-  </div>
+  <p><strong>Figura Rostro KG</strong> · Estética Avanzada en Panamá.</p>
+  <p>© <script>document.write(new Date().getFullYear())</script> Todos los derechos reservados.</p>
 </footer>
 
 <div class="fab-wrap">
-  <a class="fab fab-wa" href="https://wa.me/50764746168" target="_blank" aria-label="WhatsApp">
-    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+  <a class="fab" href="https://wa.me/50764746168" target="_blank">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
   </a>
 </div>
 
 <script>
   const WA_NUM = "50764746168";
   const modal = document.getElementById("svcModal");
-  const mTitle = document.getElementById("mTitle");
-  const mBody = document.getElementById("mBody");
-  const mWa = document.getElementById("mWa");
-
-  // --- LÓGICA PARA OCULTAR EL BANNER EL DÍA 19 ---
-  (function checkPromoDate() {
-      const today = new Date();
-      // Meses en JS van de 0 a 11. Enero es 0.
-      // Fecha límite: 19 de Enero de 2026 (Año, Mes, Día)
-      const deadline = new Date(2026, 0, 19); 
-      
-      if (today >= deadline) {
-          const banner = document.getElementById('promo-banner');
-          if (banner) {
-              banner.style.display = 'none';
-          }
-      }
-  })();
-  // --------------------------------------------------
-
   function openModal(btn){
     const card = btn.closest(".svc-card");
-    const title = card.getAttribute("data-title");
-    const desc = card.getAttribute("data-desc");
-    
-    mTitle.textContent = title;
-    mBody.textContent = desc;
-    mWa.href = `https://wa.me/${WA_NUM}?text=${encodeURIComponent("Hola, deseo información y detalles sobre: " + title)}`;
-    
+    document.getElementById("mTitle").textContent = card.getAttribute("data-title");
+    document.getElementById("mBody").textContent = card.getAttribute("data-desc");
+    document.getElementById("mWa").href = `https://wa.me/${WA_NUM}?text=Info sobre: ${card.getAttribute("data-title")}`;
     modal.classList.add("open");
-    modal.setAttribute("aria-hidden","false");
-    document.body.style.overflow = "hidden"; // Evita scroll
   }
-
-  function closeModal(){
-    modal.classList.remove("open");
-    modal.setAttribute("aria-hidden","true");
-    document.body.style.overflow = "";
-  }
-
-  window.onclick = function(event) {
-    if (event.target == modal) closeModal();
-  }
-
+  function closeModal(){ modal.classList.remove("open"); }
   function sendToWhatsApp(e){
     e.preventDefault();
-    const nombre = document.getElementById("c-nombre").value;
-    const servicio = document.getElementById("c-servicio").value;
-    const msg = document.getElementById("c-msg").value;
-
-    const text = `Hola, mi nombre es ${nombre}.\nEstoy interesado/a en: ${servicio}.\n${msg ? 'Mensaje adicional: ' + msg : ''}\n\nQuedo atento/a a su respuesta.`;
-    
+    const text = `Hola, mi nombre es ${document.getElementById("c-nombre").value}. Me interesa ${document.getElementById("c-servicio").value}.`;
     window.open(`https://wa.me/${WA_NUM}?text=${encodeURIComponent(text)}`, "_blank");
   }
 </script>
 
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+  const firebaseConfig = {
+      apiKey: "AIzaSyBAuTfBKGuG33c9NXc1s0lkQv-7GwA47l0",
+      authDomain: "figurarostro-system.firebaseapp.com",
+      projectId: "figurarostro-system",
+      storageBucket: "figurarostro-system.firebasestorage.app",
+      messagingSenderId: "803848354693",
+      appId: "1:803848354693:web:7144490abb18b0319822ec"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const provider = new GoogleAuthProvider();
+
+  window.loginCliente = () => signInWithPopup(auth, provider);
+  window.logoutCliente = () => signOut(auth).then(() => location.reload());
+
+  const authContainer = document.getElementById('authContainer');
+
+  onAuthStateChanged(auth, (user) => {
+      if (user) {
+          const nombre = user.displayName ? user.displayName.split(' ')[0] : 'Cliente';
+          authContainer.innerHTML = `
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span style="color:var(--vip-teal); font-weight:800; font-size:13px;">👋 Hola, ${nombre}</span>
+              <button onclick="logoutCliente()" style="background:none; border:none; color:gray; cursor:pointer; font-size:11px; text-decoration:underline;">Salir</button>
+            </div>`;
+          document.querySelectorAll('.promo-vip').forEach(el => el.style.display = 'block');
+      } else {
+          authContainer.innerHTML = `
+            <button onclick="loginCliente()" class="btn-login">
+              <img src="https://www.svgrepo.com/show/475656/google-color.svg" width="14"> Ver mis Descuentos
+            </button>`;
+          document.querySelectorAll('.promo-vip').forEach(el => el.style.display = 'none');
+      }
+  });
+</script>
+
 <script type='text/javascript' data-cfasync='false'>
-window.purechatApi={l:[],t:[],on:function(){this.l.push(arguments);}};
-(function(){ var done=false;var script=document.createElement('script');script.async=true;script.type='text/javascript';
-script.src='https://app.purechat.com/VisitorWidget/WidgetScript';
-document.getElementsByTagName('HEAD').item(0).appendChild(script);
-script.onreadystatechange=script.onload=function(e){if(!done&&(!this.readyState||this.readyState=='loaded'||this.readyState=='complete')){
-new PCWidget({c:'39cf325c-2286-4b58-b2af-9c647e257085',f:true});done=true;}};})();
+  window.purechatApi={l:[],t:[],on:function(){this.l.push(arguments);}};
+  (function(){ var done=false;var script=document.createElement('script');script.async=true;script.type='text/javascript';
+  script.src='https://app.purechat.com/VisitorWidget/WidgetScript';
+  document.getElementsByTagName('HEAD').item(0).appendChild(script);
+  script.onreadystatechange=script.onload=function(e){if(!done&&(!this.readyState||this.readyState=='loaded'||this.readyState=='complete')){
+  new PCWidget({c:'39cf325c-2286-4b58-b2af-9c647e257085',f:true});done=true;}};})();
 </script>
 
 </body>
