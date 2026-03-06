@@ -248,7 +248,7 @@
       font-size:.9rem
     }
 
-    /* ===== Especialidades (NUEVO) ===== */
+    /* ===== Especialidades ===== */
     .special-wrap{
       margin-top:-38px;
       position:relative;
@@ -354,35 +354,120 @@
       .fr-ic svg{width:22px;height:22px}
     }
 
-    /* Footer */
+    /* ===== FOOTER SEO ROBUSTO ===== */
     .site-footer.dark{
-      background:linear-gradient(180deg, rgba(10,7,16,.92) 0%, rgba(12,10,26,.96) 100%);
+      background:
+        radial-gradient(900px 400px at 50% 0%, rgba(124,92,255,.10), transparent 60%),
+        linear-gradient(180deg, rgba(10,7,16,.96) 0%, rgba(12,10,26,.98) 100%);
       color:#fff;
-      border-top:1px solid var(--line)
+      border-top:1px solid var(--line);
     }
-    .site-footer a{color:rgba(242,236,255,.92);text-decoration:none}
-    .site-footer a:hover{text-decoration:underline;text-underline-offset:3px;color:#fff}
+    .site-footer a{
+      color:rgba(242,236,255,.92);
+      text-decoration:none;
+    }
+    .site-footer a:hover{
+      text-decoration:underline;
+      text-underline-offset:3px;
+      color:#fff;
+    }
     .footer-grid{
       display:grid;
-      grid-template-columns:1.4fr 1fr 1fr 1.6fr;
-      gap:28px;
-      padding:36px 0 12px
+      grid-template-columns:1.35fr 1fr 1fr 1fr 1.15fr;
+      gap:26px;
+      padding:42px 0 18px;
     }
-    .brand-line{display:flex;gap:12px;align-items:flex-start}
-    .f-logo{height:40px}
-    .site-footer .f-col h4{font-size:1rem;margin:0 0 10px;color:#fff}
-    .site-footer .f-col ul{list-style:none;padding:0;margin:0}
-    .site-footer .f-col li{margin:6px 0}
-    .f-social{margin-top:8px}
-    .map-links{margin-top:8px;font-size:.95rem}
+    .brand-line{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+    }
+    .f-logo{
+      height:44px;
+      flex:0 0 auto;
+    }
+    .site-footer .f-col h4{
+      font-size:1rem;
+      margin:0 0 12px;
+      color:#fff;
+    }
+    .site-footer .f-col p{
+      color:rgba(242,236,255,.86);
+      line-height:1.65;
+    }
+    .site-footer .f-col ul{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+    .site-footer .f-col li{
+      margin:8px 0;
+    }
+    .f-social{
+      margin-top:10px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .f-social a{
+      display:inline-flex;
+      align-items:center;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(191,160,255,.16);
+    }
+    .footer-note{
+      margin-top:14px;
+      padding:12px 14px;
+      border-radius:14px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(191,160,255,.14);
+      font-size:.94rem;
+      line-height:1.65;
+    }
+    .map-links{
+      margin-top:8px;
+      font-size:.95rem;
+    }
+    .footer-cta{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
     .footer-bottom{
       border-top:1px solid var(--line);
       padding:14px 0;
-      text-align:center;
-      opacity:.9
+      opacity:.9;
     }
-    @media (max-width:900px){
-      .footer-grid{grid-template-columns:1fr;gap:14px;padding:22px 0 8px}
+    .footer-bottom .container{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    .footer-bottom-links{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    @media (max-width:1100px){
+      .footer-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+    @media (max-width:768px){
+      .footer-grid{
+        grid-template-columns:1fr;
+        gap:16px;
+        padding:24px 0 10px;
+      }
+      .footer-bottom .container{
+        justify-content:center;
+        text-align:center;
+      }
     }
   </style>
 
@@ -422,9 +507,9 @@
         </ul>
       </nav>
 
-    <div id="authContainer" class="site-nav" style="margin-left: auto; z-index: 60;">
-  <button class="btn-ghost" style="opacity: 0.5;">Cargando...</button>
-</div>  
+      <div id="authContainer" class="site-nav" style="margin-left: auto; z-index: 60;">
+        <button class="btn-ghost" style="opacity: 0.5;">Cargando...</button>
+      </div>  
     </div>
   </header>
 
@@ -493,7 +578,7 @@
     })();
   </script>
 
-  <!-- ESPECIALIDADES (NUEVO: esto es lo que te faltaba para verse “especialistas”) -->
+  <!-- ESPECIALIDADES -->
   <section id="especialidades" class="special-wrap" aria-label="Especialidades">
     <div class="container">
       <div class="special-card">
@@ -649,7 +734,7 @@
     </div>
   </section>
 
-  <!-- “Clínico y confianza” (NUEVO, corto y poderoso) -->
+  <!-- Proceso -->
   <section id="proceso">
     <div class="container">
       <div class="two-col">
@@ -731,7 +816,6 @@
               </div>
             </details>
           </div>
-
         </div>
 
         <div>
@@ -823,60 +907,107 @@
   <!-- Footer -->
   <footer class="site-footer dark">
     <div class="container footer-grid">
+
       <div class="f-col">
         <div class="brand-line">
           <img class="f-logo" src="logo-header-white.png" alt="Figura Rostro KG logo">
           <div>
             <h4>Figura Rostro KG</h4>
-            <p style="margin:6px 0 0; opacity:.85;">Parque Lefevre · Royal Park, Ciudad de Panamá.</p>
-            <p style="margin:6px 0 0; opacity:.85;">Atención por cita · Enfoque clínico y protocolo.</p>
-            <div class="f-social" style="margin-top:8px">
+            <p style="margin:6px 0 0;">Centro estético en Royal Park, Parque Lefevre, Ciudad de Panamá.</p>
+            <p style="margin:6px 0 0;">Especialistas en rejuvenecimiento facial y corporal, Plasma Fibroblast, tratamientos estéticos avanzados y valoración personalizada.</p>
+
+            <div class="f-social">
               <a href="https://instagram.com/figurarostrokg" target="_blank" rel="noopener">Instagram</a>
-              <span style="opacity:.6">·</span>
               <a href="https://facebook.com/figurarostrokg" target="_blank" rel="noopener">Facebook</a>
-              <span style="opacity:.6">·</span>
               <a href="https://www.tiktok.com/@figurarostrokg" target="_blank" rel="noopener">TikTok</a>
+            </div>
+
+            <div class="footer-note">
+              Atención por cita previa. Agenda tu valoración por WhatsApp y descubre el tratamiento ideal según tu caso.
             </div>
           </div>
         </div>
       </div>
 
       <div class="f-col">
-        <h4>Plasma Fibroblast</h4>
+        <h4>Servicios destacados</h4>
         <ul>
-          <li><a href="/fibroblast.html">Información completa</a></li>
+          <li><a href="/fibroblast.html">Plasma Fibroblast</a></li>
+          <li><a href="/plasma-fibroblast.html">Plasma Fibroblast facial</a></li>
+          <li><a href="/peeling-facial.html">Peeling facial</a></li>
+          <li><a href="/microneedling.html">Microneedling</a></li>
+          <li><a href="/masajes-relajantes.html">Masajes relajantes</a></li>
+          <li><a href="/tratamientos.html">Tratamientos estéticos</a></li>
+          <li><a href="/menu.html">Menú de servicios</a></li>
+        </ul>
+      </div>
+
+      <div class="f-col">
+        <h4>Zonas y soluciones</h4>
+        <ul>
+          <li><a href="/fibroblast.html">Fibroblast para abdomen</a></li>
+          <li><a href="/fibroblast.html">Fibroblast para párpados</a></li>
+          <li><a href="/fibroblast.html">Fibroblast para ojeras</a></li>
+          <li><a href="/hidrolipoclasia.html">Hidrolipoclasia</a></li>
+          <li><a href="/radiofrecuencia-facial.html">Radiofrecuencia facial</a></li>
+          <li><a href="/radiofrecuencia-corporal.html">Radiofrecuencia corporal</a></li>
           <li><a href="#zonas">Zonas más solicitadas</a></li>
-          <li><a href="https://figurarostro.life/reservar-v2.html">Reservar valoración</a></li>
         </ul>
       </div>
 
       <div class="f-col">
-        <h4>Especialidades</h4>
+        <h4>Explora el sitio</h4>
         <ul>
-          <li><a href="#especialidades">Plasma Fibroblast</a></li>
-          <li><a href="#especialidades">Adelgazamiento Exprés</a></li>
-          <li><a href="/menu.html">Menú completo</a></li>
+          <li><a href="/">Inicio</a></li>
+          <li><a href="#sobre">Sobre nosotros</a></li>
+          <li><a href="#especialidades">Especialidades</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="/agendar.html">Agendar cita</a></li>
+          <li><a href="/reservar-v2.html">Reservar online</a></li>
+          <li><a href="/buy-online.html">Comprar online</a></li>
+          <li><a href="/clinic.html">Clínica / información</a></li>
+          <li><a href="/black-week.html">Promociones</a></li>
         </ul>
       </div>
 
       <div class="f-col">
-        <h4>Cómo llegar</h4>
+        <h4>Contacto y ubicación</h4>
         <div class="map-links">
-          <a href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noopener">Abrir en Waze</a> ·
-          <a href="https://maps.google.com/?q=Royal+Park+Ernesto+T+Lefevre+Panama" target="_blank" rel="noopener">Google Maps</a>
-          <p style="margin:10px 0 0;font-size:.9rem;opacity:.85;">
-            Reserva por <strong style="color:#fff">WhatsApp</strong> o en el enlace oficial.
+          <p style="margin:0 0 10px;">Royal Park · Av. Ernesto T. Lefevre · Ciudad de Panamá</p>
+          <p style="margin:0 0 10px;">
+            <strong>WhatsApp:</strong>
+            <a href="https://wa.me/50764746168" target="_blank" rel="noopener">+507 6474-6168</a>
           </p>
-          <p style="margin-top:12px">
+          <p style="margin:0 0 10px;">
+            <strong>Teléfono:</strong>
+            <a href="tel:+50764746168">+507 6474-6168</a>
+          </p>
+          <p style="margin:0 0 10px;">
+            <a href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noopener">Abrir en Waze</a>
+            <span style="opacity:.5;">·</span>
+            <a href="https://maps.google.com/?q=Royal+Park+Ernesto+T+Lefevre+Panama" target="_blank" rel="noopener">Google Maps</a>
+          </p>
+
+          <div class="footer-cta">
             <a class="btn-primary" href="https://figurarostro.life/reservar-v2.html">Agendar</a>
-          </p>
+            <a class="btn-ghost" href="https://wa.me/50764746168" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
         </div>
       </div>
+
     </div>
 
     <div class="footer-bottom">
       <div class="container">
-        © <span id="year"></span> Figura Rostro KG · Todos los derechos reservados
+        <div>
+          © <span id="year"></span> Figura Rostro KG · Estética avanzada en Panamá
+        </div>
+        <div class="footer-bottom-links">
+          <a href="/">Inicio</a>
+          <a href="/menu.html">Servicios</a>
+          <a href="/fibroblast.html">Fibroblast</a>
+          <a href="https://figurarostro.life/reservar-v2.html">Reservar</a>
+        </div>
       </div>
     </div>
   </footer>
@@ -916,7 +1047,6 @@
     const auth = getAuth(app);
     const provider = new GoogleAuthProvider();
 
-    // Función para iniciar sesión con ventana emergente
     window.loginCliente = () => {
       signInWithPopup(auth, provider)
         .then(() => console.log("Acceso exitoso"))
@@ -941,7 +1071,6 @@
                 <button onclick="logoutCliente()" style="background:transparent; border:none; color: rgba(255,255,255,0.5); cursor:pointer; font-size:12px; text-decoration:underline;">Salir</button>
               </div>
             `;
-            // Activa los mensajes VIP
             document.querySelectorAll('.promo-vip').forEach(el => el.style.display = 'block');
             const heroBtn = document.getElementById('heroBtn');
             if(heroBtn) heroBtn.textContent = "Canjear mis bonos ahora";
@@ -952,7 +1081,6 @@
                 Soy Cliente
               </button>
             `;
-            // Oculta los mensajes VIP
             document.querySelectorAll('.promo-vip').forEach(el => el.style.display = 'none');
         }
     });
