@@ -25,7 +25,7 @@
   <link rel="manifest" href="/site.webmanifest">
   <meta name="theme-color" content="#5b2580">
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -49,13 +49,15 @@
     html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family:Inter,system-ui,Segoe UI,Roboto,Arial;
-      background:radial-gradient(1200px 600px at 50% -10%, rgba(124,92,255,.20), transparent 60%),
-                 radial-gradient(900px 500px at 20% 10%, rgba(191,160,255,.12), transparent 55%),
-                 var(--bg);
+      font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
+      background:
+        radial-gradient(1200px 600px at 50% -10%, rgba(124,92,255,.20), transparent 60%),
+        radial-gradient(900px 500px at 20% 10%, rgba(191,160,255,.12), transparent 55%),
+        var(--bg);
       color:var(--text);
       overflow-x:hidden;
     }
+
     .container{max-width:1150px;margin:0 auto;padding:0 16px;width:100%}
     @media (max-width:768px){.container{padding:0 12px}}
 
@@ -65,6 +67,44 @@
     img{max-width:100%;height:auto;display:block}
     .ratio-16x9{position:relative; width:100%; aspect-ratio:16/9}
     .ratio-16x9 iframe{position:absolute; inset:0; width:100%; height:100%; border:0; border-radius:14px}
+
+    /* ===== BARRA SUPERIOR ===== */
+    .topbar{
+      background:#ffffff;
+      color:#2b1244;
+      border-bottom:1px solid rgba(0,0,0,.08);
+      font-size:.95rem;
+      font-weight:800;
+    }
+    .topbar-inner{
+      min-height:44px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+      padding:10px 0;
+    }
+    .topbar-item{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      color:#2b1244;
+      line-height:1.3;
+    }
+    .topbar-item strong{
+      color:#111;
+    }
+    @media (max-width:768px){
+      .topbar-inner{
+        justify-content:center;
+        gap:8px 14px;
+        text-align:center;
+      }
+      .topbar-item{
+        font-size:.84rem;
+      }
+    }
 
     /* ===== HEADER ===== */
     header{
@@ -80,15 +120,30 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:16px 0
+      padding:16px 0;
+      gap:18px;
     }
     .brand{position:relative;display:inline-block}
     .brand img{height:58px; filter: drop-shadow(0 10px 16px rgba(0,0,0,.35));}
     @media (max-width:768px){.brand img{height:44px}}
 
     .site-nav{display:flex;align-items:center}
-    .site-nav .menu{display:flex;gap:22px;list-style:none;margin:0;padding:0}
-    .site-nav a{color:rgba(255,255,255,.92);font-weight:800;text-decoration:none}
+    .site-nav .menu{
+      display:flex;
+      gap:22px;
+      list-style:none;
+      margin:0;
+      padding:0;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+    .site-nav a{
+      color:rgba(255,255,255,.92);
+      font-weight:800;
+      text-decoration:none;
+      white-space:nowrap;
+    }
     .site-nav a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
 
     .btn-primary{
@@ -101,6 +156,7 @@
       text-decoration:none;
       display:inline-flex;
       align-items:center;
+      justify-content:center;
       gap:8px;
       box-shadow:0 10px 22px rgba(0,0,0,.30);
       transition: transform .15s ease;
@@ -117,28 +173,36 @@
       text-decoration:none;
       display:inline-flex;
       align-items:center;
+      justify-content:center;
       gap:8px;
       box-shadow:0 10px 22px rgba(0,0,0,.18);
       transition: transform .15s ease;
     }
     .btn-ghost:hover{transform:translateY(-1px);text-decoration:none;color:#fff;border-color:rgba(191,160,255,.35)}
 
-    #menuBtn{
-      position:absolute;
-      right:12px;
-      top:50%;
-      transform:translateY(-50%);
-      z-index:60
-    }
-    @media (min-width:769px){
-      #menuBtn{position:static;transform:none;margin-left:auto}
+    @media (max-width:980px){
+      .header-inner{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+      .site-nav{
+        order:3;
+        width:100%;
+        justify-content:center;
+      }
     }
     @media (max-width:768px){
-      nav.site-nav{display:none !important}
-      .btn-primary,.btn-ghost{padding:8px 12px;border-radius:12px;font-size:14px}
+      .site-nav .menu{
+        gap:12px 16px;
+      }
+      .btn-primary,.btn-ghost{
+        padding:8px 12px;
+        border-radius:12px;
+        font-size:14px;
+      }
     }
 
-    /* ===== HERO (3 SLIDERS) ===== */
+    /* ===== HERO ===== */
     .hero{
       position:relative;
       display:grid;
@@ -187,7 +251,13 @@
       margin:0 auto;
       max-width:920px
     }
-    .hero-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .hero-actions{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:12px;
+    }
     @media (max-width:768px){
       .hero{min-height:54vh}
       .hero .content{max-width:92%;padding:14px 8px}
@@ -288,6 +358,87 @@
     .special-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
     .divider-soft{height:1px;background:rgba(255,255,255,.08);margin:18px 0}
 
+    /* ===== Galería ===== */
+    .gallery-section{
+      padding-top:24px;
+      padding-bottom:20px;
+    }
+    .gallery-box{
+      border-radius:22px;
+      border:1px solid rgba(191,160,255,.20);
+      background:linear-gradient(180deg, rgba(18,16,36,.96), rgba(12,10,26,.96));
+      box-shadow:var(--shadow2);
+      padding:22px;
+    }
+    .gallery-head{
+      text-align:center;
+      margin-bottom:18px;
+    }
+    .gallery-head h2{
+      margin:0 0 8px;
+      font-size:clamp(28px,4vw,44px);
+      color:var(--muted);
+      font-weight:900;
+      letter-spacing:-.03em;
+    }
+    .gallery-head p{
+      margin:0;
+      color:rgba(242,236,255,.76);
+      max-width:760px;
+      margin-inline:auto;
+    }
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+    .gallery-item{
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.03);
+      min-height:220px;
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .gallery-item img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      aspect-ratio:4/3;
+      display:block;
+    }
+    .gallery-placeholder{
+      width:100%;
+      height:100%;
+      min-height:220px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:18px;
+      color:rgba(242,236,255,.56);
+      font-weight:800;
+      background:
+        linear-gradient(135deg, rgba(191,160,255,.06), rgba(255,255,255,.02));
+    }
+    @media (max-width:980px){
+      .gallery-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+    @media (max-width:580px){
+      .gallery-grid{
+        grid-template-columns:1fr;
+      }
+      .gallery-item,
+      .gallery-placeholder{
+        min-height:190px;
+      }
+    }
+
     /* ===== Video ===== */
     .video-hero{padding:32px 0}
     .video-two-col{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:center}
@@ -354,7 +505,7 @@
       .fr-ic svg{width:22px;height:22px}
     }
 
-    /* ===== FOOTER SEO ROBUSTO ===== */
+    /* ===== FOOTER MEJOR ORDENADO ===== */
     .site-footer.dark{
       background:
         radial-gradient(900px 400px at 50% 0%, rgba(124,92,255,.10), transparent 60%),
@@ -373,8 +524,9 @@
     }
     .footer-grid{
       display:grid;
-      grid-template-columns:1.35fr 1fr 1fr 1fr 1.15fr;
+      grid-template-columns:minmax(280px,1.4fr) repeat(4,minmax(180px,1fr));
       gap:26px;
+      align-items:start;
       padding:42px 0 18px;
     }
     .brand-line{
@@ -382,9 +534,20 @@
       gap:14px;
       align-items:flex-start;
     }
+    .brand-copy{
+      min-width:0;
+      max-width:100%;
+    }
+    .brand-copy p{
+      margin:6px 0 0;
+      max-width:320px;
+      word-break:normal;
+      overflow-wrap:break-word;
+    }
     .f-logo{
       height:44px;
       flex:0 0 auto;
+      margin-top:4px;
     }
     .site-footer .f-col h4{
       font-size:1rem;
@@ -402,9 +565,13 @@
     }
     .site-footer .f-col li{
       margin:8px 0;
+      line-height:1.45;
+    }
+    .site-footer .f-col li a{
+      display:inline-block;
     }
     .f-social{
-      margin-top:10px;
+      margin-top:12px;
       display:flex;
       flex-wrap:wrap;
       gap:10px;
@@ -416,6 +583,7 @@
       border-radius:999px;
       background:rgba(255,255,255,.05);
       border:1px solid rgba(191,160,255,.16);
+      white-space:nowrap;
     }
     .footer-note{
       margin-top:14px;
@@ -425,10 +593,17 @@
       border:1px solid rgba(191,160,255,.14);
       font-size:.94rem;
       line-height:1.65;
+      max-width:330px;
+      overflow-wrap:break-word;
     }
     .map-links{
       margin-top:8px;
       font-size:.95rem;
+    }
+    .map-links p{
+      margin:0 0 10px;
+      line-height:1.6;
+      max-width:280px;
     }
     .footer-cta{
       margin-top:14px;
@@ -455,18 +630,26 @@
     }
     @media (max-width:1100px){
       .footer-grid{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+      .brand-copy p,
+      .footer-note,
+      .map-links p{
+        max-width:none;
       }
     }
     @media (max-width:768px){
       .footer-grid{
         grid-template-columns:1fr;
-        gap:16px;
+        gap:18px;
         padding:24px 0 10px;
       }
       .footer-bottom .container{
         justify-content:center;
         text-align:center;
+      }
+      .brand-line{
+        flex-direction:column;
       }
     }
   </style>
@@ -490,6 +673,15 @@
 
 <body>
 
+  <!-- FRANJA SUPERIOR -->
+  <div class="topbar" aria-label="Información principal">
+    <div class="container topbar-inner">
+      <div class="topbar-item"><strong>📞 6474-6168</strong></div>
+      <div class="topbar-item">📍 Royal Park · Av. Ernesto T. Lefevre · Ciudad de Panamá</div>
+      <div class="topbar-item">🕘 Horario Lun - Dom 8am a 8pm</div>
+    </div>
+  </div>
+
   <header>
     <div class="container header-inner">
       <a href="/" class="brand" aria-label="Inicio Figura Rostro KG">
@@ -501,7 +693,7 @@
           <li><a href="/">Inicio</a></li>
           <li><a href="#sobre">Nosotros</a></li>
           <li><a href="#especialidades">Especialidades</a></li>
-          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="https://figurarostro.life/menu-servicios-figura-rostro.html">Servicios</a></li>
           <li><a href="/fibroblast.html">Plasma Fibroblast</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
@@ -650,6 +842,29 @@
           <div>
             <img class="special-img" src="especialidad-adelgazamiento.jpg" alt="Adelgazamiento exprés - hidrolipoplasia y masajes reductores en Panamá">
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA -->
+  <section class="gallery-section" aria-label="Galería de instalaciones y tratamientos">
+    <div class="container">
+      <div class="gallery-box">
+        <div class="gallery-head">
+          <h2>Galería de imágenes</h2>
+          <p>Espacio listo para colocar fotos de cabinas, instalaciones, tratamientos, resultados y ambiente de Figura Rostro KG.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item"><div class="gallery-placeholder">Sube aquí imagen 1</div></div>
+          <div class="gallery-item"><div class="gallery-placeholder">Sube aquí imagen 2</div></div>
+          <div class="gallery-item"><div class="gallery-placeholder">Sube aquí imagen 3</div></div>
+          <div class="gallery-item"><div class="gallery-placeholder">Sube aquí imagen 4</div></div>
+          <div class="gallery-item"><div class="gallery-placeholder">Sube aquí imagen 5</div></div>
+          <div class="gallery-item"><div class="gallery-placeholder">Sube aquí imagen 6</div></div>
+          <div class="gallery-item"><div class="gallery-placeholder">Sube aquí imagen 7</div></div>
+          <div class="gallery-item"><div class="gallery-placeholder">Sube aquí imagen 8</div></div>
         </div>
       </div>
     </div>
@@ -869,8 +1084,8 @@
       </div>
 
       <div style="text-align:center;margin-top:22px">
-        <a href="/menu.html" class="btn-primary" style="padding:12px 24px;font-size:17px;border-radius:14px;display:inline-block">
-          Ver más (Menú de servicios)
+        <a href="https://figurarostro.life/menu-servicios-figura-rostro.html" class="btn-primary" style="padding:12px 24px;font-size:17px;border-radius:14px;display:inline-block">
+          Ver más servicios
         </a>
       </div>
     </div>
@@ -886,7 +1101,7 @@
         <ul style="list-style:none;padding:0;margin:16px 0;line-height:1.9;color:rgba(242,236,255,.88)">
           <li><strong>WhatsApp:</strong> <a href="https://wa.me/50764746168" target="_blank" rel="noopener">+507 6474-6168</a></li>
           <li><strong>Teléfono:</strong> <a href="tel:+50764746168">+507 6474-6168</a></li>
-          <li><strong>Horario:</strong> <span style="color:#fff;font-weight:900">Según cita</span> · (te confirmamos disponibilidad por WhatsApp)</li>
+          <li><strong>Horario:</strong> <span style="color:#fff;font-weight:900">Lun - Dom · 8am a 8pm</span></li>
           <li><strong>Cómo llegar:</strong>
             <a href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noopener">Abrir en Waze</a> ·
             <a href="https://maps.google.com/?q=Royal+Park+Ernesto+T+Lefevre+Panama" target="_blank" rel="noopener">Google Maps</a>
@@ -911,10 +1126,10 @@
       <div class="f-col">
         <div class="brand-line">
           <img class="f-logo" src="logo-header-white.png" alt="Figura Rostro KG logo">
-          <div>
+          <div class="brand-copy">
             <h4>Figura Rostro KG</h4>
-            <p style="margin:6px 0 0;">Centro estético en Royal Park, Parque Lefevre, Ciudad de Panamá.</p>
-            <p style="margin:6px 0 0;">Especialistas en rejuvenecimiento facial y corporal, Plasma Fibroblast, tratamientos estéticos avanzados y valoración personalizada.</p>
+            <p>Centro estético en Royal Park, Parque Lefevre, Ciudad de Panamá.</p>
+            <p>Especialistas en rejuvenecimiento facial y corporal, Plasma Fibroblast, tratamientos estéticos avanzados y valoración personalizada.</p>
 
             <div class="f-social">
               <a href="https://instagram.com/figurarostrokg" target="_blank" rel="noopener">Instagram</a>
@@ -938,7 +1153,7 @@
           <li><a href="/microneedling.html">Microneedling</a></li>
           <li><a href="/masajes-relajantes.html">Masajes relajantes</a></li>
           <li><a href="/tratamientos.html">Tratamientos estéticos</a></li>
-          <li><a href="/menu.html">Menú de servicios</a></li>
+          <li><a href="https://figurarostro.life/menu-servicios-figura-rostro.html">Menú de servicios</a></li>
         </ul>
       </div>
 
@@ -961,7 +1176,7 @@
           <li><a href="/">Inicio</a></li>
           <li><a href="#sobre">Sobre nosotros</a></li>
           <li><a href="#especialidades">Especialidades</a></li>
-          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="https://figurarostro.life/menu-servicios-figura-rostro.html">Servicios</a></li>
           <li><a href="/agendar.html">Agendar cita</a></li>
           <li><a href="/reservar-v2.html">Reservar online</a></li>
           <li><a href="/buy-online.html">Comprar online</a></li>
@@ -973,16 +1188,11 @@
       <div class="f-col">
         <h4>Contacto y ubicación</h4>
         <div class="map-links">
-          <p style="margin:0 0 10px;">Royal Park · Av. Ernesto T. Lefevre · Ciudad de Panamá</p>
-          <p style="margin:0 0 10px;">
-            <strong>WhatsApp:</strong>
-            <a href="https://wa.me/50764746168" target="_blank" rel="noopener">+507 6474-6168</a>
-          </p>
-          <p style="margin:0 0 10px;">
-            <strong>Teléfono:</strong>
-            <a href="tel:+50764746168">+507 6474-6168</a>
-          </p>
-          <p style="margin:0 0 10px;">
+          <p>Royal Park · Av. Ernesto T. Lefevre · Ciudad de Panamá</p>
+          <p><strong>WhatsApp:</strong> <a href="https://wa.me/50764746168" target="_blank" rel="noopener">+507 6474-6168</a></p>
+          <p><strong>Teléfono:</strong> <a href="tel:+50764746168">+507 6474-6168</a></p>
+          <p><strong>Horario:</strong> Lun - Dom · 8am a 8pm</p>
+          <p>
             <a href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noopener">Abrir en Waze</a>
             <span style="opacity:.5;">·</span>
             <a href="https://maps.google.com/?q=Royal+Park+Ernesto+T+Lefevre+Panama" target="_blank" rel="noopener">Google Maps</a>
@@ -1004,7 +1214,7 @@
         </div>
         <div class="footer-bottom-links">
           <a href="/">Inicio</a>
-          <a href="/menu.html">Servicios</a>
+          <a href="https://figurarostro.life/menu-servicios-figura-rostro.html">Servicios</a>
           <a href="/fibroblast.html">Fibroblast</a>
           <a href="https://figurarostro.life/reservar-v2.html">Reservar</a>
         </div>
@@ -1064,7 +1274,7 @@
         if (user) {
             const primerNombre = user.displayName ? user.displayName.split(' ')[0] : 'Cliente';
             authContainer.innerHTML = `
-              <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center;">
                 <a href="/app.html" class="btn-ghost" style="border-color: #14b8a6; color: #14b8a6;">
                   <span style="font-size:18px;">👋</span> Hola, ${primerNombre}
                 </a>
