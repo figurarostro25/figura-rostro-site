@@ -5,433 +5,788 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Plasma Fibroblast Panamá | Lifting Sin Cirugía | Figura Rostro KG</title>
-  <meta name="description" content="Tratamiento de Plasma Fibroblast en Panamá. La técnica europea avanzada para blefaroplastia sin cirugía, lifting de cuello y rejuvenecimiento natural. Resultados permanentes.">
-  <meta name="keywords" content="plasma fibroblast panama, blefaroplastia sin cirugia, lifting de cuello, colageno natural, rejuvenecimiento facial chiriqui, figura rostro kg, fibroblast brazos, fibroblast manos">
+  <meta name="description" content="Tratamiento de Plasma Fibroblast en Panamá. Técnica avanzada para rejuvenecimiento facial y corporal, tensado de piel y valoración personalizada en Figura Rostro KG.">
+  <meta name="keywords" content="plasma fibroblast panama, lifting sin cirugia panama, blefaroplastia sin cirugia panama, fibroblast abdomen panama, fibroblast parpados panama, figura rostro kg">
+  <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://figurarostro.life/fibroblast.html">
+
+  <meta property="og:title" content="Plasma Fibroblast Panamá | Figura Rostro KG">
+  <meta property="og:description" content="Rejuvenecimiento y tensado de piel sin cirugía con valoración personalizada en Panamá.">
+  <meta property="og:image" content="/og-cover-fr.jpg">
+  <meta property="og:url" content="https://figurarostro.life/fibroblast.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#5b2580">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --brand: #5b2580;       /* Morado Principal */
-      --brand-dark: #1F0A2E;  /* Morado Muy Oscuro (Header) */
-      --gold: #d4af37;
-      --bg-light: #fdfbfd;
-      --text-main: #2d2d2d;
-      --chiriqui-red: #d31d1d;
-      --ig-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-      --shadow: 0 10px 40px rgba(91, 37, 128, 0.08);
+      --brand:#bfa0ff;
+      --brand2:#7c5cff;
+      --bg:#0b0812;
+      --bg2:#0f0b19;
+      --card:#121024;
+      --card2:#151131;
+      --text:#f2ecff;
+      --muted:#cdbdf2;
+      --muted2:#a69ac4;
+      --line:rgba(255,255,255,.10);
+      --line2:rgba(191,160,255,.18);
+      --shadow:0 18px 70px rgba(0,0,0,.45);
+      --shadow2:0 12px 30px rgba(0,0,0,.35);
+      --radius:18px;
+
+      --green:#25D366;
+      --green2:#19b55a;
+      --gold:#d4af37;
+      --teal:#14b8a6;
+      --ig-gradient:linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
     }
-    *{box-sizing:border-box}
-    
+
+    *{box-sizing:border-box;min-width:0}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family: 'Inter', sans-serif;
-      background: var(--bg-light);
-      color: var(--text-main);
-      overflow-x: hidden;
+      font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
+      background:
+        radial-gradient(1200px 600px at 50% -10%, rgba(124,92,255,.20), transparent 60%),
+        radial-gradient(900px 500px at 20% 10%, rgba(191,160,255,.12), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      overflow-x:hidden;
     }
-    
-    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
-    a{text-decoration:none; transition: 0.3s ease;}
-    p{line-height: 1.6; color: #555; font-size: 1rem;}
-    img { max-width: 100%; display: block; }
 
-    /* --- ESTILOS DEL MENÚ --- */
-    header{
-      position:sticky;
-      top:0;
-      z-index:100;
-      background: var(--brand-dark);
-      border-bottom: 1px solid rgba(255,255,255,0.1); 
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline;text-underline-offset:3px}
+    img{max-width:100%;height:auto;display:block}
+    p{line-height:1.7;color:rgba(242,236,255,.86)}
+
+    .container{max-width:1150px;margin:0 auto;padding:0 16px;width:100%}
+    @media (max-width:768px){.container{padding:0 12px}}
+
+    /* ===== FRANJA SUPERIOR ===== */
+    .topbar{
+      background:#ffffff;
+      color:#2b1244;
+      border-bottom:1px solid rgba(0,0,0,.08);
+      font-size:.83rem;
+      font-weight:800;
     }
-    .header-inner{
-      max-width:1200px;
-      margin:auto;
-      padding:12px 20px;
+    .topbar-inner{
+      min-height:34px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      position: relative;
+      gap:14px;
+      flex-wrap:wrap;
+      padding:6px 0;
     }
-    .brand img {
-      height: 55px; 
-      width: auto; 
-      filter: brightness(0) invert(1);
-      transition: transform 0.3s;
+    .topbar-item{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      color:#2b1244;
+      line-height:1.2;
+      white-space:nowrap;
     }
-    .brand:hover img { transform: scale(1.05); }
-
-    .site-nav { display: flex; align-items: center; }
-    .site-nav .menu { display: flex; gap: 24px; list-style: none; margin: 0; padding: 0; }
-    .site-nav .menu > li { position: relative; }
-    .site-nav a { 
-        color: rgba(255,255,255,0.9); 
-        font-weight: 500; 
-        font-size: 15px; 
-        text-decoration: none;
-    }
-    .site-nav a:hover { color: var(--gold); }
-
-    .submenu {
-      position: absolute;
-      top: 100%; left: 0;
-      min-width: 220px;
-      background: #1a0925;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 14px;
-      padding: 8px;
-      list-style: none;
-      margin: 10px 0 0;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      display: none;
-      z-index: 60;
-    }
-    .has-sub:hover > .submenu, .has-sub:focus-within > .submenu { display: block; }
-    
-    .submenu li { display: block; width: 100%; }
-    .submenu a { 
-        display: block; 
-        padding: 10px 12px; 
-        border-radius: 10px; 
-        color: rgba(255,255,255,0.85);
-        font-size: 14px;
-    }
-    .submenu a:hover { 
-        background: rgba(255,255,255,0.1); 
-        color: var(--gold); 
+    .topbar-item strong{color:#111}
+    @media (max-width:768px){
+      .topbar{font-size:.76rem}
+      .topbar-inner{justify-content:center;gap:6px 12px;padding:5px 0}
+      .topbar-item{white-space:normal;text-align:center}
     }
 
-    .btn-primary.header-btn {
-        margin-left: 20px;
+    /* ===== HEADER ===== */
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:linear-gradient(180deg, rgba(10,7,16,.92) 0%, rgba(15,10,25,.88) 100%);
+      border-bottom:1px solid var(--line);
+      backdrop-filter:blur(10px);
     }
-
-    /* --- ESTILOS LOGIN --- */
-    #authContainer { margin-left: 15px; display: flex; align-items: center; }
-    .btn-login {
-      background: rgba(255,255,255,0.05);
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.2);
-      padding: 8px 16px;
-      border-radius: 50px;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    .header-inner{
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:16px 0;
+      gap:18px;
     }
+    .brand{position:relative;display:inline-block}
+    .brand img{height:58px;filter:drop-shadow(0 10px 16px rgba(0,0,0,.35))}
+    @media (max-width:768px){.brand img{height:44px}}
 
-    /* --- ESTILOS GENERALES --- */
+    .site-nav{display:flex;align-items:center}
+    .site-nav .menu{
+      display:flex;
+      gap:22px;
+      list-style:none;
+      margin:0;
+      padding:0;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+    .site-nav a{
+      color:rgba(255,255,255,.92);
+      font-weight:800;
+      text-decoration:none;
+      white-space:nowrap;
+    }
+    .site-nav a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
+
     .btn-primary{
-      display: inline-flex; align-items: center; justify-content: center;
-      background: var(--brand); color: #fff; border: 0;
-      padding: 16px 32px; border-radius: 50px; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 1px; font-size: 14px;
-      box-shadow: 0 4px 15px rgba(91, 37, 128, 0.3); cursor: pointer; gap: 10px;
+      background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,255,255,.88));
+      color:#2b1244;
+      border:0;
+      padding:12px 20px;
+      border-radius:14px;
+      font-weight:900;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      box-shadow:0 10px 22px rgba(0,0,0,.30);
+      transition:transform .15s ease;
+      cursor:pointer;
     }
-    .btn-primary:hover{
-      background: var(--gold); color: #000;
-      transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
-    }
-    
-    .btn-ig {
-      background: var(--ig-gradient); color: white; border: 0;
-      padding: 16px 32px; border-radius: 50px; font-weight: 600;
-      display: inline-flex; align-items: center; gap: 8px;
-      box-shadow: 0 4px 15px rgba(220, 39, 67, 0.3);
-    }
-    .btn-ig:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(220, 39, 67, 0.5); }
+    .btn-primary:hover{transform:translateY(-1px);text-decoration:none}
 
-    .chiriqui-bar {
-      background: #0f0518; color: #fff; text-align: center; padding: 12px 20px;
-      font-weight: 500; font-size: 14px; position: relative; z-index: 101;
-      display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+    .btn-ghost{
+      background:rgba(255,255,255,.06);
+      color:rgba(255,255,255,.92);
+      border:1px solid rgba(191,160,255,.22);
+      padding:12px 18px;
+      border-radius:14px;
+      font-weight:900;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      box-shadow:0 10px 22px rgba(0,0,0,.18);
+      transition:transform .15s ease;
+      cursor:pointer;
     }
-    .chiriqui-badge {
-      background: var(--chiriqui-red); color: white; padding: 4px 10px;
-      border-radius: 4px; font-weight: 700; font-size: 11px;
-      text-transform: uppercase; letter-spacing: 1px;
-    }
-    .chiriqui-link {
-      color: var(--gold); text-decoration: underline; font-weight: 700;
-      display: inline-flex; align-items: center; gap: 5px;
+    .btn-ghost:hover{
+      transform:translateY(-1px);
+      text-decoration:none;
+      color:#fff;
+      border-color:rgba(191,160,255,.35);
     }
 
+    @media (max-width:980px){
+      .header-inner{flex-wrap:wrap;justify-content:center}
+      .site-nav{order:3;width:100%;justify-content:center}
+    }
+    @media (max-width:768px){
+      .site-nav .menu{gap:12px 16px}
+      .btn-primary,.btn-ghost{
+        padding:8px 12px;
+        border-radius:12px;
+        font-size:14px;
+      }
+    }
+
+    /* ===== HERO ===== */
     .hero{
-      position:relative; height: 85vh; min-height: 550px;
-      display:flex; align-items:center; justify-content: center; text-align:center;
-      color:#fff; background:url('banner-fibroblast.jpg') center/cover no-repeat;
-      background-color: #222;
+      position:relative;
+      min-height:78vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      color:#fff;
+      background:url('banner-fibroblast.jpg') center/cover no-repeat;
+      background-color:#1d162a;
     }
     .hero::before{
-      content:"";position:absolute;inset:0;
-      background: linear-gradient(135deg, rgba(15,5,24,0.85) 0%, rgba(91,37,128,0.4) 100%);
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(900px 500px at 50% 15%, rgba(124,92,255,.32), transparent 55%),
+        linear-gradient(180deg, rgba(5,4,10,.78), rgba(10,7,16,.60));
     }
-    .hero .inner{position:relative;z-index:2;padding:20px; max-width: 800px;}
+    .hero .inner{
+      position:relative;
+      z-index:2;
+      padding:28px 16px;
+      max-width:860px;
+    }
     .hero h1{
-      font-size:clamp(40px,7vw,65px); margin:0 0 20px;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      font-size:clamp(34px,6vw,62px);
+      font-weight:900;
+      line-height:1.08;
+      margin:0 0 14px;
+      background:linear-gradient(90deg,#ffffff, #dfd2ff, #bfa0ff);
+      -webkit-background-clip:text;
+      color:transparent;
     }
     .hero p{
-      color: rgba(255,255,255,0.95); font-size: 1.25rem;
-      margin: 0 auto 35px; max-width: 650px; font-weight: 300;
+      color:rgba(255,255,255,.92);
+      font-size:1.1rem;
+      margin:0 auto 26px;
+      max-width:700px;
+    }
+    .hero-btns{
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    .btn-ig{
+      background:var(--ig-gradient);
+      color:#fff;
+      border:0;
+      padding:12px 20px;
+      border-radius:14px;
+      font-weight:900;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      box-shadow:0 10px 22px rgba(220,39,67,.28);
+    }
+    .btn-ig:hover{transform:translateY(-1px);text-decoration:none}
+
+    /* ===== RESULTS ===== */
+    .results-bar{
+      margin-top:-40px;
+      position:relative;
+      z-index:5;
+      padding:0 0 8px;
+    }
+    .results-box{
+      background:linear-gradient(180deg, rgba(18,16,36,.96), rgba(12,10,26,.96));
+      border:1px solid rgba(191,160,255,.20);
+      border-radius:22px;
+      box-shadow:var(--shadow);
+      padding:26px 22px;
+    }
+    .results-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:22px;
+      text-align:center;
+    }
+    .result-item{
+      padding:12px;
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:18px;
+      background:rgba(255,255,255,.03);
+    }
+    .result-icon{
+      font-size:28px;
+      margin-bottom:8px;
+      display:block;
+    }
+    .result-item h3{
+      margin:0 0 6px;
+      font-size:28px;
+      color:#fff;
+      font-weight:900;
+    }
+    .result-item span{
+      font-size:.84rem;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      color:var(--muted);
+      font-weight:800;
     }
 
-    .results-bar {
-      background: #fff; padding: 50px 20px; margin-top: -60px;
-      position: relative; z-index: 10; border-radius: 20px 20px 0 0;
-      border-bottom: 1px solid #eee; box-shadow: 0 -10px 30px rgba(0,0,0,0.05);
+    /* ===== WRAP ===== */
+    .wrap{max-width:1100px;margin:0 auto;padding:64px 20px}
+    .section-title{text-align:center;margin-bottom:34px}
+    .section-title h2{
+      font-size:clamp(30px,4vw,44px);
+      margin:0 0 12px;
+      color:#fff;
+      font-weight:900;
     }
-    .results-grid {
-      max-width: 1100px; margin: auto; display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px; text-align: center;
-    }
-    .result-item h3 { font-size: 26px; color: var(--brand); margin: 0 0 5px; }
-    .result-item span { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: #888; font-weight: 600; }
-    .result-icon { font-size: 30px; margin-bottom: 10px; display: block; }
+    .section-title p{max-width:700px;margin:auto;color:rgba(242,236,255,.78)}
 
-    .wrap{max-width:1100px;margin:0 auto;padding:80px 20px;}
-    .section-title { text-align: center; margin-bottom: 50px; }
-    .section-title h2 { font-size: 42px; margin-bottom: 15px; color: var(--brand-dark); }
-    .section-title p { max-width: 700px; margin: auto; color: #666; }
+    /* ===== ALERT ===== */
+    .notice-box{
+      background:linear-gradient(180deg, rgba(255,248,220,.98), rgba(255,252,240,.98));
+      color:#4f3a00;
+      border-left:5px solid #d4af37;
+      padding:28px;
+      border-radius:14px;
+      margin:0 auto 50px;
+      max-width:920px;
+      display:flex;
+      gap:18px;
+      align-items:flex-start;
+      box-shadow:0 10px 30px rgba(0,0,0,.15);
+    }
+    .notice-box p{margin:0;color:#5d5334}
+    @media (max-width:700px){
+      .notice-box{flex-direction:column}
+    }
 
-    .zones-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px; margin-top: 40px;
+    /* ===== ZONAS ===== */
+    .zones-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+      gap:22px;
+      margin-top:22px;
     }
-    .zone-card {
-      background: #fff; border-radius: 20px; overflow: hidden;
-      box-shadow: var(--shadow); border: 1px solid #eee;
-      transition: transform 0.3s; position: relative;
+    .zone-card{
+      background:linear-gradient(180deg, rgba(21,17,49,.96), rgba(15,12,34,.96));
+      border-radius:20px;
+      overflow:hidden;
+      box-shadow:var(--shadow2);
+      border:1px solid rgba(255,255,255,.08);
+      transition:transform .22s ease, border-color .22s ease;
     }
-    .zone-card:hover { transform: translateY(-5px); }
-    
-    .zone-img-wrap {
-      height: 220px; overflow: hidden; background: #f4f0f6; position: relative; 
+    .zone-card:hover{
+      transform:translateY(-5px);
+      border-color:rgba(191,160,255,.22);
     }
-    .zone-img-wrap::after {
-        content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-        background: linear-gradient(90deg, rgba(91, 37, 128, 0.4) 0%, rgba(91, 37, 128, 0) 70%);
-        z-index: 2; pointer-events: none; transition: opacity 0.3s;
+    .zone-card.featured{border:2px solid rgba(212,175,55,.75)}
+    .zone-img-wrap{
+      height:230px;
+      overflow:hidden;
+      background:#1c1731;
+      position:relative;
     }
-    .zone-card:hover .zone-img-wrap::after { opacity: 0.2; }
+    .zone-img-wrap::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(90deg, rgba(91,37,128,.35) 0%, rgba(91,37,128,0) 70%);
+      z-index:2;
+      pointer-events:none;
+      transition:opacity .3s;
+    }
+    .zone-card:hover .zone-img-wrap::after{opacity:.2}
+    .zone-img-wrap img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:transform .5s ease;
+      position:relative;
+      z-index:1;
+    }
+    .zone-card:hover .zone-img-wrap img{transform:scale(1.05)}
+    .zone-content{padding:22px}
+    .zone-content h3{
+      color:#fff;
+      margin:0 0 8px;
+      font-size:1.18rem;
+      font-weight:900;
+    }
+    .zone-content p{
+      font-size:.95rem;
+      margin:0;
+      color:rgba(242,236,255,.78);
+    }
+    .promo-vip{
+      display:none;
+      background:rgba(20,184,166,.14);
+      border:1px solid rgba(20,184,166,.55);
+      padding:10px 12px;
+      border-radius:12px;
+      margin-top:12px;
+      color:#ccfbf1;
+      font-weight:800;
+      font-size:.83rem;
+      line-height:1.45;
+    }
 
-    .zone-img-wrap img {
-      width: 100%; height: 100%; object-fit: cover;
-      transition: transform 0.5s ease; position: relative; z-index: 1;
+    /* ===== BLOG ===== */
+    .seo-blog-section{
+      max-width:920px;
+      margin:56px auto;
+      padding:0 20px;
     }
-    .zone-card:hover .zone-img-wrap img { transform: scale(1.05); }
-    
-    .zone-content { padding: 25px; text-align: left; }
-    .zone-content h3 { color: var(--brand); margin-top: 0; font-size: 20px; margin-bottom: 8px;}
-    .zone-content p { font-size: 14px; margin: 0; color: #666; }
+    .seo-blog-section details{
+      background:linear-gradient(180deg, rgba(18,16,36,.96), rgba(12,10,26,.96));
+      border-radius:18px;
+      box-shadow:var(--shadow2);
+      overflow:hidden;
+      border:1px solid rgba(191,160,255,.18);
+    }
+    .seo-blog-section summary{
+      background:rgba(255,255,255,.03);
+      color:#fff;
+      padding:22px;
+      font-weight:900;
+      cursor:pointer;
+      list-style:none;
+      font-size:1.08rem;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+    }
+    .seo-blog-section summary::-webkit-details-marker{display:none}
+    .seo-blog-section summary::after{
+      content:'Leer más';
+      font-size:.82rem;
+      background:#fff;
+      color:#2b1244;
+      padding:7px 14px;
+      border-radius:999px;
+      font-family:Inter,sans-serif;
+      font-weight:900;
+      white-space:nowrap;
+    }
+    .seo-blog-section details[open] summary::after{
+      content:'Cerrar';
+      background:rgba(255,255,255,.12);
+      color:#fff;
+    }
+    .blog-content{
+      padding:28px;
+      color:rgba(242,236,255,.88);
+      text-align:left;
+      line-height:1.8;
+    }
+    .blog-content h3{
+      color:#fff;
+      font-size:1.18rem;
+      margin-top:26px;
+      margin-bottom:8px;
+    }
+    .blog-content h3:first-child{margin-top:0}
 
-    .seo-blog-section { max-width: 900px; margin: 60px auto; padding: 0 20px; }
-    .seo-blog-section details {
-        background: #fff; border-radius: 15px; box-shadow: var(--shadow);
-        overflow: hidden; border: 1px solid #efe5f5;
+    /* ===== FAQ ===== */
+    .faq-section{
+      margin-top:20px;
     }
-    .seo-blog-section summary {
-        background: linear-gradient(to right, #fdfbfd, #f4f0f6);
-        color: var(--brand); padding: 25px; font-weight: 700; cursor: pointer;
-        list-style: none; font-size: 18px; display: flex;
-        justify-content: space-between; align-items: center;
-        font-family: 'Playfair Display', serif;
+    .faq-item{
+      background:linear-gradient(180deg, rgba(18,16,36,.96), rgba(12,10,26,.96));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:14px;
+      margin-bottom:14px;
+      box-shadow:var(--shadow2);
+      overflow:hidden;
     }
-    .seo-blog-section summary::-webkit-details-marker { display: none; }
-    .seo-blog-section summary::after { content: '📖 Leer Más'; font-size: 14px; background: var(--gold); color:#fff; padding: 5px 15px; border-radius: 20px; font-family: 'Inter', sans-serif;}
-    .seo-blog-section details[open] summary::after { content: 'Cerrar'; background: #ccc; }
-    .blog-content { padding: 40px; color: #444; text-align: justify; line-height: 1.8; }
-    .blog-content h3 { color: var(--brand); font-size: 22px; margin-top: 30px; border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 5px; }
-    .blog-content h3:first-child { margin-top: 0; }
+    .faq-item summary{
+      padding:18px 20px;
+      cursor:pointer;
+      font-weight:800;
+      color:#fff;
+      list-style:none;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+    }
+    .faq-item summary::-webkit-details-marker{display:none}
+    .faq-item summary::after{
+      content:'+';
+      font-size:20px;
+      color:var(--muted);
+      flex:0 0 auto;
+    }
+    .faq-item[open] summary::after{content:'−'}
+    .faq-item p{
+      padding:0 20px 18px;
+      margin:0;
+      font-size:.95rem;
+      color:rgba(242,236,255,.78);
+    }
 
-    .faq-section { background: #fdfbfd; margin-top: 40px; }
-    .faq-item {
-      background: #fff; border: 1px solid #eee; border-radius: 10px;
-      margin-bottom: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.02); overflow: hidden;
+    /* ===== FINAL CTA ===== */
+    .final-cta-wrap{padding:0 20px 24px}
+    .final-cta{
+      background:linear-gradient(135deg, #160c1f 0%, #3a1555 100%);
+      color:#fff;
+      text-align:center;
+      padding:70px 20px;
+      border-radius:30px;
+      box-shadow:0 20px 40px rgba(0,0,0,.2);
+      max-width:1120px;
+      margin:0 auto;
+      border:1px solid rgba(191,160,255,.18);
     }
-    .faq-item summary {
-      padding: 20px; cursor: pointer; font-weight: 600; color: var(--brand-dark);
-      list-style: none; display: flex; justify-content: space-between; align-items: center;
+    .final-cta h2{
+      color:#fff;
+      font-size:clamp(30px,4vw,42px);
+      margin-bottom:16px;
+      font-weight:900;
     }
-    .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item summary::after { content: '+'; font-size: 20px; color: var(--gold); }
-    .faq-item[open] summary::after { content: '-'; }
-    .faq-item p { padding: 0 20px 20px; margin: 0; font-size: 15px; color: #666; }
+    .final-cta p{
+      color:rgba(255,255,255,.82);
+      max-width:600px;
+      margin:0 auto 30px;
+    }
 
-    .final-cta {
-      background: linear-gradient(135deg, #160c1f 0%, #3a1555 100%);
-      color: #fff; text-align: center; padding: 80px 20px;
-      border-radius: 30px; margin: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    /* ===== FOOTER ===== */
+    .site-footer.dark{
+      margin-top:40px;
+      background:
+        radial-gradient(900px 400px at 50% 0%, rgba(124,92,255,.10), transparent 60%),
+        linear-gradient(180deg, rgba(10,7,16,.96) 0%, rgba(12,10,26,.98) 100%);
+      color:#fff;
+      border-top:1px solid var(--line);
     }
-    .final-cta h2 { color: #fff; font-size: 38px; margin-bottom: 20px; }
-    .final-cta p { color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 40px; }
+    .site-footer a{
+      color:rgba(242,236,255,.92);
+      text-decoration:none;
+    }
+    .site-footer a:hover{
+      text-decoration:underline;
+      text-underline-offset:3px;
+      color:#fff;
+    }
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.2fr 1fr 1fr 1fr;
+      gap:34px;
+      align-items:start;
+      padding:40px 0 18px;
+    }
+    .f-col h4{
+      font-size:1rem;
+      margin:0 0 12px;
+      color:#fff;
+    }
+    .f-col ul{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+    .f-col li{
+      margin:8px 0;
+      line-height:1.45;
+    }
+    .footer-brand{max-width:300px}
+    .footer-brand-logo{
+      height:44px;
+      margin-bottom:12px;
+    }
+    .footer-brand p{
+      margin:0 0 10px;
+      line-height:1.65;
+      color:rgba(242,236,255,.86);
+    }
+    .f-social{
+      margin-top:12px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .f-social a{
+      display:inline-flex;
+      align-items:center;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(191,160,255,.16);
+      white-space:nowrap;
+    }
+    .footer-mini-note{
+      margin-top:14px;
+      padding:12px 14px;
+      border-radius:14px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(191,160,255,.14);
+      font-size:.92rem;
+      line-height:1.6;
+      color:rgba(242,236,255,.88);
+    }
+    .footer-contact p{
+      margin:0 0 10px;
+      line-height:1.6;
+      color:rgba(242,236,255,.86);
+    }
+    .footer-cta{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .footer-bottom{
+      border-top:1px solid var(--line);
+      padding:14px 0;
+      opacity:.9;
+    }
+    .footer-bottom .container{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    .footer-bottom-links{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    @media (max-width:980px){
+      .footer-grid{grid-template-columns:1fr 1fr;gap:24px}
+      .footer-brand{max-width:none}
+    }
+    @media (max-width:640px){
+      .footer-grid{grid-template-columns:1fr;gap:18px;padding:24px 0 10px}
+      .footer-bottom .container{justify-content:center;text-align:center}
+    }
 
-    footer{background: #fff; padding: 60px 20px; text-align:center; font-size:14px; color:#666; border-top: 1px solid #eee;}
-    footer .links{display:flex;flex-wrap:wrap;gap:15px;justify-content:center;margin-top:20px}
-    footer a{color: var(--brand);}
-    
-    .fr-fab{position:fixed;right:20px;bottom:30px;z-index:9999;display:flex;flex-direction:column-reverse;gap:15px;}
-    .fr-ic{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,0.2); transition: transform 0.2s;}
-    .fr-ic svg{fill:#fff;width:24px;height:24px}
-    
+    /* ===== FAB ===== */
+    .fr-fab{
+      position:fixed;
+      right:14px;
+      top:50%;
+      transform:translateY(-50%);
+      z-index:9999;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      align-items:flex-end;
+    }
+    .fr-ic{
+      width:52px;
+      height:52px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:999px;
+      text-decoration:none;
+      box-shadow:0 16px 30px rgba(0,0,0,.40)
+    }
+    .fr-ic svg{width:26px;height:26px;fill:#fff}
     .fr-wa{background:#25D366}
-    .fr-ig{background:linear-gradient(45deg,#F58529,#DD2A7B,#8134AF,#515BD4)}
-    .fr-call{background:#4CAF50}
-    .fr-ic:hover{transform:scale(1.1);}
-
+    .fr-waze{background:#0099ff}
     @media (max-width:768px){
-      .header-inner { justify-content: space-between; }
-      .site-nav, .btn-primary.header-btn { display: none; }
-      .hero { height: 75vh; }
-      .results-bar { margin-top: 0; border-radius: 0; }
-      .zones-grid { grid-template-columns: 1fr; }
-      .final-cta { margin: 0; border-radius: 0; }
-      h1 { font-size: 36px; }
-      h2 { font-size: 28px; }
-      .hero-btns { flex-direction: column; width: 100%; max-width: 300px; margin: auto; }
-      .btn-primary, .btn-ig { width: 100%; }
-      .blog-content { padding: 20px; }
+      .hero{min-height:68vh}
+      .wrap{padding:48px 16px}
+      .final-cta-wrap{padding:0}
+      .final-cta{border-radius:0}
+      .fr-ic{width:46px;height:46px}
+      .fr-ic svg{width:22px;height:22px}
     }
   </style>
 </head>
 <body>
 
-  <div class="chiriqui-bar">
-    <span class="chiriqui-badge">METO! GIRA CHIRIQUÍ</span>
-    <span>Pronto en David y Tierras Altas.</span>
-    <a href="https://instagram.com/figurarostrokg" target="_blank" class="chiriqui-link">
-      ¡Síguenos y gana $10 en tu cita! 
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-    </a>
+  <!-- FRANJA SUPERIOR -->
+  <div class="topbar" aria-label="Información principal">
+    <div class="container topbar-inner">
+      <div class="topbar-item"><strong>📞 6474-6168</strong></div>
+      <div class="topbar-item">📍 Royal Park · Av. Ernesto T. Lefevre</div>
+      <div class="topbar-item">🕘 Lun - Dom 8am a 8pm</div>
+    </div>
   </div>
 
+  <!-- HEADER -->
   <header>
-    <div class="header-inner">
-      <a href="/" class="brand">
-          <img src="logo-header-white.png" alt="Figura Rostro KG">
-      </a> 
-      
+    <div class="container header-inner">
+      <a href="/" class="brand" aria-label="Inicio Figura Rostro KG">
+        <img src="logo-header-white.png" alt="Figura Rostro KG — Estética en Panamá">
+      </a>
+
       <nav class="site-nav" aria-label="Menú principal">
         <ul class="menu">
-          <li class="has-sub">
-            <a href="/fibroblast.html">Plasma Fibroblast</a>
-            <ul class="submenu">
-              <li><a href="/fibroblast.html">¿Qué es Plasma Fibroblast?</a></li>
-              <li><a href="#zonas">Zonas más solicitadas</a></li>
-              <li><a href="/chat-citas.html">Agendar valoración</a></li>
-            </ul>
-          </li>
-          <li class="has-sub">
-            <a href="/tratamientos-faciales/">Faciales</a>
-            <ul class="submenu">
-              <li><a href="/peeling-facial.html">Peeling Facial</a></li>
-              <li><a href="/radiofrecuencia-facial.html">Radiofrecuencia Facial</a></li>
-              <li><a href="/lifting-sin-cirugia.html">Lifting sin cirugía</a></li>
-            </ul>
-          </li>
-          <li class="has-sub">
-            <a href="/masajes-terapeuticos/">Terapias</a>
-            <ul class="submenu">
-              <li><a href="/masaje-relajante.html">Terapia relajante</a></li>
-              <li><a href="/masajes-terapeuticos/">Descontracturante</a></li>
-              <li><a href="/masajes-terapeuticos/">Drenaje linfático</a></li>
-              <li><a href="/masaje-terapeutico-adultos-mayores.html">Adultos Mayores</a></li>
-              <li><a href="/terapia-masaje-discapacidad.html">Terapia adaptada</a></li>
-            </ul>
-          </li>
-          <li><a href="#sobre">Nosotros</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-          <li><a href="/menu.html">Servicios</a></li>
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/#sobre">Nosotros</a></li>
+          <li><a href="https://figurarostro.life/menu-servicios-figura-rostro.html">Servicios</a></li>
+          <li><a href="/fibroblast.html">Plasma Fibroblast</a></li>
+          <li><a href="/#contacto">Contacto</a></li>
         </ul>
       </nav>
 
-      <div id="authContainer" class="site-nav">
-        <button class="btn-login" style="opacity: 0.5;">Cargando...</button>
+      <div id="authContainer" class="site-nav" style="margin-left:auto; z-index:60;">
+        <button class="btn-ghost" style="opacity:.5;">Cargando...</button>
       </div>
-
-      <a class="btn-primary header-btn" href="/chat-citas.html">Agendar Cita</a>
     </div>
   </header>
 
+  <!-- HERO -->
   <section class="hero">
     <div class="inner">
       <h1>Rejuvenece tu piel sin cirugía</h1>
-      <p>Plasma Fibroblast: Regeneración dérmica real para tensar, alisar y renovar tu rostro. Resultados naturales y permanentes en Panamá.</p>
-      
-      <div class="hero-btns" style="display:flex; gap:15px; justify-content:center; flex-wrap:wrap;">
-        <a class="btn-primary" href="/chat-citas.html">
-          📅 Solicitar Valoración
-        </a>
-        <a class="btn-ig" href="https://instagram.com/figurarostrokg" target="_blank">
-          Síguenos
-        </a>
+      <p>
+        Plasma Fibroblast para tensado y rejuvenecimiento de la piel con enfoque profesional,
+        valoración personalizada y orientación clara según tu caso.
+      </p>
+
+      <div class="hero-btns">
+        <a class="btn-primary" href="/chat-citas.html">📅 Solicitar valoración</a>
+        <a class="btn-ig" href="https://instagram.com/figurarostrokg" target="_blank" rel="noopener">Síguenos</a>
       </div>
     </div>
   </section>
 
+  <!-- RESULTS -->
   <div class="results-bar" id="resultados">
-    <div class="results-grid">
-      <div class="result-item">
-        <span class="result-icon">✨</span>
-        <h3>7-10 Días</h3>
-        <span>Recuperación visible</span>
-      </div>
-      <div class="result-item">
-        <span class="result-icon">🛡️</span>
-        <h3>100% Natural</h3>
-        <span>Sin químicos ni cirugía</span>
-      </div>
-      <div class="result-item">
-        <span class="result-icon">♾️</span>
-        <h3>Permanente*</h3>
-        <span>Regeneración real de tejido</span>
+    <div class="container">
+      <div class="results-box">
+        <div class="results-grid">
+          <div class="result-item">
+            <span class="result-icon">✨</span>
+            <h3>7 - 10 días</h3>
+            <span>Recuperación visible</span>
+          </div>
+          <div class="result-item">
+            <span class="result-icon">🛡️</span>
+            <h3>Sin cirugía</h3>
+            <span>Protocolo no quirúrgico</span>
+          </div>
+          <div class="result-item">
+            <span class="result-icon">📋</span>
+            <h3>Valoración previa</h3>
+            <span>Plan personalizado</span>
+          </div>
+        </div>
+        <p style="text-align:center; font-size:12px; margin-top:15px; color:rgba(242,236,255,.55);">
+          Los resultados y tiempos pueden variar según la zona tratada, condición de la piel y cuidados indicados.
+        </p>
       </div>
     </div>
-    <p style="text-align: center; font-size: 12px; margin-top: 15px; color: #999;">*El resultado es definitivo ya que es tu piel nueva.</p>
   </div>
 
   <section>
     <div class="wrap">
-      
-      <div style="background: #fffcf0; border-left: 5px solid #d4af37; padding: 30px; border-radius: 10px; margin: 0 auto 50px; max-width: 900px; display: flex; gap: 20px; align-items: flex-start; box-shadow: var(--shadow);">
-        <div style="font-size: 40px;">👩‍⚕️</div>
+
+      <div class="notice-box">
+        <div style="font-size:40px;">👩‍⚕️</div>
         <div>
-          <h4 style="margin: 0 0 10px; color: #b8860b; font-size: 20px;">Valoración Previa Obligatoria</h4>
-          <p style="margin: 0; font-size: 15px; color: #555;">Para garantizar tu seguridad y el éxito del tratamiento, analizamos tu fototipo de piel y capacidad de cicatrización.</p>
+          <h4 style="margin:0 0 10px; color:#8f6c08; font-size:20px;">Valoración previa obligatoria</h4>
+          <p>
+            Para ayudarte de forma responsable, evaluamos la zona, fototipo, condiciones de la piel
+            y expectativa realista del tratamiento antes de recomendar el procedimiento.
+          </p>
         </div>
       </div>
 
       <div class="section-title">
-        <h2>Identifica tu Zona Ideal</h2>
+        <h2>Identifica tu zona ideal</h2>
+        <p>Estas son algunas de las áreas más consultadas para Plasma Fibroblast en Figura Rostro KG.</p>
       </div>
 
       <div class="zones-grid" id="zonas">
-        
+
         <div class="zone-card">
           <div class="zone-img-wrap">
-            <img src="zona-parpados.jpg" alt="Blefaroplastia" loading="lazy">
+            <img src="zona-parpados.jpg" alt="Plasma Fibroblast en párpados" loading="lazy">
           </div>
           <div class="zone-content">
-            <h3>Párpados (Blefaroplastia)</h3>
-            <p>Retrae la piel sobrante del párpado superior o inferior.</p>
+            <h3>Párpados</h3>
+            <p>Área altamente consultada para apoyar el rejuvenecimiento del contorno ocular y mejorar apariencia de piel excedente según valoración.</p>
           </div>
         </div>
 
-        <div class="zone-card" style="border: 2px solid var(--gold);">
+        <div class="zone-card featured">
           <div class="zone-img-wrap">
-            <img src="zona-abdomen.jpg" alt="Abdomen" loading="lazy">
+            <img src="zona-abdomen.jpg" alt="Plasma Fibroblast en abdomen" loading="lazy">
           </div>
           <div class="zone-content">
-            <h3>Abdomen y Estrías</h3>
-            <p>Excelente para flacidez post-parto y estrías blancas.</p>
-            <div class="promo-vip" style="display: none; background: rgba(20, 184, 166, 0.1); border: 1px solid #14b8a6; padding: 10px; border-radius: 12px; margin-top: 10px; color: #14b8a6; font-weight: 800;">
+            <h3>Abdomen y estrías</h3>
+            <p>Muy solicitado en flacidez leve postparto o cambios de peso. El protocolo depende del estado de la piel y de los objetivos de la paciente.</p>
+            <div class="promo-vip">
               ✨ PRECIO VIP ACTIVADO: Usa tus bonos en este servicio.
             </div>
           </div>
@@ -439,11 +794,11 @@
 
         <div class="zone-card">
           <div class="zone-img-wrap">
-            <img src="zona-cuello.jpg" alt="Cuello" loading="lazy">
+            <img src="zona-cuello.jpg" alt="Plasma Fibroblast en cuello y papada" loading="lazy">
           </div>
           <div class="zone-content">
-            <h3>Cuello y Papada</h3>
-            <p>Combate la flacidez logrando un perfil más definido.</p>
+            <h3>Cuello y papada</h3>
+            <p>Apoya la mejora de la apariencia de flacidez y definición en zonas donde se busca una imagen más estilizada y rejuvenecida.</p>
           </div>
         </div>
 
@@ -451,65 +806,176 @@
 
       <section class="seo-blog-section">
         <details>
-            <summary>📖 La Ciencia detrás del Rejuvenecimiento: Todo sobre el Plasma Fibroblast</summary>
-            <div class="blog-content">
-                <h3>Tecnología Europea de Vanguardia en Panamá</h3>
-                <p>El Plasma Fibroblast no es una moda pasajera; es una evolución científica en la medicina estética.</p>
-                <h3>¿Cómo funciona la "Magia" Biológica?</h3>
-                <p>A diferencia del láser que quema o del bisturí que corta, el Plasma Fibroblast utiliza el plasma.</p>
-                <h3>Estimulación de Colágeno Tipo III y I</h3>
-                <p>El tratamiento induce una regeneración masiva de colágeno joven.</p>
-                <h3>Un Procedimiento de Alto Confort</h3>
-                <p>Olvídate de los mitos sobre el dolor. Utilizamos protocolos avanzados.</p>
-                <h3>Resultados Permanentes vs. Temporales</h3>
-                <p>A diferencia del Botox, el Plasma Fibroblast ofrece resultados permanentes.</p>
-                <h3>El Respaldo de Figura Rostro KG</h3>
-                <p>Somos especialistas en ingeniería de la piel.</p>
-            </div>
+          <summary>📖 La ciencia detrás del rejuvenecimiento con Plasma Fibroblast</summary>
+          <div class="blog-content">
+            <h3>Tecnología estética avanzada en Panamá</h3>
+            <p>
+              El Plasma Fibroblast es una técnica utilizada en protocolos estéticos para apoyar el tensado de la piel
+              y mejorar la apariencia de ciertas zonas sin recurrir a cirugía.
+            </p>
+
+            <h3>¿Cómo funciona?</h3>
+            <p>
+              Se trabaja de forma superficial y controlada para estimular una respuesta de reparación en la piel,
+              buscando una mejor apariencia en firmeza, textura y líneas finas según el caso.
+            </p>
+
+            <h3>Resultados progresivos</h3>
+            <p>
+              Aunque hay cambios visibles durante la recuperación, el resultado real es progresivo y depende también de
+              la biología de cada paciente, cuidados posteriores y correcta selección del protocolo.
+            </p>
+
+            <h3>Importancia de la valoración</h3>
+            <p>
+              No todas las pieles ni todas las zonas responden igual. Por eso la valoración previa es clave para saber
+              si eres candidata, qué zona conviene tratar y qué expectativas son razonables.
+            </p>
+
+            <h3>El enfoque de Figura Rostro KG</h3>
+            <p>
+              Nuestra atención se orienta a una guía clara, seguimiento y protocolos personalizados, priorizando siempre
+              seguridad, criterio estético y una experiencia profesional.
+            </p>
+          </div>
         </details>
       </section>
 
-      <div id="preguntas" style="max-width: 800px; margin: 40px auto 0;">
+      <div id="preguntas" style="max-width: 820px; margin: 40px auto 0;">
         <div class="section-title">
-          <h2>Preguntas Frecuentes y Mitos</h2>
+          <h2>Preguntas frecuentes</h2>
         </div>
+
         <div class="faq-section">
-            <details class="faq-item">
-                <summary>¿Qué tan confortable es el procedimiento?</summary>
-                <p>Aplicamos un protocolo de preparación tópica de alto confort.</p>
-            </details>
-            <details class="faq-item">
-                <summary>¿Cuánto dura la recuperación?</summary>
-                <p>Los "puntitos" duran entre 5 y 7 días.</p>
-            </details>
+          <details class="faq-item">
+            <summary>¿Qué tan confortable es el procedimiento?</summary>
+            <p>
+              La experiencia puede variar según la zona y sensibilidad de cada persona. Se siguen indicaciones y preparación previa para mejorar la tolerancia del procedimiento.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>¿Cuánto dura la recuperación?</summary>
+            <p>
+              La recuperación visible inicial suele estar relacionada con la presencia de costritas o puntitos temporales. El tiempo exacto depende de la zona tratada y de la respuesta individual.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>¿Todas las personas son candidatas?</summary>
+            <p>
+              No. La valoración previa ayuda a definir si el tratamiento es conveniente para tu piel, tu tono, la zona y tu expectativa de resultado.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>¿Se puede hacer en abdomen?</summary>
+            <p>
+              Sí, es una de las zonas más consultadas, especialmente en casos de flacidez leve. La indicación exacta se define en consulta.
+            </p>
+          </details>
         </div>
       </div>
 
     </div>
   </section>
 
-  <section class="final-cta">
-    <h2>¿Lista para el cambio?</h2>
-    <p>El primer paso es un diagnóstico profesional.</p>
-    <a class="btn-primary" style="background:#fff; color:var(--brand); font-size:18px; padding: 18px 40px;" href="/chat-citas.html">
-      📅 Solicitar Valoración
-    </a>
-  </section>
+  <div class="final-cta-wrap">
+    <section class="final-cta">
+      <h2>¿Lista para dar el primer paso?</h2>
+      <p>La mejor forma de saber si este tratamiento es para ti es con una valoración profesional y personalizada.</p>
+      <a class="btn-primary" style="font-size:18px; padding:18px 40px;" href="/chat-citas.html">📅 Solicitar valoración</a>
+    </section>
+  </div>
 
-  <footer>
-    <p style="font-family:'Playfair Display', serif; font-size: 20px; font-weight:700; color:var(--brand); margin-bottom:10px;">Figura Rostro KG</p>
-    <p>Royal Park – Av. Ernesto T. Lefevre, Ciudad de Panamá</p>
-    <p>© <span id="year"></span> Figura Rostro KG. Todos los derechos reservados.</p>
-    <div class="links">
-      <a href="/fibroblast.html">Fibroblast</a> ·
-      <a href="/tratamientos.html">Tratamientos</a> ·
-      <a href="https://instagram.com/figurarostrokg" target="_blank">Instagram</a>
+  <!-- FOOTER -->
+  <footer class="site-footer dark">
+    <div class="container footer-grid">
+
+      <div class="f-col">
+        <div class="footer-brand">
+          <img class="footer-brand-logo" src="logo-header-white.png" alt="Figura Rostro KG logo">
+          <h4>Figura Rostro KG</h4>
+          <p>Centro estético en Royal Park, Parque Lefevre, Ciudad de Panamá.</p>
+          <p>Rejuvenecimiento facial y corporal con valoración personalizada y atención por cita.</p>
+
+          <div class="f-social">
+            <a href="https://instagram.com/figurarostrokg" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://facebook.com/figurarostrokg" target="_blank" rel="noopener">Facebook</a>
+            <a href="https://www.tiktok.com/@figurarostrokg" target="_blank" rel="noopener">TikTok</a>
+          </div>
+
+          <div class="footer-mini-note">
+            Agenda tu valoración por WhatsApp y conoce el tratamiento ideal según tu caso.
+          </div>
+        </div>
+      </div>
+
+      <div class="f-col">
+        <h4>Servicios principales</h4>
+        <ul>
+          <li><a href="/fibroblast.html">Plasma Fibroblast</a></li>
+          <li><a href="/peeling-facial.html">Peeling facial</a></li>
+          <li><a href="/microneedling.html">Microneedling</a></li>
+          <li><a href="/masajes-relajantes.html">Masajes relajantes</a></li>
+          <li><a href="/tratamientos.html">Tratamientos estéticos</a></li>
+          <li><a href="https://figurarostro.life/menu-servicios-figura-rostro.html">Menú de servicios</a></li>
+        </ul>
+      </div>
+
+      <div class="f-col">
+        <h4>Explora</h4>
+        <ul>
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/#sobre">Sobre nosotros</a></li>
+          <li><a href="/#especialidades">Especialidades</a></li>
+          <li><a href="/#zonas">Zonas más solicitadas</a></li>
+          <li><a href="/agendar.html">Agendar cita</a></li>
+          <li><a href="/reservar-v2.html">Reservar online</a></li>
+          <li><a href="/buy-online.html">Comprar online</a></li>
+        </ul>
+      </div>
+
+      <div class="f-col footer-contact">
+        <h4>Contacto y ubicación</h4>
+        <p>Royal Park · Av. Ernesto T. Lefevre · Ciudad de Panamá</p>
+        <p><strong>WhatsApp:</strong> <a href="https://wa.me/50764746168" target="_blank" rel="noopener">+507 6474-6168</a></p>
+        <p><strong>Teléfono:</strong> <a href="tel:+50764746168">+507 6474-6168</a></p>
+        <p><strong>Horario:</strong> Lun - Dom · 8am a 8pm</p>
+        <p>
+          <a href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noopener">Abrir en Waze</a>
+          <span style="opacity:.5;">·</span>
+          <a href="https://maps.google.com/?q=Royal+Park+Ernesto+T+Lefevre+Panama" target="_blank" rel="noopener">Google Maps</a>
+        </p>
+
+        <div class="footer-cta">
+          <a class="btn-primary" href="https://figurarostro.life/reservar-v2.html">Agendar</a>
+          <a class="btn-ghost" href="https://wa.me/50764746168" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <div>© <span id="year"></span> Figura Rostro KG · Estética avanzada en Panamá</div>
+        <div class="footer-bottom-links">
+          <a href="/">Inicio</a>
+          <a href="https://figurarostro.life/menu-servicios-figura-rostro.html">Servicios</a>
+          <a href="/fibroblast.html">Fibroblast</a>
+          <a href="https://figurarostro.life/reservar-v2.html">Reservar</a>
+        </div>
+      </div>
     </div>
   </footer>
 
-  <div class="fr-fab">
-    <a class="fr-ic fr-wa" href="https://wa.me/50764746168" target="_blank" aria-label="WhatsApp">
-      <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.94 14.5L2 22l5.7-1.5A10 10 0 1 0 12 2zm5.5 14.1c-.24.68-1.4 1.3-1.96 1.34-.5.03-1.14.05-1.84-.12-.42-.1-.97-.31-1.67-.61-2.94-1.27-4.86-4.2-5.01-4.4-.15-.2-1.2-1.6-1.2-3.06 0-1.45.76-2.16 1.03-2.45.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.24.59.82 2.05.9 2.2.07.15.12.33.01.53-.1.2-.15.33-.3.51-.15.18-.31.4-.44.54-.15.15-.31.32-.13.62.18.3.8 1.3 1.71 2.1 1.18 1.05 2.17 1.37 2.47 1.52.3.15.48.13.66-.08.18-.2.76-.89.96-1.2.2-.3.41-.26.67-.15.26.1 1.64.77 1.92.91.29.15.48.22.55.34.07.12.07.7-.17 1.38z"/></svg>
+  <!-- FAB -->
+  <div class="fr-fab" aria-label="Accesos rápidos">
+    <a class="fr-ic fr-wa" href="https://wa.me/50764746168" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.94 14.5L2 22l5.7-1.5A10 10 0 1 0 12 2zm5.5 14.1c-.24.68-1.4 1.3-1.96 1.34-.5.03-1.14.05-1.84-.12-.42-.1-.97-.31-1.67-.61-2.94-1.27-4.86-4.2-5.01-4.4-.15-.2-1.2-1.6-1.2-3.06 0-1.45.76-2.16 1.03-2.45.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.24.59.82 2.05.9 2.2.07.15.12.33.01.53-.1.2-.15.33-.3.51-.15.18-.31.4-.44.54-.15.15-.31.32-.13.62.18.3.8 1.3 1.71 2.1 1.18 1.05 2.17 1.37 2.47 1.52.3.15.48.13.66-.08.18-.2.76-.89.96-1.2.2-.3.41-.26.67-.15.26.1 1.64.77 1.92.91.29.15.48.22.55.34.07.12.07.7-.17 1.38z"/></svg>
+    </a>
+    <a class="fr-ic fr-waze" href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noopener" aria-label="Waze" title="Waze">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c5.5 0 10 3.9 10 8.7 0 3.9-3 7.2-7.2 8.2-.5.1-.7.4-.9.8-.5 1-1.4 2.1-2.9 2.1-1.6 0-2.4-1.1-2.9-2.1-.2-.4-.4-.7-.9-.8C5 17.9 2 14.6 2 10.7 2 5.9 6.5 2 12 2zm-6 9a1 1 0 110-2 1 1 0 010 2zm5 0a1 1 0 110-2 1 1 0 010 2zm5 0a1 1 0 110-2 1 1 0 010 2z"/></svg>
     </a>
   </div>
 
@@ -519,46 +985,89 @@
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, setPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
     const firebaseConfig = {
-        apiKey: "AIzaSyBAuTfBKGuG33c9NXc1s0lkQv-7GwA47l0",
-        authDomain: "figurarostro-system.firebaseapp.com",
-        projectId: "figurarostro-system",
-        storageBucket: "figurarostro-system.firebasestorage.app",
-        messagingSenderId: "803848354693",
-        appId: "1:803848354693:web:7144490abb18b0319822ec"
+      apiKey: "AIzaSyBAuTfBKGuG33c9NXc1s0lkQv-7GwA47l0",
+      authDomain: "figurarostro-system.firebaseapp.com",
+      projectId: "figurarostro-system",
+      storageBucket: "figurarostro-system.firebasestorage.app",
+      messagingSenderId: "803848354693",
+      appId: "1:803848354693:web:7144490abb18b0319822ec"
     };
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const provider = new GoogleAuthProvider();
 
-    window.loginCliente = () => signInWithPopup(auth, provider).catch((error) => alert("Error: " + error.code));
+    setPersistence(auth, browserLocalPersistence);
+
+    window.loginCliente = async () => {
+      try {
+        await signInWithPopup(auth, provider);
+      } catch (error) {
+        console.error("Error de login:", error);
+        if(error.code === 'auth/unauthorized-domain') {
+          alert("ERROR: Este dominio no está autorizado en Firebase. Ve a Authentication > Settings > Authorized Domains.");
+        } else {
+          alert("Error de conexión: " + error.message);
+        }
+      }
+    };
+
     window.logoutCliente = () => signOut(auth).then(() => location.reload());
 
     const authContainer = document.getElementById('authContainer');
 
     onAuthStateChanged(auth, (user) => {
-        if (user) {
-            const primerNombre = user.displayName ? user.displayName.split(' ')[0] : 'Cliente';
-            authContainer.innerHTML = `
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <a href="/app.html" class="btn-login" style="border-color: #14b8a6; color: #14b8a6; background: rgba(20,184,166,0.1);">
-                  👋 Hola, ${primerNombre}
-                </a>
-                <button onclick="logoutCliente()" style="background:transparent; border:none; color: rgba(255,255,255,0.5); cursor:pointer; font-size:10px; text-decoration:underline;">Salir</button>
-              </div>`;
-            document.querySelectorAll('.promo-vip').forEach(el => el.style.display = 'block');
-        } else {
-            authContainer.innerHTML = `
-              <button onclick="loginCliente()" class="btn-login">
-                <img src="https://www.svgrepo.com/show/475656/google-color.svg" width="14" style="margin-right:5px;"> Soy Cliente
-              </button>`;
-            document.querySelectorAll('.promo-vip').forEach(el => el.style.display = 'none');
-        }
+      if (user) {
+        const primerNombre = user.displayName ? user.displayName.split(' ')[0] : 'Cliente';
+
+        authContainer.innerHTML = `
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;">
+            <a href="/app.html" class="btn-ghost" style="border-color:#14b8a6;color:#14b8a6;">
+              <span style="font-size:18px;">👋</span> Hola, ${primerNombre}
+            </a>
+            <button onclick="logoutCliente()" style="background:transparent;border:none;color:rgba(255,255,255,0.5);cursor:pointer;font-size:12px;text-decoration:underline;">Salir</button>
+          </div>
+        `;
+
+        document.querySelectorAll('.promo-vip').forEach(el => {
+          el.style.display = 'block';
+        });
+
+      } else {
+        authContainer.innerHTML = `
+          <button onclick="loginCliente()" class="btn-ghost" style="background:rgba(255,255,255,0.05);">
+            <img src="https://www.svgrepo.com/show/475656/google-color.svg" style="width:16px;height:16px;margin-right:8px;display:inline-block;vertical-align:middle;">
+            Soy Cliente
+          </button>
+        `;
+
+        document.querySelectorAll('.promo-vip').forEach(el => {
+          el.style.display = 'none';
+        });
+      }
     });
   </script>
-  <script type='text/javascript' data-cfasync='false'>window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: '39cf325c-2286-4b58-b2af-9c647e257085', f: true }); done = true; } }; })();</script> 
+
+  <script type='text/javascript' data-cfasync='false'>
+    window.purechatApi={l:[],t:[],on:function(){this.l.push(arguments);}};
+    (function(){
+      var done=false;
+      var script=document.createElement('script');
+      script.async=true;
+      script.type='text/javascript';
+      script.src='https://app.purechat.com/VisitorWidget/WidgetScript';
+      document.getElementsByTagName('HEAD').item(0).appendChild(script);
+      script.onreadystatechange=script.onload=function(){
+        if(!done && (!this.readyState || this.readyState=='loaded' || this.readyState=='complete')){
+          new PCWidget({c:'39cf325c-2286-4b58-b2af-9c647e257085',f:true});
+          done=true;
+        }
+      };
+    })();
+  </script>
+
 </body>
 </html>
