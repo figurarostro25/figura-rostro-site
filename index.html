@@ -68,7 +68,7 @@
     .ratio-16x9{position:relative; width:100%; aspect-ratio:16/9}
     .ratio-16x9 iframe{position:absolute; inset:0; width:100%; height:100%; border:0; border-radius:14px}
 
-    /* ===== FRANJA SUPERIOR MÁS DELGADA ===== */
+    /* ===== FRANJA SUPERIOR ===== */
     .topbar{
       background:#ffffff;
       color:#2b1244;
@@ -95,9 +95,7 @@
     }
     .topbar-item strong{color:#111}
     @media (max-width:768px){
-      .topbar{
-        font-size:.76rem;
-      }
+      .topbar{font-size:.76rem}
       .topbar-inner{
         justify-content:center;
         gap:6px 12px;
@@ -195,9 +193,7 @@
       }
     }
     @media (max-width:768px){
-      .site-nav .menu{
-        gap:12px 16px;
-      }
+      .site-nav .menu{gap:12px 16px}
       .btn-primary,.btn-ghost{
         padding:8px 12px;
         border-radius:12px;
@@ -274,7 +270,7 @@
     .ul-check{margin:12px 0 0;padding-left:18px;line-height:1.85;color:rgba(242,236,255,.88)}
     .ul-check li{margin:2px 0}
 
-    /* ===== Cards ===== */
+    /* ===== CARDS ===== */
     .cards{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
@@ -310,7 +306,7 @@
     }
     @media (max-width:900px){.two-col{grid-template-columns:1fr}}
 
-    /* ===== Pills ===== */
+    /* ===== PILLS ===== */
     .mini-badges{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
     .pill{
       display:inline-flex;gap:8px;align-items:center;
@@ -321,7 +317,7 @@
       font-size:.9rem
     }
 
-    /* ===== Especialidades ===== */
+    /* ===== ESPECIALIDADES ===== */
     .special-wrap{
       margin-top:-38px;
       position:relative;
@@ -361,7 +357,7 @@
     .special-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
     .divider-soft{height:1px;background:rgba(255,255,255,.08);margin:18px 0}
 
-    /* ===== Galería ===== */
+    /* ===== GALERÍA ===== */
     .gallery-section{
       padding-top:24px;
       padding-bottom:20px;
@@ -400,53 +396,38 @@
       overflow:hidden;
       border:1px solid rgba(255,255,255,.08);
       background:rgba(255,255,255,.03);
-      min-height:220px;
-      position:relative;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      aspect-ratio:1/1;
     }
     .gallery-item img{
       width:100%;
       height:100%;
       object-fit:cover;
-      aspect-ratio:4/3;
       display:block;
+      transition:transform .25s ease;
     }
-    .gallery-placeholder{
-      width:100%;
-      height:100%;
-      min-height:220px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:18px;
-      color:rgba(242,236,255,.56);
-      font-weight:800;
-      background:linear-gradient(135deg, rgba(191,160,255,.06), rgba(255,255,255,.02));
+    .gallery-item:hover img{
+      transform:scale(1.03);
     }
     @media (max-width:980px){
       .gallery-grid{grid-template-columns:repeat(2,1fr)}
     }
     @media (max-width:580px){
       .gallery-grid{grid-template-columns:1fr}
-      .gallery-item,.gallery-placeholder{min-height:190px}
     }
 
-    /* ===== Video ===== */
+    /* ===== VIDEO ===== */
     .video-hero{padding:32px 0}
     .video-two-col{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:center}
     .video-copy h3{margin:0 0 8px;font-size:1.45rem;color:var(--muted)}
     @media (max-width:900px){.video-two-col{grid-template-columns:1fr}}
 
-    /* ===== Contacto ===== */
+    /* ===== CONTACTO ===== */
     .contact{display:grid;grid-template-columns:1.1fr .9fr;gap:28px}
     @media (max-width:900px){.contact{grid-template-columns:1fr}}
     #contacto ul a{color:rgba(242,236,255,.92)}
     #contacto ul a:hover{color:#fff}
 
-    /* ===== Blog ===== */
+    /* ===== BLOG ===== */
     .blog-wrap{
       margin-top:22px;
       border:1px solid rgba(191,160,255,.18);
@@ -474,7 +455,7 @@
     .blog-body h3{margin:0 0 10px;color:var(--muted);font-size:1.2rem}
     .blog-body ul{margin:10px 0 0;padding-left:18px}
 
-    /* FAB */
+    /* ===== FAB ===== */
     .fr-fab{
       position:fixed;
       right:14px;
@@ -500,7 +481,7 @@
       .fr-ic svg{width:22px;height:22px}
     }
 
-    /* ===== FOOTER LIMPIO ===== */
+    /* ===== FOOTER ===== */
     .site-footer.dark{
       background:
         radial-gradient(900px 400px at 50% 0%, rgba(124,92,255,.10), transparent 60%),
@@ -609,9 +590,7 @@
         grid-template-columns:1fr 1fr;
         gap:24px;
       }
-      .footer-brand{
-        max-width:none;
-      }
+      .footer-brand{max-width:none}
     }
     @media (max-width:640px){
       .footer-grid{
@@ -692,7 +671,7 @@
     </div>
   </section>
 
-  <!-- Script texto/botón según slider -->
+  <!-- SCRIPT HERO -->
   <script>
     (function(){
       const title = document.getElementById('heroTitle');
@@ -767,7 +746,7 @@
 
             <div class="promo-vip" style="display: none; background: rgba(20, 184, 166, 0.15); border: 1px solid #14b8a6; padding: 10px; border-radius: 12px; margin-bottom: 15px;">
               <p style="margin:0; font-size: 0.85rem; color: #ccfbf1; font-weight: 800;">
-                <i class="fas fa-star" style="color: #14b8a6;"></i> PRECIO VIP ACTIVADO: Usa tus bonos en este servicio.
+                PRECIO VIP ACTIVADO: Usa tus bonos en este servicio.
               </p>
             </div>
 
@@ -800,7 +779,7 @@
 
             <div class="promo-vip" style="display: none; background: rgba(20, 184, 166, 0.15); border: 1px solid #14b8a6; padding: 10px; border-radius: 12px; margin-bottom: 15px;">
               <p style="margin:0; font-size: 0.85rem; color: #ccfbf1; font-weight: 800;">
-                <i class="fas fa-star" style="color: #14b8a6;"></i> PRECIO VIP ACTIVADO: Usa tus bonos en este servicio.
+                PRECIO VIP ACTIVADO: Usa tus bonos en este servicio.
               </p>
             </div>
 
@@ -818,30 +797,46 @@
     </div>
   </section>
 
-  <!-- GALERÍA -->
+  <!-- GALERÍA CORREGIDA -->
   <section class="gallery-section" aria-label="Galería de instalaciones y tratamientos">
     <div class="container">
       <div class="gallery-box">
         <div class="gallery-head">
           <h2>Galería de imágenes</h2>
-          <p>Espacio listo para colocar fotos de cabinas, instalaciones, resultados y ambiente de Figura Rostro KG.</p>
+          <p>Espacio visual con tratamientos, cabinas, resultados y ambiente de Figura Rostro KG.</p>
         </div>
 
         <div class="gallery-grid">
-          <div class="gallery-item"><div class="gallery-placeholder">Sube aquí imagen 1</div></div>
-          <div class="gallery-item"><div class="gallery-placeholder">Sube aquí imagen 2</div></div>
-          <div class="gallery-item"><div class="gallery-placeholder">Sube aquí imagen 3</div></div>
-          <div class="gallery-item"><div class="gallery-placeholder">Sube aquí imagen 4</div></div>
-          <div class="gallery-item"><div class="gallery-placeholder">Sube aquí imagen 5</div></div>
-          <div class="gallery-item"><div class="gallery-placeholder">Sube aquí imagen 6</div></div>
-          <div class="gallery-item"><div class="gallery-placeholder">Sube aquí imagen 7</div></div>
-          <div class="gallery-item"><div class="gallery-placeholder">Sube aquí imagen 8</div></div>
+          <div class="gallery-item">
+            <img src="galeria-1.jpg" alt="Plasma Fibroblast trabajando en Figura Rostro KG">
+          </div>
+          <div class="gallery-item">
+            <img src="galeria-2.jpg" alt="Tratamiento de abdomen en Figura Rostro KG">
+          </div>
+          <div class="gallery-item">
+            <img src="galeria-3.jpg" alt="Plasma Fibroblast en párpados en Panamá">
+          </div>
+          <div class="gallery-item">
+            <img src="galeria-4.jpg" alt="Hidrolipoclasia y tratamientos reductivos en Panamá">
+          </div>
+          <div class="gallery-item">
+            <img src="galeria-5.jpg" alt="Masaje relajante en spa Figura Rostro KG">
+          </div>
+          <div class="gallery-item">
+            <img src="galeria-6.jpg" alt="Cabina estética de Figura Rostro KG">
+          </div>
+          <div class="gallery-item">
+            <img src="galeria-7.jpg" alt="Equipo de tratamiento estético en Panamá">
+          </div>
+          <div class="gallery-item">
+            <img src="galeria-8.jpg" alt="Resultado de tratamiento facial en Figura Rostro KG">
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Video -->
+  <!-- VIDEO -->
   <section id="video" class="video-hero">
     <div class="container video-two-col" aria-label="Video de presentación">
       <div class="ratio-16x9">
@@ -880,7 +875,7 @@
     </div>
   </section>
 
-  <!-- Zonas -->
+  <!-- ZONAS -->
   <section id="zonas" style="background:linear-gradient(180deg, rgba(15,11,25,.92), rgba(11,8,18,.92)); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
     <div class="container">
       <h2 class="muted" style="font-size:34px;margin:0 0 10px">Zonas más solicitadas</h2>
@@ -920,7 +915,7 @@
     </div>
   </section>
 
-  <!-- Proceso -->
+  <!-- PROCESO -->
   <section id="proceso">
     <div class="container">
       <div class="two-col">
@@ -952,7 +947,7 @@
     </div>
   </section>
 
-  <!-- Sobre -->
+  <!-- SOBRE -->
   <section id="sobre">
     <div class="container">
       <div class="two-col">
@@ -1016,7 +1011,7 @@
     </div>
   </section>
 
-  <!-- Servicios -->
+  <!-- SERVICIOS -->
   <section id="servicios" style="background:linear-gradient(180deg, rgba(15,11,25,.92), rgba(11,8,18,.92)); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
     <div class="container">
       <h2 class="muted" style="font-size:34px;margin:0 0 10px">Servicios · estética avanzada</h2>
@@ -1062,7 +1057,7 @@
     </div>
   </section>
 
-  <!-- Contacto -->
+  <!-- CONTACTO -->
   <section id="contacto" style="background:linear-gradient(180deg, rgba(15,11,25,.92), rgba(11,8,18,.92)); border-top:1px solid var(--line);">
     <div class="container contact">
       <div>
@@ -1090,7 +1085,7 @@
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer class="site-footer dark">
     <div class="container footer-grid">
 
