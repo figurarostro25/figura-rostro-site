@@ -313,7 +313,7 @@
       color:#fff;
       font-weight:900;
     }
-    .section-title p{max-width:700px;margin:auto;color:rgba(242,236,255,.78)}
+    .section-title p{max-width:760px;margin:auto;color:rgba(242,236,255,.78)}
 
     /* ===== ALERT ===== */
     .notice-box{
@@ -332,6 +332,151 @@
     .notice-box p{margin:0;color:#5d5334}
     @media (max-width:700px){
       .notice-box{flex-direction:column}
+    }
+
+    /* ===== EDU SECTIONS ===== */
+    .edu-grid{
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      gap:24px;
+      align-items:center;
+      margin:0 0 28px;
+    }
+    .edu-card{
+      background:linear-gradient(180deg, rgba(21,17,49,.96), rgba(15,12,34,.96));
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow:var(--shadow2);
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .edu-card.pad{padding:28px}
+    .edu-card h3{
+      margin:0 0 10px;
+      color:#fff;
+      font-size:clamp(24px,3vw,34px);
+      font-weight:900;
+    }
+    .edu-card h4{
+      margin:0 0 8px;
+      color:#fff;
+      font-size:1.05rem;
+      font-weight:800;
+    }
+    .edu-card p{
+      margin:0 0 14px;
+      color:rgba(242,236,255,.84);
+    }
+    .mini-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 14px;
+      border-radius:999px;
+      background:rgba(191,160,255,.12);
+      border:1px solid rgba(191,160,255,.22);
+      color:#efe6ff;
+      font-size:.84rem;
+      font-weight:800;
+      margin-bottom:14px;
+    }
+    .edu-list{
+      display:grid;
+      gap:12px;
+      margin-top:12px;
+    }
+    .edu-item{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:16px;
+      padding:14px 16px;
+    }
+    .edu-item strong{
+      color:#fff;
+      display:block;
+      margin-bottom:4px;
+    }
+    .edu-image{
+      min-height:360px;
+      background:#1c1731;
+      position:relative;
+      overflow:hidden;
+    }
+    .edu-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .two-col-points{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+      margin-top:14px;
+    }
+    .point-box{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:16px;
+      padding:14px;
+    }
+    .point-box strong{
+      color:#fff;
+      display:block;
+      margin-bottom:6px;
+    }
+    .soft-note{
+      margin-top:14px;
+      padding:14px 16px;
+      border-radius:16px;
+      background:rgba(20,184,166,.10);
+      border:1px solid rgba(20,184,166,.25);
+      color:#d9fffb;
+      font-size:.94rem;
+    }
+    @media (max-width:900px){
+      .edu-grid{grid-template-columns:1fr}
+      .edu-image{min-height:280px}
+    }
+    @media (max-width:640px){
+      .two-col-points{grid-template-columns:1fr}
+    }
+
+    /* ===== GALLERY ===== */
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
+      margin-top:18px;
+    }
+    .gallery-card{
+      background:linear-gradient(180deg, rgba(21,17,49,.96), rgba(15,12,34,.96));
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--shadow2);
+    }
+    .gallery-card img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+      background:#1c1731;
+    }
+    .gallery-card .cap{
+      padding:14px 14px 16px;
+    }
+    .gallery-card .cap strong{
+      color:#fff;
+      display:block;
+      margin-bottom:6px;
+    }
+    .gallery-card .cap p{
+      margin:0;
+      font-size:.93rem;
+    }
+    @media (max-width:900px){
+      .gallery-grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:620px){
+      .gallery-grid{grid-template-columns:1fr}
     }
 
     /* ===== ZONAS ===== */
@@ -462,9 +607,7 @@
     .blog-content h3:first-child{margin-top:0}
 
     /* ===== FAQ ===== */
-    .faq-section{
-      margin-top:20px;
-    }
+    .faq-section{margin-top:20px}
     .faq-item{
       background:linear-gradient(180deg, rgba(18,16,36,.96), rgba(12,10,26,.96));
       border:1px solid rgba(255,255,255,.08);
@@ -762,6 +905,124 @@
         </div>
       </div>
 
+      <!-- NUEVA SECCIÓN: QUÉ ES -->
+      <div class="edu-grid">
+        <div class="edu-card pad">
+          <span class="mini-badge">✨ Tecnología estética avanzada</span>
+          <h3>¿Qué es Plasma Fibroblast?</h3>
+          <p>
+            El Plasma Fibroblast es un procedimiento estético avanzado utilizado para apoyar el
+            tensado cutáneo, mejorar la apariencia de flacidez leve y trabajar ciertas zonas con
+            enfoque no quirúrgico, siempre bajo valoración previa.
+          </p>
+          <p>
+            Se utiliza en protocolos faciales y corporales, especialmente en áreas donde la piel
+            puede beneficiarse de una mejor apariencia en textura, firmeza y acabado superficial.
+          </p>
+
+          <div class="edu-list">
+            <div class="edu-item">
+              <strong>¿Qué busca mejorar?</strong>
+              Flacidez leve, textura irregular, líneas finas, algunas estrías y zonas donde se busca una piel con apariencia más uniforme.
+            </div>
+            <div class="edu-item">
+              <strong>¿En qué capa actúa?</strong>
+              Trabaja de forma superficial y controlada sobre la epidermis para estimular una respuesta de regeneración que influye progresivamente en la calidad de la piel.
+            </div>
+            <div class="edu-item">
+              <strong>¿Es igual para todos?</strong>
+              No. Cada piel responde distinto según su fototipo, grosor, capacidad de regeneración, cuidados posteriores y zona tratada.
+            </div>
+          </div>
+        </div>
+
+        <div class="edu-card">
+          <div class="edu-image">
+            <img src="fibroblast-que-es.jpg" alt="Ilustración o imagen explicativa de Plasma Fibroblast">
+          </div>
+        </div>
+      </div>
+
+      <!-- NUEVA SECCIÓN: CÓMO FUNCIONA -->
+      <div class="edu-grid">
+        <div class="edu-card">
+          <div class="edu-image">
+            <img src="fibroblast-piel-dermis.jpg" alt="Ilustración de la piel, dermis y acción del Plasma Fibroblast">
+          </div>
+        </div>
+
+        <div class="edu-card pad">
+          <span class="mini-badge">🧬 Regeneración progresiva</span>
+          <h3>¿Cómo funciona en la piel?</h3>
+          <p>
+            Durante el procedimiento se generan puntos superficiales controlados sobre la piel,
+            lo que activa una respuesta de reparación natural. Esa respuesta estimula
+            la regeneración cutánea y el soporte de colágeno de forma progresiva.
+          </p>
+
+          <div class="two-col-points">
+            <div class="point-box">
+              <strong>Epidermis</strong>
+              Es la capa más externa de la piel. Allí se producen cambios visibles en la recuperación, como costritas temporales y renovación superficial.
+            </div>
+            <div class="point-box">
+              <strong>Dermis</strong>
+              Es una capa más profunda relacionada con estructura, soporte y firmeza. La respuesta biológica del tejido continúa por varias semanas.
+            </div>
+            <div class="point-box">
+              <strong>Colágeno</strong>
+              La piel entra en proceso de reparación y remodelación, por eso los resultados reales no siempre se ven de inmediato.
+            </div>
+            <div class="point-box">
+              <strong>Tiempo</strong>
+              La evolución visible puede cambiar entre una persona y otra. En muchas pieles el proceso continúa de 8 a 12 semanas.
+            </div>
+          </div>
+
+          <div class="soft-note">
+            No se trata solo de “ver menos costritas”. El verdadero cambio depende del proceso progresivo de regeneración y del seguimiento correcto.
+          </div>
+        </div>
+      </div>
+
+      <!-- NUEVA SECCIÓN: CONFORT -->
+      <div class="edu-grid">
+        <div class="edu-card pad">
+          <span class="mini-badge">💆‍♀️ Prioridad: confort</span>
+          <h3>Confort durante el procedimiento</h3>
+          <p>
+            Para mayor comodidad utilizamos preparación previa y anestesia tópica de uso estético,
+            buscando una experiencia más tolerable según la zona a tratar y la sensibilidad de cada persona.
+          </p>
+          <p>
+            Aunque muchas pacientes lo describen como tolerable, la percepción puede variar según el área,
+            el umbral individual y el estado de la piel. Por eso el acompañamiento y la explicación previa son clave.
+          </p>
+
+          <div class="edu-list">
+            <div class="edu-item">
+              <strong>Anestesia tópica</strong>
+              Se utiliza para aportar mayor confort durante el protocolo y facilitar una experiencia más llevadera.
+            </div>
+            <div class="edu-item">
+              <strong>Equipo profesional</strong>
+              Trabajamos con equipos de uso estético diseñados para este tipo de protocolo superficial y controlado.
+            </div>
+            <div class="edu-item">
+              <strong>Protocolo personalizado</strong>
+              No todas las zonas ni todas las pieles se trabajan igual. Ajustar el abordaje hace parte del criterio profesional.
+            </div>
+          </div>
+        </div>
+
+        <div class="edu-card">
+          <div class="edu-image">
+            <img src="fibroblast-equipo-anestesia.jpg" alt="Equipo de Plasma Fibroblast y anestesia tópica">
+          </div>
+        </div>
+      </div>
+
+      <!-- ZONAS -->
       <div class="section-title">
         <h2>Identifica tu zona ideal</h2>
         <p>Estas son algunas de las áreas más consultadas para Plasma Fibroblast en Figura Rostro KG.</p>
@@ -802,6 +1063,239 @@
           </div>
         </div>
 
+        <div class="zone-card">
+          <div class="zone-img-wrap">
+            <img src="zona-frente.jpg" alt="Plasma Fibroblast en frente" loading="lazy">
+          </div>
+          <div class="zone-content">
+            <h3>Frente y líneas finas</h3>
+            <p>Zona consultada para apoyar la apariencia de piel más lisa y uniforme en líneas finas superficiales según valoración profesional.</p>
+          </div>
+        </div>
+
+        <div class="zone-card">
+          <div class="zone-img-wrap">
+            <img src="zona-surco-nasogeniano.jpg" alt="Plasma Fibroblast en surco nasogeniano" loading="lazy">
+          </div>
+          <div class="zone-content">
+            <h3>Surcos y líneas peribucales</h3>
+            <p>En ciertos casos se utiliza para mejorar visualmente la textura de la piel alrededor de la boca y zonas con arrugas finas.</p>
+          </div>
+        </div>
+
+        <div class="zone-card">
+          <div class="zone-img-wrap">
+            <img src="zona-brazos.jpg" alt="Plasma Fibroblast en brazos" loading="lazy">
+          </div>
+          <div class="zone-content">
+            <h3>Brazos</h3>
+            <p>Puede considerarse en piel con flacidez leve y textura alterada, especialmente cuando se busca una apariencia más firme y cuidada.</p>
+          </div>
+        </div>
+
+        <div class="zone-card">
+          <div class="zone-img-wrap">
+            <img src="zona-rodillas.jpg" alt="Plasma Fibroblast en rodillas" loading="lazy">
+          </div>
+          <div class="zone-content">
+            <h3>Rodillas</h3>
+            <p>Área corporal donde algunas pacientes buscan mejorar visualmente textura, pliegues y pérdida leve de firmeza con protocolo adecuado.</p>
+          </div>
+        </div>
+
+        <div class="zone-card">
+          <div class="zone-img-wrap">
+            <img src="zona-manos.jpg" alt="Plasma Fibroblast en manos" loading="lazy">
+          </div>
+          <div class="zone-content">
+            <h3>Manos</h3>
+            <p>Puede apoyar el rejuvenecimiento visual en manos con textura envejecida, arrugas finas o aspecto apagado, según selección del caso.</p>
+          </div>
+        </div>
+
+        <div class="zone-card">
+          <div class="zone-img-wrap">
+            <img src="zona-gluteos.jpg" alt="Plasma Fibroblast en glúteos" loading="lazy">
+          </div>
+          <div class="zone-content">
+            <h3>Glúteos y otras zonas corporales</h3>
+            <p>En ciertos casos se valora para textura de piel, estrías o flacidez leve localizada, siempre con expectativa realista y evaluación previa.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- NUEVA SECCIÓN: ESTRÍAS -->
+      <div style="height:28px"></div>
+      <div class="edu-grid">
+        <div class="edu-card">
+          <div class="edu-image">
+            <img src="fibroblast-estrias.jpg" alt="Tratamiento estético de estrías con Plasma Fibroblast">
+          </div>
+        </div>
+
+        <div class="edu-card pad">
+          <span class="mini-badge">✨ Textura y apariencia</span>
+          <h3>Estrías y textura de la piel</h3>
+          <p>
+            En abdomen y otras zonas corporales, el Plasma Fibroblast puede formar parte de protocolos
+            orientados a mejorar la apariencia visual de algunas estrías y de la textura superficial de la piel.
+          </p>
+          <p>
+            No todas las estrías responden igual. Influyen su color, profundidad, antigüedad, cantidad,
+            tono de piel y elasticidad del tejido. Por eso la evaluación previa es indispensable.
+          </p>
+
+          <div class="edu-list">
+            <div class="edu-item">
+              <strong>Estrías recientes vs. antiguas</strong>
+              Algunas son más reactivas que otras. El abordaje dependerá del estado real de la piel.
+            </div>
+            <div class="edu-item">
+              <strong>Resultados progresivos</strong>
+              La mejoría puede ser gradual, por lo que en ciertos casos se valora más de una sesión.
+            </div>
+            <div class="edu-item">
+              <strong>Expectativas realistas</strong>
+              El objetivo suele ser mejorar textura, acabado y apariencia general, no prometer una “desaparición total” en todos los casos.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NUEVA SECCIÓN: PUNTITOS BLANCOS -->
+      <div class="edu-grid">
+        <div class="edu-card pad">
+          <span class="mini-badge">🩺 Evolución normal</span>
+          <h3>Puntitos blancos y cambios temporales de pigmentación</h3>
+          <p>
+            Durante la recuperación pueden observarse pequeños puntitos claros, diferencias temporales de tono
+            o áreas que lucen más blancas al inicio. Esto puede formar parte del proceso de regeneración cutánea.
+          </p>
+          <p>
+            La piel nueva suele verse distinta mientras termina de estabilizar su color. En muchas personas esto se va
+            suavizando con las semanas, especialmente cuando siguen indicaciones y asisten a sus controles.
+          </p>
+
+          <div class="two-col-points">
+            <div class="point-box">
+              <strong>¿Por qué aparecen?</strong>
+              Porque la piel está renovándose y reorganizando su pigmentación después del proceso superficial controlado.
+            </div>
+            <div class="point-box">
+              <strong>¿Cuándo mejoran?</strong>
+              Muchas veces se van integrando progresivamente entre 6 y 12 semanas, aunque cada piel tiene su ritmo.
+            </div>
+            <div class="point-box">
+              <strong>¿Todas las pieles son aptas?</strong>
+              No. Hay fototipos y condiciones donde el riesgo de hiperpigmentación o hipopigmentación puede ser mayor.
+            </div>
+            <div class="point-box">
+              <strong>¿Puede quedar algo visible?</strong>
+              En algunas pieles puede persistir pigmentación o despigmentación residual, por eso la selección del caso y el seguimiento son tan importantes.
+            </div>
+          </div>
+
+          <div class="soft-note">
+            La valoración previa responsable permite identificar si la piel es una buena candidata y explicar con claridad los posibles tiempos, límites y cuidados del proceso.
+          </div>
+        </div>
+
+        <div class="edu-card">
+          <div class="edu-image">
+            <img src="fibroblast-puntitos-blancos.jpg" alt="Puntitos blancos durante recuperación de Plasma Fibroblast">
+          </div>
+        </div>
+      </div>
+
+      <!-- NUEVA SECCIÓN: COSTOS EN EUROPA / VALOR RELATIVO -->
+      <div class="edu-grid">
+        <div class="edu-card">
+          <div class="edu-image">
+            <img src="fibroblast-europa-precio.jpg" alt="Referencia internacional del Plasma Fibroblast en Europa">
+          </div>
+        </div>
+
+        <div class="edu-card pad">
+          <span class="mini-badge">🌍 Referencia internacional</span>
+          <h3>Un tratamiento conocido a nivel internacional</h3>
+          <p>
+            El Plasma Fibroblast es un procedimiento ampliamente conocido en mercados internacionales,
+            incluyendo Europa, donde los costos pueden variar considerablemente según la clínica, la ciudad,
+            la experiencia profesional y la zona tratada.
+          </p>
+          <p>
+            Más que comparar precios aislados, lo importante es comprender que se trata de un protocolo
+            especializado que requiere criterio en la selección del paciente, preparación, seguimiento
+            y expectativas realistas.
+          </p>
+          <div class="edu-list">
+            <div class="edu-item">
+              <strong>El precio depende de la zona</strong>
+              No vale lo mismo un párpado que un abdomen, ni una pequeña área localizada que una zona amplia corporal.
+            </div>
+            <div class="edu-item">
+              <strong>La valoración es clave</strong>
+              Una buena orientación previa puede evitar errores de expectativa y ayudar a definir si este procedimiento es realmente el ideal.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NUEVA SECCIÓN: GALERÍA -->
+      <div class="section-title" style="margin-top:14px;">
+        <h2>Galería informativa</h2>
+        <p>Espacios pensados para explicar visualmente el procedimiento, la recuperación y las zonas más consultadas.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-card">
+          <img src="galeria-fibroblast-antes-despues-1.jpg" alt="Antes y después Plasma Fibroblast">
+          <div class="cap">
+            <strong>Antes y después</strong>
+            <p>Coloca una imagen comparativa real y clara, preferiblemente de una zona tratada en tu clínica.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <img src="galeria-fibroblast-proceso-1.jpg" alt="Proceso Plasma Fibroblast">
+          <div class="cap">
+            <strong>Proceso del procedimiento</strong>
+            <p>Ideal para mostrar una vista cercana del equipo trabajando de forma profesional y controlada.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <img src="galeria-fibroblast-recuperacion-1.jpg" alt="Recuperación Plasma Fibroblast">
+          <div class="cap">
+            <strong>Recuperación</strong>
+            <p>Imagen útil para explicar costritas, puntitos temporales o evolución normal de la piel.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <img src="galeria-fibroblast-abdomen-1.jpg" alt="Fibroblast abdomen">
+          <div class="cap">
+            <strong>Abdomen y estrías</strong>
+            <p>Usa una foto estética y elegante donde se aprecie la zona corporal tratada sin verse agresiva.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <img src="galeria-fibroblast-parpados-1.jpg" alt="Fibroblast en párpados">
+          <div class="cap">
+            <strong>Párpados</strong>
+            <p>Una de las zonas más buscadas. Coloca imagen limpia, clínica y de apariencia profesional.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <img src="galeria-fibroblast-cuello-1.jpg" alt="Fibroblast cuello y papada">
+          <div class="cap">
+            <strong>Cuello y papada</strong>
+            <p>Muy buena para reforzar la variedad de zonas tratables y hacer la página más completa visualmente.</p>
+          </div>
+        </div>
       </div>
 
       <section class="seo-blog-section">
@@ -974,6 +1468,7 @@
     <a class="fr-ic fr-wa" href="https://wa.me/50764746168" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.94 14.5L2 22l5.7-1.5A10 10 0 1 0 12 2zm5.5 14.1c-.24.68-1.4 1.3-1.96 1.34-.5.03-1.14.05-1.84-.12-.42-.1-.97-.31-1.67-.61-2.94-1.27-4.86-4.2-5.01-4.4-.15-.2-1.2-1.6-1.2-3.06 0-1.45.76-2.16 1.03-2.45.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.24.59.82 2.05.9 2.2.07.15.12.33.01.53-.1.2-.15.33-.3.51-.15.18-.31.4-.44.54-.15.15-.31.32-.13.62.18.3.8 1.3 1.71 2.1 1.18 1.05 2.17 1.37 2.47 1.52.3.15.48.13.66-.08.18-.2.76-.89.96-1.2.2-.3.41-.26.67-.15.26.1 1.64.77 1.92.91.29.15.48.22.55.34.07.12.07.7-.17 1.38z"/></svg>
     </a>
+
     <a class="fr-ic fr-waze" href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noopener" aria-label="Waze" title="Waze">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c5.5 0 10 3.9 10 8.7 0 3.9-3 7.2-7.2 8.2-.5.1-.7.4-.9.8-.5 1-1.4 2.1-2.9 2.1-1.6 0-2.4-1.1-2.9-2.1-.2-.4-.4-.7-.9-.8C5 17.9 2 14.6 2 10.7 2 5.9 6.5 2 12 2zm-6 9a1 1 0 110-2 1 1 0 010 2zm5 0a1 1 0 110-2 1 1 0 010 2zm5 0a1 1 0 110-2 1 1 0 010 2z"/></svg>
     </a>
