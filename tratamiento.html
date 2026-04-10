@@ -1024,18 +1024,26 @@ window.renderTabla = () => {
             return true; 
         });
 
-        // Totales de tarjetas
+        // ✅ MEJORA: Cálculo robusto de totales
         let tVentas = 0, tCobrado = 0, tPendiente = 0;
+
+        const limpiarNum = (val) => {
+            if (!val) return 0;
+            if (typeof val === 'number') return val;
+            const limpio = String(val).replace(/[^0-9.-]/g, "");
+            return parseFloat(limpio) || 0;
+        };
+
         datosFiltrados.forEach(d => {
-            let totalRaw = d.finanzas.total || "0";
-            let pendRaw = d.finanzas.pendiente || "0";
-            if(typeof totalRaw === 'string') totalRaw = totalRaw.replace(/[^0-9.-]+/g,"");
-            if(typeof pendRaw === 'string') pendRaw = pendRaw.replace(/[^0-9.-]+/g,"");
-            
-            tVentas += parseFloat(totalRaw) || 0;
-            tCobrado += parseFloat(d.finanzas.abono) || 0;
-            tPendiente += parseFloat(pendRaw) || 0;
+            const total = limpiarNum(d.finanzas.total);
+            const cobrado = limpiarNum(d.finanzas.abono);
+            const pendiente = total - cobrado;
+
+            tVentas += total;
+            tCobrado += cobrado;
+            tPendiente += pendiente;
         });
+
         document.getElementById('cardVentas').innerText = `$${tVentas.toFixed(2)}`;
         document.getElementById('cardCobrado').innerText = `$${tCobrado.toFixed(2)}`;
         document.getElementById('cardPendiente').innerText = `$${tPendiente.toFixed(2)}`;
@@ -1046,12 +1054,10 @@ window.renderTabla = () => {
         }
 
         datosFiltrados.forEach(d => {
-            let pendienteRaw = d.finanzas.pendiente || "0";
-            let esDeuda = false;
-            if(typeof pendienteRaw === 'string') {
-                 const val = parseFloat(pendienteRaw.replace('$','').replace('S. Favor: ',''));
-                 esDeuda = val > 0.50;
-            }
+        const totalFila = limpiarNum(d.finanzas.total);
+        const abonoFila = limpiarNum(d.finanzas.abono);
+        const pendienteFila = totalFila - abonoFila;
+        const esDeuda = pendienteFila > 0.50;
 
             const bgRow = esDeuda ? "bg-slate-50/50" : ""; 
             const badgeDeuda = esDeuda ? '<span class="ml-1 text-slate-400 text-[9px] font-bold italic">(Pte.)</span>' : '';
@@ -1081,7 +1087,7 @@ window.renderTabla = () => {
                 <td class="py-3 px-2">
                     <div class="flex justify-between items-center pr-4">
                         <div class="flex-1">
-                            <div class="font-black uppercase text-slate-700 text-xs mb-0.5">${d.paciente.nombre} ${badgeDeuda}</div>
+                            <div class="font-black uppercase text-slate-700 text-xs mb-0.5 text-flexible">${d.paciente.nombre} ${badgeDeuda}</div>
                             <div class="text-[9px] font-bold text-slate-400 uppercase flex items-center gap-1 mb-1.5">
                                 <i class="fas fa-briefcase"></i> ${d.paciente.ocupacion || 'No especificada'}
                             </div>
@@ -1096,9 +1102,9 @@ window.renderTabla = () => {
                     <div class="font-black text-slate-700 uppercase text-[9px]">VALORACIÓN</div>
                     <div class="font-black text-[10px] border px-2 py-1 rounded shadow-sm inline-block mt-1 ${estiloFecha}">${fechaValoracion}</div>
                 </td>
-                <td class="text-right font-black text-xs">${d.finanzas.total}</td>
-                <td class="text-right text-emerald-600 font-bold text-xs">$${parseFloat(d.finanzas.abono || 0).toFixed(2)}</td>
-                <td class="text-right font-black tracking-tighter text-sm">${d.finanzas.pendiente}</td>
+                <td class="text-right font-black text-xs">$${totalFila.toFixed(2)}</td>
+                <td class="text-right text-emerald-600 font-bold text-xs">$${abonoFila.toFixed(2)}</td>
+                <td class="text-right font-black tracking-tighter text-sm">$${pendienteFila.toFixed(2)}</td>
                 <td class="p-4 flex justify-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                     <button onclick="editarFicha('${d.id}')" class="p-2 bg-slate-800 text-white rounded shadow" title="Cobrar"><i class="fas fa-edit text-xs"></i></button>
                     
