@@ -259,7 +259,105 @@ header{
   font-weight:700;
   color:#665f76;
 }
+/* HERO PREMIUM UPGRADE */
 
+.hero{
+  position:relative;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  width:700px;
+  height:700px;
+  background:radial-gradient(circle, rgba(141,108,246,.18), transparent 70%);
+  top:-250px;
+  right:-200px;
+  z-index:1;
+}
+
+.hero-content{
+  animation:fadeUp 1s ease;
+}
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.hero h1{
+  max-width:900px;
+  margin:auto;
+}
+
+.hero p{
+  margin-top:24px;
+}
+
+.hero-actions .btn-primary{
+  transform:scale(1.02);
+}
+
+.hero-actions .btn-primary:hover{
+  transform:scale(1.06);
+}
+
+.hero-trust{
+  margin-top:42px;
+}
+
+.hero-trust span{
+  backdrop-filter:blur(10px);
+  background:rgba(255,255,255,.88);
+  border:1px solid rgba(255,255,255,.6);
+}
+
+/* MINI STATS */
+
+.hero-stats{
+  margin-top:50px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  max-width:850px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.hero-stat{
+  background:rgba(255,255,255,.88);
+  border:1px solid #f0ebfa;
+  border-radius:24px;
+  padding:24px;
+  box-shadow:var(--shadow);
+}
+
+.hero-stat h3{
+  margin:0;
+  font-size:2rem;
+  color:var(--primary);
+}
+
+.hero-stat p{
+  margin-top:10px;
+  font-size:.95rem;
+  line-height:1.6;
+  color:#6f6978;
+}
+
+@media(max-width:768px){
+
+  .hero-stats{
+    grid-template-columns:1fr;
+  }
+
+}
 /* SECTIONS */
 
 section{
@@ -654,7 +752,24 @@ Reservar valoración
 <span>✔️ Resultados progresivos</span>
 
 </div>
+<div class="hero-stats">
 
+<div class="hero-stat">
+<h3>+500</h3>
+<p>Pacientes atendidas en tratamientos faciales y corporales.</p>
+</div>
+
+<div class="hero-stat">
+<h3>100%</h3>
+<p>Valoraciones personalizadas según objetivos y necesidades.</p>
+</div>
+
+<div class="hero-stat">
+<h3>Premium</h3>
+<p>Ambiente privado, relajante y enfocado en bienestar integral.</p>
+</div>
+
+</div>
 </div>
 
 </section>
