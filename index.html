@@ -1,1106 +1,874 @@
 <!doctype html>
 <html lang="es">
 <head>
-
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Figura Rostro KG | Rejuvenecimiento Facial y Corporal en Panamá</title>
-
-<meta name="description" content="Centro estético en Panamá especializado en Plasma Fibroblast, Adelgazamiento Exprés y bienestar integral. Valoraciones personalizadas y atención privada.">
-
-<link rel="canonical" href="https://figurarostro.life/">
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-<style>
-
-:root{
-  --bg:#faf8ff;
-  --white:#ffffff;
-  --primary:#8d6cf6;
-  --primary2:#b49bff;
-  --text:#2f2a38;
-  --muted:#6f6a78;
-  --line:#eee8f7;
-  --green:#25D366;
-  --shadow:0 15px 45px rgba(30,20,50,.08);
-  --radius:24px;
-}
-
-*{
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  margin:0;
-  background:linear-gradient(180deg,#faf8ff 0%,#ffffff 50%,#f7f3ff 100%);
-  color:var(--text);
-  font-family:'Inter',sans-serif;
-  overflow-x:hidden;
-}
-
-.container{
-  width:100%;
-  max-width:1200px;
-  margin:auto;
-  padding:0 20px;
-}
-
-img{
-  width:100%;
-  display:block;
-}
-
-a{
-  text-decoration:none;
-}
-
-/* TOPBAR */
-
-.topbar{
-  background:#ffffff;
-  border-bottom:1px solid rgba(0,0,0,.05);
-}
-
-.topbar-inner{
-  min-height:42px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:22px;
-  flex-wrap:wrap;
-  font-size:.92rem;
-  color:#655f73;
-  font-weight:700;
-}
-
-/* HEADER */
-
-header{
-  position:sticky;
-  top:0;
-  z-index:999;
-  background:rgba(255,255,255,.88);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(0,0,0,.04);
-}
-
-.header-inner{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-  padding:18px 0;
-}
-
-.brand img{
-  height:56px;
-  width:auto;
-}
-
-.site-nav .menu{
-  list-style:none;
-  display:flex;
-  align-items:center;
-  gap:28px;
-  margin:0;
-  padding:0;
-}
-
-.site-nav a{
-  color:#514a61;
-  font-weight:700;
-  transition:.2s ease;
-}
-
-.site-nav a:hover{
-  color:var(--primary);
-}
-
-.btn-primary{
-  background:linear-gradient(135deg,var(--primary),var(--primary2));
-  color:#fff;
-  border:none;
-  border-radius:18px;
-  padding:14px 24px;
-  font-weight:800;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  transition:.2s ease;
-  box-shadow:0 14px 30px rgba(141,108,246,.22);
-}
-
-.btn-primary:hover{
-  transform:translateY(-2px);
-}
-
-.btn-ghost{
-  background:#fff;
-  color:#544d65;
-  border:1px solid #e9e3f5;
-  border-radius:18px;
-  padding:14px 24px;
-  font-weight:800;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-}
-
-/* HERO */
-
-.hero{
-  min-height:92vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
-  background-size:cover;
-  background-position:center;
-  animation:heroChange 18s infinite ease-in-out;
-}
-
-@keyframes heroChange{
-
-  0%,33%{
-    background-image:url('hero-1.jpg');
-  }
-
-  34%,66%{
-    background-image:url('hero-2.jpg');
-  }
-
-  67%,100%{
-    background-image:url('hero-3.jpg');
-  }
-
-}
-
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-  linear-gradient(180deg,rgba(255,255,255,.72),rgba(255,255,255,.86)),
-  radial-gradient(circle at top right, rgba(141,108,246,.15), transparent 40%);
-}
-
-.hero-content{
-  position:relative;
-  z-index:2;
-  max-width:980px;
-}
-
-.hero-badge{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  background:#fff;
-  border-radius:999px;
-  padding:12px 18px;
-  color:#6f61a7;
-  font-weight:700;
-  box-shadow:var(--shadow);
-  margin-bottom:24px;
-}
-
-.hero h1{
-  font-size:clamp(42px,7vw,78px);
-  line-height:1.02;
-  margin:0 0 20px;
-  font-weight:900;
-  color:#2d2738;
-  letter-spacing:-2px;
-}
-
-.hero h1 span{
-  color:var(--primary);
-}
-
-.hero p{
-  max-width:760px;
-  margin:auto;
-  color:#655f71;
-  line-height:1.9;
-  font-size:1.12rem;
-}
-
-.hero-actions{
-  margin-top:34px;
-  display:flex;
-  justify-content:center;
-  gap:14px;
-  flex-wrap:wrap;
-}
-
-.hero-trust{
-  margin-top:38px;
-  display:flex;
-  justify-content:center;
-  gap:14px;
-  flex-wrap:wrap;
-}
-
-.hero-trust span{
-  background:#fff;
-  border-radius:999px;
-  padding:12px 18px;
-  box-shadow:var(--shadow);
-  font-size:.92rem;
-  font-weight:700;
-  color:#665f76;
-}
-/* HERO PREMIUM UPGRADE */
-
-.hero{
-  position:relative;
-}
-
-.hero::after{
-  content:"";
-  position:absolute;
-  width:700px;
-  height:700px;
-  background:radial-gradient(circle, rgba(141,108,246,.18), transparent 70%);
-  top:-250px;
-  right:-200px;
-  z-index:1;
-}
-
-.hero-content{
-  animation:fadeUp 1s ease;
-}
-
-@keyframes fadeUp{
-  from{
-    opacity:0;
-    transform:translateY(30px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-.hero h1{
-  max-width:900px;
-  margin:auto;
-}
-
-.hero p{
-  margin-top:24px;
-}
-
-.hero-actions .btn-primary{
-  transform:scale(1.02);
-}
-
-.hero-actions .btn-primary:hover{
-  transform:scale(1.06);
-}
-
-.hero-trust{
-  margin-top:42px;
-}
-
-.hero-trust span{
-  backdrop-filter:blur(10px);
-  background:rgba(255,255,255,.88);
-  border:1px solid rgba(255,255,255,.6);
-}
-
-/* MINI STATS */
-
-.hero-stats{
-  margin-top:50px;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-  max-width:850px;
-  margin-left:auto;
-  margin-right:auto;
-}
-
-.hero-stat{
-  background:rgba(255,255,255,.88);
-  border:1px solid #f0ebfa;
-  border-radius:24px;
-  padding:24px;
-  box-shadow:var(--shadow);
-}
-
-.hero-stat h3{
-  margin:0;
-  font-size:2rem;
-  color:var(--primary);
-}
-
-.hero-stat p{
-  margin-top:10px;
-  font-size:.95rem;
-  line-height:1.6;
-  color:#6f6978;
-}
-
-@media(max-width:768px){
-
-  .hero-stats{
-    grid-template-columns:1fr;
-  }
-
-}
-/* SECTIONS */
-
-section{
-  padding:90px 0;
-}
-
-.section-title{
-  text-align:center;
-  margin-bottom:60px;
-}
-
-.section-title span{
-  color:var(--primary);
-  text-transform:uppercase;
-  letter-spacing:.1em;
-  font-size:.82rem;
-  font-weight:800;
-}
-
-.section-title h2{
-  font-size:clamp(34px,5vw,58px);
-  margin:14px 0;
-  color:#2d2738;
-  letter-spacing:-1.5px;
-}
-
-.section-title p{
-  max-width:760px;
-  margin:auto;
-  color:#6c6678;
-  line-height:1.9;
-}
-
-/* PILARES */
-
-.pilares{
-  margin-top:-70px;
-  position:relative;
-  z-index:4;
-}
-
-.pilares-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:24px;
-}
-
-.pilar{
-  background:#fff;
-  border-radius:30px;
-  overflow:hidden;
-  box-shadow:var(--shadow);
-  border:1px solid #f1ebfa;
-  transition:.25s ease;
-}
-
-.pilar:hover{
-  transform:translateY(-5px);
-}
-
-.pilar img{
-  aspect-ratio:16/10;
-  object-fit:cover;
-}
-
-.pilar-content{
-  padding:28px;
-}
-
-.pilar-tag{
-  color:var(--primary);
-  font-size:.82rem;
-  font-weight:800;
-  text-transform:uppercase;
-  letter-spacing:.08em;
-}
-
-.pilar h3{
-  margin:12px 0;
-  font-size:1.8rem;
-}
-
-.pilar p{
-  color:#6f697a;
-  line-height:1.8;
-}
-
-/* BENEFITS */
-
-.benefits{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:20px;
-}
-
-.benefit{
-  background:#fff;
-  border-radius:24px;
-  padding:28px;
-  box-shadow:var(--shadow);
-  border:1px solid #f2edf8;
-  text-align:center;
-}
-
-.benefit h4{
-  margin:18px 0 10px;
-  font-size:1.1rem;
-}
-
-.benefit p{
-  color:#746f7d;
-  line-height:1.8;
-  font-size:.95rem;
-}
-
-/* GALLERY */
-
-.gallery-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:18px;
-}
-
-.gallery-item{
-  overflow:hidden;
-  border-radius:26px;
-  box-shadow:var(--shadow);
-}
-
-.gallery-item img{
-  height:100%;
-  object-fit:cover;
-  transition:.3s ease;
-}
-
-.gallery-item:hover img{
-  transform:scale(1.05);
-}
-
-/* CTA */
-
-.cta-premium{
-  background:linear-gradient(135deg,#8d6cf6,#b79cff);
-  border-radius:38px;
-  padding:80px 50px;
-  text-align:center;
-  color:#fff;
-  box-shadow:0 20px 60px rgba(141,108,246,.25);
-}
-
-.cta-premium h2{
-  margin:0 0 16px;
-  font-size:clamp(38px,5vw,64px);
-  line-height:1.05;
-}
-
-.cta-premium p{
-  max-width:720px;
-  margin:auto;
-  line-height:1.9;
-  color:rgba(255,255,255,.92);
-}
-
-.cta-premium .hero-actions{
-  margin-top:28px;
-}
-
-/* FOOTER */
-
-footer{
-  background:#fff;
-  border-top:1px solid #eee7f7;
-  padding:60px 0 30px;
-}
-
-.footer-grid{
-  display:grid;
-  grid-template-columns:1.3fr 1fr 1fr;
-  gap:40px;
-}
-
-.footer-grid h4{
-  margin:0 0 18px;
-  color:#2f2a38;
-}
-
-.footer-grid p,
-.footer-grid a{
-  color:#6f6978;
-  line-height:1.9;
-}
-
-.footer-grid ul{
-  list-style:none;
-  padding:0;
-  margin:0;
-}
-
-.footer-grid li{
-  margin-bottom:10px;
-}
-
-.footer-bottom{
-  border-top:1px solid #eee7f7;
-  margin-top:40px;
-  padding-top:20px;
-  text-align:center;
-  color:#8a8495;
-}
-
-/* FLOAT BUTTONS */
-
-.fr-fab{
-  position:fixed;
-  right:16px;
-  bottom:18px;
-  z-index:9999;
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
-
-.fr-ic{
-  width:58px;
-  height:58px;
-  border-radius:999px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 16px 35px rgba(0,0,0,.16);
-}
-
-.fr-wa{
-  background:#25D366;
-}
-
-.fr-waze{
-  background:#8d6cf6;
-}
-
-.fr-ic svg{
-  width:26px;
-  fill:#fff;
-}
-
-/* RESPONSIVE */
-
-@media(max-width:980px){
-
-  .header-inner{
-    flex-direction:column;
-  }
-
-  .pilares-grid{
-    grid-template-columns:1fr;
-  }
-
-  .benefits{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .gallery-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .footer-grid{
-    grid-template-columns:1fr;
-  }
-
-}
-
-@media(max-width:640px){
-
-  .site-nav .menu{
-    gap:14px;
-    flex-wrap:wrap;
-    justify-content:center;
-  }
-
-  .hero{
-    min-height:82vh;
-  }
-
-  .hero h1{
-    font-size:40px;
-  }
-
-  .hero p{
-    font-size:1rem;
-  }
-
-  .benefits{
-    grid-template-columns:1fr;
-  }
-
-  .gallery-grid{
-    grid-template-columns:1fr;
-  }
-
-  .cta-premium{
-    padding:50px 24px;
-  }
-
-}
-
-</style>
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Masaje Relajante en Panamá (Parque Lefevre) | Paquetes Reductores, Peeling y Plasma Fibroblast – Figura Rostro KG</title>
+  <meta name="description" content="Spa en Parque Lefevre: masaje relajante, descontracturante, masajes reductores, peeling facial, radiofrecuencia y plasma Fibroblast. Promos, paquetes y reservas por WhatsApp.">
+  <meta name="keywords" content="masaje relajante en panamá, masaje reductor panamá, paquete reductor, plasma fibroblast panamá, peeling facial panamá, spa parque lefevre, figura rostro kg">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://figurarostro.life/">
+
+  <!-- OG/Twitter -->
+  <meta property="og:title" content="Masaje Relajante en Panamá | Paquetes Reductores y Fibroblast – Figura Rostro KG">
+  <meta property="og:description" content="Faciales, masajes y tratamientos no invasivos con resultados visibles en Parque Lefevre, Ciudad de Panamá.">
+  <meta property="og:image" content="/og-cover-fr.jpg">
+  <meta property="og:url" content="https://figurarostro.life/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#5b2580">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{--brand:#5b2580;--brand2:#7b3aa6}
+    *{box-sizing:border-box;min-width:0}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Segoe UI,Roboto,Arial;
+      background:#fff;
+      color:#1b0f26;
+      overflow-x:hidden;
+    }
+    .container{max-width:1150px;margin:0 auto;padding:0 16px;width:100%}
+    @media (max-width:768px){.container{padding:0 12px}}
+
+    img{max-width:100%;height:auto;display:block}
+    .ratio-16x9{position:relative; width:100%; aspect-ratio:16/9}
+    .ratio-16x9 iframe{position:absolute; inset:0; width:100%; height:100%; border:0; border-radius:12px}
+
+    /* ===== HEADER ===== */
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:linear-gradient(180deg,#160c1f 0%,#241235 100%);
+      border-bottom:1px solid rgba(255,255,255,.08)
+    }
+    .header-inner{
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:16px 0
+    }
+    .brand{
+      position:relative;
+      display:inline-block;
+    }
+    .brand img{height:58px}
+    @media (max-width:768px){.brand img{height:44px}}
+
+    /* Gorrito navideño sobre el logo (solo cuando body tiene .xmas-on) */
+    body.xmas-on .brand::after{
+      content:"";
+      position:absolute;
+      top:-14px;
+      right:-10px;
+      width:46px;
+      height:46px;
+      background:url('fr-santa-hat.png') no-repeat center/contain;
+      pointer-events:none;
+    }
+    @media (max-width:768px){
+      body.xmas-on .brand::after{
+        top:-10px;
+        right:-6px;
+        width:34px;
+        height:34px;
+      }
+    }
+
+    .site-nav{display:flex;align-items:center}
+    .site-nav .menu{display:flex;gap:24px;list-style:none;margin:0;padding:0}
+    .site-nav .menu>li{position:relative}
+    .site-nav a{color:#fff;font-weight:600;text-decoration:none;opacity:.95}
+    .site-nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:3px}
+    .submenu{
+      position:absolute;
+      top:100%;left:0;
+      min-width:220px;
+      background:#1e0f2b;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:12px;
+      padding:8px;
+      list-style:none;
+      margin:8px 0 0;
+      box-shadow:0 14px 34px rgba(0,0,0,.28);
+      display:none;
+      z-index:60
+    }
+    .has-sub:hover>.submenu,.has-sub:focus-within>.submenu{display:block}
+    .submenu a{display:block;padding:10px 12px;border-radius:8px}
+
+    .btn-primary{
+      background:#fff;
+      color:var(--brand);
+      border:0;
+      padding:12px 20px;
+      border-radius:14px;
+      font-weight:700;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:8px
+    }
+
+    #menuBtn{
+      position:absolute;
+      right:12px;
+      top:50%;
+      transform:translateY(-50%);
+      z-index:60
+    }
+    @media (min-width:769px){#menuBtn{position:static;transform:none;margin-left:auto}}
+    @media (max-width:768px){
+      nav.site-nav{display:none !important}
+      .btn-primary{padding:8px 12px;border-radius:10px;font-size:14px}
+    }
+
+    /* ===== HERO ===== */
+    .hero{
+      position:relative;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      min-height:74vh;
+      color:#fff;
+      background-size:cover;
+      background-position:center;
+      animation:changeHero 18s infinite ease-in-out
+    }
+    @keyframes changeHero{
+      0%,33%{background-image:url('hero-1.jpg');background-position:center 35%}
+      34%,66%{background-image:url('hero-2.jpg');background-position:center 40%}
+      67%,100%{background-image:url('hero-3.jpg');background-position:center 30%}
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(20,10,35,.7),rgba(30,10,40,.55));
+      z-index:1
+    }
+    .hero .content{
+      position:relative;
+      z-index:2;
+      max-width:760px;
+      padding:30px 16px
+    }
+    .hero h1{
+      font-size:clamp(32px,6vw,56px);
+      font-weight:800;
+      line-height:1.15;
+      margin:0 0 10px;
+      background:linear-gradient(90deg,#fff,#e5c2ff);
+      -webkit-background-clip:text;
+      color:transparent;
+      overflow-wrap:anywhere;
+      max-width:92vw
+    }
+    .hero p{font-size:1.05rem;color:rgba(255,255,255,.94)}
+    @media (max-width:768px){
+      .hero{min-height:46vh}
+      .hero .content{max-width:92%;padding:14px 8px}
+      .hero h1{font-size:clamp(22px,6.2vw,28px)}
+      .hero p{font-size:14px}
+    }
+
+    /* ===== Video ===== */
+    .video-hero{padding:32px 0}
+    .video-two-col{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:center}
+    .video-copy h3{margin:0 0 8px;font-size:1.4rem;color:#5b2580}
+    .video-copy p{margin:0 0 10px;opacity:.9}
+    @media (max-width:900px){.video-two-col{grid-template-columns:1fr}}
+
+    section{padding:64px 0}
+    .muted{color:#5b2580}
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:18px
+    }
+    .card{
+      border-radius:18px;
+      padding:18px;
+      border:1px solid #eee;
+      box-shadow:0 10px 30px rgba(30,10,60,.05);
+      background:#fff
+    }
+    .card img{border-radius:12px;aspect-ratio:16/10;object-fit:cover}
+    .promos{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:18px
+    }
+    .promo img{border-radius:12px;aspect-ratio:16/10;object-fit:cover}
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:14px
+    }
+    .gallery img{border-radius:14px;aspect-ratio:1/1;object-fit:cover}
+
+    .contact{display:grid;grid-template-columns:1.1fr .9fr;gap:28px}
+    @media (max-width:900px){.contact{grid-template-columns:1fr}}
+
+    /* FAB flotante (solo WhatsApp + Waze, derecha al centro) */
+    .fr-fab{
+      position:fixed;
+      right:14px;
+      top:50%;
+      transform:translateY(-50%);
+      z-index:9999;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      align-items:flex-end;
+    }
+    .fr-ic{
+      width:52px;
+      height:52px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:999px;
+      text-decoration:none;
+      box-shadow:0 10px 18px rgba(0,0,0,.18)
+    }
+    .fr-ic svg{width:26px;height:26px;fill:#fff}
+    .fr-wa{background:#25D366}
+    .fr-waze{background:#0099ff}
+
+    @media (max-width:768px){
+      .fr-ic{width:46px;height:46px}
+      .fr-ic svg{width:22px;height:22px}
+    }
+
+    .site-footer.dark{
+      background:linear-gradient(180deg,#160c1f 0%,#241235 100%);
+      color:#fff;
+      border-top:1px solid rgba(255,255,255,.12)
+    }
+    .site-footer a{color:#e9d9ff;text-decoration:none}
+    .site-footer a:hover{text-decoration:underline;text-underline-offset:3px}
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.4fr 1fr 1fr 1.6fr;
+      gap:28px;
+      padding:36px 0 12px
+    }
+    .brand-line{display:flex;gap:12px;align-items:flex-start}
+    .f-logo{height:40px}
+    .site-footer .f-col h4{font-size:1rem;margin:0 0 10px;color:#f5eaff}
+    .site-footer .f-col ul{list-style:none;padding:0;margin:0}
+    .site-footer .f-col li{margin:6px 0}
+    .f-social{margin-top:8px}
+    .map-links{margin-top:8px;font-size:.95rem}
+    .footer-bottom{
+      border-top:1px solid rgba(255,255,255,.12);
+      padding:14px 0;
+      text-align:center;
+      opacity:.9
+    }
+    @media (max-width:900px){
+      .footer-grid{grid-template-columns:1fr;gap:14px;padding:22px 0 8px}
+    }
+
+    nav ul li{position:relative}
+    nav ul li>ul{
+      position:absolute;
+      top:100%;
+      left:0;
+      background:#2a013d;
+      border-radius:12px;
+      padding:10px 0;
+      min-width:240px;
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+      transition:opacity .22s,transform .22s,visibility .22s;
+      transform:translateY(6px);
+      z-index:60
+    }
+    nav ul li:hover>ul,nav ul li:focus-within>ul{
+      opacity:1;
+      visibility:visible;
+      pointer-events:auto;
+      transform:translateY(0)
+    }
+    nav ul li:hover::after{
+      content:"";
+      position:absolute;
+      top:100%;left:0;width:100%;height:14px
+    }
+
+    /* ===== PÉTALOS LAVANDA (NAVIDAD) ===== */
+    .xmas-petal{
+      position:fixed;
+      top:-40px;
+      width:16px;
+      height:22px;
+      background:radial-gradient(circle at 30% 30%, #fff 0, #fff 18%, #f4deff 40%, #b37cff 100%);
+      border-radius:60% 40% 60% 40%;
+      opacity:.0;
+      z-index:5;
+      pointer-events:none;
+      animation:petal-fall linear infinite;
+    }
+    @keyframes petal-fall{
+      0%{
+        transform:translateY(0) translateX(0) rotate(0deg);
+        opacity:0;
+      }
+      10%{
+        opacity:.9;
+      }
+      100%{
+        transform:translateY(110vh) translateX(40px) rotate(260deg);
+        opacity:0;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"DaySpa","name":"Figura Rostro KG","url":"https://figurarostro.life/","telephone":"+507 6474-6168","address":{"@type":"PostalAddress","streetAddress":"Royal Park – Av. Ernesto T. Lefevre","addressLocality":"Ciudad de Panamá","addressCountry":"PA"},"openingHours":"Mo-Su 08:00-20:00"}
+  </script>
 </head>
-
 <body>
 
-<!-- TOPBAR -->
-
-<div class="topbar">
-
-<div class="container topbar-inner">
-
-<div>📞 +507 6474-6168</div>
-<div>📍 Royal Park · Panamá</div>
-<div>🕘 Lun - Dom · 8am a 8pm</div>
-
-</div>
-</div>
-
-<!-- HEADER -->
-
-<header>
-
-<div class="container header-inner">
-
-<a href="/" class="brand">
-<img src="logo-header-white.png">
-</a>
-
-<nav class="site-nav">
-
-<ul class="menu">
-
-<li><a href="/">Inicio</a></li>
-<li><a href="#sobre">Nosotros</a></li>
-<li><a href="https://figurarostro.life/menu-servicios-figura-rostro.html">Servicios</a></li>
-<li><a href="/fibroblast.html">Plasma Fibroblast</a></li>
-<li><a href="#contacto">Contacto</a></li>
-
-</ul>
-
-</nav>
-
-<a href="https://wa.me/50764746168" class="btn-primary">
-WhatsApp
-</a>
-
-</div>
-
-</header>
-
-<!-- HERO -->
-
-<section class="hero">
-
-<div class="hero-content container">
-
-<div class="hero-badge">
-✨ Rejuvenecimiento · Bienestar · Adelgazamiento
-</div>
-
-<h1>
-Rejuvenece tu rostro y redefine tu figura <span>sin cirugía</span>
-</h1>
-
-<p>
-Especialistas en Plasma Fibroblast, Adelgazamiento Exprés y tratamientos wellness en Panamá. Atención privada, valoración personalizada y resultados progresivos.
-</p>
-
-<div class="hero-actions">
-
-<a href="https://wa.me/50764746168" class="btn-primary">
-Consultar por WhatsApp
-</a>
-
-<a href="https://figurarostro.life/reservar-v2.html" class="btn-ghost">
-Reservar valoración
-</a>
-
-</div>
-
-<div class="hero-trust">
-
-<span>✔️ Atención personalizada</span>
-<span>✔️ Ambiente wellness</span>
-<span>✔️ Cabinas privadas</span>
-<span>✔️ Resultados progresivos</span>
-
-</div>
-<div class="hero-stats">
-
-<div class="hero-stat">
-<h3>+500</h3>
-<p>Pacientes atendidas en tratamientos faciales y corporales.</p>
-</div>
-
-<div class="hero-stat">
-<h3>100%</h3>
-<p>Valoraciones personalizadas según objetivos y necesidades.</p>
-</div>
-
-<div class="hero-stat">
-<h3>Premium</h3>
-<p>Ambiente privado, relajante y enfocado en bienestar integral.</p>
-</div>
-
-</div>
-</div>
-
-</section>
-
-<!-- PILARES -->
-
-<section class="pilares">
-
-<div class="container">
-
-<div class="pilares-grid">
-
-<article class="pilar">
-
-<img src="especialidad-adelgazamiento.jpg">
-
-<div class="pilar-content">
-
-<div class="pilar-tag">Pilar #1</div>
-
-<h3>Adelgazamiento Exprés</h3>
-
-<p>
-Programas intensivos para apoyar reducción de medidas y definición corporal visible.
-</p>
-
-<div class="hero-actions" style="justify-content:flex-start;margin-top:18px;">
-<a href="https://wa.me/50764746168" class="btn-primary">
-Quiero información
-</a>
-</div>
-
-</div>
-
-</article>
-
-<article class="pilar">
-
-<img src="especialidad-plasma.jpg">
-
-<div class="pilar-content">
-
-<div class="pilar-tag">Pilar #2</div>
-
-<h3>Plasma Fibroblast</h3>
-
-<p>
-Tensado y rejuvenecimiento de piel con enfoque clínico y valoración personalizada.
-</p>
-
-<div class="hero-actions" style="justify-content:flex-start;margin-top:18px;">
-<a href="/fibroblast.html" class="btn-primary">
-Ver tratamiento
-</a>
-</div>
-
-</div>
-
-</article>
-
-<article class="pilar">
-
-<img src="galeria-5.jpg">
-
-<div class="pilar-content">
-
-<div class="pilar-tag">Pilar #3</div>
-
-<h3>Limpieza Energética</h3>
-
-<p>
-Espacios enfocados en armonización, relajación profunda y bienestar integral.
-</p>
-
-<div class="hero-actions" style="justify-content:flex-start;margin-top:18px;">
-<a href="https://wa.me/50764746168" class="btn-primary">
-Consultar
-</a>
-</div>
-
-</div>
-
-</article>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- BENEFICIOS -->
-
-<section>
-
-<div class="container">
-
-<div class="section-title">
-
-<span>¿POR QUÉ ELEGIRNOS?</span>
-
-<h2>
-Experiencia estética con enfoque humano
-</h2>
-
-<p>
-Combinamos estética avanzada, bienestar y atención personalizada para ayudarte a sentirte mejor contigo misma.
-</p>
-
-</div>
-
-<div class="benefits">
-
-<div class="benefit">
-<h4>Valoración personalizada</h4>
-<p>Protocolos adaptados según objetivos y necesidades.</p>
-</div>
-
-<div class="benefit">
-<h4>Ambiente premium</h4>
-<p>Cabinas privadas y ambiente relajante wellness.</p>
-</div>
-
-<div class="benefit">
-<h4>Atención enfocada</h4>
-<p>Especialistas en rejuvenecimiento facial y corporal.</p>
-</div>
-
-<div class="benefit">
-<h4>Seguimiento</h4>
-<p>Acompañamiento durante el proceso y orientación.</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- GALERÍA -->
-
-<section>
-
-<div class="container">
-
-<div class="section-title">
-
-<span>ESPACIOS · EXPERIENCIA · RESULTADOS</span>
-
-<h2>
-Conoce Figura Rostro KG
-</h2>
-
-</div>
-
-<div class="gallery-grid">
-
-<div class="gallery-item"><img src="galeria-1.jpg"></div>
-<div class="gallery-item"><img src="galeria-2.jpg"></div>
-<div class="gallery-item"><img src="galeria-3.jpg"></div>
-<div class="gallery-item"><img src="galeria-4.jpg"></div>
-<div class="gallery-item"><img src="galeria-5.jpg"></div>
-<div class="gallery-item"><img src="galeria-6.jpg"></div>
-<div class="gallery-item"><img src="galeria-7.jpg"></div>
-<div class="gallery-item"><img src="galeria-8.jpg"></div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- CTA -->
-
-<section>
-
-<div class="container">
-
-<div class="cta-premium">
-
-<h2>
-Tu cambio puede comenzar hoy
-</h2>
-
-<p>
-Agenda tu valoración personalizada y descubre qué tratamiento puede ayudarte a verte y sentirte mejor.
-</p>
-
-<div class="hero-actions">
-
-<a href="https://wa.me/50764746168" class="btn-primary" style="background:#fff;color:#7c5cff;">
-Hablar por WhatsApp
-</a>
-
-<a href="https://figurarostro.life/reservar-v2.html" class="btn-ghost" style="background:rgba(255,255,255,.14);color:#fff;border-color:rgba(255,255,255,.22)">
-Reservar valoración
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- CONTACTO -->
-
-<section id="contacto">
-
-<div class="container">
-
-<div class="section-title">
-
-<span>CONTACTO</span>
-
-<h2>
-Agenda tu cita
-</h2>
-
-<p>
-Royal Park · Av. Ernesto T. Lefevre · Ciudad de Panamá
-</p>
-
-</div>
-
-<div class="hero-actions">
-
-<a href="https://wa.me/50764746168" class="btn-primary">
-WhatsApp
-</a>
-
-<a href="https://figurarostro.life/reservar-v2.html" class="btn-ghost">
-Reservar online
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- FOOTER -->
-
-<footer>
-
-<div class="container footer-grid">
-
-<div>
-
-<img src="logo-header-white.png" style="height:52px;width:auto;margin-bottom:18px;">
-
-<p>
-Centro estético enfocado en rejuvenecimiento facial, adelgazamiento y bienestar integral en Panamá.
-</p>
-
-</div>
-
-<div>
-
-<h4>Servicios</h4>
-
-<ul>
-
-<li><a href="/fibroblast.html">Plasma Fibroblast</a></li>
-<li><a href="https://figurarostro.life/menu-servicios-figura-rostro.html">Menú de servicios</a></li>
-<li><a href="#">Adelgazamiento Exprés</a></li>
-<li><a href="#">Limpieza Energética</a></li>
-
-</ul>
-
-</div>
-
-<div>
-
-<h4>Contacto</h4>
-
-<p>
-📞 +507 6474-6168
-</p>
-
-<p>
-📍 Royal Park · Panamá
-</p>
-
-<p>
-🕘 Lun - Dom · 8am a 8pm
-</p>
-
-</div>
-
-</div>
-
-<div class="footer-bottom">
-
-© <span id="year"></span> Figura Rostro KG · Panamá
-
-</div>
-
-</footer>
-
-<!-- FLOAT BUTTONS -->
-
-<div class="fr-fab">
-
-<a class="fr-ic fr-wa"
-href="https://wa.me/50764746168"
-target="_blank">
-
-<svg viewBox="0 0 24 24">
-<path d="M12 2a10 10 0 0 0-8.94 14.5L2 22l5.7-1.5A10 10 0 1 0 12 2z"/>
-</svg>
-
-</a>
-
-<a class="fr-ic fr-waze"
-href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes"
-target="_blank">
-
-<svg viewBox="0 0 24 24">
-<path d="M12 2c5.5 0 10 3.9 10 8.7 0 3.9-3 7.2-7.2 8.2z"/>
-</svg>
-
-</a>
-
-</div>
-
-<script>
-
-document.getElementById('year').textContent = new Date().getFullYear();
-
-</script>
-
+  <!-- Estilos extra para gorro, blog y lluvia de pinos -->
+  <style>
+    /* Gorro navideño dibujado en CSS sobre el logo */
+    header .brand{
+      position:relative;
+      display:inline-block;
+    }
+    header .brand::after{
+      content:"";
+      position:absolute;
+      top:-6px;
+      right:6px;
+      width:26px;
+      height:18px;
+      border-left:14px solid transparent;
+      border-right:14px solid transparent;
+      border-bottom:18px solid #d62828;
+      border-radius:4px;
+      transform:rotate(18deg);
+    }
+    header .brand::before{
+      content:"";
+      position:absolute;
+      bottom:4px;
+      right:8px;
+      width:18px;
+      height:6px;
+      background:#fff;
+      border-radius:999px;
+      transform:rotate(18deg);
+    }
+    @media (max-width:768px){
+      header .brand::after{
+        top:-4px;right:4px;
+        width:20px;height:14px;
+        border-left-width:11px;
+        border-right-width:11px;
+        border-bottom-width:14px;
+      }
+      header .brand::before{
+        bottom:3px;right:6px;
+        width:14px;height:5px;
+      }
+    }
+
+    /* Blog: tarjetas en columna (imagen arriba, texto ancho) */
+    .cards-blog .card{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      align-items:stretch;
+    }
+    .cards-blog .blog-media img{
+      border-radius:14px;
+      width:100%;
+      height:auto;
+      object-fit:cover;
+    }
+    .cards-blog .blog-copy h3{
+      margin-top:0;
+      margin-bottom:6px;
+      font-size:1.02rem;
+    }
+    .cards-blog .blog-copy p{
+      margin:0 0 6px;
+      font-size:.92rem;
+      line-height:1.6;
+    }
+
+    /* Lluvia de arbolitos de Navidad */
+    .xmas-tree{
+      position:fixed;
+      top:-40px;
+      width:18px;
+      height:28px;
+      z-index:5;
+      pointer-events:none;
+      opacity:0;
+      animation:xmasTreeFall linear infinite;
+    }
+    .xmas-tree::before{
+      content:"";
+      position:absolute;
+      bottom:0;
+      left:50%;
+      width:6px;
+      height:8px;
+      background:#8b5a2b;
+      transform:translateX(-50%);
+      border-radius:2px;
+    }
+    .xmas-tree::after{
+      content:"";
+      position:absolute;
+      bottom:8px;
+      left:50%;
+      width:0;
+      height:0;
+      border-left:9px solid transparent;
+      border-right:9px solid transparent;
+      border-bottom:20px solid #2ecc71;
+      transform:translateX(-50%);
+    }
+    @keyframes xmasTreeFall{
+      0%{transform:translateY(0) translateX(0) rotate(0deg); opacity:0;}
+      10%{opacity:.9;}
+      100%{transform:translateY(110vh) translateX(40px) rotate(20deg); opacity:0;}
+    }
+  </style>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-inner">
+      <a href="/" class="brand" aria-label="Inicio Figura Rostro KG">
+        <img src="logo-header-white.png" alt="Figura Rostro KG — Estética en Panamá">
+      </a>
+
+      <nav class="site-nav" aria-label="Menú principal">
+        <ul class="menu">
+          <li class="has-sub">
+            <a href="/tratamientos-faciales/">Faciales</a>
+            <ul class="submenu">
+              <li><a href="/peeling-facial.html">Peeling Facial</a></li>
+              <li><a href="/fibroblast.html">Plasma Fibroblast</a></li>
+              <li><a href="/radiofrecuencia-facial.html">Radiofrecuencia Facial</a></li>
+              <li><a href="/lifting-sin-cirugia.html">Lifting sin cirugía</a></li>
+            </ul>
+          </li>
+          <li class="has-sub">
+            <a href="/masajes-terapeuticos/">Masajes</a>
+            <ul class="submenu">
+              <li><a href="/masaje-relajante.html">Masaje Relajante</a></li>
+              <li><a href="/masajes-terapeuticos/">Descontracturante</a></li>
+              <li><a href="/masajes-terapeuticos/">Drenaje linfático</a></li>
+              <li><a href="/masaje-terapeutico-adultos-mayores.html">Adultos Mayores</a></li>
+              <li><a href="/terapia-masaje-discapacidad.html">Terapia adaptada</a></li>
+            </ul>
+          </li>
+          <li><a href="#sobre">Nosotros</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="/menu.html">Menú</a></li>
+        </ul>
+      </nav>
+
+      <!-- Botón Agendar -->
+      <a id="menuBtn"
+         href="https://figurarostro.life/reservar-cita-figura-rostro.html"
+         class="btn-primary"
+         aria-label="Reservar cita en Figura Rostro KG">
+        Agendar
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="content">
+      <h1>Masajes, faciales y plasma Fibroblast en Parque Lefevre</h1>
+      <p>Estética facial y corporal con resultados reales: masaje relajante y descontracturante, masajes reductores, peeling facial, radiofrecuencia y plasma Fibroblast para rejuvenecer sin cirugía.</p>
+      <a href="#contacto" class="btn-primary" style="margin-top:10px">Reservar ahora</a>
+    </div>
+  </section>
+
+  <!-- Video -->
+  <section id="video" class="video-hero">
+    <div class="container video-two-col" aria-label="Video de presentación">
+      <div class="ratio-16x9">
+        <iframe src="https://www.youtube.com/embed/mLwrr6g9OJo?rel=0&modestbranding=1" title="Figura Rostro KG — Presentación" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <div class="video-copy">
+        <h3>Plasma Fibroblast: lifting sin cirugía</h3>
+        <p>Suaviza arrugas y flacidez estimulando colágeno. Ideal para párpados, código de barras, líneas finas y zonas con flacidez leve.</p>
+        <p><a class="btn-primary" href="https://figurarostro.life/chat-citas.html" target="_blank" rel="noopener">Reservar cita</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Promos -->
+  <section id="promos" style="background:#faf7ff">
+    <div class="container">
+      <h2 class="muted" style="font-size:34px;margin:0 0 10px">Promociones destacadas</h2>
+      <p style="opacity:.85;margin-bottom:16px">Masaje relajante, paquete reductor y faciales de alta gama.</p>
+
+      <div class="promos">
+        <article class="card promo">
+          <span class="badge">Oferta</span>
+          <span class="subbadge">Cupos limitados</span>
+          <img src="promo-relax.jpg" alt="Oferta de masaje relajante en Panamá">
+          <h3>Masaje Relajante Premium</h3>
+          <p>Relajación total con terapeutas profesionales para soltar tensiones y dormir mejor.</p>
+          <div class="price-row"><span class="old">$89.00</span><span class="now">$69.00</span></div>
+          <p class="note">Aplica con código <strong>KG-31</strong>.</p>
+        </article>
+
+        <article class="card promo">
+          <span class="badge">Paquete</span>
+          <span class="subbadge">10 sesiones</span>
+          <img src="promo-descontracturante.jpg" alt="Paquete reductor en Panamá">
+          <h3>Paquete Reductor</h3>
+          <p>Sesiones reductoras, drenaje y evaluación corporal. Resultados progresivos para contorno y celulitis.</p>
+          <p style="font-weight:700;margin:.5rem 0">Desde <span>$299</span></p>
+        </article>
+
+        <article class="card promo">
+          <span class="badge">-30%</span>
+          <span class="subbadge">Temporada</span>
+          <img src="promo-peeling.jpg" alt="Peeling facial unisex en Panamá">
+          <h3>Peeling Facial Unisex</h3>
+          <p>Disminuye manchas finas y marcas, mejora textura e ilumina el rostro.</p>
+          <div class="price-row"><span class="old">$85.00</span><span class="now">$65.00</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre nosotros -->
+  <section id="sobre">
+    <div class="container">
+      <h2 class="muted" style="font-size:40px;margin:0 0 10px">Sobre nosotros</h2>
+      <p style="max-width:820px">
+        En <strong>Figura Rostro KG</strong> combinamos técnicas manuales, aparatología no invasiva y productos profesionales para
+        <em>masaje relajante, paquetes reductores, peeling facial, radiofrecuencia y plasma Fibroblast</em>. Estamos en <strong>Parque Lefevre (Royal Park)</strong>, con atención de <strong>8:00 a.m. a 8:00 p.m.</strong>
+      </p>
+      <ul style="margin:18px 0 28px;line-height:1.9">
+        <li>✔️ Valoración personalizada y seguimiento por esteticista.</li>
+        <li>✔️ Protocolos para anti-edad, hiperpigmentación, acné y contorno corporal.</li>
+        <li>✔️ Cabinas privadas, trato humano y ambiente relajante.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Servicios -->
+  <section id="servicios">
+    <div class="container">
+      <h2 class="muted" style="font-size:34px;margin:0 0 10px">Servicios</h2>
+      <p style="opacity:.85;margin-bottom:16px">Faciales, masajes y rejuvenecimiento no invasivo.</p>
+
+      <h3 style="margin:18px 0 8px">Faciales</h3>
+      <div class="cards">
+        <article class="card">
+          <img src="facial-limpieza.jpg" alt="Limpieza facial premium en Panamá">
+          <h3>Limpieza Facial Premium</h3>
+          <p>Higiene profunda, extracción controlada y mascarilla nutritiva para oxigenar la piel.</p>
+        </article>
+
+        <article class="card">
+          <img src="peeling.jpg" alt="Peeling facial de alta gama en Panamá">
+          <h3>Peeling Facial de Alta Gama</h3>
+          <p>Tono más uniforme y luminoso con protocolos adaptados a tu tipo de piel.</p>
+        </article>
+
+        <article class="card">
+          <img src="dermaplaning.jpg" alt="Dermaplaning profesional">
+          <h3>Dermaplaning</h3>
+          <p>Elimina células muertas y vello fino para dejar la piel más lisa y receptiva a activos.</p>
+        </article>
+      </div>
+
+      <h3 style="margin:28px 0 8px">Masajes y terapias</h3>
+      <div class="cards">
+        <article class="card">
+          <img src="masaje-relajante.jpg" alt="Masaje relajante en Parque Lefevre">
+          <h3>Masaje Relajante</h3>
+          <p>Alivia el estrés, mejora el descanso y ayuda a desconectar de la rutina diaria.</p>
+        </article>
+        <article class="card">
+          <img src="descontracturante.jpg" alt="Masaje descontracturante para cuello y espalda">
+          <h3>Descontracturante</h3>
+          <p>Ideal para tensión en cuello, espalda y hombros por malas posturas o carga física.</p>
+        </article>
+        <article class="card">
+          <img src="drenaje-linfatico.jpg" alt="Drenaje linfático manual">
+          <h3>Drenaje Linfático</h3>
+          <p>Ayuda a reducir inflamación, retención de líquidos y a mejorar la sensación de pesadez.</p>
+        </article>
+      </div>
+
+      <h3 style="margin:28px 0 8px">Rejuvenecimiento</h3>
+      <div class="cards">
+        <article class="card">
+          <img src="radiofrecuencia.jpg" alt="Radiofrecuencia facial en Panamá">
+          <h3>Radiofrecuencia</h3>
+          <p>Tensado cutáneo sin reposo, estimula colágeno en rostro y cuello.</p>
+        </article>
+        <article class="card">
+          <img src="microcorrientes.jpg" alt="Yoga facial y microcorrientes">
+          <h3>Yoga Facial / Microcorrientes</h3>
+          <p>Ejercita musculatura facial para un lifting suave y natural.</p>
+        </article>
+        <article class="card">
+          <img src="fibroblast.jpg" alt="Plasma Fibroblast en Panamá">
+          <h3>Plasma / Fibroblast</h3>
+          <p>Micro puntos que contraen la piel y estimulan colágeno para rejuvenecer sin cirugía.</p>
+        </article>
+
+        <div style="text-align:center;margin-top:22px;width:100%">
+          <a href="/promociones-estetica-panama.html" class="btn-primary" style="padding:12px 24px;font-size:17px;border-radius:14px;display:inline-block">
+            Ver todas las promociones
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tratamientos estrella (blog) -->
+  <section id="blog" style="background:#fafafa">
+    <div class="container">
+      <h2 class="muted" style="font-size:34px;margin:0 0 10px">Tratamientos estrella para tu rostro y figura</h2>
+      <p style="opacity:.85;margin-bottom:22px;max-width:860px">
+        Te ayudamos a elegir entre faciales avanzados, plasma Fibroblast y paquetes reductores según tu objetivo: rejuvenecer, mejorar textura o moldear tu figura.
+      </p>
+
+      <div class="cards cards-blog">
+        <!-- Bloque 1: Hollywood + Peeling -->
+        <article class="card">
+          <div class="blog-media">
+            <img src="blog-hollywood-peeling.jpg" alt="Facial Hollywood y peeling facial en Panamá">
+          </div>
+          <div class="blog-copy">
+            <h3>Facial Hollywood + Peeling: piel luminosa y uniforme</h3>
+            <p>
+              El <strong>facial Hollywood</strong> da brillo inmediato, afinando poros y mejorando la textura de la piel, ideal antes de eventos o sesiones de fotos.
+            </p>
+            <p>
+              Podemos combinarlo con un <strong>peeling suave</strong> y limpieza profunda para trabajar manchas finas y piel apagada, siempre con protocolo adaptado a tu tipo de piel.
+            </p>
+            <a href="/peeling-facial.html" class="btn-primary" style="margin-top:8px;padding:10px 18px;font-size:.9rem;border-radius:12px;">
+              Ver detalles del facial
+            </a>
+          </div>
+        </article>
+
+        <!-- Bloque 2: Plasma Fibroblast -->
+        <article class="card">
+          <div class="blog-media">
+            <img src="blog-fibroblast-parpados-abdomen.jpg" alt="Plasma Fibroblast en párpados y abdomen">
+          </div>
+          <div class="blog-copy">
+            <h3>Plasma Fibroblast: párpados y abdomen sin cirugía</h3>
+            <p>
+              El <strong>plasma Fibroblast</strong> aplica puntos de calor controlado que contraen la piel y estimulan colágeno. Es muy solicitado para <strong>párpados caídos</strong> y contorno de ojos.
+            </p>
+            <p>
+              También se usa en zonas con <strong>flacidez suave en abdomen</strong> después de cambios de peso o embarazo, siempre con valoración previa y cuidados claros de post tratamiento.
+            </p>
+            <a href="/fibroblast.html" class="btn-primary" style="margin-top:8px;padding:10px 18px;font-size:.9rem;border-radius:12px;">
+              Más información sobre Fibroblast
+            </a>
+          </div>
+        </article>
+
+        <!-- Bloque 3: Paquete reductor + drenaje -->
+        <article class="card">
+          <div class="blog-media">
+            <img src="blog-reductores-drenaje.jpg" alt="Paquete reductor y drenaje linfático">
+          </div>
+          <div class="blog-copy">
+            <h3>Paquete reductor y drenaje linfático</h3>
+            <p>
+              Nuestros <strong>paquetes reductores</strong> combinan masaje reductor, técnicas de moldeamiento y <strong>drenaje linfático</strong> para mejorar contorno, celulitis y sensación de pesadez.
+            </p>
+            <p>
+              Diseñamos un <strong>plan de sesiones</strong> a tu medida (cintura, piernas, abdomen) con resultados progresivos y realistas.
+            </p>
+            <a href="/masajes-terapeuticos/" class="btn-primary" style="margin-top:8px;padding:10px 18px;font-size:.9rem;border-radius:12px;">
+              Ver paquetes reductores
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" style="background:#fafafa">
+    <div class="container contact">
+      <div>
+        <h2 class="muted" style="font-size:34px;margin:0 0 10px">Contacto</h2>
+        <p style="opacity:.9">Royal Park – Av. Ernesto T. Lefevre, Ciudad de Panamá</p>
+        <ul style="list-style:none;padding:0;margin:16px 0;line-height:1.9">
+          <li><strong>WhatsApp:</strong> <a href="https://wa.me/50764746168" target="_blank" rel="noopener">+507 6474-6168</a></li>
+          <li><strong>Teléfono:</strong> <a href="tel:+50764746168">+507 6474-6168</a></li>
+          <li><strong>Horario:</strong> Lunes a Domingo, 8:00 a.m. – 8:00 p.m.</li>
+          <li><strong>Cómo llegar:</strong>
+            <a href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noopener">Abrir en Waze</a> ·
+            <a href="https://maps.google.com/?q=Royal+Park+Ernesto+T+Lefevre+Panama" target="_blank" rel="noopener">Google Maps</a>
+          </li>
+        </ul>
+        <p style="margin:8px 0 0;opacity:.85;max-width:520px">
+          Para agendar tu cita puedes escribirnos directamente por <strong>WhatsApp</strong>, llamarnos por teléfono
+          o usar el <strong>chat en vivo (PureChat)</strong> que verás en la parte baja de la pantalla.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer dark">
+    <div class="container footer-grid">
+      <div class="f-col">
+        <div class="brand-line">
+          <img class="f-logo" src="logo-header-white.png" alt="Figura Rostro KG logo">
+          <div>
+            <h4>Figura Rostro KG</h4>
+            <p style="margin:6px 0 0; opacity:.9;">Parque Lefevre · Royal Park, Ciudad de Panamá.</p>
+            <p style="margin:6px 0 0; opacity:.9;">Atención: 8:00 a.m. – 8:00 p.m.</p>
+            <div class="f-social" style="margin-top:8px">
+              <a href="https://instagram.com/figurarostrokg" target="_blank" rel="noopener">Instagram</a>
+              <span>·</span>
+              <a href="https://facebook.com/figurarostrokg" target="_blank" rel="noopener">Facebook</a>
+              <span>·</span>
+              <a href="https://www.tiktok.com/@figurarostrokg" target="_blank" rel="noopener">TikTok</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="f-col">
+        <h4>Faciales</h4>
+        <ul>
+          <li><a href="/tratamientos-faciales/">Tratamientos faciales</a></li>
+          <li><a href="/peeling-facial.html">Peeling Facial</a></li>
+          <li><a href="/fibroblast.html">Plasma Fibroblast</a></li>
+          <li><a href="/radiofrecuencia-facial.html">Radiofrecuencia Facial</a></li>
+          <li><a href="/lifting-sin-cirugia.html">Lifting sin cirugía</a></li>
+        </ul>
+      </div>
+
+      <div class="f-col">
+        <h4>Masajes & Salón</h4>
+        <ul>
+          <li><a href="/masajes-terapeuticos/">Masajes terapéuticos</a></li>
+          <li><a href="/masaje-relajante.html">Masaje Relajante</a></li>
+          <li><a href="/keratina-organica-biotanix.html">Keratina Orgánica Biotanix</a></li>
+          <li><a href="/masaje-terapeutico-adultos-mayores.html">Adultos Mayores</a></li>
+          <li><a href="/terapia-masaje-discapacidad.html">Terapia adaptada</a></li>
+        </ul>
+      </div>
+
+      <div class="f-col">
+        <h4>Cómo llegar</h4>
+        <div class="map-links">
+          <a href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noopener">Abrir en Waze</a> ·
+          <a href="https://maps.google.com/?q=Royal+Park+Ernesto+T+Lefevre+Panama" target="_blank" rel="noopener">Google Maps</a>
+          <p style="margin:10px 0 0;font-size:.9rem;opacity:.9;">
+            También puedes chatear con nosotros por <strong>WhatsApp</strong> o usar el <strong>chat en vivo (PureChat)</strong> para resolver dudas y agendar tu cita.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        © <span id="year"></span> Figura Rostro KG · Todos los derechos reservados
+      </div>
+    </div>
+  </footer>
+
+  <!-- FAB flotante: solo WhatsApp y Waze -->
+  <div class="fr-fab" aria-label="Accesos rápidos">
+    <a class="fr-ic fr-wa" href="https://wa.me/50764746168" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.94 14.5L2 22l5.7-1.5A10 10 0 1 0 12 2zm5.5 14.1c-.24.68-1.4 1.3-1.96 1.34-.5.03-1.14.05-1.84-.12-.42-.1-.97-.31-1.67-.61-2.94-1.27-4.86-4.2-5.01-4.4-.15-.2-1.2-1.6-1.2-3.06 0-1.45.76-2.16 1.03-2.45.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.24.59.82 2.05.9 2.2.07.15.12.33.01.53-.1.2-.15.33-.3.51-.15.18-.31.4-.44.54-.15.15-.31.32-.13.62.18.3.8 1.3 1.71 2.1 1.18 1.05 2.17 1.37 2.47 1.52.3.15.48.13.66-.08.18-.2.76-.89.96-1.2.2-.3.41-.26.67-.15.26.1 1.64.77 1.92.91.29.15.48.22.55.34.07.12.07.7-.17 1.38z"/></svg>
+    </a>
+    <a class="fr-ic fr-waze" href="https://ul.waze.com/ul?query=Royal%20Park%20Ernesto%20T%20Lefevre%20Panama&navigate=yes" target="_blank" rel="noopener" aria-label="Waze" title="Waze">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c5.5 0 10 3.9 10 8.7 0 3.9-3 7.2-7.2 8.2-.5.1-.7.4-.9.8-.5 1-1.4 2.1-2.9 2.1-1.6 0-2.4-1.1-2.9-2.1-.2-.4-.4-.7-.9-.8C5 17.9 2 14.6 2 10.7 2 5.9 6.5 2 12 2zm-6 9a1 1 0 110-2 1 1 0 010 2zm5 0a1 1 0 110-2 1 1 0 010 2zm5 0a1 1 0 110-2 1 1 0 010 2z"/></svg>
+    </a>
+  </div>
+
+  <!-- Scripts: año y lluvia de pinos en diciembre -->
+  <script>
+    function startXmasTrees(){
+      const MAX_TREES = 36;
+      let current = 0;
+
+      function addTree(){
+        if (current >= MAX_TREES) return;
+        const t = document.createElement('span');
+        t.className = 'xmas-tree';
+        t.style.left = Math.random() * 100 + 'vw';
+        const dur = 10 + Math.random() * 8;
+        t.style.animationDuration = dur + 's';
+        t.style.animationDelay = (Math.random() * 5) + 's';
+        document.body.appendChild(t);
+        current++;
+        const life = (dur + 5) * 1000;
+        setTimeout(function(){
+          if (t && t.parentNode) t.parentNode.removeChild(t);
+          current--;
+        }, life);
+      }
+
+      for (let i = 0; i < 12; i++){ addTree(); }
+      setInterval(addTree, 1200);
+    }
+
+    (function(){
+      const now = new Date();
+      const y = document.getElementById('year');
+      if (y) y.textContent = now.getFullYear();
+
+      // Lluvia de pinos solo en diciembre (mes 11)
+      if (now.getMonth() === 11) {
+        startXmasTrees();
+      }
+    })();
+  </script>
+
+  <!-- PURECHAT -->
+  <script type='text/javascript' data-cfasync='false'>
+    window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } };
+    (function () {
+      var done = false;
+      var script = document.createElement('script');
+      script.async = true;
+      script.type = 'text/javascript';
+      script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript';
+      document.getElementsByTagName('HEAD').item(0).appendChild(script);
+      script.onreadystatechange = script.onload = function (e) {
+        if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
+          var w = new PCWidget({c: '39cf325c-2286-4b58-b2af-9c647e257085', f: true });
+          done = true;
+        }
+      };
+    })();
+  </script>
 </body>
 </html>
