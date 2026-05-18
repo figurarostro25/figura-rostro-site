@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Figura Rostro KG | Estética Premium y Bienestar en Panamá</title>
-
-<meta name="description" content="Centro estético y bienestar en Panamá especializado en rejuvenecimiento facial, tratamientos corporales, Plasma Fibroblast y masajes terapéuticos.">
+<title>Figura Rostro KG | Estética y Bienestar Premium</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
 :root{
---bg:#f4f8f8;
---white:#ffffff;
---dark:#24343d;
---text:#50626b;
+  --bg:#f7faf9;
+  --white:#ffffff;
+  --text:#17343a;
+  --muted:#60757b;
 
---primary:#5f7f88;
---primary2:#8eb0b7;
+  --primary:#00a6a6;
+  --primary-dark:#007c80;
+  --secondary:#7b61ff;
+  --accent:#19c37d;
 
---gold:#d4b88d;
---soft:#eef5f5;
+  --soft:#eef8f7;
+  --soft-2:#f2f0ff;
 
---shadow:0 10px 30px rgba(0,0,0,.08);
---radius:22px;
+  --shadow:0 14px 40px rgba(0,0,0,.08);
+  --radius:28px;
 }
 
 *{
@@ -34,385 +34,352 @@ padding:0;
 box-sizing:border-box;
 }
 
-body{
-font-family:'Inter',sans-serif;
-background:var(--bg);
-color:var(--dark);
-overflow-x:hidden;
-}
-
 html{
 scroll-behavior:smooth;
 }
 
+body{
+font-family:'Inter',sans-serif;
+background:var(--bg);
+color:var(--text);
+overflow-x:hidden;
+}
+
 .container{
-width:92%;
-max-width:1240px;
+width:min(1200px,92%);
 margin:auto;
+}
+
+img{
+max-width:100%;
+display:block;
+}
+
+section{
+padding:90px 0;
 }
 
 /* HEADER */
 
 header{
-position:fixed;
+position:sticky;
 top:0;
-left:0;
-width:100%;
 z-index:999;
-background:linear-gradient(135deg,#f8fbfb,#e8f1f2);
-backdrop-filter:blur(8px);
-border-bottom:1px solid rgba(0,0,0,.04);
+backdrop-filter:blur(12px);
+background:
+linear-gradient(
+90deg,
+rgba(0,124,128,.95),
+rgba(123,97,255,.92)
+);
+
+box-shadow:0 5px 20px rgba(0,0,0,.08);
 }
 
 .header-inner{
-height:82px;
+height:84px;
 display:flex;
 align-items:center;
 justify-content:space-between;
 }
 
-.logo img{
-height:58px;
-object-fit:contain;
+.brand img{
+height:54px;
 }
 
-nav ul{
+.site-nav .menu{
 display:flex;
-align-items:center;
 gap:34px;
 list-style:none;
+align-items:center;
 }
 
-nav a{
+.site-nav a{
+color:white;
 text-decoration:none;
-color:var(--dark);
-font-weight:600;
-font-size:15px;
-transition:.3s;
-}
-
-nav a:hover{
-color:var(--primary);
-}
-
-.header-btn{
-background:linear-gradient(135deg,var(--primary),var(--primary2));
-color:#fff;
-padding:13px 22px;
-border-radius:14px;
 font-weight:700;
+font-size:.96rem;
+transition:.25s;
+}
+
+.site-nav a:hover{
+opacity:.85;
+}
+
+.btn-primary{
+background:
+linear-gradient(
+135deg,
+var(--primary),
+var(--secondary)
+);
+
+color:#fff;
+padding:15px 26px;
+border-radius:18px;
 text-decoration:none;
-box-shadow:var(--shadow);
+font-weight:800;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+gap:8px;
+transition:.25s ease;
+box-shadow:0 10px 24px rgba(0,166,166,.22);
+}
+
+.btn-primary:hover{
+transform:translateY(-2px);
+}
+
+.btn-secondary{
+background:white;
+color:var(--primary-dark);
+padding:15px 26px;
+border-radius:18px;
+text-decoration:none;
+font-weight:800;
 }
 
 /* HERO */
 
 .hero{
-margin-top:82px;
-height:72vh;
-min-height:560px;
 position:relative;
-overflow:hidden;
-border-radius:0 0 40px 40px;
-}
-
-.slider{
-height:100%;
-width:300%;
+min-height:72vh;
 display:flex;
-animation:slide 18s infinite;
-}
-
-.slide{
-width:100%;
-height:100%;
-position:relative;
+align-items:center;
+overflow:hidden;
+color:white;
 background-size:cover;
 background-position:center;
+animation:heroSlider 18s infinite ease-in-out;
 }
 
-.slide::before{
-content:'';
+.hero::before{
+content:"";
 position:absolute;
 inset:0;
-background:linear-gradient(
-90deg,
-rgba(15,25,28,.70),
-rgba(15,25,28,.25)
+
+background:
+linear-gradient(
+120deg,
+rgba(6,38,42,.78),
+rgba(14,88,96,.58),
+rgba(70,55,140,.40)
 );
 }
 
-.slide-content{
-position:absolute;
-left:8%;
-top:50%;
-transform:translateY(-50%);
-max-width:620px;
-color:#fff;
+@keyframes heroSlider{
+
+0%,33%{
+background-image:url('hero-1.jpg');
+}
+
+34%,66%{
+background-image:url('hero-2.jpg');
+}
+
+67%,100%{
+background-image:url('hero-3.jpg');
+}
+
+}
+
+.hero-content{
+position:relative;
 z-index:2;
+max-width:760px;
+padding:90px 0;
 }
 
-.slide-content h1{
-font-size:58px;
-line-height:1.08;
+.hero-tag{
+display:inline-block;
+padding:10px 16px;
+border-radius:999px;
+background:rgba(255,255,255,.14);
+backdrop-filter:blur(10px);
+font-weight:700;
+margin-bottom:20px;
+}
+
+.hero h1{
+font-size:clamp(2.5rem,5vw,5rem);
+line-height:1.03;
 font-weight:900;
-margin-bottom:18px;
+letter-spacing:-2px;
+margin-bottom:20px;
 }
 
-.slide-content p{
-font-size:18px;
+.hero p{
+font-size:1.08rem;
 line-height:1.8;
-opacity:.95;
 margin-bottom:28px;
+color:rgba(255,255,255,.92);
 }
 
 .hero-buttons{
 display:flex;
-gap:16px;
+gap:14px;
 flex-wrap:wrap;
 }
 
-.btn-main{
-background:linear-gradient(135deg,var(--gold),#e4d3b5);
-color:#1e1e1e;
-padding:16px 26px;
-border-radius:16px;
-font-weight:800;
-text-decoration:none;
-box-shadow:var(--shadow);
-}
+/* SECTION HEAD */
 
-.btn-second{
-background:rgba(255,255,255,.16);
-backdrop-filter:blur(8px);
-border:1px solid rgba(255,255,255,.25);
-color:#fff;
-padding:16px 26px;
-border-radius:16px;
-font-weight:700;
-text-decoration:none;
-}
-
-@keyframes slide{
-0%,28%{
-transform:translateX(0%);
-}
-33%,61%{
-transform:translateX(-33.333%);
-}
-66%,94%{
-transform:translateX(-66.666%);
-}
-100%{
-transform:translateX(0%);
-}
-}
-
-/* SECTION TITLE */
-
-.section{
-padding:90px 0;
-}
-
-.section-title{
+.section-head{
 text-align:center;
-margin-bottom:20px;
+margin-bottom:55px;
 }
 
-.section-title span{
-display:inline-block;
-background:#dce8ea;
-color:var(--primary);
-padding:10px 18px;
-border-radius:100px;
-font-weight:700;
-font-size:13px;
-margin-bottom:18px;
-}
-
-.section-title h2{
-font-size:48px;
+.section-head h2{
+font-size:clamp(2rem,4vw,3rem);
+font-weight:900;
 margin-bottom:16px;
 }
 
-.section-title p{
-max-width:760px;
+.section-head p{
+max-width:720px;
 margin:auto;
 line-height:1.8;
-color:var(--text);
+color:var(--muted);
 }
 
 /* SERVICES */
 
 .services-grid{
 display:grid;
-grid-template-columns:repeat(3,1fr);
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
 gap:28px;
-margin-top:55px;
 }
 
-.service-card{
-background:#fff;
-border-radius:26px;
+.card{
+background:white;
+border-radius:28px;
 overflow:hidden;
 box-shadow:var(--shadow);
-transition:.4s;
+transition:.3s ease;
 }
 
-.service-card:hover{
-transform:translateY(-8px);
+.card:hover{
+transform:translateY(-6px);
 }
 
-.service-card img{
+.card img{
 width:100%;
-height:240px;
+height:250px;
 object-fit:cover;
 }
 
-.service-info{
-padding:28px;
+.card-body{
+padding:26px;
 }
 
-.service-info h3{
-font-size:26px;
+.card-body h3{
+font-size:1.5rem;
 margin-bottom:14px;
+font-weight:800;
 }
 
-.service-info p{
+.card-body p{
 line-height:1.8;
-color:var(--text);
-margin-bottom:24px;
+color:var(--muted);
+margin-bottom:20px;
 }
 
-.service-btn{
-display:inline-block;
-padding:13px 20px;
-border-radius:14px;
-background:linear-gradient(135deg,var(--primary),var(--primary2));
-color:#fff;
-font-weight:700;
-text-decoration:none;
-}
+/* CTA */
 
-/* MENU BUTTON */
+.cta-box{
+background:
+linear-gradient(
+135deg,
+rgba(0,166,166,.08),
+rgba(123,97,255,.08)
+);
 
-.center-btn{
+border-radius:36px;
+padding:70px 50px;
 text-align:center;
-margin-top:48px;
+}
+
+.cta-box h2{
+font-size:clamp(2rem,4vw,3rem);
+margin-bottom:20px;
+font-weight:900;
+}
+
+.cta-box p{
+max-width:800px;
+margin:auto;
+line-height:1.9;
+margin-bottom:30px;
+color:var(--muted);
 }
 
 /* PLANS */
 
-.plans{
-background:linear-gradient(180deg,#eef4f5,#ffffff);
+.plans-section{
+background:
+linear-gradient(
+180deg,
+#f6fbfb,
+#eef5ff
+);
 }
 
 .plans-grid{
 display:grid;
-grid-template-columns:repeat(3,1fr);
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
 gap:28px;
-margin-top:55px;
 }
 
 .plan-card{
-background:#fff;
-border-radius:28px;
-padding:30px;
-box-shadow:var(--shadow);
-position:relative;
+background:white;
+border-radius:32px;
 overflow:hidden;
+box-shadow:var(--shadow);
 }
 
-.plan-top{
-display:flex;
-align-items:center;
-gap:18px;
-margin-bottom:24px;
-}
-
-.plan-top img{
-width:90px;
-height:90px;
-border-radius:18px;
+.plan-img img{
+width:100%;
+height:220px;
 object-fit:cover;
 }
 
-.plan-card h3{
-font-size:24px;
+.plan-content{
+padding:26px;
 }
 
-.plan-card p{
-line-height:1.8;
-color:var(--text);
-margin-bottom:20px;
-}
-
-.price{
-font-size:42px;
+.plan-content h3{
+font-size:1.6rem;
+margin-bottom:12px;
 font-weight:900;
-color:var(--primary);
+}
+
+.plan-content p{
+line-height:1.8;
+color:var(--muted);
 margin-bottom:18px;
 }
 
-.plan-list{
+.plan-content ul{
 list-style:none;
-margin-bottom:25px;
+margin-bottom:22px;
 }
 
-.plan-list li{
-margin-bottom:12px;
-color:var(--text);
+.plan-content li{
+margin-bottom:10px;
+font-weight:600;
 }
 
-.plan-btn{
-display:block;
-text-align:center;
-padding:15px;
-border-radius:16px;
-background:linear-gradient(135deg,var(--gold),#e4d3b5);
-color:#1f1f1f;
-font-weight:800;
-text-decoration:none;
+.plan-bottom{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:16px;
 }
 
-/* ENERGY */
-
-.energy-box{
-margin-top:60px;
-background:url('energia-bg.jpg') center/cover;
-border-radius:32px;
-padding:90px;
-position:relative;
-overflow:hidden;
-}
-
-.energy-box::before{
-content:'';
-position:absolute;
-inset:0;
-background:linear-gradient(
-90deg,
-rgba(18,28,30,.82),
-rgba(18,28,30,.35)
-);
-}
-
-.energy-content{
-position:relative;
-z-index:2;
-max-width:620px;
-color:#fff;
-}
-
-.energy-content h2{
-font-size:48px;
-margin-bottom:20px;
-}
-
-.energy-content p{
-line-height:1.9;
-margin-bottom:26px;
-font-size:17px;
+.price{
+font-size:2rem;
+font-weight:900;
+color:var(--primary-dark);
 }
 
 /* GALLERY */
@@ -422,251 +389,178 @@ display:flex;
 justify-content:center;
 gap:12px;
 flex-wrap:wrap;
-margin:45px 0;
+margin-bottom:40px;
 }
 
 .filter-btn{
-padding:12px 18px;
-border-radius:100px;
+padding:12px 20px;
+border-radius:999px;
 border:none;
-background:#dfeaec;
-font-weight:700;
+font-weight:800;
 cursor:pointer;
+background:white;
+box-shadow:var(--shadow);
 }
 
 .gallery-grid{
 display:grid;
-grid-template-columns:repeat(3,1fr);
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:18px;
 }
 
-.gallery-item{
-overflow:hidden;
-border-radius:22px;
-position:relative;
-height:260px;
-}
-
-.gallery-item img{
+.gallery-grid img{
+border-radius:24px;
+height:230px;
 width:100%;
-height:100%;
 object-fit:cover;
-transition:.5s;
 }
 
-.gallery-item:hover img{
-transform:scale(1.08);
+/* WELLNESS */
+
+.wellness{
+background:
+linear-gradient(
+120deg,
+rgba(0,166,166,.08),
+rgba(123,97,255,.08)
+);
 }
 
-/* CTA */
-
-.cta{
-padding:110px 0;
+.wellness-box{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:center;
 }
 
-.cta-box{
-background:linear-gradient(135deg,#6e8e97,#88aeb5);
-border-radius:34px;
-padding:90px;
-text-align:center;
-color:#fff;
+.wellness-box img{
+border-radius:30px;
+height:420px;
+object-fit:cover;
+width:100%;
 }
 
-.cta-box h2{
-font-size:52px;
-margin-bottom:22px;
+.wellness-content h2{
+font-size:3rem;
+margin-bottom:20px;
+font-weight:900;
 }
 
-.cta-box p{
-max-width:780px;
-margin:auto;
+.wellness-content p{
 line-height:1.9;
-margin-bottom:35px;
-font-size:18px;
+color:var(--muted);
+margin-bottom:22px;
 }
 
 /* FOOTER */
 
 footer{
-background:#1d2a2f;
-color:#fff;
-padding:90px 0 35px;
-margin-top:90px;
+background:
+linear-gradient(
+135deg,
+#08363b,
+#4d43aa
+);
+
+color:white;
+padding:80px 0 30px;
 }
 
 .footer-grid{
 display:grid;
-grid-template-columns:2fr 1fr 1fr;
-gap:50px;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:40px;
 }
 
-.footer-logo img{
-height:65px;
-margin-bottom:20px;
+.footer-logo{
+height:58px;
+margin-bottom:18px;
 }
 
-.footer-text{
-line-height:1.9;
-color:#c7d2d6;
+.footer-col h4{
+margin-bottom:18px;
+font-size:1.1rem;
 }
 
-.footer-links h4{
-margin-bottom:22px;
-font-size:20px;
+.footer-col ul{
+list-style:none;
 }
 
-.footer-links a{
-display:block;
-margin-bottom:14px;
+.footer-col li{
+margin-bottom:12px;
+}
+
+.footer-col a{
+color:white;
 text-decoration:none;
-color:#d5e0e4;
+opacity:.92;
 }
 
-.footer-social{
-display:flex;
-gap:16px;
-margin-top:24px;
-}
-
-.footer-social a{
-width:46px;
-height:46px;
-border-radius:50%;
-background:rgba(255,255,255,.08);
-display:flex;
-align-items:center;
-justify-content:center;
-text-decoration:none;
-color:#fff;
-font-size:18px;
-}
-
-.copy{
-margin-top:60px;
-padding-top:25px;
-border-top:1px solid rgba(255,255,255,.08);
+.footer-bottom{
+margin-top:50px;
+padding-top:24px;
+border-top:1px solid rgba(255,255,255,.12);
 text-align:center;
-color:#9fb0b5;
+opacity:.8;
 }
 
-/* FLOAT WHATSAPP */
+/* WHATSAPP */
 
-.whatsapp{
+.whatsapp-float{
 position:fixed;
-right:22px;
-bottom:22px;
-width:68px;
-height:68px;
-background:#25D366;
+right:18px;
+bottom:18px;
+width:62px;
+height:62px;
 border-radius:50%;
+background:#19c37d;
 display:flex;
 align-items:center;
 justify-content:center;
 z-index:999;
-box-shadow:0 10px 30px rgba(0,0,0,.25);
+box-shadow:0 10px 24px rgba(0,0,0,.18);
 }
 
-.whatsapp img{
-width:34px;
+.whatsapp-float svg{
+width:30px;
 }
 
-/* RESPONSIVE */
-
-@media(max-width:1100px){
-
-.services-grid,
-.plans-grid,
-.gallery-grid{
-grid-template-columns:1fr 1fr;
-}
-
-.slide-content h1{
-font-size:46px;
-}
-
-}
+/* MOBILE */
 
 @media(max-width:768px){
 
-.header-inner{
-height:74px;
-}
-
-nav{
-display:none;
-}
-
-.logo img{
-height:48px;
-}
-
 .hero{
-height:62vh;
-min-height:470px;
+min-height:55vh;
 }
 
-.slide-content{
-left:6%;
-right:6%;
-max-width:90%;
+.hero-content{
+padding:60px 0;
 }
 
-.slide-content h1{
-font-size:34px;
+.hero h1{
+font-size:2.1rem;
+line-height:1.12;
 }
 
-.slide-content p{
-font-size:15px;
+.hero p{
+font-size:.96rem;
 line-height:1.7;
 }
 
-.hero-buttons{
-gap:12px;
+.site-nav{
+display:none;
 }
 
-.btn-main,
-.btn-second{
-padding:14px 18px;
-font-size:14px;
-}
-
-.section{
-padding:70px 0;
-}
-
-.section-title h2{
-font-size:34px;
-}
-
-.services-grid,
-.plans-grid,
-.gallery-grid,
-.footer-grid{
+.wellness-box{
 grid-template-columns:1fr;
 }
 
-.service-card img{
-height:220px;
-}
-
-.energy-box{
-padding:50px 28px;
-}
-
-.energy-content h2{
-font-size:34px;
+.wellness-box img{
+height:320px;
 }
 
 .cta-box{
-padding:55px 25px;
-}
-
-.cta-box h2{
-font-size:34px;
-}
-
-.gallery-item{
-height:210px;
+padding:50px 24px;
 }
 
 }
@@ -677,207 +571,180 @@ height:210px;
 <body>
 
 <header>
+
 <div class="container header-inner">
 
-<a href="#" class="logo">
-<img src="logo-header-white.png">
+<a href="#" class="brand">
+<img src="logo-header-white.png" alt="Figura Rostro KG">
 </a>
 
-<nav>
-<ul>
+<nav class="site-nav">
+<ul class="menu">
+
 <li><a href="#">Inicio</a></li>
 <li><a href="#nosotros">Nosotros</a></li>
 <li><a href="/menu.html">Menú</a></li>
 <li><a href="#planes">Planes</a></li>
 <li><a href="#contacto">Contacto</a></li>
+
 </ul>
 </nav>
 
-<a href="https://figurarostro.life/reservar-v2.html" class="header-btn">
+<a href="https://figurarostro.life/reservar-v2.html" class="btn-primary">
 Agendar
 </a>
 
 </div>
-</header>
 
-<!-- HERO -->
+</header>
 
 <section class="hero">
 
-<div class="slider">
+<div class="container">
 
-<div class="slide" style="background-image:url('hero-fibroblast.jpg')">
+<div class="hero-content">
 
-<div class="slide-content">
-<h1>Rejuvenecimiento sin cirugía con Plasma Fibroblast</h1>
+<div class="hero-tag">
+Estética avanzada · Bienestar premium
+</div>
+
+<h1>
+Rejuvenece, relájate y transforma tu bienestar
+</h1>
+
 <p>
-Resultados progresivos, naturales y personalizados para rostro, párpados, abdomen y más.
+En Figura Rostro KG combinamos estética moderna,
+bienestar y atención personalizada para ayudarte
+a sentirte más segura, relajada y renovada.
 </p>
 
 <div class="hero-buttons">
-<a href="https://figurarostro.life/reservar-v2.html" class="btn-main">
+
+<a href="https://figurarostro.life/reservar-v2.html" class="btn-primary">
 Agendar valoración
 </a>
 
-<a href="/menu.html" class="btn-second">
-Ver tratamientos
-</a>
-</div>
-</div>
-
-</div>
-
-<div class="slide" style="background-image:url('hero-facial.jpg')">
-
-<div class="slide-content">
-<h1>Tratamientos faciales premium para una piel luminosa</h1>
-
-<p>
-Limpiezas profundas, peelings y protocolos faciales avanzados enfocados en bienestar y confianza.
-</p>
-
-<div class="hero-buttons">
-<a href="https://figurarostro.life/reservar-v2.html" class="btn-main">
-Quiero mi cita
+<a href="/menu.html" class="btn-secondary">
+Ver servicios
 </a>
 
-<a href="/menu.html" class="btn-second">
-Ver menú
-</a>
-</div>
-</div>
-
-</div>
-
-<div class="slide" style="background-image:url('hero-masajes.jpg')">
-
-<div class="slide-content">
-<h1>Masajes terapéuticos y bienestar integral</h1>
-
-<p>
-Relaja cuerpo y mente con terapias diseñadas para aliviar tensión, estrés y recuperar equilibrio.
-</p>
-
-<div class="hero-buttons">
-<a href="https://figurarostro.life/reservar-v2.html" class="btn-main">
-Reservar ahora
-</a>
-
-<a href="/menu.html" class="btn-second">
-Explorar servicios
-</a>
-</div>
 </div>
 
 </div>
 
 </div>
+
 </section>
 
-<!-- SERVICES -->
-
-<section class="section">
+<section>
 
 <div class="container">
 
-<div class="section-title">
+<div class="section-head">
 
-<span>TRATAMIENTOS DESTACADOS</span>
-
-<h2>Los servicios más solicitados</h2>
+<h2>
+Servicios más solicitados
+</h2>
 
 <p>
-Protocolos diseñados para ayudarte a verte y sentirte mejor en un ambiente moderno, relajante y profesional.
+Tratamientos diseñados para resultados visibles,
+bienestar y una experiencia premium.
 </p>
 
 </div>
 
 <div class="services-grid">
 
-<div class="service-card">
+<article class="card">
 
-<img src="servicio-limpieza.jpg">
+<img src="servicio-facial.jpg" alt="Limpieza Facial Premium">
 
-<div class="service-info">
+<div class="card-body">
 
 <h3>Limpieza Facial Premium</h3>
 
 <p>
-Renueva tu piel con una limpieza profunda enfocada en luminosidad, hidratación y bienestar facial.
+Limpieza profunda con hidratación, extracción y renovación
+para una piel más luminosa y saludable.
 </p>
 
-<a href="https://figurarostro.life/reservar-v2.html" class="service-btn">
-Me interesa
+<a href="https://figurarostro.life/reservar-v2.html" class="btn-primary">
+Solicitar información
 </a>
 
 </div>
-</div>
 
-<div class="service-card">
+</article>
 
-<img src="servicio-masajes.jpg">
+<article class="card">
 
-<div class="service-info">
+<img src="servicio-masaje.jpg" alt="Masajes Terapéuticos">
+
+<div class="card-body">
 
 <h3>Masajes Terapéuticos</h3>
 
 <p>
-Alivia tensiones musculares, estrés y fatiga con terapias corporales enfocadas en relajación y recuperación.
+Relaja tensiones, mejora tu bienestar físico y emocional
+con terapias enfocadas en equilibrio y relajación.
 </p>
 
-<a href="https://figurarostro.life/reservar-v2.html" class="service-btn">
-Agendar terapia
+<a href="https://figurarostro.life/reservar-v2.html" class="btn-primary">
+Solicitar información
 </a>
 
 </div>
-</div>
 
-<div class="service-card">
+</article>
 
-<img src="servicio-peeling.jpg">
+<article class="card">
 
-<div class="service-info">
+<img src="servicio-peeling.jpg" alt="Peeling Facial y Corporal">
+
+<div class="card-body">
 
 <h3>Peeling Facial y Corporal</h3>
 
 <p>
-Ayuda a mejorar textura, apariencia y luminosidad de la piel mediante protocolos de renovación.
+Renovación progresiva para mejorar textura,
+luminosidad y apariencia de la piel.
 </p>
 
-<a href="https://figurarostro.life/reservar-v2.html" class="service-btn">
-Solicitar valoración
+<a href="https://figurarostro.life/reservar-v2.html" class="btn-primary">
+Solicitar información
 </a>
 
 </div>
-</div>
+
+</article>
 
 </div>
 
-<div class="center-btn">
+<div style="text-align:center;margin-top:40px;">
 
-<a href="/menu.html" class="btn-main">
+<a href="/menu.html" class="btn-primary">
 Ver menú completo de servicios
 </a>
 
 </div>
 
 </div>
+
 </section>
 
-<!-- PLANS -->
-
-<section class="section plans" id="planes">
+<section class="plans-section" id="planes">
 
 <div class="container">
 
-<div class="section-title">
+<div class="section-head">
 
-<span>PLANES Y OFERTAS</span>
-
-<h2>Planes creados para objetivos reales</h2>
+<h2>
+Planes pensados para resultados visibles
+</h2>
 
 <p>
-Combina tratamientos estratégicamente y aprovecha promociones pensadas para bienestar, rejuvenecimiento y estética.
+Protocolos combinados para ayudarte a sentirte
+más segura, renovada y en bienestar.
 </p>
 
 </div>
@@ -886,81 +753,107 @@ Combina tratamientos estratégicamente y aprovecha promociones pensadas para bie
 
 <div class="plan-card">
 
-<div class="plan-top">
-<img src="plan-adelgazar.jpg">
-<div>
-<h3>Plan Moldeo</h3>
+<div class="plan-img">
+<img src="plan-adelgazar.jpg" alt="">
 </div>
-</div>
+
+<div class="plan-content">
+
+<h3>Plan Moldeo Corporal</h3>
 
 <p>
-Ideal para quienes desean apoyar procesos de reducción, modelado corporal y bienestar físico.
+Ideal para quienes desean reducir medidas,
+mejorar apariencia corporal y sentirse mejor.
 </p>
 
-<div class="price">$350</div>
-
-<ul class="plan-list">
-<li>✔️ Tratamientos corporales</li>
-<li>✔️ Seguimiento personalizado</li>
-<li>✔️ Atención premium</li>
+<ul>
+<li>✔ Evaluación personalizada</li>
+<li>✔ Tratamientos combinados</li>
+<li>✔ Seguimiento del progreso</li>
 </ul>
 
-<a href="https://figurarostro.life/reservar-v2.html" class="plan-btn">
-Quiero este plan
+<div class="plan-bottom">
+
+<div class="price">
+$350
+</div>
+
+<a href="https://figurarostro.life/reservar-v2.html" class="btn-primary">
+Me interesa
 </a>
+
+</div>
+
+</div>
 
 </div>
 
 <div class="plan-card">
 
-<div class="plan-top">
-<img src="plan-facial.jpg">
-<div>
-<h3>Plan Rejuvenecimiento</h3>
+<div class="plan-img">
+<img src="plan-facial.jpg" alt="">
 </div>
-</div>
+
+<div class="plan-content">
+
+<h3>Plan Rejuvenecimiento Facial</h3>
 
 <p>
-Enfocado en mejorar apariencia, luminosidad y frescura facial con protocolos combinados.
+Protocolos faciales enfocados en luminosidad,
+hidratación y renovación visible.
 </p>
 
-<div class="price">$350</div>
-
-<ul class="plan-list">
-<li>✔️ Limpieza premium</li>
-<li>✔️ Peeling facial</li>
-<li>✔️ Protocolos avanzados</li>
+<ul>
+<li>✔ Limpieza premium</li>
+<li>✔ Radiofrecuencia</li>
+<li>✔ Renovación facial</li>
 </ul>
 
-<a href="https://figurarostro.life/reservar-v2.html" class="plan-btn">
-Agendar valoración
+<div class="plan-bottom">
+
+<div class="price">
+$350
+</div>
+
+<a href="https://figurarostro.life/reservar-v2.html" class="btn-primary">
+Me interesa
 </a>
+
+</div>
+
+</div>
 
 </div>
 
 <div class="plan-card">
 
-<div class="plan-top">
-<img src="plan-relax.jpg">
-<div>
-<h3>Plan Relax & Wellness</h3>
+<div class="plan-img">
+<img src="plan-bienestar.jpg" alt="">
 </div>
-</div>
+
+<div class="plan-content">
+
+<h3>Plan Bienestar Premium</h3>
 
 <p>
-Una experiencia creada para desconectarte del estrés y recuperar equilibrio físico y mental.
+Una experiencia enfocada en relajación,
+equilibrio y alivio corporal.
 </p>
 
-<div class="price">$350</div>
-
-<ul class="plan-list">
-<li>✔️ Masajes terapéuticos</li>
-<li>✔️ Aromaterapia</li>
-<li>✔️ Ambiente relajante</li>
+<ul>
+<li>✔ Masajes terapéuticos</li>
+<li>✔ Aromaterapia</li>
+<li>✔ Limpieza energética</li>
 </ul>
 
-<a href="https://figurarostro.life/reservar-v2.html" class="plan-btn">
-Reservar experiencia
+<div class="plan-bottom">
+
+<div class="price">
+$350
+</div>
+
+<a href="https://figurarostro.life/reservar-v2.html" class="btn-primary">
+Me interesa
 </a>
 
 </div>
@@ -968,53 +861,25 @@ Reservar experiencia
 </div>
 
 </div>
+
+</div>
+
+</div>
+
 </section>
 
-<!-- ENERGY -->
-
-<section class="section" id="nosotros">
+<section>
 
 <div class="container">
 
-<div class="energy-box">
+<div class="section-head">
 
-<div class="energy-content">
-
-<h2>Limpieza Energética & Bienestar</h2>
-
-<p>
-Una experiencia enfocada en relajación profunda mediante aromas, música, masajes y un ambiente diseñado para ayudarte a desconectar del estrés diario.
-</p>
+<h2>
+Resultados y experiencias
+</h2>
 
 <p>
-Perfecto para quienes buscan un espacio de calma, renovación y bienestar integral.
-</p>
-
-<a href="https://figurarostro.life/reservar-v2.html" class="btn-main">
-Quiero vivir la experiencia
-</a>
-
-</div>
-
-</div>
-
-</div>
-</section>
-
-<!-- GALLERY -->
-
-<section class="section">
-
-<div class="container">
-
-<div class="section-title">
-
-<span>GALERÍA</span>
-
-<h2>Resultados y experiencias</h2>
-
-<p>
-Explora imágenes relacionadas con tratamientos faciales, corporales y bienestar.
+Galería de tratamientos y procedimientos realizados.
 </p>
 
 </div>
@@ -1030,59 +895,81 @@ Explora imágenes relacionadas con tratamientos faciales, corporales y bienestar
 
 <div class="gallery-grid">
 
-<div class="gallery-item">
-<img src="galeria1.jpg">
-</div>
-
-<div class="gallery-item">
-<img src="galeria2.jpg">
-</div>
-
-<div class="gallery-item">
-<img src="galeria3.jpg">
-</div>
-
-<div class="gallery-item">
-<img src="galeria4.jpg">
-</div>
-
-<div class="gallery-item">
-<img src="galeria5.jpg">
-</div>
-
-<div class="gallery-item">
-<img src="galeria6.jpg">
-</div>
+<img src="galeria-1.jpg">
+<img src="galeria-2.jpg">
+<img src="galeria-3.jpg">
+<img src="galeria-4.jpg">
+<img src="galeria-5.jpg">
+<img src="galeria-6.jpg">
 
 </div>
 
 </div>
+
 </section>
 
-<!-- CTA -->
+<section class="wellness">
 
-<section class="cta">
+<div class="container">
+
+<div class="wellness-box">
+
+<img src="limpieza-energetica.jpg" alt="">
+
+<div class="wellness-content">
+
+<h2>
+Limpieza Energética y Bienestar
+</h2>
+
+<p>
+Una experiencia enfocada en relajación,
+armonía y renovación emocional.
+</p>
+
+<p>
+Combinamos aromas, música relajante y terapias
+de bienestar para ayudarte a liberar tensiones
+y recuperar equilibrio.
+</p>
+
+<a href="https://figurarostro.life/reservar-v2.html" class="btn-primary">
+Solicitar información
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
 
 <div class="container">
 
 <div class="cta-box">
 
-<h2>Horario extendido para citas después del trabajo</h2>
+<h2>
+Horario extendido para quienes trabajan
+</h2>
 
 <p>
-Sabemos que muchas personas trabajan hasta tarde. Por eso ofrecemos atención desde las 8:00am hasta las 4:00pm y citas agendadas hasta las 9:00pm.
+Sabemos que muchas personas solo tienen tiempo
+después de las 5PM. Por eso ofrecemos atención
+extendida con citas agendadas hasta las 9:00PM.
 </p>
 
-<a href="https://figurarostro.life/reservar-v2.html" class="btn-main">
+<a href="https://figurarostro.life/reservar-v2.html" class="btn-primary">
 Agendar ahora
 </a>
 
 </div>
 
 </div>
-</section>
 
-<!-- FOOTER -->
+</section>
 
 <footer id="contacto">
 
@@ -1090,78 +977,93 @@ Agendar ahora
 
 <div class="footer-grid">
 
-<div>
+<div class="footer-col">
 
-<div class="footer-logo">
-<img src="logo-header-white.png">
-</div>
+<img src="logo-header-white.png" class="footer-logo">
 
-<p class="footer-text">
-Avenida Ernesto T. Lefevre, Plaza Royal Park, Local PB-15.
-<br><br>
-Horario extendido de 8:00am hasta las 4:00pm.
-<br>
-Citas agendadas hasta las 9:00pm.
+<p>
+Avenida Ernesto T. Lefevre,
+Plaza Royal Park,
+Local PB-15
 </p>
 
-<div class="footer-social">
+<br>
 
-<a href="#">IG</a>
-<a href="#">TT</a>
-<a href="#">YT</a>
+<p>
+Horario extendido:
+8AM hasta las 4PM
+<br>
+Citas agendadas hasta las 9PM
+</p>
 
 </div>
 
-</div>
-
-<div class="footer-links">
+<div class="footer-col">
 
 <h4>Servicios</h4>
 
-<a href="#">Plasma Fibroblast</a>
-<a href="/menu.html">Menú de servicios</a>
-<a href="#">Masajes Terapéuticos</a>
-<a href="#">Tratamientos Faciales</a>
-<a href="#">Limpieza Energética</a>
+<ul>
+
+<li><a href="#">Plasma Fibroblast</a></li>
+<li><a href="/menu.html">Menú de servicios</a></li>
+<li><a href="#">Masajes terapéuticos</a></li>
+<li><a href="#">Tratamientos faciales</a></li>
+<li><a href="#">Limpieza energética</a></li>
+
+</ul>
 
 </div>
 
-<div class="footer-links">
+<div class="footer-col">
+
+<h4>Redes</h4>
+
+<ul>
+
+<li><a href="#">Instagram</a></li>
+<li><a href="#">TikTok</a></li>
+<li><a href="#">YouTube</a></li>
+
+</ul>
+
+</div>
+
+<div class="footer-col">
 
 <h4>Contacto</h4>
 
-<a href="https://figurarostro.life/reservar-v2.html">
-Agendar cita
-</a>
+<ul>
 
-<a href="#">
-WhatsApp
-</a>
+<li><a href="https://wa.me/50764746168">WhatsApp</a></li>
+<li><a href="https://figurarostro.life/reservar-v2.html">Reservar cita</a></li>
 
-<a href="#">
-Instagram
-</a>
-
-<a href="#">
-TikTok
-</a>
+</ul>
 
 </div>
 
 </div>
 
-<div class="copy">
+<div class="footer-bottom">
+
 © 2026 Figura Rostro KG · Todos los derechos reservados
+
 </div>
 
 </div>
+
 </footer>
 
-<!-- FLOAT -->
+<a href="https://wa.me/50764746168"
+class="whatsapp-float"
+target="_blank">
 
-<a href="https://wa.me/50764746168" class="whatsapp">
+<svg xmlns="http://www.w3.org/2000/svg"
+fill="white"
+viewBox="0 0 24 24">
 
-<img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+<path d="M20.52 3.48A11.79 11.79 0 0012.07 0C5.5 0 .17 5.33.17 11.9c0 2.1.55 4.15 1.6 5.95L0 24l6.33-1.66a11.83 11.83 0 005.74 1.46h.01c6.57 0 11.9-5.33 11.9-11.9a11.8 11.8 0 00-3.46-8.42z"/>
+
+</svg>
 
 </a>
 
