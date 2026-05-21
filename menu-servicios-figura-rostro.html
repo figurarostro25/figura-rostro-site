@@ -7,10 +7,10 @@
 
 <title>Menú de Servicios Premium | Figura Rostro KG</title>
 
-<meta name="description" content="Centro estético premium en Panamá especializado en rejuvenecimiento facial, tratamientos corporales, plasma fibroblast, limpieza facial premium y terapias de bienestar.">
+<meta name="description" content="Centro estético premium en Panamá especializado en rejuvenecimiento facial, tratamientos corporales, plasma fibroblast, limpieza facial premium y bienestar integral.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
@@ -37,19 +37,19 @@ scroll-behavior:smooth;
 
 body{
 font-family:'Inter',sans-serif;
-background:#ffffff;
+background:#fff;
 color:var(--text);
 overflow-x:hidden;
 }
 
 .container{
 width:100%;
-max-width:1200px;
+max-width:1240px;
 margin:auto;
 padding:0 20px;
 }
 
-/* HEADER UNIFICADO CON EL HOME */
+/* HEADER */
 
 header{
 position:fixed;
@@ -57,9 +57,9 @@ top:0;
 left:0;
 width:100%;
 z-index:999;
-background:linear-gradient(135deg,#1f4f5c,#2bbeb6);
-box-shadow:0 2px 20px rgba(0,0,0,.08);
-backdrop-filter:blur(10px);
+background:rgba(255,255,255,.92);
+backdrop-filter:blur(12px);
+border-bottom:1px solid #edf5f5;
 }
 
 .header-inner{
@@ -70,7 +70,7 @@ justify-content:space-between;
 }
 
 .logo img{
-height:54px;
+height:56px;
 }
 
 nav ul{
@@ -82,24 +82,24 @@ align-items:center;
 
 nav a{
 text-decoration:none;
-color:#fff;
-font-weight:600;
+color:var(--dark);
+font-weight:700;
 font-size:15px;
 transition:.3s;
 }
 
 nav a:hover{
-opacity:.8;
+color:var(--primary);
 }
 
 .btn-header{
-background:#fff;
-color:#1f666f;
+background:linear-gradient(135deg,#2bc6be,#25aaa4);
+color:#fff;
 padding:13px 24px;
 border-radius:50px;
 font-weight:700;
 text-decoration:none;
-box-shadow:var(--shadow);
+box-shadow:0 8px 20px rgba(39,184,176,.18);
 transition:.3s;
 }
 
@@ -107,269 +107,58 @@ transition:.3s;
 transform:translateY(-2px);
 }
 
-/* HERO PARA PÁGINAS INTERNAS */
+/* HERO */
 
-.hero-internal{
+.hero{
 margin-top:82px;
+padding:110px 0 90px;
+background:
+linear-gradient(rgba(255,255,255,.92),rgba(255,255,255,.96)),
+url('hero-menu.jpg') center/cover no-repeat;
 position:relative;
-background:linear-gradient(rgba(24,52,61,0.85), rgba(24,52,61,0.95)), url('hero-1.jpg') no-repeat center center/cover;
-padding:80px 0;
-text-align:center;
-color:#fff;
-}
-
-.hero-internal h1{
-font-size:48px;
-font-weight:800;
-margin-bottom:16px;
-line-height:1.1;
-}
-
-.hero-internal p{
-font-size:18px;
-max-width:700px;
-margin:auto;
-opacity:0.9;
-line-height:1.8;
-}
-
-/* EMBUDO DE CONVERSIÓN (PROCESO DE ATENCIÓN) */
-
-.funnel-section{
-background:#ffffff;
-padding:60px 0;
-border-bottom:1px solid #edf5f5;
-}
-
-.section-title{
-text-align:center;
-margin-bottom:45px;
-}
-
-.section-title span{
-color:var(--primary);
-font-weight:700;
-letter-spacing:1px;
-font-size:14px;
-text-transform:uppercase;
-}
-
-.section-title h2{
-font-size:42px;
-margin-top:10px;
-margin-bottom:16px;
-color:#17353c;
-}
-
-.section-title p{
-max-width:760px;
-margin:auto;
-line-height:1.9;
-color:var(--muted);
-}
-
-.funnel-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:24px;
-}
-
-.funnel-box{
-background:#fff;
-padding:35px 32px;
-border-radius:28px;
-box-shadow:0 10px 35px rgba(0,0,0,.05);
-text-align:center;
-transition:.3s;
-border:1px solid #edf5f5;
-}
-
-.funnel-box:hover{
-transform:translateY(-5px);
-}
-
-.funnel-number{
-width:44px;
-height:44px;
-background:linear-gradient(135deg,#2bc6be,#25aaa4);
-color:#fff;
-font-weight:800;
-font-size:18px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-margin:0 auto 20px;
-box-shadow:0 6px 15px rgba(39,184,176,.2);
-}
-
-.funnel-box h3{
-font-size:22px;
-margin-bottom:14px;
-color:var(--dark);
-}
-
-.funnel-box p{
-color:var(--muted);
-line-height:1.8;
-font-size:15px;
-}
-
-/* SECCIÓN GENERAL DEL MENÚ / CATÁLOGO */
-
-.menu-catalog{
-padding:80px 0;
-background:var(--soft);
-}
-
-.category-wrapper{
-margin-bottom:70px;
-}
-
-.category-wrapper:last-child{
-margin-bottom:0;
-}
-
-.category-header-title{
-font-size:32px;
-color:var(--dark);
-margin-bottom:35px;
-font-weight:800;
-position:relative;
-display:inline-block;
-padding-bottom:10px;
-}
-
-.category-header-title::after{
-content:'';
-position:absolute;
-left:0;
-bottom:0;
-width:60px;
-height:4px;
-background:var(--primary);
-border-radius:2px;
-}
-
-.services-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:30px;
-}
-
-.service-card{
-background:#fff;
-border-radius:30px;
 overflow:hidden;
-box-shadow:0 10px 35px rgba(0,0,0,.06);
-transition:.3s;
-display:flex;
-flex-direction:column;
-height:100%;
-border:1px solid #edf5f5;
 }
 
-.service-card:hover{
-transform:translateY(-6px);
-box-shadow:0 15px 40px rgba(0,0,0,.08);
+.hero-grid{
+display:grid;
+grid-template-columns:1.1fr .9fr;
+gap:60px;
+align-items:center;
 }
 
-.service-content{
-padding:30px;
-display:flex;
-flex-direction:column;
-height:100%;
-justify-content:space-between;
-}
-
-.service-info-block h3{
-font-size:23px;
-margin-bottom:12px;
-color:var(--dark);
+.hero-badge{
+display:inline-flex;
+align-items:center;
+gap:10px;
+padding:12px 20px;
+background:#ecfbfa;
+border:1px solid #d8f3f1;
+border-radius:50px;
+font-size:14px;
 font-weight:700;
-line-height:1.2;
-}
-
-.service-info-block p{
-line-height:1.7;
-color:var(--muted);
-font-size:15px;
+color:var(--primary);
 margin-bottom:24px;
 }
 
-/* BOTONES DE ACCIÓN UNIFICADOS DENTRO DE LAS TARJETAS */
-
-.service-actions{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px;
-margin-top:auto;
-}
-
-.btn-card-primary{
-background:var(--dark);
-color:#fff;
-text-decoration:none;
-text-align:center;
-padding:12px 16px;
-border-radius:50px;
-font-weight:700;
-font-size:14px;
-transition:.3s;
-}
-
-.btn-card-primary:hover{
-background:var(--primary);
-}
-
-.btn-card-outline{
-border:1px solid #c2d1d4;
+.hero h1{
+font-size:64px;
+line-height:1.02;
+font-weight:900;
 color:var(--dark);
-text-decoration:none;
-text-align:center;
-padding:11px 16px;
-border-radius:50px;
-font-weight:700;
-font-size:14px;
-transition:.3s;
-background:transparent;
+margin-bottom:22px;
+letter-spacing:-2px;
 }
 
-.btn-card-outline:hover{
-background:rgba(24,52,61,0.04);
-border-color:var(--dark);
-}
-
-/* UNIFICACIÓN Y ARREGLO VISUAL DEL CTA RECOMENDACIÓN (BANNER DE LA IMAGEN) */
-
-.cta-box{
-margin-top:60px;
-background:linear-gradient(135deg,#1f4f5c,#2abeb6);
-border-radius:34px;
-padding:60px;
-text-align:center;
-color:#fff;
-box-shadow:0 15px 40px rgba(31,79,92,0.15);
-}
-
-.cta-box h3{
-font-size:42px;
-margin-bottom:18px;
-font-weight:700;
-}
-
-.cta-box p{
-max-width:720px;
-margin:auto;
+.hero p{
+font-size:18px;
 line-height:1.9;
+color:var(--muted);
 margin-bottom:34px;
-font-size:17px;
-opacity:0.95;
+max-width:680px;
 }
 
-.cta-button-group{
+.hero-actions{
 display:flex;
-justify-content:center;
 gap:16px;
 flex-wrap:wrap;
 }
@@ -377,7 +166,7 @@ flex-wrap:wrap;
 .btn-main{
 background:linear-gradient(135deg,#2dcfc6,#26aba5);
 color:#fff;
-padding:14px 28px;
+padding:15px 30px;
 border-radius:50px;
 text-decoration:none;
 font-weight:700;
@@ -387,8 +176,6 @@ transition:.3s;
 display:inline-flex;
 align-items:center;
 justify-content:center;
-border:none;
-cursor:pointer;
 }
 
 .btn-main:hover{
@@ -396,27 +183,325 @@ transform:translateY(-3px);
 }
 
 .btn-outline{
-border:2px solid rgba(255,255,255,.75);
-padding:13px 26px;
+border:2px solid #d7e7e8;
+padding:14px 28px;
 border-radius:50px;
-color:#fff;
+color:var(--dark);
 text-decoration:none;
 font-weight:700;
-font-size:15px;
-backdrop-filter:blur(10px);
 transition:.3s;
-background:transparent;
-display:inline-flex;
-align-items:center;
-justify-content:center;
+background:#fff;
 }
 
 .btn-outline:hover{
-background:rgba(255,255,255,.12);
+background:#f7fbfb;
+}
+
+.hero-card{
+background:#fff;
+padding:34px;
+border-radius:34px;
+box-shadow:0 18px 45px rgba(0,0,0,.08);
+border:1px solid #edf5f5;
+}
+
+.hero-card-title{
+font-size:26px;
+font-weight:800;
+margin-bottom:24px;
+color:var(--dark);
+}
+
+.hero-mini-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:16px;
+}
+
+.hero-mini-box{
+background:#f8fdfd;
+padding:22px;
+border-radius:24px;
+border:1px solid #edf5f5;
+}
+
+.hero-mini-box h3{
+font-size:28px;
+color:var(--primary);
+margin-bottom:8px;
+font-weight:800;
+}
+
+.hero-mini-box p{
+font-size:14px;
+line-height:1.6;
+margin:0;
+}
+
+/* TRUST */
+
+.trust{
+padding:28px 0;
+background:#ffffff;
+border-top:1px solid #edf5f5;
+border-bottom:1px solid #edf5f5;
+}
+
+.trust-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+}
+
+.trust-item{
+text-align:center;
+padding:16px;
+}
+
+.trust-item h3{
+font-size:18px;
+margin-bottom:6px;
+color:var(--dark);
+}
+
+.trust-item p{
+font-size:14px;
+color:var(--muted);
+line-height:1.6;
+}
+
+/* FILTER */
+
+.filter-bar{
+padding:34px 0 10px;
+background:var(--soft);
+position:sticky;
+top:82px;
+z-index:50;
+}
+
+.filter-scroll{
+display:flex;
+gap:14px;
+overflow:auto;
+padding-bottom:8px;
+}
+
+.filter-btn{
+border:none;
+background:#fff;
+padding:14px 22px;
+border-radius:50px;
+font-weight:700;
+cursor:pointer;
+white-space:nowrap;
+color:var(--dark);
+box-shadow:var(--shadow);
+transition:.3s;
+}
+
+.filter-btn.active{
+background:linear-gradient(135deg,#2bc6be,#25aaa4);
+color:#fff;
+}
+
+/* SERVICES */
+
+.services{
+padding:40px 0 100px;
+background:var(--soft);
+}
+
+.category{
+margin-bottom:80px;
+}
+
+.category-top{
+display:flex;
+align-items:end;
+justify-content:space-between;
+margin-bottom:34px;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.category-top h2{
+font-size:40px;
+color:var(--dark);
+margin-bottom:8px;
+}
+
+.category-top p{
+color:var(--muted);
+max-width:620px;
+line-height:1.8;
+}
+
+.services-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:28px;
+}
+
+.service-card{
+background:#fff;
+border-radius:30px;
+overflow:hidden;
+box-shadow:0 10px 35px rgba(0,0,0,.06);
+transition:.35s;
+display:flex;
+flex-direction:column;
+border:1px solid #edf5f5;
+position:relative;
+}
+
+.service-card:hover{
+transform:translateY(-8px);
+box-shadow:0 18px 45px rgba(0,0,0,.09);
+}
+
+.service-image{
+height:240px;
+position:relative;
+overflow:hidden;
+}
+
+.service-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:1s;
+}
+
+.service-card:hover img{
+transform:scale(1.08);
+}
+
+.service-badge{
+position:absolute;
+top:18px;
+left:18px;
+background:#fff;
+padding:10px 14px;
+border-radius:50px;
+font-size:12px;
+font-weight:800;
+color:var(--primary);
+box-shadow:0 10px 20px rgba(0,0,0,.08);
+}
+
+.service-content{
+padding:30px;
+display:flex;
+flex-direction:column;
+height:100%;
+}
+
+.service-content h3{
+font-size:25px;
+line-height:1.2;
+margin-bottom:14px;
+color:var(--dark);
+}
+
+.service-content p{
+font-size:15px;
+line-height:1.8;
+color:var(--muted);
+margin-bottom:24px;
+}
+
+.tags{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-bottom:28px;
+}
+
+.tags span{
+padding:8px 12px;
+border-radius:50px;
+background:#eefafa;
+color:var(--primary);
+font-size:12px;
+font-weight:700;
+}
+
+.card-actions{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+margin-top:auto;
+}
+
+.btn-card{
+padding:14px;
+border-radius:16px;
+font-weight:700;
+text-decoration:none;
+text-align:center;
+font-size:14px;
+transition:.3s;
+}
+
+.btn-card-primary{
+background:linear-gradient(135deg,#2dcfc6,#26aba5);
+color:#fff;
+}
+
+.btn-card-primary:hover{
 transform:translateY(-2px);
 }
 
-/* FOOTER UNIFICADO CON EL HOME */
+.btn-card-secondary{
+background:#fff;
+border:1px solid #d7e6e7;
+color:var(--dark);
+}
+
+.btn-card-secondary:hover{
+background:#f8fbfb;
+}
+
+/* CTA */
+
+.cta{
+padding:100px 0;
+background:#fff;
+}
+
+.cta-box{
+background:linear-gradient(135deg,#1f4f5c,#2abeb6);
+border-radius:40px;
+padding:70px;
+color:#fff;
+text-align:center;
+box-shadow:0 18px 50px rgba(31,79,92,.16);
+}
+
+.cta-box h2{
+font-size:52px;
+line-height:1.05;
+margin-bottom:22px;
+}
+
+.cta-box p{
+max-width:760px;
+margin:auto;
+line-height:1.9;
+font-size:18px;
+margin-bottom:34px;
+opacity:.95;
+}
+
+.cta-buttons{
+display:flex;
+justify-content:center;
+gap:16px;
+flex-wrap:wrap;
+}
+
+/* FOOTER */
 
 footer{
 background:linear-gradient(135deg,#1d4954,#163840);
@@ -439,7 +524,6 @@ margin-bottom:20px;
 .footer-text{
 line-height:1.9;
 opacity:.9;
-font-size:14.5px;
 }
 
 .footer-title{
@@ -458,13 +542,6 @@ gap:14px;
 color:#fff;
 text-decoration:none;
 opacity:.9;
-font-size:14.5px;
-transition:.2s;
-}
-
-.footer-links a:hover{
-color:var(--primary2);
-padding-left:4px;
 }
 
 .socials{
@@ -491,7 +568,7 @@ opacity:.8;
 font-size:14px;
 }
 
-/* BOTÓN FLOTANTE DE WHATSAPP */
+/* WHATSAPP */
 
 .whatsapp{
 position:fixed;
@@ -512,22 +589,23 @@ box-shadow:0 10px 25px rgba(0,0,0,.18);
 width:34px;
 }
 
-/* SECCIÓN DE RESPONSIVE DESIGN COMPLETAMENTE IDÉNTICA AL HOME */
+/* MOBILE */
 
 @media(max-width:980px){
 
-.hero-internal{
-padding:70px 0;
+.hero{
+padding:70px 0 60px;
 }
 
-.hero-internal h1{
-font-size:36px;
-}
-
+.hero-grid,
 .services-grid,
-.funnel-grid,
-.footer-grid{
+.footer-grid,
+.trust-grid{
 grid-template-columns:1fr;
+}
+
+.hero h1{
+font-size:42px;
 }
 
 nav{
@@ -538,23 +616,28 @@ display:none;
 justify-content:center;
 }
 
-.section-title h2{
+.category-top h2{
 font-size:32px;
 }
 
 .cta-box{
-padding:40px 24px;
+padding:42px 26px;
 }
 
-.cta-button-group{
-flex-direction:column;
-gap:12px;
+.cta-box h2{
+font-size:36px;
 }
 
-.cta-button-group .btn-main,
-.cta-button-group .btn-outline{
-width:100%;
-text-align:center;
+.card-actions{
+grid-template-columns:1fr;
+}
+
+.hero-mini-grid{
+grid-template-columns:1fr;
+}
+
+.filter-bar{
+top:82px;
 }
 
 }
@@ -565,399 +648,599 @@ text-align:center;
 <body>
 
 <header>
+
 <div class="container header-inner">
 
-<a href="#" class="logo">
+<a href="/" class="logo">
 <img src="logo-header-white.png" alt="Figura Rostro KG">
 </a>
 
 <nav>
 <ul>
-<li><a href="#">Inicio</a></li>
-<li><a href="#nosotros">Nosotros</a></li>
-<li><a href="/menu.html">Menú</a></li>
-<li><a href="#planes">Planes</a></li>
+<li><a href="/">Inicio</a></li>
+<li><a href="#faciales">Faciales</a></li>
+<li><a href="#corporales">Corporales</a></li>
+<li><a href="#medicina">Medicina Estética</a></li>
 <li><a href="#contacto">Contacto</a></li>
 </ul>
 </nav>
 
 <a href="https://figurarostro.life/reservar-v2.html" class="btn-header">
-Agendar
+Agendar valoración
 </a>
 
 </div>
+
 </header>
 
-<section class="hero-internal">
-<div class="container">
-<h1>Nuestros Servicios</h1>
-<p>Explora nuestro catálogo completo de tratamientos avanzados diseñados bajo rigurosos protocolos clínico-estéticos para realzar y transformar tu imagen naturalmente.</p>
-</div>
-</section>
+<section class="hero">
 
-<section class="funnel-section">
-<div class="container">
-<div class="section-title">
-<span>Tu proceso de transformación</span>
-<h2>Cómo reservar en 3 simples pasos</h2>
-<p>Diseñamos una experiencia premium enfocada en brindarte resultados seguros, reales y totalmente personalizados.</p>
+<div class="container hero-grid">
+
+<div>
+
+<div class="hero-badge">
+✨ Estética avanzada · Bienestar · Resultados reales
 </div>
 
-<div class="funnel-grid">
+<h1>
+Servicios premium diseñados para transformar tu imagen
+</h1>
 
-<div class="funnel-box">
-<div class="funnel-number">1</div>
-<h3>Elige tu Tratamiento</h3>
-<p>Revisa nuestro menú detallado abajo y selecciona el procedimiento facial o corporal acorde a tus necesidades y objetivos actuales.</p>
-</div>
+<p>
+Explora nuestros tratamientos faciales, corporales y protocolos médico-estéticos desarrollados para ayudarte a verte más fresca, definida y segura con una experiencia elegante y personalizada.
+</p>
 
-<div class="funnel-box">
-<div class="funnel-number">2</div>
-<h3>Agenda tu Valoración</h3>
-<p>Haz clic en los accesos de reserva para programar tu sesión de diagnóstico. Nuestros expertos diseñarán tu plan estético ideal.</p>
-</div>
+<div class="hero-actions">
 
-<div class="funnel-box">
-<div class="funnel-number">3</div>
-<h3>Disfruta los Resultados</h3>
-<p>Asiste a nuestra clínica en horario extendido y recibe un protocolo de alta gama potenciado con aparatología clínica de vanguardia.</p>
-</div>
-
-</div>
-</div>
-</section>
-
-<section class="menu-catalog">
-<div class="container">
-
-<div class="category-wrapper">
-<h2 class="category-title">Estética Integral Faciales</h2>
-<div class="services-grid">
-
-<div class="service-card">
-<div class="service-content">
-<div class="service-info-block">
-<h3>Facial profundo</h3>
-<p>Se centra minuciosamente en eliminar impurezas profundas de la piel, extrayendo comedones e incluyendo aparatología de grado clínico.</p>
-</div>
-<div class="service-actions">
-<a href="https://wa.me/50764746168?text=Hola,%20deseo%20contactar%20por%20el%20Facial%20profundo" class="btn-card-primary">Contactar</a>
-<a href="#" class="btn-card-outline">Detalles</a>
-</div>
-</div>
-</div>
-
-<div class="service-card">
-<div class="service-content">
-<div class="service-info-block">
-<h3>Hidrafacial</h3>
-<p>Consiste en realizar una limpieza facial sumamente profunda enfocada al 100% en la hidratación dérmica mediante la combinación de 6 patologías estéticas.</p>
-</div>
-<div class="service-actions">
-<a href="https://wa.me/50764746168?text=Hola,%20deseo%20contactar%20por%20el%20Hidrafacial" class="btn-card-primary">Contactar</a>
-<a href="#" class="btn-card-outline">Detalles</a>
-</div>
-</div>
-</div>
-
-<div class="service-card">
-<div class="service-content">
-<div class="service-info-block">
-<h3>Tratamientos para el acné</h3>
-<p>Abordaje clínico profesional especializado para el tratamiento de brotes e imperfecciones de acné tipo 1 y tipo 2 mediante diferentes protocolos adaptados.</p>
-</div>
-<div class="service-actions">
-<a href="https://wa.me/50764746168?text=Hola,%20deseo%20consultar%20por%20Tratamientos%20para%20el%20acné" class="btn-card-primary">Contactar</a>
-<a href="#" class="btn-card-outline">Consultar</a>
-</div>
-</div>
-</div>
-
-<div class="service-card">
-<div class="service-content">
-<div class="service-info-block">
-<h3>Peeling</h3>
-<p>Tratamientos para diferentes necesidades cutáneas encaminados a la renovación celular controlada mediante exfoliación química avanzada y aparatología activa.</p>
-</div>
-<div class="service-actions">
-<a href="https://wa.me/50764746168?text=Hola,%20deseo%20contactar%20por%20el%20Peeling" class="btn-card-primary">Contactar</a>
-<a href="#" class="btn-card-outline">Detalles</a>
-</div>
-</div>
-</div>
-
-<div class="service-card">
-<div class="service-content">
-<div class="service-info-block">
-<h3>Hollywood peeling</h3>
-<p>Tratamiento de alta gama ideal para unificar el tono dérmico, tratar hiperpigmentaciones o manchas rebeldes a la vez que elimina la flacidez facial superficial.</p>
-</div>
-<div class="service-actions">
-<a href="https://wa.me/50764746168?text=Hola,%20deseo%20contactar%20por%20el%20Hollywood%20peeling" class="btn-card-primary">Contactar</a>
-<a href="#" class="btn-card-outline">Detalles</a>
-</div>
-</div>
-</div>
-
-<div class="service-card">
-<div class="service-content">
-<div class="service-info-block">
-<h3>Tratamientos para manchas</h3>
-<p>Diferentes protocolos estéticos minuciosos diseñados para tratar de raíz las afecciones complejas de la hiperpigmentación cutánea como el melasma.</p>
-</div>
-<div class="service-actions">
-<a href="https://wa.me/50764746168?text=Hola,%20deseo%20consultar%20por%20Tratamientos%20para%20manchas" class="btn-card-primary">Contactar</a>
-<a href="#" class="btn-card-outline">Consultar</a>
-</div>
-</div>
-</div>
-
-<div class="service-card">
-<div class="service-content">
-<div class="service-info-block">
-<h3>Fibroblast (acrocordones y verrugas)</h3>
-<p>Dispositivo médico-estético de plasma que ayuda de forma inmediata a retraer el exceso de piel flácida, eliminando arrugas localizadas, acrocordones y verrugas.</p>
-</div>
-<div class="service-actions">
-<a href="https://wa.me/50764746168?text=Hola,%20deseo%20consultar%20por%20el%20Fibroblast" class="btn-card-primary">Contactar</a>
-<a href="#" class="btn-card-outline">Consultar</a>
-</div>
-</div>
-</div>
-
-<div class="service-card">
-<div class="service-content">
-<div class="service-info-block">
-<h3>Eliminación de arañitas</h3>
-<p>Aplicación de diferentes protocolos especializados para la atenuación y remoción efectiva de arañitas vasculares superficiales combinando productos y aparatología.</p>
-</div>
-<div class="service-actions">
-<a href="https://wa.me/50764746168?text=Hola,%20deseo%20consultar%20por%20la%20Eliminación%20de%20arañitas" class="btn-card-primary">Contactar</a>
-<a href="#" class="btn-card-outline">Consultar</a>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="category-wrapper">
-<h2 class="category-title">Corporales</h2>
-<div class="services-grid">
-
-<div class="service-card">
-<div class="service-content">
-<div class="service-info-block">
-<h3>Hidrolipoclasia</h3>
-<p>Tratamiento corporal no invasivo de alta efectividad clínica, enfocado en la reducción sustancial de adiposidad o grasa localizada y remodelación de contornos.</p>
-</div>
-<div class="service-actions">
-<a href="https://wa.me/50764746168?text=Hola,%20deseo%20consultar%20por%20la%20Hidrolipoclasia" class="btn-card-primary">Contactar</a>
-<a href="#" class="btn-card-outline">Consultar</a>
-</div>
-</div>
-</div>
-
-<div class="service-card">
-<div class="service-content">
-<div class="service-info-block">
-<h3>Reducción de talla</h3>
-<p>Protocolos intensivos enfocados en la reducción de medidas corporales globales mediante la sinergia de aparatología estética de última generación.</p>
-</div>
-<div class="service-actions">
-<a href="https://wa.me/50764746168?text=Hola,%20deseo%20consultar%20por%20la%20Reducción%20de%20talla" class="btn-card-primary">Contactar</a>
-<a href="#" class="btn-card-outline">Consultar</a>
-</div>
-</div>
-</div>
-
-<div class="service-card">
-<div class="service-content">
-<div class="service-info-block">
-<h3>Levantamiento de glúteos</h3>
-<p>Protocolo de moldeamiento, tonificación y elevación del tejido graso y muscular de los glúteos apoyado en aparatología y bioestimuladores activos.</p>
-</div>
-<div class="service-actions">
-<a href="https://wa.me/50764746168?text=Hola,%20deseo%20contactar%20por%20el%20Levantamiento%20de%20glúteos" class="btn-card-primary">Contactar</a>
-<a href="#" class="btn-card-outline">Detalles</a>
-</div>
-</div>
-</div>
-
-<div class="service-card">
-<div class="service-content">
-<div class="service-info-block">
-<h3>Moldeamiento corporal</h3>
-<p>Diseño de tratamientos integrales dirigidos específicamente al combate de la flacidez dérmica severa y la reducción de grasa en zonas rebeldes.</p>
-</div>
-<div class="service-actions">
-<a href="https://wa.me/50764746168?text=Hola,%20deseo%20contactar%20por%20el%20Moldeamiento%20corporal" class="btn-card-primary">Contactar</a>
-<a href="#" class="btn-card-outline">Detalles</a>
-</div>
-</div>
-</div>
-
-<div class="service-card">
-<div class="service-content">
-<div class="service-info-block">
-<h3>Drenaje linfático</h3>
-<p>Masaje terapéutico sumamente especializado ideal para el periodo postoperatorio de cirugías estéticas y altamente indicado para eliminar edemas y retención de líquidos.</p>
-</div>
-<div class="service-actions">
-<a href="https://wa.me/50764746168?text=Hola,%20deseo%20contactar%20por%20el%20Drenaje%20linfático" class="btn-card-primary">Contactar</a>
-<a href="#" class="btn-card-outline">Detalles</a>
-</div>
-</div>
-</div>
-
-<div class="service-card">
-<div class="service-content">
-<div class="service-info-block">
-<h3>Masajes relajantes</h3>
-<p>La máxima experiencia sensorial y terapéutica ambientada especialmente para inducir a tu cuerpo a una relajación profunda, descanso muscular y bienestar mental.</p>
-</div>
-<div class="service-actions">
-<a href="https://wa.me/50764746168?text=Hola,%20deseo%20contactar%20por%20los%20Masajes%20relajantes" class="btn-card-primary">Contactar</a>
-<a href="#" class="btn-card-outline">Detalles</a>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="category-wrapper">
-<h2 class="category-title">Medicina Estética</h2>
-<div class="services-grid">
-
-<div class="service-card">
-<div class="service-content">
-<div class="service-info-block">
-<h3>PRP (Plasma Rico en Plaquetas)</h3>
-<p>Tratamiento celular autólogo premium ideal para realizar una regeneración celular e intramuscular profunda, mejorando la textura, calidad y lozanía de tu piel.</p>
-</div>
-<div class="service-actions">
-<a href="https://wa.me/50764746168?text=Hola,%20deseo%20contactar%20por%20el%20PRP" class="btn-card-primary">Contactar</a>
-<a href="#" class="btn-card-outline">Detalles</a>
-</div>
-</div>
-</div>
-
-<div class="service-card">
-<div class="service-content">
-<div class="service-info-block">
-<h3>Ácido hialurónico</h3>
-<p>Microinyecciones de gel de hialurónico biocompatible de alta pureza, ideal para rellenar surcos, posicionar estructuras faciales caídas e hidratar en máxima profundidad.</p>
-</div>
-<div class="service-actions">
-<a href="https://wa.me/50764746168?text=Hola,%20deseo%20contactar%20por%20el%20Ácido%20hialurónico" class="btn-card-primary">Contactar</a>
-<a href="#" class="btn-card-outline">Detalles</a>
-</div>
-</div>
-</div>
-
-<div class="service-card">
-<div class="service-content">
-<div class="service-info-block">
-<h3>Skinbooster</h3>
-<p>Tratamiento de nutrición e hidratación inyectable profunda, ideal para mejorar drásticamente la elasticidad, calidad general de la dermis y el brillo natural de la piel.</p>
-</div>
-<div class="service-actions">
-<a href="https://wa.me/50764746168?text=Hola,%20deseo%20contactar%20por%20el%20Skinbooster" class="btn-card-primary">Contactar</a>
-<a href="#" class="btn-card-outline">Detalles</a>
-</div>
-</div>
-</div>
-
-<div class="service-card">
-<div class="service-content">
-<div class="service-info-block">
-<h3>Armonización facial</h3>
-<p>Diseño de un plan estético médico personalizado con enfoques y objetivos claros para balancear sutilmente y resaltar tus rasgos más bellos.</p>
-</div>
-<div class="service-actions">
-<a href="https://wa.me/50764746168?text=Hola,%20deseo%20consultar%20por%20la%20Armonización%20facial" class="btn-card-primary">Contactar</a>
-<a href="#" class="btn-card-outline">Consultar</a>
-</div>
-</div>
-</div>
-
-<div class="service-card">
-<div class="service-content">
-<div class="service-info-block">
-<h3>Hilos foxy eyes</h3>
-<p>Colocación experta de hilos tensores avanzados de soporte, ideales para elevar la ceja o párpado superior logrando una mirada rasgada y rejuvenecida.</p>
-</div>
-<div class="service-actions">
-<a href="https://wa.me/50764746168?text=Hola,%20deseo%20consultar%20por%20los%20Hilos%20foxy%20eyes" class="btn-card-primary">Contactar</a>
-<a href="#" class="btn-card-outline">Consultar</a>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="cta-box">
-<h3>¿Necesitas una Recomendación Personalizada?</h3>
-<p>Agenda tu cita de valoración estética inicial con nuestros expertos para diseñar el plan exacto que tu piel y cuerpo necesitan.</p>
-<div class="cta-button-group">
 <a href="https://figurarostro.life/reservar-v2.html" class="btn-main">
-Reservar mi Valoración
+Reservar valoración
 </a>
-<a href="https://wa.me/50764746168?text=Hola,%20deseo%20una%20recomendación%20personalizada" class="btn-outline">
+
+<a href="https://wa.me/50764746168" class="btn-outline">
 Consultar por WhatsApp
 </a>
-</div>
+
 </div>
 
 </div>
+
+<div class="hero-card">
+
+<div class="hero-card-title">
+¿Por qué elegir Figura Rostro KG?
+</div>
+
+<div class="hero-mini-grid">
+
+<div class="hero-mini-box">
+<h3>+8</h3>
+<p>Años creando protocolos estéticos personalizados.</p>
+</div>
+
+<div class="hero-mini-box">
+<h3>Premium</h3>
+<p>Experiencia privada enfocada en bienestar y confianza.</p>
+</div>
+
+<div class="hero-mini-box">
+<h3>1:1</h3>
+<p>Atención personalizada en cada valoración.</p>
+</div>
+
+<div class="hero-mini-box">
+<h3>Top</h3>
+<p>Tecnología y tratamientos en tendencia.</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="trust">
+
+<div class="container">
+
+<div class="trust-grid">
+
+<div class="trust-item">
+<h3>✨ Valoración personalizada</h3>
+<p>Cada tratamiento se adapta a tus objetivos.</p>
+</div>
+
+<div class="trust-item">
+<h3>🕘 Horario extendido</h3>
+<p>Atención cómoda y flexible con previa cita.</p>
+</div>
+
+<div class="trust-item">
+<h3>💎 Ambiente premium</h3>
+<p>Espacios privados y experiencia relajante.</p>
+</div>
+
+<div class="trust-item">
+<h3>📍 Royal Park Panamá</h3>
+<p>Ubicación céntrica y fácil acceso.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="filter-bar">
+
+<div class="container">
+
+<div class="filter-scroll">
+
+<button class="filter-btn active">Todos</button>
+<button class="filter-btn">Faciales</button>
+<button class="filter-btn">Corporales</button>
+<button class="filter-btn">Medicina Estética</button>
+<button class="filter-btn">Fibroblast</button>
+<button class="filter-btn">Wellness</button>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="services">
+
+<div class="container">
+
+<!-- FACIALES -->
+
+<div class="category" id="faciales">
+
+<div class="category-top">
+
+<div>
+<h2>Faciales Premium</h2>
+<p>
+Tratamientos enfocados en hidratación profunda, rejuvenecimiento, luminosidad y restauración de la piel mediante protocolos clínico-estéticos personalizados.
+</p>
+</div>
+
+</div>
+
+<div class="services-grid">
+
+<div class="service-card">
+
+<div class="service-image">
+<img src="servicio-hidrafacial.jpg">
+<div class="service-badge">TOP</div>
+</div>
+
+<div class="service-content">
+
+<h3>Hidrafacial</h3>
+
+<p>
+Limpieza profunda e hidratación intensa para mejorar textura, luminosidad y apariencia saludable de la piel.
+</p>
+
+<div class="tags">
+<span>Glow</span>
+<span>Hidratación</span>
+<span>Limpieza</span>
+</div>
+
+<div class="card-actions">
+<a href="#" class="btn-card btn-card-primary">Reservar</a>
+<a href="#" class="btn-card btn-card-secondary">Detalles</a>
+</div>
+
+</div>
+
+</div>
+
+<div class="service-card">
+
+<div class="service-image">
+<img src="servicio-hollywood.jpg">
+<div class="service-badge">POPULAR</div>
+</div>
+
+<div class="service-content">
+
+<h3>Hollywood Peeling</h3>
+
+<p>
+Tratamiento avanzado orientado a unificar tono, reducir poros y revitalizar la apariencia general.
+</p>
+
+<div class="tags">
+<span>Láser</span>
+<span>Piel uniforme</span>
+<span>Glow</span>
+</div>
+
+<div class="card-actions">
+<a href="#" class="btn-card btn-card-primary">Consultar</a>
+<a href="#" class="btn-card btn-card-secondary">Detalles</a>
+</div>
+
+</div>
+
+</div>
+
+<div class="service-card">
+
+<div class="service-image">
+<img src="servicio-acne.jpg">
+<div class="service-badge">CLÍNICO</div>
+</div>
+
+<div class="service-content">
+
+<h3>Tratamientos para Acné</h3>
+
+<p>
+Protocolos personalizados para mejorar brotes, marcas y equilibrio general de la piel.
+</p>
+
+<div class="tags">
+<span>Acné</span>
+<span>Control grasa</span>
+<span>Textura</span>
+</div>
+
+<div class="card-actions">
+<a href="#" class="btn-card btn-card-primary">Consultar</a>
+<a href="#" class="btn-card btn-card-secondary">Detalles</a>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CORPORALES -->
+
+<div class="category" id="corporales">
+
+<div class="category-top">
+
+<div>
+<h2>Corporales & Moldeamiento</h2>
+<p>
+Tecnología estética y protocolos reductores enfocados en firmeza, reducción de medidas y remodelación corporal progresiva.
+</p>
+</div>
+
+</div>
+
+<div class="services-grid">
+
+<div class="service-card">
+
+<div class="service-image">
+<img src="servicio-reduccion.jpg">
+<div class="service-badge">RESULTADOS</div>
+</div>
+
+<div class="service-content">
+
+<h3>Reducción de Talla</h3>
+
+<p>
+Protocolos intensivos para apoyar reducción de medidas y mejorar definición corporal.
+</p>
+
+<div class="tags">
+<span>Moldeamiento</span>
+<span>Reductor</span>
+<span>Corporal</span>
+</div>
+
+<div class="card-actions">
+<a href="#" class="btn-card btn-card-primary">Reservar</a>
+<a href="#" class="btn-card btn-card-secondary">Detalles</a>
+</div>
+
+</div>
+
+</div>
+
+<div class="service-card">
+
+<div class="service-image">
+<img src="servicio-gluteos.jpg">
+<div class="service-badge">TRENDING</div>
+</div>
+
+<div class="service-content">
+
+<h3>Levantamiento de Glúteos</h3>
+
+<p>
+Tratamiento enfocado en tonificación, proyección visual y armonización corporal.
+</p>
+
+<div class="tags">
+<span>Tonificación</span>
+<span>Glúteos</span>
+<span>Firmeza</span>
+</div>
+
+<div class="card-actions">
+<a href="#" class="btn-card btn-card-primary">Consultar</a>
+<a href="#" class="btn-card btn-card-secondary">Detalles</a>
+</div>
+
+</div>
+
+</div>
+
+<div class="service-card">
+
+<div class="service-image">
+<img src="servicio-masajes.jpg">
+<div class="service-badge">RELAX</div>
+</div>
+
+<div class="service-content">
+
+<h3>Masajes Relajantes</h3>
+
+<p>
+Experiencia de relajación profunda con aromas, música y ambiente diseñado para bienestar total.
+</p>
+
+<div class="tags">
+<span>Wellness</span>
+<span>Relajación</span>
+<span>Spa</span>
+</div>
+
+<div class="card-actions">
+<a href="#" class="btn-card btn-card-primary">Reservar</a>
+<a href="#" class="btn-card btn-card-secondary">Detalles</a>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- MEDICINA ESTÉTICA -->
+
+<div class="category" id="medicina">
+
+<div class="category-top">
+
+<div>
+<h2>Medicina Estética</h2>
+<p>
+Tratamientos avanzados enfocados en rejuvenecimiento facial, armonización y bioestimulación de la piel.
+</p>
+</div>
+
+</div>
+
+<div class="services-grid">
+
+<div class="service-card">
+
+<div class="service-image">
+<img src="servicio-prp.jpg">
+<div class="service-badge">REGENERACIÓN</div>
+</div>
+
+<div class="service-content">
+
+<h3>PRP Facial</h3>
+
+<p>
+Bioestimulación celular enfocada en mejorar textura, luminosidad y calidad general de la piel.
+</p>
+
+<div class="tags">
+<span>Colágeno</span>
+<span>Regeneración</span>
+<span>Glow</span>
+</div>
+
+<div class="card-actions">
+<a href="#" class="btn-card btn-card-primary">Consultar</a>
+<a href="#" class="btn-card btn-card-secondary">Detalles</a>
+</div>
+
+</div>
+
+</div>
+
+<div class="service-card">
+
+<div class="service-image">
+<img src="servicio-hialuronico.jpg">
+<div class="service-badge">PREMIUM</div>
+</div>
+
+<div class="service-content">
+
+<h3>Ácido Hialurónico</h3>
+
+<p>
+Armonización facial, hidratación profunda y definición estratégica según tus rasgos.
+</p>
+
+<div class="tags">
+<span>Volumen</span>
+<span>Perfilado</span>
+<span>Antiage</span>
+</div>
+
+<div class="card-actions">
+<a href="#" class="btn-card btn-card-primary">Reservar</a>
+<a href="#" class="btn-card btn-card-secondary">Detalles</a>
+</div>
+
+</div>
+
+</div>
+
+<div class="service-card">
+
+<div class="service-image">
+<img src="servicio-fibroblast.jpg">
+<div class="service-badge">PIONEROS</div>
+</div>
+
+<div class="service-content">
+
+<h3>Plasma Fibroblast</h3>
+
+<p>
+Tecnología avanzada enfocada en mejorar apariencia de piel flácida y rejuvenecer zonas específicas.
+</p>
+
+<div class="tags">
+<span>Fibroblast</span>
+<span>Tensado</span>
+<span>Rejuvenecimiento</span>
+</div>
+
+<div class="card-actions">
+<a href="#" class="btn-card btn-card-primary">Consultar</a>
+<a href="#" class="btn-card btn-card-secondary">Ver zonas</a>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="cta">
+
+<div class="container">
+
+<div class="cta-box">
+
+<h2>
+¿No sabes qué tratamiento elegir?
+</h2>
+
+<p>
+Agenda una valoración personalizada y recibe una recomendación enfocada en tus objetivos, tipo de piel y resultados deseados.
+</p>
+
+<div class="cta-buttons">
+
+<a href="https://figurarostro.life/reservar-v2.html" class="btn-main">
+Reservar valoración
+</a>
+
+<a href="https://wa.me/50764746168" class="btn-outline">
+Hablar por WhatsApp
+</a>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
 
 <footer id="contacto">
+
 <div class="container">
 
 <div class="footer-grid">
 
 <div>
+
 <div class="footer-logo">
-<img src="logo-header-white.png" alt="Figura Rostro KG">
+<img src="logo-header-white.png">
 </div>
+
 <p class="footer-text">
+
 Avenida Ernesto T. Lefevre, Plaza Royal Park, Local PB-15.
+
 <br><br>
+
 Horario extendido:
 <br>
 Lun - Sab 7:30am hasta las 9pm
 <br>
 (De 5pm a 9pm con previa cita)
+
 </p>
+
 <div class="socials">
-<a href="#"><img src="icon-instagram-white.png" width="20" alt="Instagram"></a>
-<a href="#"><img src="icon-facebook-white.png" width="20" alt="Facebook"></a>
-<a href="#"><img src="icon-tiktok-white.png" width="20" alt="TikTok"></a>
-<a href="#"><img src="icon-youtube-white.png" width="20" alt="YouTube"></a>
+
+<a href="#">
+<img src="icon-instagram-white.png" width="20">
+</a>
+
+<a href="#">
+<img src="icon-facebook-white.png" width="20">
+</a>
+
+<a href="#">
+<img src="icon-tiktok-white.png" width="20">
+</a>
+
+<a href="#">
+<img src="icon-youtube-white.png" width="20">
+</a>
+
 </div>
+
 </div>
 
 <div>
-<h3 class="footer-title">Servicios</h3>
+
+<h3 class="footer-title">
+Servicios
+</h3>
+
 <ul class="footer-links">
 <li><a href="#">Plasma Fibroblast</a></li>
 <li><a href="#">Masajes Terapéuticos</a></li>
 <li><a href="#">Tratamientos Faciales</a></li>
 <li><a href="#">Limpieza Energética</a></li>
 </ul>
+
 </div>
 
 <div>
-<h3 class="footer-title">Enlaces rápidos</h3>
+
+<h3 class="footer-title">
+Enlaces rápidos
+</h3>
+
 <ul class="footer-links">
 <li><a href="/">Inicio</a></li>
 <li><a href="/menu.html">Menú de servicios</a></li>
-<li><a href="#planes">Planes</a></li>
+<li><a href="#">Planes</a></li>
 <li><a href="https://figurarostro.life/reservar-v2.html">Agendar cita</a></li>
 </ul>
+
 </div>
 
 </div>
@@ -967,10 +1250,13 @@ Lun - Sab 7:30am hasta las 9pm
 </div>
 
 </div>
+
 </footer>
 
 <a class="whatsapp" href="https://wa.me/50764746168" target="_blank">
-<img src="whatsapp-icon.png" alt="WhatsApp">
+
+<img src="whatsapp-icon.png">
+
 </a>
 
 </body>
