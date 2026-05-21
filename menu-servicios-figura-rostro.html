@@ -5,9 +5,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Menú de Servicios | Figura Rostro KG Panamá</title>
+<title>Menú de Servicios | Figura Rostro KG</title>
 
-<meta name="description" content="Plasma Fibroblast, adelgazamiento, tratamientos faciales, aparatología estética, drenajes, masajes terapéuticos y bienestar integral en Panamá.">
+<meta name="description" content="Tratamientos faciales, corporales, plasma fibroblast, terapias relajantes y aparatología estética avanzada en Panamá.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -15,14 +15,15 @@
 <style>
 
 :root{
---primary:#1eb7ae;
---primary2:#4dd9d0;
---dark:#16333c;
---text:#26434b;
---muted:#71838a;
+--primary:#1ea59a;
+--primary2:#45d4c6;
+--dark:#163841;
 --soft:#f5fbfb;
 --white:#ffffff;
---shadow:0 14px 45px rgba(0,0,0,.08);
+--text:#28444b;
+--muted:#6b7e85;
+--line:#e5f1f1;
+--shadow:0 15px 45px rgba(0,0,0,.07);
 }
 
 *{
@@ -48,8 +49,10 @@ display:block;
 }
 
 .container{
-width:min(1250px,92%);
+width:100%;
+max-width:1250px;
 margin:auto;
+padding:0 22px;
 }
 
 /* HEADER */
@@ -60,13 +63,12 @@ top:0;
 left:0;
 width:100%;
 z-index:999;
-background:rgba(255,255,255,.94);
-backdrop-filter:blur(14px);
-border-bottom:1px solid rgba(0,0,0,.05);
+background:linear-gradient(135deg,#173f48,#1f646e);
+box-shadow:0 3px 18px rgba(0,0,0,.08);
 }
 
 .header-inner{
-height:82px;
+height:84px;
 display:flex;
 align-items:center;
 justify-content:space-between;
@@ -78,102 +80,179 @@ height:56px;
 
 nav ul{
 display:flex;
-gap:28px;
+gap:34px;
 list-style:none;
+align-items:center;
 }
 
 nav a{
 text-decoration:none;
-color:var(--dark);
-font-weight:700;
+color:#fff;
+font-weight:600;
 font-size:15px;
+position:relative;
+padding-bottom:6px;
+}
+
+nav a:hover{
+opacity:.85;
+}
+
+nav a.active::after{
+content:'';
+position:absolute;
+left:0;
+bottom:0;
+width:100%;
+height:2px;
+background:#7df0e4;
+border-radius:10px;
 }
 
 .btn-header{
-background:linear-gradient(135deg,var(--primary),var(--primary2));
-padding:14px 24px;
+background:#fff;
+color:#184650;
+padding:13px 24px;
 border-radius:50px;
+font-weight:700;
 text-decoration:none;
-font-weight:800;
-color:#fff;
+transition:.3s;
 box-shadow:var(--shadow);
+}
+
+.btn-header:hover{
+transform:translateY(-2px);
 }
 
 /* HERO */
 
 .hero{
-margin-top:82px;
-padding:120px 0 100px;
+margin-top:84px;
+padding:110px 0 90px;
 background:
-linear-gradient(rgba(13,37,43,.72),rgba(13,37,43,.80)),
-url('hero-servicios.jpg') center/cover;
+linear-gradient(rgba(18,45,53,.82), rgba(18,45,53,.88)),
+url('hero-servicios.jpg') center/cover no-repeat;
 color:#fff;
-text-align:center;
 position:relative;
+overflow:hidden;
+}
+
+.hero-grid{
+display:grid;
+grid-template-columns:1.1fr .9fr;
+gap:60px;
+align-items:center;
 }
 
 .hero-badge{
-display:inline-block;
+display:inline-flex;
+align-items:center;
+gap:10px;
 padding:10px 18px;
 border-radius:50px;
 background:rgba(255,255,255,.12);
 backdrop-filter:blur(10px);
 font-size:13px;
 font-weight:700;
-margin-bottom:26px;
+letter-spacing:.5px;
+margin-bottom:24px;
 }
 
 .hero h1{
-font-size:clamp(2.5rem,6vw,5rem);
-line-height:1;
+font-size:62px;
+line-height:1.05;
 margin-bottom:24px;
 font-weight:900;
 }
 
 .hero p{
-max-width:820px;
-margin:auto;
-line-height:1.9;
 font-size:18px;
-opacity:.95;
+line-height:1.9;
+max-width:650px;
+opacity:.92;
+margin-bottom:35px;
 }
 
 .hero-actions{
-margin-top:38px;
 display:flex;
-justify-content:center;
 gap:16px;
 flex-wrap:wrap;
 }
 
 .btn-main{
-background:linear-gradient(135deg,var(--primary),var(--primary2));
-padding:16px 30px;
-border-radius:50px;
+background:linear-gradient(135deg,#2fd2c5,#24a49d);
 color:#fff;
+padding:15px 30px;
+border-radius:50px;
+font-weight:700;
 text-decoration:none;
-font-weight:800;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+transition:.3s;
+box-shadow:0 10px 25px rgba(36,164,157,.25);
+}
+
+.btn-main:hover{
+transform:translateY(-3px);
 }
 
 .btn-outline{
-border:2px solid rgba(255,255,255,.7);
-padding:15px 28px;
+border:2px solid rgba(255,255,255,.65);
+padding:14px 28px;
 border-radius:50px;
 color:#fff;
-text-decoration:none;
 font-weight:700;
+text-decoration:none;
+transition:.3s;
+}
+
+.btn-outline:hover{
+background:rgba(255,255,255,.10);
+}
+
+.hero-card{
+background:rgba(255,255,255,.12);
+border:1px solid rgba(255,255,255,.15);
+backdrop-filter:blur(12px);
+padding:34px;
+border-radius:32px;
+}
+
+.hero-card h3{
+font-size:30px;
+margin-bottom:16px;
+}
+
+.hero-card p{
+font-size:15px;
+line-height:1.9;
+margin-bottom:26px;
+}
+
+.hero-list{
+display:grid;
+gap:14px;
+}
+
+.hero-list div{
+background:rgba(255,255,255,.10);
+padding:14px 16px;
+border-radius:16px;
+font-size:14px;
+font-weight:600;
 }
 
 /* TOP SERVICES */
 
 .top-services{
-padding:90px 0 60px;
-background:var(--soft);
+padding:90px 0;
+background:#fff;
 }
 
 .section-head{
 text-align:center;
-margin-bottom:50px;
+margin-bottom:55px;
 }
 
 .section-head span{
@@ -185,167 +264,102 @@ text-transform:uppercase;
 }
 
 .section-head h2{
-font-size:clamp(2rem,5vw,3.3rem);
-margin-top:12px;
-margin-bottom:16px;
+font-size:48px;
+margin:12px 0 16px;
 color:var(--dark);
 }
 
 .section-head p{
 max-width:760px;
 margin:auto;
-line-height:1.8;
+line-height:1.9;
 color:var(--muted);
 }
 
-.highlight-grid{
+.top-grid{
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:28px;
 }
 
-.highlight-card{
+.feature-card{
 background:#fff;
 border-radius:32px;
 overflow:hidden;
 box-shadow:var(--shadow);
-border:1px solid #ebf2f2;
+border:1px solid var(--line);
+transition:.3s;
 }
 
-.highlight-img{
+.feature-card:hover{
+transform:translateY(-6px);
+}
+
+.feature-image{
 height:260px;
 overflow:hidden;
 }
 
-.highlight-img img{
+.feature-image img{
 width:100%;
 height:100%;
 object-fit:cover;
+transition:1s;
 }
 
-.highlight-content{
-padding:28px;
+.feature-card:hover img{
+transform:scale(1.08);
 }
 
-.highlight-tag{
-display:inline-block;
-padding:8px 14px;
-border-radius:50px;
-background:#e9fbfa;
-color:var(--primary);
-font-size:12px;
-font-weight:800;
-margin-bottom:16px;
+.feature-content{
+padding:30px;
 }
 
-.highlight-content h3{
+.feature-content h3{
 font-size:28px;
-color:var(--dark);
 margin-bottom:14px;
+color:var(--dark);
 }
 
-.highlight-content p{
+.feature-content p{
 line-height:1.8;
 color:var(--muted);
+font-size:15px;
 margin-bottom:24px;
 }
 
-.card-buttons{
+.feature-buttons{
 display:flex;
 gap:12px;
 flex-wrap:wrap;
 }
 
-.btn-card{
-flex:1;
-min-width:140px;
-text-align:center;
-padding:13px;
+.small-btn{
+padding:12px 18px;
 border-radius:50px;
 font-size:14px;
-font-weight:800;
+font-weight:700;
 text-decoration:none;
+transition:.3s;
 }
 
-.btn-consulta{
-background:linear-gradient(135deg,var(--primary),var(--primary2));
+.small-primary{
+background:var(--dark);
 color:#fff;
 }
 
-.btn-more{
-border:1px solid #d8e7e7;
-color:var(--dark);
-background:#fff;
+.small-primary:hover{
+background:var(--primary);
 }
 
-/* FIBROBLAST SPECIAL */
-
-.fibroblast-section{
-padding:100px 0;
-background:#fff;
-}
-
-.fibro-grid{
-display:grid;
-grid-template-columns:1.2fr 1fr 1fr;
-gap:28px;
-align-items:stretch;
-}
-
-.fibro-main{
-background:linear-gradient(135deg,#183840,#1f4f5c);
-color:#fff;
-border-radius:34px;
-padding:40px;
-display:flex;
-flex-direction:column;
-justify-content:center;
-}
-
-.fibro-main h2{
-font-size:42px;
-margin-bottom:20px;
-}
-
-.fibro-main p{
-line-height:1.9;
-opacity:.95;
-margin-bottom:28px;
-}
-
-.fibro-card{
-background:#fff;
-border-radius:30px;
-overflow:hidden;
-box-shadow:var(--shadow);
-border:1px solid #edf4f4;
-}
-
-.fibro-card img{
-height:240px;
-width:100%;
-object-fit:cover;
-}
-
-.fibro-card-content{
-padding:24px;
-}
-
-.fibro-card-content h3{
-font-size:24px;
-margin-bottom:14px;
+.small-outline{
+border:1px solid #cfe1e1;
 color:var(--dark);
 }
 
-.fibro-card-content p{
-line-height:1.8;
-color:var(--muted);
-margin-bottom:20px;
-}
+/* CATEGORIES */
 
-/* SERVICES */
-
-.services{
+.services-section{
 padding:90px 0;
 background:var(--soft);
 }
@@ -354,11 +368,27 @@ background:var(--soft);
 margin-bottom:90px;
 }
 
+.category:last-child{
+margin-bottom:0;
+}
+
 .category-title{
+display:flex;
+align-items:center;
+gap:14px;
+margin-bottom:36px;
+}
+
+.category-line{
+width:60px;
+height:4px;
+background:linear-gradient(90deg,var(--primary),var(--primary2));
+border-radius:50px;
+}
+
+.category-title h2{
 font-size:38px;
 color:var(--dark);
-margin-bottom:36px;
-font-weight:900;
 }
 
 .services-grid{
@@ -369,11 +399,13 @@ gap:28px;
 
 .service-card{
 background:#fff;
-border-radius:28px;
+border-radius:30px;
 overflow:hidden;
 box-shadow:var(--shadow);
-border:1px solid #edf5f5;
+border:1px solid var(--line);
 transition:.3s;
+display:flex;
+flex-direction:column;
 }
 
 .service-card:hover{
@@ -381,7 +413,7 @@ transform:translateY(-6px);
 }
 
 .service-image{
-height:230px;
+height:240px;
 overflow:hidden;
 }
 
@@ -389,81 +421,114 @@ overflow:hidden;
 width:100%;
 height:100%;
 object-fit:cover;
+transition:1s;
+}
+
+.service-card:hover img{
+transform:scale(1.08);
 }
 
 .service-content{
-padding:24px;
+padding:28px;
+display:flex;
+flex-direction:column;
+height:100%;
 }
 
 .service-content h3{
-font-size:22px;
+font-size:23px;
 margin-bottom:12px;
 color:var(--dark);
 }
 
 .service-content p{
-line-height:1.7;
+line-height:1.8;
 color:var(--muted);
 font-size:15px;
-margin-bottom:20px;
+margin-bottom:24px;
+}
+
+.service-action{
+margin-top:auto;
+}
+
+.btn-service{
+background:linear-gradient(135deg,#1d4e58,#1ea59a);
+color:#fff;
+padding:12px 22px;
+border-radius:50px;
+font-size:14px;
+font-weight:700;
+text-decoration:none;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+transition:.3s;
+}
+
+.btn-service:hover{
+transform:translateY(-2px);
 }
 
 /* CTA */
 
 .cta{
-padding:100px 0;
+padding:90px 0;
 background:#fff;
 }
 
 .cta-box{
-background:linear-gradient(135deg,#173a43,#245b67);
-padding:70px;
+background:linear-gradient(135deg,#1b4953,#1fb2a6);
 border-radius:40px;
-text-align:center;
+padding:70px;
 color:#fff;
+text-align:center;
+box-shadow:0 15px 45px rgba(0,0,0,.10);
 }
 
 .cta-box h2{
-font-size:clamp(2rem,5vw,4rem);
+font-size:52px;
 margin-bottom:18px;
 }
 
 .cta-box p{
-max-width:760px;
+max-width:800px;
 margin:auto;
 line-height:1.9;
-margin-bottom:34px;
-opacity:.92;
+font-size:17px;
+opacity:.95;
+margin-bottom:36px;
 }
 
 /* FOOTER */
 
 footer{
-background:#173840;
+background:linear-gradient(135deg,#183f48,#16353d);
+padding-top:70px;
 color:#fff;
-padding:60px 0 30px;
 }
 
 .footer-grid{
 display:grid;
-grid-template-columns:1.2fr 1fr 1fr;
-gap:40px;
-margin-bottom:40px;
+grid-template-columns:1.4fr 1fr 1fr;
+gap:50px;
+padding-bottom:50px;
 }
 
 .footer-logo img{
-height:56px;
+height:60px;
 margin-bottom:20px;
 }
 
 .footer-text{
 line-height:1.9;
-opacity:.9;
+font-size:14px;
+opacity:.92;
 }
 
 .footer-title{
 font-size:20px;
-margin-bottom:20px;
+margin-bottom:18px;
 }
 
 .footer-links{
@@ -477,30 +542,36 @@ gap:14px;
 color:#fff;
 text-decoration:none;
 opacity:.9;
+font-size:14px;
+}
+
+.footer-links a:hover{
+color:#85f4e7;
 }
 
 .bottom{
-border-top:1px solid rgba(255,255,255,.1);
-padding-top:24px;
+padding:24px 0;
+border-top:1px solid rgba(255,255,255,.12);
 text-align:center;
+font-size:14px;
 opacity:.8;
 }
 
-/* WHATSAPP */
+/* FLOAT */
 
 .whatsapp{
 position:fixed;
-right:20px;
-bottom:20px;
+right:22px;
+bottom:22px;
+z-index:999;
+background:#25D366;
 width:68px;
 height:68px;
 border-radius:50%;
-background:#25D366;
 display:flex;
 align-items:center;
 justify-content:center;
-box-shadow:0 10px 25px rgba(0,0,0,.2);
-z-index:999;
+box-shadow:0 12px 28px rgba(0,0,0,.18);
 }
 
 .whatsapp img{
@@ -519,39 +590,77 @@ display:none;
 justify-content:center;
 }
 
-.highlight-grid,
-.fibro-grid,
+.hero{
+padding:70px 0 60px;
+}
+
+.hero-grid{
+grid-template-columns:1fr;
+gap:30px;
+}
+
+.hero h1{
+font-size:40px;
+}
+
+.hero p{
+font-size:16px;
+}
+
+.top-grid,
 .services-grid,
 .footer-grid{
 grid-template-columns:1fr;
 }
 
-.hero{
-padding:90px 0 70px;
+.section-head h2,
+.cta-box h2{
+font-size:34px;
 }
 
-.hero h1{
-font-size:42px;
+.category-title h2{
+font-size:28px;
 }
 
 .cta-box{
-padding:40px 24px;
+padding:42px 24px;
 }
+
+.hero-actions,
+.feature-buttons{
+flex-direction:column;
+}
+
+.hero-actions a,
+.feature-buttons a,
+.btn-main,
+.btn-outline{
+width:100%;
+text-align:center;
+}
+
+/* VERSION MOVIL MÁS LIMPIA */
 
 .service-content p{
 display:none;
 }
 
-.highlight-content p{
-display:none;
+.service-content{
+padding:18px;
 }
 
-.fibro-card-content p{
-display:none;
+.service-content h3{
+font-size:18px;
+margin-bottom:16px;
+text-align:center;
 }
 
 .service-image{
-height:210px;
+height:220px;
+}
+
+.btn-service{
+width:100%;
 }
 
 }
@@ -562,7 +671,6 @@ height:210px;
 <body>
 
 <header>
-
 <div class="container header-inner">
 
 <a href="/" class="logo">
@@ -572,45 +680,70 @@ height:210px;
 <nav>
 <ul>
 <li><a href="/">Inicio</a></li>
-<li><a href="#servicios">Servicios</a></li>
-<li><a href="#fibroblast">Fibroblast</a></li>
-<li><a href="#contacto">Contacto</a></li>
+<li><a href="/#nosotros">Nosotros</a></li>
+<li><a href="/menu.html" class="active">Menú</a></li>
+<li><a href="/#planes">Planes</a></li>
+<li><a href="/#contacto">Contacto</a></li>
 </ul>
 </nav>
 
-<a href="https://wa.me/50764787049" class="btn-header">
-Reservar
+<a href="https://figurarostro.life/reservar-v2.html" class="btn-header">
+Reservar Valoración
 </a>
 
 </div>
-
 </header>
 
 <section class="hero">
 
-<div class="container">
+<div class="container hero-grid">
+
+<div>
 
 <div class="hero-badge">
-ESTÉTICA AVANZADA · PANAMÁ
+✨ Estética avanzada · Panamá
 </div>
 
 <h1>
-Transforma tu imagen con tratamientos premium y bienestar integral
+Tratamientos estéticos premium para rejuvenecer, definir y transformar tu imagen
 </h1>
 
 <p>
-Especialistas en Plasma Fibroblast, reducción de flacidez, tratamientos faciales avanzados, terapias corporales y protocolos estéticos modernos.
+Descubre nuestros tratamientos faciales, corporales, terapias relajantes y aparatología estética avanzada diseñados para ayudarte a sentirte mejor física, emocional y visualmente.
 </p>
 
 <div class="hero-actions">
 
-<a href="https://wa.me/50764787049" class="btn-main">
-Consultar por WhatsApp
+<a href="https://figurarostro.life/reservar-v2.html" class="btn-main">
+Reservar valoración
 </a>
 
-<a href="#servicios" class="btn-outline">
-Ver tratamientos
+<a href="https://wa.me/50764787049" class="btn-outline">
+Consulta con la especialista
 </a>
+
+</div>
+
+</div>
+
+<div class="hero-card">
+
+<h3>
+Nuestros pilares más solicitados
+</h3>
+
+<p>
+Protocolos avanzados para rejuvenecimiento, flacidez, reducción de medidas y bienestar integral.
+</p>
+
+<div class="hero-list">
+
+<div>🔥 Plasma Fibroblast</div>
+<div>✨ Limpieza Energética</div>
+<div>💎 Planes para adelgazar</div>
+<div>🌿 Rejuvenecimiento facial</div>
+
+</div>
 
 </div>
 
@@ -623,180 +756,79 @@ Ver tratamientos
 <div class="container">
 
 <div class="section-head">
-<span>Lo más solicitado</span>
-<h2>Tratamientos estrella</h2>
+<span>Lo más cotizado</span>
+<h2>Especialidad de la casa</h2>
 <p>
-Los procedimientos más buscados por nuestros pacientes para rejuvenecimiento, flacidez y reducción de medidas.
+Protocolos estéticos avanzados diseñados para ayudar a mejorar la apariencia de la piel, flacidez y rejuvenecimiento.
 </p>
 </div>
 
-<div class="highlight-grid">
+<div class="top-grid">
 
-<div class="highlight-card">
+<div class="feature-card">
 
-<div class="highlight-img">
-<img src="fibroblast-main.jpg">
+<div class="feature-image">
+<img src="fibroblast-abdomen.jpg" alt="">
 </div>
 
-<div class="highlight-content">
-
-<div class="highlight-tag">
-Especialidad de la casa
-</div>
-
-<h3>Plasma Fibroblast</h3>
-
-<p>
-Tratamiento avanzado para tensar la piel, mejorar flacidez y rejuvenecer zonas específicas sin cirugía.
-</p>
-
-<div class="card-buttons">
-
-<a href="https://wa.me/50764787049?text=Hola,%20quiero%20información%20sobre%20Plasma%20Fibroblast" class="btn-card btn-consulta">
-Consulta
-</a>
-
-<a href="/fibroblast.html" class="btn-card btn-more">
-Ver más
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="highlight-card">
-
-<div class="highlight-img">
-<img src="adelgazamiento.jpg">
-</div>
-
-<div class="highlight-content">
-
-<div class="highlight-tag">
-Adelgazamiento
-</div>
-
-<h3>Reducción de Medidas</h3>
-
-<p>
-Protocolos corporales modernos enfocados en moldear, reducir grasa localizada y mejorar la firmeza corporal.
-</p>
-
-<div class="card-buttons">
-
-<a href="https://wa.me/50764787049" class="btn-card btn-consulta">
-Consulta
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="highlight-card">
-
-<div class="highlight-img">
-<img src="limpieza-energetica.jpg">
-</div>
-
-<div class="highlight-content">
-
-<div class="highlight-tag">
-Bienestar integral
-</div>
-
-<h3>Limpieza Energética</h3>
-
-<p>
-Experiencia holística enfocada en relajación profunda, equilibrio emocional y renovación energética.
-</p>
-
-<div class="card-buttons">
-
-<a href="https://wa.me/50764787049" class="btn-card btn-consulta">
-Consulta
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="fibroblast-section" id="fibroblast">
-
-<div class="container">
-
-<div class="fibro-grid">
-
-<div class="fibro-main">
-
-<h2>
-Plasma Fibroblast Premium
-</h2>
-
-<p>
-Nuestra especialidad más solicitada. Tecnología enfocada en tensado superficial, rejuvenecimiento y mejora estética de zonas específicas del rostro y cuerpo.
-</p>
-
-<div class="card-buttons">
-
-<a href="https://wa.me/50764787049?text=Hola,%20quiero%20agendar%20una%20valoración%20para%20Fibroblast" class="btn-card btn-consulta">
-Agendar valoración
-</a>
-
-<a href="/fibroblast.html" class="btn-card btn-more">
-Conocer más
-</a>
-
-</div>
-
-</div>
-
-<div class="fibro-card">
-
-<img src="fibroblast-abdomen.jpg">
-
-<div class="fibro-card-content">
+<div class="feature-content">
 
 <h3>Fibroblast Abdomen</h3>
 
 <p>
-Ayuda a mejorar flacidez, textura de la piel y apariencia de estrías superficiales.
+Tratamiento enfocado en ayudar a mejorar flacidez, apariencia de estrías y tensado superficial de la piel.
 </p>
 
-<a href="https://wa.me/50764787049" class="btn-card btn-consulta">
-Consulta
-</a>
-
+<div class="feature-buttons">
+<a href="https://wa.me/50764787049" class="small-btn small-primary">Consultar</a>
+<a href="/fibroblast.html" class="small-btn small-outline">Ver más</a>
 </div>
 
 </div>
 
-<div class="fibro-card">
+</div>
 
-<img src="fibroblast-parpados.jpg">
+<div class="feature-card">
 
-<div class="fibro-card-content">
+<div class="feature-image">
+<img src="fibroblast-parpados.jpg" alt="">
+</div>
+
+<div class="feature-content">
 
 <h3>Fibroblast Párpados</h3>
 
 <p>
-Ayuda a tensar y rejuvenecer la zona de los párpados para una mirada más fresca.
+Ayuda a tensar la piel de los párpados y rejuvenecer visualmente la mirada sin cirugía invasiva.
 </p>
 
-<a href="https://wa.me/50764787049" class="btn-card btn-consulta">
-Consulta
-</a>
+<div class="feature-buttons">
+<a href="https://wa.me/50764787049" class="small-btn small-primary">Consultar</a>
+<a href="/fibroblast.html" class="small-btn small-outline">Ver más</a>
+</div>
+
+</div>
+
+</div>
+
+<div class="feature-card">
+
+<div class="feature-image">
+<img src="valoracion-piel.jpg" alt="">
+</div>
+
+<div class="feature-content">
+
+<h3>Valoración Profesional</h3>
+
+<p>
+Evaluación estética personalizada para determinar el tratamiento ideal según tu piel y objetivos.
+</p>
+
+<div class="feature-buttons">
+<a href="https://figurarostro.life/reservar-v2.html" class="small-btn small-primary">Reservar</a>
+<a href="https://wa.me/50764787049" class="small-btn small-outline">Consultar</a>
+</div>
 
 </div>
 
@@ -808,7 +840,7 @@ Consulta
 
 </section>
 
-<section class="services" id="servicios">
+<section class="services-section">
 
 <div class="container">
 
@@ -816,33 +848,38 @@ Consulta
 
 <div class="category">
 
-<h2 class="category-title">
-Tratamientos Faciales
-</h2>
+<div class="category-title">
+<div class="category-line"></div>
+<h2>Tratamientos Faciales</h2>
+</div>
 
 <div class="services-grid">
 
-<!-- repetir estructura -->
+<!-- REPITE EL MISMO FORMATO -->
 
 <div class="service-card">
 <div class="service-image">
 <img src="facial-profundo.jpg">
 </div>
 <div class="service-content">
-<h3>Limpieza Facial Profunda</h3>
-<p>Extracción profunda y revitalización para una piel más limpia y fresca.</p>
-<a href="https://wa.me/50764787049" class="btn-card btn-consulta">Consulta</a>
+<h3>Limpieza facial profunda</h3>
+<p>Limpieza con extracción y aparatología estética para renovar la piel.</p>
+<div class="service-action">
+<a href="https://wa.me/50764787049" class="btn-service">Consulta</a>
+</div>
 </div>
 </div>
 
 <div class="service-card">
 <div class="service-image">
-<img src="hidratacion.jpg">
+<img src="hidratacion-facial.jpg">
 </div>
 <div class="service-content">
-<h3>Hidratación Intensiva</h3>
-<p>Nutrición profunda y efecto glow inmediato para pieles deshidratadas.</p>
-<a href="https://wa.me/50764787049" class="btn-card btn-consulta">Consulta</a>
+<h3>Hidratación intensiva</h3>
+<p>Tratamiento hidratante para mejorar luminosidad y textura.</p>
+<div class="service-action">
+<a href="https://wa.me/50764787049" class="btn-service">Consulta</a>
+</div>
 </div>
 </div>
 
@@ -852,8 +889,10 @@ Tratamientos Faciales
 </div>
 <div class="service-content">
 <h3>Microdermoabrasión</h3>
-<p>Renovación suave de la piel para mejorar textura y luminosidad.</p>
-<a href="https://wa.me/50764787049" class="btn-card btn-consulta">Consulta</a>
+<p>Exfoliación estética avanzada con punta de diamante.</p>
+<div class="service-action">
+<a href="https://wa.me/50764787049" class="btn-service">Consulta</a>
+</div>
 </div>
 </div>
 
@@ -863,8 +902,10 @@ Tratamientos Faciales
 </div>
 <div class="service-content">
 <h3>Peeling Facial</h3>
-<p>Tratamiento ideal para manchas, acné y renovación celular.</p>
-<a href="https://wa.me/50764787049" class="btn-card btn-consulta">Consulta</a>
+<p>Renovación celular para manchas, textura y acné.</p>
+<div class="service-action">
+<a href="https://wa.me/50764787049" class="btn-service">Consulta</a>
+</div>
 </div>
 </div>
 
@@ -874,19 +915,23 @@ Tratamientos Faciales
 </div>
 <div class="service-content">
 <h3>Microneedling / Dermapen</h3>
-<p>Estimulación de colágeno para rejuvenecimiento y textura.</p>
-<a href="https://wa.me/50764787049" class="btn-card btn-consulta">Consulta</a>
+<p>Estimulación de colágeno y rejuvenecimiento facial.</p>
+<div class="service-action">
+<a href="https://wa.me/50764787049" class="btn-service">Consulta</a>
+</div>
 </div>
 </div>
 
 <div class="service-card">
 <div class="service-image">
-<img src="radiofrecuencia-facial.jpg">
+<img src="dermaplaning.jpg">
 </div>
 <div class="service-content">
-<h3>Radiofrecuencia Facial</h3>
-<p>Efecto lifting y tensado para combatir flacidez facial.</p>
-<a href="https://wa.me/50764787049" class="btn-card btn-consulta">Consulta</a>
+<h3>Dermaplaning</h3>
+<p>Exfoliación física para una piel más suave y luminosa.</p>
+<div class="service-action">
+<a href="https://wa.me/50764787049" class="btn-service">Consulta</a>
+</div>
 </div>
 </div>
 
@@ -898,9 +943,10 @@ Tratamientos Faciales
 
 <div class="category">
 
-<h2 class="category-title">
-Corporales y Terapias
-</h2>
+<div class="category-title">
+<div class="category-line"></div>
+<h2>Terapias Corporales y Bienestar</h2>
+</div>
 
 <div class="services-grid">
 
@@ -909,9 +955,11 @@ Corporales y Terapias
 <img src="masaje-relajante.jpg">
 </div>
 <div class="service-content">
-<h3>Masaje Relajante</h3>
-<p>Relajación muscular profunda y alivio del estrés acumulado.</p>
-<a href="https://wa.me/50764787049" class="btn-card btn-consulta">Consulta</a>
+<h3>Masaje relajante</h3>
+<p>Ideal para aliviar tensión muscular y estrés acumulado.</p>
+<div class="service-action">
+<a href="https://wa.me/50764787049" class="btn-service">Consulta</a>
+</div>
 </div>
 </div>
 
@@ -920,9 +968,11 @@ Corporales y Terapias
 <img src="maderoterapia.jpg">
 </div>
 <div class="service-content">
-<h3>Maderoterapia</h3>
-<p>Tratamiento corporal moldeador y anticelulítico.</p>
-<a href="https://wa.me/50764787049" class="btn-card btn-consulta">Consulta</a>
+<h3>Maderoterapia corporal</h3>
+<p>Tratamiento reductivo y anticelulítico corporal.</p>
+<div class="service-action">
+<a href="https://wa.me/50764787049" class="btn-service">Consulta</a>
+</div>
 </div>
 </div>
 
@@ -931,9 +981,11 @@ Corporales y Terapias
 <img src="drenaje.jpg">
 </div>
 <div class="service-content">
-<h3>Drenaje Linfático</h3>
-<p>Ideal para post operatorios y retención de líquidos.</p>
-<a href="https://wa.me/50764787049" class="btn-card btn-consulta">Consulta</a>
+<h3>Drenaje linfático</h3>
+<p>Apoyo ideal para retención de líquidos y post operatorios.</p>
+<div class="service-action">
+<a href="https://wa.me/50764787049" class="btn-service">Consulta</a>
+</div>
 </div>
 </div>
 
@@ -942,9 +994,11 @@ Corporales y Terapias
 <img src="piedras-calientes.jpg">
 </div>
 <div class="service-content">
-<h3>Piedras Calientes</h3>
-<p>Terapia relajante para descanso físico y mental.</p>
-<a href="https://wa.me/50764787049" class="btn-card btn-consulta">Consulta</a>
+<h3>Piedras calientes</h3>
+<p>Terapia relajante profunda para cuerpo y mente.</p>
+<div class="service-action">
+<a href="https://wa.me/50764787049" class="btn-service">Consulta</a>
+</div>
 </div>
 </div>
 
@@ -953,20 +1007,24 @@ Corporales y Terapias
 <img src="reflexologia.jpg">
 </div>
 <div class="service-content">
-<h3>Reflexología Podal</h3>
-<p>Estimulación de puntos de presión y bienestar integral.</p>
-<a href="https://wa.me/50764787049" class="btn-card btn-consulta">Consulta</a>
+<h3>Reflexología podal</h3>
+<p>Estimulación de puntos de presión para bienestar integral.</p>
+<div class="service-action">
+<a href="https://wa.me/50764787049" class="btn-service">Consulta</a>
+</div>
 </div>
 </div>
 
 <div class="service-card">
 <div class="service-image">
-<img src="limpieza-energetica-2.jpg">
+<img src="limpieza-energetica.jpg">
 </div>
 <div class="service-content">
-<h3>Limpieza Energética</h3>
-<p>Equilibrio emocional y relajación profunda holística.</p>
-<a href="https://wa.me/50764787049" class="btn-card btn-consulta">Consulta</a>
+<h3>Limpieza energética</h3>
+<p>Experiencia holística enfocada en equilibrio y relajación.</p>
+<div class="service-action">
+<a href="https://wa.me/50764787049" class="btn-service">Consulta</a>
+</div>
 </div>
 </div>
 
@@ -978,9 +1036,10 @@ Corporales y Terapias
 
 <div class="category">
 
-<h2 class="category-title">
-Aparatología y Adelgazamiento
-</h2>
+<div class="category-title">
+<div class="category-line"></div>
+<h2>Aparatología y Reducción</h2>
+</div>
 
 <div class="services-grid">
 
@@ -990,19 +1049,23 @@ Aparatología y Adelgazamiento
 </div>
 <div class="service-content">
 <h3>Cavitación</h3>
-<p>Ayuda a reducir grasa localizada y moldear el cuerpo.</p>
-<a href="https://wa.me/50764787049" class="btn-card btn-consulta">Consulta</a>
+<p>Tratamiento enfocado en grasa localizada y reducción.</p>
+<div class="service-action">
+<a href="https://wa.me/50764787049" class="btn-service">Consulta</a>
+</div>
 </div>
 </div>
 
 <div class="service-card">
 <div class="service-image">
-<img src="radiofrecuencia-corporal.jpg">
+<img src="radiofrecuencia.jpg">
 </div>
 <div class="service-content">
-<h3>Radiofrecuencia Corporal</h3>
-<p>Tensado corporal y mejora visible de la flacidez.</p>
-<a href="https://wa.me/50764787049" class="btn-card btn-consulta">Consulta</a>
+<h3>Radiofrecuencia corporal</h3>
+<p>Ayuda a tensar la piel y mejorar flacidez corporal.</p>
+<div class="service-action">
+<a href="https://wa.me/50764787049" class="btn-service">Consulta</a>
+</div>
 </div>
 </div>
 
@@ -1011,9 +1074,11 @@ Aparatología y Adelgazamiento
 <img src="lipolaser.jpg">
 </div>
 <div class="service-content">
-<h3>Lipoláser</h3>
-<p>Reducción de medidas mediante tecnología no invasiva.</p>
-<a href="https://wa.me/50764787049" class="btn-card btn-consulta">Consulta</a>
+<h3>Lipoláser no invasivo</h3>
+<p>Reducción de medidas mediante tecnología láser estética.</p>
+<div class="service-action">
+<a href="https://wa.me/50764787049" class="btn-service">Consulta</a>
+</div>
 </div>
 </div>
 
@@ -1023,8 +1088,10 @@ Aparatología y Adelgazamiento
 </div>
 <div class="service-content">
 <h3>Criolipólisis</h3>
-<p>Tratamiento corporal para eliminación de grasa localizada.</p>
-<a href="https://wa.me/50764787049" class="btn-card btn-consulta">Consulta</a>
+<p>Tratamiento estético mediante enfriamiento localizado.</p>
+<div class="service-action">
+<a href="https://wa.me/50764787049" class="btn-service">Consulta</a>
+</div>
 </div>
 </div>
 
@@ -1034,8 +1101,10 @@ Aparatología y Adelgazamiento
 </div>
 <div class="service-content">
 <h3>Ondas Rusas</h3>
-<p>Tonificación muscular y levantamiento de glúteos.</p>
-<a href="https://wa.me/50764787049" class="btn-card btn-consulta">Consulta</a>
+<p>Tonificación muscular y levantamiento corporal.</p>
+<div class="service-action">
+<a href="https://wa.me/50764787049" class="btn-service">Consulta</a>
+</div>
 </div>
 </div>
 
@@ -1044,9 +1113,11 @@ Aparatología y Adelgazamiento
 <img src="depilacion-laser.jpg">
 </div>
 <div class="service-content">
-<h3>Depilación Láser</h3>
-<p>Reducción progresiva del vello con tecnología moderna.</p>
-<a href="https://wa.me/50764787049" class="btn-card btn-consulta">Consulta</a>
+<h3>Depilación láser</h3>
+<p>Uno de los tratamientos más buscados para reducción de vello.</p>
+<div class="service-action">
+<a href="https://wa.me/50764787049" class="btn-service">Consulta</a>
+</div>
 </div>
 </div>
 
@@ -1065,21 +1136,21 @@ Aparatología y Adelgazamiento
 <div class="cta-box">
 
 <h2>
-Valoración Profesional Personalizada
+Agenda tu valoración personalizada
 </h2>
 
 <p>
-Cada piel y cuerpo requieren protocolos diferentes. Agenda tu evaluación personalizada y descubre qué tratamientos aplican mejor para ti.
+Nuestro equipo puede orientarte según tus objetivos, tipo de piel y tratamientos ideales para ti.
 </p>
 
 <div class="hero-actions">
 
-<a href="https://wa.me/50764787049" class="btn-main">
-Agendar valoración
+<a href="https://figurarostro.life/reservar-v2.html" class="btn-main">
+Reservar valoración
 </a>
 
-<a href="/fibroblast.html" class="btn-outline">
-Ver especialidad Fibroblast
+<a href="https://wa.me/50764787049" class="btn-outline">
+Consulta con especialista
 </a>
 
 </div>
@@ -1103,38 +1174,37 @@ Ver especialidad Fibroblast
 </div>
 
 <p class="footer-text">
-Figura Rostro KG · Estética avanzada y bienestar integral en Panamá.
+Avenida Ernesto T. Lefevre, Plaza Royal Park, Local PB-15 Panamá.
 <br><br>
-Atención personalizada · Protocolos premium · Valoraciones privadas.
+Horario extendido:
+<br>
+Lunes a Sábado · 7:30am - 9:00pm
 </p>
 
 </div>
 
 <div>
 
-<h3 class="footer-title">
-Servicios
-</h3>
+<h3 class="footer-title">Servicios</h3>
 
 <ul class="footer-links">
-<li><a href="#">Fibroblast</a></li>
-<li><a href="#">Faciales</a></li>
-<li><a href="#">Corporales</a></li>
-<li><a href="#">Adelgazamiento</a></li>
+<li><a href="#">Plasma Fibroblast</a></li>
+<li><a href="#">Planes para adelgazar</a></li>
+<li><a href="#">Tratamientos faciales</a></li>
+<li><a href="#">Limpieza energética</a></li>
 </ul>
 
 </div>
 
 <div>
 
-<h3 class="footer-title">
-Contacto
-</h3>
+<h3 class="footer-title">Enlaces</h3>
 
 <ul class="footer-links">
-<li><a href="https://wa.me/50764787049">WhatsApp</a></li>
-<li><a href="#">Royal Park Panamá</a></li>
-<li><a href="#">Atención por citas</a></li>
+<li><a href="/">Inicio</a></li>
+<li><a href="/menu.html">Menú de servicios</a></li>
+<li><a href="/#planes">Planes</a></li>
+<li><a href="https://figurarostro.life/reservar-v2.html">Reservar valoración</a></li>
 </ul>
 
 </div>
@@ -1149,10 +1219,8 @@ Contacto
 
 </footer>
 
-<a class="whatsapp" href="https://wa.me/50764787049">
-
+<a class="whatsapp" href="https://wa.me/50764787049" target="_blank">
 <img src="whatsapp-icon.png">
-
 </a>
 
 </body>
