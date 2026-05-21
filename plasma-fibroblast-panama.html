@@ -7,7 +7,7 @@
 
 <title>Plasma Fibroblast en Panamá | Figura Rostro KG</title>
 
-<meta name="description" content="Plasma Fibroblast en Panamá. Rejuvenecimiento facial y corporal sin cirugía. Especialistas en párpados, abdomen, estrías, flacidez y lifting natural.">
+<meta name="description" content="Plasma Fibroblast en Panamá para tensar párpados, reducir flacidez, mejorar arrugas y rejuvenecer la piel sin cirugía. Valoración personalizada en Figura Rostro KG.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -69,7 +69,7 @@ justify-content:space-between;
 }
 
 .logo img{
-height:56px;
+height:54px;
 }
 
 nav ul{
@@ -84,23 +84,16 @@ text-decoration:none;
 color:#fff;
 font-weight:600;
 font-size:15px;
-position:relative;
+transition:.3s;
 padding-bottom:6px;
 }
 
 nav a:hover{
-opacity:.9;
+opacity:.8;
 }
 
-.active-link::after{
-content:'';
-position:absolute;
-left:0;
-bottom:0;
-width:100%;
-height:3px;
-border-radius:10px;
-background:#fff;
+.active-link{
+border-bottom:2px solid #fff;
 }
 
 .btn-header{
@@ -123,50 +116,54 @@ transform:translateY(-2px);
 .hero{
 margin-top:82px;
 position:relative;
-min-height:700px;
+min-height:88vh;
 display:flex;
 align-items:center;
 background:
-linear-gradient(rgba(20,46,53,.65),rgba(20,46,53,.70)),
-url('fibroblast-hero.jpg') center center/cover no-repeat;
+linear-gradient(rgba(24,52,61,0.68),rgba(24,52,61,0.72)),
+url('fibroblast-hero.jpg') center center/cover;
+color:#fff;
 overflow:hidden;
 }
 
-.hero::before{
+.hero::after{
 content:'';
 position:absolute;
-width:700px;
-height:700px;
+right:-150px;
+top:-150px;
+width:420px;
+height:420px;
+background:rgba(67,214,206,.15);
 border-radius:50%;
-background:rgba(67,214,206,.12);
-top:-200px;
-right:-180px;
 filter:blur(20px);
 }
 
-.hero-content{
+.hero-grid{
+display:grid;
+grid-template-columns:1.1fr .9fr;
+gap:50px;
+align-items:center;
+padding:90px 0;
 position:relative;
 z-index:2;
-max-width:680px;
-color:#fff;
-padding:90px 0;
 }
 
-.badge{
+.hero-badge{
 display:inline-flex;
 align-items:center;
 gap:10px;
-padding:12px 18px;
-border-radius:50px;
 background:rgba(255,255,255,.12);
 backdrop-filter:blur(10px);
-font-size:14px;
+padding:10px 18px;
+border-radius:50px;
+font-size:13px;
 font-weight:700;
-margin-bottom:22px;
+margin-bottom:24px;
+border:1px solid rgba(255,255,255,.15);
 }
 
 .hero h1{
-font-size:64px;
+font-size:62px;
 line-height:1.05;
 margin-bottom:22px;
 font-weight:800;
@@ -175,9 +172,9 @@ font-weight:800;
 .hero p{
 font-size:18px;
 line-height:1.9;
+opacity:.94;
 max-width:620px;
 margin-bottom:34px;
-color:rgba(255,255,255,.92);
 }
 
 .hero-buttons{
@@ -189,7 +186,7 @@ flex-wrap:wrap;
 .btn-main{
 background:linear-gradient(135deg,#2dcfc6,#26aba5);
 color:#fff;
-padding:15px 28px;
+padding:15px 30px;
 border-radius:50px;
 text-decoration:none;
 font-weight:700;
@@ -207,7 +204,7 @@ transform:translateY(-3px);
 
 .btn-outline{
 border:2px solid rgba(255,255,255,.75);
-padding:13px 26px;
+padding:14px 28px;
 border-radius:50px;
 color:#fff;
 text-decoration:none;
@@ -218,27 +215,53 @@ transition:.3s;
 }
 
 .btn-outline:hover{
-background:rgba(255,255,255,.12);
+background:rgba(255,255,255,.1);
 }
 
-/* TRUST BAR */
+.hero-card{
+background:#fff;
+padding:36px;
+border-radius:34px;
+box-shadow:0 15px 40px rgba(0,0,0,.15);
+color:var(--dark);
+}
+
+.hero-card img{
+width:100%;
+border-radius:24px;
+margin-bottom:24px;
+}
+
+.hero-card h3{
+font-size:28px;
+margin-bottom:14px;
+}
+
+.hero-card p{
+color:var(--muted);
+font-size:15px;
+line-height:1.8;
+margin-bottom:0;
+}
+
+/* TRUST */
 
 .trust-bar{
 background:#fff;
-padding:32px 0;
+padding:34px 0;
 border-bottom:1px solid #edf5f5;
 }
 
 .trust-grid{
 display:grid;
 grid-template-columns:repeat(4,1fr);
-gap:20px;
+gap:24px;
 }
 
 .trust-box{
 background:#fff;
-border-radius:26px;
-padding:30px;
+border-radius:24px;
+padding:28px;
 text-align:center;
 box-shadow:0 10px 30px rgba(0,0,0,.05);
 border:1px solid #edf5f5;
@@ -247,19 +270,23 @@ border:1px solid #edf5f5;
 .trust-box h3{
 font-size:34px;
 color:var(--primary);
-margin-bottom:10px;
+margin-bottom:8px;
 }
 
 .trust-box p{
-font-size:14px;
-line-height:1.7;
 color:var(--muted);
+font-size:14px;
+line-height:1.6;
 }
 
 /* SECTION */
 
 .section{
 padding:90px 0;
+}
+
+.section-light{
+background:var(--soft);
 }
 
 .section-title{
@@ -269,17 +296,16 @@ margin-bottom:55px;
 
 .section-title span{
 color:var(--primary);
+font-size:14px;
 font-weight:700;
 letter-spacing:1px;
-font-size:14px;
 text-transform:uppercase;
 }
 
 .section-title h2{
-font-size:46px;
-margin-top:12px;
-margin-bottom:16px;
-color:#17353c;
+font-size:44px;
+margin:14px 0 16px;
+color:var(--dark);
 }
 
 .section-title p{
@@ -299,7 +325,7 @@ gap:28px;
 
 .benefit-card{
 background:#fff;
-padding:38px;
+padding:36px;
 border-radius:30px;
 box-shadow:0 10px 35px rgba(0,0,0,.05);
 border:1px solid #edf5f5;
@@ -312,127 +338,146 @@ color:var(--dark);
 }
 
 .benefit-card p{
+line-height:1.9;
 color:var(--muted);
-line-height:1.9;
-font-size:15px;
+margin-bottom:20px;
 }
 
-/* SPECIAL AREAS */
-
-.area-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:30px;
-}
-
-.area-card{
-position:relative;
-overflow:hidden;
-border-radius:34px;
-min-height:420px;
+.benefit-card ul{
+padding-left:18px;
 display:flex;
-align-items:flex-end;
-padding:36px;
-background-size:cover;
-background-position:center;
+flex-direction:column;
+gap:12px;
+color:var(--muted);
+line-height:1.7;
 }
 
-.area-card::before{
-content:'';
-position:absolute;
-inset:0;
-background:linear-gradient(to top,rgba(15,33,38,.82),rgba(15,33,38,.15));
-}
+/* ZONES */
 
-.area-content{
-position:relative;
-z-index:2;
-color:#fff;
-}
-
-.area-content h3{
-font-size:34px;
-margin-bottom:14px;
-}
-
-.area-content p{
-font-size:15px;
-line-height:1.9;
-color:rgba(255,255,255,.92);
-margin-bottom:22px;
-}
-
-/* PROCESS */
-
-.process-section{
-background:var(--soft);
-}
-
-.process-grid{
+.zones-grid{
 display:grid;
 grid-template-columns:repeat(4,1fr);
-gap:24px;
+gap:22px;
 }
 
-.process-card{
+.zone-card{
 background:#fff;
-padding:34px 28px;
-border-radius:28px;
+padding:26px;
+border-radius:24px;
 text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,.05);
 border:1px solid #edf5f5;
-box-shadow:0 10px 35px rgba(0,0,0,.04);
 }
 
-.process-number{
-width:52px;
-height:52px;
-border-radius:50%;
-background:linear-gradient(135deg,#2bc6be,#25aaa4);
-display:flex;
-align-items:center;
-justify-content:center;
-color:#fff;
-font-weight:800;
-font-size:18px;
-margin:0 auto 18px;
+.zone-card img{
+width:100%;
+height:190px;
+object-fit:cover;
+border-radius:18px;
+margin-bottom:18px;
 }
 
-.process-card h3{
-font-size:22px;
-margin-bottom:12px;
+.zone-card h3{
+font-size:20px;
+margin-bottom:10px;
 color:var(--dark);
 }
 
-.process-card p{
+.zone-card p{
 font-size:14px;
-line-height:1.8;
+line-height:1.7;
+color:var(--muted);
+}
+
+/* COMPARISON */
+
+.compare-box{
+background:#fff;
+border-radius:34px;
+padding:50px;
+box-shadow:0 12px 40px rgba(0,0,0,.06);
+border:1px solid #edf5f5;
+overflow:auto;
+}
+
+.compare-table{
+width:100%;
+border-collapse:collapse;
+min-width:700px;
+}
+
+.compare-table th{
+background:#eff9f8;
+padding:18px;
+text-align:center;
+font-size:16px;
+color:var(--dark);
+}
+
+.compare-table td{
+padding:18px;
+border-bottom:1px solid #edf5f5;
+font-size:15px;
+color:var(--muted);
+text-align:center;
+}
+
+/* GALLERY */
+
+.gallery-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:24px;
+}
+
+.gallery-card{
+background:#fff;
+padding:16px;
+border-radius:24px;
+box-shadow:0 10px 30px rgba(0,0,0,.05);
+}
+
+.gallery-card img{
+width:100%;
+border-radius:18px;
+display:block;
+margin-bottom:14px;
+}
+
+.gallery-card h4{
+font-size:18px;
+margin-bottom:8px;
+color:var(--dark);
+}
+
+.gallery-card p{
+font-size:14px;
+line-height:1.7;
 color:var(--muted);
 }
 
 /* FAQ */
 
-.faq{
-max-width:900px;
-margin:auto;
+.faq-grid{
+display:grid;
+gap:20px;
 }
 
 .faq-item{
 background:#fff;
-border:1px solid #edf5f5;
+padding:30px;
 border-radius:24px;
-padding:28px;
-margin-bottom:18px;
-box-shadow:0 10px 30px rgba(0,0,0,.03);
+box-shadow:0 10px 30px rgba(0,0,0,.04);
+border:1px solid #edf5f5;
 }
 
 .faq-item h3{
 font-size:20px;
-margin-bottom:12px;
+margin-bottom:14px;
 color:var(--dark);
 }
 
 .faq-item p{
-font-size:15px;
 line-height:1.9;
 color:var(--muted);
 }
@@ -442,28 +487,28 @@ color:var(--muted);
 .cta-box{
 margin-top:30px;
 background:linear-gradient(135deg,#1f4f5c,#2abeb6);
-border-radius:36px;
+border-radius:34px;
 padding:70px 50px;
 text-align:center;
 color:#fff;
 box-shadow:0 15px 40px rgba(31,79,92,0.15);
 }
 
-.cta-box h3{
-font-size:46px;
-margin-bottom:18px;
+.cta-box h2{
+font-size:48px;
+margin-bottom:20px;
 }
 
 .cta-box p{
 max-width:760px;
 margin:auto;
 line-height:1.9;
-margin-bottom:34px;
+margin-bottom:36px;
 font-size:17px;
-opacity:0.96;
+opacity:.94;
 }
 
-.cta-buttons{
+.cta-actions{
 display:flex;
 justify-content:center;
 gap:16px;
@@ -513,12 +558,6 @@ color:#fff;
 text-decoration:none;
 opacity:.9;
 font-size:14.5px;
-transition:.2s;
-}
-
-.footer-links a:hover{
-color:var(--primary2);
-padding-left:4px;
 }
 
 .bottom{
@@ -529,14 +568,14 @@ opacity:.8;
 font-size:14px;
 }
 
-/* WHATSAPP */
+/* FLOAT */
 
 .whatsapp{
 position:fixed;
 right:22px;
 bottom:22px;
-width:66px;
-height:66px;
+width:68px;
+height:68px;
 background:#25D366;
 border-radius:50%;
 display:flex;
@@ -564,24 +603,19 @@ justify-content:center;
 
 .hero{
 min-height:auto;
-padding:40px 0 20px;
-background-position:center;
 }
 
-.hero-content{
-padding:40px 0 30px;
-text-align:center;
+.hero-grid{
+grid-template-columns:1fr;
+padding:70px 0;
 }
 
 .hero h1{
-font-size:38px;
-line-height:1.1;
+font-size:42px;
 }
 
 .hero p{
-font-size:15px;
-line-height:1.8;
-margin-bottom:24px;
+font-size:16px;
 }
 
 .hero-buttons{
@@ -590,53 +624,48 @@ flex-direction:column;
 
 .hero-buttons a{
 width:100%;
+text-align:center;
 }
 
 .trust-grid,
 .benefits-grid,
-.area-grid,
-.process-grid,
+.zones-grid,
+.gallery-grid,
 .footer-grid{
 grid-template-columns:1fr;
 }
 
-.section{
-padding:65px 0;
-}
-
 .section-title h2{
-font-size:32px;
+font-size:34px;
 }
 
-.area-card{
-min-height:340px;
-padding:28px;
-}
-
-.area-content h3{
-font-size:28px;
+.compare-box{
+padding:25px;
 }
 
 .cta-box{
-padding:42px 24px;
-border-radius:28px;
+padding:50px 24px;
 }
 
-.cta-box h3{
-font-size:32px;
+.cta-box h2{
+font-size:36px;
 }
 
-.cta-buttons{
+.cta-actions{
 flex-direction:column;
 }
 
-.cta-buttons a{
+.cta-actions a{
 width:100%;
+text-align:center;
 }
 
-.whatsapp{
-width:60px;
-height:60px;
+.hero-card{
+padding:24px;
+}
+
+.zone-card img{
+height:220px;
 }
 
 }
@@ -657,8 +686,8 @@ height:60px;
 <ul>
 <li><a href="/">Inicio</a></li>
 <li><a href="/#nosotros">Nosotros</a></li>
-<li><a href="/menu.html">Menú</a></li>
-<li><a href="/planes.html">Planes</a></li>
+<li><a href="/menu.html" class="active-link">Menú</a></li>
+<li><a href="/#planes">Planes</a></li>
 <li><a href="/#contacto">Contacto</a></li>
 </ul>
 </nav>
@@ -672,31 +701,45 @@ Reservar
 
 <section class="hero">
 
-<div class="container">
+<div class="container hero-grid">
 
-<div class="hero-content">
+<div>
 
-<div class="badge">
-Especialidad Figura Rostro KG · Plasma Fibroblast
+<div class="hero-badge">
+Especialidad destacada · Plasma Fibroblast
 </div>
 
-<h1>Rejuvenece y tensa tu piel sin cirugía</h1>
+<h1>
+Rejuvenece tu piel sin cirugía
+</h1>
 
 <p>
-Plasma Fibroblast es uno de los tratamientos más buscados para mejorar flacidez, párpados caídos, arrugas, estrías y exceso de piel de forma natural, segura y progresiva.
+El tratamiento de Plasma Fibroblast ayuda a tensar la piel, mejorar flacidez, reducir arrugas y rejuvenecer zonas delicadas como párpados, cuello, abdomen y papada mediante tecnología avanzada de plasma.
 </p>
 
 <div class="hero-buttons">
 
 <a href="https://figurarostro.life/reservar-v2.html" class="btn-main">
-Reservar valoración
+Reservar Valoración
 </a>
 
-<a href="https://wa.me/50764787049?text=Hola,%20deseo%20consultar%20por%20Plasma%20Fibroblast" class="btn-outline">
+<a href="https://wa.me/50764787049?text=Hola,%20quiero%20consultar%20sobre%20Plasma%20Fibroblast" class="btn-outline">
 Consulta con la especialista
 </a>
 
 </div>
+
+</div>
+
+<div class="hero-card">
+
+<img src="fibroblast-portada.jpg" alt="Plasma Fibroblast">
+
+<h3>Resultados progresivos y naturales</h3>
+
+<p>
+Una alternativa estética avanzada para mejorar la apariencia de la piel sin cirugía invasiva y con tiempos de recuperación mucho menores.
+</p>
 
 </div>
 
@@ -706,30 +749,26 @@ Consulta con la especialista
 
 <section class="trust-bar">
 
-<div class="container">
-
-<div class="trust-grid">
+<div class="container trust-grid">
 
 <div class="trust-box">
-<h3>+300</h3>
-<p>Pacientes atendidos en tratamientos de rejuvenecimiento y tensado cutáneo.</p>
+<h3>1-2h</h3>
+<p>Duración aproximada del procedimiento</p>
 </div>
 
 <div class="trust-box">
-<h3>Sin cirugía</h3>
-<p>Procedimiento no invasivo enfocado en estimular colágeno y elastina.</p>
+<h3>7-10</h3>
+<p>Días promedio de recuperación superficial</p>
 </div>
 
 <div class="trust-box">
-<h3>1 sesión</h3>
-<p>Muchas zonas muestran cambios visibles desde la primera aplicación.</p>
+<h3>Sin</h3>
+<p>Cirugía invasiva ni cortes quirúrgicos</p>
 </div>
 
 <div class="trust-box">
-<h3>Natural</h3>
-<p>Resultados progresivos que rejuvenecen sin alterar tus rasgos naturales.</p>
-</div>
-
+<h3>90</h3>
+<p>Días aproximados de producción activa de colágeno</p>
 </div>
 
 </div>
@@ -742,33 +781,63 @@ Consulta con la especialista
 
 <div class="section-title">
 <span>¿Qué es?</span>
-<h2>La tecnología estética más buscada para tensar la piel</h2>
+<h2>¿Cómo funciona el Plasma Fibroblast?</h2>
 <p>
-El Plasma Fibroblast trabaja mediante micro pulsos de plasma controlado sobre la superficie de la piel para estimular la regeneración natural, ayudando a mejorar firmeza, textura y apariencia sin necesidad de cirugía.
+El Plasma Fibroblast utiliza microdescargas de plasma controladas sobre la superficie cutánea para generar una retracción de la piel y estimular intensamente la producción natural de colágeno y elastina.
 </p>
 </div>
 
 <div class="benefits-grid">
 
 <div class="benefit-card">
-<h3>Rejuvenecimiento Facial</h3>
+<h3>Beneficios</h3>
+
 <p>
-Ideal para suavizar líneas de expresión, mejorar arrugas finas y devolver una apariencia más descansada y juvenil al rostro.
+Uno de los tratamientos más buscados para rejuvenecimiento no quirúrgico.
 </p>
+
+<ul>
+<li>✔ Tensado visible de la piel</li>
+<li>✔ Ayuda con arrugas finas</li>
+<li>✔ Mejora apariencia de flacidez</li>
+<li>✔ Estimula regeneración natural</li>
+<li>✔ Procedimiento ambulatorio</li>
+</ul>
+
 </div>
 
 <div class="benefit-card">
-<h3>Efecto Lifting</h3>
+<h3>Recuperación</h3>
+
 <p>
-Ayuda a tensar zonas con flacidez leve o moderada como párpados, cuello, abdomen y contorno facial.
+La recuperación depende del tipo de piel y zona tratada.
 </p>
+
+<ul>
+<li>✔ Inflamación leve temporal</li>
+<li>✔ Pequeñas costritas superficiales</li>
+<li>✔ Recuperación visual progresiva</li>
+<li>✔ Mejora continua durante semanas</li>
+<li>✔ Seguimiento personalizado</li>
+</ul>
+
 </div>
 
 <div class="benefit-card">
-<h3>Estimulación de Colágeno</h3>
+<h3>Valoración profesional</h3>
+
 <p>
-Activa procesos naturales de regeneración dérmica favoreciendo una piel más firme, uniforme y revitalizada.
+La valoración es importante para determinar si el tratamiento es adecuado para tu tipo de piel.
 </p>
+
+<ul>
+<li>✔ Evaluación de flacidez</li>
+<li>✔ Historial dermatológico</li>
+<li>✔ Objetivos estéticos</li>
+<li>✔ Recomendaciones post cuidado</li>
+<li>✔ Diseño de protocolo personalizado</li>
+</ul>
+
 </div>
 
 </div>
@@ -777,49 +846,81 @@ Activa procesos naturales de regeneración dérmica favoreciendo una piel más f
 
 </section>
 
-<section class="section process-section">
+<section class="section section-light">
 
 <div class="container">
 
 <div class="section-title">
-<span>Proceso Premium</span>
-<h2>Tu experiencia Plasma Fibroblast</h2>
+<span>Zonas tratables</span>
+<h2>Áreas donde puede aplicarse</h2>
 <p>
-Diseñamos un protocolo personalizado para brindarte seguridad, orientación profesional y resultados progresivos.
+El Plasma Fibroblast puede utilizarse en múltiples zonas faciales y corporales según valoración profesional.
 </p>
 </div>
 
-<div class="process-grid">
+<div class="zones-grid">
 
-<div class="process-card">
-<div class="process-number">1</div>
-<h3>Valoración</h3>
+<div class="zone-card">
+<img src="zona-parpados.jpg" alt="Parpados">
+<h3>Párpados</h3>
 <p>
-Evaluamos tu piel, flacidez y objetivos para determinar si eres candidata ideal.
+Ayuda a tensar y rejuvenecer visualmente la zona periocular.
 </p>
 </div>
 
-<div class="process-card">
-<div class="process-number">2</div>
-<h3>Diseño del protocolo</h3>
+<div class="zone-card">
+<img src="zona-abdomen.jpg" alt="Abdomen">
+<h3>Abdomen</h3>
 <p>
-Seleccionamos intensidad, zonas y cuidados específicos según tu caso.
+Ideal para mejorar apariencia de flacidez y estrías superficiales.
 </p>
 </div>
 
-<div class="process-card">
-<div class="process-number">3</div>
-<h3>Aplicación</h3>
+<div class="zone-card">
+<img src="zona-cuello.jpg" alt="Cuello">
+<h3>Cuello y papada</h3>
 <p>
-Realizamos el procedimiento bajo protocolos higiénicos y técnica profesional.
+Contribuye a mejorar firmeza y redefinir visualmente el contorno.
 </p>
 </div>
 
-<div class="process-card">
-<div class="process-number">4</div>
-<h3>Seguimiento</h3>
+<div class="zone-card">
+<img src="zona-manos.jpg" alt="Manos">
+<h3>Manos</h3>
 <p>
-Te orientamos en el proceso de recuperación y evolución de resultados.
+Rejuvenecimiento visual y mejora de textura cutánea.
+</p>
+</div>
+
+<div class="zone-card">
+<img src="zona-brazos.jpg" alt="Brazos">
+<h3>Brazos</h3>
+<p>
+Apoyo para mejorar apariencia de piel flácida.
+</p>
+</div>
+
+<div class="zone-card">
+<img src="zona-rodillas.jpg" alt="Rodillas">
+<h3>Rodillas</h3>
+<p>
+Ayuda a mejorar textura y apariencia envejecida de la piel.
+</p>
+</div>
+
+<div class="zone-card">
+<img src="zona-cicatrices.jpg" alt="Cicatrices">
+<h3>Cicatrices y estrías</h3>
+<p>
+Puede ayudar a mejorar visualmente ciertas irregularidades.
+</p>
+</div>
+
+<div class="zone-card">
+<img src="zona-frente.jpg" alt="Frente">
+<h3>Frente y líneas finas</h3>
+<p>
+Tratamiento enfocado en rejuvenecimiento y textura.
 </p>
 </div>
 
@@ -834,49 +935,103 @@ Te orientamos en el proceso de recuperación y evolución de resultados.
 <div class="container">
 
 <div class="section-title">
-<span>Zonas más solicitadas</span>
-<h2>Resultados visibles en diferentes áreas</h2>
+<span>Comparativa</span>
+<h2>Plasma Fibroblast vs procedimientos invasivos</h2>
 <p>
-El Plasma Fibroblast puede aplicarse en múltiples zonas faciales y corporales dependiendo del tipo de piel y evaluación previa.
+Muchos pacientes buscan alternativas menos invasivas para mejorar la apariencia de la piel y rejuvenecer zonas específicas.
 </p>
 </div>
 
-<div class="area-grid">
+<div class="compare-box">
 
-<div class="area-card" style="background-image:url('fibroblast-parpados.jpg');">
+<table class="compare-table">
 
-<div class="area-content">
+<tr>
+<th>Característica</th>
+<th>Plasma Fibroblast</th>
+<th>Procedimientos invasivos</th>
+</tr>
 
-<h3>Párpados y mirada</h3>
+<tr>
+<td>Cirugía</td>
+<td>No quirúrgico</td>
+<td>Puede requerir cirugía</td>
+</tr>
 
+<tr>
+<td>Tiempo de recuperación</td>
+<td>Moderado</td>
+<td>Mayor recuperación</td>
+</tr>
+
+<tr>
+<td>Anestesia</td>
+<td>Tópica</td>
+<td>Puede requerir anestesia</td>
+</tr>
+
+<tr>
+<td>Estimulación de colágeno</td>
+<td>Sí</td>
+<td>Variable</td>
+</tr>
+
+<tr>
+<td>Procedimiento ambulatorio</td>
+<td>Sí</td>
+<td>No siempre</td>
+</tr>
+
+<tr>
+<td>Resultados</td>
+<td>Progresivos y naturales</td>
+<td>Más inmediatos</td>
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section section-light">
+
+<div class="container">
+
+<div class="section-title">
+<span>Resultados reales</span>
+<h2>Galería de pacientes</h2>
 <p>
-Ayuda a tensar la piel del párpado superior, mejorar la apariencia de cansancio y rejuvenecer visualmente la mirada sin cirugía.
+Agrega aquí tus imágenes reales de antes y después para aumentar la confianza y conversión del tratamiento.
 </p>
-
-<a href="https://figurarostro.life/reservar-v2.html" class="btn-main">
-Quiero valoración
-</a>
-
 </div>
 
-</div>
+<div class="gallery-grid">
 
-<div class="area-card" style="background-image:url('fibroblast-abdomen.jpg');">
-
-<div class="area-content">
-
-<h3>Abdomen y estrías</h3>
-
+<div class="gallery-card">
+<img src="resultado-1.jpg" alt="Resultado plasma fibroblast">
+<h4>Párpados</h4>
 <p>
-Tratamiento ideal para mejorar flacidez abdominal, textura irregular y apariencia de estrías en ciertas zonas corporales.
+Mejora visual de flacidez y rejuvenecimiento de la mirada.
 </p>
-
-<a href="https://figurarostro.life/reservar-v2.html" class="btn-main">
-Consultar abdomen
-</a>
-
 </div>
 
+<div class="gallery-card">
+<img src="resultado-2.jpg" alt="Resultado abdomen">
+<h4>Abdomen</h4>
+<p>
+Apoyo para mejorar apariencia de piel flácida y textura.
+</p>
+</div>
+
+<div class="gallery-card">
+<img src="resultado-3.jpg" alt="Resultado cuello">
+<h4>Cuello y papada</h4>
+<p>
+Tratamiento orientado a mejorar firmeza y contorno.
+</p>
 </div>
 
 </div>
@@ -891,39 +1046,43 @@ Consultar abdomen
 
 <div class="section-title">
 <span>Preguntas frecuentes</span>
-<h2>Lo que debes saber antes de reservar</h2>
-<p>
-Cada piel es diferente. Por eso recomendamos una valoración personalizada antes de iniciar cualquier protocolo.
-</p>
+<h2>Dudas comunes sobre Plasma Fibroblast</h2>
 </div>
 
-<div class="faq">
+<div class="faq-grid">
 
 <div class="faq-item">
-<h3>¿El procedimiento reemplaza una cirugía?</h3>
+<h3>¿El procedimiento duele?</h3>
 <p>
-No sustituye procedimientos quirúrgicos avanzados, pero puede ayudar notablemente a mejorar flacidez leve o moderada en ciertas zonas.
-</p>
-</div>
-
-<div class="faq-item">
-<h3>¿Cuánto dura la recuperación?</h3>
-<p>
-La recuperación puede variar según la zona tratada y el tipo de piel. Generalmente la piel pasa por una etapa de regeneración progresiva.
+Normalmente se utiliza anestesia tópica para mayor comodidad durante el procedimiento.
 </p>
 </div>
 
 <div class="faq-item">
-<h3>¿Desde cuándo se ven resultados?</h3>
+<h3>¿Cuánto duran los resultados?</h3>
 <p>
-Muchas personas comienzan a notar cambios progresivos durante las primeras semanas conforme aumenta la producción natural de colágeno.
+Los resultados pueden variar dependiendo de factores como edad, cuidados, hábitos y producción natural de colágeno.
 </p>
 </div>
 
 <div class="faq-item">
-<h3>¿Todas las personas aplican?</h3>
+<h3>¿Todos son candidatos?</h3>
 <p>
-No todas las pieles son candidatas ideales. La especialista evaluará historial, sensibilidad cutánea y objetivos estéticos.
+No necesariamente. La valoración profesional permite determinar si el tratamiento es adecuado para tu piel y objetivos.
+</p>
+</div>
+
+<div class="faq-item">
+<h3>¿Qué cuidados se necesitan?</h3>
+<p>
+Seguir correctamente las recomendaciones post tratamiento es fundamental para una adecuada recuperación.
+</p>
+</div>
+
+<div class="faq-item">
+<h3>¿Se puede combinar con otros tratamientos?</h3>
+<p>
+Sí, en muchos casos puede combinarse estratégicamente con protocolos faciales y corporales personalizados.
 </p>
 </div>
 
@@ -931,20 +1090,20 @@ No todas las pieles son candidatas ideales. La especialista evaluará historial,
 
 <div class="cta-box">
 
-<h3>Agenda tu valoración Plasma Fibroblast</h3>
+<h2>Agenda tu valoración especializada</h2>
 
 <p>
-Nuestro equipo evaluará tus objetivos y te orientará sobre las zonas, cuidados y protocolo más adecuado para tu piel.
+Nuestro equipo evaluará tu tipo de piel, grado de flacidez y objetivos estéticos para recomendarte el protocolo más adecuado para tu caso.
 </p>
 
-<div class="cta-buttons">
+<div class="cta-actions">
 
 <a href="https://figurarostro.life/reservar-v2.html" class="btn-main">
-Reservar cita ahora
+Reservar cita de valoración
 </a>
 
-<a href="https://wa.me/50764787049?text=Hola,%20quiero%20información%20sobre%20Plasma%20Fibroblast" class="btn-outline">
-Hablar con la especialista
+<a href="https://wa.me/50764787049?text=Hola,%20quiero%20más%20información%20sobre%20Plasma%20Fibroblast" class="btn-outline">
+Consulta con la especialista
 </a>
 
 </div>
@@ -986,7 +1145,7 @@ Lun - Sab 7:30am hasta las 9pm
 <ul class="footer-links">
 <li><a href="#">Plasma Fibroblast</a></li>
 <li><a href="#">Tratamientos Faciales</a></li>
-<li><a href="#">Reducción de Medidas</a></li>
+<li><a href="#">Corporales</a></li>
 <li><a href="#">Limpieza Energética</a></li>
 </ul>
 
@@ -999,8 +1158,8 @@ Lun - Sab 7:30am hasta las 9pm
 <ul class="footer-links">
 <li><a href="/">Inicio</a></li>
 <li><a href="/menu.html">Menú de servicios</a></li>
-<li><a href="/planes.html">Planes</a></li>
-<li><a href="https://figurarostro.life/reservar-v2.html">Reservar cita</a></li>
+<li><a href="https://figurarostro.life/reservar-v2.html">Agendar cita</a></li>
+<li><a href="/#contacto">Contacto</a></li>
 </ul>
 
 </div>
