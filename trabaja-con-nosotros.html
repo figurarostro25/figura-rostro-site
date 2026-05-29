@@ -14,8 +14,6 @@
 :root{
 --primary:#27b8b0;
 --primary2:#43d6ce;
---pink:#ff5ca8;
---lime:#b4de36;
 --dark:#17353c;
 --soft:#f6fbfb;
 }
@@ -28,38 +26,155 @@ box-sizing:border-box;
 
 body{
 font-family:'Inter',sans-serif;
-background:var(--soft);
+background:#fff;
 color:#24414a;
+overflow-x:hidden;
 }
 
+/* HERO */
+
 .hero{
-background:linear-gradient(135deg,#1f4f5c,#2abeb6);
-padding:60px 20px;
+min-height:100vh;
+padding:40px 20px;
+position:relative;
+overflow:hidden;
+background:
+linear-gradient(
+90deg,
+rgba(18,63,73,.92) 0%,
+rgba(24,93,101,.88) 35%,
+rgba(39,184,176,.78) 100%
+);
+}
+
+/* IMAGEN DE FONDO */
+
+.hero::before{
+content:"";
+position:absolute;
+inset:0;
+background:url('auxiliar-estetica.jpg') center left/cover no-repeat;
+opacity:.38;
+filter:brightness(.9);
+z-index:1;
+}
+
+/* EFECTO DIFUMINADO */
+
+.hero::after{
+content:"";
+position:absolute;
+top:0;
+right:0;
+width:55%;
+height:100%;
+background:linear-gradient(
+90deg,
+rgba(255,255,255,0) 0%,
+rgba(255,255,255,.12) 20%,
+rgba(255,255,255,.92) 100%
+);
+z-index:2;
 }
 
 .container{
-max-width:1200px;
+max-width:1280px;
 margin:auto;
+position:relative;
+z-index:5;
 }
 
 .hero-grid{
 display:grid;
-grid-template-columns:1fr 1fr;
-gap:40px;
+grid-template-columns:1fr 520px;
+gap:60px;
 align-items:center;
+min-height:90vh;
 }
 
-.hero img{
-width:100%;
-border-radius:30px;
-box-shadow:0 15px 40px rgba(0,0,0,.15);
+/* TEXTO IZQUIERDA */
+
+.hero-content{
+color:#fff;
+padding-right:30px;
 }
+
+.hero-tag{
+display:inline-block;
+padding:10px 18px;
+background:rgba(255,255,255,.14);
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,.18);
+border-radius:50px;
+font-size:14px;
+font-weight:700;
+margin-bottom:22px;
+}
+
+.hero-content h1{
+font-size:64px;
+line-height:1;
+font-weight:800;
+margin-bottom:22px;
+max-width:580px;
+}
+
+.hero-content p{
+font-size:18px;
+line-height:1.8;
+max-width:560px;
+color:rgba(255,255,255,.9);
+}
+
+.hero-mini{
+margin-top:35px;
+display:flex;
+gap:18px;
+flex-wrap:wrap;
+}
+
+.mini-box{
+background:rgba(255,255,255,.12);
+border:1px solid rgba(255,255,255,.12);
+backdrop-filter:blur(12px);
+padding:18px 22px;
+border-radius:22px;
+min-width:170px;
+}
+
+.mini-box strong{
+display:block;
+font-size:20px;
+margin-bottom:4px;
+}
+
+/* FORMULARIO */
 
 .form-card{
-background:#fff;
-padding:40px;
-border-radius:30px;
-box-shadow:0 15px 40px rgba(0,0,0,.08);
+background:rgba(255,255,255,.96);
+backdrop-filter:blur(12px);
+padding:38px;
+border-radius:34px;
+box-shadow:
+0 30px 70px rgba(0,0,0,.15),
+0 10px 30px rgba(0,0,0,.08);
+position:relative;
+overflow:hidden;
+}
+
+.form-card::before{
+content:"";
+position:absolute;
+top:-120px;
+right:-120px;
+width:240px;
+height:240px;
+background:linear-gradient(
+135deg,
+rgba(39,184,176,.16),
+rgba(67,214,206,.04)
+);
+border-radius:50%;
 }
 
 .badge{
@@ -69,21 +184,26 @@ padding:10px 18px;
 border-radius:50px;
 color:var(--primary);
 font-weight:700;
-margin-bottom:15px;
+margin-bottom:18px;
+font-size:14px;
 }
 
-h1{
-font-size:42px;
-line-height:1.1;
-margin-bottom:15px;
+.form-card h2{
+font-size:46px;
+line-height:1.05;
+margin-bottom:18px;
 color:var(--dark);
+font-weight:800;
 }
 
 .subtitle{
-color:#667a82;
-line-height:1.7;
-margin-bottom:30px;
+color:#60737b;
+line-height:1.8;
+margin-bottom:28px;
+font-size:15px;
 }
+
+/* INPUTS */
 
 .form-group{
 margin-bottom:18px;
@@ -92,18 +212,30 @@ margin-bottom:18px;
 label{
 display:block;
 margin-bottom:8px;
-font-weight:600;
+font-weight:700;
+font-size:14px;
+color:#234048;
 }
 
 input,
 select,
 textarea{
 width:100%;
-padding:14px;
-border:1px solid #d9e5e5;
-border-radius:14px;
+padding:15px 18px;
+border:1px solid #dce8e8;
+border-radius:16px;
 font-family:inherit;
 font-size:15px;
+background:#fff;
+transition:.25s;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+outline:none;
+border-color:#27b8b0;
+box-shadow:0 0 0 4px rgba(39,184,176,.12);
 }
 
 textarea{
@@ -113,72 +245,164 @@ resize:none;
 
 input[type=file]{
 padding:12px;
+background:#f7fbfb;
 }
 
-.benefits{
-padding:80px 20px;
-background:#fff;
-}
-
-.benefit-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:25px;
-}
-
-.benefit{
-background:#fff;
-padding:30px;
-border-radius:24px;
-text-align:center;
-box-shadow:0 8px 30px rgba(0,0,0,.05);
-}
-
-.benefit-icon{
-font-size:42px;
-margin-bottom:15px;
-}
-
-.benefit h3{
-margin-bottom:10px;
-}
+/* BOTON */
 
 .btn{
 width:100%;
 border:none;
 padding:18px;
+margin-top:8px;
 background:linear-gradient(135deg,#25D366,#20b458);
 color:#fff;
-font-size:18px;
+font-size:17px;
 font-weight:700;
 border-radius:60px;
 cursor:pointer;
 transition:.3s;
+box-shadow:0 12px 30px rgba(37,211,102,.25);
 }
 
 .btn:hover{
-transform:translateY(-2px);
+transform:translateY(-3px);
+box-shadow:0 16px 40px rgba(37,211,102,.35);
 }
 
+/* BENEFICIOS */
+
+.benefits{
+padding:90px 20px;
+background:#fff;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:50px;
+}
+
+.section-title h2{
+font-size:42px;
+color:#17353c;
+margin-bottom:10px;
+}
+
+.section-title p{
+color:#688088;
+}
+
+.benefit-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:28px;
+}
+
+.benefit{
+background:#fff;
+padding:35px;
+border-radius:30px;
+text-align:center;
+box-shadow:0 10px 35px rgba(0,0,0,.06);
+transition:.3s;
+border:1px solid #eef5f5;
+}
+
+.benefit:hover{
+transform:translateY(-6px);
+}
+
+.benefit-icon{
+font-size:46px;
+margin-bottom:18px;
+}
+
+.benefit h3{
+margin-bottom:12px;
+color:#17353c;
+}
+
+.benefit p{
+color:#60737b;
+line-height:1.7;
+}
+
+/* FOOTER */
+
 .footer{
-padding:40px 20px;
+padding:50px 20px;
 text-align:center;
 background:#17353c;
 color:#fff;
 }
 
-@media(max-width:900px){
+.footer h3{
+font-size:28px;
+margin-bottom:8px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1050px){
 
 .hero-grid{
 grid-template-columns:1fr;
 }
 
-h1{
+.hero-content{
+text-align:center;
+padding-right:0;
+}
+
+.hero-content h1{
+font-size:52px;
+max-width:100%;
+}
+
+.hero-content p{
+margin:auto;
+}
+
+.hero-mini{
+justify-content:center;
+}
+
+.form-card{
+max-width:700px;
+margin:auto;
+}
+
+.hero::after{
+display:none;
+}
+
+}
+
+@media(max-width:700px){
+
+.hero{
+padding:25px 15px 60px;
+}
+
+.hero-content h1{
+font-size:40px;
+}
+
+.form-card{
+padding:28px 22px;
+border-radius:26px;
+}
+
+.form-card h2{
 font-size:34px;
 }
 
 .benefit-grid{
 grid-template-columns:1fr;
+}
+
+.section-title h2{
+font-size:34px;
 }
 
 }
@@ -195,9 +419,46 @@ grid-template-columns:1fr;
 
 <div class="hero-grid">
 
-<div>
-<img src="auxiliar-estetica.jpg" alt="Vacante Auxiliar de Estética">
+<!-- TEXTO IZQUIERDA -->
+
+<div class="hero-content">
+
+<div class="hero-tag">
+✨ Vacante Disponible • Figura Rostro KG
 </div>
+
+<h1>
+Trabaja en una estética premium en Panamá
+</h1>
+
+<p>
+Buscamos Auxiliar de Estética apasionada por la belleza,
+el cuidado facial y la atención al cliente.
+Únete a un equipo profesional en crecimiento.
+</p>
+
+<div class="hero-mini">
+
+<div class="mini-box">
+<strong>Faciales</strong>
+Tratamientos profesionales
+</div>
+
+<div class="mini-box">
+<strong>Corporales</strong>
+Tecnologías estéticas
+</div>
+
+<div class="mini-box">
+<strong>Ambiente VIP</strong>
+Clínica moderna y elegante
+</div>
+
+</div>
+
+</div>
+
+<!-- FORMULARIO -->
 
 <div class="form-card">
 
@@ -205,13 +466,12 @@ grid-template-columns:1fr;
 Figura Rostro KG
 </div>
 
-<h1>
+<h2>
 Únete a nuestro equipo
-</h1>
+</h2>
 
 <p class="subtitle">
-Buscamos Auxiliar de Estética con conocimientos en tratamientos faciales y corporales.
-Completa el formulario y envíanos tu solicitud por WhatsApp.
+Completa el formulario y envíanos tu solicitud directamente por WhatsApp.
 </p>
 
 <form id="empleoForm">
@@ -305,12 +565,17 @@ Enviar Solicitud por WhatsApp
 
 <div class="container">
 
+<div class="section-title">
+<h2>¿Por qué trabajar con nosotros?</h2>
+<p>Un entorno moderno enfocado en crecimiento y bienestar.</p>
+</div>
+
 <div class="benefit-grid">
 
 <div class="benefit">
 <div class="benefit-icon">💼</div>
 <h3>Crece con Nosotros</h3>
-<p>Forma parte de un equipo profesional en crecimiento.</p>
+<p>Forma parte de un equipo profesional en expansión.</p>
 </div>
 
 <div class="benefit">
@@ -322,7 +587,7 @@ Enviar Solicitud por WhatsApp
 <div class="benefit">
 <div class="benefit-icon">🌟</div>
 <h3>Excelente Ambiente</h3>
-<p>Trabaja en un entorno enfocado en bienestar y belleza.</p>
+<p>Trabaja en un espacio moderno, elegante y profesional.</p>
 </div>
 
 </div>
