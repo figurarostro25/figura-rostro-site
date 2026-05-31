@@ -118,21 +118,32 @@
       box-shadow: 0 22px 48px rgba(32, 184, 174, .34);
     }
 
-    .simple-link {
-      display: flex;
-      justify-content: center;
+    .notice {
       margin-top: 14px;
-      color: var(--teal-dark);
+      padding: 16px;
+      border: 1px solid rgba(18, 122, 125, .18);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, .82);
+      color: var(--deep);
       font-weight: 900;
-      font-size: 14px;
       text-align: center;
+      box-shadow: 0 14px 34px rgba(18, 61, 70, .08);
     }
 
-    .simple-link span {
-      padding: 12px 16px;
-      border: 1px solid rgba(18, 122, 125, .18);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, .78);
+    .notice strong {
+      display: block;
+      font-size: 18px;
+      line-height: 1.15;
+      text-transform: uppercase;
+    }
+
+    .notice span {
+      display: block;
+      margin-top: 6px;
+      color: #60797f;
+      font-size: 13px;
+      line-height: 1.45;
+      font-weight: 700;
     }
 
     @media (max-width: 520px) {
@@ -180,9 +191,10 @@
       </form>
     </section>
 
-    <a class="simple-link" href="https://figurarostro.life/plasma-fibroblast-panama.html">
-      <span>Ver informaci&oacute;n completa de Plasma Fibroblast</span>
-    </a>
+    <div class="notice">
+      <strong>Cita de Valoraci&oacute;n Requerida</strong>
+      <span>La promoci&oacute;n se confirma seg&uacute;n zona, tipo de piel y objetivo del tratamiento.</span>
+    </div>
   </main>
 
   <script>
