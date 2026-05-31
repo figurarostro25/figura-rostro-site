@@ -342,7 +342,7 @@
 
     .intro-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: .92fr 1.08fr;
       gap: 24px;
       align-items: stretch;
     }
@@ -357,6 +357,8 @@
 
     .feature-panel {
       padding: 30px;
+      display: flex;
+      flex-direction: column;
     }
 
     .feature-panel h3,
@@ -372,6 +374,49 @@
       color: var(--muted);
       line-height: 1.76;
       font-size: 15px;
+    }
+
+    .key-list {
+      display: grid;
+      gap: 12px;
+      margin: 22px 0;
+    }
+
+    .key-item {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--soft);
+    }
+
+    .key-item b {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      font-size: 18px;
+    }
+
+    .key-item strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--deep);
+      font-size: 15px;
+      line-height: 1.25;
+    }
+
+    .key-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
     }
 
     .tag {
@@ -397,6 +442,65 @@
         radial-gradient(circle at 88% 12%, rgba(34, 184, 177, .18), transparent 32%),
         var(--white);
       box-shadow: var(--shadow);
+    }
+
+    .science-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .science-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--white);
+      box-shadow: 0 10px 26px rgba(18, 61, 70, .06);
+    }
+
+    .science-card-body {
+      padding: 15px;
+    }
+
+    .science-card-body b {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--deep);
+      font-size: 15px;
+    }
+
+    .science-card-body span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .edu-frame {
+      position: relative;
+      min-height: 210px;
+      background: linear-gradient(135deg, #e8fbf9, #fffaf3);
+    }
+
+    .edu-frame img {
+      width: 100%;
+      height: 210px;
+      display: block;
+      object-fit: cover;
+    }
+
+    .edu-fallback {
+      position: absolute;
+      inset: 0;
+      display: none;
+      place-items: center;
+      padding: 16px;
+    }
+
+    .edu-fallback svg {
+      width: 100%;
+      height: 100%;
     }
 
     .visual-mini {
@@ -1178,6 +1282,10 @@
         grid-template-columns: 1fr;
       }
 
+      .science-grid {
+        grid-template-columns: 1fr;
+      }
+
       .zone-card img,
       .blog-card img {
         height: 180px;
@@ -1282,9 +1390,34 @@
           <article class="feature-panel">
             <span class="tag">Est&eacute;tica avanzada</span>
             <h3>Por qu&eacute; llama tanto la atenci&oacute;n</h3>
-            <p>Es buscado por personas que desean mejorar flacidez localizada sin iniciar por una cirug&iacute;a. En la pr&aacute;ctica est&eacute;tica internacional se ense&ntilde;a como una t&eacute;cnica de tensado cut&aacute;neo para zonas espec&iacute;ficas, siempre con evaluaci&oacute;n previa, cuidados posteriores y expectativas realistas.</p>
+            <p>Es buscado por personas que desean mejorar flacidez localizada sin iniciar por una cirug&iacute;a. La clave est&aacute; en trabajar zonas espec&iacute;ficas con puntos controlados, valoraci&oacute;n previa y cuidados posteriores realistas.</p>
+
+            <div class="key-list">
+              <div class="key-item">
+                <b>1</b>
+                <div>
+                  <strong>Dise&ntilde;o por zona</strong>
+                  <span>No se trabaja igual un p&aacute;rpado que abdomen, cuello o una l&iacute;nea puntual.</span>
+                </div>
+              </div>
+              <div class="key-item">
+                <b>2</b>
+                <div>
+                  <strong>Puntos focalizados</strong>
+                  <span>La energ&iacute;a se aplica de forma localizada para crear una respuesta superficial controlada.</span>
+                </div>
+              </div>
+              <div class="key-item">
+                <b>3</b>
+                <div>
+                  <strong>Recuperaci&oacute;n guiada</strong>
+                  <span>Los cuidados posteriores influyen mucho en la apariencia final de la piel.</span>
+                </div>
+              </div>
+            </div>
+
             <div class="visual-mini">
-              <img src="https://figurarostro.life/proceso-puntos-plasma.png" alt="Ilustraci&oacute;n de puntos controlados en Plasma Fibroblast">
+              <img src="https://figurarostro.life/proceso-puntos-plasma.png" alt="Ilustraci&oacute;n de puntos controlados en Plasma Fibroblast" onerror="this.style.display='none';">
               <div>
                 <b>Precisi&oacute;n por puntos</b>
                 <span>El trabajo se hace de forma localizada, como un dise&ntilde;o manual sobre la zona que necesita tensado.</span>
@@ -1298,14 +1431,51 @@
             <h3>C&oacute;mo se relaciona con col&aacute;geno y firmeza</h3>
             <p>La dermis contiene fibroblastos y matriz extracelular. Los fibroblastos participan en la reparaci&oacute;n del tejido y producen componentes como col&aacute;geno, clave para firmeza y soporte.</p>
 
-            <div class="cell-illustration" aria-label="Ilustraci&oacute;n educativa de fibroblasto y col&aacute;geno">
-              <img src="https://figurarostro.life/colageno-fibroblastos.png" alt="Ilustraci&oacute;n de fibroblastos, col&aacute;geno y firmeza de la piel">
+            <div class="science-grid">
+              <div class="science-card">
+                <div class="edu-frame">
+                  <img src="https://figurarostro.life/colageno-fibroblastos.png" alt="Ilustraci&oacute;n de fibroblastos, col&aacute;geno y firmeza de la piel" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                  <div class="edu-fallback" aria-hidden="true">
+                    <svg viewBox="0 0 420 260">
+                      <rect width="420" height="260" rx="28" fill="#eefbf9"/>
+                      <path d="M38 92 C110 40, 170 154, 244 88 S342 60, 386 120" fill="none" stroke="#22b8b1" stroke-width="13" stroke-linecap="round"/>
+                      <path d="M36 142 C124 198, 196 82, 270 150 S350 188, 392 120" fill="none" stroke="#9be5df" stroke-width="10" stroke-linecap="round"/>
+                      <path d="M42 182 C130 138, 208 220, 286 174 S354 126, 390 178" fill="none" stroke="#c9a962" stroke-width="8" stroke-linecap="round"/>
+                      <ellipse cx="214" cy="126" rx="62" ry="38" fill="#fff" stroke="#127a7d" stroke-width="4"/>
+                      <ellipse cx="216" cy="126" rx="25" ry="15" fill="#22b8b1"/>
+                    </svg>
+                  </div>
+                </div>
+                <div class="science-card-body">
+                  <b>Fibroblastos y soporte</b>
+                  <span>Participan en la reparaci&oacute;n del tejido y en la matriz que da firmeza.</span>
+                </div>
+              </div>
+
+              <div class="science-card">
+                <div class="edu-frame">
+                  <img src="https://figurarostro.life/capas-piel-fibroblast.png" alt="Ilustraci&oacute;n de capas de la piel en Plasma Fibroblast" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                  <div class="edu-fallback" aria-hidden="true">
+                    <svg viewBox="0 0 420 260">
+                      <rect width="420" height="260" rx="28" fill="#fffaf3"/>
+                      <rect x="38" y="48" width="344" height="54" rx="18" fill="#fff2e9" stroke="#f1cfbd"/>
+                      <rect x="38" y="104" width="344" height="70" rx="18" fill="#e8fbf9" stroke="#bce8e4"/>
+                      <rect x="38" y="176" width="344" height="46" rx="18" fill="#fff8dc" stroke="#eadf9d"/>
+                      <path d="M70 138 C118 116, 160 164, 208 138 S296 116, 350 144" fill="none" stroke="#22b8b1" stroke-width="8" stroke-linecap="round"/>
+                      <text x="58" y="82" font-size="18" font-weight="900" fill="#123d46">Epidermis</text>
+                      <text x="58" y="145" font-size="18" font-weight="900" fill="#123d46">Dermis</text>
+                      <text x="58" y="205" font-size="18" font-weight="900" fill="#123d46">Soporte</text>
+                    </svg>
+                  </div>
+                </div>
+                <div class="science-card-body">
+                  <b>Capas de la piel</b>
+                  <span>La valoraci&oacute;n define si la flacidez es superficial o requiere otro enfoque.</span>
+                </div>
+              </div>
             </div>
 
             <div class="skin-diagram" aria-label="Diagrama educativo de capas de piel">
-              <div class="cell-illustration" style="margin:0; border:0; border-radius:0;">
-                <img src="https://figurarostro.life/capas-piel-fibroblast.png" alt="Ilustraci&oacute;n de capas de la piel en Plasma Fibroblast">
-              </div>
               <div class="skin-layer layer-epidermis">
                 <div>
                   <b>Epidermis</b>
