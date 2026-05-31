@@ -3,181 +3,166 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Figura Rostro KG | Centro de Atención</title>
-
-<meta name="description" content="Consulta promociones, tratamientos y agenda tu cita de valoración en Figura Rostro KG.">
+<title>Figura Rostro KG | Consulta por WhatsApp</title>
+<meta name="description" content="Consulta promociones de Figura Rostro KG por WhatsApp.">
 <meta name="theme-color" content="#25D366">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 :root{
   --wa:#25D366;
-  --wa-dark:#128C7E;
+  --wa2:#16b553;
   --dark:#123f46;
-  --text:#19363c;
+  --text:#17353b;
   --muted:#6b7f84;
-  --bg:#eaf7f3;
+  --bg:#f3fbf9;
   --white:#fff;
   --border:#dcefeb;
   --shadow:0 12px 35px rgba(0,0,0,.10);
+  --aqua:#22b8b0;
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
 
 body{
   font-family:Inter,Arial,sans-serif;
-  background:
-    radial-gradient(circle at top left,rgba(37,211,102,.20),transparent 30%),
-    linear-gradient(180deg,#eaf7f3,#f8fffd);
+  background:linear-gradient(180deg,#eaf8f5,#ffffff);
   color:var(--text);
-  padding-bottom:90px;
+  padding-bottom:88px;
 }
 
 a{text-decoration:none;color:inherit}
 
 .wrap{
-  width:min(100%,720px);
+  width:min(100%,760px);
   margin:auto;
-  padding:14px;
+  padding:12px;
 }
 
-.phone{
-  background:#f7fffc;
-  border:1px solid var(--border);
-  border-radius:30px;
-  overflow:hidden;
-  box-shadow:var(--shadow);
-}
-
-.topbar{
-  background:linear-gradient(135deg,var(--wa-dark),#0f6f65);
+.header{
+  background:linear-gradient(135deg,#128C7E,#22b8b0);
   color:white;
-  padding:18px 16px;
+  border-radius:26px;
+  padding:18px;
+  box-shadow:var(--shadow);
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:13px;
+  margin-bottom:14px;
 }
 
-.avatar{
-  width:48px;
-  height:48px;
+.logo{
+  width:52px;
+  height:52px;
   border-radius:50%;
   background:white;
-  color:var(--wa-dark);
+  color:#128C7E;
   display:grid;
   place-items:center;
   font-weight:900;
   font-size:18px;
+  flex-shrink:0;
 }
 
-.topbar h1{
-  font-size:18px;
-  line-height:1.2;
+.header h1{
+  font-size:20px;
+  line-height:1.15;
 }
 
-.topbar p{
+.header p{
   font-size:13px;
-  opacity:.9;
-  margin-top:3px;
+  opacity:.95;
+  margin-top:4px;
 }
 
-.chat{
-  padding:18px 14px 22px;
-  background:
-    linear-gradient(rgba(255,255,255,.88),rgba(255,255,255,.88)),
-    url("promo-plasma-junio.jpg") center/cover;
-}
-
-.bubble{
+.chat-note{
   background:white;
-  border-radius:18px 18px 18px 4px;
-  padding:15px;
-  box-shadow:0 6px 18px rgba(0,0,0,.06);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:14px;
   margin-bottom:14px;
-  border:1px solid #eef6f4;
+  box-shadow:0 8px 24px rgba(0,0,0,.05);
 }
 
-.bubble h2{
-  font-size:22px;
+.chat-note strong{
+  display:block;
+  font-size:18px;
   color:var(--dark);
-  margin-bottom:8px;
+  margin-bottom:4px;
 }
 
-.bubble p{
+.chat-note p{
   color:var(--muted);
-  line-height:1.45;
-  font-size:15px;
+  font-size:14px;
+  line-height:1.4;
 }
 
 .status{
   display:inline-flex;
   align-items:center;
   gap:7px;
+  margin-top:10px;
   background:#eafff2;
   color:#087b37;
   padding:8px 12px;
   border-radius:999px;
   font-size:13px;
   font-weight:800;
-  margin-top:12px;
 }
 
-.option{
+.grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:14px;
+}
+
+.card{
   background:white;
   border:1px solid var(--border);
-  border-radius:24px;
+  border-radius:26px;
   overflow:hidden;
-  margin-top:15px;
-  box-shadow:0 8px 24px rgba(0,0,0,.07);
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
-.option.featured{
+.card.featured{
   border:2px solid var(--wa);
 }
 
-.option-head{
-  padding:16px 16px 12px;
+.card-top{
+  padding:13px 14px 10px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
 }
 
-.label{
-  display:inline-block;
+.card-title{
+  font-size:17px;
+  font-weight:900;
+  color:var(--dark);
+}
+
+.badge{
   background:#eafff2;
   color:#087b37;
-  padding:7px 11px;
-  border-radius:999px;
-  font-size:12px;
+  font-size:11px;
   font-weight:900;
-  margin-bottom:9px;
+  padding:7px 9px;
+  border-radius:999px;
+  white-space:nowrap;
 }
 
-.label.hot{
+.badge.hot{
   background:#fff0f6;
   color:#c61f67;
 }
 
-.label.blue{
-  background:#e9fbfa;
-  color:#0b7b79;
-}
-
-.option h3{
-  font-size:21px;
-  color:var(--dark);
-  margin-bottom:7px;
-}
-
-.option p{
-  color:var(--muted);
-  line-height:1.45;
-  font-size:15px;
-}
-
-.option img{
+.card img{
   width:100%;
   display:block;
   height:auto;
-  max-height:520px;
+  max-height:560px;
   object-fit:contain;
   background:#f3fbfa;
   border-top:1px solid #edf7f5;
@@ -185,21 +170,21 @@ a{text-decoration:none;color:inherit}
 }
 
 .actions{
-  padding:14px;
+  padding:13px;
 }
 
 .btn{
   width:100%;
+  min-height:54px;
   display:flex;
   align-items:center;
   justify-content:center;
   gap:9px;
-  background:linear-gradient(135deg,var(--wa),#16b553);
+  background:linear-gradient(135deg,var(--wa),var(--wa2));
   color:white;
-  padding:15px;
-  border-radius:16px;
+  border-radius:17px;
+  font-size:17px;
   font-weight:900;
-  font-size:16px;
   box-shadow:0 10px 22px rgba(37,211,102,.25);
 }
 
@@ -217,26 +202,18 @@ a{text-decoration:none;color:inherit}
   100%{transform:scale(1)}
 }
 
-.micro{
-  text-align:center;
-  font-size:12px;
-  color:#789095;
-  margin-top:9px;
-  line-height:1.35;
-}
-
 .trust{
+  margin-top:15px;
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:10px;
-  margin-top:16px;
 }
 
 .trust div{
   background:white;
   border:1px solid var(--border);
-  border-radius:17px;
-  padding:13px 10px;
+  border-radius:18px;
+  padding:12px 9px;
   text-align:center;
   font-size:13px;
   color:var(--muted);
@@ -245,43 +222,36 @@ a{text-decoration:none;color:inherit}
 .trust strong{
   display:block;
   color:var(--dark);
-  margin-bottom:4px;
+  margin-bottom:3px;
 }
 
 .services{
-  margin-top:18px;
+  margin-top:15px;
   background:white;
   border:1px solid var(--border);
   border-radius:24px;
-  padding:18px 14px;
+  padding:16px 13px;
+  box-shadow:0 8px 24px rgba(0,0,0,.04);
 }
 
 .services h2{
   text-align:center;
+  font-size:19px;
   color:var(--dark);
-  font-size:21px;
-  margin-bottom:7px;
+  margin-bottom:11px;
 }
 
-.services p{
-  text-align:center;
-  color:var(--muted);
-  font-size:14px;
-  line-height:1.45;
-  margin-bottom:14px;
-}
-
-.grid{
+.service-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:9px;
+  gap:8px;
 }
 
-.item{
+.service{
   background:#f2fbf8;
   border:1px solid #e1f2ed;
-  border-radius:15px;
-  padding:12px 8px;
+  border-radius:14px;
+  padding:11px 8px;
   text-align:center;
   font-weight:800;
   font-size:13px;
@@ -304,7 +274,7 @@ a{text-decoration:none;color:inherit}
   position:fixed;
   left:12px;
   right:12px;
-  bottom:14px;
+  bottom:13px;
   z-index:99;
 }
 
@@ -313,10 +283,14 @@ a{text-decoration:none;color:inherit}
   margin:auto;
 }
 
-@media(min-width:760px){
-  .wrap{padding:26px}
-  .chat{padding:22px}
-  .option img{max-height:600px}
+@media(min-width:780px){
+  .wrap{padding:24px}
+  .grid{
+    grid-template-columns:1fr 1fr;
+  }
+  .card.featured{
+    grid-column:1 / -1;
+  }
 }
 </style>
 </head>
@@ -325,125 +299,104 @@ a{text-decoration:none;color:inherit}
 
 <div class="wrap">
 
-  <main class="phone">
+  <header class="header">
+    <div class="logo">FR</div>
+    <div>
+      <h1>Figura Rostro KG</h1>
+      <p>Centro de atención por WhatsApp</p>
+    </div>
+  </header>
 
-    <header class="topbar">
-      <div class="avatar">FR</div>
-      <div>
-        <h1>Figura Rostro KG</h1>
-        <p>Centro de atención · WhatsApp activo</p>
+  <section class="chat-note">
+    <strong>Hola 👋 selecciona una opción</strong>
+    <p>Estás a un paso de chatear con nosotros. Toca el botón de la promoción que viste.</p>
+    <div class="status">● WhatsApp disponible</div>
+  </section>
+
+  <section class="grid">
+
+    <article class="card featured">
+      <div class="card-top">
+        <div class="card-title">Promo Plasma Fibroblast -40%</div>
+        <div class="badge hot">Junio</div>
       </div>
-    </header>
 
-    <section class="chat">
+      <img src="promo-plasma-junio.jpg" alt="Promo Plasma Fibroblast -40% Junio">
 
-      <div class="bubble">
-        <h2>Hola 👋 ¿cómo podemos ayudarte hoy?</h2>
-        <p>
-          Selecciona una opción para consultar una promoción o reservar tu cita de valoración.
-          Te atenderemos de forma directa y personalizada.
-        </p>
-        <div class="status">● Disponible para responder</div>
+      <div class="actions">
+        <a class="btn pulse" href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20Promo%20Plasma%20Fibroblast%20-40%25%20Junio.%20Vi%20la%20promoci%C3%B3n%20en%20Facebook%20y%20quiero%20consultar." target="_blank" rel="noopener">
+          💬 Consultar esta promo
+        </a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <div class="card-title">Reduce Express -20%</div>
+        <div class="badge">Corporal</div>
       </div>
 
-      <article class="option featured">
-        <div class="option-head">
-          <span class="label hot">🔥 Promo activa</span>
-          <h3>Promo Plasma Fibroblast -40% Junio</h3>
-          <p>
-            Usa esta opción si vienes por la promoción de Plasma Fibroblast.
-            Al escribirnos sabremos exactamente qué promo viste.
-          </p>
-        </div>
+      <img src="reduce-express.jpg" alt="Paquete Reduce Express -20%">
 
-        <img src="promo-plasma-junio.jpg" alt="Promo Plasma Fibroblast -40% Junio">
+      <div class="actions">
+        <a class="btn" href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20Paquete%20Reduce%20Express%20-20%25.%20Vi%20la%20opci%C3%B3n%20en%20la%20p%C3%A1gina%20y%20quiero%20consultar." target="_blank" rel="noopener">
+          💬 Consultar
+        </a>
+      </div>
+    </article>
 
-        <div class="actions">
-          <a class="btn pulse" href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20Promo%20Plasma%20Fibroblast%20-40%25%20Junio.%20Vi%20la%20promoci%C3%B3n%20y%20quiero%20saber%20disponibilidad%20para%20valoraci%C3%B3n." target="_blank" rel="noopener">
-            💬 Consultar Promo Plasma -40%
-          </a>
-          <div class="micro">Mensaje preparado para identificar la promoción.</div>
-        </div>
-      </article>
+    <article class="card">
+      <div class="card-top">
+        <div class="card-title">Agendar valoración</div>
+        <div class="badge">Reserva</div>
+      </div>
 
-      <article class="option">
-        <div class="option-head">
-          <span class="label">💚 Corporal</span>
-          <h3>Paquete Reduce Express -20%</h3>
-          <p>
-            Consulta por paquetes corporales para reducción de medidas, moldeo y tratamientos personalizados.
-          </p>
-        </div>
+      <img src="agendar-cita.jpg" alt="Agendar cita de valoración">
 
-        <img src="reduce-express.jpg" alt="Paquete Reduce Express -20%">
+      <div class="actions">
+        <a class="btn blue" href="https://figurarostro.life/reservar-v2.html">
+          📅 Reservar cita
+        </a>
+      </div>
+    </article>
 
-        <div class="actions">
-          <a class="btn" href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20Paquete%20Reduce%20Express%20-20%25.%20Me%20gustar%C3%ADa%20saber%20qu%C3%A9%20incluye%20y%20disponibilidad." target="_blank" rel="noopener">
-            💬 Consultar Reduce Express
-          </a>
-          <div class="micro">Ideal si buscas orientación corporal.</div>
-        </div>
-      </article>
+  </section>
 
-      <article class="option">
-        <div class="option-head">
-          <span class="label blue">📅 Reserva online</span>
-          <h3>Agendar cita con la especialista</h3>
-          <p>
-            Reserva tu cita de valoración para recibir una recomendación según tu caso.
-          </p>
-        </div>
+  <section class="trust">
+    <div><strong>Atención directa</strong>WhatsApp oficial</div>
+    <div><strong>Cupos limitados</strong>Promos activas</div>
+    <div><strong>Valoración previa</strong>Según tu caso</div>
+    <div><strong>Figura Rostro KG</strong>Estética y bienestar</div>
+  </section>
 
-        <img src="agendar-cita.jpg" alt="Agendar cita de valoración">
+  <section class="services">
+    <h2>Otros servicios</h2>
 
-        <div class="actions">
-          <a class="btn blue" href="https://figurarostro.life/reservar-v2.html">
-            📅 Reservar cita de valoración
-          </a>
-          <div class="micro">Te lleva directo al sistema de reservas.</div>
-        </div>
-      </article>
+    <div class="service-grid">
+      <div class="service">Faciales</div>
+      <div class="service">Plasma Fibroblast</div>
+      <div class="service">Reducción</div>
+      <div class="service">Moldeo corporal</div>
+      <div class="service">Radiofrecuencia</div>
+      <div class="service">Reafirmantes</div>
+    </div>
+  </section>
 
-      <section class="trust">
-        <div><strong>Atención directa</strong>Por WhatsApp</div>
-        <div><strong>Valoración previa</strong>Según tu caso</div>
-        <div><strong>Promos activas</strong>Cupos limitados</div>
-        <div><strong>Figura Rostro KG</strong>Estética y bienestar</div>
-      </section>
-
-      <section class="services">
-        <h2>También puedes consultar por servicios</h2>
-        <p>Faciales, corporales, plasma, reducción de medidas y tratamientos reafirmantes.</p>
-
-        <div class="grid">
-          <div class="item">Limpieza facial</div>
-          <div class="item">Plasma Fibroblast</div>
-          <div class="item">Moldeo corporal</div>
-          <div class="item">Reducción de medidas</div>
-          <div class="item">Radiofrecuencia</div>
-          <div class="item">Tratamientos reafirmantes</div>
-        </div>
-      </section>
-
-    </section>
-
-    <footer class="footer">
-      <p>Figura Rostro KG · Canal de atención</p>
-      <p>
-        <a href="https://figurarostro.life/">Inicio</a>
-        <a href="https://figurarostro.life/plasma-fibroblast-panama.html">Plasma</a>
-        <a href="https://figurarostro.life/menu-servicios.html">Menú</a>
-        <a href="https://figurarostro.life/reservar-v2.html">Reservar</a>
-      </p>
-    </footer>
-
-  </main>
+  <footer class="footer">
+    <p>Figura Rostro KG · Atención por WhatsApp</p>
+    <p>
+      <a href="https://figurarostro.life/">Inicio</a>
+      <a href="https://figurarostro.life/plasma-fibroblast-panama.html">Plasma</a>
+      <a href="https://figurarostro.life/menu-servicios.html">Menú</a>
+      <a href="https://figurarostro.life/reservar-v2.html">Reservar</a>
+    </p>
+  </footer>
 
 </div>
 
 <div class="fixed">
-  <a class="btn pulse" href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20Promo%20Plasma%20Fibroblast%20-40%25%20Junio.%20Vi%20la%20promoci%C3%B3n%20y%20quiero%20saber%20disponibilidad." target="_blank" rel="noopener">
-    💬 Promo Plasma -40%
+  <a class="btn pulse" href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20Promo%20Plasma%20Fibroblast%20-40%25%20Junio.%20Vi%20la%20promoci%C3%B3n%20en%20Facebook%20y%20quiero%20consultar." target="_blank" rel="noopener">
+    💬 Consultar Promo Plasma -40%
   </a>
 </div>
 
