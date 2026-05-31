@@ -3,210 +3,841 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Promo Plasma Fibroblast 40% | Figura Rostro KG</title>
-  <meta name="description" content="Promoci&oacute;n Plasma Fibroblast 40% OFF para p&aacute;rpados y abdomen. Elige tu zona de inter&eacute;s y chatea por WhatsApp.">
+  <title>Promo Plasma Fibroblast 40% OFF | Figura Rostro KG</title>
+  <meta name="description" content="Promoci&oacute;n especial de Plasma Fibroblast en Panam&aacute;. Tratamiento est&eacute;tico no quir&uacute;rgico para flacidez en p&aacute;rpados, abdomen, rostro, cuello y zonas localizadas. Valoraci&oacute;n requerida.">
   <meta name="theme-color" content="#123d46">
-  <meta property="og:title" content="Promo Plasma Fibroblast 40% OFF">
-  <meta property="og:description" content="Elige tu zona de inter&eacute;s y solicita informaci&oacute;n por WhatsApp.">
-  <meta property="og:image" content="https://figurarostro.life/promo-fibroblast-parpados-abdomen-40.png">
+  <meta property="og:title" content="Plasma Fibroblast 40% OFF | Figura Rostro KG">
+  <meta property="og:description" content="Agenda tu valoraci&oacute;n para confirmar si aplicas a la promoci&oacute;n de Plasma Fibroblast.">
+  <meta property="og:image" content="https://figurarostro.life/img/promo-fibroblast-40.webp">
+  <!-- META PIXEL AQU&Iacute; -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --teal: #20b8ae;
-      --teal-dark: #127a7d;
+      --teal: #23bab2;
+      --teal-dark: #117a7d;
       --deep: #123d46;
       --ink: #17363d;
-      --line: #d8e9e7;
-      --soft: #effbfa;
+      --muted: #5e777d;
+      --soft: #f1fbfa;
+      --cream: #fff8ed;
+      --gold: #d4ad55;
+      --rose: #dc4d80;
+      --line: #d9ecea;
       --white: #ffffff;
-      --shadow: 0 26px 70px rgba(18, 61, 70, .18);
+      --shadow: 0 22px 60px rgba(18, 61, 70, .14);
     }
 
     * { box-sizing: border-box; }
 
+    html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
-      min-height: 100vh;
       font-family: Inter, Arial, sans-serif;
       color: var(--ink);
       background:
-        radial-gradient(circle at 50% 0%, rgba(32, 184, 174, .22), transparent 34%),
-        linear-gradient(180deg, #f4fffd 0%, #ffffff 58%, #fff9ef 100%);
-      display: grid;
-      place-items: center;
-      padding: 18px;
+        radial-gradient(circle at 12% 0%, rgba(35, 186, 178, .18), transparent 34%),
+        radial-gradient(circle at 88% 10%, rgba(212, 173, 85, .16), transparent 30%),
+        linear-gradient(180deg, #f6fffd 0%, #ffffff 42%, #fffaf2 100%);
       overflow-x: hidden;
     }
 
+    img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
 
-    .wrap {
-      width: 100%;
-      max-width: 460px;
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
     }
 
-    .card {
-      overflow: hidden;
-      border: 1px solid rgba(18, 122, 125, .18);
-      border-radius: 30px;
-      background: var(--white);
-      box-shadow: var(--shadow);
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      padding: 10px 0;
+      background: rgba(246, 255, 253, .82);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(18, 61, 70, .08);
     }
 
-    .promo-image {
-      display: block;
-      width: 100%;
-      height: auto;
-      background: var(--white);
+    .nav {
+      min-height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 14px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(18, 61, 70, .98), rgba(17, 122, 125, .96));
+      box-shadow: 0 16px 42px rgba(18, 61, 70, .14);
     }
 
-    .controls {
-      display: grid;
+    .brand {
+      display: flex;
+      align-items: center;
       gap: 12px;
-      padding: 18px;
-      background:
-        radial-gradient(circle at 0% 0%, rgba(32, 184, 174, .14), transparent 36%),
-        #ffffff;
+      color: white;
+      font-weight: 900;
     }
 
-    label {
+    .brand img {
+      width: 128px;
+      height: auto;
+    }
+
+    .brand-fallback {
+      display: none;
+      width: 46px;
+      height: 46px;
+      place-items: center;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, .14);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 999px;
       color: var(--deep);
-      font-size: 13px;
+      background: white;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .hero {
+      padding: 28px 0 38px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 22px;
+      align-items: center;
+    }
+
+    .hero-copy {
+      padding: 16px 0 0;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #e5f8f6;
+      color: var(--teal-dark);
+      font-size: 12px;
       font-weight: 900;
       text-transform: uppercase;
     }
 
-    select {
-      width: 100%;
+    .kicker::before {
+      content: "";
+      width: 24px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--gold);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 780px;
+      margin: 16px 0 14px;
+      color: var(--deep);
+      font-size: clamp(42px, 10vw, 84px);
+      line-height: .96;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 720px;
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    .trust-note {
+      display: grid;
+      gap: 8px;
+      margin: 20px 0;
+      padding: 16px;
+      border: 1px solid rgba(18, 122, 125, .18);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, .82);
+      box-shadow: 0 14px 34px rgba(18, 61, 70, .07);
+    }
+
+    .trust-note b {
+      color: var(--deep);
+      font-size: 15px;
+    }
+
+    .trust-note span {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .actions {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .btn {
       min-height: 58px;
-      padding: 0 16px;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: var(--soft);
-      color: var(--ink);
-      font: inherit;
-      font-weight: 800;
-      outline: none;
-      cursor: pointer;
-    }
-
-    select:focus {
-      border-color: var(--teal);
-      box-shadow: 0 0 0 4px rgba(32, 184, 174, .16);
-    }
-
-    .wa-button {
-      min-height: 62px;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
       border: 0;
       border-radius: 999px;
-      color: white;
-      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
-      box-shadow: 0 18px 40px rgba(32, 184, 174, .28);
+      padding: 0 22px;
       font: inherit;
       font-weight: 900;
       cursor: pointer;
       transition: transform .18s ease, box-shadow .18s ease;
+      text-align: center;
     }
 
-    .wa-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 22px 48px rgba(32, 184, 174, .34);
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      color: white;
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      box-shadow: 0 18px 42px rgba(35, 186, 178, .28);
     }
 
-    .notice {
-      margin-top: 14px;
-      padding: 16px;
-      border: 1px solid rgba(18, 122, 125, .18);
-      border-radius: 24px;
-      background: rgba(255, 255, 255, .82);
+    .btn-light {
+      color: var(--deep);
+      background: white;
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 30px rgba(18, 61, 70, .08);
+    }
+
+    .promo-media,
+    .media {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: linear-gradient(135deg, #e8fbf9, #fffaf3);
+      box-shadow: var(--shadow);
+    }
+
+    .promo-media {
+      margin-top: 12px;
+    }
+
+    .promo-media img {
+      width: 100%;
+      aspect-ratio: 1 / 1.08;
+      object-fit: cover;
+    }
+
+    .media img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .placeholder {
+      position: absolute;
+      inset: 0;
+      display: none;
+      place-items: center;
+      padding: 22px;
+      text-align: center;
       color: var(--deep);
       font-weight: 900;
+      background:
+        radial-gradient(circle at 24% 24%, rgba(35, 186, 178, .24), transparent 28%),
+        linear-gradient(135deg, #edfafa, #fff9ee);
+    }
+
+    .is-missing .placeholder { display: grid; }
+    .is-missing img { visibility: hidden; }
+
+    .promo-bar {
+      padding: 22px 0;
+      background: linear-gradient(135deg, var(--deep), var(--teal-dark));
+      color: white;
+    }
+
+    .promo-bar-inner {
+      display: grid;
+      gap: 10px;
       text-align: center;
-      box-shadow: 0 14px 34px rgba(18, 61, 70, .08);
     }
 
-    .notice strong {
-      display: block;
-      font-size: 18px;
-      line-height: 1.15;
-      text-transform: uppercase;
+    .promo-bar b {
+      color: white;
+      font-size: clamp(24px, 7vw, 42px);
+      line-height: 1;
     }
 
-    .notice span {
-      display: block;
-      margin-top: 6px;
-      color: #60797f;
-      font-size: 13px;
-      line-height: 1.45;
+    .promo-bar span {
+      color: rgba(255, 255, 255, .82);
       font-weight: 700;
     }
 
+    .section {
+      padding: 46px 0;
+    }
+
+    .section-soft { background: rgba(241, 251, 250, .72); }
+    .section-cream { background: rgba(255, 248, 237, .72); }
+
+    .section-head {
+      margin-bottom: 24px;
+    }
+
+    .section-head h2 {
+      max-width: 780px;
+      margin: 10px 0 10px;
+      color: var(--deep);
+      font-size: clamp(31px, 7vw, 56px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .section-head p {
+      max-width: 740px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 22px;
+      align-items: center;
+    }
+
+    .cards-2,
+    .zone-grid,
+    .benefit-grid,
+    .faq-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 16px;
+    }
+
+    .result-card,
+    .zone-card,
+    .benefit-card,
+    .faq-item,
+    .process-card {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: white;
+      box-shadow: 0 14px 38px rgba(18, 61, 70, .08);
+      overflow: hidden;
+    }
+
+    .result-body,
+    .zone-card,
+    .benefit-card,
+    .faq-item,
+    .process-card {
+      padding: 20px;
+    }
+
+    .result-body h3,
+    .zone-card h3,
+    .benefit-card h3,
+    .faq-item h3,
+    .process-card h3 {
+      margin-bottom: 8px;
+      color: var(--deep);
+      font-size: 22px;
+      line-height: 1.14;
+    }
+
+    .result-body p,
+    .zone-card p,
+    .benefit-card p,
+    .faq-item p,
+    .process-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 15px;
+    }
+
+    .note {
+      margin-top: 18px;
+      padding: 16px;
+      border-left: 4px solid var(--gold);
+      border-radius: 16px;
+      background: #fff8e5;
+      color: #6d5a24;
+      font-weight: 800;
+      line-height: 1.55;
+    }
+
+    .zone-card {
+      display: grid;
+      gap: 14px;
+    }
+
+    .zone-card .btn {
+      min-height: 46px;
+      font-size: 14px;
+    }
+
+    .process-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .process-list li {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 12px;
+      align-items: center;
+      padding: 13px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--soft);
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .process-list b {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: white;
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+    }
+
+    .benefit-card {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .benefit-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: white;
+      background: var(--deep);
+      font-weight: 900;
+    }
+
+    .cta-final {
+      padding: 34px 22px;
+      border-radius: 30px;
+      color: white;
+      text-align: center;
+      background:
+        linear-gradient(135deg, rgba(18, 61, 70, .96), rgba(17, 122, 125, .9)),
+        radial-gradient(circle at 88% 20%, rgba(212, 173, 85, .28), transparent 30%);
+      box-shadow: var(--shadow);
+    }
+
+    .cta-final h2 {
+      margin-bottom: 12px;
+      color: white;
+      font-size: clamp(32px, 8vw, 56px);
+      line-height: 1.04;
+    }
+
+    .cta-final p {
+      max-width: 680px;
+      margin: 0 auto 22px;
+      color: rgba(255, 255, 255, .84);
+      line-height: 1.7;
+    }
+
+    .footer {
+      padding: 28px 0 92px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer b {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--deep);
+    }
+
+    .floating-whatsapp {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 30;
+      min-height: 56px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      border-radius: 999px;
+      color: white;
+      background: #20c767;
+      box-shadow: 0 18px 45px rgba(18, 61, 70, .22);
+      font-weight: 900;
+    }
+
+    @media (min-width: 760px) {
+      .hero {
+        padding: 54px 0 64px;
+      }
+
+      .hero-grid,
+      .split {
+        grid-template-columns: minmax(0, 1fr) minmax(330px, .82fr);
+      }
+
+      .cards-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .zone-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .benefit-grid,
+      .faq-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .promo-bar-inner {
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        text-align: left;
+      }
+
+      .promo-bar-inner b {
+        text-align: center;
+      }
+    }
+
     @media (max-width: 520px) {
-      body {
-        padding: 14px;
-        align-items: start;
+      .container {
+        width: min(100% - 28px, 430px);
       }
 
-      .wrap {
-        max-width: 390px;
+      .topbar {
+        position: relative;
       }
 
-      .card {
-        border-radius: 26px;
+      .nav {
+        justify-content: center;
       }
 
-      .controls {
-        padding: 16px;
+      .brand img {
+        width: 118px;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .promo-media img {
+        aspect-ratio: 1 / 1.18;
+      }
+
+      .section {
+        padding: 38px 0;
+      }
+
+      .floating-whatsapp {
+        left: 50%;
+        right: auto;
+        width: min(340px, calc(100% - 28px));
+        transform: translateX(-50%);
       }
     }
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <section class="card" aria-label="Promoci&oacute;n Plasma Fibroblast">
-      <img
-        class="promo-image"
-        src="https://figurarostro.life/promo-fibroblast-parpados-abdomen-40.png"
-        alt="Promoci&oacute;n Plasma Fibroblast 40% OFF para p&aacute;rpados y abdomen"
-        width="920"
-        height="1007"
-      >
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="/" aria-label="Figura Rostro KG">
+        <img src="/img/logo-figura-rostro-blanco.png" alt="Figura Rostro KG Est&eacute;tica y Bienestar" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+        <span class="brand-fallback">FR</span>
+      </a>
+      <a class="nav-cta js-whatsapp" href="https://wa.me/50764746168?text=Hola,%20vi%20la%20promoci%C3%B3n%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20agendar%20una%20valoraci%C3%B3n.">WhatsApp</a>
+    </div>
+  </header>
 
-      <form class="controls" id="promoForm">
-        <label for="zona">Zona de inter&eacute;s</label>
-        <select id="zona" name="zona" required>
-          <option value="P&aacute;rpados / mirada">P&aacute;rpados / mirada</option>
-          <option value="Abdomen">Abdomen</option>
-          <option value="Brazos">Brazos</option>
-          <option value="Cuello / papada">Cuello / papada</option>
-          <option value="Rostro">Rostro</option>
-          <option value="Estr&iacute;as o zona localizada">Estr&iacute;as o zona localizada</option>
-        </select>
-        <button class="wa-button" type="submit">Chatear por WhatsApp</button>
-      </form>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="kicker">Promoci&oacute;n especial</span>
+          <h1>Plasma Fibroblast 40% OFF</h1>
+          <p class="lead">Tensado est&eacute;tico sin cirug&iacute;a para p&aacute;rpados, abdomen, rostro, cuello y zonas con flacidez.</p>
+
+          <div class="trust-note">
+            <b>Valoraci&oacute;n requerida</b>
+            <span>Confirmamos si aplicas seg&uacute;n tu tipo de piel, zona y objetivo.</span>
+          </div>
+
+          <div class="actions">
+            <a class="btn btn-primary js-whatsapp" href="https://wa.me/50764746168?text=Hola,%20vi%20la%20promoci%C3%B3n%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20agendar%20una%20valoraci%C3%B3n.">Quiero mi valoraci&oacute;n por WhatsApp</a>
+          </div>
+        </div>
+
+        <div class="promo-media">
+          <img src="/img/promo-fibroblast-40.webp" alt="Promoci&oacute;n Plasma Fibroblast 40% OFF en Figura Rostro KG">
+          <div class="placeholder">Promo Plasma Fibroblast 40% OFF</div>
+        </div>
+      </div>
     </section>
 
-    <div class="notice">
-      <strong>Cita de Valoraci&oacute;n Requerida</strong>
-      <span>La promoci&oacute;n se confirma seg&uacute;n zona, tipo de piel y objetivo del tratamiento.</span>
-    </div>
+    <section class="promo-bar" aria-label="Promoci&oacute;n">
+      <div class="container promo-bar-inner">
+        <span>Promoci&oacute;n especial por reapertura</span>
+        <b>40% de descuento</b>
+        <span>Cupos limitados &middot; Aplica previa valoraci&oacute;n</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker">Confianza y resultados</span>
+          <h2>Resultados progresivos y atenci&oacute;n profesional</h2>
+          <p>El Plasma Fibroblast puede ayudar a mejorar la apariencia de flacidez, l&iacute;neas finas y textura de la piel. Los resultados var&iacute;an seg&uacute;n cada persona y zona tratada.</p>
+        </div>
+
+        <div class="cards-2">
+          <article class="result-card">
+            <div class="media">
+              <img loading="lazy" src="/img/antes-despues-parpados.webp" alt="Antes y despu&eacute;s de p&aacute;rpados para Plasma Fibroblast">
+              <div class="placeholder">Antes / despu&eacute;s p&aacute;rpados</div>
+            </div>
+            <div class="result-body">
+              <h3>P&aacute;rpados / mirada</h3>
+              <p>Zona delicada que se valora con cuidado para revisar flacidez, sensibilidad y expectativas.</p>
+            </div>
+          </article>
+
+          <article class="result-card">
+            <div class="media">
+              <img loading="lazy" src="/img/antes-despues-abdomen.webp" alt="Antes y despu&eacute;s de abdomen para Plasma Fibroblast">
+              <div class="placeholder">Antes / despu&eacute;s abdomen</div>
+            </div>
+            <div class="result-body">
+              <h3>Abdomen</h3>
+              <p>Puede valorarse en flacidez superficial, textura o cambios visibles de piel.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="container split">
+        <div>
+          <span class="kicker">Qu&eacute; es</span>
+          <h2>&iquest;Qu&eacute; es el Plasma Fibroblast?</h2>
+          <p class="lead">Es un procedimiento est&eacute;tico no quir&uacute;rgico que trabaja de forma superficial sobre la piel mediante peque&ntilde;os puntos controlados, ayudando a estimular una apariencia m&aacute;s firme y rejuvenecida en zonas espec&iacute;ficas.</p>
+          <div class="note">No sustituye cirug&iacute;a. Se requiere valoraci&oacute;n previa y los resultados pueden variar.</div>
+        </div>
+        <div class="media">
+          <img loading="lazy" src="/img/procedimiento-fibroblast.webp" alt="Procedimiento Plasma Fibroblast con puntos controlados">
+          <div class="placeholder">Procedimiento Plasma Fibroblast</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker">Zonas populares</span>
+          <h2>Elige la zona que deseas valorar</h2>
+          <p>Todos los accesos abren WhatsApp con la zona seleccionada para que podamos orientarte r&aacute;pido.</p>
+        </div>
+
+        <div class="zone-grid">
+          <article class="zone-card">
+            <h3>P&aacute;rpados / mirada</h3>
+            <p>Para flacidez visible o apariencia cansada en la zona de la mirada.</p>
+            <a class="btn btn-light js-zone" data-zone="P&aacute;rpados / mirada" href="#">Consultar esta zona</a>
+          </article>
+          <article class="zone-card">
+            <h3>Abdomen</h3>
+            <p>Para valorar flacidez localizada, textura o piel que ha cambiado.</p>
+            <a class="btn btn-light js-zone" data-zone="Abdomen" href="#">Consultar esta zona</a>
+          </article>
+          <article class="zone-card">
+            <h3>Cuello / papada</h3>
+            <p>Zona visible que requiere evaluaci&oacute;n cuidadosa y cuidados claros.</p>
+            <a class="btn btn-light js-zone" data-zone="Cuello / papada" href="#">Consultar esta zona</a>
+          </article>
+          <article class="zone-card">
+            <h3>Rostro</h3>
+            <p>Para l&iacute;neas finas, textura y firmeza seg&uacute;n tipo de piel.</p>
+            <a class="btn btn-light js-zone" data-zone="Rostro" href="#">Consultar esta zona</a>
+          </article>
+          <article class="zone-card">
+            <h3>Brazos</h3>
+            <p>Para zonas localizadas donde se busca mejorar apariencia de firmeza.</p>
+            <a class="btn btn-light js-zone" data-zone="Brazos" href="#">Consultar esta zona</a>
+          </article>
+          <article class="zone-card">
+            <h3>Estr&iacute;as o zona localizada</h3>
+            <p>Se revisa cada caso para definir si el tratamiento es adecuado.</p>
+            <a class="btn btn-light js-zone" data-zone="Estr&iacute;as o zona localizada" href="#">Consultar esta zona</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-cream">
+      <div class="container split">
+        <div class="process-card">
+          <span class="kicker">Proceso</span>
+          <h2>As&iacute; es el proceso</h2>
+          <ul class="process-list">
+            <li><b>1</b> Valoraci&oacute;n inicial</li>
+            <li><b>2</b> Revisi&oacute;n de piel y zona</li>
+            <li><b>3</b> Explicaci&oacute;n de cuidados</li>
+            <li><b>4</b> Aplicaci&oacute;n si eres candidato/a</li>
+            <li><b>5</b> Seguimiento y recuperaci&oacute;n</li>
+          </ul>
+        </div>
+        <div class="media">
+          <img loading="lazy" src="/img/valoracion-estetica.webp" alt="Valoraci&oacute;n est&eacute;tica personalizada antes de Plasma Fibroblast">
+          <div class="placeholder">Valoraci&oacute;n est&eacute;tica</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split">
+        <div>
+          <span class="kicker">Beneficios</span>
+          <h2>&iquest;Por qu&eacute; agendar una valoraci&oacute;n?</h2>
+          <div class="benefit-grid">
+            <div class="benefit-card"><span class="benefit-icon">1</span><p>Atenci&oacute;n personalizada</p></div>
+            <div class="benefit-card"><span class="benefit-icon">2</span><p>Orientaci&oacute;n seg&uacute;n tu tipo de piel</p></div>
+            <div class="benefit-card"><span class="benefit-icon">3</span><p>Explicaci&oacute;n clara de cuidados</p></div>
+            <div class="benefit-card"><span class="benefit-icon">4</span><p>Revisi&oacute;n de expectativas reales</p></div>
+            <div class="benefit-card"><span class="benefit-icon">5</span><p>Confirmaci&oacute;n de si aplicas al tratamiento</p></div>
+          </div>
+        </div>
+        <div class="media">
+          <img loading="lazy" src="/img/fibroblast-piel-firme.webp" alt="Piel con apariencia firme y cuidada">
+          <div class="placeholder">Piel firme y cuidada</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker">Preguntas frecuentes</span>
+          <h2>Antes de escribirnos</h2>
+        </div>
+        <div class="faq-grid">
+          <article class="faq-item">
+            <h3>&iquest;Necesito valoraci&oacute;n?</h3>
+            <p>S&iacute;. La valoraci&oacute;n es necesaria para revisar tu piel, zona, antecedentes y expectativas.</p>
+          </article>
+          <article class="faq-item">
+            <h3>&iquest;Es cirug&iacute;a?</h3>
+            <p>No. Es un procedimiento est&eacute;tico no quir&uacute;rgico.</p>
+          </article>
+          <article class="faq-item">
+            <h3>&iquest;Cu&aacute;ndo veo resultados?</h3>
+            <p>Los cambios pueden ser progresivos durante las semanas posteriores. Cada persona responde diferente.</p>
+          </article>
+          <article class="faq-item">
+            <h3>&iquest;Quedan puntitos?</h3>
+            <p>S&iacute;. Pueden aparecer peque&ntilde;os puntos o costritas temporales durante la recuperaci&oacute;n.</p>
+          </article>
+          <article class="faq-item">
+            <h3>&iquest;Todas las personas aplican?</h3>
+            <p>No. Por eso primero se realiza una valoraci&oacute;n.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta-final">
+          <h2>Agenda tu valoraci&oacute;n y confirma si aplicas</h2>
+          <p>Escr&iacute;benos por WhatsApp y cu&eacute;ntanos qu&eacute; zona deseas tratar.</p>
+          <a class="btn btn-primary js-whatsapp" href="https://wa.me/50764746168?text=Hola,%20vi%20la%20promoci%C3%B3n%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20agendar%20una%20valoraci%C3%B3n.">Reservar valoraci&oacute;n por WhatsApp</a>
+        </div>
+      </div>
+    </section>
   </main>
 
+  <footer class="footer">
+    <div class="container">
+      <b>Figura Rostro KG &middot; Est&eacute;tica y Bienestar</b>
+      <span>Panam&aacute; &middot; WhatsApp 6474-6168</span>
+    </div>
+  </footer>
+
+  <a class="floating-whatsapp js-whatsapp" href="https://wa.me/50764746168?text=Hola,%20vi%20la%20promoci%C3%B3n%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20agendar%20una%20valoraci%C3%B3n.">WhatsApp</a>
+
   <script>
-    document.getElementById("promoForm").addEventListener("submit", function (event) {
-      event.preventDefault();
-      const zona = document.getElementById("zona").value;
-      const mensaje = encodeURIComponent([
-        "Hola, vi la promocion 40% OFF de Plasma Fibroblast.",
-        "Zona de interes: " + zona,
-        "Quiero chatear para saber si aplico."
-      ].join("\n"));
-      window.open("https://wa.me/50764746168?text=" + mensaje, "_blank", "noopener,noreferrer");
+    const phone = "50764746168";
+    const generalMessage = "Hola, vi la promocion 40% OFF de Plasma Fibroblast. Quiero agendar una valoracion.";
+
+    function whatsappUrl(message) {
+      return "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+    }
+
+    function trackWhatsAppClick() {
+      if (typeof fbq === "function") {
+        fbq("track", "Contact");
+      }
+      console.log("WhatsApp click - Plasma Fibroblast Promo");
+    }
+
+    document.querySelectorAll(".js-whatsapp").forEach(function (link) {
+      link.addEventListener("click", trackWhatsAppClick);
+    });
+
+    document.querySelectorAll(".js-zone").forEach(function (link) {
+      const zone = link.getAttribute("data-zone");
+      const message = "Hola, vi la promocion 40% OFF de Plasma Fibroblast. Quiero consultar la zona: " + zone + ".";
+      link.href = whatsappUrl(message);
+      link.addEventListener("click", trackWhatsAppClick);
+    });
+
+    document.querySelectorAll(".media img, .promo-media img").forEach(function (image) {
+      image.addEventListener("error", function () {
+        const parent = image.closest(".media, .promo-media");
+        if (parent) parent.classList.add("is-missing");
+      });
     });
   </script>
 </body>
