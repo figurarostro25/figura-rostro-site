@@ -1,419 +1,1063 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Figura Rostro KG | Consulta por WhatsApp</title>
-<meta name="theme-color" content="#25D366">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Consulta Plasma Fibroblast 40% | Figura Rostro KG</title>
+  <meta name="description" content="Consulta de valoraci&oacute;n para Plasma Fibroblast en p&aacute;rpados y abdomen con promoci&oacute;n especial del 40%. Agenda por WhatsApp con Figura Rostro KG.">
+  <meta name="theme-color" content="#123d46">
+  <meta property="og:title" content="Plasma Fibroblast 40% | Figura Rostro KG">
+  <meta property="og:description" content="Promoci&oacute;n directa para p&aacute;rpados y abdomen. Solicita tu valoraci&oacute;n por WhatsApp.">
+  <meta property="og:image" content="https://figurarostro.life/servicio-fibroblast.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --teal: #20b8ae;
+      --teal-dark: #127a7d;
+      --deep: #113d46;
+      --ink: #17363d;
+      --muted: #5e777d;
+      --soft: #f2fbfa;
+      --cream: #fff8ed;
+      --gold: #d5ad52;
+      --rose: #c98278;
+      --line: #d8e9e7;
+      --white: #ffffff;
+      --shadow: 0 26px 70px rgba(17, 61, 70, .16);
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    * { box-sizing: border-box; }
 
-<style>
-:root{
-  --wa:#25D366;
-  --wa2:#16b553;
-  --dark:#123f46;
-  --text:#17353b;
-  --muted:#6b7f84;
-  --border:#dcefeb;
-  --shadow:0 12px 35px rgba(0,0,0,.10);
-}
+    html { scroll-behavior: smooth; }
 
-*{box-sizing:border-box;margin:0;padding:0}
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 0%, rgba(32, 184, 174, .18), transparent 32%),
+        radial-gradient(circle at 92% 14%, rgba(213, 173, 82, .16), transparent 30%),
+        linear-gradient(180deg, #f7fffe 0%, #ffffff 38%, #fffaf2 100%);
+      overflow-x: hidden;
+    }
 
-body{
-  font-family:Inter,Arial,sans-serif;
-  background:linear-gradient(180deg,#eaf8f5,#ffffff);
-  color:var(--text);
-  padding-bottom:88px;
-}
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
 
-a{text-decoration:none;color:inherit}
+    .page {
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
 
-.wrap{
-  width:min(100%,820px);
-  margin:auto;
-  padding:12px;
-}
+    .page::before,
+    .page::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-.header{
-  background:linear-gradient(135deg,#128C7E,#22b8b0);
-  color:white;
-  border-radius:26px;
-  padding:18px;
-  box-shadow:var(--shadow);
-  display:flex;
-  align-items:center;
-  gap:13px;
-  margin-bottom:14px;
-}
+    .page::before {
+      width: 420px;
+      height: 420px;
+      right: -180px;
+      top: 120px;
+      background: rgba(32, 184, 174, .13);
+    }
 
-.logo{
-  width:52px;
-  height:52px;
-  border-radius:50%;
-  background:white;
-  color:#128C7E;
-  display:grid;
-  place-items:center;
-  font-weight:900;
-  flex-shrink:0;
-}
+    .page::after {
+      width: 360px;
+      height: 360px;
+      left: -180px;
+      bottom: 260px;
+      background: rgba(213, 173, 82, .12);
+    }
 
-.header h1{font-size:20px}
-.header p{font-size:13px;opacity:.95;margin-top:4px}
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
 
-.note{
-  background:white;
-  border:1px solid var(--border);
-  border-radius:22px;
-  padding:14px;
-  margin-bottom:14px;
-  box-shadow:0 8px 24px rgba(0,0,0,.05);
-}
+    .topbar {
+      padding: 18px 0;
+    }
 
-.note strong{
-  display:block;
-  font-size:18px;
-  color:var(--dark);
-  margin-bottom:4px;
-}
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 12px 16px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(17, 61, 70, .98), rgba(18, 122, 125, .94));
+      box-shadow: 0 18px 45px rgba(17, 61, 70, .14);
+    }
 
-.note p{
-  color:var(--muted);
-  font-size:14px;
-  line-height:1.4;
-}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: white;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
 
-.status{
-  display:inline-flex;
-  margin-top:10px;
-  background:#eafff2;
-  color:#087b37;
-  padding:8px 12px;
-  border-radius:999px;
-  font-size:13px;
-  font-weight:800;
-}
+    .brand img {
+      width: 118px;
+      height: auto;
+      filter: drop-shadow(0 8px 16px rgba(17, 61, 70, .12));
+    }
 
-.grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:14px;
-}
+    .brand-fallback {
+      display: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 15px;
+      place-items: center;
+      color: white;
+      background: linear-gradient(135deg, var(--deep), var(--teal-dark));
+      font-weight: 900;
+    }
 
-.card{
-  background:white;
-  border:1px solid var(--border);
-  border-radius:26px;
-  overflow:hidden;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
-}
+    .nav-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
 
-.card.featured{
-  border:2px solid var(--wa);
-}
+    .mini-link {
+      border: 1px solid rgba(255, 255, 255, .16);
+      background: rgba(255, 255, 255, .13);
+      padding: 12px 16px;
+      border-radius: 999px;
+      color: white;
+      font-size: 14px;
+      font-weight: 800;
+    }
 
-.card-top{
-  padding:13px 14px 10px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-}
+    .hero {
+      padding: 32px 0 54px;
+    }
 
-.card-title{
-  font-size:17px;
-  font-weight:900;
-  color:var(--dark);
-}
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(360px, .98fr);
+      gap: 34px;
+      align-items: center;
+    }
 
-.badge{
-  background:#eafff2;
-  color:#087b37;
-  font-size:11px;
-  font-weight:900;
-  padding:7px 9px;
-  border-radius:999px;
-  white-space:nowrap;
-}
+    .hero-copy {
+      padding: 36px 0;
+    }
 
-.badge.hot{
-  background:#fff0f6;
-  color:#c61f67;
-}
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: #e4f7f5;
+      color: var(--teal-dark);
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
 
-.card img{
-  width:100%;
-  display:block;
-  height:auto;
-  max-height:620px;
-  object-fit:contain;
-  background:#f3fbfa;
-  border-top:1px solid #edf7f5;
-  border-bottom:1px solid #edf7f5;
-}
+    .kicker::before {
+      content: "";
+      width: 28px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 999px;
+    }
 
-.actions{
-  padding:13px;
-}
+    h1 {
+      margin: 18px 0 16px;
+      max-width: 720px;
+      color: var(--deep);
+      font-size: clamp(46px, 6vw, 86px);
+      line-height: .96;
+      letter-spacing: 0;
+    }
 
-.btn{
-  width:100%;
-  min-height:54px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:9px;
-  background:linear-gradient(135deg,var(--wa),var(--wa2));
-  color:white;
-  border-radius:17px;
-  font-size:17px;
-  font-weight:900;
-  box-shadow:0 10px 22px rgba(37,211,102,.25);
-}
+    .lead {
+      margin: 0;
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 20px;
+      line-height: 1.7;
+    }
 
-.btn.blue{
-  background:linear-gradient(135deg,#22b8b0,#0f7e84);
-}
+    .offer-line {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px;
+      align-items: center;
+      margin: 28px 0;
+      max-width: 650px;
+      padding: 16px;
+      border: 1px solid rgba(32, 184, 174, .28);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, .82);
+      box-shadow: 0 16px 45px rgba(17, 61, 70, .08);
+    }
 
-.btn.insta{
-  background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd);
-  box-shadow:0 10px 24px rgba(214,41,118,.28);
-}
+    .discount {
+      display: grid;
+      place-items: center;
+      width: 116px;
+      height: 116px;
+      border-radius: 26px;
+      color: white;
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      box-shadow: 0 20px 45px rgba(32, 184, 174, .28);
+      text-align: center;
+      font-weight: 900;
+    }
 
-.btn.pulse{
-  animation:pulse 1.8s infinite;
-}
+    .discount strong {
+      display: block;
+      font-size: 38px;
+      line-height: .9;
+    }
 
-@keyframes pulse{
-  0%{transform:scale(1)}
-  50%{transform:scale(1.025)}
-  100%{transform:scale(1)}
-}
+    .discount span {
+      display: block;
+      margin-top: 4px;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
 
-.instagram-box{
-  margin-top:15px;
-  background:white;
-  border:1px solid #f3d5e7;
-  border-radius:26px;
-  overflow:hidden;
-  box-shadow:0 10px 30px rgba(214,41,118,.10);
-}
+    .offer-line h2 {
+      margin: 0 0 8px;
+      color: var(--deep);
+      font-size: 24px;
+      line-height: 1.15;
+    }
 
-.instagram-head{
-  padding:15px;
-  background:linear-gradient(45deg,#fff7fb,#f8ffff);
-  text-align:center;
-}
+    .offer-line p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
 
-.ig-icon{
-  width:54px;
-  height:54px;
-  margin:0 auto 8px;
-  border-radius:16px;
-  background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd);
-  display:grid;
-  place-items:center;
-  color:white;
-  font-size:30px;
-  font-weight:900;
-}
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 28px 0 20px;
+    }
 
-.instagram-head h2{
-  font-size:21px;
-  color:var(--dark);
-  margin-bottom:5px;
-}
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 58px;
+      padding: 0 24px;
+      border: 0;
+      border-radius: 999px;
+      font: inherit;
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
 
-.instagram-head p{
-  font-size:14px;
-  color:var(--muted);
-  line-height:1.4;
-}
+    .btn:hover {
+      transform: translateY(-2px);
+    }
 
-.bono{
-  margin:12px;
-  padding:14px;
-  border-radius:20px;
-  background:#fff0f6;
-  color:#b9155d;
-  text-align:center;
-  font-weight:900;
-  font-size:18px;
-}
+    .btn-primary {
+      color: white;
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      box-shadow: 0 18px 40px rgba(32, 184, 174, .28);
+    }
 
-.trust{
-  margin-top:15px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-}
+    .btn-dark {
+      color: white;
+      background: var(--deep);
+      box-shadow: 0 16px 34px rgba(17, 61, 70, .18);
+    }
 
-.trust div{
-  background:white;
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:12px 9px;
-  text-align:center;
-  font-size:13px;
-  color:var(--muted);
-}
+    .btn-light {
+      color: var(--deep);
+      background: white;
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 28px rgba(17, 61, 70, .08);
+    }
 
-.trust strong{
-  display:block;
-  color:var(--dark);
-  margin-bottom:3px;
-}
+    .trust-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 650px;
+      margin-top: 24px;
+    }
 
-.footer{
-  text-align:center;
-  padding:18px 8px 26px;
-  color:#6b7f84;
-  font-size:13px;
-}
+    .trust-pill {
+      min-height: 82px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, .72);
+    }
 
-.footer a{
-  color:#0f7e84;
-  font-weight:900;
-  margin:0 6px;
-}
+    .trust-pill b {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--deep);
+      font-size: 14px;
+    }
 
-.fixed{
-  position:fixed;
-  left:12px;
-  right:12px;
-  bottom:13px;
-  z-index:99;
-}
+    .trust-pill span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+    }
 
-.fixed .btn{
-  max-width:520px;
-  margin:auto;
-}
+    .promo-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      background: var(--deep);
+      box-shadow: var(--shadow);
+      min-height: 680px;
+      isolation: isolate;
+    }
 
-@media(min-width:780px){
-  .wrap{padding:24px}
-  .grid{grid-template-columns:1fr 1fr}
-  .card.featured{grid-column:1 / -1}
-}
-</style>
+    .promo-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(17, 61, 70, .08), rgba(17, 61, 70, .86)),
+        linear-gradient(90deg, rgba(17, 61, 70, .48), rgba(17, 61, 70, .06));
+      z-index: 1;
+    }
+
+    .promo-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.02);
+    }
+
+    .badge-float {
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      width: 132px;
+      height: 132px;
+      border-radius: 999px;
+      border: 8px solid rgba(255, 255, 255, .9);
+      color: var(--deep);
+      background: linear-gradient(135deg, #fffdf5, #e8fbf9);
+      text-align: center;
+      box-shadow: 0 18px 42px rgba(0, 0, 0, .18);
+      font-weight: 900;
+    }
+
+    .badge-float strong {
+      display: block;
+      font-size: 42px;
+      line-height: .9;
+    }
+
+    .badge-float span {
+      display: block;
+      margin-top: 5px;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: var(--teal-dark);
+    }
+
+    .promo-content {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      z-index: 2;
+      padding: 24px;
+      border: 1px solid rgba(255, 255, 255, .24);
+      border-radius: 26px;
+      background: rgba(17, 61, 70, .74);
+      backdrop-filter: blur(14px);
+      color: white;
+    }
+
+    .promo-content h2 {
+      margin: 0 0 10px;
+      font-size: 34px;
+      line-height: 1.05;
+      color: white;
+    }
+
+    .promo-content p {
+      margin: 0;
+      color: rgba(255, 255, 255, .82);
+      line-height: 1.55;
+    }
+
+    .quick-form {
+      margin-top: 18px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .quick-form input,
+    .quick-form select {
+      width: 100%;
+      min-height: 52px;
+      border: 1px solid rgba(255, 255, 255, .22);
+      border-radius: 16px;
+      padding: 0 14px;
+      background: rgba(255, 255, 255, .94);
+      color: var(--ink);
+      font: inherit;
+      outline: none;
+    }
+
+    .quick-form input:focus,
+    .quick-form select:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 4px rgba(32, 184, 174, .16);
+    }
+
+    .quick-form .btn {
+      width: 100%;
+      min-height: 54px;
+    }
+
+    .microcopy {
+      color: rgba(255, 255, 255, .72);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .section {
+      padding: 54px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 24px;
+    }
+
+    .section-head h2 {
+      margin: 10px 0 0;
+      color: var(--deep);
+      font-size: clamp(32px, 4vw, 54px);
+      line-height: 1.04;
+      letter-spacing: 0;
+    }
+
+    .section-head p {
+      max-width: 520px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .offer-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 22px;
+    }
+
+    .offer-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: white;
+      box-shadow: 0 18px 48px rgba(17, 61, 70, .09);
+    }
+
+    .offer-media {
+      position: relative;
+      height: 330px;
+      overflow: hidden;
+      background: var(--soft);
+    }
+
+    .offer-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .28s ease;
+    }
+
+    .offer-card:hover .offer-media img {
+      transform: scale(1.035);
+    }
+
+    .offer-tag {
+      position: absolute;
+      left: 18px;
+      top: 18px;
+      z-index: 2;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .92);
+      color: var(--teal-dark);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, .08);
+    }
+
+    .offer-body {
+      padding: 24px;
+    }
+
+    .offer-body h3 {
+      margin: 0 0 10px;
+      color: var(--deep);
+      font-size: 28px;
+      line-height: 1.1;
+    }
+
+    .offer-body p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .benefits {
+      display: grid;
+      gap: 9px;
+      margin: 0 0 20px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .benefits li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      color: var(--ink);
+      line-height: 1.45;
+    }
+
+    .benefits li::before {
+      content: "";
+      flex: 0 0 auto;
+      width: 9px;
+      height: 9px;
+      margin-top: 7px;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 0 5px rgba(32, 184, 174, .12);
+    }
+
+    .focus-band {
+      display: grid;
+      grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr);
+      gap: 28px;
+      align-items: center;
+      padding: 34px;
+      border-radius: 32px;
+      color: white;
+      background:
+        linear-gradient(135deg, rgba(17, 61, 70, .97), rgba(18, 122, 125, .92)),
+        radial-gradient(circle at 90% 18%, rgba(213, 173, 82, .3), transparent 28%);
+      box-shadow: var(--shadow);
+    }
+
+    .flat-illustration {
+      min-height: 320px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, .09);
+      border: 1px solid rgba(255, 255, 255, .18);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .focus-band h2 {
+      margin: 0 0 12px;
+      color: white;
+      font-size: clamp(32px, 4vw, 54px);
+      line-height: 1.04;
+    }
+
+    .focus-band p {
+      margin: 0 0 20px;
+      color: rgba(255, 255, 255, .82);
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .next-links {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .next-link {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, .11);
+      border: 1px solid rgba(255, 255, 255, .18);
+      color: white;
+      font-weight: 900;
+    }
+
+    .next-link span {
+      display: block;
+      margin-top: 7px;
+      color: rgba(255, 255, 255, .72);
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .sticky-cta {
+      position: fixed;
+      left: 50%;
+      bottom: 16px;
+      z-index: 20;
+      transform: translateX(-50%);
+      display: none;
+      width: min(352px, calc(100% - 28px));
+      min-height: 58px;
+      border-radius: 999px;
+      color: white;
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      box-shadow: 0 18px 46px rgba(17, 61, 70, .24);
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+    }
+
+    footer {
+      padding: 34px 0 86px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    footer strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--deep);
+    }
+
+    @media (max-width: 980px) {
+      .container {
+        width: min(720px, calc(100% - 28px));
+      }
+
+      .topbar {
+        padding: 12px 0;
+      }
+
+      .nav {
+        justify-content: center;
+      }
+
+      .brand img {
+        width: 108px;
+      }
+
+      .nav-actions {
+        display: none;
+      }
+
+      .hero {
+        padding: 12px 0 30px;
+      }
+
+      .hero-grid,
+      .offer-grid,
+      .focus-band,
+      .section-head {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-grid {
+        gap: 18px;
+      }
+
+      .hero-copy {
+        padding: 12px 0 0;
+      }
+
+      .kicker {
+        font-size: 11px;
+        padding: 8px 11px;
+      }
+
+      .kicker::before {
+        width: 18px;
+      }
+
+      h1 {
+        font-size: clamp(36px, 10vw, 44px);
+        line-height: 1.02;
+        max-width: 100%;
+      }
+
+      .lead {
+        display: none;
+      }
+
+      .offer-line {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin: 20px 0;
+        padding: 14px;
+      }
+
+      .discount {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: auto;
+        min-height: 76px;
+        border-radius: 18px;
+        grid-template-columns: auto auto;
+        gap: 8px;
+      }
+
+      .discount strong {
+        font-size: 34px;
+      }
+
+      .discount span {
+        margin: 0;
+      }
+
+      .actions {
+        display: grid;
+        margin: 20px 0 12px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .trust-row {
+        display: none;
+      }
+
+      .promo-card {
+        order: -1;
+        min-height: 560px;
+        border-radius: 28px;
+      }
+
+      .badge-float {
+        width: 104px;
+        height: 104px;
+        top: 16px;
+        right: 16px;
+        border-width: 6px;
+      }
+
+      .badge-float strong {
+        font-size: 34px;
+      }
+
+      .promo-content {
+        left: 14px;
+        right: 14px;
+        bottom: 14px;
+        padding: 18px;
+        border-radius: 22px;
+      }
+
+      .promo-content h2 {
+        font-size: 25px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 38px 0;
+      }
+
+      .section-head {
+        align-items: start;
+        gap: 12px;
+      }
+
+      .section-head h2,
+      .focus-band h2 {
+        font-size: 36px;
+      }
+
+      .section-head p,
+      .focus-band p {
+        font-size: 16px;
+      }
+
+      .offer-media {
+        height: 250px;
+      }
+
+      .focus-band {
+        padding: 20px;
+        border-radius: 26px;
+      }
+
+      .flat-illustration {
+        min-height: 240px;
+      }
+
+      .next-links {
+        grid-template-columns: 1fr;
+      }
+
+      .sticky-cta {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .promo-card {
+        min-height: 650px;
+      }
+
+      .offer-media {
+        height: 220px;
+      }
+
+      .offer-body {
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
-
 <body>
-
-<div class="wrap">
-
-  <header class="header">
-    <div class="logo">FR</div>
-    <div>
-      <h1>Figura Rostro KG</h1>
-      <p>Centro de atención por WhatsApp</p>
-    </div>
-  </header>
-
-  <section class="note">
-    <strong>Hola 👋 selecciona la promoción</strong>
-    <p>Estás a un paso de chatear con nosotros. Toca consultar y te llevamos directo a WhatsApp.</p>
-    <div class="status">● WhatsApp disponible</div>
-  </section>
-
-  <section class="grid">
-
-    <article class="card featured">
-      <div class="card-top">
-        <div class="card-title">Párpados Plasma -40%</div>
-        <div class="badge hot">Junio</div>
-      </div>
-      <img src="promo-parpados.jpg" alt="Promo Plasma Fibroblast párpados 40%">
-      <div class="actions">
-        <a class="btn pulse" href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20Promo%20Plasma%20Fibroblast%20en%20p%C3%A1rpados%20con%2040%25%20de%20descuento.%20Vi%20la%20promoci%C3%B3n%20en%20Facebook%20y%20quiero%20consultar." target="_blank" rel="noopener">
-          💬 Consultar párpados
+  <div class="page">
+    <header class="topbar">
+      <div class="container nav">
+        <a class="brand" href="/">
+          <img src="https://figurarostro.life/logo-header-white.png" alt="Figura Rostro KG" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+          <span class="brand-fallback">FR</span>
         </a>
+        <nav class="nav-actions" aria-label="Accesos">
+          <a class="mini-link" href="/plasma-fibroblast-panama.html">Ver Fibroblast</a>
+          <a class="mini-link" href="/menu.html">Men&uacute;</a>
+        </nav>
       </div>
-    </article>
+    </header>
 
-    <article class="card">
-      <div class="card-top">
-        <div class="card-title">Abdomen Plasma -40%</div>
-        <div class="badge hot">Junio</div>
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <span class="kicker">Promoci&oacute;n desde Instagram</span>
+            <h1>Plasma Fibroblast para p&aacute;rpados con 40% OFF.</h1>
+            <p class="lead">Solicita una valoraci&oacute;n r&aacute;pida y descubre si este procedimiento es ideal para tensar visualmente la mirada, trabajar flacidez localizada y mejorar zonas puntuales sin cirug&iacute;a invasiva.</p>
+
+            <div class="offer-line">
+              <div class="discount">
+                <strong>40%</strong>
+                <span>descuento</span>
+              </div>
+              <div>
+                <h2>Oferta especial para pacientes que aplican en valoraci&oacute;n.</h2>
+                <p>Cupos limitados. El descuento se confirma seg&uacute;n zona, tipo de piel, cuidados requeridos y objetivo del tratamiento.</p>
+              </div>
+            </div>
+
+            <div class="actions">
+              <a class="btn btn-primary" href="https://wa.me/50764746168?text=Hola,%20vi%20la%20promo%2040%25%20de%20Plasma%20Fibroblast%20para%20p%C3%A1rpados%20en%20Instagram%20y%20quiero%20una%20valoraci%C3%B3n." target="_blank" rel="noreferrer">Quiero mi valoraci&oacute;n</a>
+              <a class="btn btn-light" href="#abdomen">Ver promo abdomen</a>
+            </div>
+
+            <div class="trust-row">
+              <div class="trust-pill">
+                <b>Respuesta por WhatsApp</b>
+                <span>Te orientamos con los datos b&aacute;sicos antes de agendar.</span>
+              </div>
+              <div class="trust-pill">
+                <b>Proceso guiado</b>
+                <span>Valoraci&oacute;n, preparaci&oacute;n, cuidados y seguimiento.</span>
+              </div>
+              <div class="trust-pill">
+                <b>Enfoque puntual</b>
+                <span>Ideal para zonas espec&iacute;ficas que requieren precisi&oacute;n.</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="promo-card" aria-label="Promoci&oacute;n Plasma Fibroblast en p&aacute;rpados">
+            <img src="https://figurarostro.life/servicio-fibroblast.jpg" alt="Plasma Fibroblast en p&aacute;rpados" onerror="this.style.display='none';">
+            <div class="badge-float">
+              <div>
+                <strong>40%</strong>
+                <span>OFF</span>
+              </div>
+            </div>
+            <div class="promo-content">
+              <h2>Consulta de valoraci&oacute;n</h2>
+              <p>Cu&eacute;ntanos qu&eacute; zona deseas mejorar y te respondemos por WhatsApp para revisar si aplicas a la promoci&oacute;n.</p>
+              <form class="quick-form" id="promoForm">
+                <div class="form-row">
+                  <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required>
+                  <input id="telefono" name="telefono" type="tel" placeholder="WhatsApp" required>
+                </div>
+                <select id="zona" name="zona" required>
+                  <option value="P&aacute;rpados">P&aacute;rpados / mirada</option>
+                  <option value="Abdomen">Abdomen</option>
+                  <option value="Brazos">Brazos</option>
+                  <option value="Cuello o papada">Cuello o papada</option>
+                  <option value="Rostro">Rostro</option>
+                </select>
+                <button class="btn btn-primary" type="submit">Enviar por WhatsApp</button>
+                <div class="microcopy">Este formulario abre WhatsApp con tu solicitud lista para enviar. La promoci&oacute;n aplica luego de valoraci&oacute;n.</div>
+              </form>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section" id="abdomen">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="kicker">Segunda zona destacada</span>
+              <h2>Tambi&eacute;n disponible para abdomen.</h2>
+            </div>
+            <p>Si vienes desde la publicidad y tu inter&eacute;s es abdomen, aqu&iacute; tienes el acceso directo. La recomendaci&oacute;n depende de flacidez, tipo de piel y expectativas reales.</p>
+          </div>
+
+          <div class="offer-grid">
+            <article class="offer-card">
+              <div class="offer-media">
+                <span class="offer-tag">P&aacute;rpados 40% OFF</span>
+                <img src="https://figurarostro.life/servicio-fibroblast.jpg" alt="Promoci&oacute;n Plasma Fibroblast p&aacute;rpados" onerror="this.style.display='none';">
+              </div>
+              <div class="offer-body">
+                <h3>Mirada m&aacute;s firme y descansada</h3>
+                <p>Dise&ntilde;ado para personas que buscan trabajar flacidez visual en p&aacute;rpados y zona de la mirada con un enfoque puntual.</p>
+                <ul class="benefits">
+                  <li>Valoraci&oacute;n previa para revisar si aplicas.</li>
+                  <li>Indicaciones claras antes y despu&eacute;s del proceso.</li>
+                  <li>Promoci&oacute;n confirmada por disponibilidad.</li>
+                </ul>
+                <a class="btn btn-primary" href="https://wa.me/50764746168?text=Hola,%20quiero%20aplicar%20a%20la%20promo%2040%25%20de%20Plasma%20Fibroblast%20para%20p%C3%A1rpados." target="_blank" rel="noreferrer">Consultar p&aacute;rpados</a>
+              </div>
+            </article>
+
+            <article class="offer-card">
+              <div class="offer-media">
+                <span class="offer-tag">Abdomen 40% OFF</span>
+                <img src="https://figurarostro.life/galeria-corporal-1.jpg" alt="Promoci&oacute;n Plasma Fibroblast abdomen" onerror="this.style.display='none';">
+              </div>
+              <div class="offer-body">
+                <h3>Abdomen y flacidez localizada</h3>
+                <p>Una opci&oacute;n para valorar zonas corporales donde se busca mejorar apariencia de flacidez, textura o marcas superficiales.</p>
+                <ul class="benefits">
+                  <li>Revisi&oacute;n de zona y cuidados necesarios.</li>
+                  <li>Plan seg&uacute;n piel, objetivo y recuperaci&oacute;n.</li>
+                  <li>Acceso a la misma promoci&oacute;n del 40% si aplicas.</li>
+                </ul>
+                <a class="btn btn-dark" href="https://wa.me/50764746168?text=Hola,%20quiero%20aplicar%20a%20la%20promo%2040%25%20de%20Plasma%20Fibroblast%20para%20abdomen." target="_blank" rel="noreferrer">Consultar abdomen</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="focus-band">
+            <div class="flat-illustration" aria-hidden="true">
+              <svg viewBox="0 0 620 360" width="100%" height="100%" role="img">
+                <defs>
+                  <linearGradient id="skin" x1="0" x2="1">
+                    <stop stop-color="#fff6ec"/>
+                    <stop offset="1" stop-color="#f1c7ba"/>
+                  </linearGradient>
+                  <linearGradient id="tealLine" x1="0" x2="1">
+                    <stop stop-color="#20b8ae"/>
+                    <stop offset="1" stop-color="#d5ad52"/>
+                  </linearGradient>
+                </defs>
+                <rect x="56" y="70" width="508" height="220" rx="56" fill="rgba(255,255,255,.12)"/>
+                <path d="M94 212c94-82 176-82 254 0 68 72 132 70 198 4" fill="none" stroke="url(#skin)" stroke-width="42" stroke-linecap="round"/>
+                <path d="M116 208c74-52 146-52 214 0 58 44 116 46 184 4" fill="none" stroke="#113d46" stroke-width="12" stroke-linecap="round" opacity=".5"/>
+                <circle cx="220" cy="198" r="7" fill="#20b8ae"/>
+                <circle cx="252" cy="190" r="7" fill="#20b8ae"/>
+                <circle cx="284" cy="194" r="7" fill="#20b8ae"/>
+                <circle cx="316" cy="206" r="7" fill="#20b8ae"/>
+                <path d="M98 126c88-42 176-38 264 8 58 30 108 31 158 2" fill="none" stroke="url(#tealLine)" stroke-width="12" stroke-linecap="round"/>
+                <path d="M112 268c104 26 206 23 306-10" fill="none" stroke="rgba(255,255,255,.44)" stroke-width="10" stroke-linecap="round"/>
+                <text x="86" y="54" fill="white" font-size="22" font-weight="900">Valoraci&oacute;n primero</text>
+                <text x="86" y="324" fill="rgba(255,255,255,.72)" font-size="18" font-weight="700">Puntos focalizados, cuidado posterior y seguimiento.</text>
+              </svg>
+            </div>
+            <div>
+              <span class="kicker">M&aacute;s informaci&oacute;n</span>
+              <h2>Quieres leer antes de decidir?</h2>
+              <p>Te dejamos dos accesos simples: la p&aacute;gina completa de Plasma Fibroblast para entender el procedimiento y el men&uacute; de servicios para revisar otras opciones faciales y corporales.</p>
+              <div class="next-links">
+                <a class="next-link" href="/plasma-fibroblast-panama.html">
+                  Ver Plasma Fibroblast
+                  <span>Proceso, zonas, cuidados y preguntas frecuentes.</span>
+                </a>
+                <a class="next-link" href="/menu.html">
+                  Ir al men&uacute; de servicios
+                  <span>Faciales, corporales, masajes y bienestar.</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <strong>Figura Rostro KG | Est&eacute;tica integral</strong>
+        <span>Avenida Ernesto T. Lefevre, Plaza Royal Park, Local PB-15. WhatsApp: +507 6474-6168.</span>
       </div>
-      <img src="promo-abdomen.jpg" alt="Promo Plasma Fibroblast abdomen 40%">
-      <div class="actions">
-        <a class="btn" href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20Promo%20Plasma%20Fibroblast%20para%20abdomen%20con%2040%25%20de%20descuento.%20Vi%20la%20promoci%C3%B3n%20y%20quiero%20consultar." target="_blank" rel="noopener">
-          💬 Consultar abdomen
-        </a>
-      </div>
-    </article>
+    </footer>
+  </div>
 
-    <article class="card">
-      <div class="card-top">
-        <div class="card-title">Reduce Express</div>
-        <div class="badge">Corporal</div>
-      </div>
-      <img src="reduce-express.jpg" alt="Reduce Express corporal">
-      <div class="actions">
-        <a class="btn" href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20quiero%20informaci%C3%B3n%20sobre%20Reduce%20Express.%20Vi%20la%20opci%C3%B3n%20en%20la%20p%C3%A1gina%20y%20quiero%20consultar." target="_blank" rel="noopener">
-          💬 Consultar Reduce
-        </a>
-      </div>
-    </article>
+  <a class="sticky-cta" href="https://wa.me/50764746168?text=Hola,%20vi%20la%20promo%2040%25%20de%20Plasma%20Fibroblast%20en%20Instagram%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noreferrer">Consultar promo 40%</a>
 
-    <article class="card">
-      <div class="card-top">
-        <div class="card-title">Agendar valoración</div>
-        <div class="badge">Reserva</div>
-      </div>
-      <img src="valoracion.jpg" alt="Agendar cita de valoración">
-      <div class="actions">
-        <a class="btn blue" href="https://figurarostro.life/reservar-v2.html">
-          📅 Reservar cita
-        </a>
-      </div>
-    </article>
-
-  </section>
-
-  <section class="instagram-box">
-    <div class="instagram-head">
-      <div class="ig-icon">◎</div>
-      <h2>Promo de reapertura 🎁</h2>
-      <p>Síguenos en Instagram y reclama un bono de $10 para usar en servicios de la estética durante junio.</p>
-    </div>
-
-    <div class="bono">Bono especial: $10</div>
-
-    <div class="actions">
-      <a class="btn insta" href="https://www.instagram.com/figurarostrokg/" target="_blank" rel="noopener">
-        📸 Síguenos y reclama $10
-      </a>
-    </div>
-  </section>
-
-  <section class="trust">
-    <div><strong>Atención directa</strong>WhatsApp oficial</div>
-    <div><strong>Promos activas</strong>Cupos limitados</div>
-    <div><strong>Valoración previa</strong>Según tu caso</div>
-    <div><strong>Figura Rostro KG</strong>Estética y bienestar</div>
-  </section>
-
-  <footer class="footer">
-    <p>Figura Rostro KG · Atención por WhatsApp</p>
-    <p>
-      <a href="https://figurarostro.life/">Inicio</a>
-      <a href="https://figurarostro.life/plasma-fibroblast-panama.html">Plasma</a>
-      <a href="https://figurarostro.life/menu-servicios.html">Menú</a>
-      <a href="https://figurarostro.life/reservar-v2.html">Reservar</a>
-    </p>
-  </footer>
-
-</div>
-
-<div class="fixed">
-  <a class="btn pulse" href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20Promo%20Plasma%20Fibroblast%2040%25%20de%20descuento.%20Vi%20la%20promoci%C3%B3n%20en%20Facebook%20y%20quiero%20consultar." target="_blank" rel="noopener">
-    💬 Consultar Promo Plasma -40%
-  </a>
-</div>
-
+  <script>
+    const form = document.getElementById("promoForm");
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      const nombre = document.getElementById("nombre").value.trim();
+      const telefono = document.getElementById("telefono").value.trim();
+      const zona = document.getElementById("zona").value;
+      const mensaje = [
+        "Hola, vi la promo 40% de Plasma Fibroblast en Instagram.",
+        "Nombre: " + nombre,
+        "WhatsApp: " + telefono,
+        "Zona de interes: " + zona,
+        "Quiero una valoracion para saber si aplico."
+      ].join("%0A");
+      window.open("https://wa.me/50764746168?text=" + mensaje, "_blank", "noopener,noreferrer");
+    });
+  </script>
 </body>
 </html>
