@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Figura Rostro KG | Centro de Atención</title>
+
+<meta name="description" content="Consulta promociones, tratamientos y agenda tu cita de valoración en Figura Rostro KG.">
+<meta name="theme-color" content="#25D366">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --wa:#25D366;
+  --wa-dark:#128C7E;
+  --dark:#123f46;
+  --text:#19363c;
+  --muted:#6b7f84;
+  --bg:#eaf7f3;
+  --white:#fff;
+  --border:#dcefeb;
+  --shadow:0 12px 35px rgba(0,0,0,.10);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:Inter,Arial,sans-serif;
+  background:
+    radial-gradient(circle at top left,rgba(37,211,102,.20),transparent 30%),
+    linear-gradient(180deg,#eaf7f3,#f8fffd);
+  color:var(--text);
+  padding-bottom:90px;
+}
+
+a{text-decoration:none;color:inherit}
+
+.wrap{
+  width:min(100%,720px);
+  margin:auto;
+  padding:14px;
+}
+
+.phone{
+  background:#f7fffc;
+  border:1px solid var(--border);
+  border-radius:30px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+
+.topbar{
+  background:linear-gradient(135deg,var(--wa-dark),#0f6f65);
+  color:white;
+  padding:18px 16px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.avatar{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:white;
+  color:var(--wa-dark);
+  display:grid;
+  place-items:center;
+  font-weight:900;
+  font-size:18px;
+}
+
+.topbar h1{
+  font-size:18px;
+  line-height:1.2;
+}
+
+.topbar p{
+  font-size:13px;
+  opacity:.9;
+  margin-top:3px;
+}
+
+.chat{
+  padding:18px 14px 22px;
+  background:
+    linear-gradient(rgba(255,255,255,.88),rgba(255,255,255,.88)),
+    url("promo-plasma-junio.jpg") center/cover;
+}
+
+.bubble{
+  background:white;
+  border-radius:18px 18px 18px 4px;
+  padding:15px;
+  box-shadow:0 6px 18px rgba(0,0,0,.06);
+  margin-bottom:14px;
+  border:1px solid #eef6f4;
+}
+
+.bubble h2{
+  font-size:22px;
+  color:var(--dark);
+  margin-bottom:8px;
+}
+
+.bubble p{
+  color:var(--muted);
+  line-height:1.45;
+  font-size:15px;
+}
+
+.status{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  background:#eafff2;
+  color:#087b37;
+  padding:8px 12px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:800;
+  margin-top:12px;
+}
+
+.option{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:24px;
+  overflow:hidden;
+  margin-top:15px;
+  box-shadow:0 8px 24px rgba(0,0,0,.07);
+}
+
+.option.featured{
+  border:2px solid var(--wa);
+}
+
+.option-head{
+  padding:16px 16px 12px;
+}
+
+.label{
+  display:inline-block;
+  background:#eafff2;
+  color:#087b37;
+  padding:7px 11px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:900;
+  margin-bottom:9px;
+}
+
+.label.hot{
+  background:#fff0f6;
+  color:#c61f67;
+}
+
+.label.blue{
+  background:#e9fbfa;
+  color:#0b7b79;
+}
+
+.option h3{
+  font-size:21px;
+  color:var(--dark);
+  margin-bottom:7px;
+}
+
+.option p{
+  color:var(--muted);
+  line-height:1.45;
+  font-size:15px;
+}
+
+.option img{
+  width:100%;
+  display:block;
+  height:auto;
+  max-height:520px;
+  object-fit:contain;
+  background:#f3fbfa;
+  border-top:1px solid #edf7f5;
+  border-bottom:1px solid #edf7f5;
+}
+
+.actions{
+  padding:14px;
+}
+
+.btn{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  background:linear-gradient(135deg,var(--wa),#16b553);
+  color:white;
+  padding:15px;
+  border-radius:16px;
+  font-weight:900;
+  font-size:16px;
+  box-shadow:0 10px 22px rgba(37,211,102,.25);
+}
+
+.btn.blue{
+  background:linear-gradient(135deg,#22b8b0,#0f7e84);
+}
+
+.btn.pulse{
+  animation:pulse 1.8s infinite;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.025)}
+  100%{transform:scale(1)}
+}
+
+.micro{
+  text-align:center;
+  font-size:12px;
+  color:#789095;
+  margin-top:9px;
+  line-height:1.35;
+}
+
+.trust{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:16px;
+}
+
+.trust div{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:17px;
+  padding:13px 10px;
+  text-align:center;
+  font-size:13px;
+  color:var(--muted);
+}
+
+.trust strong{
+  display:block;
+  color:var(--dark);
+  margin-bottom:4px;
+}
+
+.services{
+  margin-top:18px;
+  background:white;
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:18px 14px;
+}
+
+.services h2{
+  text-align:center;
+  color:var(--dark);
+  font-size:21px;
+  margin-bottom:7px;
+}
+
+.services p{
+  text-align:center;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.45;
+  margin-bottom:14px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+}
+
+.item{
+  background:#f2fbf8;
+  border:1px solid #e1f2ed;
+  border-radius:15px;
+  padding:12px 8px;
+  text-align:center;
+  font-weight:800;
+  font-size:13px;
+}
+
+.footer{
+  text-align:center;
+  padding:18px 8px 26px;
+  color:#6b7f84;
+  font-size:13px;
+}
+
+.footer a{
+  color:#0f7e84;
+  font-weight:900;
+  margin:0 6px;
+}
+
+.fixed{
+  position:fixed;
+  left:12px;
+  right:12px;
+  bottom:14px;
+  z-index:99;
+}
+
+.fixed .btn{
+  max-width:520px;
+  margin:auto;
+}
+
+@media(min-width:760px){
+  .wrap{padding:26px}
+  .chat{padding:22px}
+  .option img{max-height:600px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+  <main class="phone">
+
+    <header class="topbar">
+      <div class="avatar">FR</div>
+      <div>
+        <h1>Figura Rostro KG</h1>
+        <p>Centro de atención · WhatsApp activo</p>
+      </div>
+    </header>
+
+    <section class="chat">
+
+      <div class="bubble">
+        <h2>Hola 👋 ¿cómo podemos ayudarte hoy?</h2>
+        <p>
+          Selecciona una opción para consultar una promoción o reservar tu cita de valoración.
+          Te atenderemos de forma directa y personalizada.
+        </p>
+        <div class="status">● Disponible para responder</div>
+      </div>
+
+      <article class="option featured">
+        <div class="option-head">
+          <span class="label hot">🔥 Promo activa</span>
+          <h3>Promo Plasma Fibroblast -40% Junio</h3>
+          <p>
+            Usa esta opción si vienes por la promoción de Plasma Fibroblast.
+            Al escribirnos sabremos exactamente qué promo viste.
+          </p>
+        </div>
+
+        <img src="promo-plasma-junio.jpg" alt="Promo Plasma Fibroblast -40% Junio">
+
+        <div class="actions">
+          <a class="btn pulse" href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20Promo%20Plasma%20Fibroblast%20-40%25%20Junio.%20Vi%20la%20promoci%C3%B3n%20y%20quiero%20saber%20disponibilidad%20para%20valoraci%C3%B3n." target="_blank" rel="noopener">
+            💬 Consultar Promo Plasma -40%
+          </a>
+          <div class="micro">Mensaje preparado para identificar la promoción.</div>
+        </div>
+      </article>
+
+      <article class="option">
+        <div class="option-head">
+          <span class="label">💚 Corporal</span>
+          <h3>Paquete Reduce Express -20%</h3>
+          <p>
+            Consulta por paquetes corporales para reducción de medidas, moldeo y tratamientos personalizados.
+          </p>
+        </div>
+
+        <img src="reduce-express.jpg" alt="Paquete Reduce Express -20%">
+
+        <div class="actions">
+          <a class="btn" href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20Paquete%20Reduce%20Express%20-20%25.%20Me%20gustar%C3%ADa%20saber%20qu%C3%A9%20incluye%20y%20disponibilidad." target="_blank" rel="noopener">
+            💬 Consultar Reduce Express
+          </a>
+          <div class="micro">Ideal si buscas orientación corporal.</div>
+        </div>
+      </article>
+
+      <article class="option">
+        <div class="option-head">
+          <span class="label blue">📅 Reserva online</span>
+          <h3>Agendar cita con la especialista</h3>
+          <p>
+            Reserva tu cita de valoración para recibir una recomendación según tu caso.
+          </p>
+        </div>
+
+        <img src="agendar-cita.jpg" alt="Agendar cita de valoración">
+
+        <div class="actions">
+          <a class="btn blue" href="https://figurarostro.life/reservar-v2.html">
+            📅 Reservar cita de valoración
+          </a>
+          <div class="micro">Te lleva directo al sistema de reservas.</div>
+        </div>
+      </article>
+
+      <section class="trust">
+        <div><strong>Atención directa</strong>Por WhatsApp</div>
+        <div><strong>Valoración previa</strong>Según tu caso</div>
+        <div><strong>Promos activas</strong>Cupos limitados</div>
+        <div><strong>Figura Rostro KG</strong>Estética y bienestar</div>
+      </section>
+
+      <section class="services">
+        <h2>También puedes consultar por servicios</h2>
+        <p>Faciales, corporales, plasma, reducción de medidas y tratamientos reafirmantes.</p>
+
+        <div class="grid">
+          <div class="item">Limpieza facial</div>
+          <div class="item">Plasma Fibroblast</div>
+          <div class="item">Moldeo corporal</div>
+          <div class="item">Reducción de medidas</div>
+          <div class="item">Radiofrecuencia</div>
+          <div class="item">Tratamientos reafirmantes</div>
+        </div>
+      </section>
+
+    </section>
+
+    <footer class="footer">
+      <p>Figura Rostro KG · Canal de atención</p>
+      <p>
+        <a href="https://figurarostro.life/">Inicio</a>
+        <a href="https://figurarostro.life/plasma-fibroblast-panama.html">Plasma</a>
+        <a href="https://figurarostro.life/menu-servicios.html">Menú</a>
+        <a href="https://figurarostro.life/reservar-v2.html">Reservar</a>
+      </p>
+    </footer>
+
+  </main>
+
+</div>
+
+<div class="fixed">
+  <a class="btn pulse" href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20Promo%20Plasma%20Fibroblast%20-40%25%20Junio.%20Vi%20la%20promoci%C3%B3n%20y%20quiero%20saber%20disponibilidad." target="_blank" rel="noopener">
+    💬 Promo Plasma -40%
+  </a>
+</div>
+
+</body>
+</html>
