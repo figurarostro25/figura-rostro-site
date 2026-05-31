@@ -165,7 +165,7 @@
       color: var(--white);
       background:
         linear-gradient(90deg, rgba(18, 61, 70, .94), rgba(18, 61, 70, .66) 52%, rgba(18, 61, 70, .25)),
-        url("https://figurarostro.life/servicio-fibroblast.jpg") center / cover no-repeat;
+        url("https://figurarostro.life/hero-plasma-fibroblast-parpados.jpg") center / cover no-repeat;
       padding: 90px 0 76px;
     }
 
@@ -445,6 +445,13 @@
       display: block;
     }
 
+    .cell-illustration img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+    }
+
     .skin-diagram {
       margin-top: 18px;
       overflow: hidden;
@@ -557,6 +564,14 @@
       height: 64px;
     }
 
+    .step-visual img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      border-radius: 18px;
+    }
+
     .zone-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -603,7 +618,7 @@
       color: var(--white);
       background:
         linear-gradient(135deg, rgba(18, 61, 70, .96), rgba(18, 122, 125, .88)),
-        url("https://figurarostro.life/plan-facial.jpg") center / cover no-repeat;
+        url("https://figurarostro.life/proceso-puntos-plasma.png") center / cover no-repeat;
       box-shadow: var(--shadow);
     }
 
@@ -634,6 +649,22 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 22px;
+    }
+
+    .comparison-visual {
+      margin: 0 0 24px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .comparison-visual img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
     }
 
     .comparison-card {
@@ -780,6 +811,16 @@
       background: rgba(255, 255, 255, .10);
       box-shadow: 0 22px 55px rgba(0, 0, 0, .18);
       backdrop-filter: blur(14px);
+    }
+
+    .course-image {
+      width: 100%;
+      display: block;
+      margin: 18px 0;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, .18);
     }
 
     .price {
@@ -935,7 +976,7 @@
       text-align: center;
       background:
         linear-gradient(135deg, rgba(18, 61, 70, .96), rgba(34, 184, 177, .80)),
-        url("https://figurarostro.life/servicio-fibroblast.jpg") center / cover no-repeat;
+        url("https://figurarostro.life/hero-plasma-fibroblast-parpados.jpg") center / cover no-repeat;
       box-shadow: var(--shadow);
     }
 
@@ -1047,7 +1088,7 @@
         padding: 56px 0 44px;
         background:
           linear-gradient(180deg, rgba(18, 61, 70, .88), rgba(18, 61, 70, .76)),
-          url("https://figurarostro.life/servicio-fibroblast.jpg") center / cover no-repeat;
+          url("https://figurarostro.life/hero-plasma-fibroblast-parpados.jpg") center / cover no-repeat;
       }
 
       .hero-grid,
@@ -1243,7 +1284,7 @@
             <h3>Por qu&eacute; llama tanto la atenci&oacute;n</h3>
             <p>Es buscado por personas que desean mejorar flacidez localizada sin iniciar por una cirug&iacute;a. En la pr&aacute;ctica est&eacute;tica internacional se ense&ntilde;a como una t&eacute;cnica de tensado cut&aacute;neo para zonas espec&iacute;ficas, siempre con evaluaci&oacute;n previa, cuidados posteriores y expectativas realistas.</p>
             <div class="visual-mini">
-              <img src="https://figurarostro.life/plan-facial.jpg" alt="Ejemplo facial Plasma Fibroblast">
+              <img src="https://figurarostro.life/proceso-puntos-plasma.png" alt="Ilustraci&oacute;n de puntos controlados en Plasma Fibroblast">
               <div>
                 <b>Precisi&oacute;n por puntos</b>
                 <span>El trabajo se hace de forma localizada, como un dise&ntilde;o manual sobre la zona que necesita tensado.</span>
@@ -1258,26 +1299,13 @@
             <p>La dermis contiene fibroblastos y matriz extracelular. Los fibroblastos participan en la reparaci&oacute;n del tejido y producen componentes como col&aacute;geno, clave para firmeza y soporte.</p>
 
             <div class="cell-illustration" aria-label="Ilustraci&oacute;n educativa de fibroblasto y col&aacute;geno">
-              <svg viewBox="0 0 640 250" role="img" aria-labelledby="cellTitle">
-                <title id="cellTitle">Fibroblasto produciendo fibras de col&aacute;geno en la dermis</title>
-                <defs>
-                  <linearGradient id="fiberGradient" x1="0" x2="1">
-                    <stop offset="0%" stop-color="#22b8b1"/>
-                    <stop offset="55%" stop-color="#9be5df"/>
-                    <stop offset="100%" stop-color="#c9a962"/>
-                  </linearGradient>
-                </defs>
-                <rect width="640" height="250" rx="28" fill="#eefbf9"/>
-                <path d="M40 92 C120 35, 210 154, 310 82 S500 60, 600 122" fill="none" stroke="url(#fiberGradient)" stroke-width="13" stroke-linecap="round"/>
-                <path d="M36 140 C140 205, 230 82, 340 148 S520 186, 604 116" fill="none" stroke="url(#fiberGradient)" stroke-width="10" stroke-linecap="round" opacity=".72"/>
-                <path d="M42 178 C170 136, 240 222, 360 174 S520 124, 610 178" fill="none" stroke="url(#fiberGradient)" stroke-width="8" stroke-linecap="round" opacity=".52"/>
-                <ellipse cx="315" cy="122" rx="72" ry="43" fill="#ffffff" stroke="#127a7d" stroke-width="4"/>
-                <ellipse cx="318" cy="122" rx="28" ry="17" fill="#22b8b1" opacity=".9"/>
-                <text x="315" y="214" text-anchor="middle" font-size="22" font-weight="800" fill="#123d46">Dermis: fibroblasto + fibras de col&aacute;geno</text>
-              </svg>
+              <img src="https://figurarostro.life/colageno-fibroblastos.png" alt="Ilustraci&oacute;n de fibroblastos, col&aacute;geno y firmeza de la piel">
             </div>
 
             <div class="skin-diagram" aria-label="Diagrama educativo de capas de piel">
+              <div class="cell-illustration" style="margin:0; border:0; border-radius:0;">
+                <img src="https://figurarostro.life/capas-piel-fibroblast.png" alt="Ilustraci&oacute;n de capas de la piel en Plasma Fibroblast">
+              </div>
               <div class="skin-layer layer-epidermis">
                 <div>
                   <b>Epidermis</b>
@@ -1343,7 +1371,7 @@
           <article class="step-card">
             <div class="step-number">4</div>
             <div class="step-visual">
-              <svg viewBox="0 0 180 90" aria-hidden="true"><rect x="34" y="25" width="112" height="42" rx="21" fill="#fff" stroke="#127a7d" stroke-width="5"/><path d="M54 47h72" stroke="#22b8b1" stroke-width="6" stroke-linecap="round"/><path d="M67 34l-10 26M95 34L85 60M123 34l-10 26" stroke="#c9a962" stroke-width="4" stroke-linecap="round"/></svg>
+              <img src="https://figurarostro.life/recuperacion-puntitos-fibroblast.jpg" alt="Recuperaci&oacute;n con puntitos temporales de Plasma Fibroblast">
             </div>
             <h3>Recuperaci&oacute;n</h3>
             <p>Pueden aparecer puntitos, inflamaci&oacute;n temporal y sensaci&oacute;n de tirantez. El cuidado posterior es fundamental.</p>
@@ -1364,42 +1392,42 @@
 
         <div class="zone-grid">
           <article class="zone-card">
-            <img src="https://figurarostro.life/plan-facial.jpg" alt="Plasma Fibroblast en p&aacute;rpados">
+            <img src="https://figurarostro.life/fibroblast-parpados.jpg" alt="Plasma Fibroblast en p&aacute;rpados">
             <div class="zone-body">
               <h3>P&aacute;rpados</h3>
               <p>Para personas que buscan una mirada m&aacute;s descansada o mejorar la apariencia de piel suelta en la zona superior.</p>
             </div>
           </article>
           <article class="zone-card">
-            <img src="https://figurarostro.life/galeria-corporal-1.jpg" alt="Plasma Fibroblast abdomen">
+            <img src="https://figurarostro.life/fibroblast-abdomen.jpg" alt="Plasma Fibroblast abdomen">
             <div class="zone-body">
               <h3>Abdomen</h3>
               <p>Se valora en casos de flacidez superficial, textura o piel que ha cambiado por peso, embarazo o edad.</p>
             </div>
           </article>
           <article class="zone-card">
-            <img src="https://figurarostro.life/galeria-facial-1.jpg" alt="Plasma Fibroblast rostro">
+            <img src="https://figurarostro.life/fibroblast-rostro.jpg" alt="Plasma Fibroblast rostro">
             <div class="zone-body">
               <h3>Rostro completo</h3>
               <p>Puede enfocarse en l&iacute;neas finas, firmeza y textura. La indicaci&oacute;n depende de sensibilidad y calidad de piel.</p>
             </div>
           </article>
           <article class="zone-card">
-            <img src="https://figurarostro.life/galeria-corporal-2.jpg" alt="Plasma Fibroblast brazos">
+            <img src="https://figurarostro.life/fibroblast-brazos.jpg" alt="Plasma Fibroblast brazos">
             <div class="zone-body">
               <h3>Brazos</h3>
               <p>Para zonas localizadas donde se busca mejorar visualmente firmeza o piel fina, seg&uacute;n evaluaci&oacute;n.</p>
             </div>
           </article>
           <article class="zone-card">
-            <img src="https://figurarostro.life/galeria-facial-2.jpg" alt="Plasma Fibroblast cuello y papada">
+            <img src="https://figurarostro.life/fibroblast-cuello-papada.jpg" alt="Plasma Fibroblast cuello y papada">
             <div class="zone-body">
               <h3>Cuello y papada</h3>
               <p>Se trabaja con cuidado por ser una zona visible y sensible. Requiere indicaciones post tratamiento claras.</p>
             </div>
           </article>
           <article class="zone-card">
-            <img src="https://figurarostro.life/servicio-fibroblast.jpg" alt="Valoraci&oacute;n Plasma Fibroblast">
+            <img src="https://figurarostro.life/fibroblast-zona-puntual.jpg" alt="Valoraci&oacute;n Plasma Fibroblast en zona puntual">
             <div class="zone-body">
               <h3>Zonas puntuales</h3>
               <p>Arrugas finas, textura, marcas superficiales y peque&ntilde;as &aacute;reas se valoran caso por caso.</p>
@@ -1437,6 +1465,10 @@
             <h2>Plasma Fibroblast vs CO2: precisi&oacute;n focalizada en zonas delicadas.</h2>
           </div>
           <p class="lead">Ambas tecnolog&iacute;as tienen lugar en el mundo del rejuvenecimiento. La diferencia clave est&aacute; en el objetivo, la forma de aplicaci&oacute;n, la zona y el tipo de piel.</p>
+        </div>
+
+        <div class="comparison-visual">
+          <img src="https://figurarostro.life/co2-vs-plasma-fibroblast.png" alt="Comparativa visual entre CO2 y Plasma Fibroblast focalizado">
         </div>
 
         <div class="comparison-grid">
@@ -1512,7 +1544,7 @@
 
         <div class="blog-grid">
           <article class="blog-card">
-            <img src="https://figurarostro.life/galeria-facial-3.jpg" alt="Cuidados post Plasma Fibroblast">
+            <img src="https://figurarostro.life/blog-cuidados-post-fibroblast.jpg" alt="Cuidados post Plasma Fibroblast">
             <div class="blog-body">
               <span class="tag">Recuperaci&oacute;n</span>
               <h3>Por qu&eacute; aparecen puntitos despu&eacute;s del Fibroblast</h3>
@@ -1520,7 +1552,7 @@
             </div>
           </article>
           <article class="blog-card">
-            <img src="https://figurarostro.life/servicio-limpieza.jpg" alt="Col&aacute;geno y piel">
+            <img src="https://figurarostro.life/blog-colageno-piel.jpg" alt="Col&aacute;geno y piel">
             <div class="blog-body">
               <span class="tag">Col&aacute;geno</span>
               <h3>Fibroblastos, col&aacute;geno y firmeza de la piel</h3>
@@ -1528,7 +1560,7 @@
             </div>
           </article>
           <article class="blog-card">
-            <img src="https://figurarostro.life/galeria-bienestar-2.jpg" alt="Evaluaci&oacute;n antes de Plasma Fibroblast">
+            <img src="https://figurarostro.life/blog-valoracion-fibroblast.jpg" alt="Evaluaci&oacute;n antes de Plasma Fibroblast">
             <div class="blog-body">
               <span class="tag">Valoraci&oacute;n</span>
               <h3>Qui&eacute;nes deben valorarse con m&aacute;s cuidado</h3>
@@ -1553,6 +1585,7 @@
           <aside class="course-card">
             <span class="tag">Cupos limitados</span>
             <h3>Valoraci&oacute;n virtual para aplicar a la gira</h3>
+            <img class="course-image" src="https://figurarostro.life/gira-fibroblast-chiriqui.jpg" alt="Gira Plasma Fibroblast en David, Chiriqu&iacute;">
             <div class="price"><span>Directorio Yappi</span> $5.95</div>
             <p>La valoraci&oacute;n virtual tiene un costo de $5.95 por Directorio Yappi para garantizar la cita y filtrar clientes falsos o no show.</p>
             <div class="date-grid">
