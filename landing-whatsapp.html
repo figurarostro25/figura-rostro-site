@@ -330,6 +330,7 @@
     .cards-2,
     .zone-grid,
     .benefit-grid,
+    .comfort-grid,
     .faq-grid {
       display: grid;
       grid-template-columns: minmax(0, 1fr);
@@ -339,6 +340,7 @@
     .result-card,
     .zone-card,
     .benefit-card,
+    .comfort-card,
     .faq-item,
     .process-card {
       border: 1px solid var(--line);
@@ -351,6 +353,7 @@
     .result-body,
     .zone-card,
     .benefit-card,
+    .comfort-card,
     .faq-item,
     .process-card {
       padding: 20px;
@@ -359,6 +362,7 @@
     .result-body h3,
     .zone-card h3,
     .benefit-card h3,
+    .comfort-card h3,
     .faq-item h3,
     .process-card h3 {
       margin-bottom: 8px;
@@ -370,6 +374,7 @@
     .result-body p,
     .zone-card p,
     .benefit-card p,
+    .comfort-card p,
     .faq-item p,
     .process-card p {
       margin-bottom: 0;
@@ -448,6 +453,30 @@
       font-weight: 900;
     }
 
+    .comfort-card {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(35, 186, 178, .14), transparent 34%),
+        white;
+    }
+
+    .comfort-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--teal-dark);
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    .faq-intro {
+      max-width: 820px;
+      margin-top: -8px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
     .cta-final {
       padding: 34px 22px;
       border-radius: 30px;
@@ -478,6 +507,23 @@
       text-align: center;
       color: var(--muted);
       font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .footer-links a {
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: white;
+      color: var(--teal-dark);
+      font-weight: 900;
     }
 
     .footer b {
@@ -522,6 +568,7 @@
       }
 
       .benefit-grid,
+      .comfort-grid,
       .faq-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -759,13 +806,47 @@
     <section class="section section-soft">
       <div class="container">
         <div class="section-head">
+          <span class="kicker">Experiencia Figura Rostro KG</span>
+          <h2>Hacemos de tu tratamiento una experiencia lo m&aacute;s confortable posible</h2>
+          <p>Desde la valoraci&oacute;n hasta el seguimiento, buscamos que entiendas qu&eacute; se har&aacute;, qu&eacute; puedes sentir, c&oacute;mo cuidarte y qu&eacute; esperar de forma realista.</p>
+        </div>
+
+        <div class="comfort-grid">
+          <article class="comfort-card">
+            <strong>Confort durante el procedimiento</strong>
+            <h3>Anestesia t&oacute;pica y comunicaci&oacute;n constante</h3>
+            <p>El procedimiento se realiza con preparaci&oacute;n previa y anestesia t&oacute;pica para ayudar a que la experiencia sea m&aacute;s tolerable. La sensibilidad var&iacute;a por persona y por zona, por eso trabajamos con comunicaci&oacute;n durante la sesi&oacute;n.</p>
+          </article>
+          <article class="comfort-card">
+            <strong>Zonas delicadas</strong>
+            <h3>Plasma Fibroblast vs CO2</h3>
+            <p>El Plasma Fibroblast trabaja de forma m&aacute;s precisa y focalizada, punto por punto. En zonas delicadas como p&aacute;rpados puede ser una alternativa atractiva frente a tecnolog&iacute;as m&aacute;s amplias como CO2, que requieren selecci&oacute;n cuidadosa por mayor riesgo de irritaci&oacute;n, quemadura o cambios de pigmento si no se indica bien.</p>
+          </article>
+          <article class="comfort-card">
+            <strong>Resultados progresivos</strong>
+            <h3>Cu&aacute;ndo se empiezan a notar</h3>
+            <p>Los primeros cambios suelen apreciarse cuando las costritas van cayendo y la piel empieza a recuperarse. La respuesta contin&uacute;a evolucionando porque la piel sigue su proceso de reparaci&oacute;n y remodelaci&oacute;n, con mejoras que pueden seguir not&aacute;ndose hasta alrededor de 3 meses.</p>
+          </article>
+          <article class="comfort-card">
+            <strong>Siguiente paso</strong>
+            <h3>La valoraci&oacute;n convierte dudas en una ruta clara</h3>
+            <p>En WhatsApp puedes contarnos tu zona de inter&eacute;s y recibir orientaci&oacute;n inicial. Luego confirmamos si aplicas, qu&eacute; cuidados necesitas y cu&aacute;l es la expectativa responsable para tu caso.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
           <span class="kicker">Preguntas frecuentes</span>
-          <h2>Antes de escribirnos</h2>
+          <h2>Antes de agendar tu valoraci&oacute;n</h2>
+          <p class="faq-intro">Respuestas breves para ayudarte a decidir con confianza. Si tu caso requiere revisi&oacute;n personalizada, el mejor siguiente paso es escribirnos por WhatsApp y consultar con nuestro equipo.</p>
         </div>
         <div class="faq-grid">
           <article class="faq-item">
             <h3>&iquest;Necesito valoraci&oacute;n?</h3>
-            <p>S&iacute;. La valoraci&oacute;n es necesaria para revisar tu piel, zona, antecedentes y expectativas.</p>
+            <p>S&iacute;. Es necesaria para revisar tu piel, zona, antecedentes, expectativas y confirmar si aplicas a la promoci&oacute;n.</p>
           </article>
           <article class="faq-item">
             <h3>&iquest;Es cirug&iacute;a?</h3>
@@ -773,15 +854,19 @@
           </article>
           <article class="faq-item">
             <h3>&iquest;Cu&aacute;ndo veo resultados?</h3>
-            <p>Los cambios pueden ser progresivos durante las semanas posteriores. Cada persona responde diferente.</p>
+            <p>Al caer las costritas se pueden notar primeros cambios, y la apariencia puede seguir mejorando durante las semanas posteriores, incluso hasta cerca de 3 meses. Cada piel responde diferente.</p>
           </article>
           <article class="faq-item">
             <h3>&iquest;Quedan puntitos?</h3>
-            <p>S&iacute;. Pueden aparecer peque&ntilde;os puntos o costritas temporales durante la recuperaci&oacute;n.</p>
+            <p>S&iacute;. Pueden aparecer peque&ntilde;os puntos o costritas temporales durante la recuperaci&oacute;n. No deben retirarse manualmente y requieren protecci&oacute;n solar y cuidados.</p>
           </article>
           <article class="faq-item">
             <h3>&iquest;Todas las personas aplican?</h3>
             <p>No. Por eso primero se realiza una valoraci&oacute;n.</p>
+          </article>
+          <article class="faq-item">
+            <h3>&iquest;Por qu&eacute; consultar primero?</h3>
+            <p>Porque una buena valoraci&oacute;n ayuda a evitar expectativas irreales, elegir la zona correcta y explicarte cuidados antes de invertir en el tratamiento.</p>
           </article>
         </div>
       </div>
@@ -801,7 +886,11 @@
   <footer class="footer">
     <div class="container">
       <b>Figura Rostro KG &middot; Est&eacute;tica y Bienestar</b>
-      <span>Panam&aacute; &middot; WhatsApp 6474-6168</span>
+      <span>San Francisco, cruce de Santa Elena con Parque Lefevre, Plaza Royal Park, local 15PB &middot; Panam&aacute; &middot; WhatsApp 6474-6168</span>
+      <div class="footer-links">
+        <a href="https://figurarostro.life">figurarostro.life</a>
+        <a href="https://www.instagram.com/figurarostrokg?igsh=cWo2c2k2dGhkcmNq" target="_blank" rel="noreferrer">Instagram</a>
+      </div>
     </div>
   </footer>
 
