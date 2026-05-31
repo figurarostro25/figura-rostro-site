@@ -177,6 +177,11 @@ a{text-decoration:none;color:inherit}
   background:linear-gradient(135deg,#22b8b0,#0f7e84);
 }
 
+.btn.insta{
+  background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd);
+  box-shadow:0 10px 24px rgba(214,41,118,.28);
+}
+
 .btn.pulse{
   animation:pulse 1.8s infinite;
 }
@@ -185,6 +190,57 @@ a{text-decoration:none;color:inherit}
   0%{transform:scale(1)}
   50%{transform:scale(1.025)}
   100%{transform:scale(1)}
+}
+
+.instagram-box{
+  margin-top:15px;
+  background:white;
+  border:1px solid #f3d5e7;
+  border-radius:26px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(214,41,118,.10);
+}
+
+.instagram-head{
+  padding:15px;
+  background:linear-gradient(45deg,#fff7fb,#f8ffff);
+  text-align:center;
+}
+
+.ig-icon{
+  width:54px;
+  height:54px;
+  margin:0 auto 8px;
+  border-radius:16px;
+  background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd);
+  display:grid;
+  place-items:center;
+  color:white;
+  font-size:30px;
+  font-weight:900;
+}
+
+.instagram-head h2{
+  font-size:21px;
+  color:var(--dark);
+  margin-bottom:5px;
+}
+
+.instagram-head p{
+  font-size:14px;
+  color:var(--muted);
+  line-height:1.4;
+}
+
+.bono{
+  margin:12px;
+  padding:14px;
+  border-radius:20px;
+  background:#fff0f6;
+  color:#b9155d;
+  text-align:center;
+  font-weight:900;
+  font-size:18px;
 }
 
 .trust{
@@ -316,6 +372,22 @@ a{text-decoration:none;color:inherit}
       </div>
     </article>
 
+  </section>
+
+  <section class="instagram-box">
+    <div class="instagram-head">
+      <div class="ig-icon">◎</div>
+      <h2>Promo de reapertura 🎁</h2>
+      <p>Síguenos en Instagram y reclama un bono de $10 para usar en servicios de la estética durante junio.</p>
+    </div>
+
+    <div class="bono">Bono especial: $10</div>
+
+    <div class="actions">
+      <a class="btn insta" href="https://www.instagram.com/figurarostro25/" target="_blank" rel="noopener">
+        📸 Síguenos y reclama $10
+      </a>
+    </div>
   </section>
 
   <section class="trust">
