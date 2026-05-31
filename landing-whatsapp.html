@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Figura Rostro KG | Consulta por WhatsApp</title>
-<meta name="description" content="Consulta promociones de Figura Rostro KG por WhatsApp.">
 <meta name="theme-color" content="#25D366">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -16,11 +15,8 @@
   --dark:#123f46;
   --text:#17353b;
   --muted:#6b7f84;
-  --bg:#f3fbf9;
-  --white:#fff;
   --border:#dcefeb;
   --shadow:0 12px 35px rgba(0,0,0,.10);
-  --aqua:#22b8b0;
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -35,7 +31,7 @@ body{
 a{text-decoration:none;color:inherit}
 
 .wrap{
-  width:min(100%,760px);
+  width:min(100%,820px);
   margin:auto;
   padding:12px;
 }
@@ -61,22 +57,13 @@ a{text-decoration:none;color:inherit}
   display:grid;
   place-items:center;
   font-weight:900;
-  font-size:18px;
   flex-shrink:0;
 }
 
-.header h1{
-  font-size:20px;
-  line-height:1.15;
-}
+.header h1{font-size:20px}
+.header p{font-size:13px;opacity:.95;margin-top:4px}
 
-.header p{
-  font-size:13px;
-  opacity:.95;
-  margin-top:4px;
-}
-
-.chat-note{
+.note{
   background:white;
   border:1px solid var(--border);
   border-radius:22px;
@@ -85,14 +72,14 @@ a{text-decoration:none;color:inherit}
   box-shadow:0 8px 24px rgba(0,0,0,.05);
 }
 
-.chat-note strong{
+.note strong{
   display:block;
   font-size:18px;
   color:var(--dark);
   margin-bottom:4px;
 }
 
-.chat-note p{
+.note p{
   color:var(--muted);
   font-size:14px;
   line-height:1.4;
@@ -100,8 +87,6 @@ a{text-decoration:none;color:inherit}
 
 .status{
   display:inline-flex;
-  align-items:center;
-  gap:7px;
   margin-top:10px;
   background:#eafff2;
   color:#087b37;
@@ -132,8 +117,8 @@ a{text-decoration:none;color:inherit}
 .card-top{
   padding:13px 14px 10px;
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
   gap:10px;
 }
 
@@ -162,7 +147,7 @@ a{text-decoration:none;color:inherit}
   width:100%;
   display:block;
   height:auto;
-  max-height:560px;
+  max-height:620px;
   object-fit:contain;
   background:#f3fbfa;
   border-top:1px solid #edf7f5;
@@ -225,38 +210,6 @@ a{text-decoration:none;color:inherit}
   margin-bottom:3px;
 }
 
-.services{
-  margin-top:15px;
-  background:white;
-  border:1px solid var(--border);
-  border-radius:24px;
-  padding:16px 13px;
-  box-shadow:0 8px 24px rgba(0,0,0,.04);
-}
-
-.services h2{
-  text-align:center;
-  font-size:19px;
-  color:var(--dark);
-  margin-bottom:11px;
-}
-
-.service-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-}
-
-.service{
-  background:#f2fbf8;
-  border:1px solid #e1f2ed;
-  border-radius:14px;
-  padding:11px 8px;
-  text-align:center;
-  font-weight:800;
-  font-size:13px;
-}
-
 .footer{
   text-align:center;
   padding:18px 8px 26px;
@@ -285,12 +238,8 @@ a{text-decoration:none;color:inherit}
 
 @media(min-width:780px){
   .wrap{padding:24px}
-  .grid{
-    grid-template-columns:1fr 1fr;
-  }
-  .card.featured{
-    grid-column:1 / -1;
-  }
+  .grid{grid-template-columns:1fr 1fr}
+  .card.featured{grid-column:1 / -1}
 }
 </style>
 </head>
@@ -307,9 +256,9 @@ a{text-decoration:none;color:inherit}
     </div>
   </header>
 
-  <section class="chat-note">
-    <strong>Hola 👋 selecciona una opción</strong>
-    <p>Estás a un paso de chatear con nosotros. Toca el botón de la promoción que viste.</p>
+  <section class="note">
+    <strong>Hola 👋 selecciona la promoción</strong>
+    <p>Estás a un paso de chatear con nosotros. Toca consultar y te llevamos directo a WhatsApp.</p>
     <div class="status">● WhatsApp disponible</div>
   </section>
 
@@ -317,30 +266,39 @@ a{text-decoration:none;color:inherit}
 
     <article class="card featured">
       <div class="card-top">
-        <div class="card-title">Promo Plasma Fibroblast -40%</div>
+        <div class="card-title">Párpados Plasma -40%</div>
         <div class="badge hot">Junio</div>
       </div>
-
-      <img src="promo-plasma-junio.jpg" alt="Promo Plasma Fibroblast -40% Junio">
-
+      <img src="promo-parpados.jpg" alt="Promo Plasma Fibroblast párpados 40%">
       <div class="actions">
-        <a class="btn pulse" href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20Promo%20Plasma%20Fibroblast%20-40%25%20Junio.%20Vi%20la%20promoci%C3%B3n%20en%20Facebook%20y%20quiero%20consultar." target="_blank" rel="noopener">
-          💬 Consultar esta promo
+        <a class="btn pulse" href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20Promo%20Plasma%20Fibroblast%20en%20p%C3%A1rpados%20con%2040%25%20de%20descuento.%20Vi%20la%20promoci%C3%B3n%20en%20Facebook%20y%20quiero%20consultar." target="_blank" rel="noopener">
+          💬 Consultar párpados
         </a>
       </div>
     </article>
 
     <article class="card">
       <div class="card-top">
-        <div class="card-title">Reduce Express -20%</div>
+        <div class="card-title">Abdomen Plasma -40%</div>
+        <div class="badge hot">Junio</div>
+      </div>
+      <img src="promo-abdomen.jpg" alt="Promo Plasma Fibroblast abdomen 40%">
+      <div class="actions">
+        <a class="btn" href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20Promo%20Plasma%20Fibroblast%20para%20abdomen%20con%2040%25%20de%20descuento.%20Vi%20la%20promoci%C3%B3n%20y%20quiero%20consultar." target="_blank" rel="noopener">
+          💬 Consultar abdomen
+        </a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <div class="card-title">Reduce Express</div>
         <div class="badge">Corporal</div>
       </div>
-
-      <img src="reduce-express.jpg" alt="Paquete Reduce Express -20%">
-
+      <img src="reduce-express.jpg" alt="Reduce Express corporal">
       <div class="actions">
-        <a class="btn" href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20Paquete%20Reduce%20Express%20-20%25.%20Vi%20la%20opci%C3%B3n%20en%20la%20p%C3%A1gina%20y%20quiero%20consultar." target="_blank" rel="noopener">
-          💬 Consultar
+        <a class="btn" href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20quiero%20informaci%C3%B3n%20sobre%20Reduce%20Express.%20Vi%20la%20opci%C3%B3n%20en%20la%20p%C3%A1gina%20y%20quiero%20consultar." target="_blank" rel="noopener">
+          💬 Consultar Reduce
         </a>
       </div>
     </article>
@@ -350,9 +308,7 @@ a{text-decoration:none;color:inherit}
         <div class="card-title">Agendar valoración</div>
         <div class="badge">Reserva</div>
       </div>
-
-      <img src="agendar-cita.jpg" alt="Agendar cita de valoración">
-
+      <img src="valoracion.jpg" alt="Agendar cita de valoración">
       <div class="actions">
         <a class="btn blue" href="https://figurarostro.life/reservar-v2.html">
           📅 Reservar cita
@@ -364,22 +320,9 @@ a{text-decoration:none;color:inherit}
 
   <section class="trust">
     <div><strong>Atención directa</strong>WhatsApp oficial</div>
-    <div><strong>Cupos limitados</strong>Promos activas</div>
+    <div><strong>Promos activas</strong>Cupos limitados</div>
     <div><strong>Valoración previa</strong>Según tu caso</div>
     <div><strong>Figura Rostro KG</strong>Estética y bienestar</div>
-  </section>
-
-  <section class="services">
-    <h2>Otros servicios</h2>
-
-    <div class="service-grid">
-      <div class="service">Faciales</div>
-      <div class="service">Plasma Fibroblast</div>
-      <div class="service">Reducción</div>
-      <div class="service">Moldeo corporal</div>
-      <div class="service">Radiofrecuencia</div>
-      <div class="service">Reafirmantes</div>
-    </div>
   </section>
 
   <footer class="footer">
@@ -395,7 +338,7 @@ a{text-decoration:none;color:inherit}
 </div>
 
 <div class="fixed">
-  <a class="btn pulse" href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20Promo%20Plasma%20Fibroblast%20-40%25%20Junio.%20Vi%20la%20promoci%C3%B3n%20en%20Facebook%20y%20quiero%20consultar." target="_blank" rel="noopener">
+  <a class="btn pulse" href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20Promo%20Plasma%20Fibroblast%2040%25%20de%20descuento.%20Vi%20la%20promoci%C3%B3n%20en%20Facebook%20y%20quiero%20consultar." target="_blank" rel="noopener">
     💬 Consultar Promo Plasma -40%
   </a>
 </div>
