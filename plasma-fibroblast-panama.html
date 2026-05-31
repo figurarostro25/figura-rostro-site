@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Plasma Fibroblast en Panam&aacute; | Figura Rostro KG</title>
-  <meta name="description" content="Plasma Fibroblast en Panam&aacute; para p&aacute;rpados, abdomen, brazos, cuello y rostro. Conoce el proceso, beneficios, cuidados, zonas tratables y curso presencial de Plasma Fibroblast en septiembre.">
+  <meta name="description" content="Plasma Fibroblast en Panam&aacute; para p&aacute;rpados, abdomen, brazos, cuello y rostro. Conoce el proceso, cuidados, comparativa con CO2, zonas tratables y gira especial en David, Chiriqu&iacute;.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -399,6 +399,52 @@
       box-shadow: var(--shadow);
     }
 
+    .visual-mini {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 16px;
+      align-items: center;
+      margin: 22px 0;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--soft);
+    }
+
+    .visual-mini img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 14px;
+    }
+
+    .visual-mini b {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--deep);
+      font-size: 16px;
+    }
+
+    .visual-mini span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .cell-illustration {
+      margin: 18px 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--white);
+    }
+
+    .cell-illustration svg {
+      width: 100%;
+      display: block;
+    }
+
     .skin-diagram {
       margin-top: 18px;
       overflow: hidden;
@@ -496,6 +542,21 @@
       font-size: 14px;
     }
 
+    .step-visual {
+      height: 92px;
+      display: grid;
+      place-items: center;
+      margin: 0 0 18px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #e8fbf9, #fffaf3);
+      border: 1px solid var(--line);
+    }
+
+    .step-visual svg {
+      width: 112px;
+      height: 64px;
+    }
+
     .zone-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -567,6 +628,91 @@
       background: rgba(255, 255, 255, .12);
       font-weight: 800;
       line-height: 1.4;
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .comparison-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .comparison-top {
+      min-height: 210px;
+      display: grid;
+      place-items: center;
+      padding: 26px;
+      background: linear-gradient(135deg, #e8fbf9, #fffaf3);
+    }
+
+    .comparison-top svg {
+      width: min(100%, 420px);
+      height: auto;
+    }
+
+    .comparison-body {
+      padding: 26px;
+    }
+
+    .comparison-body h3 {
+      margin-bottom: 12px;
+      color: var(--deep);
+      font-size: 25px;
+    }
+
+    .comparison-body p,
+    .risk-note p {
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 15px;
+    }
+
+    .comparison-list {
+      display: grid;
+      gap: 10px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .comparison-list li {
+      position: relative;
+      padding-left: 24px;
+    }
+
+    .comparison-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--teal);
+    }
+
+    .risk-note {
+      margin-top: 22px;
+      padding: 24px;
+      border: 1px solid #f1d7d2;
+      border-radius: 24px;
+      background: #fff6f3;
+    }
+
+    .risk-note h3 {
+      margin-bottom: 10px;
+      color: #8f5751;
+      font-size: 23px;
     }
 
     .blog-grid {
@@ -699,6 +845,61 @@
       display: block;
       margin-bottom: 4px;
       color: var(--white);
+    }
+
+    .tour-form {
+      padding: 26px;
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, .12);
+    }
+
+    .tour-form form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 7px;
+      color: rgba(255, 255, 255, .82);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      min-height: 48px;
+      border: 1px solid rgba(255, 255, 255, .22);
+      border-radius: 14px;
+      padding: 12px 14px;
+      color: var(--deep);
+      background: var(--white);
+      font: inherit;
+      outline: none;
+    }
+
+    .field textarea {
+      min-height: 92px;
+      resize: vertical;
+    }
+
+    .form-note {
+      padding: 14px;
+      border-radius: 16px;
+      color: rgba(255, 255, 255, .86);
+      background: rgba(255, 255, 255, .10);
+      font-size: 13px;
+      line-height: 1.55;
     }
 
     .faq-grid {
@@ -853,6 +1054,7 @@
       .intro-grid,
       .comfort-band,
       .course-layout,
+      .comparison-grid,
       .section-head {
         grid-template-columns: 1fr;
       }
@@ -922,6 +1124,7 @@
       .blog-grid,
       .includes-grid,
       .faq-grid,
+      .form-row,
       .footer-grid {
         grid-template-columns: 1fr;
       }
@@ -937,6 +1140,14 @@
       .zone-card img,
       .blog-card img {
         height: 180px;
+      }
+
+      .visual-mini {
+        grid-template-columns: 1fr;
+      }
+
+      .visual-mini img {
+        height: 160px;
       }
 
       .course-card,
@@ -966,7 +1177,7 @@
           <li><a href="/">Inicio</a></li>
           <li><a class="active" href="/plasma-fibroblast-panama.html">Fibroblast</a></li>
           <li><a href="#proceso">Proceso</a></li>
-          <li><a href="#curso">Curso</a></li>
+          <li><a href="#gira">Gira Chiriqu&iacute;</a></li>
           <li><a href="/menu.html">Men&uacute;</a></li>
         </ul>
       </nav>
@@ -1031,6 +1242,13 @@
             <span class="tag">Est&eacute;tica avanzada</span>
             <h3>Por qu&eacute; llama tanto la atenci&oacute;n</h3>
             <p>Es buscado por personas que desean mejorar flacidez localizada sin iniciar por una cirug&iacute;a. En la pr&aacute;ctica est&eacute;tica internacional se ense&ntilde;a como una t&eacute;cnica de tensado cut&aacute;neo para zonas espec&iacute;ficas, siempre con evaluaci&oacute;n previa, cuidados posteriores y expectativas realistas.</p>
+            <div class="visual-mini">
+              <img src="https://figurarostro.life/plan-facial.jpg" alt="Ejemplo facial Plasma Fibroblast">
+              <div>
+                <b>Precisi&oacute;n por puntos</b>
+                <span>El trabajo se hace de forma localizada, como un dise&ntilde;o manual sobre la zona que necesita tensado.</span>
+              </div>
+            </div>
             <p>No todos los casos aplican. El tipo de piel, historial de cicatrizaci&oacute;n, exposici&oacute;n solar, salud general y zona a tratar influyen en la recomendaci&oacute;n.</p>
           </article>
 
@@ -1038,6 +1256,26 @@
             <span class="tag">Capas de la piel</span>
             <h3>C&oacute;mo se relaciona con col&aacute;geno y firmeza</h3>
             <p>La dermis contiene fibroblastos y matriz extracelular. Los fibroblastos participan en la reparaci&oacute;n del tejido y producen componentes como col&aacute;geno, clave para firmeza y soporte.</p>
+
+            <div class="cell-illustration" aria-label="Ilustraci&oacute;n educativa de fibroblasto y col&aacute;geno">
+              <svg viewBox="0 0 640 250" role="img" aria-labelledby="cellTitle">
+                <title id="cellTitle">Fibroblasto produciendo fibras de col&aacute;geno en la dermis</title>
+                <defs>
+                  <linearGradient id="fiberGradient" x1="0" x2="1">
+                    <stop offset="0%" stop-color="#22b8b1"/>
+                    <stop offset="55%" stop-color="#9be5df"/>
+                    <stop offset="100%" stop-color="#c9a962"/>
+                  </linearGradient>
+                </defs>
+                <rect width="640" height="250" rx="28" fill="#eefbf9"/>
+                <path d="M40 92 C120 35, 210 154, 310 82 S500 60, 600 122" fill="none" stroke="url(#fiberGradient)" stroke-width="13" stroke-linecap="round"/>
+                <path d="M36 140 C140 205, 230 82, 340 148 S520 186, 604 116" fill="none" stroke="url(#fiberGradient)" stroke-width="10" stroke-linecap="round" opacity=".72"/>
+                <path d="M42 178 C170 136, 240 222, 360 174 S520 124, 610 178" fill="none" stroke="url(#fiberGradient)" stroke-width="8" stroke-linecap="round" opacity=".52"/>
+                <ellipse cx="315" cy="122" rx="72" ry="43" fill="#ffffff" stroke="#127a7d" stroke-width="4"/>
+                <ellipse cx="318" cy="122" rx="28" ry="17" fill="#22b8b1" opacity=".9"/>
+                <text x="315" y="214" text-anchor="middle" font-size="22" font-weight="800" fill="#123d46">Dermis: fibroblasto + fibras de col&aacute;geno</text>
+              </svg>
+            </div>
 
             <div class="skin-diagram" aria-label="Diagrama educativo de capas de piel">
               <div class="skin-layer layer-epidermis">
@@ -1080,21 +1318,33 @@
         <div class="process-grid">
           <article class="step-card">
             <div class="step-number">1</div>
+            <div class="step-visual">
+              <svg viewBox="0 0 180 90" aria-hidden="true"><circle cx="70" cy="45" r="28" fill="#22b8b1" opacity=".22"/><path d="M70 27c18 0 34 9 45 18-11 9-27 18-45 18s-34-9-45-18c11-9 27-18 45-18z" fill="#fff" stroke="#127a7d" stroke-width="5"/><circle cx="70" cy="45" r="10" fill="#127a7d"/><path d="M125 20l28 28M153 20l-28 28" stroke="#c9a962" stroke-width="6" stroke-linecap="round"/></svg>
+            </div>
             <h3>Valoraci&oacute;n</h3>
             <p>Revisamos zona, tipo de piel, flacidez, antecedentes, tendencia a manchas o cicatrizaci&oacute;n y objetivo del tratamiento.</p>
           </article>
           <article class="step-card">
             <div class="step-number">2</div>
+            <div class="step-visual">
+              <svg viewBox="0 0 180 90" aria-hidden="true"><rect x="26" y="20" width="128" height="50" rx="25" fill="#fff" stroke="#127a7d" stroke-width="5"/><circle cx="55" cy="45" r="5" fill="#22b8b1"/><circle cx="82" cy="45" r="5" fill="#22b8b1"/><circle cx="109" cy="45" r="5" fill="#22b8b1"/><circle cx="136" cy="45" r="5" fill="#22b8b1"/><path d="M40 72c36-22 70-22 104 0" fill="none" stroke="#c9a962" stroke-width="5" stroke-linecap="round"/></svg>
+            </div>
             <h3>Dise&ntilde;o</h3>
             <p>Marcamos la zona y definimos el patr&oacute;n de puntos. En p&aacute;rpados, rostro o abdomen se trabaja distinto.</p>
           </article>
           <article class="step-card">
             <div class="step-number">3</div>
+            <div class="step-visual">
+              <svg viewBox="0 0 180 90" aria-hidden="true"><path d="M92 16h34l-16 40H76z" fill="#fff" stroke="#127a7d" stroke-width="5" stroke-linejoin="round"/><path d="M93 56l-12 18" stroke="#127a7d" stroke-width="5" stroke-linecap="round"/><circle cx="68" cy="76" r="4" fill="#22b8b1"/><circle cx="82" cy="76" r="4" fill="#22b8b1"/><circle cx="96" cy="76" r="4" fill="#22b8b1"/><path d="M42 78h92" stroke="#c9a962" stroke-width="5" stroke-linecap="round"/></svg>
+            </div>
             <h3>Aplicaci&oacute;n</h3>
             <p>Se realizan puntos controlados con el equipo de plasma. La experiencia se maneja con preparaci&oacute;n y comunicaci&oacute;n constante.</p>
           </article>
           <article class="step-card">
             <div class="step-number">4</div>
+            <div class="step-visual">
+              <svg viewBox="0 0 180 90" aria-hidden="true"><rect x="34" y="25" width="112" height="42" rx="21" fill="#fff" stroke="#127a7d" stroke-width="5"/><path d="M54 47h72" stroke="#22b8b1" stroke-width="6" stroke-linecap="round"/><path d="M67 34l-10 26M95 34L85 60M123 34l-10 26" stroke="#c9a962" stroke-width="4" stroke-linecap="round"/></svg>
+            </div>
             <h3>Recuperaci&oacute;n</h3>
             <p>Pueden aparecer puntitos, inflamaci&oacute;n temporal y sensaci&oacute;n de tirantez. El cuidado posterior es fundamental.</p>
           </article>
@@ -1179,6 +1429,77 @@
       </div>
     </section>
 
+    <section class="section section-soft" id="comparativa">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="kicker">Comparativa responsable</span>
+            <h2>Plasma Fibroblast vs CO2: precisi&oacute;n focalizada en zonas delicadas.</h2>
+          </div>
+          <p class="lead">Ambas tecnolog&iacute;as tienen lugar en el mundo del rejuvenecimiento. La diferencia clave est&aacute; en el objetivo, la forma de aplicaci&oacute;n, la zona y el tipo de piel.</p>
+        </div>
+
+        <div class="comparison-grid">
+          <article class="comparison-card">
+            <div class="comparison-top">
+              <svg viewBox="0 0 540 260" role="img" aria-label="Ilustraci&oacute;n Plasma Fibroblast focalizado">
+                <rect width="540" height="260" rx="26" fill="#eefbf9"/>
+                <path d="M70 160 C150 115 250 205 350 150 S455 112 490 160" fill="none" stroke="#c9a962" stroke-width="10" stroke-linecap="round"/>
+                <path d="M150 52h82l-40 92h-72z" fill="#fff" stroke="#127a7d" stroke-width="8" stroke-linejoin="round"/>
+                <path d="M160 144l-28 44" stroke="#127a7d" stroke-width="8" stroke-linecap="round"/>
+                <circle cx="126" cy="192" r="7" fill="#22b8b1"/>
+                <circle cx="154" cy="185" r="7" fill="#22b8b1"/>
+                <circle cx="184" cy="187" r="7" fill="#22b8b1"/>
+                <circle cx="214" cy="195" r="7" fill="#22b8b1"/>
+                <text x="330" y="92" font-size="26" font-weight="900" fill="#123d46">Puntos focalizados</text>
+                <text x="330" y="126" font-size="18" fill="#60797f">Trabajo por dise&ntilde;o, zona y objetivo.</text>
+              </svg>
+            </div>
+            <div class="comparison-body">
+              <span class="tag">Fibroblast</span>
+              <h3>Como un trabajo manual, punto por punto</h3>
+              <p>El Plasma Fibroblast permite focalizar puntos en zonas espec&iacute;ficas. Por eso suele resultar atractivo para p&aacute;rpados, arrugas puntuales, cuello, papada o flacidez localizada donde se busca tensado m&aacute;s selectivo.</p>
+              <ul class="comparison-list">
+                <li>Aplicaci&oacute;n localizada y visualmente controlada.</li>
+                <li>Muy buscado para zonas delicadas como p&aacute;rpados.</li>
+                <li>Permite ajustar dise&ntilde;o seg&uacute;n piel y flacidez.</li>
+                <li>Requiere valoraci&oacute;n, cuidados y seguimiento.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="comparison-card">
+            <div class="comparison-top">
+              <svg viewBox="0 0 540 260" role="img" aria-label="Ilustraci&oacute;n CO2 m&aacute;s amplio">
+                <rect width="540" height="260" rx="26" fill="#fff6f3"/>
+                <rect x="62" y="146" width="420" height="52" rx="26" fill="#fff" stroke="#c7827a" stroke-width="8"/>
+                <path d="M112 58l55 86M188 58l55 86M264 58l55 86M340 58l55 86M416 58l55 86" stroke="#c7827a" stroke-width="9" stroke-linecap="round" opacity=".72"/>
+                <path d="M95 198c90-28 230-28 390 0" fill="none" stroke="#c9a962" stroke-width="8" stroke-linecap="round"/>
+                <text x="74" y="86" font-size="26" font-weight="900" fill="#8f5751">Energ&iacute;a m&aacute;s amplia</text>
+                <text x="74" y="120" font-size="18" fill="#78514d">Puede ser excelente, pero no siempre ideal para toda zona.</text>
+              </svg>
+            </div>
+            <div class="comparison-body">
+              <span class="tag">CO2</span>
+              <h3>Potente, pero exige selecci&oacute;n cuidadosa</h3>
+              <p>El l&aacute;ser CO2 puede ser una herramienta valiosa para resurfacing, textura o cicatrices, pero en zonas delicadas y seg&uacute;n fototipo puede implicar mayor inflamaci&oacute;n, recuperaci&oacute;n, sensibilidad o riesgo de cambios de pigmento si no se indica bien.</p>
+              <ul class="comparison-list">
+                <li>M&aacute;s asociado a resurfacing amplio de piel.</li>
+                <li>Requiere cuidados estrictos post tratamiento.</li>
+                <li>En pieles sensibles o zonas finas se debe valorar con mucha cautela.</li>
+                <li>No reemplaza una evaluaci&oacute;n profesional.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <div class="risk-note">
+          <h3>Sobre puntitos, marquitas blancas y cambios de pigmento</h3>
+          <p>En algunos casos poco frecuentes pueden quedar puntitos claros o marquitas blancas temporales, especialmente si la piel cicatriza lento, si hubo sol, si se retiraron costritas antes de tiempo o si el cuidado posterior no fue ideal. En muchas personas estos puntos se van atenuando con el paso de los meses; en otras pueden tardar mucho m&aacute;s, parecido a una marca de raspada que en ciertas pieles demora bastante en desaparecer. Por eso explicamos este riesgo con honestidad y damos indicaciones estrictas de cuidado, protecci&oacute;n solar y seguimiento.</p>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="blog">
       <div class="container">
         <div class="section-head">
@@ -1218,50 +1539,105 @@
       </div>
     </section>
 
-    <section class="section course" id="curso">
+    <section class="section course" id="gira">
       <div class="container">
         <div class="section-head">
           <div>
-            <span class="kicker">Formaci&oacute;n presencial</span>
-            <h2>Curso de Plasma Fibroblast septiembre 2026.</h2>
+            <span class="kicker">Gira especial</span>
+            <h2>Plasma Fibroblast en David, Chiriqu&iacute;.</h2>
           </div>
-          <p class="lead">Para profesionales de est&eacute;tica que desean aprender una t&eacute;cnica rentable, moderna y con protocolos claros. Cupos limitados.</p>
+          <p class="lead">Para pacientes que no pueden venir a la ciudad de Panam&aacute;. Se requiere valoraci&oacute;n virtual previa en junio y confirmaci&oacute;n presencial el d&iacute;a de la cita.</p>
         </div>
 
         <div class="course-layout">
           <aside class="course-card">
             <span class="tag">Cupos limitados</span>
-            <h3>Pre-venta especial</h3>
-            <div class="price"><span>Pre-venta</span> $500</div>
-            <p>Incluye material para el curso. Reserva tu espacio y recibe la informaci&oacute;n completa de requisitos, horarios y proceso de inscripci&oacute;n.</p>
+            <h3>Valoraci&oacute;n virtual para aplicar a la gira</h3>
+            <div class="price"><span>Directorio Yappi</span> $5.95</div>
+            <p>La valoraci&oacute;n virtual tiene un costo de $5.95 por Directorio Yappi para garantizar la cita y filtrar clientes falsos o no show.</p>
             <div class="date-grid">
               <div class="date-box">
-                <b>17 al 19 de septiembre</b>
-                <span>Hotel Riu Plaza Panam&aacute;, Ciudad de Panam&aacute;.</span>
+                <b>Valoraciones virtuales</b>
+                <span>Del 1 al 30 de junio de 2026. Elige tu fecha en el formulario.</span>
               </div>
               <div class="date-box">
-                <b>22 al 24 de septiembre</b>
-                <span>Hotel Gran David, Chiriqu&iacute;.</span>
+                <b>Gira presencial</b>
+                <span>22 al 24 de septiembre de 2026, Hotel Gran David, David, Chiriqu&iacute;.</span>
               </div>
             </div>
-            <div class="hero-actions" style="margin-top:22px; margin-bottom:0;">
-              <a class="btn btn-light" href="https://wa.me/50764746168?text=Hola,%20quiero%20informaci%C3%B3n%20del%20curso%20de%20Plasma%20Fibroblast">Quiero cupo</a>
+            <div class="risk-note" style="margin-top:18px; background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.18);">
+              <h3 style="color:white;">Beneficio para pacientes que apliquen</h3>
+              <p style="color:rgba(255,255,255,.82);">Al completar la sesi&oacute;n, recibes un bono de $25 para usar en la est&eacute;tica o aplicar a tu tratamiento. Las pacientes aprobadas para la valoraci&oacute;n tendr&aacute;n 30% de descuento en su sesi&oacute;n de Plasma Fibroblast.</p>
             </div>
           </aside>
 
-          <div class="course-card">
-            <h3>Qu&eacute; puede incluir la formaci&oacute;n</h3>
-            <p>Basado en programas internacionales de capacitaci&oacute;n en Plasma Fibroblast, el contenido debe cubrir teor&iacute;a, seguridad, protocolo, pr&aacute;ctica guiada y herramientas para iniciar con criterio profesional.</p>
-            <div class="includes-grid">
-              <div class="include-item"><b>Fundamentos de plasma</b>Qu&eacute; es, c&oacute;mo act&uacute;a y cu&aacute;ndo recomendarlo.</div>
-              <div class="include-item"><b>Anatom&iacute;a b&aacute;sica</b>Capas de piel, fibroblastos, col&aacute;geno, elastina y cicatrizaci&oacute;n.</div>
-              <div class="include-item"><b>Bioseguridad</b>Preparaci&oacute;n del espacio, higiene, contraindicaciones y ficha de cliente.</div>
-              <div class="include-item"><b>Dise&ntilde;o por zonas</b>P&aacute;rpados, rostro, abdomen, brazos, cuello y zonas localizadas.</div>
-              <div class="include-item"><b>Pr&aacute;ctica supervisada</b>Demostraci&oacute;n, marcaci&oacute;n, puntos, distancia y control visual.</div>
-              <div class="include-item"><b>Post tratamiento</b>Cuidados, seguimiento, fotos, comunicaci&oacute;n y manejo de expectativas.</div>
-              <div class="include-item"><b>Material incluido</b>Material para el curso y gu&iacute;a de trabajo para clase.</div>
-              <div class="include-item"><b>Certificado</b>Certificado de participaci&oacute;n al completar la formaci&oacute;n.</div>
-            </div>
+          <div class="tour-form">
+            <h3>Solicitar valoraci&oacute;n virtual</h3>
+            <p>Completa tus datos para entrar en la lista de valoraci&oacute;n. La valoraci&oacute;n virtual se confirma por WhatsApp y se valida presencialmente el d&iacute;a de la cita.</p>
+
+            <form id="giraFibroblastForm" action="https://formsubmit.co/TU_CORREO_AQUI" method="POST" enctype="multipart/form-data">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_subject" value="Nueva solicitud - Gira Plasma Fibroblast Chiriqui">
+              <input type="hidden" name="campana" value="Gira Plasma Fibroblast David Chiriqui Septiembre 2026">
+
+              <div class="form-row">
+                <div class="field">
+                  <label>Nombre completo</label>
+                  <input type="text" name="nombre" required placeholder="Nombre y apellido">
+                </div>
+                <div class="field">
+                  <label>WhatsApp</label>
+                  <input type="tel" name="whatsapp" required placeholder="+507...">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="field">
+                  <label>Correo</label>
+                  <input type="email" name="email" required placeholder="correo@email.com">
+                </div>
+                <div class="field">
+                  <label>Ciudad / provincia</label>
+                  <input type="text" name="ciudad" required placeholder="David, Boquete, Bugaba...">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="field">
+                  <label>Fecha virtual deseada</label>
+                  <input type="date" name="fecha_valoracion_virtual" min="2026-06-01" max="2026-06-30" required>
+                </div>
+                <div class="field">
+                  <label>Zona de inter&eacute;s</label>
+                  <select name="zona_interes" required>
+                    <option value="">Selecciona una zona</option>
+                    <option>P&aacute;rpados</option>
+                    <option>Rostro completo</option>
+                    <option>Abdomen</option>
+                    <option>Brazos</option>
+                    <option>Cuello / papada</option>
+                    <option>Estr&iacute;as o zona localizada</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field">
+                <label>Qu&eacute; deseas mejorar?</label>
+                <textarea name="objetivo" placeholder="Ejemplo: flacidez en abdomen, p&aacute;rpado ca&iacute;do, textura, estr&iacute;as, papada..."></textarea>
+              </div>
+
+              <div class="field">
+                <label>Comprobante Directorio Yappi $5.95</label>
+                <input type="file" name="comprobante_yappi" accept="image/*">
+              </div>
+
+              <div class="form-note">
+                El pago de $5.95 garantiza tu cita virtual y ayuda a evitar ausencias. Si aplicas, obtendr&aacute;s bono de $25 y 30% de descuento en tu sesi&oacute;n de Plasma Fibroblast durante la gira.
+              </div>
+
+              <button class="btn btn-light" type="submit">Enviar solicitud</button>
+            </form>
           </div>
         </div>
       </div>
@@ -1296,7 +1672,11 @@
           </article>
           <article class="faq-item">
             <h3>Es igual que l&aacute;ser CO2?</h3>
-            <p>No. Ambos pertenecen al mundo del rejuvenecimiento est&eacute;tico, pero se aplican con tecnolog&iacute;as, objetivos y recuperaciones diferentes.</p>
+            <p>No. Ambos pertenecen al mundo del rejuvenecimiento est&eacute;tico, pero el Plasma Fibroblast trabaja punto por punto, como un dise&ntilde;o manual y focalizado. El CO2 puede ser m&aacute;s amplio y potente, por eso en zonas delicadas se valora con mucha cautela.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Pueden quedar marquitas blancas?</h3>
+            <p>Es poco frecuente, pero puede pasar. Algunas pieles cicatrizan m&aacute;s lento o reaccionan con puntitos claros, sobre todo si hay sol, mala protecci&oacute;n o si se retiran costritas. Muchas marcas se aten&uacute;an con los meses; otras pueden tardar bastante m&aacute;s.</p>
           </article>
           <article class="faq-item">
             <h3>Cu&aacute;ntas sesiones necesito?</h3>
@@ -1335,7 +1715,7 @@
           <li><a href="#que-es">Qu&eacute; es</a></li>
           <li><a href="#proceso">Proceso</a></li>
           <li><a href="#zonas">Zonas tratables</a></li>
-          <li><a href="#curso">Curso presencial</a></li>
+          <li><a href="#gira">Gira Chiriqu&iacute;</a></li>
         </ul>
       </div>
       <div>
