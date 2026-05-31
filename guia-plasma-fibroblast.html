@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guía Interna Plasma Fibroblast | Figura Rostro KG</title>
+
+<style>
+:root{
+  --primary:#087d6f;
+  --accent:#23b8aa;
+  --soft:#f2fbfa;
+  --dark:#17353c;
+  --muted:#60757a;
+  --red:#b42318;
+  --yellow:#996000;
+  --green:#087d35;
+  --card:#ffffff;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:linear-gradient(180deg,#f7fffe,#eef9f7);
+  color:var(--dark);
+  line-height:1.55;
+}
+
+a{color:var(--primary)}
+
+header{
+  background:linear-gradient(135deg,#087d6f,#23b8aa);
+  color:white;
+  padding:36px 18px 28px;
+  text-align:center;
+}
+
+header img{
+  width:150px;
+  height:150px;
+  object-fit:contain;
+  background:white;
+  border-radius:26px;
+  padding:10px;
+  box-shadow:0 14px 40px rgba(0,0,0,.16);
+}
+
+header h1{
+  margin:18px auto 8px;
+  font-size:clamp(26px,4vw,44px);
+  line-height:1.1;
+}
+
+header p{
+  max-width:850px;
+  margin:0 auto;
+  opacity:.95;
+  font-size:17px;
+}
+
+nav{
+  position:sticky;
+  top:0;
+  background:white;
+  z-index:9;
+  padding:12px 16px;
+  border-bottom:1px solid #d7ece8;
+  box-shadow:0 4px 18px rgba(0,0,0,.05);
+}
+
+nav .wrap{
+  max-width:1100px;
+  margin:auto;
+  display:flex;
+  gap:10px;
+  overflow:auto;
+}
+
+nav a{
+  white-space:nowrap;
+  text-decoration:none;
+  padding:8px 12px;
+  background:var(--soft);
+  border-radius:999px;
+  color:var(--primary);
+  font-weight:700;
+  font-size:14px;
+}
+
+main{
+  max-width:1100px;
+  margin:0 auto;
+  padding:26px 16px 60px;
+}
+
+section{
+  background:var(--card);
+  border:1px solid #d9eeeb;
+  border-radius:24px;
+  padding:24px;
+  margin:18px 0;
+  box-shadow:0 12px 35px rgba(6,80,70,.07);
+}
+
+h2{
+  color:var(--primary);
+  font-size:28px;
+  margin:0 0 12px;
+}
+
+h3{
+  color:#174149;
+  margin:20px 0 8px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:14px;
+}
+
+.card{
+  background:#f8fffe;
+  border:1px solid #d5eeea;
+  border-radius:18px;
+  padding:16px;
+}
+
+.tag{
+  display:inline-block;
+  border-radius:999px;
+  padding:6px 11px;
+  font-weight:800;
+  font-size:13px;
+  margin-bottom:8px;
+}
+
+.green{background:#e9f9ef;color:var(--green)}
+.yellow{background:#fff8e6;color:var(--yellow)}
+.red{background:#fff0ee;color:var(--red)}
+
+ul{padding-left:20px}
+
+.alert{
+  border-left:6px solid var(--red);
+  background:#fff5f3;
+  padding:15px;
+  border-radius:15px;
+}
+
+.ok{
+  border-left:6px solid var(--green);
+  background:#f0fff6;
+  padding:15px;
+  border-radius:15px;
+}
+
+.note{
+  font-size:14px;
+  color:var(--muted);
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  background:white;
+  border-radius:14px;
+  overflow:hidden;
+}
+
+td,th{
+  border:1px solid #d3e8e4;
+  padding:10px;
+  vertical-align:top;
+}
+
+th{
+  background:var(--primary);
+  color:white;
+  text-align:left;
+}
+
+footer{
+  text-align:center;
+  padding:28px;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.btn{
+  display:inline-block;
+  background:var(--primary);
+  color:white!important;
+  text-decoration:none;
+  border-radius:14px;
+  padding:12px 16px;
+  font-weight:800;
+  margin-top:8px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <img src="logo-figura-rostro.png" alt="Figura Rostro KG">
+  <h1>Guía Interna de Valoración para Plasma Fibroblast</h1>
+  <p>
+    Material educativo para orientar a la esteticista antes de aceptar pacientes en abdomen,
+    párpados, cuello, rostro y otras zonas. En caso de duda: no tratar y referir.
+  </p>
+</header>
+
+<nav>
+  <div class="wrap">
+    <a href="#objetivo">Objetivo</a>
+    <a href="#semaforo">Semáforo</a>
+    <a href="#contra">Contraindicaciones</a>
+    <a href="#valoracion">Valoración</a>
+    <a href="#abdomen">Abdomen</a>
+    <a href="#manchas">Manchas</a>
+    <a href="#fiebre">Fiebre</a>
+    <a href="#cuidados">Cuidados</a>
+    <a href="#formularios">Formularios</a>
+    <a href="#fuentes">Fuentes</a>
+  </div>
+</nav>
+
+<main>
+
+<section id="objetivo">
+  <h2>1. Objetivo de la valoración</h2>
+  <p>
+    La valoración debe identificar si la paciente es candidata segura, si tiene riesgo de mancha,
+    infección, mala cicatrización o inflamación exagerada, y si entiende los cuidados posteriores.
+  </p>
+
+  <div class="alert">
+    <b>Regla de oro:</b> si hay piel irritada, fiebre, infección, bronceado reciente,
+    melasma activo o duda clínica, el procedimiento se aplaza.
+  </div>
+
+  <p>
+    El consentimiento firmado ayuda a documentar que la paciente fue informada, pero no reemplaza
+    la buena selección, higiene, capacitación ni cumplimiento de protocolos.
+  </p>
+</section>
+
+<section id="semaforo">
+  <h2>2. Semáforo de riesgo</h2>
+
+  <div class="grid">
+    <div class="card">
+      <span class="tag green">VERDE</span>
+      <h3>Candidata probable</h3>
+      <ul>
+        <li>Piel íntegra y sana.</li>
+        <li>Sin melasma activo.</li>
+        <li>Sin infección ni heridas.</li>
+        <li>No se mancha fácilmente.</li>
+        <li>Expectativa realista.</li>
+        <li>Acepta cuidados y controles.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="tag yellow">AMARILLO</span>
+      <h3>Precaución</h3>
+      <ul>
+        <li>Piel trigueña o morena.</li>
+        <li>Antecedente de manchas post-acné.</li>
+        <li>Zona amplia como abdomen.</li>
+        <li>Estrías, roce o sudor frecuente.</li>
+        <li>Requiere decisión conservadora o aplazar.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="tag red">ROJO</span>
+      <h3>No tratar</h3>
+      <ul>
+        <li>Fiebre, infección o heridas.</li>
+        <li>Melasma activo.</li>
+        <li>Queloides o mala cicatrización.</li>
+        <li>Diabetes no controlada.</li>
+        <li>Embarazo o lactancia.</li>
+        <li>Piel bronceada.</li>
+        <li>No puede cumplir cuidados.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="contra">
+  <h2>3. Contraindicaciones y alertas</h2>
+
+  <table>
+    <tr>
+      <th>No realizar</th>
+      <th>Motivo</th>
+    </tr>
+    <tr>
+      <td>Infección, pus, granitos, foliculitis o heridas</td>
+      <td>Aumenta el riesgo de complicaciones, inflamación y mala evolución.</td>
+    </tr>
+    <tr>
+      <td>Piel morena con tendencia a mancha o melasma activo</td>
+      <td>La inflamación puede desencadenar hiperpigmentación postinflamatoria.</td>
+    </tr>
+    <tr>
+      <td>Queloides o mala cicatrización</td>
+      <td>Mayor riesgo de marcas elevadas, cicatriz o resultado antiestético.</td>
+    </tr>
+    <tr>
+      <td>Paciente con fiebre o malestar</td>
+      <td>No se debe tratar a una persona enferma.</td>
+    </tr>
+    <tr>
+      <td>Expectativas tipo cirugía</td>
+      <td>El plasma no sustituye cirugía y el resultado puede ser parcial.</td>
+    </tr>
+  </table>
+</section>
+
+<section id="valoracion">
+  <h2>4. Preguntas obligatorias antes de aprobar</h2>
+
+  <ul>
+    <li>¿Se mancha fácilmente?</li>
+    <li>¿Le quedan manchas oscuras cuando le sale un granito?</li>
+    <li>¿Tiene melasma?</li>
+    <li>¿Ha tenido queloides o cicatrices elevadas?</li>
+    <li>¿Tiene diabetes, hipertensión o enfermedad autoinmune?</li>
+    <li>¿Está embarazada o lactando?</li>
+    <li>¿Tiene herpes activo o frecuente?</li>
+    <li>¿Está tomando medicamentos anticoagulantes o tratamientos fuertes para la piel?</li>
+    <li>¿Se expuso al sol recientemente?</li>
+    <li>¿Tiene viaje, playa, piscina o evento próximo?</li>
+    <li>¿Puede cumplir cuidados estrictos de 10 a 15 días?</li>
+    <li>¿Acepta que puede haber manchas, costras, inflamación o resultado parcial?</li>
+  </ul>
+
+  <div class="ok">
+    <b>Importante:</b> documentar la respuesta de la paciente y tomar fotos antes del procedimiento.
+  </div>
+</section>
+
+<section id="abdomen">
+  <h2>5. Abdomen: zona de mayor control</h2>
+
+  <p>
+    El abdomen exige más cuidado porque es una zona amplia, con roce de ropa, sudor,
+    movimiento y mayor posibilidad de inflamación o infección si no se cuida correctamente.
+  </p>
+
+  <h3>Antes de tratar abdomen revisar:</h3>
+  <ul>
+    <li>Estrías profundas.</li>
+    <li>Cicatrices de cesárea o cirugía.</li>
+    <li>Manchas previas.</li>
+    <li>Foliculitis, granitos o irritación.</li>
+    <li>Sudoración excesiva.</li>
+    <li>Uso de ropa apretada.</li>
+    <li>Capacidad de evitar gimnasio, playa, piscina y sol.</li>
+  </ul>
+
+  <div class="alert">
+    Si varias pacientes presentan fiebre después de abdomen, se debe suspender temporalmente
+    el protocolo y revisar técnica, higiene, extensión tratada, indicaciones y selección de pacientes.
+  </div>
+</section>
+
+<section id="manchas">
+  <h2>6. Prevención de manchas</h2>
+
+  <p>
+    Las manchas pueden aparecer por inflamación, calor, exposición solar, rascado,
+    arrancar costras o por predisposición de la piel.
+  </p>
+
+  <h3>Medidas preventivas:</h3>
+  <ul>
+    <li>No tratar piel bronceada.</li>
+    <li>No tratar melasma activo.</li>
+    <li>No tratar piel irritada.</li>
+    <li>No realizar procedimientos agresivos en piel con alto riesgo de pigmentación.</li>
+    <li>Evitar sol antes y después.</li>
+    <li>No arrancar costras.</li>
+    <li>No frotar la zona.</li>
+    <li>Usar ropa suelta en abdomen.</li>
+    <li>Hacer seguimiento fotográfico.</li>
+  </ul>
+
+  <div class="ok">
+    En pieles de riesgo medio o alto, es mejor aplazar, tratar de forma conservadora
+    o referir para evaluación dermatológica.
+  </div>
+</section>
+
+<section id="fiebre">
+  <h2>7. Fiebre después del procedimiento</h2>
+
+  <p>
+    La fiebre no debe considerarse normal después del plasma fibroblast.
+    Puede indicar infección, inflamación exagerada o complicación.
+  </p>
+
+  <div class="alert">
+    <b>Referir a atención médica si hay:</b>
+    fiebre, escalofríos, pus, mal olor, dolor que aumenta, enrojecimiento que se expande,
+    calor intenso, decaimiento fuerte o secreción.
+  </div>
+
+  <h3>Qué debe hacer la estética:</h3>
+  <ul>
+    <li>No minimizar el síntoma.</li>
+    <li>Documentar fecha, hora, fotos y evolución.</li>
+    <li>Indicar atención médica si hay signos de alarma.</li>
+    <li>Suspender nuevas sesiones hasta aclarar la causa.</li>
+    <li>Revisar higiene, técnica, extensión tratada y cuidados explicados.</li>
+  </ul>
+</section>
+
+<section id="cuidados">
+  <h2>8. Cuidados posteriores que debe entender la paciente</h2>
+
+  <ul>
+    <li>No arrancar costras.</li>
+    <li>No rascarse.</li>
+    <li>No frotar la zona.</li>
+    <li>No exponerse al sol.</li>
+    <li>No playa, piscina ni sauna.</li>
+    <li>No gimnasio intenso durante los primeros días.</li>
+    <li>No usar ropa apretada en abdomen.</li>
+    <li>No aplicar productos no autorizados.</li>
+    <li>Mantener la zona limpia según indicación.</li>
+    <li>Reportar fiebre, pus, mal olor, dolor fuerte o enrojecimiento progresivo.</li>
+  </ul>
+
+  <p class="note">
+    La paciente debe firmar que recibió y entendió estas instrucciones.
+  </p>
+</section>
+
+<section id="formularios">
+  <h2>9. Cómo usar los formularios</h2>
+
+  <ol>
+    <li><b>Primera entrevista:</b> llenar ficha de valoración y antecedentes.</li>
+    <li><b>Antes de decidir:</b> completar evaluación profesional de riesgo.</li>
+    <li><b>Antes de tratar:</b> firmar consentimiento informado.</li>
+    <li><b>Fotos:</b> firmar autorización fotográfica según uso clínico o publicitario.</li>
+    <li><b>Al terminar:</b> entregar cuidados posteriores y firmar recibido.</li>
+    <li><b>Seguimiento:</b> documentar evolución, fotos, mensajes e incidencias.</li>
+    <li><b>Si no es candidata:</b> llenar constancia de aplazamiento o no aprobación.</li>
+  </ol>
+
+  <div class="ok">
+    Guardar todo en expediente físico o digital junto con fotografías de antes/después
+    y conversaciones relevantes.
+  </div>
+</section>
+
+<section id="fuentes">
+  <h2>10. Fuentes para estudiar más</h2>
+
+  <ul>
+    <li>
+      <a href="https://recalls-rappels.canada.ca/en/node/58744/revisions/460940/view" target="_blank">
+        Health Canada - Riesgos y advertencias sobre plasma pens
+      </a>
+    </li>
+    <li>
+      <a href="https://dermnetnz.org/topics/postinflammatory-hyperpigmentation" target="_blank">
+        DermNet - Hiperpigmentación postinflamatoria
+      </a>
+    </li>
+    <li>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2921758/" target="_blank">
+        Revisión médica sobre hiperpigmentación postinflamatoria
+      </a>
+    </li>
+    <li>
+      <a href="https://www.goodrx.com/conditions/wound-care/how-to-tell-if-wound-is-healing-infected" target="_blank">
+        Signos de herida infectada
+      </a>
+    </li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  Figura Rostro KG - Estética y Bienestar | Guía educativa interna. No sustituye asesoría médica ni legal.
+</footer>
+
+</body>
+</html>
