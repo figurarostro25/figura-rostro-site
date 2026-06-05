@@ -75,7 +75,7 @@
     }
 
     .nav-offer {
-      display: none;
+      display: inline-flex;
       min-height: 42px;
       align-items: center;
       gap: 10px;
@@ -217,6 +217,32 @@
       border-radius: 50%;
       background: linear-gradient(135deg, var(--teal), var(--coral));
       box-shadow: 0 0 0 5px rgba(35, 186, 178, .12);
+    }
+
+    .route-strip {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .route-pill {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 12px;
+      border: 1px solid rgba(18, 122, 125, .16);
+      border-radius: 999px;
+      background: #f7fffd;
+      color: var(--deep);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .route-pill span {
+      color: var(--teal-dark);
+      font-size: 12px;
+      text-transform: uppercase;
     }
 
     .promo-panel b { color: var(--deep); font-size: 15px; }
@@ -453,6 +479,42 @@
       line-height: 1.55;
     }
 
+    .mirror-block {
+      display: grid;
+      gap: 16px;
+      padding: 24px;
+      border: 1px solid rgba(212, 173, 85, .34);
+      border-radius: 22px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, .94), rgba(255, 248, 237, .94)),
+        radial-gradient(circle at 100% 0%, rgba(239, 111, 97, .12), transparent 30%);
+      box-shadow: var(--shadow);
+    }
+
+    .mirror-block h2 {
+      margin: 0;
+      color: var(--deep);
+      font-size: clamp(31px, 7vw, 52px);
+      line-height: 1.05;
+    }
+
+    .mirror-block p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .mirror-quote {
+      padding: 14px 16px;
+      border-left: 4px solid var(--coral);
+      border-radius: 14px;
+      background: white;
+      color: var(--deep);
+      font-weight: 900;
+      line-height: 1.55;
+    }
+
     .zone-card { display: grid; gap: 14px; }
     .zone-card .btn, .promo-choice-card .btn { min-height: 48px; font-size: 14px; }
 
@@ -554,6 +616,10 @@
       line-height: 1.7;
     }
 
+    .cta-final .actions {
+      justify-content: center;
+    }
+
     .footer {
       padding: 28px 0 96px;
       text-align: center;
@@ -601,7 +667,6 @@
     @media (min-width: 760px) {
       .hero { padding: 54px 0 64px; }
       .hero-grid, .split { grid-template-columns: minmax(0, 1fr) minmax(330px, .82fr); }
-      .nav-offer { display: inline-flex; }
       .cards-2, .promo-choice-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .zone-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .benefit-grid, .comfort-grid, .faq-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -613,9 +678,10 @@
     @media (max-width: 520px) {
       .container { width: min(100% - 28px, 430px); }
       .topbar { position: relative; }
-      .nav { justify-content: center; }
+      .nav { justify-content: center; flex-wrap: wrap; }
       .brand img { width: 118px; }
       .nav-cta { display: none; }
+      .nav-offer { width: 100%; justify-content: center; white-space: normal; text-align: center; }
       .promo-media img { aspect-ratio: 1 / 1.18; }
       .section { padding: 38px 0; }
       .countdown { gap: 6px; }
@@ -636,8 +702,8 @@
         <img src="/logo-figura-rostro-blanco.png" alt="Figura Rostro KG Estetica y Bienestar" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
         <span class="brand-fallback">Figura Rostro KG</span>
       </a>
-      <div class="nav-offer"><strong>40% OFF</strong> Cupos limitados hoy</div>
-      <a class="nav-cta js-random-whatsapp" href="https://wa.me/50764746168?text=Hola,%20vi%20la%20promocion%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20agendar%20una%20valoracion.">Separar cupo</a>
+      <div class="nav-offer"><strong>40% OFF</strong> Abdomen 6474-6168 &middot; Parpados 6097-6097</div>
+      <a class="nav-cta js-random-whatsapp" href="https://wa.me/50764746168?text=Hola,%20vi%20la%20promocion%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20agendar%20una%20valoracion.">Pedir valoracion</a>
     </div>
   </header>
 
@@ -647,10 +713,10 @@
         <div class="hero-copy">
           <span class="kicker">Promocion especial por tiempo limitado</span>
           <h1>Plasma Fibroblast 40% OFF</h1>
-          <p class="lead">Tensado estetico sin cirugia para parpados, abdomen, rostro, cuello y zonas con flacidez. Escribenos, envia tu zona de interes y confirma si aplicas antes de que se llenen los cupos.</p>
+          <p class="lead">Mejora tu relacion con el espejo. Plasma Fibroblast ayuda a tensar la apariencia de la piel en parpados, abdomen, rostro, cuello y zonas con flacidez, sin cirugia y con valoracion previa.</p>
 
           <div class="promo-panel" aria-label="Cuenta regresiva de promocion">
-            <b>Oferta activa: reserva antes de que termine el contador</b>
+            <b>La promo 40% menos termina pronto. La cita de valoracion es el primer paso para confirmar si aplicas.</b>
             <div class="countdown">
               <div class="timebox"><strong id="days">00</strong><small>Dias</small></div>
               <div class="timebox"><strong id="hours">00</strong><small>Horas</small></div>
@@ -658,16 +724,20 @@
               <div class="timebox"><strong id="seconds">00</strong><small>Seg</small></div>
             </div>
             <ul class="conversion-list">
-              <li>Valoracion requerida para confirmar si tu piel aplica.</li>
-              <li>Promocion ideal si notas flacidez, piel cansada o cambios de textura.</li>
-              <li>Te orientamos por WhatsApp antes de invertir en el tratamiento.</li>
+              <li>Tu valoracion revisa piel, zona, objetivo y cuidados antes del tratamiento.</li>
+              <li>Si eres mama y tu abdomen cambio, mereces volver a sentirte comoda en tu cuerpo.</li>
+              <li>Invierte en la prenda que te dio Dios: tu cuerpo, mas que en lo que le pones encima.</li>
             </ul>
+            <div class="route-strip" aria-label="Telefonos por promocion">
+              <div class="route-pill"><span>Promo abdomen</span> WhatsApp 6474-6168</div>
+              <div class="route-pill"><span>Promo parpados</span> WhatsApp 6097-6097</div>
+            </div>
           </div>
 
           <div class="actions">
-            <a class="btn btn-primary js-random-whatsapp" href="https://wa.me/50764746168?text=Hola,%20vi%20la%20promocion%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20agendar%20una%20valoracion.">Quiero mi valoracion ahora</a>
-            <a class="btn btn-secondary" data-phone="64746168" data-topic="Promo abdomen" href="https://wa.me/50764746168?text=Hola,%20vi%20la%20promocion%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20consultar%20la%20zona:%20Abdomen.">Promo abdomen</a>
-            <a class="btn btn-light" data-phone="60976097" data-topic="Promo parpados" href="https://wa.me/50760976097?text=Hola,%20vi%20la%20promocion%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20consultar%20la%20zona:%20Parpados%20/%20mirada.">Promo parpados</a>
+            <a class="btn btn-primary js-random-whatsapp" href="https://wa.me/50764746168?text=Hola,%20vi%20la%20promocion%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20agendar%20una%20valoracion.">Pedir cita de valoracion</a>
+            <a class="btn btn-secondary" data-phone="64746168" data-topic="Promo abdomen" href="https://wa.me/50764746168?text=Hola,%20vi%20la%20promocion%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20consultar%20la%20zona:%20Abdomen.">Promo abdomen 6474-6168</a>
+            <a class="btn btn-light" data-phone="60976097" data-topic="Promo parpados" href="https://wa.me/50760976097?text=Hola,%20vi%20la%20promocion%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20consultar%20la%20zona:%20Parpados%20/%20mirada.">Promo parpados 6097-6097</a>
           </div>
         </div>
 
@@ -682,7 +752,7 @@
       <div class="container promo-bar-inner">
         <span>Promocion especial por reapertura</span>
         <b>40% de descuento</b>
-        <span>Cupos limitados &middot; Aplica previa valoracion</span>
+        <span>La promo termina pronto &middot; Tu valoracion confirma si aplicas</span>
       </div>
     </section>
 
@@ -690,22 +760,41 @@
       <div class="container">
         <div class="section-head">
           <span class="kicker">Elige tu promo</span>
-          <h2>Dos consultas rapidas segun lo que quieres mejorar</h2>
-          <p>Haz clic en la zona que mas te interesa y abre WhatsApp con el mensaje listo. Si no sabes cual elegir, usa el boton general y te orientamos.</p>
+          <h2>Dos rutas claras para pedir tu valoracion</h2>
+          <p>Haz clic segun la zona que quieres mejorar. Cada boton abre WhatsApp con el mensaje listo y te lleva al numero correcto.</p>
         </div>
         <div class="promo-choice-grid">
           <article class="promo-choice-card">
-            <span class="promo-choice-label">Mas solicitada en cuerpo</span>
+            <span class="promo-choice-label">WhatsApp 6474-6168</span>
             <h3>Promo abdomen y cuerpo</h3>
-            <p>Para flacidez localizada, textura o piel que ha cambiado en abdomen, brazos, cuello, papada o zonas corporales.</p>
-            <a class="btn btn-secondary" data-phone="64746168" data-topic="Abdomen / cuerpo" href="https://wa.me/50764746168?text=Hola,%20vi%20la%20promocion%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20consultar%20la%20zona:%20Abdomen%20/%20cuerpo.">Consultar abdomen y cuerpo</a>
+            <p>Para flacidez localizada, textura o piel que cambio despues de embarazo, perdida de peso o paso del tiempo. Primero valoramos si eres candidata.</p>
+            <a class="btn btn-secondary" data-phone="64746168" data-topic="Abdomen / cuerpo" href="https://wa.me/50764746168?text=Hola,%20vi%20la%20promocion%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20consultar%20la%20zona:%20Abdomen%20/%20cuerpo.">Pedir valoracion abdomen</a>
           </article>
           <article class="promo-choice-card">
-            <span class="promo-choice-label">Ideal para mirada cansada</span>
+            <span class="promo-choice-label">WhatsApp 6097-6097</span>
             <h3>Promo parpados y rostro</h3>
-            <p>Para mirada, parpados, rostro, lineas finas y zonas delicadas donde quieres una orientacion cuidadosa.</p>
-            <a class="btn btn-primary" data-phone="60976097" data-topic="Parpados / rostro" href="https://wa.me/50760976097?text=Hola,%20vi%20la%20promocion%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20consultar%20la%20zona:%20Parpados%20/%20rostro.">Consultar parpados y rostro</a>
+            <p>Para mirada cansada, parpados, rostro, lineas finas y zonas delicadas donde necesitas una orientacion cuidadosa y expectativas reales.</p>
+            <a class="btn btn-primary" data-phone="60976097" data-topic="Parpados / rostro" href="https://wa.me/50760976097?text=Hola,%20vi%20la%20promocion%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20consultar%20la%20zona:%20Parpados%20/%20rostro.">Pedir valoracion parpados</a>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split">
+        <div class="mirror-block">
+          <span class="kicker">Vuelve a mirarte bonito</span>
+          <h2>Tu cuerpo merece sentirse tan cuidado como lo que compras para vestirlo</h2>
+          <p>Una blusa bonita ayuda, pero sentirte bien con tu abdomen, tu mirada y tu piel cambia como te paras frente al espejo. Esta promo es para mujeres que quieren verse mas frescas, mas firmes y mas seguras sin correr directo a una cirugia.</p>
+          <div class="mirror-quote">Si fuiste mama y tu cuerpo cambio, cuidarte tambien puede ser una decision de pareja. Conversalo, date prioridad y empieza por una valoracion responsable.</div>
+          <div class="actions">
+            <a class="btn btn-secondary" data-phone="64746168" data-topic="Abdomen / cuerpo" href="https://wa.me/50764746168?text=Hola,%20vi%20la%20promocion%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20consultar%20la%20zona:%20Abdomen%20/%20cuerpo.">Valorar abdomen 6474-6168</a>
+            <a class="btn btn-primary" data-phone="60976097" data-topic="Parpados / rostro" href="https://wa.me/50760976097?text=Hola,%20vi%20la%20promocion%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20consultar%20la%20zona:%20Parpados%20/%20rostro.">Valorar parpados 6097-6097</a>
+          </div>
+        </div>
+        <div class="media">
+          <img loading="lazy" src="/fibroblast-piel-firme.jpg" alt="Piel con apariencia firme y cuidada">
+          <div class="placeholder">Piel firme y cuidada</div>
         </div>
       </div>
     </section>
@@ -771,12 +860,12 @@
           <article class="zone-card">
             <h3>Parpados / mirada</h3>
             <p>Para flacidez visible o apariencia cansada en la zona de la mirada.</p>
-            <a class="btn btn-light js-zone" data-zone="Parpados / mirada" data-phone="60976097" href="https://wa.me/50760976097?text=Hola,%20vi%20la%20promocion%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20consultar%20la%20zona:%20Parpados%20/%20mirada.">Consultar parpados</a>
+            <a class="btn btn-light js-zone" data-zone="Parpados / mirada" data-phone="60976097" href="https://wa.me/50760976097?text=Hola,%20vi%20la%20promocion%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20consultar%20la%20zona:%20Parpados%20/%20mirada.">Parpados 6097-6097</a>
           </article>
           <article class="zone-card">
             <h3>Abdomen</h3>
             <p>Para valorar flacidez localizada, textura o piel que ha cambiado.</p>
-            <a class="btn btn-light js-zone" data-zone="Abdomen" data-phone="64746168" href="https://wa.me/50764746168?text=Hola,%20vi%20la%20promocion%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20consultar%20la%20zona:%20Abdomen.">Consultar abdomen</a>
+            <a class="btn btn-light js-zone" data-zone="Abdomen" data-phone="64746168" href="https://wa.me/50764746168?text=Hola,%20vi%20la%20promocion%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20consultar%20la%20zona:%20Abdomen.">Abdomen 6474-6168</a>
           </article>
           <article class="zone-card">
             <h3>Cuello / papada</h3>
@@ -914,9 +1003,12 @@
     <section class="section">
       <div class="container">
         <div class="cta-final">
-          <h2>Agenda tu valoracion y confirma si aplicas</h2>
-          <p>Escribenos por WhatsApp y cuentanos que zona deseas tratar.</p>
-          <a class="btn btn-primary js-random-whatsapp" href="https://wa.me/50764746168?text=Hola,%20vi%20la%20promocion%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20agendar%20una%20valoracion.">Reservar valoracion por WhatsApp</a>
+          <h2>No esperes a que se cierre la promo</h2>
+          <p>La valoracion es el filtro que protege tu piel y tu inversion: revisamos si aplicas, que zona conviene tratar y que cuidados necesitas antes de empezar.</p>
+          <div class="actions">
+            <a class="btn btn-secondary" data-phone="64746168" data-topic="Abdomen / cuerpo" href="https://wa.me/50764746168?text=Hola,%20vi%20la%20promocion%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20consultar%20la%20zona:%20Abdomen%20/%20cuerpo.">Promo abdomen 6474-6168</a>
+            <a class="btn btn-primary" data-phone="60976097" data-topic="Parpados / rostro" href="https://wa.me/50760976097?text=Hola,%20vi%20la%20promocion%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20consultar%20la%20zona:%20Parpados%20/%20rostro.">Promo parpados 6097-6097</a>
+          </div>
         </div>
       </div>
     </section>
