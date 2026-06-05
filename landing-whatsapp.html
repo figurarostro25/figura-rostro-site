@@ -74,6 +74,26 @@
       box-shadow: 0 16px 42px rgba(18, 61, 70, .14);
     }
 
+    .nav-offer {
+      display: none;
+      min-height: 42px;
+      align-items: center;
+      gap: 10px;
+      padding: 0 14px;
+      border-radius: 999px;
+      color: white;
+      background: rgba(255, 255, 255, .12);
+      border: 1px solid rgba(255, 255, 255, .18);
+      font-size: 13px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .nav-offer strong {
+      color: #ffe6a7;
+      font-size: 15px;
+    }
+
     .brand {
       display: flex;
       align-items: center;
@@ -169,6 +189,34 @@
       border-radius: 18px;
       background: rgba(255, 255, 255, .88);
       box-shadow: 0 14px 34px rgba(18, 61, 70, .07);
+    }
+
+    .conversion-list {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .conversion-list li {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 8px;
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.45;
+    }
+
+    .conversion-list li::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      margin-top: 6px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal), var(--coral));
+      box-shadow: 0 0 0 5px rgba(35, 186, 178, .12);
     }
 
     .promo-panel b { color: var(--deep); font-size: 15px; }
@@ -276,26 +324,6 @@
       object-fit: cover;
     }
 
-    .badge-sale {
-      position: absolute;
-      left: 14px;
-      top: 14px;
-      display: grid;
-      place-items: center;
-      width: 104px;
-      height: 104px;
-      border-radius: 50%;
-      color: white;
-      background: linear-gradient(135deg, var(--rose), var(--coral));
-      box-shadow: 0 16px 36px rgba(220, 77, 128, .28);
-      text-align: center;
-      font-weight: 900;
-      transform: rotate(-7deg);
-    }
-
-    .badge-sale span { display: block; font-size: 30px; line-height: .95; }
-    .badge-sale small { display: block; font-size: 12px; }
-
     .placeholder {
       position: absolute;
       inset: 0;
@@ -365,13 +393,13 @@
       align-items: center;
     }
 
-    .cards-2, .zone-grid, .benefit-grid, .comfort-grid, .faq-grid, .assistant-grid {
+    .cards-2, .zone-grid, .benefit-grid, .comfort-grid, .faq-grid, .promo-choice-grid {
       display: grid;
       grid-template-columns: minmax(0, 1fr);
       gap: 16px;
     }
 
-    .result-card, .zone-card, .benefit-card, .comfort-card, .faq-item, .process-card, .assistant-card {
+    .result-card, .zone-card, .benefit-card, .comfort-card, .faq-item, .process-card, .promo-choice-card {
       border: 1px solid var(--line);
       border-radius: 18px;
       background: white;
@@ -379,23 +407,23 @@
       overflow: hidden;
     }
 
-    .result-body, .zone-card, .benefit-card, .comfort-card, .faq-item, .process-card, .assistant-card { padding: 20px; }
+    .result-body, .zone-card, .benefit-card, .comfort-card, .faq-item, .process-card, .promo-choice-card { padding: 20px; }
 
-    .result-body h3, .zone-card h3, .benefit-card h3, .comfort-card h3, .faq-item h3, .process-card h3, .assistant-card h3 {
+    .result-body h3, .zone-card h3, .benefit-card h3, .comfort-card h3, .faq-item h3, .process-card h3, .promo-choice-card h3 {
       margin-bottom: 8px;
       color: var(--deep);
       font-size: 22px;
       line-height: 1.14;
     }
 
-    .result-body p, .zone-card p, .benefit-card p, .comfort-card p, .faq-item p, .process-card p, .assistant-card p {
+    .result-body p, .zone-card p, .benefit-card p, .comfort-card p, .faq-item p, .process-card p, .promo-choice-card p {
       margin-bottom: 0;
       color: var(--muted);
       line-height: 1.65;
       font-size: 15px;
     }
 
-    .assistant-card {
+    .promo-choice-card {
       display: grid;
       gap: 14px;
       background:
@@ -403,7 +431,7 @@
         linear-gradient(135deg, var(--teal), var(--coral));
     }
 
-    .assistant-label {
+    .promo-choice-label {
       width: max-content;
       padding: 7px 10px;
       border-radius: 999px;
@@ -426,7 +454,7 @@
     }
 
     .zone-card { display: grid; gap: 14px; }
-    .zone-card .btn, .assistant-card .btn { min-height: 48px; font-size: 14px; }
+    .zone-card .btn, .promo-choice-card .btn { min-height: 48px; font-size: 14px; }
 
     .process-list {
       display: grid;
@@ -573,7 +601,8 @@
     @media (min-width: 760px) {
       .hero { padding: 54px 0 64px; }
       .hero-grid, .split { grid-template-columns: minmax(0, 1fr) minmax(330px, .82fr); }
-      .cards-2, .assistant-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .nav-offer { display: inline-flex; }
+      .cards-2, .promo-choice-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .zone-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .benefit-grid, .comfort-grid, .faq-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .actions { display: flex; flex-wrap: wrap; }
@@ -607,7 +636,8 @@
         <img src="/logo-figura-rostro-blanco.png" alt="Figura Rostro KG Estetica y Bienestar" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
         <span class="brand-fallback">Figura Rostro KG</span>
       </a>
-      <a class="nav-cta js-random-whatsapp" href="https://wa.me/50764746168?text=Hola,%20vi%20la%20promocion%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20agendar%20una%20valoracion.">Hablar con una asesora</a>
+      <div class="nav-offer"><strong>40% OFF</strong> Cupos limitados hoy</div>
+      <a class="nav-cta js-random-whatsapp" href="https://wa.me/50764746168?text=Hola,%20vi%20la%20promocion%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20agendar%20una%20valoracion.">Separar cupo</a>
     </div>
   </header>
 
@@ -617,7 +647,7 @@
         <div class="hero-copy">
           <span class="kicker">Promocion especial por tiempo limitado</span>
           <h1>Plasma Fibroblast 40% OFF</h1>
-          <p class="lead">Tensado estetico sin cirugia para parpados, abdomen, rostro, cuello y zonas con flacidez. Agenda tu valoracion y confirma si aplicas.</p>
+          <p class="lead">Tensado estetico sin cirugia para parpados, abdomen, rostro, cuello y zonas con flacidez. Escribenos, envia tu zona de interes y confirma si aplicas antes de que se llenen los cupos.</p>
 
           <div class="promo-panel" aria-label="Cuenta regresiva de promocion">
             <b>Oferta activa: reserva antes de que termine el contador</b>
@@ -627,19 +657,22 @@
               <div class="timebox"><strong id="minutes">00</strong><small>Min</small></div>
               <div class="timebox"><strong id="seconds">00</strong><small>Seg</small></div>
             </div>
-            <span>Valoracion requerida. Confirmamos si aplicas segun tu tipo de piel, zona y objetivo.</span>
+            <ul class="conversion-list">
+              <li>Valoracion requerida para confirmar si tu piel aplica.</li>
+              <li>Promocion ideal si notas flacidez, piel cansada o cambios de textura.</li>
+              <li>Te orientamos por WhatsApp antes de invertir en el tratamiento.</li>
+            </ul>
           </div>
 
           <div class="actions">
             <a class="btn btn-primary js-random-whatsapp" href="https://wa.me/50764746168?text=Hola,%20vi%20la%20promocion%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20agendar%20una%20valoracion.">Quiero mi valoracion ahora</a>
-            <a class="btn btn-secondary" data-phone="64746168" data-topic="Abdomen" href="https://wa.me/50764746168?text=Hola,%20vi%20la%20promocion%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20consultar%20la%20zona:%20Abdomen.">Promo abdomen - Asistente 1</a>
-            <a class="btn btn-light" data-phone="60976097" data-topic="Parpados / mirada" href="https://wa.me/50760976097?text=Hola,%20vi%20la%20promocion%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20consultar%20la%20zona:%20Parpados%20/%20mirada.">Promo parpados - Asistente 2</a>
+            <a class="btn btn-secondary" data-phone="64746168" data-topic="Promo abdomen" href="https://wa.me/50764746168?text=Hola,%20vi%20la%20promocion%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20consultar%20la%20zona:%20Abdomen.">Promo abdomen</a>
+            <a class="btn btn-light" data-phone="60976097" data-topic="Promo parpados" href="https://wa.me/50760976097?text=Hola,%20vi%20la%20promocion%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20consultar%20la%20zona:%20Parpados%20/%20mirada.">Promo parpados</a>
           </div>
         </div>
 
         <div class="promo-media">
           <img src="/promo-fibroblast-parpados-abdomen-40.png" alt="Promocion Plasma Fibroblast 40% OFF en Figura Rostro KG">
-          <div class="badge-sale"><div><small>Hasta</small><span>40%</span><small>OFF</small></div></div>
           <div class="placeholder">Promo Plasma Fibroblast 40% OFF</div>
         </div>
       </div>
@@ -656,19 +689,19 @@
     <section class="section section-cream">
       <div class="container">
         <div class="section-head">
-          <span class="kicker">Atencion mas rapida</span>
-          <h2>Elige tu asesora segun la zona que quieres valorar</h2>
-          <p>Asi cada consulta llega al equipo correcto y podemos responder mas rapido. Si no sabes que zona elegir, usa el boton general y te asignamos una asesora al azar.</p>
+          <span class="kicker">Elige tu promo</span>
+          <h2>Dos consultas rapidas segun lo que quieres mejorar</h2>
+          <p>Haz clic en la zona que mas te interesa y abre WhatsApp con el mensaje listo. Si no sabes cual elegir, usa el boton general y te orientamos.</p>
         </div>
-        <div class="assistant-grid">
-          <article class="assistant-card">
-            <span class="assistant-label">Asistente 1</span>
+        <div class="promo-choice-grid">
+          <article class="promo-choice-card">
+            <span class="promo-choice-label">Mas solicitada en cuerpo</span>
             <h3>Promo abdomen y cuerpo</h3>
             <p>Para flacidez localizada, textura o piel que ha cambiado en abdomen, brazos, cuello, papada o zonas corporales.</p>
             <a class="btn btn-secondary" data-phone="64746168" data-topic="Abdomen / cuerpo" href="https://wa.me/50764746168?text=Hola,%20vi%20la%20promocion%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20consultar%20la%20zona:%20Abdomen%20/%20cuerpo.">Consultar abdomen y cuerpo</a>
           </article>
-          <article class="assistant-card">
-            <span class="assistant-label">Asistente 2</span>
+          <article class="promo-choice-card">
+            <span class="promo-choice-label">Ideal para mirada cansada</span>
             <h3>Promo parpados y rostro</h3>
             <p>Para mirada, parpados, rostro, lineas finas y zonas delicadas donde quieres una orientacion cuidadosa.</p>
             <a class="btn btn-primary" data-phone="60976097" data-topic="Parpados / rostro" href="https://wa.me/50760976097?text=Hola,%20vi%20la%20promocion%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20consultar%20la%20zona:%20Parpados%20/%20rostro.">Consultar parpados y rostro</a>
@@ -904,9 +937,9 @@
   <a class="floating-whatsapp js-random-whatsapp" href="https://wa.me/50764746168?text=Hola,%20vi%20la%20promocion%2040%25%20OFF%20de%20Plasma%20Fibroblast.%20Quiero%20agendar%20una%20valoracion.">WhatsApp promo</a>
 
   <script>
-    const assistants = [
-      { name: "Asistente 1", phone: "64746168", topic: "Plasma Fibroblast - promocion general" },
-      { name: "Asistente 2", phone: "60976097", topic: "Plasma Fibroblast - promocion general" }
+    const promoRoutes = [
+      { phone: "64746168", topic: "Plasma Fibroblast - promocion general" },
+      { phone: "60976097", topic: "Plasma Fibroblast - promocion general" }
     ];
     const generalMessage = "Hola, vi la promocion 40% OFF de Plasma Fibroblast. Quiero agendar una valoracion.";
 
@@ -918,12 +951,12 @@
       return "https://wa.me/" + fullPhone(phone) + "?text=" + encodeURIComponent(message);
     }
 
-    function pickAssistant() {
-      const saved = sessionStorage.getItem("fibroblastAssistant");
-      if (saved) return assistants[Number(saved)] || assistants[0];
+    function pickRoute() {
+      const saved = sessionStorage.getItem("fibroblastPromoRoute");
+      if (saved) return promoRoutes[Number(saved)] || promoRoutes[0];
       const index = Math.random() < 0.5 ? 0 : 1;
-      sessionStorage.setItem("fibroblastAssistant", String(index));
-      return assistants[index];
+      sessionStorage.setItem("fibroblastPromoRoute", String(index));
+      return promoRoutes[index];
     }
 
     function trackWhatsAppClick() {
@@ -932,8 +965,8 @@
     }
 
     document.querySelectorAll(".js-random-whatsapp").forEach(function (link) {
-      const assistant = pickAssistant();
-      link.href = whatsappUrl(assistant.phone, generalMessage + " Me atendio " + assistant.name + ".");
+      const route = pickRoute();
+      link.href = whatsappUrl(route.phone, generalMessage);
       link.addEventListener("click", trackWhatsAppClick);
     });
 
