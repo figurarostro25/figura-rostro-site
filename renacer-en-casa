@@ -1,0 +1,1861 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Renacer en Casa | Terapias de recuperacion para adultos mayores en Panama</title>
+  <meta name="description" content="Terapias de recuperacion, estimulacion sensorial, drenaje linfatico, masaje terapeutico y acompanamiento a domicilio para adultos mayores y adultos en recuperacion en Ciudad de Panama. Promo junio: 50% en primera valoracion a domicilio con terapia de evaluacion.">
+  <meta name="theme-color" content="#173b42">
+  <meta property="og:title" content="Renacer en Casa | Terapias de recuperacion a domicilio">
+  <meta property="og:description" content="Atencion con amor, tecnica y seguimiento para adultos mayores y adultos en recuperacion. San Francisco, Ciudad de Panama.">
+  <meta property="og:image" content="renacer-assets/hero-terapia.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #173b42;
+      --ink-2: #224c54;
+      --muted: #60777c;
+      --line: #d9e8e4;
+      --sage: #7cb7a5;
+      --sage-2: #dff1eb;
+      --aqua: #2bb8b2;
+      --coral: #e97862;
+      --gold: #d1a955;
+      --cream: #fff8ed;
+      --rose: #fff0ec;
+      --blue: #eaf5ff;
+      --white: #ffffff;
+      --soft: #f6fbf9;
+      --shadow: 0 20px 54px rgba(23, 59, 66, .13);
+      --shadow-soft: 0 12px 30px rgba(23, 59, 66, .08);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, #f8fffd 0%, #ffffff 35%, #fffaf2 100%);
+      overflow-x: hidden;
+    }
+
+    img,
+    video {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .top-ribbon {
+      color: white;
+      background: linear-gradient(90deg, var(--ink), #2d6f6b);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .top-ribbon .container {
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-align: center;
+    }
+
+    .top-ribbon strong {
+      color: #ffe7a4;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, .88);
+      border-bottom: 1px solid rgba(23, 59, 66, .08);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      color: var(--ink);
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: white;
+      background:
+        linear-gradient(135deg, var(--sage), var(--aqua));
+      box-shadow: 0 10px 22px rgba(43, 184, 178, .25);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 25px;
+    }
+
+    .brand-text {
+      display: grid;
+      line-height: 1.1;
+    }
+
+    .brand-text small {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 0;
+      border-radius: 999px;
+      padding: 0 18px;
+      font-weight: 900;
+      text-align: center;
+      cursor: pointer;
+      transition:
+        transform .18s ease,
+        box-shadow .18s ease,
+        background .18s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: white;
+      background: linear-gradient(135deg, var(--coral), #cb5f9a);
+      box-shadow: 0 16px 34px rgba(233, 120, 98, .24);
+    }
+
+    .btn-secondary {
+      color: white;
+      background: linear-gradient(135deg, var(--aqua), #2d8f8a);
+      box-shadow: 0 16px 34px rgba(43, 184, 178, .24);
+    }
+
+    .btn-light {
+      color: var(--ink);
+      background: white;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn-ghost {
+      color: var(--ink);
+      background: rgba(255, 255, 255, .72);
+      border: 1px solid rgba(23, 59, 66, .12);
+    }
+
+    .hero {
+      position: relative;
+      padding: 34px 0 54px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 58%;
+      background:
+        radial-gradient(circle at 8% 10%, rgba(124, 183, 165, .22), transparent 32%),
+        radial-gradient(circle at 92% 8%, rgba(233, 120, 98, .14), transparent 28%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 24px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      width: max-content;
+      max-width: 100%;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: #216c68;
+      background: var(--sage-2);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 22px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--gold);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 850px;
+      margin: 16px 0 16px;
+      color: var(--ink);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(43px, 9vw, 86px);
+      line-height: .96;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.68;
+    }
+
+    .hero-actions {
+      display: grid;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .trust-row {
+      display: grid;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .trust-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border: 1px solid rgba(23, 59, 66, .12);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .84);
+      box-shadow: var(--shadow-soft);
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .trust-dot {
+      width: 10px;
+      height: 10px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--aqua), var(--coral));
+      box-shadow: 0 0 0 5px rgba(43, 184, 178, .12);
+    }
+
+    .hero-card {
+      overflow: hidden;
+      border: 1px solid rgba(23, 59, 66, .12);
+      border-radius: var(--radius);
+      background: white;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card img {
+      width: 100%;
+      aspect-ratio: 4 / 4.45;
+      object-fit: cover;
+    }
+
+    .hero-card-body {
+      display: grid;
+      gap: 12px;
+      padding: 18px;
+    }
+
+    .promo-box {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
+      padding: 18px;
+      border: 1px solid rgba(209, 169, 85, .4);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(255, 248, 237, .96), rgba(255, 255, 255, .96));
+      box-shadow: var(--shadow-soft);
+    }
+
+    .promo-box strong {
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.45;
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .timebox {
+      min-height: 76px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(209, 169, 85, .28);
+      border-radius: var(--radius);
+      background: white;
+      text-align: center;
+    }
+
+    .timebox b {
+      display: block;
+      color: var(--ink);
+      font-size: clamp(22px, 5vw, 34px);
+      line-height: 1;
+    }
+
+    .timebox span {
+      display: block;
+      margin-top: 6px;
+      color: #856d2e;
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .quick-routes {
+      display: grid;
+      gap: 10px;
+    }
+
+    .route-card {
+      display: grid;
+      gap: 8px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: white;
+    }
+
+    .route-card small {
+      color: var(--sage);
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .route-card b {
+      color: var(--ink);
+      font-size: 20px;
+    }
+
+    .section {
+      padding: 58px 0;
+    }
+
+    .section-soft {
+      background: rgba(246, 251, 249, .86);
+    }
+
+    .section-cream {
+      background: rgba(255, 248, 237, .78);
+    }
+
+    .section-head {
+      max-width: 850px;
+      margin-bottom: 26px;
+    }
+
+    .section-head h2,
+    .split h2,
+    .form-panel h2 {
+      margin: 12px 0 10px;
+      color: var(--ink);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(32px, 7vw, 58px);
+      line-height: 1.03;
+      letter-spacing: 0;
+    }
+
+    .section-head p,
+    .split p {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.72;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 24px;
+      align-items: center;
+    }
+
+    .grid-2,
+    .grid-3,
+    .grid-4,
+    .blog-grid,
+    .gallery-grid,
+    .video-grid,
+    .testimonial-grid,
+    .equipment-grid,
+    .faq-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 16px;
+    }
+
+    .card,
+    .service-card,
+    .therapy-card,
+    .blog-card,
+    .testimonial-card,
+    .faq-item,
+    .equipment-card,
+    .step-card,
+    .warning-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: white;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .card-body,
+    .service-card,
+    .therapy-card,
+    .blog-card,
+    .testimonial-card,
+    .faq-item,
+    .equipment-card,
+    .step-card,
+    .warning-card {
+      padding: 20px;
+    }
+
+    .card h3,
+    .service-card h3,
+    .therapy-card h3,
+    .blog-card h3,
+    .testimonial-card h3,
+    .faq-item h3,
+    .equipment-card h3,
+    .step-card h3,
+    .warning-card h3 {
+      margin-bottom: 9px;
+      color: var(--ink);
+      font-size: 21px;
+      line-height: 1.17;
+    }
+
+    .card p,
+    .service-card p,
+    .therapy-card p,
+    .blog-card p,
+    .testimonial-card p,
+    .faq-item p,
+    .equipment-card p,
+    .step-card p,
+    .warning-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.68;
+    }
+
+    .stat-band {
+      padding: 28px 0;
+      color: white;
+      background: linear-gradient(135deg, var(--ink), #2e7774);
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 14px;
+    }
+
+    .stat {
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .08);
+    }
+
+    .stat b {
+      display: block;
+      color: white;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 32px;
+      line-height: 1;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 8px;
+      color: rgba(255, 255, 255, .82);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .image-frame {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: white;
+      box-shadow: var(--shadow);
+    }
+
+    .image-frame img {
+      width: 100%;
+      aspect-ratio: 4 / 3.35;
+      object-fit: cover;
+    }
+
+    .image-frame.tall img {
+      aspect-ratio: 3 / 4.15;
+    }
+
+    .caption {
+      padding: 12px 14px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+      background: white;
+    }
+
+    .note {
+      padding: 16px;
+      border-left: 4px solid var(--gold);
+      border-radius: var(--radius);
+      background: #fff7df;
+      color: #705b20;
+      font-weight: 800;
+      line-height: 1.6;
+    }
+
+    .care-list {
+      display: grid;
+      gap: 11px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .care-list li {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 13px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: white;
+      color: var(--ink);
+      font-weight: 800;
+      line-height: 1.45;
+    }
+
+    .care-list b {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: white;
+      background: linear-gradient(135deg, var(--sage), var(--aqua));
+    }
+
+    .therapy-card {
+      display: grid;
+      gap: 13px;
+    }
+
+    .therapy-tag {
+      width: max-content;
+      max-width: 100%;
+      padding: 7px 10px;
+      border-radius: 999px;
+      color: #216c68;
+      background: var(--sage-2);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: white;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      aspect-ratio: 4 / 3.6;
+      object-fit: cover;
+    }
+
+    .gallery-item.portrait img {
+      aspect-ratio: 3 / 4.1;
+    }
+
+    .video-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: white;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .video-card video {
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      background: #0f2428;
+      object-fit: cover;
+    }
+
+    .video-card-body {
+      padding: 16px;
+    }
+
+    .video-card-body h3 {
+      margin-bottom: 7px;
+      color: var(--ink);
+      font-size: 18px;
+    }
+
+    .video-card-body p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .quote-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: white;
+      background: linear-gradient(135deg, var(--coral), #cb5f9a);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 30px;
+      line-height: 1;
+    }
+
+    .testimonial-card {
+      display: grid;
+      gap: 14px;
+    }
+
+    .testimonial-card strong {
+      color: var(--ink);
+      font-size: 14px;
+    }
+
+    .testimonial-card span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .boss-message {
+      padding: 24px;
+      border: 1px solid rgba(233, 120, 98, .28);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(255, 240, 236, .96), rgba(255, 255, 255, .96));
+      box-shadow: var(--shadow);
+    }
+
+    .boss-message p {
+      color: var(--ink);
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    .signature {
+      margin-top: 18px;
+      color: var(--ink);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 28px;
+      font-weight: 800;
+    }
+
+    .plan-panel {
+      display: grid;
+      gap: 16px;
+      padding: 22px;
+      border: 1px solid rgba(43, 184, 178, .28);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(223, 241, 235, .88), rgba(255, 255, 255, .96));
+      box-shadow: var(--shadow);
+    }
+
+    .plan-panel h3 {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(28px, 6vw, 44px);
+      line-height: 1.05;
+    }
+
+    .plan-panel p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .blog-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .filter-btn {
+      min-height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0 13px;
+      color: var(--ink);
+      background: white;
+      font-size: 13px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .filter-btn.is-active {
+      color: white;
+      border-color: transparent;
+      background: var(--ink);
+    }
+
+    .blog-card {
+      display: grid;
+      gap: 12px;
+    }
+
+    .blog-card small {
+      color: var(--sage);
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .form-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .form-panel {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: white;
+      box-shadow: var(--shadow);
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .field {
+      display: grid;
+      gap: 7px;
+    }
+
+    .field label {
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 13px 14px;
+      color: var(--ink);
+      background: #fbfffe;
+      outline: none;
+    }
+
+    .field textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--aqua);
+      box-shadow: 0 0 0 4px rgba(43, 184, 178, .12);
+    }
+
+    .form-note {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .map-card {
+      display: grid;
+      gap: 14px;
+      padding: 22px;
+      border-radius: var(--radius);
+      color: white;
+      background:
+        linear-gradient(135deg, rgba(23, 59, 66, .96), rgba(45, 111, 107, .94));
+      box-shadow: var(--shadow);
+    }
+
+    .map-card h3 {
+      margin: 0;
+      color: white;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 35px;
+      line-height: 1.05;
+    }
+
+    .map-card p {
+      margin: 0;
+      color: rgba(255, 255, 255, .82);
+      line-height: 1.7;
+    }
+
+    .emergency-note {
+      padding: 18px;
+      border: 1px solid rgba(233, 120, 98, .3);
+      border-radius: var(--radius);
+      background: var(--rose);
+      color: #76372b;
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.6;
+    }
+
+    .sources {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .sources a {
+      color: var(--ink);
+      font-weight: 900;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .footer {
+      padding: 34px 0 104px;
+      color: rgba(255, 255, 255, .78);
+      background: var(--ink);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .footer b {
+      display: block;
+      margin-bottom: 8px;
+      color: white;
+      font-size: 16px;
+    }
+
+    .footer a {
+      color: white;
+      font-weight: 900;
+    }
+
+    .floating-wa {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 60;
+      min-height: 56px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      border-radius: 999px;
+      color: white;
+      background: #20c767;
+      box-shadow: 0 16px 42px rgba(23, 59, 66, .24);
+      font-weight: 900;
+    }
+
+    @media (min-width: 720px) {
+      .hero-actions,
+      .quick-routes,
+      .trust-row {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .route-card {
+        min-width: 240px;
+        flex: 1;
+      }
+
+      .grid-2,
+      .testimonial-grid,
+      .equipment-grid,
+      .faq-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .grid-3,
+      .blog-grid,
+      .gallery-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .grid-4,
+      .stat-grid,
+      .video-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 940px) {
+      .nav-links {
+        display: flex;
+      }
+
+      .hero-grid {
+        grid-template-columns: minmax(0, 1.02fr) minmax(360px, .78fr);
+      }
+
+      .split {
+        grid-template-columns: minmax(0, 1fr) minmax(340px, .86fr);
+      }
+
+      .form-wrap {
+        grid-template-columns: minmax(0, 1fr) minmax(320px, .78fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1.2fr .8fr .8fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .container {
+        width: min(100% - 26px, 440px);
+      }
+
+      .top-ribbon .container {
+        min-height: 48px;
+      }
+
+      .nav {
+        min-height: 68px;
+      }
+
+      .brand-text small {
+        display: none;
+      }
+
+      .nav-actions .btn-light {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 24px;
+      }
+
+      h1 {
+        font-size: clamp(40px, 15vw, 60px);
+      }
+
+      .lead {
+        font-size: 16px;
+      }
+
+      .section {
+        padding: 44px 0;
+      }
+
+      .countdown {
+        gap: 6px;
+      }
+
+      .timebox {
+        min-height: 66px;
+      }
+
+      .floating-wa {
+        left: 50%;
+        right: auto;
+        width: min(350px, calc(100% - 28px));
+        transform: translateX(-50%);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-ribbon">
+    <div class="container">
+      <span><strong>Promo junio:</strong> 50% en primera valoracion a domicilio + terapia de evaluacion de 40 a 60 minutos.</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#inicio" aria-label="Renacer en Casa">
+        <span class="brand-mark">R</span>
+        <span class="brand-text">
+          <span>Renacer en Casa</span>
+          <small>Terapias con amor y seguimiento</small>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegacion principal">
+        <a href="#terapias">Terapias</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#blog">Blog</a>
+        <a href="#valoracion">Valoracion</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="btn btn-light" href="tel:+50764746168">6474-6168</a>
+        <a class="btn btn-primary js-whatsapp" href="https://wa.me/50764746168?text=Hola,%20quiero%20agendar%20una%20valoracion%20de%20recuperacion%20a%20domicilio.">Agendar</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Recuperacion progresiva para adultos y adultos mayores</span>
+          <h1>Cuando una familia vuelve a ver esperanza, todo cambia.</h1>
+          <p class="lead">Terapias frecuentes a domicilio, en clinica u hospitales segun el caso, para adultos mayores y adultos en recuperacion por lesiones, deterioro funcional, derrames, perdida de movilidad, decaimiento, desconexion o necesidad de estimulacion continua.</p>
+          <p class="lead">Trabajamos con amor, paciencia y tecnica: movilidad, drenaje linfatico, crioterapia valorada, estimulacion muscular, manos, brazos, piernas, tacto, olor, audicion, habla funcional, memoria afectiva, respiracion, masaje terapeutico y acompanamiento humano.</p>
+
+          <div class="promo-box">
+            <strong>Primero valoramos. Luego disenamos un plan realista para que la persona vuelva a intentar, responder, moverse, conectar y sentirse acompanada.</strong>
+            <div class="countdown" aria-label="Cuenta regresiva de promocion">
+              <div class="timebox"><b id="days">00</b><span>Dias</span></div>
+              <div class="timebox"><b id="hours">00</b><span>Horas</span></div>
+              <div class="timebox"><b id="minutes">00</b><span>Min</span></div>
+              <div class="timebox"><b id="seconds">00</b><span>Seg</span></div>
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary js-whatsapp" href="https://wa.me/50764746168?text=Hola,%20quiero%20la%20promo%20junio%2050%25%20en%20la%20primera%20valoracion%20a%20domicilio%20para%20un%20adulto%20en%20recuperacion.">Pedir valoracion con 50% OFF</a>
+            <a class="btn btn-secondary" href="#valoracion">Llenar formulario</a>
+            <a class="btn btn-ghost" href="#videos">Ver terapias</a>
+          </div>
+
+          <div class="trust-row">
+            <div class="trust-pill"><span class="trust-dot"></span>San Francisco, Ciudad de Panama</div>
+            <div class="trust-pill"><span class="trust-dot"></span>Atencion a domicilio, clinica u hospital</div>
+            <div class="trust-pill"><span class="trust-dot"></span>Plan continuo para progreso medible</div>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <img src="renacer-assets/hero-terapia.png" alt="Terapeuta acompanando a adulto mayor durante una terapia en casa">
+          <div class="hero-card-body">
+            <div class="quick-routes">
+              <a class="route-card js-whatsapp" href="https://wa.me/50764746168?text=Hola,%20deseo%20agendar%20una%20valoracion%20a%20domicilio%20para%20recuperacion%20de%20adulto%20mayor.">
+                <small>WhatsApp directo</small>
+                <b>6474-6168</b>
+                <p>Para agenda, valoracion y primera visita.</p>
+              </a>
+              <a class="route-card" href="#promo">
+                <small>Promo junio</small>
+                <b>50% OFF</b>
+                <p>Primera valoracion + terapia de evaluacion de 40 a 60 minutos.</p>
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="stat-band" aria-label="Resumen de servicio">
+      <div class="container stat-grid">
+        <div class="stat">
+          <b>40-60</b>
+          <span>minutos de primera terapia de evaluacion incluida en la valoracion promocional.</span>
+        </div>
+        <div class="stat">
+          <b>3</b>
+          <span>entornos posibles: domicilio, clinica u hospital, segun estado y seguridad del paciente.</span>
+        </div>
+        <div class="stat">
+          <b>1</b>
+          <span>plan de seguimiento claro para que la familia observe avances y necesidades reales.</span>
+        </div>
+        <div class="stat">
+          <b>24/7</b>
+          <span>la familia puede escribir por WhatsApp para solicitar cupo y orientar el caso inicial.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="promo">
+      <div class="container split">
+        <div>
+          <span class="eyebrow">Oferta de entrada</span>
+          <h2>Promo junio: 50% menos en la primera cita de valoracion a domicilio.</h2>
+          <p>Incluye una primera terapia de evaluacion de 40 a 60 minutos para observar movilidad, respuesta, energia, comunicacion, sensibilidad, colaboracion, estado emocional, fuerza basica y necesidades de seguimiento.</p>
+          <p>La valoracion no es una promesa vacia. Es el momento donde escuchamos a la familia, revisamos la situacion del paciente y explicamos que tipo de plan puede ayudarle con seguridad, constancia y amor.</p>
+          <div class="note">Importante: este servicio acompana procesos de recuperacion y bienestar. No sustituye indicaciones medicas, fisioterapia, terapia ocupacional, fonoaudiologia ni atencion de urgencias. Si hay signos de derrame, dolor de pecho, dificultad respiratoria o confusion repentina, se debe buscar ayuda medica inmediata.</div>
+          <div class="hero-actions">
+            <a class="btn btn-primary js-whatsapp" href="https://wa.me/50764746168?text=Hola,%20quiero%20la%20promo%20junio%2050%25%20en%20la%20primera%20valoracion%20a%20domicilio.%20Me%20gustaria%20contarles%20el%20caso.">Solicitar promo junio</a>
+            <a class="btn btn-light" href="#formulario">Enviar datos del paciente</a>
+          </div>
+        </div>
+        <div class="image-frame tall">
+          <img src="renacer-assets/paciente-tablet.jpeg" alt="Paciente adulta en casa durante actividades de estimulacion y acompanamiento">
+          <div class="caption">La recuperacion tambien ocurre cuando la persona vuelve a conectar, mirar, responder, recordar y participar en pequenos momentos.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Para quienes es</span>
+          <h2>Atencion para adultos que necesitan una mano constante para volver a intentar.</h2>
+          <p>Muchas familias sienten que su ser querido se esta apagando: se mueve menos, habla menos, responde poco, se entristece, pierde fuerza, tiene miedo, se desconecta o queda limitado despues de un evento de salud. Nuestro trabajo es entrar con cuidado, rutina, tacto, voz, ejercicios y afecto para abrir una nueva oportunidad de progreso.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="service-card">
+            <span class="therapy-tag">Derrame / ACV</span>
+            <h3>Despues de un derrame o evento neurologico</h3>
+            <p>Apoyo en movilidad, estimulacion de manos, brazos, piernas, lenguaje funcional, coordinacion, respuesta sensorial y motivacion diaria, siempre respetando indicaciones medicas.</p>
+          </article>
+          <article class="service-card">
+            <span class="therapy-tag">Deterioro funcional</span>
+            <h3>Adultos mayores con decaimiento</h3>
+            <p>Personas que han dejado de caminar como antes, que permanecen mucho tiempo sentadas, que perdieron fuerza o que necesitan acompanamiento para recuperar participacion.</p>
+          </article>
+          <article class="service-card">
+            <span class="therapy-tag">Recuperacion</span>
+            <h3>Lesiones, hospitalizacion o cirugias</h3>
+            <p>Apoyo gradual para reactivar el cuerpo luego de reposo prolongado, miedo al movimiento o perdida de confianza despues de una lesion o estancia hospitalaria.</p>
+          </article>
+          <article class="service-card">
+            <span class="therapy-tag">Conexion</span>
+            <h3>Pacientes con poca respuesta</h3>
+            <p>Estimulos de voz, tacto, olor, audicion, memoria afectiva, movimiento suave y rutinas repetidas para favorecer presencia, atencion y participacion.</p>
+          </article>
+          <article class="service-card">
+            <span class="therapy-tag">Bienestar</span>
+            <h3>Adultos con o sin discapacidad</h3>
+            <p>Masajes terapeuticos, drenaje linfatico, ejercicios suaves, relajacion, acompanamiento y movimiento adaptado para cuidar cuerpo y animo.</p>
+          </article>
+          <article class="service-card">
+            <span class="therapy-tag">Familia</span>
+            <h3>Familias agotadas o sin ruta clara</h3>
+            <p>La valoracion ayuda a ordenar prioridades: que observar, que evitar, que puede practicarse en casa y cuando se requiere apoyo medico especializado.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-cream" id="terapias">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Terapias y estimulacion</span>
+          <h2>Un plan de bienestar y recuperacion que combina tecnica, paciencia y vinculo humano.</h2>
+          <p>Cada paciente se trabaja distinto. No todos necesitan lo mismo ni avanzan al mismo ritmo. Por eso la valoracion inicial define que areas se priorizan y como se medira el progreso.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="therapy-card">
+            <span class="therapy-tag">Movimiento</span>
+            <h3>Estimulacion muscular y movilidad asistida</h3>
+            <p>Activacion suave de manos, brazos, piernas, pies y tronco. Buscamos que el paciente vuelva a sentir, intentar, empujar, sostener, coordinar y participar.</p>
+          </article>
+          <article class="therapy-card">
+            <span class="therapy-tag">Drenaje</span>
+            <h3>Drenaje linfatico manual</h3>
+            <p>Trabajo con presion ligera orientado a favorecer el movimiento de liquidos en zonas indicadas. Se valora antes de realizarlo y se evita si hay infecciones, coagulos u otras contraindicaciones.</p>
+          </article>
+          <article class="therapy-card">
+            <span class="therapy-tag">Sensorial</span>
+            <h3>Tacto, olor, sonido y memoria afectiva</h3>
+            <p>Estimulos repetidos y cuidadosos que ayudan a despertar respuesta, atencion, reconocimiento, gesto, mirada, sonrisa, palabra o participacion progresiva.</p>
+          </article>
+          <article class="therapy-card">
+            <span class="therapy-tag">Habla funcional</span>
+            <h3>Estimulos de habla y conversacion</h3>
+            <p>Ejercicios de repeticion, nombre, recuerdos, canciones, sonidos, lectura breve y conversacion guiada para apoyar la comunicacion diaria, sin sustituir terapia del lenguaje.</p>
+          </article>
+          <article class="therapy-card">
+            <span class="therapy-tag">Crioterapia</span>
+            <h3>Aplicacion fria valorada</h3>
+            <p>La crioterapia puede usarse como recurso puntual para bienestar y respuesta muscular, siempre evaluando sensibilidad, circulacion, piel, dolor, edad y condicion medica.</p>
+          </article>
+          <article class="therapy-card">
+            <span class="therapy-tag">Masaje</span>
+            <h3>Masajes terapeuticos y relajacion</h3>
+            <p>Masaje suave, descarga muscular, cuidado de piernas, brazos, espalda, cuello y manos para ayudar al confort, descanso, conciencia corporal y disposicion al movimiento.</p>
+          </article>
+          <article class="therapy-card">
+            <span class="therapy-tag">Marcha</span>
+            <h3>Equilibrio, pasos y seguridad</h3>
+            <p>Trabajo progresivo para sentarse, levantarse, sostenerse, transferirse y caminar con apoyo si el caso lo permite y la familia cuenta con un entorno seguro.</p>
+          </article>
+          <article class="therapy-card">
+            <span class="therapy-tag">Rutina</span>
+            <h3>Plan continuo de citas frecuentes</h3>
+            <p>La frecuencia es clave. Una visita aislada orienta, pero un plan continuo permite repetir estimulos, ajustar ejercicios y observar cambios reales en el tiempo.</p>
+          </article>
+          <article class="therapy-card">
+            <span class="therapy-tag">Familia</span>
+            <h3>Orientacion para cuidadores</h3>
+            <p>Indicaciones sencillas para que la familia sepa como hablar, motivar, observar avances, registrar cambios y preparar el espacio antes de cada visita.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split">
+        <div>
+          <span class="eyebrow">Lo que la familia empieza a notar</span>
+          <h2>Pequenos cambios pueden sentirse enormes cuando alguien parecia desconectado.</h2>
+          <p>En algunos casos, los familiares empiezan a notar mas expresiones, mejor animo, intentos de comunicacion, respuestas mas claras, colaboracion con ejercicios o afecto hacia la terapeuta. No prometemos resultados iguales para todos, pero si trabajamos para crear las condiciones que favorecen respuesta, confianza y continuidad.</p>
+          <ul class="care-list">
+            <li><b>1</b> Mas disposicion a participar cuando la visita se vuelve una experiencia esperada.</li>
+            <li><b>2</b> Mayor contacto visual, expresiones, sonidos, palabras o frases funcionales cuando el caso responde.</li>
+            <li><b>3</b> Mejores intentos de mover manos, pies, brazos o piernas con estimulos repetidos.</li>
+            <li><b>4</b> Mas esperanza familiar al ver que la persona todavia puede intentar y conectar.</li>
+          </ul>
+        </div>
+        <div class="image-frame">
+          <img src="renacer-assets/control-signos.jpeg" alt="Control de signos y seguimiento durante visita de terapia">
+          <div class="caption">Durante la visita observamos respuesta, energia y seguridad. En casos necesarios se toman referencias basicas como pulso, oxigenacion o presion, sin reemplazar supervision medica.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="proceso">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Proceso de atencion</span>
+          <h2>Un embudo claro para transformar preocupacion en un plan.</h2>
+          <p>La familia no necesita adivinar. La ruta inicia con WhatsApp, sigue con la valoracion y termina en un plan de visitas que se ajusta segun la respuesta del paciente.</p>
+        </div>
+
+        <div class="grid-4">
+          <article class="step-card">
+            <h3>1. Escribes por WhatsApp</h3>
+            <p>Nos cuentas edad, condicion, movilidad actual, diagnostico conocido, medicamentos relevantes, ubicacion y principal preocupacion familiar.</p>
+          </article>
+          <article class="step-card">
+            <h3>2. Agendamos valoracion</h3>
+            <p>Coordinamos domicilio, clinica u hospital segun el caso. En junio aplica 50% en la primera valoracion a domicilio.</p>
+          </article>
+          <article class="step-card">
+            <h3>3. Evaluacion de 40 a 60 minutos</h3>
+            <p>Observamos respuesta, movilidad, comunicacion, sensibilidad, seguridad, dolor, cansancio, animo y nivel de colaboracion.</p>
+          </article>
+          <article class="step-card">
+            <h3>4. Plan de seguimiento</h3>
+            <p>Proponemos frecuencia, objetivos, cuidados, ejercicios de apoyo familiar y senales que deben consultarse con medico.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-cream">
+      <div class="container split">
+        <div class="plan-panel">
+          <span class="eyebrow">Plan continuo</span>
+          <h3>La recuperacion necesita repeticion, vinculo y paciencia.</h3>
+          <p>Muchos adultos mayores no avanzan solo por falta de oportunidad, miedo, dolor, tristeza, debilidad o porque nadie sabe como estimularlos sin presion. Una terapeuta constante crea confianza: la persona empieza a reconocer la visita, espera la sesion, intenta colaborar y siente que alguien cree en ella.</p>
+          <p>Ese vinculo no es un detalle menor. Cuando el paciente se siente cuidado, escuchado y respetado, el cuerpo responde distinto. La familia tambien descansa al ver una ruta.</p>
+          <a class="btn btn-primary js-whatsapp" href="https://wa.me/50764746168?text=Hola,%20me%20interesa%20un%20plan%20continuo%20de%20terapias%20para%20adulto%20mayor%20o%20paciente%20en%20recuperacion.">Quiero un plan continuo</a>
+        </div>
+        <div class="image-frame">
+          <img src="renacer-assets/oximetro.jpeg" alt="Oximetro utilizado durante seguimiento de paciente adulto">
+          <div class="caption">Contamos con equipos esenciales de seguimiento y apoyo para visitas: oximetro, tensiometro, implementos de movilidad, herramientas de estimulacion y recursos terapeuticos segun el caso.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="equipos">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Equipos esenciales</span>
+          <h2>Herramientas para observar, estimular y acompanar con seguridad.</h2>
+          <p>No todo es equipo. El recurso mas importante es la lectura humana del paciente. Pero contar con herramientas adecuadas permite ordenar mejor cada visita.</p>
+        </div>
+
+        <div class="equipment-grid">
+          <article class="equipment-card">
+            <h3>Control basico de signos</h3>
+            <p>Oximetro y tensiometro para referencias de pulso, oxigenacion y presion cuando el caso lo amerita. Estos datos no sustituyen una evaluacion medica.</p>
+          </article>
+          <article class="equipment-card">
+            <h3>Implementos de movilidad</h3>
+            <p>Apoyos para marcha, balance, pedales, bastones o recursos adaptados segun seguridad del entorno y capacidad del paciente.</p>
+          </article>
+          <article class="equipment-card">
+            <h3>Estimulos sensoriales</h3>
+            <p>Texturas, sonidos, aromas suaves, ejercicios de tacto, objetos familiares, musica y conversacion guiada para provocar respuesta y participacion.</p>
+          </article>
+          <article class="equipment-card">
+            <h3>Recursos de terapia manual</h3>
+            <p>Herramientas para masaje, drenaje, movilizacion suave, relajacion muscular y bienestar corporal, siempre adaptadas al paciente.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="galeria">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Galeria real</span>
+          <h2>Momentos de cuidado, seguimiento y recuperacion progresiva.</h2>
+          <p>Estas imagenes muestran el tipo de trabajo: acompanamiento en casa, controles basicos, movilidad, presencia y ejercicios de recuperacion.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-item portrait">
+            <img src="renacer-assets/paciente-tablet.jpeg" alt="Paciente adulta durante estimulacion con tablet">
+            <figcaption class="caption">Estimulos de atencion, voz, mirada y participacion.</figcaption>
+          </figure>
+          <figure class="gallery-item portrait">
+            <img src="renacer-assets/control-signos.jpeg" alt="Control de presion durante terapia">
+            <figcaption class="caption">Seguimiento basico antes o durante la visita.</figcaption>
+          </figure>
+          <figure class="gallery-item portrait">
+            <img src="renacer-assets/oximetro.jpeg" alt="Oximetro usado en mano de paciente">
+            <figcaption class="caption">Observacion de pulso y oxigenacion cuando aplica.</figcaption>
+          </figure>
+          <figure class="gallery-item portrait">
+            <img src="renacer-assets/video-marcha.jpeg" alt="Ejercicio de postura y marcha asistida">
+            <figcaption class="caption">Trabajo de postura, marcha y seguridad.</figcaption>
+          </figure>
+          <figure class="gallery-item portrait">
+            <img src="renacer-assets/video-pedal.jpeg" alt="Ejercicio de piernas con pedal">
+            <figcaption class="caption">Movilidad de piernas y participacion activa.</figcaption>
+          </figure>
+          <figure class="gallery-item portrait">
+            <img src="renacer-assets/video-baston.jpeg" alt="Practica de apoyo con baston">
+            <figcaption class="caption">Confianza, balance y movimiento guiado.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="videos">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Videos de terapia</span>
+          <h2>La familia necesita ver que si hay trabajo, rutina y acompanamiento.</h2>
+          <p>Los videos ayudan a mostrar como se realizan algunas actividades. Luego se pueden reemplazar por clips editados, con autorizacion familiar y mejor presentacion.</p>
+        </div>
+
+        <div class="video-grid">
+          <article class="video-card">
+            <video src="renacer-assets/terapia-movilidad.mp4" controls playsinline preload="metadata" poster="renacer-assets/video-pedal.jpeg"></video>
+            <div class="video-card-body">
+              <h3>Movilidad de piernas</h3>
+              <p>Ejercicios guiados para activar extremidades inferiores y participacion.</p>
+            </div>
+          </article>
+          <article class="video-card">
+            <video src="renacer-assets/terapia-pasos.mp4" controls playsinline preload="metadata" poster="renacer-assets/video-marcha.jpeg"></video>
+            <div class="video-card-body">
+              <h3>Postura y marcha</h3>
+              <p>Acompanamiento para sostenerse, coordinar y ganar seguridad progresiva.</p>
+            </div>
+          </article>
+          <article class="video-card">
+            <video src="renacer-assets/terapia-estimulacion.mp4" controls playsinline preload="metadata" poster="renacer-assets/video-baston.jpeg"></video>
+            <div class="video-card-body">
+              <h3>Estimulos corporales</h3>
+              <p>Trabajo suave para respuesta, movilidad y confianza durante la sesion.</p>
+            </div>
+          </article>
+          <article class="video-card">
+            <video src="renacer-assets/terapia-equilibrio.mp4" controls playsinline preload="metadata" poster="renacer-assets/seguimiento-casa.jpeg"></video>
+            <div class="video-card-body">
+              <h3>Equilibrio y apoyo</h3>
+              <p>Ejercicios adaptados segun tolerancia, entorno y seguridad del paciente.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-cream">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Testimonios</span>
+          <h2>Lo que muchas familias buscan no es solo terapia. Es volver a sentir a su ser querido presente.</h2>
+          <p>Estos testimonios estan redactados como ejemplos anonimos para mostrar el tipo de experiencia que se desea comunicar. Luego podemos reemplazarlos por testimonios reales autorizados.</p>
+        </div>
+
+        <div class="testimonial-grid">
+          <article class="testimonial-card">
+            <div class="quote-mark">â€œ</div>
+            <p>Mi mama llevaba dias muy apagada. Despues de varias visitas empezo a mirar mas, responder con gestos y esperar a la terapeuta. Para nosotros fue volver a sentir esperanza.</p>
+            <strong>Familia de paciente en recuperacion</strong>
+            <span>San Francisco, Ciudad de Panama</span>
+          </article>
+          <article class="testimonial-card">
+            <div class="quote-mark">â€œ</div>
+            <p>No fue magia de un dia. Fue paciencia, rutina, carino y ejercicios. Empezamos a notar pequenas respuestas que para nuestra familia significaron muchisimo.</p>
+            <strong>Hija cuidadora</strong>
+            <span>Atencion a domicilio</span>
+          </article>
+          <article class="testimonial-card">
+            <div class="quote-mark">â€œ</div>
+            <p>La terapeuta logro que mi familiar colaborara sin sentirse presionado. Se creo un vinculo bonito y eso cambio la actitud de la casa completa.</p>
+            <strong>Familiar responsable</strong>
+            <span>Plan de visitas frecuentes</span>
+          </article>
+          <article class="testimonial-card">
+            <div class="quote-mark">â€œ</div>
+            <p>Nos explicaron que la valoracion era para saber si aplicaba y que no todos avanzan igual. Eso nos dio confianza porque sentimos honestidad y cuidado.</p>
+            <strong>Familia orientada</strong>
+            <span>Primera valoracion</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split">
+        <div class="boss-message">
+          <span class="eyebrow">Mensaje de la terapeuta</span>
+          <h2>â€œYo no llego solo a mover un cuerpo. Llego a despertar ganas de vivir.â€</h2>
+          <p>Cuando entro a una casa, se que la familia ha pasado miedo, cansancio y muchas dudas. Mi trabajo empieza escuchando. Despues observo al paciente: como respira, como mira, como responde, que le duele, que le da miedo, que recuerda, que le alegra.</p>
+          <p>Hay pacientes que al inicio no quieren colaborar o parecen muy lejos. Pero con carino, constancia y estimulos correctos, muchas veces aparece una mirada, una sonrisa, una palabra, un movimiento o una intencion que la familia no esperaba volver a ver.</p>
+          <p>No prometo milagros. Prometo presencia, respeto, tecnica, seguimiento y amor por cada avance pequeno. Para una familia, un pequeno avance puede ser enorme.</p>
+          <div class="signature">La terapeuta principal</div>
+        </div>
+        <div>
+          <div class="warning-card">
+            <h3>Valoracion responsable antes de iniciar</h3>
+            <p>Antes de aplicar crioterapia, drenaje, masaje, movilidad o estimulacion intensa, se revisan antecedentes, sensibilidad, dolor, piel, circulacion, indicaciones medicas, caidas recientes y estado general.</p>
+          </div>
+          <br>
+          <div class="warning-card">
+            <h3>Trabajo con la familia</h3>
+            <p>La familia aprende que observar, como motivar sin forzar, cuando pausar y que senales requieren consulta medica. El objetivo es cuidar, no improvisar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="blog">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Blog dinamico</span>
+          <h2>Guias para familias que quieren recuperar una ruta.</h2>
+          <p>Filtra por tema. Estos contenidos ayudan a educar y tambien a que la familia entienda por que una valoracion temprana puede ordenar el caso.</p>
+        </div>
+
+        <div class="blog-toolbar" id="blogFilters" aria-label="Filtros del blog">
+          <button class="filter-btn is-active" data-filter="todos" type="button">Todos</button>
+          <button class="filter-btn" data-filter="derrame" type="button">Derrame</button>
+          <button class="filter-btn" data-filter="familia" type="button">Familia</button>
+          <button class="filter-btn" data-filter="sensorial" type="button">Sensorial</button>
+          <button class="filter-btn" data-filter="movilidad" type="button">Movilidad</button>
+          <button class="filter-btn" data-filter="bienestar" type="button">Bienestar</button>
+        </div>
+
+        <div class="blog-grid" id="blogGrid"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Preguntas frecuentes</span>
+          <h2>Antes de agendar la valoracion.</h2>
+          <p>La familia debe sentirse informada antes de abrir la puerta de su casa o mover al paciente.</p>
+        </div>
+
+        <div class="faq-grid">
+          <article class="faq-item">
+            <h3>Â¿La terapia cura demencia, derrames o lesiones?</h3>
+            <p>No prometemos curas. Acompanamos procesos de recuperacion, estimulacion, bienestar y movilidad. Los resultados dependen del diagnostico, edad, constancia, indicaciones medicas y respuesta individual.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Â¿Por que hacer valoracion primero?</h3>
+            <p>Porque no todos los pacientes pueden recibir las mismas tecnicas. La valoracion permite revisar riesgos, objetivos, estado actual y tipo de plan recomendado.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Â¿Atienden a domicilio?</h3>
+            <p>Si. Estamos ubicados en San Francisco, Ciudad de Panama, y atendemos a domicilio. Algunas terapias o valoraciones pueden realizarse en clinica u hospitales segun el caso.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Â¿Cada cuanto se recomiendan las terapias?</h3>
+            <p>Depende del caso. Muchos pacientes requieren frecuencia semanal o varias visitas por semana para crear rutina, repetir estimulos y medir avances.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Â¿Pueden trabajar si el paciente no habla?</h3>
+            <p>Si el estado del paciente lo permite, se puede trabajar comunicacion funcional, respuesta a voz, tacto, musica, memoria afectiva, gestos y participacion progresiva.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Â¿Que pasa si el paciente se cansa?</h3>
+            <p>Se adapta la sesion. En adultos mayores, descansar tambien es parte de la seguridad. Observamos tolerancia, dolor, respiracion, animo y respuesta.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-cream" id="valoracion">
+      <div class="container form-wrap">
+        <form class="form-panel" id="formulario">
+          <span class="eyebrow">Agenda por WhatsApp</span>
+          <h2>Solicita la valoracion con 50% OFF.</h2>
+          <p>Completa estos datos y se abrira WhatsApp al 6474-6168 con el mensaje listo. Luego podremos convertir este formulario en envio real por correo.</p>
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="nombre">Nombre de quien consulta</label>
+              <input id="nombre" name="nombre" type="text" placeholder="Ej. Maria Gonzalez" required>
+            </div>
+            <div class="field">
+              <label for="telefono">Telefono de contacto</label>
+              <input id="telefono" name="telefono" type="tel" placeholder="Ej. 6XXX-XXXX" required>
+            </div>
+            <div class="field">
+              <label for="paciente">Edad y relacion con el paciente</label>
+              <input id="paciente" name="paciente" type="text" placeholder="Ej. Mi mama, 78 anos">
+            </div>
+            <div class="field">
+              <label for="situacion">Situacion principal</label>
+              <select id="situacion" name="situacion">
+                <option value="Adulto mayor con deterioro o decaimiento">Adulto mayor con deterioro o decaimiento</option>
+                <option value="Recuperacion despues de derrame o evento neurologico">Recuperacion despues de derrame o evento neurologico</option>
+                <option value="Lesion, cirugia u hospitalizacion reciente">Lesion, cirugia u hospitalizacion reciente</option>
+                <option value="Necesita masajes, drenaje o bienestar">Necesita masajes, drenaje o bienestar</option>
+                <option value="No se exactamente, necesito orientacion">No se exactamente, necesito orientacion</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="ubicacion">Ubicacion de la visita</label>
+              <input id="ubicacion" name="ubicacion" type="text" placeholder="Ej. San Francisco, Condado, hospital...">
+            </div>
+            <div class="field">
+              <label for="mensaje">Cuentanos el caso</label>
+              <textarea id="mensaje" name="mensaje" placeholder="Describe movilidad, habla, animo, diagnostico conocido, si camina, si esta en cama, dolores o preocupaciones de la familia."></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Enviar solicitud por WhatsApp</button>
+          </div>
+          <p class="form-note">Al enviar, se abrira WhatsApp. No se guardan datos en esta pagina.</p>
+        </form>
+
+        <aside class="map-card">
+          <h3>Estamos en San Francisco, Ciudad de Panama.</h3>
+          <p>Atendemos a domicilio, y segun el caso tambien podemos coordinar algunas terapias en clinica u hospitales. El objetivo es que la familia tenga una ruta clara sin mover al paciente innecesariamente.</p>
+          <a class="btn btn-secondary js-whatsapp" href="https://wa.me/50764746168?text=Hola,%20quiero%20coordinar%20una%20valoracion%20para%20terapias%20de%20recuperacion.%20Estamos%20en%20Ciudad%20de%20Panama.">Escribir al 6474-6168</a>
+          <div class="emergency-note">Si la persona presenta sintomas repentinos de derrame, debilidad facial, dificultad para hablar, perdida de fuerza, confusion aguda, dolor fuerte de pecho o dificultad respiratoria, busca atencion de emergencia antes de agendar terapia.</div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Base responsable</span>
+          <h2>La esperanza funciona mejor cuando se combina con criterio.</h2>
+          <p>Esta pagina usa un lenguaje comercial y humano, pero el servicio debe mantenerse responsable: cada caso se valora y se trabaja respetando indicaciones medicas.</p>
+        </div>
+
+        <div class="sources">
+          <p>Referencias usadas para orientar el contenido: CDC explica que la rehabilitacion despues de un accidente cerebrovascular puede incluir terapia fisica, ocupacional y del habla, y que la recuperacion puede tomar semanas, meses o anos. El National Institute on Aging describe la salud cerebral como cognitiva, motora, emocional, tactil y sensorial, y resalta actividad fisica, conexion social y manejo de salud. Mayo Clinic describe el drenaje linfatico manual como tecnica especializada con contraindicaciones importantes.</p>
+          <p>
+            <a href="https://www.cdc.gov/stroke/es/treatment/tratamiento-e-intervencion-para-accidentes-cerebrovasculares.html" target="_blank" rel="noreferrer">CDC: rehabilitacion despues de accidente cerebrovascular</a> &middot;
+            <a href="https://www.nia.nih.gov/health/brain-health/cognitive-health-and-older-adults" target="_blank" rel="noreferrer">NIA: salud cognitiva y adultos mayores</a> &middot;
+            <a href="https://www.mayoclinic.org/diseases-conditions/lymphedema/diagnosis-treatment/drc-20374687" target="_blank" rel="noreferrer">Mayo Clinic: drenaje linfatico y linfedema</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <b>Renacer en Casa</b>
+        <span>Terapias de recuperacion, bienestar y estimulacion para adultos mayores y adultos en recuperacion. Nombre provisional, listo para cambiar cuando definamos marca final.</span>
+      </div>
+      <div>
+        <b>Contacto</b>
+        <span>WhatsApp: <a href="https://wa.me/50764746168">6474-6168</a><br>San Francisco, Ciudad de Panama</span>
+      </div>
+      <div>
+        <b>Atencion</b>
+        <span>Domicilio, clinica u hospitales segun el caso. Promo junio: 50% en primera valoracion a domicilio.</span>
+      </div>
+    </div>
+  </footer>
+
+  <a class="floating-wa js-whatsapp" href="https://wa.me/50764746168?text=Hola,%20quiero%20agendar%20una%20valoracion%20de%20recuperacion%20a%20domicilio.">WhatsApp 6474-6168</a>
+
+  <script>
+    const phone = "50764746168";
+    const promoDeadline = new Date("2026-06-30T23:59:59-05:00").getTime();
+
+    function pad(value) {
+      return String(value).padStart(2, "0");
+    }
+
+    function updateCountdown() {
+      const remaining = Math.max(0, promoDeadline - Date.now());
+      const totalSeconds = Math.floor(remaining / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor((totalSeconds % 86400) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+      document.getElementById("days").textContent = pad(days);
+      document.getElementById("hours").textContent = pad(hours);
+      document.getElementById("minutes").textContent = pad(minutes);
+      document.getElementById("seconds").textContent = pad(seconds);
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    function wa(message) {
+      return "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+    }
+
+    document.querySelectorAll(".js-whatsapp").forEach(function (link) {
+      link.addEventListener("click", function () {
+        if (typeof fbq === "function") {
+          fbq("track", "Contact");
+        }
+      });
+    });
+
+    const blogPosts = [
+      {
+        category: "derrame",
+        title: "Por que los primeros meses despues de un derrame son tan importantes",
+        excerpt: "La recuperacion puede variar mucho, pero una rutina temprana, segura y constante ayuda a ordenar movilidad, comunicacion, animo y acompanamiento familiar.",
+        cta: "Pedir valoracion post-derrame"
+      },
+      {
+        category: "familia",
+        title: "Como saber si tu familiar necesita terapias frecuentes",
+        excerpt: "Si se mueve menos, habla menos, se cae, pierde fuerza, se aisla o parece desconectado, una valoracion puede aclarar prioridades y riesgos.",
+        cta: "Consultar el caso"
+      },
+      {
+        category: "sensorial",
+        title: "Estimular tacto, olor, sonido y memoria afectiva",
+        excerpt: "Los estimulos deben ser suaves, repetidos y significativos. La voz familiar, una cancion o un objeto conocido pueden abrir puertas de respuesta.",
+        cta: "Agendar estimulacion"
+      },
+      {
+        category: "movilidad",
+        title: "Manos, brazos y piernas: volver a intentar movimientos pequenos",
+        excerpt: "La recuperacion no siempre empieza con caminar. A veces inicia con apretar una mano, levantar un pie, sostener un objeto o mirar hacia un lado.",
+        cta: "Valorar movilidad"
+      },
+      {
+        category: "bienestar",
+        title: "Masaje terapeutico en adultos mayores: confort antes que fuerza",
+        excerpt: "El masaje debe adaptarse a piel, dolor, circulacion, medicamentos y fragilidad. La meta es aliviar, no imponer intensidad.",
+        cta: "Consultar masaje"
+      },
+      {
+        category: "familia",
+        title: "El vinculo con la terapeuta tambien ayuda",
+        excerpt: "Cuando la persona reconoce una visita amable y constante, puede sentirse mas dispuesta a colaborar. El carino no reemplaza tecnica, la potencia.",
+        cta: "Iniciar acompanamiento"
+      },
+      {
+        category: "derrame",
+        title: "Habla funcional: cuando una palabra vuelve a emocionar a todos",
+        excerpt: "La comunicacion puede trabajarse con sonidos, nombres, recuerdos, canciones y frases simples, respetando el rol de profesionales del lenguaje.",
+        cta: "Consultar habla funcional"
+      },
+      {
+        category: "movilidad",
+        title: "Sentarse, pararse, transferirse: los pasos invisibles de la independencia",
+        excerpt: "Antes de caminar mejor, muchas personas necesitan recuperar seguridad para pasar de cama a silla o levantarse con apoyo.",
+        cta: "Valorar transferencias"
+      },
+      {
+        category: "sensorial",
+        title: "Cuando parece que no escucha: como entrar con voz y presencia",
+        excerpt: "La terapeuta observa expresion, respiracion, mirada, tension y gestos. A veces la respuesta es pequena, pero indica que hay entrada.",
+        cta: "Pedir orientacion"
+      },
+      {
+        category: "bienestar",
+        title: "Drenaje linfatico: por que debe valorarse antes",
+        excerpt: "El drenaje usa presion ligera y no aplica para todos. Infecciones, coagulos, cancer activo u otras condiciones requieren precaucion.",
+        cta: "Consultar drenaje"
+      },
+      {
+        category: "familia",
+        title: "Como preparar la casa para la visita",
+        excerpt: "Un espacio seguro, buena luz, silla estable, agua, lista de medicamentos y observaciones familiares ayudan a aprovechar la valoracion.",
+        cta: "Preparar valoracion"
+      },
+      {
+        category: "movilidad",
+        title: "El miedo a caerse puede frenar mas que la debilidad",
+        excerpt: "Por eso se trabaja confianza, apoyo, pasos pequenos, pausas, respiracion y seguridad del entorno antes de exigir rendimiento.",
+        cta: "Valorar seguridad"
+      },
+      {
+        category: "derrame",
+        title: "Recuperacion larga: semanas, meses o anos",
+        excerpt: "Algunas personas avanzan rapido y otras conservan limitaciones. La familia necesita expectativas realistas y objetivos pequenos.",
+        cta: "Crear plan realista"
+      },
+      {
+        category: "sensorial",
+        title: "Musica, aromas y recuerdos: estimular sin saturar",
+        excerpt: "La estimulacion no debe ser ruido. Debe tener intencion, pausa y lectura de tolerancia para evitar cansancio o irritabilidad.",
+        cta: "Agendar sesion"
+      },
+      {
+        category: "bienestar",
+        title: "Crioterapia en adultos mayores: frio con criterio",
+        excerpt: "El frio puede ser util en algunos casos, pero requiere revisar sensibilidad, circulacion, piel y condicion general antes de aplicarlo.",
+        cta: "Valorar crioterapia"
+      }
+    ];
+
+    const blogGrid = document.getElementById("blogGrid");
+    const filterButtons = document.querySelectorAll(".filter-btn");
+
+    function renderPosts(filter) {
+      const visiblePosts = filter === "todos"
+        ? blogPosts
+        : blogPosts.filter(function (post) { return post.category === filter; });
+
+      blogGrid.innerHTML = visiblePosts.map(function (post) {
+        return [
+          '<article class="blog-card">',
+          '<small>' + post.category + '</small>',
+          '<h3>' + post.title + '</h3>',
+          '<p>' + post.excerpt + '</p>',
+          '<a class="btn btn-light js-blog-wa" href="' + wa("Hola, lei sobre " + post.title + " y quiero una valoracion para mi familiar.") + '">' + post.cta + '</a>',
+          '</article>'
+        ].join("");
+      }).join("");
+    }
+
+    filterButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        filterButtons.forEach(function (item) {
+          item.classList.remove("is-active");
+        });
+        button.classList.add("is-active");
+        renderPosts(button.getAttribute("data-filter"));
+      });
+    });
+
+    renderPosts("todos");
+
+    document.getElementById("formulario").addEventListener("submit", function (event) {
+      event.preventDefault();
+      const data = new FormData(event.currentTarget);
+      const message = [
+        "Hola, quiero solicitar la promo junio 50% OFF en la primera valoracion a domicilio.",
+        "",
+        "Nombre: " + (data.get("nombre") || ""),
+        "Telefono: " + (data.get("telefono") || ""),
+        "Paciente: " + (data.get("paciente") || ""),
+        "Situacion: " + (data.get("situacion") || ""),
+        "Ubicacion: " + (data.get("ubicacion") || ""),
+        "Caso: " + (data.get("mensaje") || "")
+      ].join("\n");
+      window.open(wa(message), "_blank");
+    });
+  </script>
+</body>
+</html>
