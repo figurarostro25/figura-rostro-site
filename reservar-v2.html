@@ -18,6 +18,8 @@
             --soft: #f3fbfa;
             --cream: #fffaf5;
             --gold: #c9a962;
+            --dark-bg: #071f25;
+            --dark-card: #0d3037;
         }
 
         * { box-sizing: border-box; }
@@ -28,9 +30,9 @@
             font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             color: var(--ink);
             background:
-                radial-gradient(circle at 10% 10%, rgba(34, 184, 177, .20), transparent 30%),
-                radial-gradient(circle at 88% 18%, rgba(201, 169, 98, .16), transparent 26%),
-                linear-gradient(135deg, #f5fffd 0%, #fffaf5 52%, #eef9f8 100%);
+                radial-gradient(circle at 10% 8%, rgba(34, 184, 177, .28), transparent 30%),
+                radial-gradient(circle at 88% 18%, rgba(201, 169, 98, .18), transparent 28%),
+                linear-gradient(135deg, #061b21 0%, #0b2d34 48%, #071f25 100%);
         }
 
         .page-shell {
@@ -187,8 +189,8 @@
             overflow: hidden;
             border: 1px solid rgba(22, 63, 70, .10);
             border-radius: 28px;
-            background: rgba(255, 255, 255, .92);
-            box-shadow: 0 24px 60px rgba(22, 63, 70, .14);
+            background: rgba(255, 255, 255, .97);
+            box-shadow: 0 28px 70px rgba(0, 0, 0, .34);
             backdrop-filter: blur(16px);
         }
 
@@ -196,7 +198,7 @@
             padding: 30px 32px 24px;
             border-bottom: 1px solid var(--line);
             background:
-                linear-gradient(135deg, rgba(34, 184, 177, .12), rgba(255, 250, 245, .9));
+                linear-gradient(135deg, rgba(7, 54, 60, .98), rgba(19, 127, 130, .92));
         }
 
         .step-badge {
@@ -216,7 +218,7 @@
 
         .form-header h2 {
             margin: 16px 0 8px;
-            color: var(--deep);
+            color: white;
             font-size: clamp(1.75rem, 3vw, 2.35rem);
             line-height: 1.08;
             font-weight: 900;
@@ -225,7 +227,7 @@
         .form-header p {
             max-width: 580px;
             margin: 0;
-            color: var(--muted);
+            color: rgba(255, 255, 255, .82);
             font-size: 14px;
             line-height: 1.65;
         }
@@ -269,6 +271,50 @@
         .section-box.gold {
             background: #fffaf0;
             border-color: #efe2c2;
+        }
+
+        .section-box.dark {
+            color: white;
+            background: linear-gradient(135deg, var(--deep), var(--teal-dark));
+            border-color: rgba(255, 255, 255, .18);
+        }
+
+        .section-box.dark .label-styled,
+        .section-box.dark p,
+        .section-box.dark strong {
+            color: white !important;
+        }
+
+        .benefit-list {
+            display: grid;
+            gap: 9px;
+            margin-top: 12px;
+            color: rgba(255, 255, 255, .86);
+            font-size: 12px;
+            line-height: 1.45;
+        }
+
+        .benefit-list span {
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+        }
+
+        .benefit-list i {
+            margin-top: 2px;
+            color: #ffe7aa;
+        }
+
+        .hint-box {
+            margin-top: 10px;
+            padding: 12px;
+            border-radius: 14px;
+            color: #4f3d14;
+            background: #fff4d8;
+            border: 1px solid #ead49a;
+            font-size: 12px;
+            line-height: 1.5;
+            font-weight: 800;
         }
 
         .medical-box {
@@ -409,14 +455,14 @@
                         </div>
 
                         <h1>Agenda tu valoraci&oacute;n con confianza.</h1>
-                        <p>Completa tus datos y nuestro equipo confirmar&aacute; tu espacio por WhatsApp. La valoraci&oacute;n nos ayuda a recomendarte el tratamiento ideal seg&uacute;n tu objetivo.</p>
+                        <p>Completa tus datos y nuestro equipo confirmar&aacute; tu espacio por WhatsApp. Tu valoraci&oacute;n dura aproximadamente 40 minutos con la cosmiatra que revisar&aacute; tu caso y te orientar&aacute; antes de separar o iniciar tratamiento.</p>
 
                         <div class="trust-list">
                             <div class="trust-item">
                                 <i class="fas fa-calendar-check"></i>
                                 <div>
                                     <strong>Reserva clara</strong>
-                                    <span>Elige fecha, horario y servicio de inter&eacute;s desde el formulario.</span>
+                                    <span>Elige fecha, horario, zona de inter&eacute;s y si deseas realizarte el tratamiento el mismo d&iacute;a.</span>
                                 </div>
                             </div>
                             <div class="trust-item">
@@ -430,7 +476,7 @@
                                 <i class="fas fa-spa"></i>
                                 <div>
                                     <strong>Atenci&oacute;n personalizada</strong>
-                                    <span>Faciales, corporales, Plasma Fibroblast, masajes y bienestar.</span>
+                                    <span>Valoraci&oacute;n con cosmiatra, plan recomendado y facilidades seg&uacute;n tu presupuesto.</span>
                                 </div>
                             </div>
                         </div>
@@ -446,8 +492,8 @@
             <div class="main-card">
                 <div class="form-header">
                     <span class="step-badge"><i class="fas fa-lock"></i> Solicitud segura</span>
-                    <h2>Completa tu solicitud de cita</h2>
-                    <p>Te recomendamos llenar todos los campos posibles para confirmar m&aacute;s r&aacute;pido y orientarte mejor antes de tu visita.</p>
+                    <h2>Reserva tu valoraci&oacute;n o separa tu cupo</h2>
+                    <p>Llena tus datos para confirmar disponibilidad. Si tu intenci&oacute;n es realizarte el tratamiento el mismo d&iacute;a, ind&iacute;calo para considerar un espacio adicional aproximado de 2.5 horas.</p>
                 </div>
 
                 <form id="formFinal" class="px-8 py-8 space-y-5">
@@ -492,19 +538,38 @@
                         <input type="email" id="email" class="input-styled" placeholder="Para confirmaci&oacute;n de cita">
                     </div>
 
-                    <div class="section-box">
+                    <div class="section-box dark">
                         <label class="label-styled" style="color: var(--teal-dark);">Servicio de inter&eacute;s</label>
                         <select id="servicio" class="input-styled font-bold" required onchange="checkServicio()">
                             <option value="">Seleccione una opci&oacute;n</option>
-                            <option value="Valoracion 9.95">Reservar Valoraci&oacute;n - $9.95 (45 min)</option>
-                            <option value="Valoracion Yappi">Reserva Directorio Yappi - $5.95</option>
-                            <option value="Tratamiento Abonado">Cita para realizar tratamiento (Abonado)</option>
-                            <option value="Procedimiento 10%">Cita para procedimiento (Abonar 10%)</option>
+                            <option value="Valoracion Directorio Yappi 5.95 Bono 20">Valoraci&oacute;n Directorio/Yappy - $5.95 + bono de $20</option>
+                            <option value="Valoracion Directa 9.95">Valoraci&oacute;n pago directo - $9.95 el d&iacute;a de la cita</option>
+                            <option value="Valoracion e intencion mismo dia">Valoraci&oacute;n + posible tratamiento el mismo d&iacute;a</option>
+                            <option value="Tratamiento Abonado">Cita para realizar tratamiento (ya abonado)</option>
+                            <option value="Procedimiento Abono Minimo">Separar tratamiento con abono m&iacute;nimo si el presupuesto es accesible</option>
                             <option value="Otros Tratamientos">Otros tratamientos faciales y corporales</option>
                         </select>
 
+                        <div class="benefit-list">
+                            <span><i class="fas fa-gift"></i> La reserva Directorio/Yappy de $5.95 incluye un bono de $20 para usar en servicios de la est&eacute;tica.</span>
+                            <span><i class="fas fa-coins"></i> La valoraci&oacute;n de $9.95 se puede pagar el d&iacute;a de la cita en efectivo o tarjeta.</span>
+                            <span><i class="fas fa-check-circle"></i> El monto pagado por valoraci&oacute;n es 100% utilizable en cualquier tratamiento si decides realizarlo.</span>
+                        </div>
+
                         <div id="msgYappi" class="hidden mt-3 p-3 bg-amber-50 border-l-4 border-amber-400 text-xs text-amber-800 rounded-r-md animate-fade-in">
-                            <i class="fas fa-info-circle mr-1"></i> <strong>Importante:</strong> Verificaremos el pago en el Directorio o podr&aacute;s realizarlo al confirmar tu asistencia.
+                            <i class="fas fa-info-circle mr-1"></i> <strong>Importante:</strong> La opci&oacute;n Directorio/Yappy te permite asegurar tu reserva por $5.95 y recibir un bono de $20 para usar en la est&eacute;tica.
+                        </div>
+                    </div>
+
+                    <div class="section-box">
+                        <label class="label-styled" style="color: var(--teal-dark);">Intenci&oacute;n para el d&iacute;a de la cita</label>
+                        <select id="intencion_dia" class="input-styled font-bold" onchange="checkIntencionDia()">
+                            <option value="Solo valoracion 40 minutos">Solo deseo valoraci&oacute;n inicial (aprox. 40 min)</option>
+                            <option value="Interesada en realizar tratamiento mismo dia">Estoy interesada en realizar el tratamiento el mismo d&iacute;a si soy apta</option>
+                            <option value="Quiero programarlo durante el mes">Quiero valorar y programar durante el mes</option>
+                        </select>
+                        <div id="msgMismoDia" class="hidden hint-box animate-fade-in">
+                            Si eliges realizarlo el mismo d&iacute;a, reservaremos tu valoraci&oacute;n y revisaremos disponibilidad para un espacio adicional aproximado de 2.5 horas. El procedimiento solo se realiza si tu piel es apta y aceptas las indicaciones.
                         </div>
                     </div>
 
@@ -521,8 +586,8 @@
                     </div>
 
                     <div>
-                        <label class="label-styled">Comentarios / zona / detalle del canje</label>
-                        <textarea id="detalles" rows="3" class="input-styled resize-none" placeholder="Ejemplo: p&aacute;rpados, abdomen, facial, masaje, canje o duda espec&iacute;fica..."></textarea>
+                        <label class="label-styled">Comentarios / zona / presupuesto</label>
+                        <textarea id="detalles" rows="3" class="input-styled resize-none" placeholder="Ejemplo: p&aacute;rpados, abdomen, estr&iacute;as, flacidez, deseo aplicar al 40% OFF, presupuesto aproximado o duda espec&iacute;fica..."></textarea>
                     </div>
 
                     <div>
@@ -562,7 +627,7 @@
 
                     <div class="secure-note">
                         <i class="fas fa-circle-info"></i>
-                        <span>Al enviar, recibiremos tu solicitud y confirmaremos disponibilidad por WhatsApp. El formulario no reemplaza la valoraci&oacute;n personalizada.</span>
+                        <span>Al enviar, recibiremos tu solicitud y confirmaremos disponibilidad por WhatsApp. Tu cita de valoraci&oacute;n dura aprox. 40 minutos; si deseas realizarte el tratamiento el mismo d&iacute;a, podr&iacute;a requerirse un espacio adicional de aprox. 2.5 horas.</span>
                     </div>
 
                     <button type="submit" id="btnEnviar" class="submit-btn">
@@ -575,7 +640,7 @@
                         <i class="fas fa-check text-4xl text-emerald-500"></i>
                     </div>
                     <h2 class="text-2xl font-black text-gray-800">Solicitud enviada</h2>
-                    <p class="text-sm text-gray-500 mt-4 leading-relaxed max-w-xs mx-auto">Hemos recibido tu informaci&oacute;n. Nuestro equipo confirmar&aacute; tu espacio en breve v&iacute;a WhatsApp.</p>
+                    <p class="text-sm text-gray-500 mt-4 leading-relaxed max-w-xs mx-auto">Hemos recibido tu informaci&oacute;n. Nuestro equipo confirmar&aacute; tu espacio en breve v&iacute;a WhatsApp y te orientar&aacute; sobre el pago, bono y tiempo estimado de tu cita.</p>
                     <button onclick="location.reload()" class="mt-8 text-sm font-bold underline" style="color: var(--teal-dark);">Volver al inicio</button>
                 </div>
             </div>
@@ -591,6 +656,15 @@
             else msgYappi.classList.add('hidden');
         }
         window.checkServicio = checkServicio;
+
+        function checkIntencionDia() {
+            const val = document.getElementById('intencion_dia').value;
+            const msgMismoDia = document.getElementById('msgMismoDia');
+
+            if(val.includes('mismo dia')) msgMismoDia.classList.remove('hidden');
+            else msgMismoDia.classList.add('hidden');
+        }
+        window.checkIntencionDia = checkIntencionDia;
     </script>
 
     <script type="module">
@@ -684,9 +758,11 @@
                 provincia: document.getElementById('provincia').value,
                 motivacion: document.getElementById('motivacion').value,
                 zona: detallesTexto,
-                intencion: "Cita Agendada",
+                intencion: document.getElementById('intencion_dia').value || "Cita Agendada",
                 servicio: document.getElementById('servicio').value,
                 metodo_pago: document.getElementById('metodo_pago').value,
+                tiempo_valoracion_estimado: "40 minutos aproximadamente",
+                tiempo_extra_si_tratamiento_mismo_dia: document.getElementById('intencion_dia').value.includes('mismo dia') ? "2.5 horas aproximadamente" : "",
                 antecedentes: checks,
                 fecha_cita: document.getElementById('fecha').value,
                 hora_cita: document.getElementById('hora').value,
