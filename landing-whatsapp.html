@@ -5,65 +5,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Valoración Estética de Cortesía | Figura Rostro KG</title>
-  <meta name="description" content="Solicita tu valoración estética de cortesía durante junio en Figura Rostro KG. Tratamientos faciales, corporales, Plasma Fibroblast y programa corporal premium en Panamá." />
+  <meta name="description" content="Solicita tu valoración estética de cortesía en Figura Rostro KG. Tratamientos faciales, corporales, Plasma Fibroblast y Programa Corporal Premium en Panamá." />
   <meta name="theme-color" content="#08796c" />
 
   <style>
     :root{
       --verde:#08796c;
-      --verde-oscuro:#034d45;
-      --verde-claro:#edf8f6;
+      --verde2:#0aa99a;
+      --verde-oscuro:#063f39;
+      --verde-suave:#edf9f6;
       --dorado:#caa55a;
-      --crema:#fff8ee;
+      --crema:#fff7ed;
       --texto:#143733;
-      --gris:#5d706d;
-      --linea:#d8e9e5;
+      --gris:#607873;
+      --linea:#d8ebe6;
       --blanco:#ffffff;
-      --sombra:0 18px 45px rgba(8,121,108,.13);
+      --sombra:0 22px 55px rgba(8,121,108,.16);
       --radio:26px;
     }
 
-    *{
-      box-sizing:border-box;
-    }
+    *{box-sizing:border-box}
 
-    html{
-      scroll-behavior:smooth;
-    }
+    html{scroll-behavior:smooth}
 
     body{
       margin:0;
       font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(8,121,108,.10), transparent 32%),
-        linear-gradient(180deg,var(--crema),#ffffff 38%,#f2fbf9);
       color:var(--texto);
       line-height:1.5;
+      background:
+        radial-gradient(circle at top left, rgba(8,121,108,.16), transparent 34%),
+        radial-gradient(circle at 90% 5%, rgba(202,165,90,.16), transparent 26%),
+        linear-gradient(180deg,var(--crema),#fff 40%,#f1fbf8);
     }
 
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
-
-    img{
-      max-width:100%;
-      display:block;
-    }
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
 
     .topbar{
       position:sticky;
       top:0;
-      z-index:20;
-      background:rgba(255,255,255,.88);
-      backdrop-filter:blur(14px);
+      z-index:30;
+      background:rgba(255,255,255,.9);
       border-bottom:1px solid rgba(8,121,108,.12);
+      backdrop-filter:blur(14px);
     }
 
     .nav{
-      max-width:1080px;
+      width:min(1120px,calc(100% - 32px));
       margin:auto;
-      padding:12px 18px;
+      padding:12px 0;
       display:flex;
       align-items:center;
       justify-content:space-between;
@@ -74,8 +65,8 @@
       display:flex;
       align-items:center;
       gap:10px;
-      font-weight:900;
       color:var(--verde-oscuro);
+      font-weight:950;
       line-height:1.05;
     }
 
@@ -84,12 +75,12 @@
       height:48px;
       object-fit:contain;
       border-radius:12px;
-      background:#fff;
+      background:white;
     }
 
     .brand small{
-      font-weight:600;
       color:var(--gris);
+      font-weight:700;
     }
 
     .btn{
@@ -97,21 +88,22 @@
       align-items:center;
       justify-content:center;
       gap:8px;
+      min-height:48px;
       border:0;
-      cursor:pointer;
       border-radius:999px;
-      padding:14px 20px;
-      background:var(--verde);
-      color:#fff;
-      font-weight:900;
-      box-shadow:0 14px 26px rgba(8,121,108,.20);
+      padding:13px 20px;
+      cursor:pointer;
+      background:linear-gradient(135deg,var(--verde2),var(--verde));
+      color:white;
+      font-weight:950;
+      box-shadow:0 14px 28px rgba(8,121,108,.22);
       transition:.2s ease;
       text-align:center;
     }
 
     .btn:hover{
       transform:translateY(-1px);
-      background:var(--verde-oscuro);
+      filter:saturate(1.05);
     }
 
     .btn.light{
@@ -122,21 +114,20 @@
     }
 
     .btn.gold{
-      background:var(--dorado);
-      color:#fff;
-      box-shadow:0 14px 26px rgba(202,165,90,.22);
+      background:linear-gradient(135deg,#d7b86b,var(--dorado));
+      color:white;
     }
 
     .page{
-      max-width:1080px;
+      width:min(1120px,calc(100% - 32px));
       margin:auto;
-      padding:34px 18px 82px;
+      padding:34px 0 86px;
     }
 
     .hero{
       display:grid;
-      grid-template-columns:1fr .92fr;
-      gap:32px;
+      grid-template-columns:1fr .95fr;
+      gap:28px;
       align-items:center;
     }
 
@@ -144,74 +135,75 @@
       display:inline-flex;
       align-items:center;
       gap:8px;
-      background:var(--verde-claro);
-      border:1px solid #cfe9e4;
-      color:var(--verde-oscuro);
-      border-radius:999px;
       padding:8px 13px;
-      font-weight:900;
+      border-radius:999px;
+      background:var(--verde-suave);
+      color:var(--verde-oscuro);
+      border:1px solid #cfebe5;
+      font-weight:950;
       font-size:13px;
       margin-bottom:16px;
     }
 
     h1{
       margin:0 0 16px;
-      font-size:clamp(37px,5vw,64px);
-      line-height:.97;
+      max-width:620px;
+      font-size:clamp(38px,5vw,66px);
+      line-height:.96;
       letter-spacing:-2px;
       color:#073d37;
     }
 
     .lead{
-      margin:0 0 22px;
+      margin:0;
+      max-width:610px;
       font-size:clamp(18px,2vw,22px);
-      color:#375b56;
-      max-width:620px;
+      color:#365b56;
     }
 
     .hero-actions{
       display:flex;
       flex-wrap:wrap;
       gap:12px;
-      margin:24px 0 24px;
+      margin-top:24px;
     }
 
     .mini-grid{
       display:grid;
       grid-template-columns:repeat(3,1fr);
-      gap:11px;
-      margin-top:18px;
+      gap:10px;
+      margin-top:22px;
     }
 
     .mini{
-      background:#fff;
+      padding:14px;
       border:1px solid var(--linea);
       border-radius:18px;
-      padding:14px;
+      background:#fff;
       box-shadow:0 10px 24px rgba(8,121,108,.06);
-      font-weight:900;
-      color:#244944;
+      color:#224b45;
+      font-weight:950;
     }
 
     .mini span{
       display:block;
-      font-weight:600;
-      font-size:13px;
+      margin-top:2px;
       color:var(--gris);
-      margin-top:3px;
+      font-size:13px;
+      font-weight:650;
     }
 
-    .hero-img{
+    .hero-card{
       position:relative;
+      min-height:500px;
       border-radius:34px;
       overflow:hidden;
-      border:1px solid rgba(8,121,108,.16);
-      box-shadow:var(--sombra);
       background:#fff;
-      min-height:500px;
+      box-shadow:var(--sombra);
+      border:1px solid rgba(8,121,108,.15);
     }
 
-    .hero-img img{
+    .hero-card img{
       width:100%;
       height:500px;
       object-fit:cover;
@@ -222,11 +214,11 @@
       left:18px;
       right:18px;
       bottom:18px;
-      background:rgba(255,255,255,.92);
-      backdrop-filter:blur(12px);
-      border-radius:22px;
       padding:16px;
-      border:1px solid rgba(255,255,255,.7);
+      border-radius:22px;
+      background:rgba(255,255,255,.92);
+      border:1px solid rgba(255,255,255,.8);
+      backdrop-filter:blur(12px);
     }
 
     .hero-note strong{
@@ -237,11 +229,11 @@
     }
 
     .hero-note small{
-      color:#57716d;
+      color:#58726d;
     }
 
-    .main-section{
-      margin-top:34px;
+    .main{
+      margin-top:32px;
       display:grid;
       grid-template-columns:.82fr 1.18fr;
       gap:24px;
@@ -257,21 +249,19 @@
     }
 
     h2{
-      font-size:clamp(28px,3vw,42px);
-      line-height:1.04;
       margin:0 0 10px;
-      letter-spacing:-1px;
       color:#073d37;
+      font-size:clamp(28px,3vw,42px);
+      line-height:1.05;
+      letter-spacing:-1px;
     }
 
     h3{
-      margin:0 0 8px;
+      margin:0 0 6px;
       color:#073d37;
     }
 
-    p{
-      margin-top:0;
-    }
+    p{margin-top:0}
 
     .muted{
       color:var(--gris);
@@ -279,32 +269,32 @@
 
     .service-list{
       display:grid;
-      gap:13px;
+      gap:12px;
       margin-top:18px;
     }
 
     .service-item{
       display:grid;
-      grid-template-columns:80px 1fr;
-      gap:14px;
+      grid-template-columns:78px 1fr;
+      gap:13px;
       align-items:center;
-      background:#f8fffd;
+      padding:10px;
       border:1px solid var(--linea);
       border-radius:20px;
-      padding:10px;
+      background:#f8fffd;
     }
 
     .service-item img{
-      width:80px;
-      height:80px;
-      border-radius:16px;
+      width:78px;
+      height:78px;
       object-fit:cover;
-      background:#eaf5f2;
+      border-radius:16px;
+      background:#eaf6f3;
     }
 
     .service-item strong{
       display:block;
-      color:#143733;
+      color:#183f39;
       margin-bottom:3px;
     }
 
@@ -312,43 +302,42 @@
       color:var(--gris);
     }
 
-    .premium-box{
+    .premium{
+      position:relative;
+      overflow:hidden;
       margin-top:18px;
       padding:18px;
       border-radius:22px;
-      background:linear-gradient(135deg,#073d37,#08796c);
+      background:linear-gradient(135deg,#073d37,var(--verde));
       color:#fff;
-      position:relative;
-      overflow:hidden;
     }
 
-    .premium-box:before{
+    .premium:before{
       content:"";
       position:absolute;
-      width:160px;
-      height:160px;
+      width:170px;
+      height:170px;
       border-radius:50%;
-      background:rgba(255,255,255,.11);
-      right:-50px;
-      top:-50px;
+      right:-55px;
+      top:-60px;
+      background:rgba(255,255,255,.12);
     }
 
-    .premium-box h3{
-      color:#fff;
-      margin-bottom:8px;
+    .premium h3,
+    .premium p{
       position:relative;
+      color:#fff;
     }
 
-    .premium-box p{
+    .premium p{
       margin:0;
       color:rgba(255,255,255,.88);
-      position:relative;
     }
 
     .form-head{
       display:flex;
-      justify-content:space-between;
       align-items:flex-start;
+      justify-content:space-between;
       gap:14px;
       margin-bottom:18px;
     }
@@ -357,12 +346,12 @@
       display:inline-flex;
       white-space:nowrap;
       border-radius:999px;
+      padding:8px 12px;
       background:#fff4d8;
-      border:1px solid #efd69a;
+      border:1px solid #efd79d;
       color:#72530d;
       font-size:13px;
-      font-weight:900;
-      padding:8px 12px;
+      font-weight:950;
     }
 
     form{
@@ -372,18 +361,19 @@
 
     label{
       display:grid;
-      gap:6px;
-      font-weight:850;
-      color:#244944;
+      gap:7px;
       font-size:14px;
+      font-weight:900;
+      color:#234c46;
     }
 
     input,
     select,
     textarea{
       width:100%;
+      min-height:48px;
       border:1px solid #cfe3df;
-      background:#fff;
+      background:#fbfefd;
       color:var(--texto);
       border-radius:15px;
       padding:13px 14px;
@@ -395,12 +385,13 @@
     input:focus,
     select:focus,
     textarea:focus{
-      border-color:var(--verde);
-      box-shadow:0 0 0 4px rgba(8,121,108,.10);
+      border-color:var(--verde2);
+      background:white;
+      box-shadow:0 0 0 4px rgba(10,169,154,.11);
     }
 
     textarea{
-      min-height:92px;
+      min-height:90px;
       resize:vertical;
     }
 
@@ -410,29 +401,44 @@
       gap:12px;
     }
 
-    .check{
-      display:flex;
-      align-items:flex-start;
-      gap:10px;
-      font-weight:500;
-      font-size:13px;
-      color:#5e7470;
-      line-height:1.35;
-    }
-
-    .check input{
-      width:auto;
-      margin-top:3px;
+    .date-box{
+      padding:16px;
+      border-radius:22px;
+      background:#fffaf0;
+      border:1px solid #efe0bd;
     }
 
     .note{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:13px;
+      border-radius:17px;
       background:#f7fdfb;
       border:1px solid var(--linea);
-      border-radius:17px;
-      color:#637774;
+      color:#5e7671;
       font-size:13px;
-      padding:12px;
       margin:0;
+    }
+
+    .submit{
+      width:100%;
+      min-height:58px;
+      border:0;
+      border-radius:18px;
+      cursor:pointer;
+      background:linear-gradient(135deg,var(--verde2),var(--verde));
+      color:white;
+      font-size:14px;
+      font-weight:950;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      box-shadow:0 16px 34px rgba(8,121,108,.24);
+    }
+
+    .submit:disabled{
+      opacity:.72;
+      cursor:not-allowed;
     }
 
     .steps{
@@ -453,20 +459,81 @@
     .number{
       width:32px;
       height:32px;
+      border-radius:50%;
       display:inline-flex;
       align-items:center;
       justify-content:center;
       background:var(--verde);
       color:#fff;
-      border-radius:50%;
-      font-weight:900;
+      font-weight:950;
       margin-bottom:12px;
     }
 
-    .footer{
-      margin-top:40px;
+    .success{
+      position:fixed;
+      inset:0;
+      z-index:80;
+      display:none;
+      place-items:center;
+      background:rgba(6,31,37,.72);
+      backdrop-filter:blur(12px);
+      padding:20px;
+    }
+
+    .success.show{
+      display:grid;
+    }
+
+    .success-card{
+      width:min(680px,100%);
+      background:white;
+      border-radius:30px;
+      padding:34px;
       text-align:center;
-      color:#627b77;
+      box-shadow:0 28px 80px rgba(0,0,0,.28);
+      animation:pop .22s ease-out both;
+    }
+
+    @keyframes pop{
+      from{opacity:0;transform:scale(.96) translateY(8px)}
+      to{opacity:1;transform:scale(1) translateY(0)}
+    }
+
+    .success-card img{
+      width:108px;
+      margin:0 auto 16px;
+    }
+
+    .check{
+      width:72px;
+      height:72px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:50%;
+      background:#eaf8f5;
+      color:var(--verde);
+      font-size:40px;
+      font-weight:950;
+      margin-bottom:14px;
+    }
+
+    .success-card h2{
+      margin-bottom:12px;
+    }
+
+    .success-actions{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:22px;
+    }
+
+    .footer{
+      margin-top:38px;
+      text-align:center;
+      color:#647d78;
       font-size:13px;
     }
 
@@ -474,25 +541,45 @@
       position:fixed;
       right:18px;
       bottom:18px;
-      z-index:25;
-      background:#25D366;
-      color:#fff;
+      z-index:50;
       border-radius:999px;
       padding:14px 18px;
-      font-weight:900;
-      box-shadow:0 16px 34px rgba(37,211,102,.30);
+      background:#25D366;
+      color:white;
+      font-weight:950;
+      box-shadow:0 16px 34px rgba(37,211,102,.32);
+    }
+
+    .error-box{
+      display:none;
+      padding:13px;
+      border-radius:16px;
+      background:#fff1f1;
+      border:1px solid #f2c6c6;
+      color:#8a1f1f;
+      font-size:13px;
+      font-weight:750;
+    }
+
+    .error-box.show{
+      display:block;
     }
 
     @media(max-width:900px){
+      .page,
+      .nav{
+        width:min(100% - 24px,1120px);
+      }
+
       .hero,
-      .main-section{
+      .main{
         grid-template-columns:1fr;
       }
 
-      .hero-img,
-      .hero-img img{
+      .hero-card,
+      .hero-card img{
         min-height:auto;
-        height:390px;
+        height:360px;
       }
 
       .mini-grid,
@@ -516,12 +603,21 @@
         margin-top:8px;
       }
 
+      h1{
+        letter-spacing:-1px;
+      }
+
       .page{
         padding-bottom:96px;
       }
 
-      h1{
-        letter-spacing:-1px;
+      .service-item{
+        grid-template-columns:72px 1fr;
+      }
+
+      .service-item img{
+        width:72px;
+        height:72px;
       }
     }
   </style>
@@ -546,10 +642,10 @@
       <div>
         <div class="pill">✨ Junio especial para seguidores de Instagram</div>
 
-        <h1>Valoración estética de cortesía</h1>
+        <h1>Agenda tu valoración estética de cortesía</h1>
 
         <p class="lead">
-          Cuéntanos qué deseas mejorar en tu rostro, piel o figura y te orientamos con una recomendación personalizada según tu caso.
+          Completa este formulario rápido y nuestro equipo te contactará por WhatsApp para confirmar disponibilidad.
         </p>
 
         <div class="hero-actions">
@@ -561,30 +657,30 @@
 
         <div class="mini-grid">
           <div class="mini">📍 Parque Lefevre<span>PH Royal Park</span></div>
-          <div class="mini">💬 Confirmación<span>por WhatsApp</span></div>
+          <div class="mini">💬 Respuesta rápida<span>por WhatsApp</span></div>
           <div class="mini">🌿 Facial y corporal<span>según valoración</span></div>
         </div>
       </div>
 
-      <div class="hero-img">
+      <div class="hero-card">
         <img src="valoracion-consulta.png" alt="Valoración estética en cabina" />
         <div class="hero-note">
           <strong>Primero evaluamos, luego recomendamos.</strong>
-          <small>Así podemos orientarte mejor y evitar tratamientos que no sean ideales para tu caso.</small>
+          <small>Así podemos orientarte mejor según tu piel, zona de interés y objetivo estético.</small>
         </div>
       </div>
     </section>
 
-    <section class="main-section">
+    <section class="main">
       <aside class="card">
-        <h2>¿Qué puedes consultar?</h2>
+        <h2>Tratamientos que puedes consultar</h2>
         <p class="muted">
-          Elige el tratamiento que más te interesa o selecciona “quiero orientación”.
+          Elige una opción en el formulario. Si no sabes cuál necesitas, selecciona “quiero orientación”.
         </p>
 
         <div class="service-list">
           <div class="service-item">
-            <img src="plasma-parpados.jpg" alt="Plasma Fibroblast en párpados" />
+            <img src="plasma-parpados.jpg" alt="Plasma Fibroblast" />
             <div>
               <strong>Plasma Fibroblast</strong>
               <small>Párpados, rostro, cuello, abdomen y zonas específicas.</small>
@@ -592,7 +688,7 @@
           </div>
 
           <div class="service-item">
-            <img src="plasma-abdomen.jpg" alt="Tratamiento corporal abdomen" />
+            <img src="plasma-abdomen.jpg" alt="Tratamientos corporales" />
             <div>
               <strong>Tratamientos corporales</strong>
               <small>Abdomen, flacidez, textura de piel y moldeado.</small>
@@ -600,7 +696,7 @@
           </div>
 
           <div class="service-item">
-            <img src="plasma-cuello.jpg" alt="Tratamiento cuello y papada" />
+            <img src="plasma-cuello.jpg" alt="Rostro cuello y papada" />
             <div>
               <strong>Rostro, cuello y papada</strong>
               <small>Valoración para mejorar apariencia, firmeza y cuidado estético.</small>
@@ -608,7 +704,7 @@
           </div>
         </div>
 
-        <div class="premium-box">
+        <div class="premium">
           <h3>Programa Corporal Premium</h3>
           <p>
             Método exclusivo de Figura Rostro KG para reducción de medidas, moldeado y acompañamiento corporal según valoración.
@@ -619,38 +715,34 @@
       <section id="formulario" class="card">
         <div class="form-head">
           <div>
-            <h2>Solicita tu evaluación rápida</h2>
+            <h2>Solicitud rápida</h2>
             <p class="muted">
-              Déjanos tus datos y te contactamos para confirmar disponibilidad.
+              Menos pasos, más fácil. Deja tus datos y te confirmamos por WhatsApp.
             </p>
           </div>
 
           <span class="badge">Cortesía junio</span>
         </div>
 
-        <form id="leadForm" action="https://formsubmit.co/figurarostro25@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="Nueva solicitud de valoración - Figura Rostro KG" />
-          <input type="hidden" name="_template" value="table" />
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_next" id="nextUrl" value="" />
-          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+        <div id="errorBox" class="error-box"></div>
 
+        <form id="formExpress">
           <div class="row">
             <label>
               Nombre completo
-              <input name="Nombre" autocomplete="name" required placeholder="Ej. María González" />
+              <input type="text" id="nombre" placeholder="Nombre y apellido" autocomplete="name" required />
             </label>
 
             <label>
               WhatsApp
-              <input name="WhatsApp" autocomplete="tel" required placeholder="Ej. 6XXX-XXXX" />
+              <input type="tel" id="whatsapp" placeholder="Ej. 6XXX-XXXX" autocomplete="tel" required />
             </label>
           </div>
 
           <div class="row">
             <label>
               Edad aproximada
-              <select name="Edad aproximada" required>
+              <select id="edad">
                 <option value="">Selecciona</option>
                 <option>18 a 25</option>
                 <option>26 a 35</option>
@@ -661,88 +753,53 @@
             </label>
 
             <label>
-              ¿Sigues @figurarostrokg?
-              <select name="Sigue Instagram" required>
-                <option value="">Selecciona</option>
-                <option>Sí, ya los sigo</option>
-                <option>Aún no, pero quiero recibir el beneficio</option>
+              Servicio de interés
+              <select id="servicio" required>
+                <option value="">Selecciona una opción</option>
+                <option>Valoración estética de cortesía - junio</option>
+                <option>Plasma Fibroblast</option>
+                <option>Programa Corporal Premium</option>
+                <option>Paquete reductor / moldeador</option>
+                <option>Limpieza facial</option>
+                <option>Peeling facial</option>
+                <option>Masaje relajante</option>
+                <option>Masaje descontracturante</option>
+                <option>No sé, quiero orientación</option>
               </select>
             </label>
           </div>
 
           <label>
-            Tratamiento de interés
-            <select name="Tratamiento de interés" required>
-              <option value="">Selecciona</option>
-              <option>Plasma Fibroblast</option>
-              <option>Limpieza facial</option>
-              <option>Peeling facial</option>
-              <option>Masaje relajante</option>
-              <option>Masaje descontracturante</option>
-              <option>Programa Corporal Premium</option>
-              <option>Paquete reductor / moldeador</option>
-              <option>No sé, quiero orientación</option>
-            </select>
+            Zona o comentario
+            <textarea id="detalles" placeholder="Ej. párpados, abdomen, papada, flacidez, manchas, masaje, quiero orientación..." required></textarea>
           </label>
 
-          <div class="row">
-            <label>
-              Zona que deseas tratar
-              <select name="Zona que desea tratar" required>
-                <option value="">Selecciona</option>
-                <option>Rostro</option>
-                <option>Párpados</option>
-                <option>Abdomen</option>
-                <option>Papada / cuello</option>
-                <option>Espalda</option>
-                <option>Piernas</option>
-                <option>Glúteos</option>
-                <option>Cuerpo completo</option>
-                <option>Otra</option>
-              </select>
-            </label>
+          <div class="date-box">
+            <div class="row">
+              <label>
+                Fecha deseada
+                <input type="date" id="fecha" required />
+              </label>
 
-            <label>
-              ¿Qué tan pronto deseas agendar?
-              <select name="Urgencia para agendar" required>
-                <option value="">Selecciona</option>
-                <option>Hoy o mañana</option>
-                <option>Esta semana</option>
-                <option>Este mes</option>
-                <option>Solo quiero información</option>
-              </select>
-            </label>
+              <label>
+                Horario
+                <select id="hora" required>
+                  <option value="">Selecciona fecha primero</option>
+                </select>
+              </label>
+            </div>
           </div>
-
-          <label>
-            Disponibilidad
-            <select name="Disponibilidad" required>
-              <option value="">Selecciona</option>
-              <option>Mañana</option>
-              <option>Tarde</option>
-              <option>Noche</option>
-              <option>Fin de semana</option>
-              <option>Me adapto a disponibilidad</option>
-            </select>
-          </label>
-
-          <label>
-            Comentario opcional
-            <textarea name="Comentario" placeholder="Cuéntanos brevemente qué te gustaría mejorar o qué duda tienes."></textarea>
-          </label>
-
-          <label class="check">
-            <input type="checkbox" required />
-            <span>
-              Acepto ser contactada/o por Figura Rostro KG para coordinar mi valoración y recibir orientación sobre servicios relacionados. Entiendo que la cita está sujeta a disponibilidad.
-            </span>
-          </label>
-
-          <button id="submitBtn" class="btn" type="submit">Enviar solicitud de valoración</button>
 
           <p class="note">
-            Al enviar, verás una confirmación en pantalla y podrás escribir por WhatsApp para atención más rápida.
+            <span>ℹ️</span>
+            <span>
+              Al enviar, tu solicitud entrará al panel de reservas como pendiente. Nuestro equipo confirmará disponibilidad por WhatsApp.
+            </span>
           </p>
+
+          <button id="btnEnviar" class="submit" type="submit">
+            Enviar solicitud de valoración
+          </button>
         </form>
       </section>
     </section>
@@ -750,25 +807,25 @@
     <section class="steps">
       <div class="step">
         <span class="number">1</span>
-        <h3>Completa el formulario</h3>
-        <p class="muted">Nos dices qué tratamiento o zona deseas consultar.</p>
+        <h3>Dejas tus datos</h3>
+        <p class="muted">Formulario rápido pensado para clientes que vienen desde anuncios.</p>
       </div>
 
       <div class="step">
         <span class="number">2</span>
-        <h3>Revisamos tu solicitud</h3>
-        <p class="muted">Te orientamos según tu caso y disponibilidad.</p>
+        <h3>Revisamos disponibilidad</h3>
+        <p class="muted">La solicitud llega al panel de reservas de Figura Rostro KG.</p>
       </div>
 
       <div class="step">
         <span class="number">3</span>
         <h3>Confirmamos por WhatsApp</h3>
-        <p class="muted">Coordinamos tu valoración en Figura Rostro KG.</p>
+        <p class="muted">Te orientamos y coordinamos tu valoración.</p>
       </div>
     </section>
 
     <footer class="footer">
-      Figura Rostro KG · Estética y Bienestar · Parque Lefevre, PH Royal Park, Ciudad de Panamá · WhatsApp 6474-6168<br>
+      Figura Rostro KG · Estética y Bienestar · Parque Lefevre, PH Royal Park, Ciudad de Panamá · WhatsApp 6474-6168<br />
       Beneficio válido durante junio para seguidores de Instagram. Sujeto a disponibilidad. No constituye diagnóstico médico ni garantía de resultados.
     </footer>
   </main>
@@ -777,23 +834,220 @@
     💬 WhatsApp
   </a>
 
+  <div id="successModal" class="success">
+    <div class="success-card">
+      <img src="logo-verde.png" alt="Figura Rostro KG" />
+      <div class="check">✓</div>
+      <h2>Solicitud enviada con éxito</h2>
+      <p class="muted">
+        Gracias por completar tu evaluación rápida. Nuestro equipo revisará tu solicitud y te contactará por WhatsApp para confirmar disponibilidad.
+      </p>
+      <p class="muted">
+        Para atención más rápida, también puedes escribirnos ahora y mencionar que ya llenaste el formulario.
+      </p>
+
+      <div class="success-actions">
+        <a id="btnWhatsAppSuccess" class="btn" href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20ya%20llen%C3%A9%20el%20formulario%20de%20valoraci%C3%B3n%20de%20junio%20y%20quiero%20confirmar%20mi%20cita." target="_blank" rel="noopener">
+          Confirmar por WhatsApp
+        </a>
+
+        <button class="btn light" type="button" onclick="window.location.reload()">
+          Enviar otra solicitud
+        </button>
+      </div>
+    </div>
+  </div>
+
   <script>
-    const next = document.getElementById('nextUrl');
-    const submitBtn = document.getElementById('submitBtn');
-    const form = document.getElementById('leadForm');
-
-    if (next) {
-      const currentPath = window.location.pathname;
-      const basePath = currentPath.substring(0, currentPath.lastIndexOf('/') + 1);
-      next.value = window.location.origin + basePath + 'gracias-valoracion.html';
+    const fechaInput = document.getElementById('fecha');
+    if (fechaInput) {
+      const hoy = new Date();
+      const yyyy = hoy.getFullYear();
+      const mm = String(hoy.getMonth() + 1).padStart(2, '0');
+      const dd = String(hoy.getDate()).padStart(2, '0');
+      fechaInput.min = `${yyyy}-${mm}-${dd}`;
     }
 
-    if (form && submitBtn) {
-      form.addEventListener('submit', function () {
-        submitBtn.textContent = 'Enviando solicitud...';
-        submitBtn.disabled = true;
-      });
+    function normalizarWhatsApp(numero) {
+      let limpio = String(numero || '').replace(/\D/g, '');
+
+      if (limpio.startsWith('507') && limpio.length >= 11) {
+        return limpio;
+      }
+
+      if (limpio.length === 8) {
+        return '507' + limpio;
+      }
+
+      return limpio;
     }
+
+    function mostrarError(mensaje) {
+      const box = document.getElementById('errorBox');
+      box.textContent = mensaje;
+      box.classList.add('show');
+      box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function limpiarError() {
+      const box = document.getElementById('errorBox');
+      box.textContent = '';
+      box.classList.remove('show');
+    }
+  </script>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getFirestore, collection, addDoc, Timestamp, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBAuTfBKGuG33c9NXc1s0lkQv-7GwA47l0",
+      authDomain: "figurarostro-system.firebaseapp.com",
+      projectId: "figurarostro-system",
+      storageBucket: "figurarostro-system.firebasestorage.app",
+      messagingSenderId: "803848354693",
+      appId: "1:803848354693:web:7144490abb18b0319822ec"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const colName = "reservas_entrantes";
+
+    const horariosFijos = [
+      "08:00 AM",
+      "10:00 AM",
+      "12:00 PM",
+      "02:00 PM",
+      "04:00 PM",
+      "06:00 PM",
+      "08:00 PM"
+    ];
+
+    const inputFecha = document.getElementById('fecha');
+    const selectHora = document.getElementById('hora');
+
+    inputFecha.addEventListener('change', async () => {
+      const fechaSeleccionada = inputFecha.value;
+      if (!fechaSeleccionada) return;
+
+      selectHora.disabled = true;
+      selectHora.innerHTML = '<option>Verificando agenda...</option>';
+
+      try {
+        const q = query(collection(db, colName), where("fecha_cita", "==", fechaSeleccionada));
+        const querySnapshot = await getDocs(q);
+
+        const horasOcupadas = [];
+
+        querySnapshot.forEach((doc) => {
+          const data = doc.data();
+
+          if (
+            data.estado !== 'Cancelada' &&
+            data.estado !== 'Faltó' &&
+            data.estado !== 'Falto'
+          ) {
+            if (data.hora_cita) {
+              horasOcupadas.push(data.hora_cita);
+            }
+          }
+        });
+
+        selectHora.innerHTML = '<option value="">Elige hora disponible</option>';
+
+        horariosFijos.forEach((hora) => {
+          if (horasOcupadas.includes(hora)) {
+            selectHora.innerHTML += `<option disabled>No disponible - ${hora}</option>`;
+          } else {
+            selectHora.innerHTML += `<option value="${hora}">${hora}</option>`;
+          }
+        });
+
+      } catch (error) {
+        console.error(error);
+        selectHora.innerHTML = '<option value="">No se pudo verificar. Elige horario</option>';
+
+        horariosFijos.forEach((hora) => {
+          selectHora.innerHTML += `<option value="${hora}">${hora}</option>`;
+        });
+      } finally {
+        selectHora.disabled = false;
+      }
+    });
+
+    document.getElementById('formExpress').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      limpiarError();
+
+      const nombre = document.getElementById('nombre').value.trim();
+      const whatsappOriginal = document.getElementById('whatsapp').value.trim();
+      const whatsappNormalizado = normalizarWhatsApp(whatsappOriginal);
+      const edad = document.getElementById('edad').value;
+      const servicio = document.getElementById('servicio').value;
+      const detalles = document.getElementById('detalles').value.trim();
+      const fecha = document.getElementById('fecha').value;
+      const hora = document.getElementById('hora').value;
+
+      if (!nombre || !whatsappOriginal || !servicio || !detalles || !fecha || !hora) {
+        mostrarError("Completa los campos principales para enviar tu solicitud.");
+        return;
+      }
+
+      if (hora.includes("No disponible")) {
+        mostrarError("Ese horario no está disponible. Selecciona otro horario.");
+        return;
+      }
+
+      if (whatsappNormalizado.length < 8) {
+        mostrarError("Revisa el número de WhatsApp. Parece incompleto.");
+        return;
+      }
+
+      const btn = document.getElementById('btnEnviar');
+      btn.disabled = true;
+      btn.textContent = "Enviando solicitud...";
+
+      const data = {
+        nombre: nombre,
+        edad: edad,
+        ocupacion: "",
+        whatsapp: whatsappOriginal,
+        whatsapp_normalizado: whatsappNormalizado,
+        email: "",
+        provincia: "Panamá",
+        motivacion: "Campaña junio - valoración estética de cortesía",
+        zona: detalles,
+        intencion: "Valoración de cortesía junio - landing express",
+        servicio: servicio,
+        metodo_pago: "Pendiente por confirmar",
+        tiempo_valoracion_estimado: "40 minutos aproximadamente",
+        tiempo_extra_si_tratamiento_mismo_dia: "",
+        antecedentes: [],
+        fecha_cita: fecha,
+        hora_cita: hora,
+        estado: "Pendiente",
+        origen: "Landing express anuncios",
+        campana: "Valoración estética de cortesía junio",
+        fecha_registro: Timestamp.now()
+      };
+
+      try {
+        await addDoc(collection(db, colName), data);
+
+        const mensajeWA = encodeURIComponent(
+          `Hola Figura Rostro KG, ya llené el formulario de valoración de junio.\n\nNombre: ${nombre}\nServicio: ${servicio}\nFecha deseada: ${fecha}\nHora: ${hora}\n\nQuiero confirmar mi cita.`
+        );
+
+        document.getElementById('btnWhatsAppSuccess').href = `https://wa.me/50764746168?text=${mensajeWA}`;
+        document.getElementById('successModal').classList.add('show');
+
+      } catch (error) {
+        console.error(error);
+        mostrarError("No se pudo enviar la solicitud. Intenta nuevamente o escríbenos por WhatsApp.");
+        btn.disabled = false;
+        btn.textContent = "Enviar solicitud de valoración";
+      }
+    });
   </script>
 </body>
 </html>
