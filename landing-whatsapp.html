@@ -3,53 +3,65 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Valoración Estética de Cortesía en Panamá | Figura Rostro KG</title>
-  <meta name="description" content="Solicita tu valoración estética de cortesía durante junio en Figura Rostro KG. Plasma Fibroblast, faciales, masajes y tratamientos corporales en Parque Lefevre, Panamá." />
-  <meta name="theme-color" content="#057c6d" />
+
+  <title>Valoración Estética de Cortesía | Figura Rostro KG</title>
+  <meta name="description" content="Solicita tu valoración estética de cortesía durante junio en Figura Rostro KG. Tratamientos faciales, corporales, Plasma Fibroblast y programa corporal premium en Panamá." />
+  <meta name="theme-color" content="#08796c" />
 
   <style>
     :root{
-      --verde:#057c6d;
-      --verde-oscuro:#045f54;
-      --verde-suave:#e8f7f4;
-      --dorado:#d9b56f;
-      --crema:#fffaf2;
-      --texto:#18312e;
-      --gris:#5d6f6c;
-      --borde:#dce9e6;
+      --verde:#08796c;
+      --verde-oscuro:#034d45;
+      --verde-claro:#edf8f6;
+      --dorado:#caa55a;
+      --crema:#fff8ee;
+      --texto:#143733;
+      --gris:#5d706d;
+      --linea:#d8e9e5;
       --blanco:#ffffff;
-      --sombra:0 18px 50px rgba(5,124,109,.15);
-      --radio:24px;
+      --sombra:0 18px 45px rgba(8,121,108,.13);
+      --radio:26px;
     }
 
     *{
       box-sizing:border-box;
     }
 
+    html{
+      scroll-behavior:smooth;
+    }
+
     body{
       margin:0;
       font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      background:linear-gradient(180deg,var(--crema),#fff 36%,#f4fbfa);
+      background:
+        radial-gradient(circle at top left, rgba(8,121,108,.10), transparent 32%),
+        linear-gradient(180deg,var(--crema),#ffffff 38%,#f2fbf9);
       color:var(--texto);
-      line-height:1.55;
+      line-height:1.5;
     }
 
     a{
-      text-decoration:none;
       color:inherit;
+      text-decoration:none;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
     }
 
     .topbar{
       position:sticky;
       top:0;
       z-index:20;
-      background:rgba(255,255,255,.86);
+      background:rgba(255,255,255,.88);
       backdrop-filter:blur(14px);
-      border-bottom:1px solid rgba(5,124,109,.12);
+      border-bottom:1px solid rgba(8,121,108,.12);
     }
 
     .nav{
-      max-width:1120px;
+      max-width:1080px;
       margin:auto;
       padding:12px 18px;
       display:flex;
@@ -62,8 +74,9 @@
       display:flex;
       align-items:center;
       gap:10px;
-      font-weight:800;
+      font-weight:900;
       color:var(--verde-oscuro);
+      line-height:1.05;
     }
 
     .brand img{
@@ -71,27 +84,29 @@
       height:48px;
       object-fit:contain;
       border-radius:12px;
+      background:#fff;
     }
 
-    .brand span{
-      font-size:15px;
-      line-height:1.1;
+    .brand small{
+      font-weight:600;
+      color:var(--gris);
     }
 
     .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:9px;
-      padding:13px 18px;
-      border-radius:999px;
-      font-weight:800;
+      gap:8px;
       border:0;
       cursor:pointer;
-      transition:.2s ease;
+      border-radius:999px;
+      padding:14px 20px;
       background:var(--verde);
       color:#fff;
-      box-shadow:0 12px 24px rgba(5,124,109,.18);
+      font-weight:900;
+      box-shadow:0 14px 26px rgba(8,121,108,.20);
+      transition:.2s ease;
+      text-align:center;
     }
 
     .btn:hover{
@@ -99,169 +114,255 @@
       background:var(--verde-oscuro);
     }
 
-    .btn.secondary{
+    .btn.light{
       background:#fff;
       color:var(--verde);
-      border:1px solid var(--borde);
+      border:1px solid var(--linea);
       box-shadow:none;
     }
 
-    .wrap{
-      max-width:1120px;
+    .btn.gold{
+      background:var(--dorado);
+      color:#fff;
+      box-shadow:0 14px 26px rgba(202,165,90,.22);
+    }
+
+    .page{
+      max-width:1080px;
       margin:auto;
-      padding:28px 18px 70px;
+      padding:34px 18px 82px;
     }
 
     .hero{
       display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:34px;
+      grid-template-columns:1fr .92fr;
+      gap:32px;
       align-items:center;
-      padding:32px 0 18px;
     }
 
-    .tag{
+    .pill{
       display:inline-flex;
       align-items:center;
       gap:8px;
-      background:var(--verde-suave);
-      border:1px solid #cdebe5;
+      background:var(--verde-claro);
+      border:1px solid #cfe9e4;
       color:var(--verde-oscuro);
-      font-weight:800;
       border-radius:999px;
-      padding:8px 14px;
-      font-size:14px;
+      padding:8px 13px;
+      font-weight:900;
+      font-size:13px;
       margin-bottom:16px;
     }
 
     h1{
-      font-size:clamp(36px,5vw,62px);
-      line-height:.98;
-      margin:0 0 18px;
+      margin:0 0 16px;
+      font-size:clamp(37px,5vw,64px);
+      line-height:.97;
       letter-spacing:-2px;
-      color:#123b36;
+      color:#073d37;
     }
 
     .lead{
-      font-size:clamp(18px,2.1vw,23px);
-      color:#39534f;
       margin:0 0 22px;
-      max-width:640px;
+      font-size:clamp(18px,2vw,22px);
+      color:#375b56;
+      max-width:620px;
     }
 
-    .benefits{
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin:24px 0 24px;
+    }
+
+    .mini-grid{
       display:grid;
       grid-template-columns:repeat(3,1fr);
-      gap:10px;
-      margin:24px 0;
+      gap:11px;
+      margin-top:18px;
     }
 
-    .benefit{
+    .mini{
       background:#fff;
-      border:1px solid var(--borde);
+      border:1px solid var(--linea);
       border-radius:18px;
       padding:14px;
-      font-weight:750;
-      color:#31524d;
-      box-shadow:0 10px 28px rgba(5,124,109,.06);
+      box-shadow:0 10px 24px rgba(8,121,108,.06);
+      font-weight:900;
+      color:#244944;
     }
 
-    .hero-card{
-      position:relative;
-      border-radius:32px;
-      overflow:hidden;
-      background:#fff;
-      box-shadow:var(--sombra);
-      border:1px solid rgba(5,124,109,.12);
-    }
-
-    .hero-card img{
+    .mini span{
       display:block;
+      font-weight:600;
+      font-size:13px;
+      color:var(--gris);
+      margin-top:3px;
+    }
+
+    .hero-img{
+      position:relative;
+      border-radius:34px;
+      overflow:hidden;
+      border:1px solid rgba(8,121,108,.16);
+      box-shadow:var(--sombra);
+      background:#fff;
+      min-height:500px;
+    }
+
+    .hero-img img{
       width:100%;
-      height:520px;
+      height:500px;
       object-fit:cover;
     }
 
-    .hero-card .overlay{
+    .hero-note{
       position:absolute;
       left:18px;
       right:18px;
       bottom:18px;
       background:rgba(255,255,255,.92);
-      backdrop-filter:blur(10px);
+      backdrop-filter:blur(12px);
       border-radius:22px;
       padding:16px;
       border:1px solid rgba(255,255,255,.7);
     }
 
-    .overlay strong{
+    .hero-note strong{
       display:block;
       color:var(--verde-oscuro);
       font-size:18px;
+      margin-bottom:3px;
     }
 
-    .overlay small{
-      color:#55706c;
+    .hero-note small{
+      color:#57716d;
     }
 
-    .section{
+    .main-section{
       margin-top:34px;
+      display:grid;
+      grid-template-columns:.82fr 1.18fr;
+      gap:24px;
+      align-items:start;
     }
 
     .card{
       background:#fff;
-      border:1px solid var(--borde);
+      border:1px solid var(--linea);
       border-radius:var(--radio);
       box-shadow:var(--sombra);
       padding:26px;
     }
 
-    .grid2{
-      display:grid;
-      grid-template-columns:.85fr 1.15fr;
-      gap:24px;
-      align-items:start;
+    h2{
+      font-size:clamp(28px,3vw,42px);
+      line-height:1.04;
+      margin:0 0 10px;
+      letter-spacing:-1px;
+      color:#073d37;
     }
 
-    h2{
-      font-size:clamp(28px,3vw,40px);
-      line-height:1.05;
-      margin:0 0 12px;
-      color:#123b36;
-      letter-spacing:-1px;
+    h3{
+      margin:0 0 8px;
+      color:#073d37;
+    }
+
+    p{
+      margin-top:0;
     }
 
     .muted{
       color:var(--gris);
-      margin-top:0;
     }
 
-    .services{
+    .service-list{
       display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:12px;
+      gap:13px;
       margin-top:18px;
     }
 
-    .service{
+    .service-item{
+      display:grid;
+      grid-template-columns:80px 1fr;
+      gap:14px;
+      align-items:center;
       background:#f8fffd;
-      border:1px solid var(--borde);
-      border-radius:18px;
+      border:1px solid var(--linea);
+      border-radius:20px;
+      padding:10px;
+    }
+
+    .service-item img{
+      width:80px;
+      height:80px;
+      border-radius:16px;
+      object-fit:cover;
+      background:#eaf5f2;
+    }
+
+    .service-item strong{
+      display:block;
+      color:#143733;
+      margin-bottom:3px;
+    }
+
+    .service-item small{
+      color:var(--gris);
+    }
+
+    .premium-box{
+      margin-top:18px;
+      padding:18px;
+      border-radius:22px;
+      background:linear-gradient(135deg,#073d37,#08796c);
+      color:#fff;
+      position:relative;
       overflow:hidden;
     }
 
-    .service img{
-      width:100%;
-      height:130px;
-      object-fit:cover;
-      display:block;
+    .premium-box:before{
+      content:"";
+      position:absolute;
+      width:160px;
+      height:160px;
+      border-radius:50%;
+      background:rgba(255,255,255,.11);
+      right:-50px;
+      top:-50px;
     }
 
-    .service div{
-      padding:12px;
-      font-weight:800;
-      color:#21423d;
-      font-size:14px;
+    .premium-box h3{
+      color:#fff;
+      margin-bottom:8px;
+      position:relative;
+    }
+
+    .premium-box p{
+      margin:0;
+      color:rgba(255,255,255,.88);
+      position:relative;
+    }
+
+    .form-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:14px;
+      margin-bottom:18px;
+    }
+
+    .badge{
+      display:inline-flex;
+      white-space:nowrap;
+      border-radius:999px;
+      background:#fff4d8;
+      border:1px solid #efd69a;
+      color:#72530d;
+      font-size:13px;
+      font-weight:900;
+      padding:8px 12px;
     }
 
     form{
@@ -272,8 +373,8 @@
     label{
       display:grid;
       gap:6px;
-      font-weight:750;
-      color:#254743;
+      font-weight:850;
+      color:#244944;
       font-size:14px;
     }
 
@@ -281,12 +382,12 @@
     select,
     textarea{
       width:100%;
-      border:1px solid #cfe2de;
-      border-radius:14px;
-      padding:13px 14px;
-      font:inherit;
+      border:1px solid #cfe3df;
       background:#fff;
       color:var(--texto);
+      border-radius:15px;
+      padding:13px 14px;
+      font:inherit;
       outline:none;
       transition:.2s ease;
     }
@@ -295,11 +396,11 @@
     select:focus,
     textarea:focus{
       border-color:var(--verde);
-      box-shadow:0 0 0 4px rgba(5,124,109,.10);
+      box-shadow:0 0 0 4px rgba(8,121,108,.10);
     }
 
     textarea{
-      min-height:96px;
+      min-height:92px;
       resize:vertical;
     }
 
@@ -311,11 +412,11 @@
 
     .check{
       display:flex;
-      gap:10px;
       align-items:flex-start;
+      gap:10px;
       font-weight:500;
-      color:#526b67;
       font-size:13px;
+      color:#5e7470;
       line-height:1.35;
     }
 
@@ -325,112 +426,89 @@
     }
 
     .note{
+      background:#f7fdfb;
+      border:1px solid var(--linea);
+      border-radius:17px;
+      color:#637774;
       font-size:13px;
-      color:#687b78;
-      background:#f5fbfa;
-      border:1px solid var(--borde);
-      border-radius:16px;
       padding:12px;
-      margin-top:10px;
+      margin:0;
     }
 
     .steps{
+      margin-top:28px;
       display:grid;
       grid-template-columns:repeat(3,1fr);
       gap:14px;
-      margin-top:18px;
     }
 
     .step{
       background:#fff;
-      border:1px solid var(--borde);
-      border-radius:20px;
-      padding:18px;
-      box-shadow:0 10px 26px rgba(5,124,109,.06);
+      border:1px solid var(--linea);
+      border-radius:22px;
+      padding:20px;
+      box-shadow:0 10px 24px rgba(8,121,108,.06);
     }
 
-    .step b{
+    .number{
+      width:32px;
+      height:32px;
       display:inline-flex;
-      width:30px;
-      height:30px;
-      border-radius:50%;
       align-items:center;
       justify-content:center;
       background:var(--verde);
       color:#fff;
-      margin-bottom:10px;
+      border-radius:50%;
+      font-weight:900;
+      margin-bottom:12px;
     }
 
     .footer{
-      margin-top:44px;
+      margin-top:40px;
       text-align:center;
-      color:#617773;
-      font-size:14px;
+      color:#627b77;
+      font-size:13px;
     }
 
     .float-wa{
       position:fixed;
       right:18px;
       bottom:18px;
-      z-index:30;
+      z-index:25;
       background:#25D366;
       color:#fff;
       border-radius:999px;
       padding:14px 18px;
       font-weight:900;
-      box-shadow:0 16px 32px rgba(37,211,102,.28);
+      box-shadow:0 16px 34px rgba(37,211,102,.30);
     }
 
-    .form-title{
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      align-items:flex-start;
-      margin-bottom:18px;
-    }
-
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      border-radius:999px;
-      background:#fff5dc;
-      color:#73520b;
-      border:1px solid #f1d99a;
-      padding:8px 12px;
-      font-size:13px;
-      font-weight:900;
-      white-space:nowrap;
-    }
-
-    @media (max-width:860px){
+    @media(max-width:900px){
       .hero,
-      .grid2{
+      .main-section{
         grid-template-columns:1fr;
       }
 
-      .benefits,
+      .hero-img,
+      .hero-img img{
+        min-height:auto;
+        height:390px;
+      }
+
+      .mini-grid,
       .steps{
         grid-template-columns:1fr;
       }
 
-      .hero-card img{
-        height:390px;
-      }
-
-      .row,
-      .services{
+      .row{
         grid-template-columns:1fr;
       }
 
-      .nav .btn.secondary{
+      .nav .btn{
         display:none;
       }
 
-      h1{
-        letter-spacing:-1px;
-      }
-
-      .form-title{
+      .form-head{
         display:block;
       }
 
@@ -438,100 +516,113 @@
         margin-top:8px;
       }
 
-      .wrap{
-        padding-bottom:95px;
+      .page{
+        padding-bottom:96px;
+      }
+
+      h1{
+        letter-spacing:-1px;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="topbar">
-    <div class="nav">
-      <a class="brand" href="#inicio" aria-label="Figura Rostro KG">
-        <img src="assets/logo-verde.png" alt="Figura Rostro KG" />
+  <header class="topbar">
+    <nav class="nav">
+      <a class="brand" href="#inicio">
+        <img src="logo-verde.png" alt="Figura Rostro KG" />
         <span>Figura Rostro KG<br><small>Estética y Bienestar</small></span>
       </a>
 
-      <a class="btn secondary" href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20quiero%20consultar%20por%20la%20valoraci%C3%B3n%20est%C3%A9tica%20de%20junio." target="_blank" rel="noopener">
+      <a class="btn light" href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20quiero%20consultar%20por%20la%20valoraci%C3%B3n%20est%C3%A9tica%20de%20junio." target="_blank" rel="noopener">
         WhatsApp
       </a>
-    </div>
-  </div>
+    </nav>
+  </header>
 
-  <main id="inicio" class="wrap">
+  <main id="inicio" class="page">
     <section class="hero">
       <div>
-        <div class="tag">✨ Beneficio de junio para seguidores de Instagram</div>
+        <div class="pill">✨ Junio especial para seguidores de Instagram</div>
 
-        <h1>Valoración estética de cortesía en Figura Rostro KG</h1>
+        <h1>Valoración estética de cortesía</h1>
 
         <p class="lead">
-          Completa una evaluación rápida, cuéntanos qué deseas mejorar y nuestro equipo te orientará con el tratamiento más adecuado según tu caso.
+          Cuéntanos qué deseas mejorar en tu rostro, piel o figura y te orientamos con una recomendación personalizada según tu caso.
         </p>
 
-        <div style="display:flex;gap:12px;flex-wrap:wrap">
-          <a class="btn" href="#formulario">Solicitar mi valoración</a>
-          <a class="btn secondary" href="https://www.instagram.com/figurarostrokg/" target="_blank" rel="noopener">Seguir en Instagram</a>
+        <div class="hero-actions">
+          <a class="btn" href="#formulario">Solicitar valoración</a>
+          <a class="btn light" href="https://www.instagram.com/figurarostrokg/" target="_blank" rel="noopener">
+            Seguir @figurarostrokg
+          </a>
         </div>
 
-        <div class="benefits">
-          <div class="benefit">📍 Parque Lefevre<br><small>PH Royal Park</small></div>
-          <div class="benefit">💬 Confirmación<br><small>por WhatsApp</small></div>
-          <div class="benefit">🌿 Facial y corporal<br><small>según valoración</small></div>
+        <div class="mini-grid">
+          <div class="mini">📍 Parque Lefevre<span>PH Royal Park</span></div>
+          <div class="mini">💬 Confirmación<span>por WhatsApp</span></div>
+          <div class="mini">🌿 Facial y corporal<span>según valoración</span></div>
         </div>
       </div>
 
-      <div class="hero-card">
-        <img src="assets/valoracion-consulta.png" alt="Valoración estética en cabina" />
-
-        <div class="overlay">
+      <div class="hero-img">
+        <img src="valoracion-consulta.png" alt="Valoración estética en cabina" />
+        <div class="hero-note">
           <strong>Primero evaluamos, luego recomendamos.</strong>
-          <small>La valoración ayuda a definir el tratamiento ideal y aclarar expectativas antes de agendar.</small>
+          <small>Así podemos orientarte mejor y evitar tratamientos que no sean ideales para tu caso.</small>
         </div>
       </div>
     </section>
 
-    <section class="section grid2">
-      <div class="card">
-        <h2>Tratamientos que puedes consultar</h2>
-
+    <section class="main-section">
+      <aside class="card">
+        <h2>¿Qué puedes consultar?</h2>
         <p class="muted">
-          Selecciona el servicio que más te interesa o elige “quiero orientación” si aún no sabes cuál necesitas.
+          Elige el tratamiento que más te interesa o selecciona “quiero orientación”.
         </p>
 
-        <div class="services">
-          <div class="service">
-            <img src="assets/plasma-parpados.jpg" alt="Plasma Fibroblast para párpados">
-            <div>Plasma Fibroblast</div>
+        <div class="service-list">
+          <div class="service-item">
+            <img src="plasma-parpados.jpg" alt="Plasma Fibroblast en párpados" />
+            <div>
+              <strong>Plasma Fibroblast</strong>
+              <small>Párpados, rostro, cuello, abdomen y zonas específicas.</small>
+            </div>
           </div>
 
-          <div class="service">
-            <img src="assets/plasma-abdomen.jpg" alt="Tratamiento corporal abdomen">
-            <div>Abdomen y flacidez</div>
+          <div class="service-item">
+            <img src="plasma-abdomen.jpg" alt="Tratamiento corporal abdomen" />
+            <div>
+              <strong>Tratamientos corporales</strong>
+              <small>Abdomen, flacidez, textura de piel y moldeado.</small>
+            </div>
           </div>
 
-          <div class="service">
-            <img src="assets/plasma-cuello.jpg" alt="Tratamiento de cuello y papada">
-            <div>Cuello y papada</div>
-          </div>
-
-          <div class="service">
-            <img src="assets/valoracion-consulta.png" alt="Consulta estética">
-            <div>Faciales, masajes y reductores</div>
+          <div class="service-item">
+            <img src="plasma-cuello.jpg" alt="Tratamiento cuello y papada" />
+            <div>
+              <strong>Rostro, cuello y papada</strong>
+              <small>Valoración para mejorar apariencia, firmeza y cuidado estético.</small>
+            </div>
           </div>
         </div>
 
-        <p class="note">
-          Nota: los resultados y recomendaciones dependen de la valoración, tipo de piel, zona a tratar y cuidados posteriores.
-        </p>
-      </div>
+        <div class="premium-box">
+          <h3>Programa Corporal Premium</h3>
+          <p>
+            Método exclusivo de Figura Rostro KG para reducción de medidas, moldeado y acompañamiento corporal según valoración.
+          </p>
+        </div>
+      </aside>
 
-      <div id="formulario" class="card">
-        <div class="form-title">
+      <section id="formulario" class="card">
+        <div class="form-head">
           <div>
             <h2>Solicita tu evaluación rápida</h2>
-            <p class="muted">Te contactaremos para confirmar disponibilidad de cita durante junio.</p>
+            <p class="muted">
+              Déjanos tus datos y te contactamos para confirmar disponibilidad.
+            </p>
           </div>
 
           <span class="badge">Cortesía junio</span>
@@ -574,7 +665,7 @@
               <select name="Sigue Instagram" required>
                 <option value="">Selecciona</option>
                 <option>Sí, ya los sigo</option>
-                <option>Aún no, pero quiero recibir el beneficio de junio</option>
+                <option>Aún no, pero quiero recibir el beneficio</option>
               </select>
             </label>
           </div>
@@ -588,6 +679,7 @@
               <option>Peeling facial</option>
               <option>Masaje relajante</option>
               <option>Masaje descontracturante</option>
+              <option>Programa Corporal Premium</option>
               <option>Paquete reductor / moldeador</option>
               <option>No sé, quiero orientación</option>
             </select>
@@ -641,37 +733,37 @@
 
           <label class="check">
             <input type="checkbox" required />
-            <span>Acepto ser contactada/o por Figura Rostro KG para coordinar mi valoración y recibir orientación sobre servicios relacionados. Entiendo que la cita está sujeta a disponibilidad.</span>
+            <span>
+              Acepto ser contactada/o por Figura Rostro KG para coordinar mi valoración y recibir orientación sobre servicios relacionados. Entiendo que la cita está sujeta a disponibilidad.
+            </span>
           </label>
 
-          <button class="btn" type="submit">Enviar solicitud de valoración</button>
+          <button id="submitBtn" class="btn" type="submit">Enviar solicitud de valoración</button>
 
           <p class="note">
-            Después de enviar, también podrás confirmar por WhatsApp para atención más rápida.
+            Al enviar, verás una confirmación en pantalla y podrás escribir por WhatsApp para atención más rápida.
           </p>
         </form>
-      </div>
+      </section>
     </section>
 
-    <section class="section">
-      <div class="steps">
-        <div class="step">
-          <b>1</b>
-          <h3>Completa el formulario</h3>
-          <p>Déjanos tus datos y el tratamiento que deseas consultar.</p>
-        </div>
+    <section class="steps">
+      <div class="step">
+        <span class="number">1</span>
+        <h3>Completa el formulario</h3>
+        <p class="muted">Nos dices qué tratamiento o zona deseas consultar.</p>
+      </div>
 
-        <div class="step">
-          <b>2</b>
-          <h3>Revisamos tu caso</h3>
-          <p>Te orientamos según zona, disponibilidad y objetivo estético.</p>
-        </div>
+      <div class="step">
+        <span class="number">2</span>
+        <h3>Revisamos tu solicitud</h3>
+        <p class="muted">Te orientamos según tu caso y disponibilidad.</p>
+      </div>
 
-        <div class="step">
-          <b>3</b>
-          <h3>Confirmamos por WhatsApp</h3>
-          <p>Coordinamos tu cita de valoración en Parque Lefevre.</p>
-        </div>
+      <div class="step">
+        <span class="number">3</span>
+        <h3>Confirmamos por WhatsApp</h3>
+        <p class="muted">Coordinamos tu valoración en Figura Rostro KG.</p>
       </div>
     </section>
 
@@ -681,15 +773,26 @@
     </footer>
   </main>
 
-  <a class="float-wa" href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20quiero%20confirmar%20mi%20valoraci%C3%B3n%20est%C3%A9tica%20de%20junio." target="_blank" rel="noopener">
+  <a class="float-wa" href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20quiero%20consultar%20por%20la%20valoraci%C3%B3n%20est%C3%A9tica%20de%20junio." target="_blank" rel="noopener">
     💬 WhatsApp
   </a>
 
   <script>
     const next = document.getElementById('nextUrl');
+    const submitBtn = document.getElementById('submitBtn');
+    const form = document.getElementById('leadForm');
 
     if (next) {
-      next.value = window.location.origin + window.location.pathname.replace('valoracion-estetica-panama.html','') + 'gracias-valoracion.html';
+      const currentPath = window.location.pathname;
+      const basePath = currentPath.substring(0, currentPath.lastIndexOf('/') + 1);
+      next.value = window.location.origin + basePath + 'gracias-valoracion.html';
+    }
+
+    if (form && submitBtn) {
+      form.addEventListener('submit', function () {
+        submitBtn.textContent = 'Enviando solicitud...';
+        submitBtn.disabled = true;
+      });
     }
   </script>
 </body>
