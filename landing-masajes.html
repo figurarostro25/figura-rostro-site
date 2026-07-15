@@ -1,0 +1,1090 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Masaje Relajante desde $45 | Figura Rostro KG</title>
+  <meta name="description" content="Masajes relajantes y terap&eacute;uticos para damas y caballeros en Figura Rostro KG. Cuerpo completo de 60 minutos desde $45. Reserva por WhatsApp.">
+  <meta name="theme-color" content="#090807">
+  <meta property="og:title" content="Masaje relajante desde $45 | Figura Rostro KG">
+  <meta property="og:description" content="60 minutos de relajaci&oacute;n, bienestar y atenci&oacute;n profesional para damas y caballeros.">
+  <meta property="og:image" content="masaje-dama-a-caballero.png">
+  <meta property="og:type" content="website">
+  <link rel="preload" as="image" href="masaje-dama-a-caballero.png" fetchpriority="high">
+  <style>
+    :root {
+      --bg: #090807;
+      --bg-soft: #14110f;
+      --panel: #1b1713;
+      --panel-2: #241e18;
+      --gold: #caa35c;
+      --gold-2: #f0d49b;
+      --text: #fffaf2;
+      --muted: #d8cfc0;
+      --soft: rgba(255, 250, 242, .08);
+      --line: rgba(240, 212, 155, .28);
+      --whatsapp: #25d366;
+      --shadow: 0 24px 70px rgba(0, 0, 0, .45);
+      --radius: 8px;
+      --max: 1160px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 18% 10%, rgba(202, 163, 92, .14), transparent 28rem),
+        linear-gradient(180deg, #090807 0%, #120f0c 46%, #090807 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    .topbar {
+      position: fixed;
+      z-index: 50;
+      inset: 0 0 auto 0;
+      background: rgba(9, 8, 7, .82);
+      border-bottom: 1px solid rgba(255, 255, 255, .08);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav {
+      width: min(var(--max), calc(100% - 32px));
+      min-height: 68px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: grid;
+      gap: 1px;
+      min-width: 0;
+    }
+
+    .brand strong {
+      font-size: .98rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      font-size: .9rem;
+      display: inline-flex;
+      align-items: center;
+      min-height: 42px;
+      padding: 0 10px;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: var(--radius);
+      min-height: 48px;
+      padding: 0 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform .18s ease, filter .18s ease, background .18s ease;
+      text-align: center;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+    }
+
+    .btn-primary {
+      background: var(--whatsapp);
+      color: #06270f;
+      box-shadow: 0 14px 36px rgba(37, 211, 102, .2);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, .1);
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, .2);
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold-2), var(--gold));
+      color: #17100a;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 700px;
+      isolation: isolate;
+      overflow: hidden;
+      padding-top: 68px;
+      background: #050403;
+    }
+
+    .hero-slider,
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-slide {
+      opacity: 0;
+      transition: opacity 900ms ease;
+    }
+
+    .hero-slide.is-active {
+      opacity: 1;
+    }
+
+    .hero-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 62% center;
+      transform: scale(1.01);
+    }
+
+    .hero-slide:nth-child(2) img {
+      object-position: 58% center;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(90deg, rgba(0, 0, 0, .92) 0%, rgba(0, 0, 0, .78) 33%, rgba(0, 0, 0, .36) 64%, rgba(0, 0, 0, .1) 100%),
+        linear-gradient(0deg, rgba(9, 8, 7, .96) 0%, transparent 30%, rgba(0, 0, 0, .45) 100%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: min(var(--max), calc(100% - 32px));
+      min-height: calc(700px - 68px);
+      margin: 0 auto;
+      display: grid;
+      align-items: center;
+      padding: 54px 0 78px;
+    }
+
+    .hero-copy {
+      width: min(580px, 100%);
+      display: grid;
+      gap: 20px;
+    }
+
+    .eyebrow {
+      color: var(--gold-2);
+      font-size: .78rem;
+      font-weight: 900;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3rem, 7vw, 6.35rem);
+      line-height: .96;
+      letter-spacing: 0;
+      max-width: 760px;
+      text-wrap: balance;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: clamp(1.05rem, 1.9vw, 1.35rem);
+      max-width: 560px;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .price {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: var(--radius);
+      background: rgba(255, 250, 242, .95);
+      color: #100d0a;
+      box-shadow: var(--shadow);
+    }
+
+    .price span {
+      font-size: .92rem;
+      font-weight: 800;
+    }
+
+    .price strong {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 3rem;
+      line-height: .9;
+    }
+
+    .micro {
+      color: var(--gold-2);
+      font-weight: 800;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .hero-actions .btn {
+      min-width: 180px;
+    }
+
+    .hero-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 2px;
+    }
+
+    .pill {
+      border: 1px solid rgba(255, 255, 255, .16);
+      background: rgba(255, 255, 255, .08);
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: .92rem;
+    }
+
+    .slider-controls {
+      position: absolute;
+      z-index: 3;
+      left: 50%;
+      bottom: 28px;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .dot {
+      width: 38px;
+      height: 8px;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .34);
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .dot.is-active {
+      background: var(--gold-2);
+    }
+
+    main {
+      position: relative;
+      z-index: 2;
+    }
+
+    .section {
+      padding: 76px 0;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 12px;
+      max-width: 760px;
+      margin-bottom: 32px;
+    }
+
+    h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.1rem, 4vw, 3.6rem);
+      line-height: 1.02;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+
+    .section-head p,
+    .muted {
+      color: var(--muted);
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: -44px;
+      position: relative;
+      z-index: 4;
+    }
+
+    .trust-item,
+    .card,
+    .form-card,
+    .location-card,
+    .promo {
+      border: 1px solid rgba(255, 255, 255, .1);
+      background: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .04));
+      box-shadow: 0 18px 52px rgba(0, 0, 0, .22);
+      border-radius: var(--radius);
+    }
+
+    .trust-item {
+      min-height: 116px;
+      display: grid;
+      align-content: center;
+      gap: 6px;
+      padding: 20px;
+    }
+
+    .trust-item b {
+      color: var(--gold-2);
+      font-size: 1.05rem;
+    }
+
+    .trust-item span {
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      overflow: hidden;
+      padding: 26px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .card h3 {
+      font-size: 1.45rem;
+      line-height: 1.15;
+    }
+
+    .card p {
+      color: var(--muted);
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: .86rem;
+      color: var(--gold-2);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 7px 10px;
+      background: rgba(202, 163, 92, .08);
+    }
+
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .benefit {
+      padding: 22px;
+      min-height: 150px;
+      border-left: 1px solid var(--line);
+      background: rgba(255, 255, 255, .035);
+      border-radius: var(--radius);
+    }
+
+    .benefit b {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .benefit span {
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr .8fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .promo {
+      padding: 24px;
+      background:
+        linear-gradient(135deg, rgba(202, 163, 92, .18), rgba(255, 255, 255, .04)),
+        var(--panel);
+    }
+
+    .promo small {
+      color: var(--gold-2);
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .promo h3 {
+      margin-top: 10px;
+      font-size: 1.35rem;
+    }
+
+    .promo p {
+      margin-top: 8px;
+      color: var(--muted);
+    }
+
+    .promo .price-mini {
+      margin-top: 18px;
+      display: inline-flex;
+      color: #120d08;
+      background: var(--gold-2);
+      border-radius: var(--radius);
+      padding: 8px 12px;
+      font-weight: 900;
+    }
+
+    .form-card {
+      padding: 26px;
+      background: rgba(18, 15, 12, .9);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .field {
+      display: grid;
+      gap: 7px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      color: var(--muted);
+      font-size: .9rem;
+      font-weight: 700;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      color: var(--text);
+      background: #0d0b09;
+      border: 1px solid rgba(255, 255, 255, .14);
+      border-radius: var(--radius);
+      min-height: 48px;
+      padding: 12px 13px;
+      outline: 0;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--gold-2);
+      box-shadow: 0 0 0 3px rgba(202, 163, 92, .16);
+    }
+
+    .form-note {
+      color: var(--muted);
+      font-size: .9rem;
+      margin-top: 14px;
+    }
+
+    .form-card .btn {
+      width: 100%;
+      margin-top: 16px;
+    }
+
+    .location-card {
+      padding: 24px;
+      display: grid;
+      gap: 14px;
+      background: rgba(255, 255, 255, .055);
+    }
+
+    .address {
+      color: var(--muted);
+      font-style: normal;
+    }
+
+    .footer {
+      border-top: 1px solid rgba(255, 255, 255, .1);
+      color: var(--muted);
+      padding: 26px 0 96px;
+      font-size: .92rem;
+    }
+
+    .footer .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .float-wa {
+      position: fixed;
+      z-index: 60;
+      right: 18px;
+      bottom: 18px;
+      min-height: 58px;
+      padding: 0 18px;
+      border-radius: 999px;
+      background: var(--whatsapp);
+      color: #06270f;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .36);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+    }
+
+    .wa-mark {
+      width: 30px;
+      height: 30px;
+      border: 2px solid currentColor;
+      border-radius: 50%;
+      display: inline-grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: .9rem;
+    }
+
+    @media (max-width: 920px) {
+      .nav-link {
+        display: none;
+      }
+
+      .hero {
+        min-height: 720px;
+      }
+
+      .hero-inner {
+        min-height: calc(720px - 68px);
+        align-items: end;
+        padding-bottom: 86px;
+      }
+
+      .hero::before {
+        background:
+          linear-gradient(180deg, rgba(0, 0, 0, .74) 0%, rgba(0, 0, 0, .3) 34%, rgba(0, 0, 0, .84) 74%, rgba(9, 8, 7, .98) 100%),
+          linear-gradient(90deg, rgba(0, 0, 0, .72), rgba(0, 0, 0, .12));
+      }
+
+      .hero-slide img {
+        object-position: 60% center;
+      }
+
+      .hero-slide:nth-child(2) img {
+        object-position: 58% center;
+      }
+
+      .hero-copy {
+        gap: 15px;
+      }
+
+      .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .trust-grid,
+      .benefits {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .cards,
+      .split {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        width: min(100% - 24px, var(--max));
+        min-height: 62px;
+      }
+
+      .brand strong {
+        font-size: .82rem;
+      }
+
+      .brand span {
+        font-size: .74rem;
+      }
+
+      .nav-actions .btn {
+        min-height: 40px;
+        padding: 0 12px;
+        font-size: .86rem;
+      }
+
+      .hero {
+        min-height: 730px;
+        padding-top: 62px;
+      }
+
+      .hero-inner {
+        width: min(100% - 24px, var(--max));
+        min-height: calc(730px - 62px);
+        padding: 34px 0 82px;
+      }
+
+      h1 {
+        font-size: clamp(2.65rem, 14vw, 4.2rem);
+      }
+
+      .lead {
+        font-size: 1rem;
+      }
+
+      .price strong {
+        font-size: 2.55rem;
+      }
+
+      .section {
+        padding: 54px 0;
+      }
+
+      .wrap {
+        width: min(100% - 24px, var(--max));
+      }
+
+      .trust-grid {
+        grid-template-columns: 1fr;
+        margin-top: -22px;
+      }
+
+      .benefits,
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .field.full {
+        grid-column: auto;
+      }
+
+      .card,
+      .form-card,
+      .promo,
+      .location-card {
+        padding: 20px;
+      }
+
+      .float-wa {
+        right: 12px;
+        left: 12px;
+        bottom: 12px;
+        justify-content: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar" aria-label="Encabezado">
+    <nav class="nav">
+      <a class="brand" href="#inicio" aria-label="Figura Rostro KG">
+        <strong>Figura Rostro KG</strong>
+        <span>Est&eacute;tica Integral</span>
+      </a>
+      <div class="nav-actions">
+        <a class="nav-link" href="#servicios">Masajes</a>
+        <a class="nav-link" href="#contacto">Contacto</a>
+        <a class="btn btn-primary" href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20vi%20la%20promoci%C3%B3n%20de%20masaje%20desde%20%2445%20y%20quiero%20consultar%20disponibilidad.">WhatsApp</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero" id="inicio" aria-label="Masajes relajantes y terap&eacute;uticos">
+    <div class="hero-slider" data-slider>
+      <div class="hero-slide is-active" data-slide>
+        <img src="masaje-dama-a-caballero.png" alt="Mujer masajista atendiendo a un caballero en Figura Rostro KG" width="1152" height="1408" fetchpriority="high" decoding="async">
+      </div>
+      <div class="hero-slide" data-slide>
+        <img src="masaje-caballero-a-dama.png" alt="Hombre masajista atendiendo a una dama en Figura Rostro KG" width="1024" height="1280" decoding="async">
+      </div>
+    </div>
+
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">Masajes relajantes y terap&eacute;uticos</p>
+        <h1>Tu cuerpo tambi&eacute;n necesita una pausa</h1>
+        <p class="lead">Disfruta 60 minutos de relajaci&oacute;n, bienestar y atenci&oacute;n profesional para damas y caballeros.</p>
+        <div class="price-row">
+          <div class="price" aria-label="Precio desde 45 d&oacute;lares">
+            <span>Desde</span>
+            <strong>$45</strong>
+          </div>
+          <p class="micro">Cuerpo completo &middot; Bajo reserva previa</p>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20vi%20la%20promoci%C3%B3n%20de%20masaje%20desde%20%2445%20y%20quiero%20consultar%20disponibilidad.">Reservar por WhatsApp</a>
+          <a class="btn btn-secondary" href="https://figura-rostro-site.vercel.app/reservar-v2.html">Agendar cita</a>
+        </div>
+        <div class="hero-points" aria-label="Detalles del servicio">
+          <span class="pill">60 minutos</span>
+          <span class="pill">Damas y caballeros</span>
+          <span class="pill">PH Royal Park</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="slider-controls" aria-label="Cambiar imagen del banner">
+      <button class="dot is-active" type="button" data-dot="0" aria-label="Ver imagen 1"></button>
+      <button class="dot" type="button" data-dot="1" aria-label="Ver imagen 2"></button>
+    </div>
+  </section>
+
+  <main>
+    <section class="wrap" aria-label="Datos r&aacute;pidos">
+      <div class="trust-grid">
+        <div class="trust-item">
+          <b>Desde $45</b>
+          <span>Masaje de cuerpo completo.</span>
+        </div>
+        <div class="trust-item">
+          <b>60 minutos</b>
+          <span>Tiempo real para soltar tensi&oacute;n.</span>
+        </div>
+        <div class="trust-item">
+          <b>Bajo reserva</b>
+          <span>Atenci&oacute;n organizada y personalizada.</span>
+        </div>
+        <div class="trust-item">
+          <b>WhatsApp 6474-6168</b>
+          <span>Consulta disponibilidad al instante.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="servicios">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Bienestar corporal</p>
+          <h2>Elige el masaje que tu cuerpo est&aacute; pidiendo</h2>
+          <p>En Figura Rostro KG combinamos un ambiente tranquilo, trato profesional y t&eacute;cnicas enfocadas en relajaci&oacute;n, descanso y alivio de tensiones.</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="tag-list">
+              <span class="tag">Relajaci&oacute;n</span>
+              <span class="tag">Bienestar</span>
+              <span class="tag">Descanso</span>
+            </div>
+            <h3>Masaje relajante</h3>
+            <p>Ideal para bajar el estr&eacute;s, descansar la mente y regalarle al cuerpo una pausa de 60 minutos con movimientos suaves y envolventes.</p>
+            <a class="btn btn-gold" href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20quiero%20reservar%20un%20masaje%20relajante%20desde%20%2445.">Consultar horario</a>
+          </article>
+
+          <article class="card">
+            <div class="tag-list">
+              <span class="tag">Tensi&oacute;n muscular</span>
+              <span class="tag">Espalda</span>
+              <span class="tag">Cuello</span>
+            </div>
+            <h3>Masaje terap&eacute;utico o descontracturante</h3>
+            <p>Recomendado cuando sientes el cuerpo cargado, rigidez o molestias por postura, actividad diaria o cansancio acumulado.</p>
+            <a class="btn btn-gold" href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20quiero%20informaci%C3%B3n%20sobre%20masaje%20terap%C3%A9utico%20o%20descontracturante.">Pedir informaci&oacute;n</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Beneficios">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Beneficios</p>
+          <h2>M&aacute;s que un masaje, una pausa para volver a ti</h2>
+        </div>
+        <div class="benefits">
+          <div class="benefit">
+            <b>Ayuda a reducir el estr&eacute;s</b>
+            <span>Un espacio tranquilo para soltar la carga del d&iacute;a y respirar mejor.</span>
+          </div>
+          <div class="benefit">
+            <b>Alivia tensiones</b>
+            <span>Trabajo corporal enfocado en zonas comunes como espalda, cuello y hombros.</span>
+          </div>
+          <div class="benefit">
+            <b>Favorece el descanso</b>
+            <span>La relajaci&oacute;n corporal puede ayudarte a dormir y recuperarte mejor.</span>
+          </div>
+          <div class="benefit">
+            <b>Mejora la sensaci&oacute;n corporal</b>
+            <span>Movimientos que promueven bienestar, ligereza y conexi&oacute;n con tu cuerpo.</span>
+          </div>
+          <div class="benefit">
+            <b>Atenci&oacute;n para damas y caballeros</b>
+            <span>Equipo profesional y ambiente cuidado para cada cliente.</span>
+          </div>
+          <div class="benefit">
+            <b>Reserva f&aacute;cil</b>
+            <span>Escr&iacute;benos por WhatsApp y coordinamos el horario disponible.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contacto">
+      <div class="wrap split">
+        <div>
+          <div class="section-head">
+            <p class="eyebrow">Solicitud r&aacute;pida</p>
+            <h2>Reserva tu masaje por WhatsApp</h2>
+            <p>Completa estos datos y se abrir&aacute; WhatsApp con tu mensaje listo para enviar. Nuestro equipo confirmar&aacute; disponibilidad.</p>
+          </div>
+
+          <form class="form-card" id="whatsappForm">
+            <h3>Datos para coordinar</h3>
+            <div class="form-grid">
+              <div class="field">
+                <label for="name">Nombre completo</label>
+                <input id="name" name="name" type="text" autocomplete="name" placeholder="Tu nombre" required>
+              </div>
+              <div class="field">
+                <label for="phone">WhatsApp</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="Ej. 6474-6168" required>
+              </div>
+              <div class="field">
+                <label for="service">Servicio de inter&eacute;s</label>
+                <select id="service" name="service" required>
+                  <option value="">Selecciona una opci&oacute;n</option>
+                  <option>Masaje relajante de 60 minutos desde $45</option>
+                  <option>Masaje terap&eacute;utico o descontracturante</option>
+                  <option>Ritual completo de limpieza energ&eacute;tica por $150</option>
+                  <option>Quiero orientaci&oacute;n</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="date">Fecha deseada</label>
+                <input id="date" name="date" type="date">
+              </div>
+              <div class="field">
+                <label for="time">Horario preferido</label>
+                <select id="time" name="time">
+                  <option value="">Selecciona horario</option>
+                  <option>Ma&ntilde;ana</option>
+                  <option>Mediod&iacute;a</option>
+                  <option>Tarde</option>
+                  <option>Lo antes disponible</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="people">Persona que recibir&aacute; el masaje</label>
+                <select id="people" name="people">
+                  <option>Dama</option>
+                  <option>Caballero</option>
+                  <option>Pareja o regalo</option>
+                </select>
+              </div>
+              <div class="field full">
+                <label for="message">Comentario</label>
+                <textarea id="message" name="message" placeholder="Ej. dolor de espalda, regalo, disponibilidad, zona de tensi&oacute;n..."></textarea>
+              </div>
+            </div>
+            <p class="form-note">Al enviar, WhatsApp se abrir&aacute; con la solicitud preparada. La cita queda confirmada cuando el equipo valide disponibilidad.</p>
+            <button class="btn btn-primary" type="submit">Enviar solicitud por WhatsApp</button>
+          </form>
+        </div>
+
+        <aside>
+          <div class="promo">
+            <small>Publicidad especial</small>
+            <h3>Ritual completo de limpieza energ&eacute;tica</h3>
+            <p>Una experiencia integral para renovar tu energ&iacute;a y regalarte un momento profundo de bienestar.</p>
+            <span class="price-mini">Promoci&oacute;n $150</span>
+            <a class="btn btn-secondary" style="width:100%; margin-top:18px;" href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20Ritual%20completo%20de%20limpieza%20energ%C3%A9tica%20por%20%24150.">Consultar ritual</a>
+          </div>
+
+          <div class="location-card" style="margin-top:18px;">
+            <p class="eyebrow">Ubicaci&oacute;n</p>
+            <h3>Figura Rostro KG</h3>
+            <address class="address">
+              PH Royal Park, Local 15,<br>
+              Avenida Ernesto T. Lefevre,<br>
+              Parque Lefevre, Ciudad de Panam&aacute;.
+            </address>
+            <a class="btn btn-gold" href="https://figura-rostro-site.vercel.app/reservar-v2.html">Agendar en l&iacute;nea</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>Figura Rostro KG &middot; Est&eacute;tica Integral &middot; WhatsApp 6474-6168</span>
+      <span>Atenci&oacute;n bajo reserva previa. No sustituye diagn&oacute;stico m&eacute;dico.</span>
+    </div>
+  </footer>
+
+  <a class="float-wa" href="https://wa.me/50764746168?text=Hola%20Figura%20Rostro%20KG%2C%20vi%20la%20promoci%C3%B3n%20de%20masaje%20desde%20%2445%20y%20quiero%20consultar%20disponibilidad." aria-label="Reservar por WhatsApp">
+    <span class="wa-mark">W</span>
+    <span>Reservar por WhatsApp</span>
+  </a>
+
+  <script>
+    (function () {
+      const slider = document.querySelector("[data-slider]");
+      const slides = Array.from(document.querySelectorAll("[data-slide]"));
+      const dots = Array.from(document.querySelectorAll("[data-dot]"));
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      let active = 0;
+      let timer = null;
+
+      function showSlide(index) {
+        active = (index + slides.length) % slides.length;
+        slides.forEach((slide, i) => slide.classList.toggle("is-active", i === active));
+        dots.forEach((dot, i) => {
+          dot.classList.toggle("is-active", i === active);
+          dot.setAttribute("aria-current", i === active ? "true" : "false");
+        });
+      }
+
+      function start() {
+        if (reduceMotion || timer) return;
+        timer = window.setInterval(() => showSlide(active + 1), 4500);
+      }
+
+      function stop() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+
+      dots.forEach((dot) => {
+        dot.addEventListener("click", () => {
+          stop();
+          showSlide(Number(dot.dataset.dot));
+          start();
+        });
+      });
+
+      if (slider) {
+        slider.addEventListener("mouseenter", stop);
+        slider.addEventListener("mouseleave", start);
+        slider.addEventListener("focusin", stop);
+        slider.addEventListener("focusout", start);
+      }
+
+      showSlide(0);
+      start();
+    })();
+
+    (function () {
+      const form = document.getElementById("whatsappForm");
+      if (!form) return;
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const data = new FormData(form);
+        const lines = [
+          "Hola Figura Rostro KG, vi la promoci&oacute;n de masaje desde $45 y quiero consultar disponibilidad.",
+          "",
+          "Nombre: " + (data.get("name") || ""),
+          "WhatsApp: " + (data.get("phone") || ""),
+          "Servicio: " + (data.get("service") || ""),
+          "Fecha deseada: " + (data.get("date") || "Por coordinar"),
+          "Horario: " + (data.get("time") || "Por coordinar"),
+          "Persona: " + (data.get("people") || ""),
+          "Comentario: " + (data.get("message") || "Sin comentario")
+        ];
+        const cleanText = lines.join("\n").replace(/&oacute;/g, "o").replace(/&eacute;/g, "e");
+        const url = "https://wa.me/50764746168?text=" + encodeURIComponent(cleanText);
+        window.open(url, "_blank", "noopener,noreferrer");
+      });
+    })();
+  </script>
+</body>
+</html>
