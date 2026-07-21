@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Masajes relajantes y bienestar estÃ©tico en Parque Lefevre, Ciudad de PanamÃ¡. Reserva tu cita en Figura Rostro KG.">
+  <meta name="theme-color" content="#0a0b0a">
+  <title>Figura Rostro KG | EstÃ©tica y Bienestar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#0a0b0a; --paper:#f8f5ee; --cream:#eee7d8; --gold:#d6af62; --gold-light:#f4d591; --green:#087e6d; --muted:#a8aaa5; --line:rgba(214,175,98,.28); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--ink); color:#f9f7f2; font-family:"DM Sans",Arial,sans-serif; overflow-x:hidden; }
+    a { color:inherit; text-decoration:none; }
+    button { font:inherit; }
+    .container { width:min(1120px,calc(100% - 40px)); margin:auto; }
+    .eyebrow { display:inline-flex; align-items:center; gap:9px; color:var(--gold-light); font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; font-weight:700; }
+    .eyebrow::before { content:""; display:block; width:26px; height:1px; background:currentColor; }
+    .topbar { position:relative; z-index:3; background:#071412; border-bottom:1px solid rgba(255,255,255,.1); color:#e9e5da; font-size:.78rem; }
+    .topbar .container { min-height:39px; display:flex; align-items:center; justify-content:center; gap:17px; text-align:center; }
+    .topbar span { display:flex; align-items:center; gap:6px; }
+    .topbar svg { width:14px; height:14px; color:var(--gold); }
+    header { position:absolute; z-index:3; width:100%; top:39px; }
+    .nav { min-height:88px; display:flex; align-items:center; justify-content:space-between; gap:22px; }
+    .brand { display:flex; align-items:center; }
+    .brand img { width:105px; height:auto; display:block; }
+    .nav-links { display:flex; align-items:center; gap:24px; color:#efeee9; font-size:.83rem; font-weight:600; }
+    .nav-links a:not(.button) { opacity:.82; transition:opacity .2s; }
+    .nav-links a:not(.button):hover { opacity:1; }
+    .button { display:inline-flex; align-items:center; justify-content:center; gap:10px; border:1px solid transparent; border-radius:3px; min-height:50px; padding:0 23px; font-size:.84rem; font-weight:700; letter-spacing:.025em; transition:transform .2s, background .2s, border-color .2s; cursor:pointer; }
+    .button:hover { transform:translateY(-2px); }
+    .button-gold { color:#15120c; background:linear-gradient(135deg,#f2d58e,#c89e50); box-shadow:0 10px 35px rgba(213,173,91,.2); }
+    .button-dark { border-color:rgba(255,255,255,.46); color:#fff; background:rgba(0,0,0,.14); backdrop-filter:blur(10px); }
+    .button-outline { color:#f0d18a; border-color:rgba(214,175,98,.6); }
+    .hero { min-height:795px; position:relative; isolation:isolate; display:flex; align-items:end; padding:155px 0 76px; background:#0b0b0a; overflow:hidden; }
+    .hero-image { position:absolute; z-index:-3; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; opacity:.88; }
+    .hero::before { content:""; position:absolute; z-index:-2; inset:0; background:linear-gradient(90deg,rgba(4,5,4,.99) 0%,rgba(4,5,4,.95) 26%,rgba(4,5,4,.55) 52%,rgba(4,5,4,.08) 78%),linear-gradient(0deg,rgba(5,6,5,.92),transparent 46%); }
+    .hero::after { content:""; position:absolute; z-index:-1; width:540px; height:540px; left:-290px; bottom:-310px; border:1px solid rgba(214,175,98,.42); border-radius:50%; box-shadow:0 0 0 28px rgba(214,175,98,.05),0 0 0 58px rgba(214,175,98,.025); }
+    .hero-content { width:min(590px,100%); }
+    h1,h2,h3,p { margin-top:0; }
+    h1 { margin:17px 0 20px; max-width:570px; font-family:"Playfair Display",Georgia,serif; font-size:clamp(3rem,6vw,5.4rem); line-height:.95; font-weight:600; letter-spacing:-.045em; }
+    h1 em { color:var(--gold-light); font-style:normal; }
+    .hero-copy { max-width:500px; margin-bottom:28px; color:#ddd9d0; font-size:1.06rem; line-height:1.65; }
+    .hero-price { display:flex; align-items:center; gap:12px; margin-bottom:28px; color:#efede8; font-size:.87rem; }
+    .hero-price strong { color:var(--gold-light); font-size:1.5rem; font-family:"Playfair Display",Georgia,serif; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:12px; }
+    .hero-note { margin:18px 0 0; color:rgba(255,255,255,.68); font-size:.73rem; }
+    .hero-note a { text-decoration:underline; text-underline-offset:3px; }
+    .quickproof { background:#0d1916; border-top:1px solid rgba(214,175,98,.23); border-bottom:1px solid rgba(214,175,98,.23); }
+    .quickproof .container { display:grid; grid-template-columns:repeat(3,1fr); }
+    .proof { min-height:94px; padding:22px 30px; display:flex; align-items:center; gap:15px; border-right:1px solid rgba(255,255,255,.1); }
+    .proof:last-child { border:0; }
+    .proof svg { width:26px; height:26px; color:var(--gold); flex:none; }
+    .proof strong { display:block; font-size:.86rem; }
+    .proof small { display:block; margin-top:4px; color:#b3b8ae; font-size:.76rem; }
+    .section { padding:108px 0; }
+    .section-light { color:#14201c; background:var(--paper); }
+    .section-dark { background:linear-gradient(155deg,#101511,#060706); }
+    .section-head { display:flex; justify-content:space-between; gap:30px; align-items:end; margin-bottom:42px; }
+    h2 { max-width:670px; margin:13px 0 0; font:600 clamp(2.35rem,4.2vw,4rem)/1.04 "Playfair Display",Georgia,serif; letter-spacing:-.035em; }
+    .section-light .eyebrow { color:var(--green); }
+    .head-copy { max-width:350px; margin:0; color:#627069; font-size:.93rem; line-height:1.65; }
+    .services { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    .service { position:relative; min-height:278px; padding:28px; overflow:hidden; display:flex; flex-direction:column; justify-content:flex-end; background:#f0eadf; border:1px solid #ddd3c1; transition:transform .25s, box-shadow .25s; }
+    .service:hover { transform:translateY(-5px); box-shadow:0 19px 35px rgba(24,33,29,.12); }
+    .service-number { position:absolute; top:14px; right:19px; color:#c9b68c; font:600 3.2rem/1 "Playfair Display",Georgia,serif; opacity:.58; }
+    .service-accent { position:absolute; right:-43px; top:-45px; width:153px; height:153px; border:1px solid #b2cab4; border-radius:50% 50% 50% 0; transform:rotate(28deg); }
+    .service h3 { position:relative; margin:0 0 9px; font:600 1.48rem/1.08 "Playfair Display",Georgia,serif; }
+    .service p { position:relative; margin:0; color:#52615a; font-size:.83rem; line-height:1.55; }
+    .service-featured { color:#fff; background:#0b6055; border-color:#0b6055; }
+    .service-featured .service-accent { border-color:rgba(239,210,140,.6); }
+    .service-featured .service-number { color:#e9ca81; }
+    .service-featured p { color:#dbebe4; }
+    .service-tag { display:inline-flex; position:relative; width:max-content; margin-bottom:14px; padding:5px 8px; color:#1e1c16; background:var(--gold-light); font-size:.63rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+    .offer { position:relative; overflow:hidden; padding:74px 0; background:radial-gradient(circle at 78% 25%,rgba(214,175,98,.24),transparent 27%),#071b17; }
+    .offer::after { content:""; position:absolute; width:420px; height:420px; right:-198px; bottom:-250px; border:1px solid rgba(214,175,98,.5); border-radius:50%; }
+    .offer-grid { position:relative; z-index:1; display:grid; grid-template-columns:1.1fr .9fr; gap:65px; align-items:center; }
+    .offer h2 { color:#fff; }
+    .offer-text { margin:20px 0 27px; max-width:590px; color:#d2ddd5; line-height:1.65; }
+    .offer-terms { color:#b7c7bd; font-size:.76rem; line-height:1.6; }
+    .offer-card { padding:31px; border:1px solid rgba(241,212,146,.55); color:#172018; background:linear-gradient(135deg,#f1d28c,#bd8c38); box-shadow:0 24px 70px rgba(0,0,0,.28); }
+    .offer-card span { display:block; font-size:.74rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase; }
+    .offer-amount { margin:4px 0 15px; font:600 clamp(3.5rem,6vw,5.5rem)/.94 "Playfair Display",Georgia,serif; letter-spacing:-.06em; }
+    .offer-card p { max-width:300px; margin:0; font-size:.89rem; line-height:1.5; }
+    .benefits { display:grid; grid-template-columns:repeat(3,1fr); gap:37px; }
+    .benefit { padding-top:27px; border-top:1px solid var(--line); }
+    .benefit svg { width:30px; height:30px; color:var(--gold-light); margin-bottom:19px; }
+    .benefit h3 { margin:0 0 10px; font:600 1.4rem "Playfair Display",Georgia,serif; }
+    .benefit p { margin:0; color:#afb6ad; font-size:.86rem; line-height:1.65; }
+    .location { padding:0; color:#15201b; background:#eee9df; }
+    .location-grid { display:grid; grid-template-columns:1fr 1fr; }
+    .location-body { padding:92px max(20px,calc((100vw - 1120px)/2)); padding-right:75px; }
+    .location-body h2 { margin-bottom:20px; }
+    .location-body p { max-width:430px; color:#56635d; line-height:1.66; }
+    .location-list { display:grid; gap:14px; margin:27px 0 30px; }
+    .location-list div { display:flex; gap:11px; align-items:flex-start; font-size:.86rem; }
+    .location-list svg { width:19px; height:19px; color:var(--green); flex:none; }
+    .location-map { position:relative; min-height:480px; background:linear-gradient(145deg,#0f7667,#073e36); overflow:hidden; display:flex; align-items:center; justify-content:center; }
+    .location-map::before,.location-map::after { content:""; position:absolute; border:1px solid rgba(255,255,255,.25); border-radius:50%; }
+    .location-map::before { width:440px; height:440px; }
+    .location-map::after { width:270px; height:270px; }
+    .map-link { position:relative; z-index:1; width:210px; height:210px; padding:19px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; color:#fff; text-align:center; background:#0e1613; border:1px solid var(--gold); border-radius:50%; transition:transform .25s; }
+    .map-link:hover { transform:scale(1.04); }
+    .map-link svg { width:35px; height:35px; color:var(--gold-light); }
+    .map-link strong { font:600 1.3rem "Playfair Display",Georgia,serif; }
+    .map-link span { font-size:.75rem; color:#c9d0c9; }
+    .faq { display:grid; grid-template-columns:.8fr 1.2fr; gap:75px; }
+    .faq-intro p { margin:19px 0 0; color:#aeb5ac; line-height:1.65; }
+    details { border-top:1px solid rgba(255,255,255,.18); }
+    details:last-child { border-bottom:1px solid rgba(255,255,255,.18); }
+    summary { padding:20px 32px 20px 0; position:relative; list-style:none; cursor:pointer; font-size:.94rem; font-weight:700; }
+    summary::-webkit-details-marker { display:none; }
+    summary::after { content:"+"; position:absolute; right:4px; color:var(--gold-light); font:1.6rem/1 "Playfair Display",Georgia,serif; }
+    details[open] summary::after { content:"â€“"; }
+    details p { margin:0; max-width:650px; padding:0 25px 21px 0; color:#aeb5ac; font-size:.86rem; line-height:1.65; }
+    .final-cta { position:relative; text-align:center; overflow:hidden; padding:113px 0; background:linear-gradient(180deg,#0f221d,#07100e); }
+    .final-cta::before { content:""; position:absolute; inset:18px; border:1px solid rgba(214,175,98,.23); pointer-events:none; }
+    .final-cta h2 { max-width:700px; margin:13px auto 20px; }
+    .final-cta p { max-width:525px; margin:0 auto 29px; color:#b9c1b8; line-height:1.65; }
+    .contact-options { display:flex; justify-content:center; flex-wrap:wrap; gap:11px; margin-top:18px; }
+    .contact-options a { color:#c4cbc2; font-size:.76rem; text-decoration:underline; text-underline-offset:4px; }
+    footer { padding:39px 0 92px; color:#929991; background:#050605; font-size:.76rem; }
+    .footer-grid { display:flex; justify-content:space-between; gap:25px; align-items:center; }
+    .footer-brand { display:flex; align-items:center; gap:12px; color:#d8d9d2; font-weight:700; }
+    .footer-brand img { width:53px; height:auto; }
+    .footer-links { display:flex; flex-wrap:wrap; gap:18px; }
+    .footer-links a:hover { color:var(--gold-light); }
+    .floating { position:fixed; z-index:10; right:20px; bottom:20px; display:flex; align-items:center; gap:9px; padding:13px 17px; color:#172018; background:linear-gradient(135deg,#f2d590,#c69645); border-radius:28px; box-shadow:0 12px 35px rgba(0,0,0,.36); font-size:.8rem; font-weight:700; }
+    .floating svg { width:20px; height:20px; }
+    @media (max-width:840px) { .nav-links a:not(.button) { display:none; } .hero { min-height:730px; } .services { grid-template-columns:repeat(2,1fr); } .offer-grid,.location-grid,.faq { grid-template-columns:1fr; } .location-body { padding:76px 20px; } .location-map { min-height:330px; } .benefits { gap:24px; } }
+    @media (max-width:580px) { .container { width:min(100% - 32px,1120px); } .topbar .container { min-height:45px; gap:9px; font-size:.68rem; } .topbar span + span { border-left:1px solid rgba(255,255,255,.2); padding-left:9px; } header { top:45px; } .nav { min-height:75px; } .brand img { width:88px; } .nav .button { min-height:39px; padding:0 13px; font-size:.7rem; } .hero { min-height:700px; padding:145px 0 52px; align-items:end; } .hero-image { object-position:62% center; } .hero::before { background:linear-gradient(90deg,rgba(4,5,4,.97) 0%,rgba(4,5,4,.89) 53%,rgba(4,5,4,.27) 100%),linear-gradient(0deg,rgba(5,6,5,.92),transparent 54%); } h1 { font-size:3.3rem; } .hero-copy { font-size:.94rem; } .hero-actions .button { width:100%; } .quickproof .container { grid-template-columns:1fr; } .proof { min-height:73px; padding:15px 5px; border-right:0; border-bottom:1px solid rgba(255,255,255,.1); } .section { padding:72px 0; } .section-head { display:block; margin-bottom:28px; } .head-copy { margin-top:15px; } .services { grid-template-columns:1fr; } .service { min-height:215px; } .offer { padding:65px 0; } .offer-grid { gap:35px; } .offer-card { padding:25px; } .benefits { grid-template-columns:1fr; gap:29px; } .faq { gap:35px; } .footer-grid { display:block; } .footer-links { margin-top:20px; } .floating { right:13px; bottom:13px; } }
+  </style>
+</head>
+<body>
+  <div class="topbar"><div class="container"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3.5 2"/></svg> 8:00 a. m. â€“ 8:00 p. m. Â· Previa cita</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 10c0 5-8 10-8 10S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg> Parque Lefevre, Ciudad de PanamÃ¡</span></div></div>
+  <header><div class="container nav"><a class="brand" href="#inicio" aria-label="Figura Rostro KG, inicio"><img src="logo-figura-rostro-kg.png" alt="Figura Rostro KG"></a><nav class="nav-links" aria-label="NavegaciÃ³n principal"><a href="#servicios">Servicios</a><a href="#bono">Bono web</a><a href="#ubicacion">UbicaciÃ³n</a><a class="button button-gold" href="https://figura-rostro-site.vercel.app/reservar-v2.html">Reservar ahora</a></nav></div></header>
+  <main>
+    <section class="hero" id="inicio"><img class="hero-image" src="hero-masaje.png" alt="Terapeuta realizando masaje relajante profesional"><div class="container"><div class="hero-content"><span class="eyebrow">EstÃ©tica y bienestar integral</span><h1>Tu pausa comienza <em>aquÃ­.</em></h1><p class="hero-copy">Reserva tu experiencia de bienestar en Figura Rostro KG y solicita un bono exclusivo de hasta <strong>$25</strong> para tu prÃ³ximo servicio elegible.</p><div class="hero-price"><strong>Desde $29.95</strong><span>Masaje relajante Â· 25 min</span></div><div class="hero-actions"><a class="button button-gold" href="https://figura-rostro-site.vercel.app/reservar-v2.html">Reservar y solicitar mi bono <span>â†’</span></a><a class="button button-dark" href="#servicios">Conocer servicios</a></div><p class="hero-note">Al continuar, verÃ¡s el sistema de reservas. Consulta nuestra <a href="politica-privacidad.html">polÃ­tica de privacidad</a>.</p></div></div></section>
+    <section class="quickproof"><div class="container"><div class="proof"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m12 3 2 4 4.4.6-3.2 3.1.8 4.4-4-2.1-4 2.1.8-4.4L5.6 7.6 10 7l2-4Z"/></svg><div><strong>AtenciÃ³n profesional</strong><small>Terapeuta certificada y esteticista internacional</small></div></div><div class="proof"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M7 10h10M8 14h.01M12 14h.01M16 14h.01"/></svg><div><strong>Reserva sencilla</strong><small>Elige fecha y horario desde el sistema online</small></div></div><div class="proof"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 7h18v11H3zM3 10h18M7 15h3"/></svg><div><strong>Pagos disponibles</strong><small>Efectivo, Yappy y tarjetas</small></div></div></div></section>
+    <section class="section section-light" id="servicios"><div class="container"><div class="section-head"><div><span class="eyebrow">Elige tu experiencia</span><h2>Tiempo para volver a sentirte bien.</h2></div><p class="head-copy">Servicios de bienestar y estÃ©tica pensados para acompaÃ±ar tu descanso y cuidado personal.</p></div><div class="services"><article class="service"><span class="service-number">01</span><i class="service-accent"></i><h3>Masaje relajante</h3><p>25 minutos de pausa y bienestar.<br><strong>Desde $29.95</strong></p></article><article class="service"><span class="service-number">02</span><i class="service-accent"></i><h3>Masaje relajante extendido</h3><p>45 minutos para dedicarte un descanso mÃ¡s completo.</p></article><article class="service"><span class="service-number">03</span><i class="service-accent"></i><h3>Masaje relajante profundo</h3><p>60 minutos de una experiencia diseÃ±ada para renovar tu energÃ­a.</p></article><article class="service service-featured"><span class="service-number">04</span><i class="service-accent"></i><span class="service-tag">Experiencia destacada</span><h3>Ritual completo con limpieza energÃ©tica</h3><p>120 minutos de atenciÃ³n integral.<br><strong>$150</strong></p></article></div></div></section>
+    <section class="offer" id="bono"><div class="container offer-grid"><div><span class="eyebrow">Exclusivo web Â· Julio</span><h2>Reserva hoy. Disfruta mÃ¡s en tu prÃ³xima visita.</h2><p class="offer-text">Al agendar por esta pÃ¡gina puedes solicitar un descuento para usar en una experiencia mÃ¡s completa de spa, estÃ©tica, facial o masaje.</p><a class="button button-gold" href="https://figura-rostro-site.vercel.app/reservar-v2.html">Quiero reservar con mi bono <span>â†’</span></a><p class="offer-terms">VÃ¡lido hasta el 31 de julio. Canjeable de lunes a jueves, de 8:00 a. m. a 5:00 p. m., con reserva previa y sujeto a disponibilidad. No aplica sobre promociones menores a $50 ni es canjeable por efectivo. <a href="condiciones-reserva.html">Ver condiciones</a>.</p></div><aside class="offer-card"><span>Bono exclusivo web</span><div class="offer-amount">$15 <small style="font-size:.36em;letter-spacing:0">a</small> $25</div><p><strong>$15</strong> en procedimientos estÃ©ticos y <strong>$25</strong> en servicios de spa de mÃ¡s de 30 minutos.</p></aside></div></section>
+    <section class="section section-dark"><div class="container"><div class="section-head"><div><span class="eyebrow">Una experiencia cuidada</span><h2>Bienestar con intenciÃ³n en cada detalle.</h2></div></div><div class="benefits"><article class="benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s7-4.5 7-11a4 4 0 0 0-7-2.6A4 4 0 0 0 5 10c0 6.5 7 11 7 11Z"/></svg><h3>AtenciÃ³n personalizada</h3><p>Cada visita comienza con escucha y una recomendaciÃ³n acorde con el servicio que deseas disfrutar.</p></article><article class="benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 20V7l8-4 8 4v13M2 20h20M8 20v-6h8v6M8 9h.01M12 9h.01M16 9h.01"/></svg><h3>Espacio de bienestar</h3><p>Un lugar preparado para hacer una pausa, cuidar tu imagen y regalarte tiempo para ti.</p></article><article class="benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21a9 9 0 1 0-9-9c0 5 4 9 9 9Z"/><path d="M12 7v5l3 2M7 3 5 5M17 3l2 2"/></svg><h3>Horarios pensados para ti</h3><p>AtenciÃ³n de 8:00 a. m. a 8:00 p. m. con cita previa, para recibirte en el momento indicado.</p></article></div></div></section>
+    <section class="location" id="ubicacion"><div class="location-grid"><div class="location-body"><span class="eyebrow">VisÃ­tanos</span><h2>Tu espacio de bienestar estÃ¡ cerca.</h2><p>Encuentra Figura Rostro KG en Plaza Royal Park, con acceso cÃ³modo desde Parque Lefevre y Santa Elena.</p><div class="location-list"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 10c0 5-8 10-8 10S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Plaza Royal Park, local 15B, diagonal a Euro Llantas.</span></div><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 10c0 5-8 10-8 10S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><span>TambiÃ©n disponible en Waze, InDrive y Uber como â€œFigura Rostro KGâ€.</span></div></div><a class="button button-outline" target="_blank" rel="noopener" href="https://www.google.com/maps/place/Figura+Rostro+KG/@9.0061721,-79.501615,17z/data=!3m1!4b1!4m6!3m5!1s0x8fab551a1659c369:0x5e22115e15368632!8m2!3d9.0061721!4d-79.4990401!16s%2Fg%2F11x2ky17pb?entry=ttu&g_ep=EgoyMDI2MDcxNS4wIKXMDSoASAFQAw%3D%3D">Abrir en Google Maps â†—</a></div><div class="location-map"><a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/place/Figura+Rostro+KG/@9.0061721,-79.501615,17z/data=!3m1!4b1!4m6!3m5!1s0x8fab551a1659c369:0x5e22115e15368632!8m2!3d9.0061721!4d-79.4990401!16s%2Fg%2F11x2ky17pb?entry=ttu&g_ep=EgoyMDI2MDcxNS4wIKXMDSoASAFQAw%3D%3D"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 10c0 5-8 10-8 10S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><strong>CÃ³mo llegar</strong><span>Abre Google Maps</span></a></div></div></section>
+    <section class="section section-dark"><div class="container faq"><div class="faq-intro"><span class="eyebrow">Antes de reservar</span><h2>Todo claro para tu visita.</h2><p>Si necesitas orientaciÃ³n adicional antes de elegir, puedes escribir a cualquiera de nuestras lÃ­neas de atenciÃ³n.</p></div><div><details><summary>Â¿CÃ³mo realizo mi reserva?</summary><p>Selecciona â€œReservar ahoraâ€, elige tu servicio, fecha y horario disponibles en el sistema oficial. La reserva estÃ¡ sujeta a confirmaciÃ³n.</p></details><details><summary>Â¿CÃ³mo funciona el bono web?</summary><p>SolicÃ­talo al reservar. Es vÃ¡lido hasta el 31 de julio, de lunes a jueves entre 8:00 a. m. y 5:00 p. m., para procedimientos estÃ©ticos y servicios de spa mayores a 30 minutos. No aplica sobre promociones con valor inferior a $50.</p></details><details><summary>Â¿QuÃ© mÃ©todos de pago aceptan?</summary><p>Aceptamos efectivo, Yappy y tarjetas. Consulta las condiciones especÃ­ficas de paquetes o abonos durante tu proceso de reserva.</p></details><details><summary>Â¿Puedo cancelar o reprogramar?</summary><p>Puedes cancelar o reprogramar hasta tres veces. A partir de la cuarta gestiÃ³n puede aplicar un cargo administrativo del 20% por no-show o gestiÃ³n administrativa.</p></details><details><summary>Â¿Atienden menores?</summary><p>SÃ­, para terapias o servicios estÃ©ticos no invasivos adecuados. Deben asistir con su padre, madre o representante legal.</p></details></div></div></section>
+    <section class="final-cta"><div class="container"><span class="eyebrow">Tu cita, a un clic</span><h2>RegÃ¡late el descanso que tu cuerpo merece.</h2><p>Elige tu servicio, reserva el horario que mÃ¡s te conviene y solicita tu bono de julio al completar el proceso.</p><a class="button button-gold" href="https://figura-rostro-site.vercel.app/reservar-v2.html">Reservar mi cita ahora <span>â†’</span></a><div class="contact-options"><a href="https://wa.me/50764787049" target="_blank" rel="noopener">WhatsApp 6478-7049</a><a href="https://wa.me/50764746168" target="_blank" rel="noopener">WhatsApp 6474-6168</a><a href="tel:+50764787049">Llamar 6478-7049</a><a href="tel:+50764746168">Llamar 6474-6168</a></div></div></section>
+  </main>
+  <footer><div class="container footer-grid"><div class="footer-brand"><img src="logo-figura-rostro-kg.png" alt="">Figura Rostro KG</div><div class="footer-links"><a href="politica-privacidad.html">PolÃ­tica de privacidad</a><a href="condiciones-reserva.html">Condiciones de reserva</a><a href="#ubicacion">UbicaciÃ³n</a></div><span>Â© <span id="year"></span> Figura Rostro KG</span></div></footer>
+  <a class="floating" href="https://figura-rostro-site.vercel.app/reservar-v2.html" aria-label="Reservar cita"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg> Reservar</a>
+  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>
