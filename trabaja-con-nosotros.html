@@ -1,643 +1,206 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Trabaja con Nosotros | Figura Rostro KG</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-
-:root{
---primary:#27b8b0;
---primary2:#43d6ce;
---dark:#17353c;
---soft:#f6fbfb;
-}
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-font-family:'Inter',sans-serif;
-background:#fff;
-color:#24414a;
-overflow-x:hidden;
-}
-
-/* HERO */
-
-.hero{
-min-height:100vh;
-padding:40px 20px;
-position:relative;
-overflow:hidden;
-background:
-linear-gradient(
-90deg,
-rgba(18,63,73,.92) 0%,
-rgba(24,93,101,.88) 35%,
-rgba(39,184,176,.78) 100%
-);
-}
-
-/* IMAGEN DE FONDO */
-
-.hero::before{
-content:"";
-position:absolute;
-inset:0;
-background:url('auxiliar-estetica.jpg') center left/cover no-repeat;
-opacity:.38;
-filter:brightness(.9);
-z-index:1;
-}
-
-/* EFECTO DIFUMINADO */
-
-.hero::after{
-content:"";
-position:absolute;
-top:0;
-right:0;
-width:55%;
-height:100%;
-background:linear-gradient(
-90deg,
-rgba(255,255,255,0) 0%,
-rgba(255,255,255,.12) 20%,
-rgba(255,255,255,.92) 100%
-);
-z-index:2;
-}
-
-.container{
-max-width:1280px;
-margin:auto;
-position:relative;
-z-index:5;
-}
-
-.hero-grid{
-display:grid;
-grid-template-columns:1fr 520px;
-gap:60px;
-align-items:center;
-min-height:90vh;
-}
-
-/* TEXTO IZQUIERDA */
-
-.hero-content{
-color:#fff;
-padding-right:30px;
-}
-
-.hero-tag{
-display:inline-block;
-padding:10px 18px;
-background:rgba(255,255,255,.14);
-backdrop-filter:blur(10px);
-border:1px solid rgba(255,255,255,.18);
-border-radius:50px;
-font-size:14px;
-font-weight:700;
-margin-bottom:22px;
-}
-
-.hero-content h1{
-font-size:64px;
-line-height:1;
-font-weight:800;
-margin-bottom:22px;
-max-width:580px;
-}
-
-.hero-content p{
-font-size:18px;
-line-height:1.8;
-max-width:560px;
-color:rgba(255,255,255,.9);
-}
-
-.hero-mini{
-margin-top:35px;
-display:flex;
-gap:18px;
-flex-wrap:wrap;
-}
-
-.mini-box{
-background:rgba(255,255,255,.12);
-border:1px solid rgba(255,255,255,.12);
-backdrop-filter:blur(12px);
-padding:18px 22px;
-border-radius:22px;
-min-width:170px;
-}
-
-.mini-box strong{
-display:block;
-font-size:20px;
-margin-bottom:4px;
-}
-
-/* FORMULARIO */
-
-.form-card{
-background:rgba(255,255,255,.96);
-backdrop-filter:blur(12px);
-padding:38px;
-border-radius:34px;
-box-shadow:
-0 30px 70px rgba(0,0,0,.15),
-0 10px 30px rgba(0,0,0,.08);
-position:relative;
-overflow:hidden;
-}
-
-.form-card::before{
-content:"";
-position:absolute;
-top:-120px;
-right:-120px;
-width:240px;
-height:240px;
-background:linear-gradient(
-135deg,
-rgba(39,184,176,.16),
-rgba(67,214,206,.04)
-);
-border-radius:50%;
-}
-
-.badge{
-display:inline-block;
-background:#e8fbfa;
-padding:10px 18px;
-border-radius:50px;
-color:var(--primary);
-font-weight:700;
-margin-bottom:18px;
-font-size:14px;
-}
-
-.form-card h2{
-font-size:46px;
-line-height:1.05;
-margin-bottom:18px;
-color:var(--dark);
-font-weight:800;
-}
-
-.subtitle{
-color:#60737b;
-line-height:1.8;
-margin-bottom:28px;
-font-size:15px;
-}
-
-/* INPUTS */
-
-.form-group{
-margin-bottom:18px;
-}
-
-label{
-display:block;
-margin-bottom:8px;
-font-weight:700;
-font-size:14px;
-color:#234048;
-}
-
-input,
-select,
-textarea{
-width:100%;
-padding:15px 18px;
-border:1px solid #dce8e8;
-border-radius:16px;
-font-family:inherit;
-font-size:15px;
-background:#fff;
-transition:.25s;
-}
-
-input:focus,
-select:focus,
-textarea:focus{
-outline:none;
-border-color:#27b8b0;
-box-shadow:0 0 0 4px rgba(39,184,176,.12);
-}
-
-textarea{
-height:120px;
-resize:none;
-}
-
-input[type=file]{
-padding:12px;
-background:#f7fbfb;
-}
-
-/* BOTON */
-
-.btn{
-width:100%;
-border:none;
-padding:18px;
-margin-top:8px;
-background:linear-gradient(135deg,#25D366,#20b458);
-color:#fff;
-font-size:17px;
-font-weight:700;
-border-radius:60px;
-cursor:pointer;
-transition:.3s;
-box-shadow:0 12px 30px rgba(37,211,102,.25);
-}
-
-.btn:hover{
-transform:translateY(-3px);
-box-shadow:0 16px 40px rgba(37,211,102,.35);
-}
-
-/* BENEFICIOS */
-
-.benefits{
-padding:90px 20px;
-background:#fff;
-}
-
-.section-title{
-text-align:center;
-margin-bottom:50px;
-}
-
-.section-title h2{
-font-size:42px;
-color:#17353c;
-margin-bottom:10px;
-}
-
-.section-title p{
-color:#688088;
-}
-
-.benefit-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:28px;
-}
-
-.benefit{
-background:#fff;
-padding:35px;
-border-radius:30px;
-text-align:center;
-box-shadow:0 10px 35px rgba(0,0,0,.06);
-transition:.3s;
-border:1px solid #eef5f5;
-}
-
-.benefit:hover{
-transform:translateY(-6px);
-}
-
-.benefit-icon{
-font-size:46px;
-margin-bottom:18px;
-}
-
-.benefit h3{
-margin-bottom:12px;
-color:#17353c;
-}
-
-.benefit p{
-color:#60737b;
-line-height:1.7;
-}
-
-/* FOOTER */
-
-.footer{
-padding:50px 20px;
-text-align:center;
-background:#17353c;
-color:#fff;
-}
-
-.footer h3{
-font-size:28px;
-margin-bottom:8px;
-}
-
-/* RESPONSIVE */
-
-@media(max-width:1050px){
-
-.hero-grid{
-grid-template-columns:1fr;
-}
-
-.hero-content{
-text-align:center;
-padding-right:0;
-}
-
-.hero-content h1{
-font-size:52px;
-max-width:100%;
-}
-
-.hero-content p{
-margin:auto;
-}
-
-.hero-mini{
-justify-content:center;
-}
-
-.form-card{
-max-width:700px;
-margin:auto;
-}
-
-.hero::after{
-display:none;
-}
-
-}
-
-@media(max-width:700px){
-
-.hero{
-padding:25px 15px 60px;
-}
-
-.hero-content h1{
-font-size:40px;
-}
-
-.form-card{
-padding:28px 22px;
-border-radius:26px;
-}
-
-.form-card h2{
-font-size:34px;
-}
-
-.benefit-grid{
-grid-template-columns:1fr;
-}
-
-.section-title h2{
-font-size:34px;
-}
-
-}
-
-</style>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17120d">
+  <title>Trabaja con nosotros | Figura Rostro KG EstÃ©tica & Spa</title>
+  <meta name="description" content="Vacantes para masajistas y auxiliares de estÃ©tica en Figura Rostro KG EstÃ©tica & Spa, PanamÃ¡.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#17120d; --ink-2:#2a2117; --gold:#c99443; --gold-2:#efcf8d;
+      --cream:#f8f3ea; --paper:#fffdf9; --muted:#756a5d; --line:#e5d9c7;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--cream);color:var(--ink);font-family:Montserrat,Arial,sans-serif;line-height:1.6}
+    button,input,select,textarea{font:inherit}
+    .hero{position:relative;isolation:isolate;min-height:680px;color:#fff;overflow:hidden;background:#100d09}
+    .hero::before{content:"";position:absolute;inset:0;z-index:-2;background:url("ChatGPT-Image-spa.png") center 25%/cover no-repeat}
+    .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(9,7,5,.96) 0%,rgba(9,7,5,.88) 40%,rgba(9,7,5,.42) 70%,rgba(9,7,5,.68) 100%)}
+    .wrap{width:min(1160px,calc(100% - 40px));margin:auto}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:28px 0}
+    .brand{font-family:"Cormorant Garamond",serif;font-weight:700;font-size:25px;letter-spacing:.02em;color:var(--gold-2)}
+    .nav a{color:#fff;text-decoration:none;border:1px solid rgba(239,207,141,.55);border-radius:999px;padding:11px 19px;font-size:13px;font-weight:600}
+    .hero-content{max-width:670px;padding:76px 0 108px}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--gold-2);text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:700}
+    .eyebrow::before{content:"";width:34px;height:1px;background:var(--gold)}
+    h1,h2,h3{font-family:"Cormorant Garamond",serif;line-height:1.02;margin:0}
+    h1{font-size:clamp(52px,7vw,88px);font-weight:600;margin:22px 0}
+    h1 em{display:block;color:var(--gold-2);font-weight:500}
+    .hero p{font-size:17px;color:rgba(255,255,255,.82);max-width:610px}
+    .cta{display:inline-block;margin-top:26px;padding:16px 25px;border-radius:999px;background:linear-gradient(135deg,var(--gold-2),var(--gold));color:#1b140b;text-decoration:none;font-weight:700;box-shadow:0 12px 35px rgba(201,148,67,.26)}
+    .facts{display:flex;flex-wrap:wrap;gap:22px;margin-top:44px}
+    .fact{padding-left:17px;border-left:1px solid var(--gold);font-size:13px;color:rgba(255,255,255,.72)}
+    .fact strong{display:block;color:#fff;font-size:15px}
+    .intro{text-align:center;padding:86px 20px 54px;background:var(--cream)}
+    .intro h2{font-size:clamp(40px,5vw,60px);margin:12px 0;color:var(--ink-2)}
+    .intro p{max-width:680px;margin:auto;color:var(--muted)}
+    .benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:34px auto 0;max-width:1100px}
+    .benefit{background:rgba(255,255,255,.68);border:1px solid var(--line);border-radius:18px;padding:24px 18px}
+    .benefit span{display:block;font-size:24px;margin-bottom:7px}
+    .benefit strong{font-family:"Cormorant Garamond",serif;font-size:22px}
+    .form-section{padding:38px 0 100px;background:linear-gradient(180deg,var(--cream),#eee3d3)}
+    .form-shell{display:grid;grid-template-columns:.75fr 1.6fr;background:var(--paper);border:1px solid #dfd0bb;border-radius:30px;overflow:hidden;box-shadow:0 28px 75px rgba(57,42,24,.12)}
+    .form-aside{padding:48px 36px;color:#fff;background:linear-gradient(160deg,#17120d,#312417);position:relative}
+    .form-aside::after{content:"âœ¦";position:absolute;right:25px;bottom:10px;color:rgba(239,207,141,.12);font-size:150px}
+    .form-aside h2{font-size:46px;margin:18px 0}
+    .form-aside p{color:rgba(255,255,255,.7);font-size:14px}
+    .aside-list{padding:0;margin:30px 0;list-style:none}
+    .aside-list li{padding:13px 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:14px}
+    .aside-list li::before{content:"âœ“";color:var(--gold-2);margin-right:10px}
+    form{padding:48px}
+    .section-label{grid-column:1/-1;margin:8px 0 2px;color:var(--gold);font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:19px}
+    .field.full{grid-column:1/-1}
+    label,.group-label{display:block;font-weight:600;font-size:13px;margin-bottom:8px;color:#453a2e}
+    input,select,textarea{width:100%;border:1px solid var(--line);border-radius:12px;background:#fff;padding:13px 14px;color:var(--ink);transition:.2s}
+    textarea{min-height:100px;resize:vertical}
+    input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 4px rgba(201,148,67,.12)}
+    .choices{display:flex;flex-wrap:wrap;gap:9px}
+    .choice{position:relative}
+    .choice input{position:absolute;opacity:0;pointer-events:none}
+    .choice span{display:block;border:1px solid var(--line);border-radius:999px;padding:9px 14px;background:#fff;font-size:13px;cursor:pointer}
+    .choice input:checked + span{color:#fff;background:var(--ink-2);border-color:var(--ink-2)}
+    .range-row{display:grid;grid-template-columns:1fr 44px;gap:12px;align-items:center}
+    input[type=range]{padding:0;accent-color:var(--gold);border:0}
+    output{text-align:center;border-radius:10px;background:var(--ink-2);color:#fff;padding:8px}
+    .hint{display:block;color:var(--muted);font-size:11px;margin-top:6px}
+    .file{background:#fbf7f1;border-style:dashed}
+    .submit{width:100%;border:0;border-radius:999px;padding:17px 22px;background:#25b95a;color:#fff;font-weight:700;cursor:pointer;box-shadow:0 12px 28px rgba(37,185,90,.2)}
+    .submit:hover{filter:brightness(.96);transform:translateY(-1px)}
+    .privacy{text-align:center;font-size:11px;color:var(--muted);margin:12px 0 0}
+    footer{text-align:center;padding:38px 20px;background:var(--ink);color:rgba(255,255,255,.67);font-size:13px}
+    footer strong{display:block;color:var(--gold-2);font-family:"Cormorant Garamond",serif;font-size:25px}
+    @media(max-width:900px){.benefits{grid-template-columns:repeat(2,1fr)}.form-shell{grid-template-columns:1fr}.form-aside{padding:38px}.form-aside .aside-list{display:none}}
+    @media(max-width:640px){.wrap{width:min(100% - 26px,1160px)}.nav{padding:20px 0}.brand{font-size:20px}.nav a{display:none}.hero{min-height:auto}.hero::before{background-position:62% center}.hero::after{background:rgba(9,7,5,.72)}.hero-content{padding:64px 0 76px}.facts{gap:15px}.intro{padding-top:65px}.benefits{grid-template-columns:1fr}.form-section{padding-bottom:55px}.form-shell{border-radius:22px}.form-aside h2{font-size:38px}form{padding:30px 20px}.grid{grid-template-columns:1fr}.section-label,.field.full{grid-column:1}.choices{gap:7px}}
+  </style>
 </head>
-
 <body>
-
-<section class="hero">
-
-<div class="container">
-
-<div class="hero-grid">
-
-<!-- TEXTO IZQUIERDA -->
-
-<div class="hero-content">
-
-<div class="hero-tag">
-✨ Vacante Disponible • Figura Rostro KG
-</div>
-
-<h1>
-Es tu Momento de Emprender</h1>
-
-<p>
-Buscamos Auxiliar de Estética apasionada por la belleza,
-el cuidado facial y la atención al cliente.
-Únete a un equipo profesional en crecimiento.
-</p>
-
-<div class="hero-mini">
-
-<div class="mini-box">
-<strong>Faciales</strong>
-Tratamientos profesionales
-</div>
-
-<div class="mini-box">
-<strong>Corporales</strong>
-Tecnologías estéticas
-</div>
-
-<div class="mini-box">
-<strong>Ambiente VIP</strong>
-Clínica moderna y elegante
-</div>
-
-</div>
-
-</div>
-
-<!-- FORMULARIO -->
-
-<div class="form-card">
-
-<div class="badge">
-Figura Rostro KG
-</div>
-
-<h2>
-Únete a nuestro equipo
-</h2>
-
-<p class="subtitle">
-Completa el formulario y envíanos tu solicitud directamente por WhatsApp.
-</p>
-
-<form id="empleoForm">
-
-<div class="form-group">
-<label>Nombre completo</label>
-<input type="text" id="nombre" required>
-</div>
-
-<div class="form-group">
-<label>Edad</label>
-<input type="number" id="edad" required>
-</div>
-
-<div class="form-group">
-<label>Nacionalidad</label>
-<select id="nacionalidad" required>
-<option value="">Seleccione</option>
-<option>Panameña</option>
-<option>Colombiana</option>
-<option>Venezolana</option>
-<option>Nicaragüense</option>
-<option>Otra</option>
-</select>
-</div>
-
-<div class="form-group">
-<label>Número de WhatsApp</label>
-<input type="tel" id="telefono" required>
-</div>
-
-<div class="form-group">
-<label>Experiencia en Faciales</label>
-<select id="facial">
-<option>Básica</option>
-<option>Intermedia</option>
-<option>Avanzada</option>
-</select>
-</div>
-
-<div class="form-group">
-<label>Experiencia en Corporales</label>
-<select id="corporal">
-<option>Básica</option>
-<option>Intermedia</option>
-<option>Avanzada</option>
-</select>
-</div>
-
-<div class="form-group">
-<label>¿Ha trabajado atendiendo clientes?</label>
-<select id="clientes">
-<option>Sí</option>
-<option>No</option>
-</select>
-</div>
-
-<div class="form-group">
-<label>¿Puede trabajar de lunes a sábado?</label>
-<select id="disponibilidad">
-<option>Sí</option>
-<option>No</option>
-</select>
-</div>
-
-<div class="form-group">
-<label>Foto realizando tratamientos (opcional)</label>
-<input type="file" accept="image/*">
-</div>
-
-<div class="form-group">
-<label>Cuéntanos brevemente tu experiencia</label>
-<textarea id="experiencia"></textarea>
-</div>
-
-<button type="submit" class="btn">
-Enviar Solicitud por WhatsApp
-</button>
-
-</form>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="benefits">
-
-<div class="container">
-
-<div class="section-title">
-<h2>¿Por qué trabajar con nosotros?</h2>
-<p>Un entorno moderno enfocado en crecimiento y bienestar.</p>
-</div>
-
-<div class="benefit-grid">
-
-<div class="benefit">
-<div class="benefit-icon">💼</div>
-<h3>Crece con Nosotros</h3>
-<p>Forma parte de un equipo profesional en expansión.</p>
-</div>
-
-<div class="benefit">
-<div class="benefit-icon">📚</div>
-<h3>Aprendizaje Continuo</h3>
-<p>Aprende nuevas técnicas y tratamientos estéticos.</p>
-</div>
-
-<div class="benefit">
-<div class="benefit-icon">🌟</div>
-<h3>Excelente Ambiente</h3>
-<p>Trabaja en un espacio moderno, elegante y profesional.</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<footer class="footer">
-
-<h3>Figura Rostro KG</h3>
-<p>Estética Integral • Panamá</p>
-
-</footer>
-
-<script>
-
-document.getElementById('empleoForm').addEventListener('submit',function(e){
-
-e.preventDefault();
-
-let mensaje =
-`Hola, deseo aplicar para la vacante de Auxiliar de Estética.
-
-👤 Nombre: ${document.getElementById('nombre').value}
-
-🎂 Edad: ${document.getElementById('edad').value}
-
-🌎 Nacionalidad: ${document.getElementById('nacionalidad').value}
-
-📱 WhatsApp: ${document.getElementById('telefono').value}
-
-✨ Experiencia Facial: ${document.getElementById('facial').value}
-
-💆 Experiencia Corporal: ${document.getElementById('corporal').value}
-
-🤝 Atención al cliente: ${document.getElementById('clientes').value}
-
-📅 Disponibilidad: ${document.getElementById('disponibilidad').value}
-
-📝 Experiencia:
-${document.getElementById('experiencia').value}`;
-
-window.open(
-'https://wa.me/50764787049?text=' + encodeURIComponent(mensaje),
-'_blank'
-);
-
-});
-
-</script>
-
+  <header class="hero">
+    <div class="wrap">
+      <nav class="nav" aria-label="Principal">
+        <div class="brand">Figura Rostro KG Â· EstÃ©tica & Spa</div>
+        <a href="#postulacion">Quiero postularme</a>
+      </nav>
+      <div class="hero-content">
+        <span class="eyebrow">Estamos contratando</span>
+        <h1>Buscamos talento <em>para cuidar y consentir.</em></h1>
+        <p>Si tienes vocaciÃ³n por el bienestar, experiencia en masajes relajantes o interÃ©s en el mundo de la estÃ©tica, queremos conocerte.</p>
+        <a class="cta" href="#postulacion">Enviar mis datos</a>
+        <div class="facts">
+          <div class="fact"><strong>Masajistas</strong>Masajes relajantes</div>
+          <div class="fact"><strong>Auxiliares</strong>EstÃ©tica y faciales</div>
+          <div class="fact"><strong>PanamÃ¡</strong>Figura Rostro KG</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="intro">
+    <span class="eyebrow">Crece con nosotros</span>
+    <h2>Un espacio para tu talento</h2>
+    <p>Buscamos personas responsables, amables y apasionadas por brindar una experiencia de bienestar excepcional.</p>
+    <div class="benefits">
+      <div class="benefit"><span>âœ¦</span><strong>Ambiente profesional</strong></div>
+      <div class="benefit"><span>â™§</span><strong>Aprendizaje continuo</strong></div>
+      <div class="benefit"><span>â™¡</span><strong>Valoramos tu talento</strong></div>
+      <div class="benefit"><span>â—·</span><strong>Horarios coordinados</strong></div>
+    </div>
+  </section>
+
+  <main class="form-section" id="postulacion">
+    <div class="wrap form-shell">
+      <aside class="form-aside">
+        <span class="eyebrow">Tu prÃ³ximo paso</span>
+        <h2>CuÃ©ntanos sobre ti</h2>
+        <p>Completa el formulario. Al finalizar, abriremos WhatsApp con tus respuestas listas para enviar.</p>
+        <ul class="aside-list">
+          <li>Ten tu hoja de vida a mano</li>
+          <li>Comparte tus redes o portafolio</li>
+          <li>Responde con sinceridad</li>
+          <li>Revisaremos cada postulaciÃ³n</li>
+        </ul>
+      </aside>
+
+      <form id="empleoForm">
+        <div class="grid">
+          <p class="section-label">InformaciÃ³n personal</p>
+          <div class="field full"><label for="nombre">Nombre completo *</label><input id="nombre" autocomplete="name" required></div>
+          <div class="field"><label for="edad">Edad *</label><input id="edad" type="number" min="18" max="75" inputmode="numeric" required></div>
+          <div class="field">
+            <label for="nacionalidad">Nacionalidad *</label>
+            <select id="nacionalidad" required>
+              <option value="">Selecciona una opciÃ³n</option><option>PanameÃ±a</option><option>Colombiana</option>
+              <option>Venezolana</option><option>NicaragÃ¼ense</option><option>Costarricense</option><option>China</option><option>Otra</option>
+            </select>
+          </div>
+          <div class="field"><label for="telefono">NÃºmero de WhatsApp *</label><input id="telefono" type="tel" autocomplete="tel" placeholder="+507 6000-0000" required></div>
+          <div class="field"><label for="residencia">Lugar de residencia *</label><input id="residencia" placeholder="Corregimiento o sector" required><small class="hint">Nos ayuda a coordinar turnos y citas.</small></div>
+          <div class="field full"><label for="puesto">Â¿A cuÃ¡l posiciÃ³n deseas aplicar? *</label><select id="puesto" required><option value="">Selecciona una opciÃ³n</option><option>Masajista</option><option>Auxiliar de estÃ©tica</option><option>Ambas posiciones</option></select></div>
+
+          <p class="section-label">Experiencia y habilidades</p>
+          <div class="field"><span class="group-label">Â¿Has trabajado en un spa o estÃ©tica? *</span><div class="choices"><label class="choice"><input type="radio" name="spa" value="SÃ­" required><span>SÃ­</span></label><label class="choice"><input type="radio" name="spa" value="No"><span>No</span></label></div></div>
+          <div class="field"><span class="group-label">Â¿Sabes hacer masajes relajantes? *</span><div class="choices"><label class="choice"><input type="radio" name="masajes" value="SÃ­" required><span>SÃ­</span></label><label class="choice"><input type="radio" name="masajes" value="No"><span>No</span></label></div></div>
+          <div class="field full"><label for="nivel">Â¿CÃ³mo calificarÃ­as tus masajes relajantes? (1 = principiante, 10 = excelente)</label><div class="range-row"><input id="nivel" type="range" min="1" max="10" value="5"><output id="nivelValor">5</output></div></div>
+          <div class="field"><span class="group-label">Â¿Sabes hacer limpieza facial? *</span><div class="choices"><label class="choice"><input type="radio" name="facial" value="SÃ­" required><span>SÃ­</span></label><label class="choice"><input type="radio" name="facial" value="No"><span>No</span></label></div></div>
+          <div class="field">
+            <span class="group-label">Otros idiomas que hablas</span>
+            <div class="choices">
+              <label class="choice"><input type="checkbox" name="idioma" value="InglÃ©s"><span>InglÃ©s</span></label>
+              <label class="choice"><input type="checkbox" name="idioma" value="FrancÃ©s"><span>FrancÃ©s</span></label>
+              <label class="choice"><input type="checkbox" name="idioma" value="Chino"><span>Chino</span></label>
+              <label class="choice"><input type="checkbox" name="idioma" value="Otros"><span>Otros</span></label>
+            </div>
+          </div>
+          <div class="field full"><label for="experiencia">CuÃ©ntanos brevemente sobre tu experiencia</label><textarea id="experiencia" placeholder="Â¿DÃ³nde has trabajado? Â¿QuÃ© tÃ©cnicas o tratamientos dominas?"></textarea></div>
+
+          <p class="section-label">Portafolio y hoja de vida</p>
+          <div class="field full"><label for="redes">Redes sociales o portafolio de tus trabajos</label><input id="redes" type="text" placeholder="@usuario o enlace a Instagram, TikTok, Facebookâ€¦"><small class="hint">Opcional. Comparte solo perfiles profesionales o trabajos que desees mostrarnos.</small></div>
+          <div class="field full"><label for="cv">Hoja de vida (opcional)</label><input class="file" id="cv" type="file" accept=".pdf,.doc,.docx"><small class="hint">Por seguridad del navegador, el archivo no se adjunta automÃ¡ticamente. Al abrir WhatsApp, adjÃºntalo en el chat.</small></div>
+          <div class="field full"><button class="submit" type="submit">Enviar postulaciÃ³n por WhatsApp</button><p class="privacy">Usaremos tus datos Ãºnicamente para evaluar tu postulaciÃ³n laboral.</p></div>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer><strong>Figura Rostro KG</strong>EstÃ©tica & Spa Â· PanamÃ¡<br>Si tienes hoja de vida, envÃ­anos tus datos. Estaremos encantados de comunicarnos contigo.</footer>
+  <script>
+    const form = document.getElementById("empleoForm");
+    const nivel = document.getElementById("nivel");
+    const nivelValor = document.getElementById("nivelValor");
+    nivel.addEventListener("input", () => nivelValor.value = nivel.value);
+    const valorRadio = nombre => form.querySelector(`input[name="${nombre}"]:checked`)?.value || "Sin respuesta";
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+      const idiomas = [...form.querySelectorAll('input[name="idioma"]:checked')].map(x => x.value).join(", ") || "Solo espaÃ±ol / no indicÃ³";
+      const tieneCV = document.getElementById("cv").files.length ? "SÃ­, lo adjuntarÃ© en este chat" : "No adjuntÃ³ archivo";
+      const mensaje = `Hola, deseo postularme para trabajar en Figura Rostro KG EstÃ©tica & Spa.
+
+*DATOS PERSONALES*
+Nombre: ${document.getElementById("nombre").value}
+Edad: ${document.getElementById("edad").value}
+Nacionalidad: ${document.getElementById("nacionalidad").value}
+WhatsApp: ${document.getElementById("telefono").value}
+Residencia: ${document.getElementById("residencia").value}
+PosiciÃ³n: ${document.getElementById("puesto").value}
+
+*EXPERIENCIA Y HABILIDADES*
+Ha trabajado en spa o estÃ©tica: ${valorRadio("spa")}
+Sabe hacer masajes relajantes: ${valorRadio("masajes")}
+Nivel de masajes (1â€“10): ${nivel.value}
+Sabe hacer limpieza facial: ${valorRadio("facial")}
+Idiomas: ${idiomas}
+Experiencia: ${document.getElementById("experiencia").value || "No indicÃ³"}
+
+*PORTAFOLIO*
+Redes o trabajos: ${document.getElementById("redes").value || "No indicÃ³"}
+Hoja de vida: ${tieneCV}`;
+      window.open("https://wa.me/50764746168?text=" + encodeURIComponent(mensaje), "_blank", "noopener,noreferrer");
+    });
+  </script>
 </body>
 </html>
