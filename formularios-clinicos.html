@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Formularios Clínicos | Figura Rostro KG</title>
+  <title>Formularios Clínicos | Figura Rostro KG by Karen Gutierrez</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
   
   <style>
@@ -13,6 +13,9 @@
     .page{ max-width:1100px; margin:0 auto; padding:20px 16px 50px; }
     header{ text-align:center; margin-bottom:20px; }
     header h1{ margin:8px 0 4px; font-size:1.6rem; color:var(--brand); }
+    .brand-logo{ width:88px; height:88px; object-fit:cover; border-radius:16px; box-shadow:0 8px 20px rgba(43,7,88,.14); }
+    .brand-lockup{ display:flex; align-items:center; justify-content:center; gap:14px; }
+    .brand-lockup > div{ text-align:left; }
     header p{ margin:0; font-size:0.9rem; color:#5b5470; }
     
     /* TABS */
@@ -67,14 +70,17 @@
     }
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-    @media (max-width:600px){ .forms-wrapper{ padding:12px; } .btn{ flex: 100%; } }
+    @media (max-width:600px){ .forms-wrapper{ padding:12px; } .btn{ flex: 100%; } .brand-logo{width:72px;height:72px;} .brand-lockup{align-items:flex-start;} }
   </style>
 </head>
 <body>
   <div class="page">
-    <header>
+    <header class="brand-lockup">
+      <img src="logo-karen-gutierrez.png" alt="Figura Rostro KG by Karen Gutierrez" class="brand-logo">
+      <div>
       <h1>Formularios Clínicos – Figura Rostro KG</h1>
-      <p>Historial Digital + Consentimiento</p>
+      <p>by Karen Gutierrez · Historial Digital + Consentimiento</p>
+      </div>
     </header>
 
     <div class="tabs">
